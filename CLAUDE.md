@@ -52,7 +52,11 @@ npm run lint:link      # リンク切れチェック
 - このリポジトリには公開済みコンテンツのみ置く。下書きや非公開ノートは置かない
 - ファイル名はケバブケース（`emergent-civilization-theory.md`）
 - 日本語がデフォルト。英語版は `docs/en/` 配下に配置
-- 数式は MathJax（`$$...$$`）、図表は Mermaid を使う
+
+### Markdown で使えるプラグイン
+
+- **MathJax3** — `$$V = f(S, R, T)$$` で数式。インラインは `$x^2$`
+- **Mermaid** — コードブロック ` ```mermaid ` で図表（flowchart, graph, sequence 等）
 
 ### Sidebar
 
