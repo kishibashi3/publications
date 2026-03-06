@@ -14,7 +14,6 @@ export default withMermaid({
     nav: [
       { text: 'ホーム', link: '/' },
       { text: 'About', link: '/about' },
-      { text: 'ノート', link: '/notes/' },
       { text: '貢献', link: '/contributing' }
     ],
     sidebar: {
@@ -86,8 +85,7 @@ export default withMermaid({
       '/': [
         { text: 'About', link: '/about' },
         { text: 'Core', link: '/core/' },
-        { text: 'AI', link: '/ai/' },
-        { text: 'ノート', link: '/notes/' }
+        { text: 'AI', link: '/ai/' }
       ]
     },
 
