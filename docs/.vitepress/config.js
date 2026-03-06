@@ -15,36 +15,103 @@ export default withMermaid({
       { text: 'ノート', link: '/notes/' },
       { text: '貢献', link: '/contributing' }
     ],
-    sidebar: [
-      {
-        text: 'About',
-        items: [
-          { text: 'About', link: '/about' }
-        ]
-      },
-      {
-        text: 'Core',
-        collapsed: true,
-        items: [
-          { text: '創発文明論', link: '/core/' }
-        ]
-      },
-      {
-        text: 'AI',
-        collapsed: true,
-        items: [
-          { text: 'AIエージェント設計概論', link: '/ai/agent-design/' },
-          { text: 'AIエージェント実装概論', link: '/ai/agent-implementation/' },
-          { text: 'AIリテラシー', link: '/ai/literacy/' }
-        ]
-      },
-      {
-        text: 'ノート',
-        items: [
-          { text: 'ノート', link: '/notes/' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/core/': [
+        {
+          text: 'Core',
+          items: [
+            { text: '序章', link: '/core/00-preface' },
+            { text: '第1章', link: '/core/01-axiom-of-existence' },
+            { text: '第2章', link: '/core/02-circular-structure' },
+            { text: '第3章', link: '/core/03-particle-wave' },
+            { text: '第4章', link: '/core/04-thermodynamic-ontology' },
+            { text: '第5章', link: '/core/05-re-relational-ethics' },
+            { text: '第6章', link: '/core/06-systemic-value' },
+            { text: '第7章', link: '/core/07-ai-resonance' },
+            { text: '附録A', link: '/core/appendix-a-dialogue' },
+            { text: '附録B', link: '/core/appendix-b-ai-perspective' }
+          ]
+        }
+      ],
+      '/ai/agent-design/': [
+        {
+          text: 'AIエージェント設計概論',
+          link: '/ai/agent-design/',
+          items: [
+            { text: '入門', link: '/ai/agent-design/introduction.ja' },
+            { text: '序章', link: '/ai/agent-design/chapter-00.ja' },
+            { text: '第1章', link: '/ai/agent-design/chapter-01.ja' },
+            { text: '第2章', link: '/ai/agent-design/chapter-02.ja' },
+            { text: '第3章', link: '/ai/agent-design/chapter-03.ja' },
+            { text: '第4章', link: '/ai/agent-design/chapter-04.ja' },
+            { text: '第5章', link: '/ai/agent-design/chapter-05.ja' },
+            { text: '第6章', link: '/ai/agent-design/chapter-06.ja' },
+            { text: '第7章', link: '/ai/agent-design/chapter-07.ja' },
+            { text: '第8章', link: '/ai/agent-design/chapter-08.ja' }
+          ]
+        }
+      ],
+      '/ai/agent-implementation/': [
+        {
+          text: 'AIエージェント実装概論',
+          link: '/ai/agent-implementation/',
+          items: [
+            { text: '入門', link: '/ai/agent-implementation/introduction.ja' },
+            { text: '序章', link: '/ai/agent-implementation/chapter-00.ja' },
+            { text: '第1章', link: '/ai/agent-implementation/chapter-01.ja' },
+            { text: '第2章', link: '/ai/agent-implementation/chapter-02.ja' },
+            { text: '第3章', link: '/ai/agent-implementation/chapter-03.ja' },
+            { text: '第4章', link: '/ai/agent-implementation/chapter-04.ja' },
+            { text: '第5章', link: '/ai/agent-implementation/chapter-05.ja' },
+            { text: '第6章', link: '/ai/agent-implementation/chapter-06.ja' },
+            { text: '第7章', link: '/ai/agent-implementation/chapter-07.ja' },
+            { text: '第8章', link: '/ai/agent-implementation/chapter-08.ja' },
+            { text: '第9章', link: '/ai/agent-implementation/chapter-09.ja' },
+            { text: '第10章', link: '/ai/agent-implementation/chapter-10.ja' }
+          ]
+        }
+      ],
+      '/ai/literacy/': [
+        {
+          text: 'AIリテラシー',
+          link: '/ai/literacy/',
+          items: [
+            { text: 'Part 1 — 地形図', link: '/ai/literacy/part1-terrain-map' },
+            { text: 'Part 2 — 詳細図', link: '/ai/literacy/part2-detailed-map' }
+          ]
+        }
+      ],
+      '/': [
+        {
+          text: 'About',
+          items: [
+            { text: 'About', link: '/about' }
+          ]
+        },
+        {
+          text: 'Core',
+          collapsed: true,
+          items: [
+            { text: '創発文明論', link: '/core/' }
+          ]
+        },
+        {
+          text: 'AI',
+          collapsed: true,
+          items: [
+            { text: 'エージェント設計概論', link: '/ai/agent-design/' },
+            { text: 'エージェント実装概論', link: '/ai/agent-implementation/' },
+            { text: 'AIリテラシー', link: '/ai/literacy/' }
+          ]
+        },
+        {
+          text: 'ノート',
+          items: [
+            { text: 'ノート', link: '/notes/' }
+          ]
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/kishibashi3/publications' }
