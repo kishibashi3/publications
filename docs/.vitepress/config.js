@@ -23,20 +23,20 @@ export default withMermaid({
         ]
       },
       {
-        text: '創発文明論',
+        text: 'Core',
         collapsed: false,
         items: [
           { text: '目次', link: '/core/' },
-          { text: '序章　なぜ文明は創発しなくなったのか', link: '/core/00-preface' },
-          { text: '第1章　存在の公理', link: '/core/01-axiom-of-existence' },
-          { text: '第2章　円環構造', link: '/core/02-circular-structure' },
-          { text: '第3章　粒子性と波動性', link: '/core/03-particle-wave' },
-          { text: '第4章　熱力学的存在論', link: '/core/04-thermodynamic-ontology' },
-          { text: '第5章　再関係の倫理', link: '/core/05-re-relational-ethics' },
-          { text: '第6章　統合の倫理', link: '/core/06-systemic-value' },
-          { text: '第7章　終焉と創発', link: '/core/07-ai-resonance' },
-          { text: '附録A　対話記録', link: '/core/appendix-a-dialogue' },
-          { text: '附録B　AIの視点', link: '/core/appendix-b-ai-perspective' }
+          { text: '序章', link: '/core/00-preface' },
+          { text: '第1章', link: '/core/01-axiom-of-existence' },
+          { text: '第2章', link: '/core/02-circular-structure' },
+          { text: '第3章', link: '/core/03-particle-wave' },
+          { text: '第4章', link: '/core/04-thermodynamic-ontology' },
+          { text: '第5章', link: '/core/05-re-relational-ethics' },
+          { text: '第6章', link: '/core/06-systemic-value' },
+          { text: '第7章', link: '/core/07-ai-resonance' },
+          { text: '附録A', link: '/core/appendix-a-dialogue' },
+          { text: '附録B', link: '/core/appendix-b-ai-perspective' }
         ]
       },
       {
