@@ -105,6 +105,8 @@ export default withMermaid({
     }
   },
 
+  lastUpdated: true,
+
   // Dark mode by default
   appearance: 'dark',
 
