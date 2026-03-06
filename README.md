@@ -32,6 +32,7 @@ Markdown plugins available:
 
 - **MathJax3** — `$$V = f(S, R, T)$$` for block math, `$x^2$` for inline
 - **Mermaid** — ` ```mermaid ` code blocks for diagrams (flowchart, graph, sequence, etc.)
+- **PlantUML** — `@startuml` / `@enduml` for class diagrams, sequence diagrams, etc.
 
 ## Development
 
