@@ -15,9 +15,8 @@
 
 ```
 docs/
-├── publications/          # 論文コンテンツ
-│   ├── core/              # 創発文明論（章分割）
-│   └── ai/                # AI関連シリーズ
+├── core/                  # 創発文明論（章分割）
+├── ai/                    # AI関連シリーズ
 ├── notes/                 # 公開メモ
 ├── en/                    # 英語版（プレースホルダー）
 ├── contributing.md        # 貢献ガイド
@@ -65,7 +64,7 @@ npm run lint:link      # リンク切れチェック
 ### License
 
 - コード（VitePress設定、ワークフロー等）: MIT
-- コンテンツ（`docs/publications/`, `docs/notes/`）: CC BY-SA 4.0
+- コンテンツ（`docs/core/`, `docs/ai/`, `docs/notes/`）: CC BY-SA 4.0
 
 ### CI/CD
 
