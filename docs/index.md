@@ -13,4 +13,4 @@
 
 ## Feedback
 
-ご意見・ご感想・誤りの指摘は [GitHub Issues](https://github.com/kishibashi3/publications/issues) からお気軽にどうぞ。
+ご意見・誤りの指摘は [GitHub Issues](https://github.com/kishibashi3/publications/issues) からどうぞ。
