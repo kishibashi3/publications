@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import mathjax3 from 'markdown-it-mathjax3'
+import plantuml from 'markdown-it-plantuml'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 
 export default withMermaid({
@@ -111,6 +112,7 @@ export default withMermaid({
     lineNumbers: true,
     config: (md) => {
       md.use(mathjax3)
+      md.use(plantuml)
     }
   }
 })

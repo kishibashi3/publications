@@ -57,6 +57,7 @@ npm run lint:link      # リンク切れチェック
 
 - **MathJax3** — `$$V = f(S, R, T)$$` で数式。インラインは `$x^2$`
 - **Mermaid** — コードブロック ` ```mermaid ` で図表（flowchart, graph, sequence 等）
+- **PlantUML** — `@startuml` / `@enduml` でクラス図、シーケンス図等（公式サーバーでレンダリング）
 
 ### Sidebar
 
