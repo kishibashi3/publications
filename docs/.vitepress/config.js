@@ -82,34 +82,10 @@ export default withMermaid({
         }
       ],
       '/': [
-        {
-          text: 'About',
-          items: [
-            { text: 'About', link: '/about' }
-          ]
-        },
-        {
-          text: 'Core',
-          collapsed: true,
-          items: [
-            { text: '創発文明論', link: '/core/' }
-          ]
-        },
-        {
-          text: 'AI',
-          collapsed: true,
-          items: [
-            { text: 'エージェント設計概論', link: '/ai/agent-design/' },
-            { text: 'エージェント実装概論', link: '/ai/agent-implementation/' },
-            { text: 'AIリテラシー', link: '/ai/literacy/' }
-          ]
-        },
-        {
-          text: 'ノート',
-          items: [
-            { text: 'ノート', link: '/notes/' }
-          ]
-        }
+        { text: 'About', link: '/about' },
+        { text: 'Core', link: '/core/' },
+        { text: 'AI', link: '/ai/' },
+        { text: 'ノート', link: '/notes/' }
       ]
     },
 
