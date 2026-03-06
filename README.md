@@ -1,34 +1,43 @@
-# Publications
+# 思考の本棚 / Bookshelf of Thoughts
 
-Research publications on emergent civilization theory, AI agent design, and related topics.
+An open archive of thoughts built on General Systems Theory.
 
-**Site**: https://kishibashi3.github.io/publications/
+一般システム論をベースにした思考の公開アーカイブ。
 
-## Topics
+**Site**: https://pubs.u-biosis.com
 
-- **Core Theory** - Emergent civilization theory, system value formulas, chaos edge theory
-- **AI** - AI agent design, AI agent implementation, AI literacy
+## Workflow
 
-## Contributing
+```mermaid
+flowchart LR
+    A[Write in research repo] --> B[Ready to publish?]
+    B --> C[Copy to this repo]
+    C --> D[Create PR]
+    D --> E[CI checks]
+    E --> F[Merge]
+    F --> G[Auto-deploy to pubs.u-biosis.com]
+```
 
-Contributions are welcome! Please see [Contributing Guide](https://kishibashi3.github.io/publications/contributing) for details.
+## Contents
 
-### Quick Summary
-
-- Typo fixes and translation improvements: PR welcome
-- New content or major edits: open an Issue first
-- All PRs are reviewed before merge
+| Section | Description | Language |
+|---------|-------------|----------|
+| [Core Theory](https://pubs.u-biosis.com/core/) | 創発文明論 — Emergent Civilization Theory | ja (en planned) |
+| [AI](https://pubs.u-biosis.com/ai/) | Agent Design / Implementation / Literacy | ja (en planned) |
+| [Notes](https://pubs.u-biosis.com/notes/) | Miscellaneous notes | ja |
 
 ## Development
 
 ```bash
-npm install
+npm ci
 npm run docs:dev
 ```
 
+## Feedback
+
+Issues and suggestions are welcome via [GitHub Issues](https://github.com/kishibashi3/publications/issues).
+
 ## License
 
-- **Code** (VitePress config, workflows, etc.): [MIT License](./LICENSE)
-- **Content** (`docs/publications/`, `docs/notes/`): [CC BY-SA 4.0](./LICENSE-CONTENT)
-
-See each license file for full details.
+- **Code** (VitePress config, workflows): [MIT](./LICENSE)
+- **Content** (`docs/core/`, `docs/ai/`, `docs/notes/`): [CC BY-SA 4.0](./LICENSE-CONTENT)

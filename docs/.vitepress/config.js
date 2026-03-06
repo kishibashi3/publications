@@ -40,17 +40,6 @@ export default withMermaid({
         ]
       },
       {
-        text: '補足資料',
-        collapsed: true,
-        items: [
-          { text: 'カオスの淵 図解', link: '/core/supplementary/chaos-edge-diagrams' },
-          { text: '創発理論', link: '/core/supplementary/emergence-theory' },
-          { text: '創発価値理論（完全版）', link: '/core/supplementary/emergence-value-theory-complete' },
-          { text: '階層性と循環性', link: '/core/supplementary/hierarchy-circularity' },
-          { text: 'システム価値の公式', link: '/core/supplementary/system-value-formula' }
-        ]
-      },
-      {
         text: 'AI',
         items: [
           { text: 'AIエージェント設計概論', link: '/ai/agent-design/' },
