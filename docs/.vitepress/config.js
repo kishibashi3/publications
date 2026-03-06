@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import mathjax3 from 'markdown-it-mathjax3'
 import plantuml from 'markdown-it-plantuml'
+import cjkFriendly from 'markdown-it-cjk-friendly'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 
 export default withMermaid({
@@ -111,6 +112,7 @@ export default withMermaid({
   markdown: {
     lineNumbers: true,
     config: (md) => {
+      md.use(cjkFriendly)
       md.use(mathjax3)
       md.use(plantuml)
     }

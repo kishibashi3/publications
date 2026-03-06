@@ -6,11 +6,11 @@
 
 ## もくじ
 
-- [創発文明論](./core/) — 一般システム論による文明の再記述
+- [Core](./core/) — 一般システム論による文明の再記述
 - [AI](./ai/) — エージェント設計 / 実装 / リテラシー
 - [ノート](./notes/)
 - [このサイトについて](./about.md)
 
 ## Feedback
 
-ご意見・ご感想・誤りの指摘は [GitHub Issues](https://github.com/kishibashi3/publications/issues) からお気軽にどうぞ。
+ご意見・誤りの指摘は [GitHub Issues](https://github.com/kishibashi3/publications/issues) からどうぞ。
