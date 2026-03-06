@@ -30,8 +30,8 @@ layout: doc
 
 ## 補足資料
 
-- [カオスの縁の図解説明](./00_diagrams/chaos_edge_diagrams_description.md)
-- [創発理論](./01_core_theory/emergence_theory.md)
-- [創発価値理論（完全版）](./01_core_theory/emergence_value_theory_complete.md)
-- [階層性と循環性](./01_core_theory/hierarchy_circularity.md)
-- [システム価値の公式](./01_core_theory/system_value_formula.md)
+- [カオスの淵 図解](./supplementary/chaos-edge-diagrams.md)
+- [創発理論](./supplementary/emergence-theory.md)
+- [創発価値理論（完全版）](./supplementary/emergence-value-theory-complete.md)
+- [階層性と循環性](./supplementary/hierarchy-circularity.md)
+- [システム価値の公式](./supplementary/system-value-formula.md)

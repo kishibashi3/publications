@@ -1,12 +1,12 @@
-# Publications
+# 思考の本棚
 
-> Research publications and notes
+> 一般システム論をベースにした思考の公開アーカイブ
 
 ## Contents
 
-- [創発文明論](./core/) - Core Theory
-- [AI](./ai/) - AI Agent Design / Implementation / Literacy
-- [Notes](./notes/) - Research notes
+- [Core Theory](./core/) - 創発文明論
+- [AI](./ai/) - AIエージェント設計 / 実装 / リテラシー
+- [Notes](./notes/) - ノート
 - [About](./about.md)
 
 ## Feedback
