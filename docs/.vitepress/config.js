@@ -24,18 +24,9 @@ export default withMermaid({
       },
       {
         text: 'Core',
-        collapsed: false,
+        collapsed: true,
         items: [
-          { text: '序章', link: '/core/00-preface' },
-          { text: '第1章', link: '/core/01-axiom-of-existence' },
-          { text: '第2章', link: '/core/02-circular-structure' },
-          { text: '第3章', link: '/core/03-particle-wave' },
-          { text: '第4章', link: '/core/04-thermodynamic-ontology' },
-          { text: '第5章', link: '/core/05-re-relational-ethics' },
-          { text: '第6章', link: '/core/06-systemic-value' },
-          { text: '第7章', link: '/core/07-ai-resonance' },
-          { text: '附録A', link: '/core/appendix-a-dialogue' },
-          { text: '附録B', link: '/core/appendix-b-ai-perspective' }
+          { text: '創発文明論', link: '/core/' }
         ]
       },
       {
