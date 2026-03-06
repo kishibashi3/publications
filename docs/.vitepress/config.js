@@ -26,7 +26,6 @@ export default withMermaid({
         text: 'Core',
         collapsed: false,
         items: [
-          { text: '目次', link: '/core/' },
           { text: '序章', link: '/core/00-preface' },
           { text: '第1章', link: '/core/01-axiom-of-existence' },
           { text: '第2章', link: '/core/02-circular-structure' },
