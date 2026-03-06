@@ -40,6 +40,7 @@ export default withMermaid({
       },
       {
         text: 'AI',
+        collapsed: true,
         items: [
           { text: 'AIエージェント設計概論', link: '/ai/agent-design/' },
           { text: 'AIエージェント実装概論', link: '/ai/agent-implementation/' },
