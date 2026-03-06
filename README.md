@@ -26,6 +26,13 @@ flowchart LR
 | [AI](https://pubs.u-biosis.com/ai/) | Agent Design / Implementation / Literacy | ja (en planned) |
 | [Notes](https://pubs.u-biosis.com/notes/) | Miscellaneous notes | ja |
 
+## Writing
+
+Markdown plugins available:
+
+- **MathJax3** — `$$V = f(S, R, T)$$` for block math, `$x^2$` for inline
+- **Mermaid** — ` ```mermaid ` code blocks for diagrams (flowchart, graph, sequence, etc.)
+
 ## Development
 
 ```bash
