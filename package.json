@@ -14,6 +14,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "markdown-it-cjk-friendly": "^2.0.2",
     "markdown-it-mathjax3": "^4.3.2",
     "markdown-it-plantuml": "^1.4.1",
     "markdown-link-check": "^3.14.2",
