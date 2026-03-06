@@ -55,11 +55,12 @@ npm run lint:link      # リンク切れチェック
 - textlint ルール: `no-empty-section`, `no-todo`
 - link-check: 内部リンクのみチェック（外部URLは無視）
 
-### Git
+### Git / Branch Rules
 
 - main ブランチへの直接 push は禁止（PR経由のみ）
-- PR には最低1レビュー必須
-- force push 禁止
+- PR のレビュー承認は不要（required_approving_review_count: 0）
+- force push 禁止（non_fast_forward ルール）
+- ブランチ名: `feature/`, `fix/`, `refactor/` などのプレフィックスを使う
 
 ### License
 
