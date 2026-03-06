@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "no-dead-link": false,
+    "no-empty-section": true,
+    "no-todo": true
+  }
+}
