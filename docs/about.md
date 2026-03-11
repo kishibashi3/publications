@@ -1,8 +1,17 @@
 # About
 
-Research publications on emergent civilization theory, AI agent design, and related topics.
+一般システム論をベースにした思考をまとめている個人サイトです。
 
-## Topics
+## コンテンツ
 
-- **Core Theory** - Emergent civilization theory, system value formulas, chaos edge theory
-- **AI** - AI agent design, AI agent implementation, AI literacy
+- **Core** — 存在・倫理・価値を一般システム論の言葉で再記述する試み
+- **AI** — AIエージェントの設計・実装に関する考察と、AIリテラシーについて
+
+## 著者
+
+kishibashi3
+
+## ライセンス
+
+- コード（VitePress設定、ワークフロー等）: MIT
+- コンテンツ: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
