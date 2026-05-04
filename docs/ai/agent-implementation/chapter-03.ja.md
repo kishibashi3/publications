@@ -30,6 +30,8 @@ AIエージェントを語るとき、Dify、LangGraph、LangChain、AutoGen、C
 
 これ以外の分類は不要。すべてのフレームワークは、この4つの掛け合わせで表現できる。
 
+2025年以降、OpenAI Agents SDK、Google ADK（Agent Development Kit）、Claude Agent SDK など新しいSDKが登場しているが、すべてこの4型のどれか・もしくは混合型である。
+
 ---
 
 ## 3.2 各型の詳細
@@ -95,12 +97,12 @@ AIエージェントを語るとき、Dify、LangGraph、LangChain、AutoGen、C
 
 #### 弱点
 
-- **実務では99%破綻する**
+- **責任の所在が曖昧になりやすい**
 - **文脈の純度が保てない**
 - **ループしやすい**
 - **コスト爆発しやすい**
 
-> Devin問題の縮図。「創発を自律で回そう」とすると地獄を見る。
+> 「誰が判断の責任を持つか」が構造的に曖昧なのが根本原因。ただし、この領域は急速に進化している。OpenAI Agents SDKのHandoff（制御の主語を明示的に移す構造）やGoogle ADKのManager-Workerパターンなど、「責任の所在を構造で固定する」アプローチが実績を出し始めている。会話型マルチエージェントの本質的な弱点（責任の曖昧性）は残るが、それを構造で塑ぐ手段は増えている。
 
 ---
 
@@ -145,6 +147,12 @@ AIエージェントを語るとき、Dify、LangGraph、LangChain、AutoGen、C
 - Vertex AI Agents → 型④＋RAG内蔵
 - LangChain → ②＋④の混合
 
+2025年以降の新SDKも同様に分類できる：
+
+- **OpenAI Agents SDK**（2025年3月）→ 型④（タスクルータ型）。Handoff（エージェント間の制御移譲）、Guardrails（入出力検証）、Tracing（デバッグ）をプリミティブとして持つ。思想は「AIはTask Router」
+- **Google ADK**（2025年後半）→ 型②＋型④の混合。Sequential / Parallel / Loopのマルチエージェントパターンを8種提供。状態機械的な制御とタスクルーティングの両方を持つ
+- **Claude Agent SDK**（2025年後半）→ 型④（タスクルータ型）。Claude CodeのコアプリミティブをSDK化。「ループの中でツールを使う」思想
+
 **全部読み解ける。**
 
 ---
@@ -168,4 +176,4 @@ AIエージェントを語るとき、Dify、LangGraph、LangChain、AutoGen、C
 
 ---
 
-**Last Updated**: 2025-12-07
+**Last Updated**: 2026-04-06
