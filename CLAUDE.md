@@ -4,6 +4,35 @@
 
 「思考の本棚」— 思考の公開アーカイブ。VitePress で構築し GitHub Pages (`pubs.u-biosis.com`) にデプロイする。
 
+## Core of Core ― 創発文明論の核
+
+すべての本論はこの公理系からの演繹。深いニュアンスが必要な編集では、必ず該当章の本文を fetch すること。
+
+### 公理
+
+1. **存在はシステム** — 上位/下位の循環構造。詳細: [ch.1](docs/core/01-axiom-of-existence.md), [ch.2](docs/core/02-circular-structure.md)
+2. **粒子と波動** — 個（構造）と関係（共鳴）の二重性。詳細: [ch.3](docs/core/03-particle-wave.md)
+3. **温度** — 秩序/自由の比率、生命性の指標。詳細: [ch.4](docs/core/04-thermodynamic-ontology.md)
+4. **創発** — 下位システムの生成。詳細: [supplementary/emergence-theory.md](docs/core/supplementary/emergence-theory.md)
+
+### 中核命題
+
+$V(S) = \sum_i V(s_i)$ — システム S の価値は、生存期間中に創発したサブシステム $s_i$ の価値の総和（再帰定義、外部基準を必要としない）。詳細: [ch.6](docs/core/06-systemic-value.md)
+
+### 中核帰結
+
+- **カオスの淵（適温）で創発が最大化される**。詳細: [supplementary/chaos-edge-optimization.md](docs/core/supplementary/chaos-edge-optimization.md)
+- **倫理 = 温度制御の技術**。詳細: [ch.5](docs/core/05-re-relational-ethics.md)
+- **価値 = 創発 × 存続期間**の最大化が目標
+
+### 派生語彙
+
+温度・勾配・適温・カオスの淵・熱機関・捨て場・エントロピー — 熱力学の標準用語をシステム論に転写したもの。再定義は不要、そのまま使う。
+
+### 新規概念を導入する前に
+
+新しい抽象を導入したくなったら、まず Core で既出か確認する。Core 級の抽象なら `docs/core/supplementary/` に追加すべきかを検討する（熱力学標準用語なら追加不要）。subject 章固有の中級概念ならその章に留める。
+
 ## Site Philosophy
 
 - **このサイトは「研究発表の場」ではなく「思考を並べておく本棚」**。トーンはやわらかく、堅くしすぎない
