@@ -1,0 +1,7 @@
+{
+  "name": "ai-design",
+  "description": "AIエージェント設計概論を operationalize したスキル。設計相談で起動し、文脈・実行・時間の三軸、5層構造、タスク外部化、レポート化アーキテクチャの観点で答える。",
+  "author": {
+    "name": "Kazuhiro Ishibashi"
+  }
+}
