@@ -1,0 +1,7 @@
+{
+  "name": "ai-implementation",
+  "description": "AIエージェント実装概論を operationalize したスキル。実装相談で起動し、5層構造、文脈OS / タスクOS / メモリOS / 安定性OS / 品質保証OS の観点で答える。",
+  "author": {
+    "name": "Kazuhiro Ishibashi"
+  }
+}

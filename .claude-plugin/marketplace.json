@@ -1,0 +1,55 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "kishibashi3-publications-claude",
+  "description": "思考の本棚（pubs.u-biosis.com）の skills を提供する marketplace。創発文明論を operationalize した core-idea、AIエージェント設計概論の ai-design、AIエージェント実装概論の ai-implementation。",
+  "owner": {
+    "name": "Kazuhiro Ishibashi"
+  },
+  "plugins": [
+    {
+      "name": "core-idea",
+      "description": "創発文明論（一般システム論）で問題を構造化するスキル。「創発文明論で見ると」「システム価値で評価」「適温で」「カオスの淵で」の相談で起動し、Core の公理系（システム価値、創発、温度、カオスの淵、勾配）で再記述する。",
+      "author": {
+        "name": "Kazuhiro Ishibashi"
+      },
+      "category": "thinking",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/kishibashi3/publications.git",
+        "path": "plugins/core-idea",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/kishibashi3/publications/tree/main/plugins/core-idea"
+    },
+    {
+      "name": "ai-design",
+      "description": "AIエージェント設計概論を operationalize したスキル。設計相談で起動し、文脈・実行・時間の三軸、5層構造、タスク外部化、レポート化アーキテクチャの観点で答える。",
+      "author": {
+        "name": "Kazuhiro Ishibashi"
+      },
+      "category": "ai",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/kishibashi3/publications.git",
+        "path": "plugins/ai-design",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/kishibashi3/publications/tree/main/plugins/ai-design"
+    },
+    {
+      "name": "ai-implementation",
+      "description": "AIエージェント実装概論を operationalize したスキル。実装相談で起動し、5層構造、文脈OS / タスクOS / メモリOS / 安定性OS / 品質保証OS の観点で答える。",
+      "author": {
+        "name": "Kazuhiro Ishibashi"
+      },
+      "category": "ai",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/kishibashi3/publications.git",
+        "path": "plugins/ai-implementation",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/kishibashi3/publications/tree/main/plugins/ai-implementation"
+    }
+  ]
+}
