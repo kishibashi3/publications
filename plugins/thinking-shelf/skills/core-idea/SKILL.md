@@ -41,31 +41,40 @@ $V(S) = \sum_i V(s_i)$
 
 温度・勾配・適温・カオスの淵・熱機関・捨て場・エントロピー — 熱力学の標準用語をシステム論に転写したもの。再定義不要、そのまま使う。
 
-## 詳細を引くときの WebFetch 先
+## 詳細を引くときの参照先
 
-深掘りが必要な場合は以下を WebFetch する:
+publications 全体が marketplace cache としてローカルにある。Read で取得する:
 
-| トピック | URL |
+```
+ベースパス: ~/.claude/plugins/marketplaces/kishibashi3-publications-claude/
+```
+
+| トピック | パス（ベースからの相対） |
 |---|---|
-| Core 全体目次 | https://pubs.u-biosis.com/core/ |
-| 序章 | https://pubs.u-biosis.com/core/00-preface.html |
-| 公理 | https://pubs.u-biosis.com/core/01-axiom-of-existence.html |
-| 循環構造 | https://pubs.u-biosis.com/core/02-circular-structure.html |
-| 粒子と波動 | https://pubs.u-biosis.com/core/03-particle-wave.html |
-| 熱力学的存在論 | https://pubs.u-biosis.com/core/04-thermodynamic-ontology.html |
-| 再関係倫理 | https://pubs.u-biosis.com/core/05-re-relational-ethics.html |
-| システム価値 | https://pubs.u-biosis.com/core/06-systemic-value.html |
-| AI共鳴 | https://pubs.u-biosis.com/core/07-ai-resonance.html |
-| 創発理論 | https://pubs.u-biosis.com/core/supplementary/emergence-theory.html |
-| カオスの淵の最適化 | https://pubs.u-biosis.com/core/supplementary/chaos-edge-optimization.html |
-| システム価値の公式 | https://pubs.u-biosis.com/core/supplementary/system-value-formula.html |
+| Core 全体目次 | docs/core/index.md |
+| 序章 | docs/core/00-preface.md |
+| 公理 | docs/core/01-axiom-of-existence.md |
+| 循環構造 | docs/core/02-circular-structure.md |
+| 粒子と波動 | docs/core/03-particle-wave.md |
+| 熱力学的存在論 | docs/core/04-thermodynamic-ontology.md |
+| 再関係倫理 | docs/core/05-re-relational-ethics.md |
+| システム価値 | docs/core/06-systemic-value.md |
+| AI共鳴 | docs/core/07-ai-resonance.md |
+| 創発理論 | docs/core/supplementary/emergence-theory.md |
+| カオスの淵の最適化 | docs/core/supplementary/chaos-edge-optimization.md |
+| システム価値の公式 | docs/core/supplementary/system-value-formula.md |
+
+例: 熱力学的存在論を引くとき:
+Read `~/.claude/plugins/marketplaces/kishibashi3-publications-claude/docs/core/04-thermodynamic-ontology.md`
 
 トピック別の応用（社会・政治・経済）は:
 
-- 社会物理学（社会温度論等）: https://pubs.u-biosis.com/social-physics/
-- 統治: https://pubs.u-biosis.com/governance/
-- 経済: https://pubs.u-biosis.com/economy/
-- 応用: https://pubs.u-biosis.com/applications/
+| 領域 | パス |
+|---|---|
+| 社会物理学 | docs/social-physics/index.md |
+| 統治 | docs/governance/index.md |
+| 経済 | docs/economy/index.md |
+| 応用 | docs/applications/index.md |
 
 ## 相談の進め方
 
