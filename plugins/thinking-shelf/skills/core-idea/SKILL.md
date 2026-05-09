@@ -41,31 +41,42 @@ $V(S) = \sum_i V(s_i)$
 
 温度・勾配・適温・カオスの淵・熱機関・捨て場・エントロピー — 熱力学の標準用語をシステム論に転写したもの。再定義不要、そのまま使う。
 
-## 詳細を引くときの WebFetch 先
+## 詳細を引くときの参照先
 
-深掘りが必要な場合は以下を WebFetch する:
+このスキルが提供される marketplace `kishibashi3-publications-claude` を install していれば、ローカル cache に publications 全体が clone されている。深掘りが必要な場合は **ローカル Read を優先**、利用不可なら WebFetch にフォールバックする:
 
-| トピック | URL |
-|---|---|
-| Core 全体目次 | https://pubs.u-biosis.com/core/ |
-| 序章 | https://pubs.u-biosis.com/core/00-preface.html |
-| 公理 | https://pubs.u-biosis.com/core/01-axiom-of-existence.html |
-| 循環構造 | https://pubs.u-biosis.com/core/02-circular-structure.html |
-| 粒子と波動 | https://pubs.u-biosis.com/core/03-particle-wave.html |
-| 熱力学的存在論 | https://pubs.u-biosis.com/core/04-thermodynamic-ontology.html |
-| 再関係倫理 | https://pubs.u-biosis.com/core/05-re-relational-ethics.html |
-| システム価値 | https://pubs.u-biosis.com/core/06-systemic-value.html |
-| AI共鳴 | https://pubs.u-biosis.com/core/07-ai-resonance.html |
-| 創発理論 | https://pubs.u-biosis.com/core/supplementary/emergence-theory.html |
-| カオスの淵の最適化 | https://pubs.u-biosis.com/core/supplementary/chaos-edge-optimization.html |
-| システム価値の公式 | https://pubs.u-biosis.com/core/supplementary/system-value-formula.html |
+```
+ローカルベース: ~/.claude/plugins/marketplaces/kishibashi3-publications-claude/
+URL ベース:    https://pubs.u-biosis.com/
+```
+
+| トピック | ローカル相対パス | URL（fallback） |
+|---|---|---|
+| Core 全体目次 | docs/core/index.md | https://pubs.u-biosis.com/core/ |
+| 序章 | docs/core/00-preface.md | https://pubs.u-biosis.com/core/00-preface.html |
+| 公理 | docs/core/01-axiom-of-existence.md | https://pubs.u-biosis.com/core/01-axiom-of-existence.html |
+| 循環構造 | docs/core/02-circular-structure.md | https://pubs.u-biosis.com/core/02-circular-structure.html |
+| 粒子と波動 | docs/core/03-particle-wave.md | https://pubs.u-biosis.com/core/03-particle-wave.html |
+| 熱力学的存在論 | docs/core/04-thermodynamic-ontology.md | https://pubs.u-biosis.com/core/04-thermodynamic-ontology.html |
+| 再関係倫理 | docs/core/05-re-relational-ethics.md | https://pubs.u-biosis.com/core/05-re-relational-ethics.html |
+| システム価値 | docs/core/06-systemic-value.md | https://pubs.u-biosis.com/core/06-systemic-value.html |
+| AI共鳴 | docs/core/07-ai-resonance.md | https://pubs.u-biosis.com/core/07-ai-resonance.html |
+| 創発理論 | docs/core/supplementary/emergence-theory.md | https://pubs.u-biosis.com/core/supplementary/emergence-theory.html |
+| カオスの淵の最適化 | docs/core/supplementary/chaos-edge-optimization.md | https://pubs.u-biosis.com/core/supplementary/chaos-edge-optimization.html |
+| システム価値の公式 | docs/core/supplementary/system-value-formula.md | https://pubs.u-biosis.com/core/supplementary/system-value-formula.html |
+
+例: 熱力学的存在論を引くとき:
+- まず Read `~/.claude/plugins/marketplaces/kishibashi3-publications-claude/docs/core/04-thermodynamic-ontology.md`
+- 失敗したら WebFetch `https://pubs.u-biosis.com/core/04-thermodynamic-ontology.html`
 
 トピック別の応用（社会・政治・経済）は:
 
-- 社会物理学（社会温度論等）: https://pubs.u-biosis.com/social-physics/
-- 統治: https://pubs.u-biosis.com/governance/
-- 経済: https://pubs.u-biosis.com/economy/
-- 応用: https://pubs.u-biosis.com/applications/
+| 領域 | ローカル | URL |
+|---|---|---|
+| 社会物理学 | docs/social-physics/index.md | https://pubs.u-biosis.com/social-physics/ |
+| 統治 | docs/governance/index.md | https://pubs.u-biosis.com/governance/ |
+| 経済 | docs/economy/index.md | https://pubs.u-biosis.com/economy/ |
+| 応用 | docs/applications/index.md | https://pubs.u-biosis.com/applications/ |
 
 ## 相談の進め方
 
