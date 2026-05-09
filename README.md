@@ -23,8 +23,32 @@ flowchart LR
 | Section | Description | Language |
 |---------|-------------|----------|
 | [Core Theory](https://pubs.u-biosis.com/core/) | 創発文明論 — Emergent Civilization Theory | ja (en planned) |
+| [Social Physics](https://pubs.u-biosis.com/social-physics/) | 社会物理学（社会温度論等） | ja |
+| [Governance](https://pubs.u-biosis.com/governance/) | 統治（民主主義 v2 等） | ja |
+| [Economy](https://pubs.u-biosis.com/economy/) | 経済（経済 v2 等） | ja |
+| [Applications](https://pubs.u-biosis.com/applications/) | 応用（アジャイル、教育等） | ja |
 | [AI](https://pubs.u-biosis.com/ai/) | Agent Design / Implementation / Literacy | ja (en planned) |
 | [Notes](https://pubs.u-biosis.com/notes/) | Miscellaneous notes | ja |
+
+## Claude Code Plugins
+
+このリポジトリは Claude Code の **marketplace** でもある。記事の思想を operationalize したスキルを提供する:
+
+| Plugin | 内容 |
+|---|---|
+| [`core-idea`](plugins/core-idea/) | 創発文明論で問題を構造化するスキル |
+| [`ai-design`](plugins/ai-design/) | AI エージェント設計概論を operationalize したスキル |
+| [`ai-implementation`](plugins/ai-implementation/) | AI エージェント実装概論を operationalize したスキル |
+
+セットアップ手順:
+
+```
+/plugin marketplace add https://github.com/kishibashi3/publications
+/plugin install core-idea           # （またはお好みの plugin 名）
+/reload-plugins
+```
+
+各 plugin の詳細はリンク先の README を参照。
 
 ## Writing
 
