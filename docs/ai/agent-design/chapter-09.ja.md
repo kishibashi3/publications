@@ -3,7 +3,7 @@ title: "第9章：AIエージェントの品質保証 ― evalを頑張るな、
 date: 2026-04-06
 type: publication
 tags: [ai-agent, design, quality-assurance, eval, architecture]
-status: draft
+status: published
 ai-reviewed: false
 ---
 

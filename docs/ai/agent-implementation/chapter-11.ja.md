@@ -3,7 +3,7 @@ title: "第11章：品質保証OS ― 多層検証で「壊れない」を証明
 date: 2026-04-06
 type: publication
 tags: [ai-agent, implementation, quality-assurance, eval, testing]
-status: draft
+status: published
 ai-reviewed: false
 ---
 

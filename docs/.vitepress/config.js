@@ -67,7 +67,8 @@ export default withMermaid({
             { text: '第5章', link: '/ai/agent-design/chapter-05.ja' },
             { text: '第6章', link: '/ai/agent-design/chapter-06.ja' },
             { text: '第7章', link: '/ai/agent-design/chapter-07.ja' },
-            { text: '第8章', link: '/ai/agent-design/chapter-08.ja' }
+            { text: '第8章', link: '/ai/agent-design/chapter-08.ja' },
+            { text: '第9章', link: '/ai/agent-design/chapter-09.ja' }
           ]
         }
       ],
@@ -87,7 +88,8 @@ export default withMermaid({
             { text: '第7章', link: '/ai/agent-implementation/chapter-07.ja' },
             { text: '第8章', link: '/ai/agent-implementation/chapter-08.ja' },
             { text: '第9章', link: '/ai/agent-implementation/chapter-09.ja' },
-            { text: '第10章', link: '/ai/agent-implementation/chapter-10.ja' }
+            { text: '第10章', link: '/ai/agent-implementation/chapter-10.ja' },
+            { text: '第11章', link: '/ai/agent-implementation/chapter-11.ja' }
           ]
         },
         {
@@ -105,6 +107,22 @@ export default withMermaid({
           items: [
             { text: 'Part 1 — 地形図', link: '/ai/literacy/part1-terrain-map' },
             { text: 'Part 2 — 詳細図', link: '/ai/literacy/part2-detailed-map' }
+          ]
+        }
+      ],
+      '/ai/': [
+        {
+          text: 'AI',
+          items: [
+            { text: '設計概論', link: '/ai/agent-design/' },
+            { text: '実装概論', link: '/ai/agent-implementation/' },
+            { text: 'リテラシー', link: '/ai/literacy/' }
+          ]
+        },
+        {
+          text: 'パターン',
+          items: [
+            { text: 'Instruction Paging Pattern', link: '/ai/instruction-paging-pattern' }
           ]
         }
       ],
