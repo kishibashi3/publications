@@ -1,0 +1,7 @@
+{
+  "name": "thinking-shelf",
+  "description": "思考の本棚（pubs.u-biosis.com）の思想を operationalize したスキル群。創発文明論で問題を構造化する core-idea、AIエージェント設計を扱う agent-design、AIエージェント実装を扱う agent-implementation を含む。",
+  "author": {
+    "name": "Kazuhiro Ishibashi"
+  }
+}

@@ -32,23 +32,21 @@ flowchart LR
 
 ## Claude Code Plugins
 
-このリポジトリは Claude Code の **marketplace** でもある。記事の思想を operationalize したスキルを提供する:
+このリポジトリは Claude Code の **marketplace** でもある。記事の思想を operationalize したスキルを 1 つの plugin にまとめて提供する:
 
 | Plugin | 内容 |
 |---|---|
-| [`core-idea`](plugins/core-idea/) | 創発文明論で問題を構造化するスキル |
-| [`ai-design`](plugins/ai-design/) | AI エージェント設計概論を operationalize したスキル |
-| [`ai-implementation`](plugins/ai-implementation/) | AI エージェント実装概論を operationalize したスキル |
+| [`thinking-shelf`](plugins/thinking-shelf/) | 創発文明論 (`core-idea`) + AI エージェント設計 (`agent-design`) + AI エージェント実装 (`agent-implementation`) の 3 skills |
 
 セットアップ手順:
 
 ```
 /plugin marketplace add https://github.com/kishibashi3/publications
-/plugin install core-idea           # （またはお好みの plugin 名）
+/plugin install thinking-shelf
 /reload-plugins
 ```
 
-各 plugin の詳細はリンク先の README を参照。
+詳細は [plugin の README](plugins/thinking-shelf/) を参照。
 
 ## Writing
 
