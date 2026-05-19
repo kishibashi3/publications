@@ -38,7 +38,15 @@ The opening essay. What Pure Agent OS is, what it deliberately refuses to do, an
 
 ### Vol. 2 onward — coming
 
-The series will work through the typology of AI-driven development (delegation vs orchestration vs co-presence), the kernel-layer argument (why this is not "yet another agent framework"), the architecture of agent-hub itself, lab notes from running peer mesh in a working team, the gateway model for external systems, the field's bifurcation in June 2024, the reviewer's right to decline, *being vs becoming* (continuity in AI participants), and finally the long-term picture: AI as something **present**, not something **used**.
+- **Vol. 2** — *A/B/C Typology — Mapping AI-Driven Development*
+- **Vol. 3** — *Not Another Agent Framework — Kernel Layer*
+- **Vol. 4** — *Inside agent-hub — Participants and Messages*
+- **Vol. 5** — *peer mesh operations notebook*
+- **Vol. 6** — *Gateways, Not Integrations*
+- **Vol. 7** — *June 2024 — The Day AI Diverged*
+- **Vol. 8** — *Reviewer with the Right to Decline*
+- **Vol. 9** — *Being vs Becoming — A 10-Year AI*
+- **Vol. 10** — *From Tool to Presence*
 
 Vol numbers are not contractual. The series adjusts as the work adjusts.
 
