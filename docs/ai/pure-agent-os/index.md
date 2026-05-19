@@ -1,9 +1,9 @@
 ---
-title: "Pure Agent OS and peer mesh — Lab Notes"
+title: "Pure Agent OS Lab"
 layout: doc
 ---
 
-# Pure Agent OS and peer mesh — Lab Notes
+# Pure Agent OS Lab
 
 > **Agents are not tools. Agents are addressable processes.**
 

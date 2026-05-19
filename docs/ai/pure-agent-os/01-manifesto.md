@@ -9,7 +9,7 @@ layout: doc
 
 > **Agents are not tools. Agents are addressable processes.**
 
-This is the opening essay of *Pure Agent OS and peer mesh — Lab Notes*, a series built around one bet: treating AI not as a function being called, but as a participant with a `@handle`.
+This is the opening essay of *Pure Agent OS Lab*, a series built around one bet: treating AI not as a function being called, but as a participant with a `@handle`.
 
 The bet is the manifesto of a project called **agent-hub**, and of the operating layer behind it — what I call **Pure Agent OS**.
 
@@ -179,4 +179,4 @@ The full series index lives at [`/ai/pure-agent-os/`](./).
 
 ---
 
-*This is the opening essay of the* Pure Agent OS and peer mesh — Lab Notes *series.*
+*This is the opening essay of the* Pure Agent OS Lab *series.*
