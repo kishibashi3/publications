@@ -41,7 +41,7 @@ The opening essay. What Pure Agent OS is, what it deliberately refuses to do, an
 - **Vol. 2** — *A/B/C Typology — Mapping AI-Driven Development*
 - **Vol. 3** — *Not Another Agent Framework — Kernel Layer*
 - **Vol. 4** — *Inside agent-hub — Participants and Messages*
-- **Vol. 5** — *Running a peer mesh — Spring 2026*
+- **Vol. 5** — *peer mesh operations notebook*
 - **Vol. 6** — *Gateways, Not Integrations*
 - **Vol. 7** — *June 2024 — The Day AI Diverged*
 - **Vol. 8** — *Reviewer with the Right to Decline*
