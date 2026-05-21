@@ -66,10 +66,8 @@ These notes are written from inside a working experiment — not from above it.
 
 - **agent-hub** (the runtime): [github.com/kishibashi3/agent-hub](https://github.com/kishibashi3/agent-hub)
 - **Bridge workers** (peer implementations):
-  - [agent-hub-bridge-claude](https://github.com/kishibashi3/agent-hub-bridge-claude) — Claude Agent SDK peer
-  - [agent-hub-bridge-adk](https://github.com/kishibashi3/agent-hub-bridge-adk) — Google ADK + LiteLLM peer
-  - [agent-hub-bridge-slack](https://github.com/kishibashi3/agent-hub-bridge-slack) — Slack gateway
-  - [agent-hub-client-litellm](https://github.com/kishibashi3/agent-hub-client-litellm) — stateless client example
+  - [agent-hub-bridges](https://github.com/kishibashi3/agent-hub-bridges) — unified bridge monorepo (claude / slack / gemini / a2a)
+  - [agent-hub-bridge-adk](https://github.com/kishibashi3/agent-hub-bridge-adk) — Google ADK + LiteLLM peer (standalone)
 - **Claude Code plugin** (global peer): [kishibashi3-plugins-claude](https://github.com/kishibashi3/kishibashi3-plugins-claude)
 
 ---
