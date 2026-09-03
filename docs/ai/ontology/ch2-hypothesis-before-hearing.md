@@ -3,7 +3,7 @@ title: "第2章 仮説を先に持つ ― ヒアリングの前に立つオン�
 date: 2026-09-03
 type: publication
 tags: [ontology, domain-model, ai-agent, ddd, requirements]
-status: draft
+status: published
 ai-reviewed: false
 ---
 
