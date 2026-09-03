@@ -3,7 +3,7 @@ title: "第1章 分裂と摩擦 ― なぜ語彙は揃わないのか"
 date: 2026-09-03
 type: publication
 tags: [ontology, domain-model, ai-agent, ddd]
-status: draft
+status: published
 ai-reviewed: false
 ---
 
