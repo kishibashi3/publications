@@ -3,7 +3,7 @@ title: "第3章 配るのではなく導出する ― データエージェン�
 date: 2026-09-03
 type: publication
 tags: [ontology, domain-model, ai-agent, data-agent, ddd]
-status: draft
+status: published
 ai-reviewed: false
 ---
 

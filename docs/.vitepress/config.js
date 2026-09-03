@@ -106,7 +106,8 @@ export default withMermaid({
           link: '/ai/ontology/',
           items: [
             { text: '第1章', link: '/ai/ontology/ch1-fragmentation-and-friction' },
-            { text: '第2章', link: '/ai/ontology/ch2-hypothesis-before-hearing' }
+            { text: '第2章', link: '/ai/ontology/ch2-hypothesis-before-hearing' },
+            { text: '第3章', link: '/ai/ontology/ch3-deriving-agent-behavior' }
           ]
         }
       ],
