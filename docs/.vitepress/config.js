@@ -100,6 +100,15 @@ export default withMermaid({
           ]
         }
       ],
+      '/ai/ontology/': [
+        {
+          text: 'オントロジー',
+          link: '/ai/ontology/',
+          items: [
+            { text: '第1章', link: '/ai/ontology/ch1-fragmentation-and-friction' }
+          ]
+        }
+      ],
       '/ai/literacy/': [
         {
           text: 'AIリテラシー',
@@ -116,6 +125,7 @@ export default withMermaid({
           items: [
             { text: '設計概論', link: '/ai/agent-design/' },
             { text: '実装概論', link: '/ai/agent-implementation/' },
+            { text: 'オントロジー', link: '/ai/ontology/' },
             { text: 'リテラシー', link: '/ai/literacy/' }
           ]
         },
