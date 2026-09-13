@@ -75,4 +75,11 @@ Platinum は Gold を読むだけで書き戻さない。同期すべき相手�
 
 ---
 
+## 関連シリーズ
+
+- [AIエージェント設計概論 第6章：レポート化アーキテクチャ](../agent-design/chapter-06.ja.md) — データ分析の出力設計との対比
+- [AIエージェント設計概論 第7章：エージェントの安定性設計](../agent-design/chapter-07.ja.md) — Platinum の安定性設計との接続
+
+---
+
 **Last Updated**: 2026-09-13
