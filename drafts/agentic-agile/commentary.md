@@ -87,7 +87,7 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 
 ここで書いているものは、どちらでもない。層を役割で定義していないので（P2）、役割の割り当てにならない。単位を工程ではなく憲法に置いているので、工程に何かを差し込む形にもならない。
 
-前提から組み直した例が存在しないわけではない。ただし、組み直されているのは一軸ずつである。承認の位置を組み直した例（GAIE は可逆性などの軸で監督の強度を決める。IETF の transaction challenge は承認を事前の一括付与から実行時・操作単位へ移す）、人が見る単位を作り直した例（Agentic SE の Merge-Readiness Pack、依存グラフから作業をエージェントが自己選択する Beads、人間可読性を捨てた agentjj）、品質の測り方を移した例（Lahiri の仕様妥当性メトリクス）、工程に強制力を持たせた例（Prifti らの実行可能プロセス記述）、人間レビュー義務そのものに手をつけた例（三者の立ち位置は異なる。Monperrus は提案である——人間の検査を撤去したあとに何も置かないのではなく、独立したエージェントによる審査、複数エージェントの合議、較正された不確実性の申告、自動の merge gate を置き、人間の承認を高リスクの変更・新規のアーキテクチャ選択・法的責任が要る経路に限定する、と書いている。General Intelligence Company は同じ方向の予測で、「2026 年末までに、人間がレビューするのはプロダクトと大きめのインフラの変更だけになる」と述べている。運用実績として報告しているのはトークン予算と出荷 PR 数であって、人間レビューの撤去ではない。Replit は運用報告だが、人間レビューを残したうえでエージェントを co-reviewer として足した形であり、「どの例でも、人間は自動化で外されたのではない。昇格したのだ」と書いている）。いずれも、残りの軸は従来のまま置かれている。
+前提から組み直した例が存在しないわけではない。ただし、組み直されているのは一軸ずつである。承認の位置を組み直した例（GAIE は可逆性などの軸で監督の強度を決める。IETF の transaction challenge は承認を事前の一括付与から実行時・操作単位へ移す）、人が見る単位を作り直した例（Agentic SE の Merge-Readiness Pack、依存グラフから作業をエージェントが自己選択する Beads、人間向けの操作前提を捨てて出力を機械可読側に寄せた agentjj。最後の一つは、人が見ることを前提に置くのをやめた点で単位の作り直しに当たる）、品質の測り方を移した例（Lahiri の仕様妥当性メトリクス）、工程に強制力を持たせた例（Prifti らの実行可能プロセス記述）、人間レビュー義務そのものに手をつけた例（三者の立ち位置は異なる。Monperrus は提案である——人間の検査を撤去したあとに何も置かないのではなく、独立したエージェントによる審査、複数エージェントの合議、較正された不確実性の申告、自動の merge gate を置き、人間の承認を高リスクの変更・新規のアーキテクチャ選択・法的責任が要る経路に限定する、と書いている。General Intelligence Company は同じ方向の予測で、「2026 年末までに、人間がレビューするのはプロダクトと大きめのインフラの変更だけになる」と述べている。運用実績として報告しているのはトークン予算と出荷 PR 数であって、人間レビューの撤去ではない。Replit は運用報告だが、人間レビューを残したうえでエージェントを co-reviewer として足した形であり、「どの例でも、人間は自動化で外されたのではない。昇格したのだ」と書いている）。いずれも、残りの軸は従来のまま置かれている。
 
 この最後の軸に手が伸びるのには観測の裏づけがある。GitLab の 2026 年の調査では、回答者——開発者と技術購買層 1,528 名——の 85% が「AI はボトルネックをコードを書くことからレビューと検証へ移した」に同意している。
 
@@ -111,7 +111,7 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 
 一つ目は標本の偏りである。上記の実証研究の対象は、1 人が 49.4%、2 人が 31.3%、3 人が 12.0% と、マイクロチームに偏っている。承認の手続きを必要としない規模なのだから、改訂手続きが観測されないのは当然だ、という読みは成り立つ。大規模な組織で同じ空白があるかは確認できていない。
 
-二つ目は、空白が機会とは限らないことである。人間可読性を捨てた agentjj は 2026 年 2 月にアーカイブされた。前提から組み直す試みが続かなかった例は既にあり、「空白なのは誰も思いつかなかったからではなく、やってみて続かなかったからだ」という読みを、現時点では排除できていない。
+二つ目は、空白が機会とは限らないことである。人間向けの操作前提を捨てて出力を機械可読側に寄せた agentjj は 2026 年 2 月にアーカイブされた。前提から組み直す試みが続かなかった例は既にあり、「空白なのは誰も思いつかなかったからではなく、やってみて続かなかったからだ」という読みを、現時点では排除できていない。
 
 どちらの反論も、議論では解けない。解けるのは運用の記録だけである。
 
@@ -133,7 +133,7 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 | IETF の transaction challenge | `draft-rosomakho-oauth-txn-challenge-00`（2026-06-25）https://datatracker.ietf.org/doc/draft-rosomakho-oauth-txn-challenge/ |
 | Agentic SE の Merge-Readiness Pack | Hassan et al., *Agentic Software Engineering: Foundational Pillars and a Research Roadmap*, arXiv:2509.06216. https://arxiv.org/abs/2509.06216 （ロードマップであり、実装と評価は未提示） |
 | Beads | https://github.com/gastownhall/beads |
-| agentjj | https://github.com/2389-research/agentjj |
+| agentjj | https://github.com/2389-research/agentjj （性格づけの根拠は `README.md` の "The Inversion"——jj が人間向けに取り除いた機能を agent 向けに戻す対比表——および "Traditional VCS tools are designed for humans. Agents need:" の対比表。捨てられているのは人間向けの操作前提であって可読性そのものではない。`--json` は opt-in フラグ（"Always use `--json` for programmatic access"）であり、フラグ無しの既定出力は残っている。2026-02-17 に archived（read-only）のため内容は凍結済み） |
 | Lahiri の仕様妥当性メトリクス | *Intent Formalization: A Grand Challenge for Reliable Coding in the Age of AI Agents*, arXiv:2603.17150. https://arxiv.org/abs/2603.17150 |
 | Prifti らの実行可能プロセス記述 | Prifti, De Meo, Provetti, *Specifying AI-SDLC Processes: A Protocol Language for Human-Agent Boundaries*, arXiv:2606.20615. https://arxiv.org/abs/2606.20615 |
 | General Intelligence Company（同方向の予測） | *Agent-Native Engineering*（2026-02-05）https://www.generalintelligencecompany.com/writing/agent-native-engineering （引用は "The future of agent-native engineering" 節の予測 "By the end of 2026, humans will review only changes on products and larger infrastructure"。運用実績として報告されているのはトークン予算と出荷 PR 数であって、人間レビューの撤去ではない） |
