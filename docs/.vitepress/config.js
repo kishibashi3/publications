@@ -70,13 +70,6 @@ export default withMermaid({
             { text: '第8章', link: '/ai/agent-design/chapter-08.ja' },
             { text: '第9章', link: '/ai/agent-design/chapter-09.ja' }
           ]
-        },
-        {
-          text: '補足',
-          collapsed: true,
-          items: [
-            { text: 'Probabilistic and Deterministic in Parallel', link: '/ai/agent-design/tag-as-document-dual-track' }
-          ]
         }
       ],
       '/ai/agent-implementation/': [
