@@ -174,7 +174,7 @@ The full series index lives at [`/ai/pure-agent-os/`](./).
 ### References
 
 - **Source code (runtime):** [github.com/kishibashi3/agent-hub](https://github.com/kishibashi3/agent-hub)
-- **Bridge workers (peer implementations):** [bridge-claude](https://github.com/kishibashi3/agent-hub-bridge-claude), [bridge-adk](https://github.com/kishibashi3/agent-hub-bridge-adk), [bridge-slack](https://github.com/kishibashi3/agent-hub-bridge-slack), [client-litellm](https://github.com/kishibashi3/agent-hub-client-litellm)
+- **Bridge workers (peer implementations):** [agent-hub-bridges](https://github.com/kishibashi3/agent-hub-bridges) — unified bridge monorepo (claude / slack / gemini / a2a)
 - **Claude Code plugin (global peer):** [kishibashi3-plugins-claude](https://github.com/kishibashi3/kishibashi3-plugins-claude)
 
 ---
