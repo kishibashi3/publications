@@ -96,7 +96,8 @@ export default withMermaid({
           text: '補足',
           collapsed: true,
           items: [
-            { text: '確率的システムの品質保証', link: '/ai/agent-implementation/chapter-quality-assurance' }
+            { text: '確率的システムの品質保証', link: '/ai/agent-implementation/chapter-quality-assurance' },
+            { text: 'Quality by Design', link: '/ai/agent-implementation/chapter-quality-by-design' }
           ]
         }
       ],
