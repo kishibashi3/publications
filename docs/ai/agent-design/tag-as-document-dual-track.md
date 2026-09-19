@@ -7,6 +7,8 @@ status: published
 ai-reviewed: false
 ---
 
+> **Language**: English | [日本語](./tag-as-document-dual-track.ja.md)
+
 # Probabilistic and Deterministic in Parallel
 
 ## A Search Design Built on a Shared Semantic Space
@@ -96,12 +98,12 @@ Dual-Track changes the starting point.
 
 **Unify the tag schema at design time, and apply the same schema to both backends.**
 
-When the same tag definition exists in both backends, the following hold simultaneously for every semantically identical entity:
+When the same tag definition exists in both backends, a semantically identical entity exists **in a different form** in both the probabilistic and the deterministic backend:
 
 - "This tag is at this coordinate in semantic space"
 - "This tag is this node in the graph"
 
-They match. The same tag exists in both backends. Whichever backend a query enters through, it departs from the same semantic foundation.
+The same tag exists in both backends. Whichever backend a query enters through, it departs from the same semantic foundation.
 
 > **Tags become the semantic bridge across both databases.**
 
@@ -119,7 +121,7 @@ The integration timing changes here as well. Where HybridRAG integrates "at quer
 
 ## Concurrent Convergence
 
-TagRAG (arxiv: 2601.05254, submitted October 2025, published January 2026) presented a design that uses tags as semantic anchors and traverses a DAG (directed acyclic graph) retroactively.
+TagRAG (arXiv:2601.05254 — v1 submitted October 2025, v2 revised January 2026, accepted to ACL 2026 Findings) presented a design that uses tags as semantic anchors and traverses a DAG (directed acyclic graph) retroactively.
 
 This publication reveals something interesting.
 
@@ -127,7 +129,7 @@ TagRAG independently arrived at the direction of "using tags as semantic anchors
 
 Concurrent convergence has the function of externally confirming the validity of a direction. When a design one designer arrived at independently is also confirmed by separate research, that indicates the idea derives from the structure of the problem itself rather than being an over-adaptation to a specific context.
 
-There is also a clear difference. TagRAG is a design within a single library. The structure at the core of this design — sharing a single tag schema across multiple independent backend databases at the index design stage — does not exist in TagRAG. The convergence with TagRAG is partial, and the point of divergence is clear.
+There is also a clear difference. TagRAG is a design within a single library. The structure at the core of this design — sharing a single tag schema across multiple independent backend databases from the design stage onward — does not exist in TagRAG. The convergence with TagRAG is partial, and the point of divergence is clear.
 
 > **When multiple contemporaneous designs converge on the same direction, what is confirmed is not the correctness of the idea but the correctness of the question's structure.**
 

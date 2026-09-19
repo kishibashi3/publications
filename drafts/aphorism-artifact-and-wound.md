@@ -10,7 +10,7 @@ status: draft
 
 ## 文脈
 
-マンガ `manga-fuel.jpg`（publications リポジトリ直下）の最終コマに掲げられた一文。
+マンガ `drafts/manga-fuel.jpg`（非公開領域の素材）の最終コマに掲げられた一文。
 GWに agent-hub を作った50歳エンジニアが、上司の期待・法務の壁・トークン切れを経て、
 燃料が尽きかけた状態でも残存する REVIEW.md、CLAUSE.md、設計指摘、記事ドラフト——
 それらを眺めながら、この言葉が掲げられた。
@@ -108,7 +108,8 @@ $V(S) = \sum_i V(s_i)$ は存在の生産的局面を定義する。
 ## archive メモ
 
 - 元箴言: 「存在とは、燃焼後にも残る artifact と傷である」
-- 出典: manga-fuel.jpg 最終コマ（2026-05-31 GW retrospective）
+- 出典: `drafts/manga-fuel.jpg` 最終コマ（2026-05-31 GW retrospective）。@ope-ultp1635 から DM 経由で受領した素材であり、
+  **権利者・自作か否かは未確認**。確認が取れるまで `drafts/`（非公開領域）に留め、公開領域には出さない
 - 定式版: 存在の残滓 = 創発集合 $\cup$ 刻印集合
 - Core への位置づけ: ch.3「粒子と波動」の消滅局面への補完、ch.6「価値の再帰」の外部性の補完
 - 公開判断: 保留（@ope-ultp1635 と operator が判断）
