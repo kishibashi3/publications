@@ -39,7 +39,7 @@ The opening essay. What Pure Agent OS is, what it deliberately refuses to do, an
 ### Vol. 2 onward — coming
 
 - **Vol. 2** — *A/B/C Typology — Mapping AI-Driven Development*
-- **Vol. 3** — *Not Another Agent Framework — Kernel Layer*
+- **Vol. 3** — *A Day the Peer Mesh Became a Team*
 - **Vol. 4** — *Inside agent-hub — Participants and Messages*
 - **Vol. 5** — *peer mesh operations notebook*
 - **Vol. 6** — *Gateways, Not Integrations*
