@@ -111,7 +111,7 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 
 一つ目は標本の偏りである。上記の実証研究の対象は、1 人が 49.4%、2 人が 31.3%、3 人が 12.0% と、マイクロチームに偏っている。承認の手続きを必要としない規模なのだから、改訂手続きが観測されないのは当然だ、という読みは成り立つ。大規模な組織で同じ空白があるかは確認できていない。
 
-二つ目は、空白が機会とは限らないことである。人間向けの操作前提を捨てて出力を機械可読側に寄せた agentjj は 2026 年 2 月にアーカイブされた。前提から組み直す試みが続かなかった例は既にあり、「空白なのは誰も思いつかなかったからではなく、やってみて続かなかったからだ」という読みを、現時点では排除できていない。
+二つ目は、空白が機会とは限らないことである。人間向けの操作前提を捨てて出力を機械可読側に寄せた agentjj は、2026 年 2 月 15 日の commit を最後に更新が止まり、現在は archived（read-only）になっている。前提から組み直す試みが続かなかった例は既にあり、「空白なのは誰も思いつかなかったからではなく、やってみて続かなかったからだ」という読みを、現時点では排除できていない。
 
 どちらの反論も、議論では解けない。解けるのは運用の記録だけである。
 
@@ -133,7 +133,7 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 | IETF の transaction challenge | `draft-rosomakho-oauth-txn-challenge-00`（2026-06-25）https://datatracker.ietf.org/doc/draft-rosomakho-oauth-txn-challenge/ |
 | Agentic SE の Merge-Readiness Pack | Hassan et al., *Agentic Software Engineering: Foundational Pillars and a Research Roadmap*, arXiv:2509.06216. https://arxiv.org/abs/2509.06216 （ロードマップであり、実装と評価は未提示） |
 | Beads | https://github.com/gastownhall/beads |
-| agentjj | https://github.com/2389-research/agentjj （性格づけの根拠は `README.md` の "The Inversion"——jj が人間向けに取り除いた機能を agent 向けに戻す対比表——および "Traditional VCS tools are designed for humans. Agents need:" の対比表。捨てられているのは人間向けの操作前提であって可読性そのものではない。`--json` は opt-in フラグ（"Always use `--json` for programmatic access"）であり、フラグ無しの既定出力は残っている。2026-02-17 に archived（read-only）のため内容は凍結済み） |
+| agentjj | https://github.com/2389-research/agentjj （性格づけの根拠は `README.md` の "The Inversion"——jj が人間向けに取り除いた機能を agent 向けに戻す対比表——および "Traditional VCS tools are designed for humans. Agents need:" の対比表。捨てられているのは人間向けの操作前提であって可読性そのものではない。`--json` は opt-in フラグ（"Always use `--json` for programmatic access"）であり、フラグ無しの既定出力は残っている。archived（read-only）のため内容は凍結済みで、README の最終更新は 2026-02-15 の commit `1cde5585`。GitHub API の `archived_at` は `null` を返すため、archive 操作そのものの日付は追試できない） |
 | Lahiri の仕様妥当性メトリクス | *Intent Formalization: A Grand Challenge for Reliable Coding in the Age of AI Agents*, arXiv:2603.17150. https://arxiv.org/abs/2603.17150 |
 | Prifti らの実行可能プロセス記述 | Prifti, De Meo, Provetti, *Specifying AI-SDLC Processes: A Protocol Language for Human-Agent Boundaries*, arXiv:2606.20615. https://arxiv.org/abs/2606.20615 |
 | General Intelligence Company（同方向の予測） | *Agent-Native Engineering*（2026-02-05）https://www.generalintelligencecompany.com/writing/agent-native-engineering （引用は "The future of agent-native engineering" 節の予測 "By the end of 2026, humans will review only changes on products and larger infrastructure"。運用実績として報告されているのはトークン予算と出荷 PR 数であって、人間レビューの撤去ではない） |
@@ -151,7 +151,7 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 | 規範の改訂を人間の合議に戻している例 | MCP のガバナンスと SEP プロセス https://modelcontextprotocol.io/community/governance |
 | 83 リポジトリ・7,310 件のルール・1,540 件の改訂イベント／承認に当たる語が本文に現れないこと・統治と所有者に当たる語は現れるが規範自身の統治を指さないこと／1 人 49.4%・2 人 31.3%・3 人 12.0% | Guangzong Cai, Ruiyin Li, Peng Liang, Zengyang Li, Mojtaba Shahin, *Rule Taxonomy and Evolution in AI IDEs: A Mining and Survey Study*, arXiv:2606.12231（2026-06-10 投稿）https://arxiv.org/abs/2606.12231 ／ 全文 https://arxiv.org/html/2606.12231v1 （数値は全文取得のうえで確認。チーム規模は本文 §4。語は同じ全文テキストへの grep で、承認に当たる `approv` / `authoriz` / `maintainer` / `sign-off` および `amend` が 0 件。`govern` は 3 件あるが、いずれも「ルールが AI IDE の挙動を統べる」意で——"rules used to govern the behavior of AI IDEs" / "rules governing software lifecycle management" / "rules governing specific project setups"——規範自身の統治を指さない。`owner` の 1 件は §4.2.1 の GitHub API URL テンプレート `https://api.github.com/repos/<owner>/<repo>/contents/<rule_file_path>` のプレースホルダである） |
 | Hoda「指針は現在存在しない」 | Rashina Hoda, *Toward Agentic Software Engineering Beyond Code: Framing Vision, Values, and Vocabulary*, *Proceedings of the 2026 International Workshop on Agentic Engineering*（AGENT '26、ICSE 2026 併設、ACM、Rio de Janeiro、2026-04-12）pp. 181-185. DOI: 10.1145/3786167.3788422 ／ プレプリント arXiv:2510.19692, DOI: 10.48550/arXiv.2510.19692. https://arxiv.org/abs/2510.19692 （出版社側レコードは Crossref 経由で到達。なお arXiv 側の citation ブロックは同じ論文を "2026 IEEE/ACM 48th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion), 2026" と記載しており、出版社側のコンテナ名と表記が異なる。本書は DOI とページ番号が取れる出版社側の表記を採る。原文 "Currently, there is no guidance on how AI teammates can/should be incorporated across the SDLC."。この一文は abstract ではなく本文にあり、所在は §3「Toward Agentic SE (emerging)」末尾の小節 "A ‘Whole of Process’ Vision" の冒頭段落——同小節は番号を持たない。なお本文は改版されており、当該文は v2（2026-02-17 改訂、https://arxiv.org/html/2510.19692v2 ）にのみ存在し、v1（2025-10-22、https://arxiv.org/html/2510.19692v1 ）には現れない。ACM 出版版 pp. 181-185 の本文は原本が 403 のため未確認で、所在の記述は arXiv v2 全文に対する観測である） |
-| agentjj が 2026 年 2 月にアーカイブされたこと | https://github.com/2389-research/agentjj （2026-02-17 に read-only 化） |
+| agentjj の更新が 2026 年 2 月で止まり archived になっていること | https://github.com/2389-research/agentjj （GitHub API: `archived: true`、最終 commit `1cde5585` = 2026-02-15。`archived_at` は `null` で、read-only 化した日付自体は追試できない） |
 
 ### 確認できたが、断定できないこと
 
