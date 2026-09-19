@@ -121,7 +121,7 @@ The integration timing changes here as well. Where HybridRAG integrates "at quer
 
 ## Concurrent Convergence
 
-TagRAG (arXiv:2601.05254 — v1 submitted October 2025, v2 revised January 2026, accepted to ACL 2026 Findings) presented a design that uses tags as semantic anchors and traverses a DAG (directed acyclic graph) retroactively.
+TagRAG (arXiv:2601.05254 — v1 submitted October 2025, latest revision v3 May 2026, accepted to ACL 2026 Findings) presented a design that uses tags as semantic anchors and traverses a DAG (directed acyclic graph) retroactively.
 
 This publication reveals something interesting.
 
