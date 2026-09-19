@@ -87,7 +87,7 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 
 ここで書いているものは、どちらでもない。層を役割で定義していないので（P2）、役割の割り当てにならない。単位を工程ではなく憲法に置いているので、工程に何かを差し込む形にもならない。
 
-前提から組み直した例が存在しないわけではない。ただし、組み直されているのは一軸ずつである。承認の位置を組み直した例（GAIE は可逆性などの軸で監督の強度を決める。IETF の transaction challenge は承認を事前の一括付与から実行時・操作単位へ移す）、人が見る単位を作り直した例（Agentic SE の Merge-Readiness Pack、依存グラフから作業をエージェントが自己選択する Beads、人間可読性を捨てた agentjj）、品質の測り方を移した例（Lahiri の仕様妥当性メトリクス）、工程に強制力を持たせた例（Prifti らの実行可能プロセス記述）、人間レビュー義務そのものを外した例（Monperrus は人間の検査を撤去したあとに何も置かないのではなく、独立したエージェントによる審査、複数エージェントの合議、較正された不確実性の申告、自動の merge gate を置き、人間の承認を高リスクの変更・新規のアーキテクチャ選択・法的責任が要る経路に限定すると提案している。General Intelligence Company と Replit は提案ではなく運用側の報告）。いずれも、残りの軸は従来のまま置かれている。
+前提から組み直した例が存在しないわけではない。ただし、組み直されているのは一軸ずつである。承認の位置を組み直した例（GAIE は可逆性などの軸で監督の強度を決める。IETF の transaction challenge は承認を事前の一括付与から実行時・操作単位へ移す）、人が見る単位を作り直した例（Agentic SE の Merge-Readiness Pack、依存グラフから作業をエージェントが自己選択する Beads、人間可読性を捨てた agentjj）、品質の測り方を移した例（Lahiri の仕様妥当性メトリクス）、工程に強制力を持たせた例（Prifti らの実行可能プロセス記述）、人間レビュー義務そのものに手をつけた例（三者の立ち位置は異なる。Monperrus は提案である——人間の検査を撤去したあとに何も置かないのではなく、独立したエージェントによる審査、複数エージェントの合議、較正された不確実性の申告、自動の merge gate を置き、人間の承認を高リスクの変更・新規のアーキテクチャ選択・法的責任が要る経路に限定する、と書いている。General Intelligence Company は同じ方向の予測で、「2026 年末までに、人間がレビューするのはプロダクトと大きめのインフラの変更だけになる」と述べている。運用実績として報告しているのはトークン予算と出荷 PR 数であって、人間レビューの撤去ではない。Replit は運用報告だが、人間レビューを残したうえでエージェントを co-reviewer として足した形であり、「どの例でも、人間は自動化で外されたのではない。昇格したのだ」と書いている）。いずれも、残りの軸は従来のまま置かれている。
 
 この最後の軸に手が伸びるのには観測の裏づけがある。GitLab の 2026 年の調査では、回答者——開発者と技術購買層 1,528 名——の 85% が「AI はボトルネックをコードを書くことからレビューと検証へ移した」に同意している。
 
@@ -99,11 +99,11 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 
 準拠先である「自己改訂規範アーキテクチャ v1」は、§4「根」で自らを体系の根と位置づけ、「本書の版は所有者の承認そのものによって成立し、その手続きは本書の外にある」と書いている（この「本書」は準拠先自身を指す）。あわせて「第1章から第3章は、本書の内側の規範文書に適用する」とも書いている。つまり、この上位書は、自分が版と改訂の機構の内側にいるのか外側にいるのかを、自分で決めている。以上は準拠先に既に書かれていることの紹介であって、本書がそれを定めているのではない。決まっているのは位置づけと、v1 が所有者の承認済みであるという事実までで、その承認をどこに記録するかは決まっていない。
 
-そのうえで見ると、上に挙げたどの例も、規範そのものをどう改訂するかを問いにしていない。改訂の手続きが設計に含まれていないだけでなく、外に置くという明記もない。監督の強度を規制インパクトや可逆性で決める枠組みは、その決定の仕組み自体を誰がどう改訂するかを書いていない。実行可能なプロセス記述を提案したものは、そのプロセスを誰が変えられるかに触れていない。仕様を正本に据えた枠組みでも、その constitution の改訂は「プロジェクトのメンテナによるレビューと承認」のままである。工程をエージェント前提に組み直した人でも、その工程を定めた規範の改訂だけは、人間の合議に戻している。
+そのうえで見ると、上に挙げたどの例も、規範そのものをどう改訂するかを問いにしていない。改訂の手続きが設計に含まれていないだけでなく、外に置くという明記もない。監督の強度を規制インパクトや可逆性で決める枠組みは、その決定の仕組み自体を誰がどう改訂するかを書いていない。実行可能なプロセス記述を提案したものは、そのプロセスを誰が変えられるかに触れていない。仕様を正本に据えた枠組みでも、その constitution の改訂は「プロジェクトのメンテナによるレビューと承認」のままである。エージェント前提でエコシステムを設計した側でも、その設計を定めた規範の改訂だけは、人間の合議に戻している。
 
-実証の側でも同じことが起きている。83 リポジトリ・7,310 件のルールと 1,540 件の改訂イベントを扱った研究は、何がなぜ変わったかを分類しているが、誰が提起し誰が承認するかを扱っていない。承認・統治・所有者に当たる語が本文に現れない。空白は「まだ書かれていない」よりも、「問いとして立っていない」に近い。
+実証の側でも同じことが起きている。83 リポジトリ・7,310 件のルールと 1,540 件の改訂イベントを扱った研究は、何がなぜ変わったかを分類しているが、誰が提起し誰が承認するかを扱っていない。承認に当たる語は本文に現れない。統治と所有者に当たる語は現れるが、前者はルールが AI IDE の挙動を統べるという意味で使われており、後者は GitHub API の URL に置かれたプレースホルダである。どちらも規範自身の統治を指していない。空白は「まだ書かれていない」よりも、「問いとして立っていない」に近い。
 
-ただし、これを「誰も気づいていない」と言うことはできない。空白の指摘は既にある。ICSE 2026 の Hoda は、これまでの構想がコーディングという一つの活動の周辺に集中していると述べたうえで、AI のチームメイトを開発の全工程にどう組み込むかについての指針は現在存在しない、と明言している。したがって主張しうるのは「気づいた」ではない。かといって「埋めた」でもない。ここで書いている体系も、先に見たとおり根の承認手続きは外に置いている。循環を体系の内側に入れたのは、根より下の規範文書についてだけである。
+ただし、これを「誰も気づいていない」と言うことはできない。空白の指摘は既にある。ICSE 2026 併設ワークショップ AGENT '26（ACM）の Hoda は、これまでの構想がコーディングという一つの活動の周辺に集中していると述べたうえで、AI のチームメイトを開発の全工程にどう組み込むかについての指針は現在存在しない、と明言している。したがって主張しうるのは「気づいた」ではない。かといって「埋めた」でもない。ここで書いている体系も、先に見たとおり根の承認手続きは外に置いている。循環を体系の内側に入れたのは、根より下の規範文書についてだけである。
 
 他との差は、改訂手続きを体系に含めたかどうかではなく、**問いとして立てたかどうか**にある。他は、規範を誰がどう改訂するかをそもそも論点にしていない。こちらはそれを論点にしたうえで、内側については循環を体系に入れ、根については外に置くと明記した。明示的に外に置くことと、問いとして立っていないことは違う。この差は小さくない。
 
@@ -128,17 +128,17 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 | 本文での言及 | 出典 |
 | --- | --- |
 | Agentic-Agile の原則 4「人が設計し、エージェントが実行し、両者がレビューする」 | 番号と原文の所在はテンプレート repo の `MANIFESTO.md`（5 つの価値と 13 の原則）の原則 4 https://github.com/microsoft/agentic-agile-template/blob/main/MANIFESTO.md ／ Daniel Epstein (Partner Tech Strategist, Microsoft), "Agentic-Agile: Why Agent Development Needs Agile (Not Just Prompts)", Microsoft for Developers blog, 2026-05-19. https://developer.microsoft.com/blog/agentic-agile-why-agent-development-needs-agile-not-just-prompts/ ／ テンプレート repo https://github.com/microsoft/agentic-agile-template （原文は "Humans design, agents execute, both review"。**Microsoft 社の公式推奨とは確認できていない**。社員が公式の開発者ブログで自分と同僚の取り組みとして提唱し——本文の文言は "Several of my colleagues and I have started talking about a model we're calling Agentic-Agile development"——公式 org 配下に public のテンプレート repo がある、までが一次確認できた範囲。社としての推奨を宣言する文言は本文に見当たらない。本人も "This isn't a finished process" と書いている） |
-| AI-Empowered SAFe「AI が組織に組み込まれても、置き換えられるのではなく増幅される」 | Scaled Agile, *Achieving AI-Empowered Agility*（最終更新 2026-08-17）https://framework.scaledagile.com/achieving-ai-empowered-agility/ （原文 "These core tenets are not replaced when AI is embedded in an organization; they are amplified"） |
-| GAIE（監督の強度を可逆性などの軸で決める） | *Governed AI-Assisted Engineering*, arXiv:2606.22484. https://arxiv.org/abs/2606.22484 |
+| AI-Empowered SAFe「AI が組織に組み込まれても、置き換えられるのではなく増幅される」 | Scaled Agile, *The Four Critical Lean-Agile Shifts in the Age of AI*（最終更新 2026-08-17）https://framework.scaledagile.com/achieving-ai-empowered-agility/ （ページに表示されている題は上記。*Achieving AI-Empowered Agility* は URL スラッグ由来の呼び名で、ページ上の題ではない。原文 "These core tenets are not replaced when AI is embedded in an organization; they are amplified through four critical shifts"） |
+| GAIE（監督の強度を可逆性などの軸で決める） | *Governed AI-Assisted Engineering: Graduated Human Oversight for Agentic Code Generation in Regulated Domains*, arXiv:2606.22484. https://arxiv.org/abs/2606.22484 |
 | IETF の transaction challenge | `draft-rosomakho-oauth-txn-challenge-00`（2026-06-25）https://datatracker.ietf.org/doc/draft-rosomakho-oauth-txn-challenge/ |
 | Agentic SE の Merge-Readiness Pack | Hassan et al., *Agentic Software Engineering: Foundational Pillars and a Research Roadmap*, arXiv:2509.06216. https://arxiv.org/abs/2509.06216 （ロードマップであり、実装と評価は未提示） |
 | Beads | https://github.com/gastownhall/beads |
 | agentjj | https://github.com/2389-research/agentjj |
-| Lahiri の仕様妥当性メトリクス | *Intent Formalization*, arXiv:2603.17150. https://arxiv.org/abs/2603.17150 |
+| Lahiri の仕様妥当性メトリクス | *Intent Formalization: A Grand Challenge for Reliable Coding in the Age of AI Agents*, arXiv:2603.17150. https://arxiv.org/abs/2603.17150 |
 | Prifti らの実行可能プロセス記述 | Prifti, De Meo, Provetti, *Specifying AI-SDLC Processes: A Protocol Language for Human-Agent Boundaries*, arXiv:2606.20615. https://arxiv.org/abs/2606.20615 |
-| General Intelligence Company | *Agent-Native Engineering*（2026-02-05）https://www.generalintelligencecompany.com/writing/agent-native-engineering |
-| Replit | *The Self-Driving Company*（2026-07-16）https://replit.com/blog/self-driving-company （規範文書ではなく社内の運用報告） |
-| Monperrus（人間の検査を撤去し、独立エージェント審査・合議・較正された不確実性申告・自動 merge gate を置く／人間は高リスク・新規アーキテクチャ・法的責任の経路に限定） | Martin Monperrus, *The End of Code Review: Coding Agents Supersede Human Inspection*, arXiv:2606.13175（2026-06-11 投稿）https://arxiv.org/abs/2606.13175 ／ 全文 https://arxiv.org/html/2606.13175v1 （本文 §IV-B・§V-B・§VI-A を全文取得のうえ逐語照合。abstract だけを読むと代替機構が未提示に見えるが、本文は提示している。なお二次記事が付している「runtime 監視・段階リリースに関門を置く」は本文に存在しない——`runtime` / `observability` / `canary` は全文 grep で 0 件——ため、ここでは書いていない） |
+| General Intelligence Company（同方向の予測） | *Agent-Native Engineering*（2026-02-05）https://www.generalintelligencecompany.com/writing/agent-native-engineering （引用は "The future of agent-native engineering" 節の予測 "By the end of 2026, humans will review only changes on products and larger infrastructure"。運用実績として報告されているのはトークン予算と出荷 PR 数であって、人間レビューの撤去ではない） |
+| Replit（人間レビューを残した運用報告） | *The Self-Driving Company*（2026-07-16）https://replit.com/blog/self-driving-company （規範文書ではなく社内の運用報告。人間レビューは残されており、エージェントは co-reviewer として足されている——"Human code reviews have the benefit of an agentic co-reviewer, so more bugs get caught." / "In every example, the human didn't get automated out. They got promoted."） |
+| Monperrus（人間の検査を撤去し、独立エージェント審査・合議・較正された不確実性申告・自動 merge gate を置く／人間は高リスク・新規アーキテクチャ・法的責任の経路に限定） | Martin Monperrus, *The End of Code Review: Coding Agents Supersede Human Inspection*, arXiv:2606.13175（2026-06-11 投稿）https://arxiv.org/abs/2606.13175 ／ 全文 https://arxiv.org/html/2606.13175v1 （本文 §IV-B・§V-A・§V-B・§VI-A を全文取得のうえ逐語照合。人間の承認を限定する部分の根拠節は §V-A——"Human approval is not eliminated; it is reserved for the decisions that genuinely require it: high-risk changes, novel architecture choices, and regulated code paths where a named human must bear legal accountability."。abstract だけを読むと代替機構が未提示に見えるが、本文は提示している。なお二次記事が付している「runtime 監視・段階リリースに関門を置く」は本文に存在しない——`runtime` / `observability` / `canary` は全文 grep で 0 件——ため、ここでは書いていない） |
 | レビュー・検証がボトルネックになったこと（85%） | GitLab, *AI Accountability Report*（2026）。調査は The Harris Poll、n=1,528（6 か国の developers and technology buyers）。プレスリリース 2026-06-23 https://ir.gitlab.com/news/news-details/2026/GitLab-Research-Reveals-Organizations-Are-Generating-AI-Code-Faster-Than-They-Can-Control-It/default.aspx ／ レポート本体 https://about.gitlab.com/resources/ai-accountability-survey-2026/ （原文 "85% agree AI has shifted the bottleneck from writing code to reviewing and validating it"。同リリースには別の 85%（"less on generating code and more on governing it"）もあるので取り違えないこと。母集団は開発者だけではない） |
 
 ### 節 5
@@ -146,11 +146,11 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 | 本文での言及 | 出典 |
 | --- | --- |
 | 仕様を正本に据えた枠組みの constitution 改訂 | GitHub Spec Kit https://github.github.com/spec-kit/ ／ 当該文言の所在は repo 内 `spec-driven.md` の見出し "Constitutional Evolution" が引用する "Section 4.2: Amendment Process" https://github.com/github/spec-kit/blob/main/spec-driven.md （原文 "Modifications to this constitution require: - Explicit documentation of the rationale for change - Review and approval by project maintainers - Backwards compatibility assessment"。constitution の改訂手続きについて述べたものであることを全文取得のうえ確認） |
-| 監督の強度を決める仕組みそのものを誰がどう改訂するかが書かれていないこと（GAIE） | 前掲 arXiv:2606.22484 ／ 全文 https://arxiv.org/html/2606.22484 （`amend` / `revis` / `owner` は全文 grep で 0 件。`govern` は多数あるが、枠組み自身の改訂手続きを指す箇所は見当たらない） |
-| 実行可能プロセス記述を誰が変えられるかに触れていないこと（Prifti ら） | 前掲 arXiv:2606.20615 ／ 全文 https://arxiv.org/html/2606.20615 （`amend` / `owner` は全文 grep で 0 件。`revis` の 2 件は検証失敗時の revise-and-retry と原稿作成の謝辞で、プロセス記述の改訂ではない） |
+| 監督の強度を決める仕組みそのものを誰がどう改訂するかが書かれていないこと（GAIE） | 前掲 arXiv:2606.22484 ／ 全文 https://arxiv.org/html/2606.22484v2 （grep は v2 に対して実施。`amend` / `revis` / `owner` は 0 件。`govern` は多数あるが、枠組み自身の改訂手続きを指す箇所は見当たらない） |
+| 実行可能プロセス記述を誰が変えられるかに触れていないこと（Prifti ら） | 前掲 arXiv:2606.20615 ／ 全文 https://arxiv.org/html/2606.20615v3 （grep は v3 に対して実施。`amend` / `owner` は 0 件。`revis` の 2 件は検証失敗時の revise-and-retry と原稿作成の謝辞で、プロセス記述の改訂ではない） |
 | 規範の改訂を人間の合議に戻している例 | MCP のガバナンスと SEP プロセス https://modelcontextprotocol.io/community/governance |
-| 83 リポジトリ・7,310 件のルール・1,540 件の改訂イベント／承認・統治・所有者に当たる語が本文に現れないこと／1 人 49.4%・2 人 31.3%・3 人 12.0% | Guangzong Cai, Ruiyin Li, Peng Liang, Zengyang Li, Mojtaba Shahin, *Rule Taxonomy and Evolution in AI IDEs: A Mining and Survey Study*, arXiv:2606.12231（2026-06-10 投稿）https://arxiv.org/abs/2606.12231 ／ 全文 https://arxiv.org/html/2606.12231v1 （語の不在は全文取得のうえでの grep により確認。チーム規模は本文 §4） |
-| Hoda「指針は現在存在しない」 | Rashina Hoda, *Toward Agentic Software Engineering Beyond Code: Framing Vision, Values, and Vocabulary*, ICSE-Companion 2026. arXiv:2510.19692, DOI: 10.48550/arXiv.2510.19692. https://arxiv.org/abs/2510.19692 （原文 "Currently, there is no guidance on how AI teammates can/should be incorporated across the SDLC."。この一文は abstract ではなく本文 Introduction にある） |
+| 83 リポジトリ・7,310 件のルール・1,540 件の改訂イベント／承認に当たる語が本文に現れないこと・統治と所有者に当たる語は現れるが規範自身の統治を指さないこと／1 人 49.4%・2 人 31.3%・3 人 12.0% | Guangzong Cai, Ruiyin Li, Peng Liang, Zengyang Li, Mojtaba Shahin, *Rule Taxonomy and Evolution in AI IDEs: A Mining and Survey Study*, arXiv:2606.12231（2026-06-10 投稿）https://arxiv.org/abs/2606.12231 ／ 全文 https://arxiv.org/html/2606.12231v1 （数値は全文取得のうえで確認。チーム規模は本文 §4。語は同じ全文テキストへの grep で、承認に当たる `approv` / `authoriz` / `maintainer` / `sign-off` および `amend` が 0 件。`govern` は 3 件あるが、いずれも「ルールが AI IDE の挙動を統べる」意で——"rules used to govern the behavior of AI IDEs" / "rules governing software lifecycle management" / "rules governing specific project setups"——規範自身の統治を指さない。`owner` の 1 件は §4.2.1 の GitHub API URL テンプレート `https://api.github.com/repos/<owner>/<repo>/contents/<rule_file_path>` のプレースホルダである） |
+| Hoda「指針は現在存在しない」 | Rashina Hoda, *Toward Agentic Software Engineering Beyond Code: Framing Vision, Values, and Vocabulary*, *Proceedings of the 2026 International Workshop on Agentic Engineering*（AGENT '26、ICSE 2026 併設、ACM、Rio de Janeiro、2026-04-12）pp. 181-185. DOI: 10.1145/3786167.3788422 ／ プレプリント arXiv:2510.19692, DOI: 10.48550/arXiv.2510.19692. https://arxiv.org/abs/2510.19692 （出版社側レコードは Crossref 経由で到達。なお arXiv 側の citation ブロックは同じ論文を "2026 IEEE/ACM 48th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion), 2026" と記載しており、出版社側のコンテナ名と表記が異なる。本書は DOI とページ番号が取れる出版社側の表記を採る。原文 "Currently, there is no guidance on how AI teammates can/should be incorporated across the SDLC."。この一文は abstract ではなく本文 Introduction にある） |
 | agentjj が 2026 年 2 月にアーカイブされたこと | https://github.com/2389-research/agentjj （2026-02-17 に read-only 化） |
 
 ### 確認できたが、断定できないこと
@@ -159,5 +159,4 @@ v1 は 6 つを横並びに置いていた。書き直し案は、そのうち�
 
 ### 一次資料まで到達できなかったもの
 
-- Hoda 論文の出版社側（IEEE/ACM）の proceedings DOI とページ番号は**未確認**。arXiv の comments 欄に ICSE-Companion 掲載と記載があるのを確認したところまでで、ここでは arXiv DOI を使い、ページ番号は書いていない。
-- GitLab のレポート本体における 85% の文脈は**未確認**。本体ページの到達（HTTP 200）までは確認したが、逐語はプレスリリース側から取っている。
+- GitLab のレポート本体における 85% の文脈は**未確認**。本体ページの到達（HTTP 200）までは確認したが、レポート本文はダウンロードフォームの背後にあり、ページ上に数値は露出していない。フォーム送信は行っていないため、逐語はプレスリリース側から取っている。
