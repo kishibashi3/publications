@@ -594,3 +594,89 @@ imprinting 救済についても、Core 側から言えるのは **Core に「�
 | #65 | 6.1 に評価時刻の規約が無い。再帰が一段目で生存期間の外へ漏れる | 未着手 |
 
 **閉じたものはゼロ。** 7 件すべて**決定待ち**であって調査待ちではない。
+
+---
+
+# 確報 + Appendix 精読（@deep-research, 2026-09-20 最終）
+
+archive: `research-archive/2026-09-20-setpoint-gap-pair-property-prior-art.md`（Round 4 まで）
+
+## 主張1 は完全に取られた —— McClelland
+
+中間報告の「『差が大きいと結合できない』を論じた先行は未発見」は**撤回**された。paywall だった論文を、**著者の公式ミラーが wayback に残っているのを見つけて回収**したことで判明。
+
+McClelland 1997 p.21 / 1996 HTML（逐語）:
+
+> "**The greater the difference between the reference values of the interactants, the greater the divergence in output, and thus the greater the conflict and the greater the likelihood that the conflict will drive the interactants to the limits of their output, where cooperative control is lost. One can classify interactions, then, by locating any given instance of collective control on a continuum from pure cooperation, where reference values are identical, to maximal conflict, where reference values diverge as much as possible.**"
+
+**判定基準 3 つを全部満たす** —— 連続量（"on a continuum" と明記）/ 対の性質 / 結合可否の決定変数（"cooperative control is lost"）。
+
+Powers 側も確定: 出典は **B:CP 最終章「Conflict and Control」p.255**、しかも **1960 年まで遡る**（Powers, Clark & McFarland 1960 に既に "virtual reference level" が「二つの異なる reference level の compromise value」として存在）。対人間への適用も Powers 本人が明示（*Living Control Systems* 1989 p.230「一方が知覚の制御を維持することは、他方がそれを失うことである。これが対人 conflict の本質だ」）。
+
+主張2（κ·Δ\*）も物理側で完成 —— **蔵本＝Adler の Arnold tongue** が `ε q_min < Δω < ε q_max`、すなわち「**差が大きいほど比例して強い結合が要る**」を (差, 結合強度) 平面の領域として与えている。**この軸での新規性は主張できない。**
+
+> **方法論の教訓（@deep-research 自己記録）**: **paywall の背後は「探索範囲外」であって「不在の証拠」ではない。** 回収できていなければ誤った否定判定を確報として出していた。
+
+## 独立再発見は 9 分野、相互引用はほぼ無し
+
+制御理論（Powers 1960/1973）/ PCT 社会学（McClelland 1994/1996）/ 同期理論（Adler・蔵本）/ 意見力学（Taylor・Friedkin–Johnsen）/ 対人関係心理（dyadic discrepancy）/ 幸福の経済学（Guven 2012）/ 建築環境工学（2025）/ **電力系統運用**（Poudel et al. 2023 の deconfliction —— 設定値の重心からのユークリッド距離で conflict metric。**Powers の virtual reference level と同じ構造に独立到達**）/ **自動交渉**（Baarslag 2016 の opposition）。
+
+**唯一の例外が McClelland → Powers の系列内引用だけ。** しかも PCT 内部ですら食い違う（McClelland は連続量、Taylor は閾値型）。
+
+> 「同じ形が繰り返し現れるが、毎回わずかに違う形で立てられる」という現象それ自体が記述対象になりえる。
+
+## 残った新規性は 1 点のみ —— 非単調性
+
+**「最適な差はゼロではない」は 9 分野のどこにも一件も無い。全先行が単調で、差ゼロが最善。**
+
+- PCT: "pure cooperation, where reference values are **identical**" が連続体の望ましい極
+- 同期理論: Δω=0 が最も同期しやすい
+- 建築環境工学: 選好の SD が 1℃ 増えると達成可能満足度が約 18% 低下（単調減少）
+- deconfliction: conflict metric は 0 が無衝突で大きいほど悪い / opposition は強いほど達成効用が下がる
+
+### Round 4（Appendix 精読）で確定
+
+**Appendix に閉じた関係式は無い。** 数式は「モデルの定義」だけ（5 変数 2 定数 + 反復式）。**`Δr` は Appendix に一度も登場しない。** 出力乖離・conflict・deadlock・virtual reference のいずれも Appendix では式に現れない。gain 加重平均も Appendix に無く、**本文脚注 22 の観測報告**（"the simulations show..."）。N≥2 拡張は散文のみ（"centroid of their preferences"）。
+
+**差が小さすぎる側のコストは一箇所も無い（ゼロ件）。** 全文を `too similar / monoculture / homogene / optimum / inverted / trade-off` 等で機械 grep。ヒットした `optimum` 2 件は**どちらも逆向き** —— p.11「設定値が**同一**のとき…**optimum** な条件下で協調は加算的になる」＝**差ゼロが最良ケース**。
+
+> **非単調性は生き残る。McClelland 側からの最優先の脅威は存在しない。**
+
+**ただし @deep-research 自身が値引きしている**:
+
+> Appendix の式の不動点を解くと `e* = (Σ g_i r_i + d)/(1 + Σ g_i)`、残留誤差は Δr に比例し deadlock 条件は `g_i|r_i − e| > o_max`。**導出は容易だが McClelland は書いていない。** …**執筆時に自明な導出を新規性として主張するのは弱い** —「Appendix の式から容易に導ける」ことは明記すべきである。
+
+## もう一つの空きかもしれないもの
+
+**先行は全部「差 → 満足度」に回帰させて null を得ている**（Frost & LeBlanc 2022 は信頼区間が 0 を含む、Kim et al. 2021 は dyadic response surface で "no support for a unique matching effect"）。両者とも「**個人内のズレが効き、二者間の理想差は効かない**」に到達。
+
+一方、効いた 3 件（Guven の離婚、Schade の家族生活満足度、Holley の demand-withdraw）は**従属変数が関係の解消・役割構造の発生**。
+
+> **差を「結合可能性・摩擦の発生・役割の非対称化」に置いた検証は、探索範囲では見つかっていない** `[推定]`
+
+## 執筆前の地雷 7 件
+
+1. **RDT（Robins & Boldero 2003）を「差が大きいと結合できない」と要約しない** —— RDT は「差 → 階層役割の生成（結合は残る）」の向き。結合不成立を説明するのは差ではなく **commensurability**。discrepancy は「一方の主体の知覚」として定義され、扱いも離散
+2. **絶対値 `|Δ|` で書くと Guven の最強の所見を捨てる** —— 中心的知見は「**妻のほうが不幸なとき**に離婚が増える」という符号の非対称性
+3. **差得点を単一スカラーに畳むこと自体が批判されている** —— Edwards 以降 polynomial regression + response surface に置換済み（Kim et al. 2021 の「9−8=1 と 2−1=1 が同じ帰結になるのはおかしい」批判）
+4. **"discrepancy" の 4 分法を明示せずに引くと誤引用** —— 個人内 / 自分の理想 vs 相手の実態 / 相手の理想 vs 自分の実態 / 二者の理想どうし
+5. **Powers 1989 p.233 の帰属誤り** —— 「標準化が進むほど conflict が増える」（"the more closely-knit the society ... the higher becomes the likelihood of direct conflict"）は**向きは非単調を支持するが機構が別**（自由度の枯渇であって距離の最適値ではない）。**非単調の根拠に引くと帰属誤り。類似構造の先行例としてなら引ける**
+6. **"tolerance limits" 定式を McClelland に帰属しない** —— 出典は Taylor の自費出版・査読なし文書で、McClelland の連続量的定式化と食い違う
+7. **Carver & Scheier を先行として引かない（確定）** —— 4 資料で固めた。彼らの conflict は「1 人が 2 つの両立しない goal を持ち 1 本の行動流を奪い合う」という別概念
+
+## 適用範囲の制約（原典に明記あり）
+
+McClelland 自身が「設定値の差」は**共有変数が存在するときにしか定義されない**と書いている —— 統制対象が完全に異なる場合は "**it makes no sense to compare their reference values**"。**二者がそもそも別のものを気にしているとき、Δ(T_n\*, T_m\*) は定義されない。**
+
+観測論の注意も原典にある: "The outside observer **can see only the actions of the individuals involved, not their reference values** ... **small disagreements in reference value typically lead to wide disparities in output**"。**差はペアの構造的性質だが直接観測できず、行動出力からの推定は系統的にバイアスがかかる。**
+
+---
+
+# 本日の帰着（2026-09-20）
+
+> **枠組みの新規性は「最適な差はゼロではない」の一点に凝縮された。**
+> **そしてそれは、@philosopher が「Core から導けない」と判定したものと同一である。**
+
+差に便益があると言うには両端が落ちることを示す必要があり、**差が小さい側で何かが落ちるという命題が Core に無い**（4.4 / 4.6 / 5.7 / 6.4 の 4 箇所がむしろ逆を言っている）。
+
+**新規性がある場所と、根拠が無い場所が一致している。**
