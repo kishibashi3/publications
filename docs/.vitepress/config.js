@@ -68,7 +68,8 @@ export default withMermaid({
             { text: '第6章', link: '/ai/agent-design/chapter-06.ja' },
             { text: '第7章', link: '/ai/agent-design/chapter-07.ja' },
             { text: '第8章', link: '/ai/agent-design/chapter-08.ja' },
-            { text: '第9章', link: '/ai/agent-design/chapter-09.ja' }
+            { text: '第9章', link: '/ai/agent-design/chapter-09.ja' },
+            { text: '補論：タグを共有意味空間にした検索設計（Dual-Track）', link: '/ai/agent-design/tag-as-document-dual-track.ja' }
           ]
         }
       ],

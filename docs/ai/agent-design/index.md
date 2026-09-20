@@ -44,6 +44,9 @@ Devinでさえ破綻する領域と、最初からAIに任せるべきでない�
 ### [第9章：AIエージェントの品質保証（最終章）](./chapter-09.ja.md)
 evalを頑張るな、アーキテクチャで勝て
 
+### [補論：タグを共有意味空間にした検索設計（Dual-Track）](./tag-as-document-dual-track.ja.md)
+確定的検索と確率的検索を、同一のタグスキーマの上で並走させる（[English](./tag-as-document-dual-track.md)）
+
 ---
 
 ## 🎯 このシリーズの目的
@@ -65,4 +68,4 @@ evalを頑張るな、アーキテクチャで勝て
 
 ---
 
-**Last Updated**: 2026-04-06
+**Last Updated**: 2026-09-20
