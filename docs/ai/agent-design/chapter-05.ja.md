@@ -314,7 +314,7 @@ AIが自律的に動くが、特定のチェックポイントで人間が介在
 
 実装では、権限を緩める方向の変更と厳しくする方向の変更を非対称に扱えばよい。緩める方向（都度確認 → 自動実行、ロール昇格、許可リストの拡張、認証情報の付与）だけを承認に通す。厳しくする方向は自律で構わない。安全側に倒す変更を止める理由はない。
 
-この区別は公開実装でも表面化している。承認ゲートを持つエージェント実行環境で、モデル側のサブプロセスが自分の承認モードを `ask` から `auto` へ切り替えられてしまう事例が報告され、権限を緩める遷移だけを分離して扱う修正が入った（[local-operator #1282](https://github.com/damianvtran/local-operator/issues/1282) / [#1310](https://github.com/damianvtran/local-operator/issues/1310)）。理論の側から出てきた条件ではなく、実装が先に踏んだ地雷である。
+この区別は公開実装でも表面化している。承認ゲートを持つエージェント実行環境で、設定ファイル経由で実行中の承認ゲートを緩められる経路が指摘され、修正された（[local-operator #1282](https://github.com/damianvtran/local-operator/issues/1282) → [PR #1291](https://github.com/damianvtran/local-operator/pull/1291)）。制御プレーン経由の `ask → auto` を同じ境界として扱う提案（[#1310](https://github.com/damianvtran/local-operator/issues/1310)）は、本稿執筆時点で未解決である。どちらも同一の報告者（[@Nakagawa-master](https://github.com/Nakagawa-master)）による起票で、"authority-increasing transition" という本条件と同じ枠組みで書かれている。第三者による独立の追認ではなく、同じ境界線を実装の側から引き直した例として読んでほしい。
 
 ---
 
