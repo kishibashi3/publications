@@ -645,3 +645,632 @@ Reality
 この世界で不足するのは「実装者の人数」ではない。
 
 不足しうるのは、Domain の現実を理解し、その現実を Agent が自律的に扱える規範・意味・境界へ変換できる Operator である。
+
+
+## 14. ケーススタディ運営モデル: 12か月の実行スケジュールとイベント
+
+本節では、13章の人員モデルを実際に一年間動かした場合の運営モデルを仮置きする。
+
+これは EAA の規範そのものではない。EAA から導出される一つの実装例である。
+
+### 14.1 基本構造
+
+人間を最初に固定チームへ割り当て、そのチームを一年間維持する方式を取らない。
+
+組織単位は次の4種類に分ける。
+
+| Unit | 存続期間 | 目的 |
+| --- | --- | --- |
+| Enterprise Control Cell | 全期間 | Enterprise Ontology、Constitution、Authority、Platform、Migration、B2B、Release の統治 |
+| Domain Cell | 原則全期間 | 各 Domain の AA 系を自律運転する |
+| Mission Cell | 数日〜数か月 | 複数 Domain をまたぐ特定 Outcome を達成する |
+| Cutover Cell | 終盤・高リスク時のみ | rehearsal、本番切替、rollback 判断を同期的に行う |
+
+構造は次のようになる。
+
+```
+Enterprise Control Cell
+        |
+        +-- Domain Cell A
+        +-- Domain Cell B
+        +-- Domain Cell C
+        +-- Domain Cell D
+        +-- Domain Cell E
+        +-- Domain Cell F
+        |
+        +-- Mission Cell X  (temporary)
+        +-- Mission Cell Y  (temporary)
+        |
+        +-- Cutover Cell    (temporary / high-risk)
+```
+
+Mission Cell は常設チームではない。成果が出たら解散する。
+
+### 14.2 Scrum の位置づけ
+
+プロジェクト全体には Scrum を置かない。
+
+理由は、Sprint Planning、Daily Scrum、Sprint Review が主に解いてきた問題の多くが、人間中心の実行・同期・状態共有コストに由来するためである。
+
+EAA では、
+
+```
+Observation
+→ Agent replanning
+→ Execution
+→ Evidence
+→ Replanning
+```
+
+を連続的に回す。
+
+したがって、
+
+- 全 Domain 共通の Sprint
+- 全 Domain 共通の Daily Scrum
+- 全社的な Scrum of Scrums
+- 2週間ごとの一斉 Planning
+
+は標準イベントとしない。
+
+ただし Scrum、Kanban、定例会議を禁止するわけではない。特定の人間集団にとって有効なら、局所的 Application として使ってよい。
+
+```
+EAA Core     ≠ Scrum
+Scrum        = optional local coordination tool
+```
+
+### 14.3 Daily Scrum の代替: Daily Evidence
+
+人間が毎朝集まり、昨日何をしたか、今日何をするか、何に困っているかを口頭共有する必要はない。
+
+Agentic System はそれらの状態を記録できる。
+
+各 Domain Operator には、少なくとも毎日一回、次の evidence digest を自動生成する。
+
+- 完了した mission / outcome
+- production / staging change
+- failed hypothesis
+- rollback
+- unresolved boundary
+- ontology mismatch
+- human escalation
+- authority violation attempt
+- expected waste / token・compute 消費
+- verification failure
+- external dependency
+
+Operator はこれを確認し、異常がなければ何もしない。
+
+したがって、
+
+> Daily meeting ではなく Daily Evidence
+
+を標準とする。
+
+Daily Evidence の目的は進捗報告ではなく、人間判断を投入すべき例外を抽出することである。
+
+### 14.4 人間イベント
+
+平常時の人間イベントは最小限とする。
+
+| Event | 頻度 | 参加者 | 目的 |
+| --- | --- | --- | --- |
+| Enterprise Mission Review | 週1回・45分目安 | E01 + 必要な Operator | 停止中 mission、cross-domain dependency、投資配分のみを見る |
+| Boundary Review | event-driven、初期は週2回程度 | 関係 Domain Operator | Domain 間 contract / responsibility の衝突を解く |
+| Ontology Review | event-driven | E02 + 関係 Expert / Operator | semantic mismatch、意味分裂、新概念を扱う |
+| Authority Review | event-driven | E04 + 関係 Operator | 権限拡大、不可逆操作、新しい外部 Agent authority を扱う |
+| Domain Reality Session | 必要時のみ | Domain Operator + Domain Expert + SME | Agent が現実を解釈できない場所を rule / example / ontology に変換する |
+| Norm Retrospective | 月1回・60分目安 | Enterprise Operators | AA / EAA / project constitution が障害になった事例から規範を改訂する |
+| Cutover War Room | rehearsal / cutover 時のみ | Cutover Cell | 時間制約・不可逆性が高い操作を同期的に扱う |
+
+会議は情報を配るためには開かない。
+
+情報共有だけなら Evidence Store、Mission、Ontology、telemetry で行う。
+
+人間イベントを開く条件は、原則として次のいずれかである。
+
+1. 複数の正当な選択肢があり、価値判断が必要
+2. Domain boundary を変える必要がある
+3. Authority を拡大する必要がある
+4. 不可逆または高 blast-radius な操作を行う
+5. 同じ例外が繰り返され、規範自体を変える必要がある
+
+### 14.5 Day 0: Project Cutover / Kickoff
+
+初日は全 Core Member と Legacy SME を集める。
+
+ただし WBS を詳細化する場にはしない。
+
+決めるのは以下に限定する。
+
+- Business Goal
+- 絶対に壊してはいけない制約
+- 仮の Domain Boundary
+- Human Authority
+- 最初に扱う Enterprise Ontology の範囲
+- 最初の Vertical Mission
+- Release / rollback の最低原則
+
+最初の Vertical Mission は、複数 Domain を横断する難しい業務を選ぶ。
+
+例:
+
+> 外部企業 Agent が契約プラン変更を要求し、Customer 確認、Contract 更新、Entitlement 更新、Billing 再計算まで行い、Evidence を返す。
+
+これは Integration、Customer、Contract、Identity、Billing の5 Domainを横断する。
+
+最初から複雑な mission を選ぶ理由は、EAA の成立性そのものを早期に検証するためである。
+
+### 14.6 Week 1-2: Boundary / Ontology Discovery
+
+最初から6 Domainすべてを同じ速度で立ち上げない。
+
+最初の Vertical Mission に必要な Domain Cell を優先起動する。
+
+例:
+
+- Enterprise Control Cell
+- Integration & B2B
+- Customer & Partner
+- Contract & Product
+- Identity & Entitlement
+- Billing & Payment
+
+Order & Workflow は最初の Mission に不要なら本格起動を遅らせてよい。
+
+各 Cell では、人間が要件定義書を書くのではなく、Agent に以下を解析させる。
+
+- 旧ソースコード
+- DB schema
+- API definition
+- batch
+- log
+- incident history
+- operation manual
+- business document
+- existing test
+- external interface
+
+Agent はそこから、
+
+```
+Observed reality
+→ ontology candidate
+→ rule candidate
+→ hidden dependency
+→ domain boundary hypothesis
+→ acceptance evidence
+```
+
+を生成する。
+
+Domain Expert / Legacy SME は主に訂正を行う。
+
+Operator は、
+
+- Domain 内で自律判断してよいもの
+- 他 Domain との contract にするもの
+- Human Authority を要求するもの
+
+を分類する。
+
+#### Milestone 0 — Week 2: Boundary v0
+
+最低条件:
+
+- 最初の mission に必要な Domain が定義されている
+-主要 cross-domain 語彙が Ontology v0 に存在する
+-初期 authority boundary が書かれている
+-旧系依存が観測可能になっている
+
+### 14.7 Week 3-6: First Autonomous Vertical Mission
+
+目的は新システムを完成させることではない。
+
+EAA の制御構造が本当に動くことを確認する。
+
+初期状態では背後に Legacy API を使ってもよい。
+
+```
+Partner Agent
+   ↓
+Agent Gateway
+   ↓
+Customer
+   ↓
+Contract
+   ↓
+Identity / Entitlement
+   ↓
+Billing simulation
+   ↓
+Legacy adapter
+   ↓
+Evidence
+```
+
+ここで確認するのは、
+
+- Agentic System 間で mission が渡る
+- Ontology reference が共有される
+- Domain contract を機械参照できる
+- Human PM を経由せず進行する
+- 必要な場所だけ escalation する
+- Evidence が残る
+
+ことである。
+
+#### Milestone 1 — Week 6: First Autonomous Vertical Mission
+
+条件:
+
+```
+external agent request
+→ 5 domains
+→ legacy or new deterministic operation
+→ result
+→ evidence
+```
+
+が end-to-end で成立する。
+
+この milestone が成立しない場合、全 Domain の大量実装を始めない。
+
+まず EAA Control Plane、Ontology、Authority、Inter-system Protocol を修正する。
+
+### 14.8 Month 2-3: Full Domain Activation
+
+最初の mission が通った後、6 Domain Cell をすべて本格起動する。
+
+各 Domain は独立して AA loop を回す。
+
+```
+Observation
+→ hypothesis
+→ implementation
+→ test
+→ independent verification when required
+→ deploy
+→ observe
+→ revise
+```
+
+固定 Sprint は要求しない。
+
+Agent が3時間で作業を終えれば、次の work item を開始する。
+
+Planning の cadence は人間のカレンダーではなく、観測と evidence によって決まる。
+
+### 14.9 Backlog の扱い
+
+Backlog は存在してよいが、人間が細かい Story を大量に作成する方式を前提としない。
+
+Domain Backlog が持つ主なものは、
+
+- 未達成 Outcome
+- Mission
+- Constraint
+- Risk
+- unresolved semantic issue
+- unresolved boundary
+- Acceptance Evidence
+
+である。
+
+例:
+
+```
+Outcome:
+  契約変更を即時反映できる
+
+Constraints:
+  過去契約を書き換えない
+  請求確定後に price を変更しない
+
+Acceptance Evidence:
+  legacy 100万件との比較差異 < threshold
+```
+
+作業分解は Agentic System が行う。
+
+### 14.10 Month 3: First Production Slice
+
+最初の Domain を本番へ出す。
+
+全面切替を必須としない。
+
+例えば、
+
+```
+read  → new
+write → legacy + new
+```
+
+または一部 customer segment のみ new system を使う。
+
+#### Milestone 2 — Month 3: First Production Domain
+
+条件:
+
+- 実ユーザーまたは実トラフィックが通る
+- observability がある
+- rollback 可能
+- Legacy reconciliation 済み
+-正常系では Operator 承認を待たない
+
+### 14.11 Month 4-6: Parallel Replacement
+
+この期間から6 Domain が並列に旧基盤を置き換える。
+
+人間を人数比例で増員せず、Agent 実行量を増減させる。
+
+複数 Domain をまたぐ Outcome が生じたら Temporary Mission Cell を作る。
+
+例:
+
+> 解約時、未払い残高が存在する場合は返金ではなく相殺する。
+
+必要な Domain:
+
+- Contract
+- Billing
+- Order
+
+Mission Cell は、この3 Domain Operator と各 Agentic System から必要な Agent を束ねる。
+
+Mission 達成後に解散する。
+
+Mission Cell のために恒久的な cross-functional human team を作らない。
+
+### 14.12 Month 5: B2B Agent Interface v1
+
+外部 Partner 1社以上を pilot として接続する。
+
+少なくとも以下のいずれかを実取引として通す。
+
+- 見積
+- 注文
+- 契約変更
+- 請求照会
+
+#### Milestone 3 — Month 5: External Agent Transaction
+
+外部企業の Agent が、
+
+```
+intent
+→ capability discovery
+→ authorized task
+→ deterministic business operation
+→ result
+→ evidence
+```
+
+を完了する。
+
+### 14.13 Month 6: Midpoint Evidence Review
+
+従来型の「進捗率50%」は主要評価にしない。
+
+見るのは少なくとも以下。
+
+- legacy dependency count
+- autonomous mission completion
+- operator escalation / mission
+- semantic mismatch
+- rollback rate
+- expected waste
+- production incident
+- reconciliation error
+- human-only knowledge count
+- partner agent task completion
+
+中心となる問いは、
+
+> 予定作業の何%を終えたか
+
+ではなく、
+
+> 旧基盤なしで成立する業務能力がどれだけ増えたか
+
+である。
+
+### 14.14 Month 7-8: Legacy Write Reduction
+
+新規 write を順次新系へ移す。
+
+Legacy SME の知識は Ontology、Rule、Test、Evidence に移す。
+
+同じ SME に繰り返し質問が発生する場合、知識移行が未完了とみなす。
+
+#### Milestone 4 — Month 8: Legacy Write Majority Eliminated
+
+目安として、新規 write の80-90%を新系へ移行する。
+
+数値自体は案件ごとに変更してよい。
+
+同時に Legacy SME の必要人数が減っていることを確認する。
+
+### 14.15 Month 9-10: Shadow Production / Reconciliation
+
+主要 mission について、新旧の実行結果を比較する。
+
+例:
+
+- Billing: 大量請求結果
+- Order: 状態遷移
+- Contract: 有効期間と価格
+- Identity: entitlement
+- Customer: master mapping
+
+Agent が継続的に照合し、人間は差異のみを見る。
+
+専任 QA Team は原則作らない。
+
+この期間に Cutover Cell を一時的に形成する。
+
+参加者例:
+
+- Release & Cutover Operator
+- Migration Operator
+- Platform Operator
+- Security Operator
+- 6 Domain Operators
+- 必要な Legacy SME
+
+#### Cutover Rehearsal
+
+Month 9 と Month 10 に最低2回を仮置きする。
+
+この期間は同期 communication の価値が高い。
+
+不可逆性、時間制約、blast radius が高いため、War Room を使用してよい。
+
+#### Milestone 5 — Month 10: Cutover Ready
+
+条件:
+
+- major mission の shadow reconciliation が閾値内
+- rollback rehearsal 成功
+- authority / credential rotation が試験済み
+- partner agent smoke test 成功
+- production telemetry / evidence path 確認済み
+- unresolved human-only knowledge が許容範囲内
+
+### 14.16 Month 11: Release Candidate Mode
+
+通常の開発を一律凍結するのではなく、authority profile を厳しくする。
+
+通常時:
+
+```
+Domain Agent
+→ automated verification
+→ production
+```
+
+Release Candidate Mode:
+
+```
+Domain Agent
+→ release candidate
+→ automated evidence
+→ elevated threshold
+→ Release Operator / policy gate when required
+→ production
+```
+
+リスクが上がるため、一時的に Human Gate を増やしてよい。
+
+これは通常運用へ人間 Gate を戻すことではない。
+
+### 14.17 Month 12: Final Cutover
+
+Final Cutover では、恒久的な分散自治より、一時的な command structure を優先してよい。
+
+Cutover Commander は E07 Release & Cutover Operator とする。
+
+例:
+
+| 時刻 | Event |
+| --- | --- |
+| 20:00 | Legacy write stop |
+| 20:15 | final replication |
+| 21:00 | reconciliation |
+| 22:00 | new write enable |
+| 23:00 | synthetic mission |
+| 00:00 | B2B Agent smoke test |
+| 01:00 | business reconciliation |
+| 02:00 | GO / rollback boundary |
+| 翌朝 | full traffic / normal authority restore |
+
+Cutover 中は必要な Operator を同時接続してよい。
+
+平時に非同期であることを、非常時にも強制しない。
+
+### 14.18 12か月の全体像
+
+| 時期 | 主な Unit | 主な活動 | Milestone |
+| --- | --- | --- | --- |
+| Day 0 | Enterprise Control Cell | Goal / Boundary / Authority / First Mission | Kickoff |
+| Week 1-2 | 必要 Domain Cells | Ontology / Legacy discovery | M0 Boundary v0 |
+| Week 3-6 | First Mission Cell | Cross-domain E2E | M1 First Autonomous Vertical Mission |
+| Month 2-3 | 6 Domain Cells | Continuous AA | M2 First Production Domain |
+| Month 4-5 | Domain + Mission Cells | Parallel replacement / B2B pilot | M3 External Agent Transaction |
+| Month 6 | Enterprise Control Cell | Evidence-based midpoint review | Midpoint |
+| Month 7-8 | Domain Cells | Legacy write reduction | M4 Legacy Write Majority Eliminated |
+| Month 9-10 | Domain + Cutover Cell | Shadow / reconciliation / rehearsal | M5 Cutover Ready |
+| Month 11 | Release mode | Authority tightening / RC | Release Candidate |
+| Month 12 | Cutover Cell | Final transition | M6 Release |
+
+### 14.19 Event-driven Escalation
+
+EAA の運営では、人間イベントを cadence だけで発火させない。
+
+以下のような machine-observable event を human escalation の契機とする。
+
+```
+semantic mismatch
+boundary violation
+authority expansion request
+expected waste threshold exceeded
+repeated rollback
+repeated verification disagreement
+cross-domain contract incompatibility
+irreversible operation
+production blast-radius threshold exceeded
+legacy knowledge dependency detected
+```
+
+したがって、会議の量は work volume に比例しない。
+
+理想的には、Agentic System が成熟するほど人間イベントは減る。
+
+### 14.20 この運営モデルが示すこと
+
+従来の大規模開発では、時間を同期することで人間を同期していた。
+
+例:
+
+```
+Sprint
+Daily
+Planning
+Review
+Release Train
+```
+
+EAA では、時間ではなく意味、権限、Mission、Evidence を同期する。
+
+```
+Ontology
+Constitution
+Mission
+Contract
+Evidence
+```
+
+そのため、EAA の標準的な運営形は、
+
+> **Persistent Domain Cells + Temporary Mission Cells + Event-driven Governance**
+
+と表現できる。
+
+平常時の人間同期は、概ね次へ圧縮される。
+
+```
+Weekly Mission Review
++ Event-driven Boundary / Ontology / Authority Decision
++ Monthly Norm Retrospective
+```
+
+そして Daily Scrum の代わりに、
+
+> **Daily Evidence**
+
+を置く。
+
+人間が毎日知るべきなのは Agent が何をしたかの全量ではない。
+
+人間判断が必要な場所、自律が停止した場所、境界が破れた場所だけである。
