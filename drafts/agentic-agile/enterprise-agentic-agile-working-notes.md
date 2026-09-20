@@ -368,3 +368,280 @@ EAA の設計思想としては、
 - EAA 固有の観測指標
 - Human escalation の条件
 - AI-Native SAFe 等との厳密な先行研究比較
+
+
+## 13. ケーススタディ: 10億円・1年の業務基盤刷新
+
+ここでは EAA の人員モデルを具体化するため、次の仮想案件を置く。
+
+- 期間: 12か月
+- 予算: 10億円
+- 現行: AWS 上のレガシーなマイクロサービス 20個
+- 目的: 業務基盤を段階的に置き換える
+- 追加目的: B2B インターフェースを現代化し、外部企業の Agent が利用できる Agent Interface を提供する
+- 移行方針: 一括再構築ではなく Strangler 型で段階移行する
+- 組織方針: 20サービスを20チームに分けず、業務ドメイン単位の AA 系へ再編する
+
+### 13.1 Domain 分割
+
+20個の既存マイクロサービスを、実装単位ではなく業務上の自律境界で6 Domainへ束ねる。
+
+| Domain | 旧サービス数 | 主な責務 |
+| --- | ---: | --- |
+| Customer & Partner | 3 | 顧客、取引先、連絡先、取引関係 |
+| Contract & Product | 4 | 商品、価格、契約、契約変更 |
+| Order & Workflow | 4 | 受注、申請、承認、業務ワークフロー |
+| Billing & Payment | 4 | 請求、入金、返金、債権 |
+| Identity & Entitlement | 2 | ID、組織、権限、利用資格 |
+| Integration & B2B | 3 | 外部連携、Partner API、Agent Interface |
+
+各 Domain は一つの AA 系として扱う。旧マイクロサービスの個数は、新組織の個数を決めない。
+
+### 13.2 仮置きする AWS 構成
+
+本ケースでは、以下を標準構成として仮置きする。これは EAA の必須技術ではなく、具体例のための実装選択である。
+
+| 用途 | AWS サービス |
+| --- | --- |
+| 新業務サービス実行 | ECS on Fargate |
+| 外部 HTTP / deterministic API | API Gateway |
+| 内部同期通信 | ALB + private service endpoints |
+| 非同期イベント | EventBridge + SQS |
+| 長時間・決定論的ワークフロー | Step Functions |
+| Domain transactional DB | Aurora PostgreSQL |
+| idempotency / task / lightweight state | DynamoDB |
+| オブジェクト、証拠、移行ファイル | S3 |
+| Enterprise Ontology graph | Amazon Neptune |
+| 認証 | Cognito / federation |
+| 細粒度権限 | Amazon Verified Permissions |
+| 暗号鍵・秘密情報 | KMS + Secrets Manager |
+| 境界防御 | AWS WAF |
+| 旧系 adapter | Lambda または ECS adapter |
+| データ移行 | AWS DMS + Glue |
+| 移行照合・分析 | S3 + Athena |
+| Observability | CloudWatch + ADOT / OpenTelemetry + X-Ray |
+| IaC | AWS CDK |
+| CI/CD | GitHub Actions + AWS deployment APIs |
+| Agent 用モデル | Bedrock を選択肢とするが、Domain 内部は他基盤を許容 |
+
+EAA Control Plane は巨大な共通業務基盤にはしない。最低限、Ontology、Constitution、Capability、Mission、Evidence、Identity / Authority を提供する。
+
+概念構成は次の通り。
+
+```
+                           Enterprise Operator
+                                  |
+                 +----------------+----------------+
+                 |                                 |
+        EAA Control Plane                    Enterprise Ontology
+   Constitution / Capability /               Amazon Neptune
+       Mission / Evidence
+                 |
+         Amazon EventBridge
+                 |
+   +-------------+-------------+-------------+
+   |             |             |             |
+Domain A      Domain B      Domain C      ... Domain F
+   |             |             |             |
+ AA system     AA system     AA system     AA system
+ AgentHub / Dify / Copilot / custom are allowed
+   |
+deterministic business API / event
+   |
+ECS / Aurora / SQS / Step Functions
+
+Integration & B2B Domain
+   |
+Agent Gateway
+   +-- Agent-to-Agent task / capability interface
+   +-- deterministic OpenAPI operations
+   +-- authn / authz / evidence
+   |
+Partner Agents
+```
+
+Agent Interface は業務トランザクションそのものを確率的処理にしない。外部 Agent の意図を capability / task として受け、最終的な更新は型付きの deterministic API / event へ落とす。
+
+### 13.3 人員原則
+
+この案件では、Developer、Tester、QA、Reviewer、PMO を人数比例で配置しない。
+
+それらは独立した恒久ロールではなく、各 AA 系の Agent が実行する機能になる。
+
+人間を配置する根拠は、主に次のいずれかである。
+
+1. Domain の現実と目的を所有する
+2. 権限または不可逆な境界を所有する
+3. Enterprise と Domain の意味を接続する
+4. 旧基盤にしか存在しない暗黙知を提供する
+5. 外部組織との契約・リリース境界を所有する
+
+### 13.4 Core Member 一覧
+
+リリースまでの Core Team を19名と仮置きする。
+
+| ID | Role | 人数 | 主責務 |
+| --- | --- | ---: | --- |
+| E01 | Enterprise Operator | 1 | 全体目的、投資配分、Domain 境界、cross-domain mission、最終的な Enterprise authority |
+| E02 | Enterprise Ontology Operator | 1 | Enterprise Ontology、意味の分裂、Domain 間 semantic mapping、ontology 改訂 |
+| E03 | EAA Platform & Reliability Operator | 1 | Control Plane、AWS platform、observability、CI/CD、可用性・運用境界 |
+| E04 | Security & Authority Operator | 1 | Identity、権限、policy、secret、外部 Agent の authority boundary、セキュリティ例外 |
+| E05 | Data Migration & Reconciliation Operator | 1 | DMS/Glue、移行順序、差分照合、データ完全性、rollback 条件 |
+| E06 | B2B Agent Interface Operator | 1 | Agent Gateway、capability 契約、Partner onboarding、外部 Agent との互換性 |
+| E07 | Release & Cutover Operator | 1 | release criteria、cutover rehearsal、本番切替、rollback、旧基盤縮退 |
+| D01 | Customer & Partner Domain Operator | 1 | 当該 Domain の目的、権限、境界、Agentic loop |
+| D02 | Contract & Product Domain Operator | 1 | 同上 |
+| D03 | Order & Workflow Domain Operator | 1 | 同上 |
+| D04 | Billing & Payment Domain Operator | 1 | 同上 |
+| D05 | Identity & Entitlement Domain Operator | 1 | 同上 |
+| D06 | Integration & B2B Domain Operator | 1 | 同上。E06 と協調し内部実装を所有 |
+| X01 | Customer & Partner Domain Expert | 1 | 現行業務、例外、業務上の正誤、ontology 訂正 |
+| X02 | Contract & Product Domain Expert | 1 | 同上 |
+| X03 | Order & Workflow Domain Expert | 1 | 同上 |
+| X04 | Billing & Payment Domain Expert | 1 | 同上 |
+| X05 | Identity & Entitlement Domain Expert | 1 | 同上 |
+| X06 | Integration & Partner Domain Expert | 1 | 同上 |
+
+Core Team:
+
+```
+Enterprise / Cross-domain Operators   7
+Domain Operators                     6
+Domain Experts                       6
+--------------------------------------
+Total                               19
+```
+
+Domain Operator は従来の PL / Architect / Lead Developer の単純な改名ではない。設計・実装・テストを自分で順番に処理する人でもない。その Domain の Agentic System が、自律的に設計・実装・検証・修正を回せる状態を作り、境界と例外を所有する。
+
+Domain Expert は Agentic Agile Operator である必要はない。ただし Agentic System に現実を供給できることが必要である。業務知識を人間の会議の中だけに閉じ込めず、Ontology、Example、Rule、Acceptance Evidence へ変換する。
+
+### 13.5 Temporary Member
+
+旧基盤の暗黙知は、置き換え完了まで一時的に必要になる。
+
+20サービスに1人ずつ保守担当を残すのではなく、依存関係を横断して理解している SME を4名置く。
+
+| ID | Role | 人数 | 主責務 | 主な期間 |
+| --- | --- | ---: | --- | --- |
+| L01-L04 | Legacy SME | 4 | 旧20サービスの実挙動、batch、例外、hidden dependency、障害履歴の説明 | Month 1-9、以後縮退 |
+
+ピーク時の人間人数は、
+
+```
+Core 19 + Legacy SME 4 = 23
+```
+
+を基準とする。
+
+外部 Partner 側の担当者、法務、監査、経営承認者は必要に応じて参加するが、本プロジェクトの恒常的な実行チームには含めない。
+
+### 13.6 各 Domain Operator が持つ Agent 機能
+
+一人の Domain Operator の下に、一人の「AI開発者」を置くのではない。役割の異なる Agent 群を置く。
+
+例:
+
+```
+Domain Operator
+   |
+   +-- planner / researcher
+   +-- domain model / ontology agent
+   +-- implementation agents
+   +-- test / property-test agents
+   +-- reviewer (different model lineage where needed)
+   +-- migration adapter agent
+   +-- observability / incident agent
+   +-- documentation / evidence agent
+```
+
+Agent 数は固定しない。仕事量、期待浪費、検証コストに応じて増減させる。
+
+人間人数と Agent 数を比例させない。
+
+### 13.7 意図的に置かない専任ロール
+
+本ケースでは、以下を独立した恒久ロールとして置かない。
+
+| 従来ロール | EAA での扱い |
+| --- | --- |
+| Project Manager | Enterprise Operator と機械的 mission tracking に分解 |
+| PMO | Evidence / telemetry / Agent による自動観測へ移す |
+| Solution Architect | Enterprise / Domain Operator の境界判断と Agent 設計へ分解 |
+| Lead Developer | Domain Operator + implementation agents へ分解 |
+| Developer | implementation agent の機能 |
+| Tester | test agent / executable specification の機能 |
+| QA Reviewer | independent judge / evidence rule の機能 |
+| Release Manager | Release & Cutover Operator に限定して残す |
+| Cloud Platform Team | Platform Operator + platform agents に縮退 |
+| API Team | Integration Domain と各 Domain の boundary contract に分解 |
+
+「人間を減らすこと」が目的ではない。工程ごとの人間 handoff を残す合理性がないため、結果としてこれらの恒久ロールが消える。
+
+### 13.8 リリースまでの人員変化
+
+同じ19名を一年間同じ仕事に固定しない。
+
+| 期間 | 主に重くなる人間 | 目的 |
+| --- | --- | --- |
+| Month 1-2 | E01-E06, D01-D06, X01-X06, Legacy SME | Domain 境界、Ontology v0、最初の vertical mission |
+| Month 3-5 | Domain Operators, Platform, Security, Migration | 新旧共存、最初の Domain cut、Agent Interface v0 |
+| Month 6-8 | Domain Operators, Migration, B2B Operator | 大量置換、Partner pilot、reconciliation |
+| Month 9-10 | Migration, Release, Security, Domain Operators | shadow run、cutover rehearsal、rollback 実証 |
+| Month 11-12 | Release Operator, Enterprise Operator, Domain Operators | 段階 release、旧系 write 停止、縮退 |
+
+Legacy SME は Month 1 から知識を Ontology、Rule、Test、Evidence に移し、必要人数を継続的に減らす。最後まで「人間だけが知っている仕様」が残った場合、それ自体を移行未完了として扱う。
+
+### 13.9 Release 条件
+
+リリース判断は「開発完了率100%」では行わない。
+
+最低限、次を満たす。
+
+1. 主要業務 mission が新系を通って end-to-end で完了する
+2. Domain 間 contract が versioned で機械参照可能である
+3. Enterprise Ontology から主要 cross-domain 語彙を解釈できる
+4. 新旧 dual-run の reconciliation が許容閾値内である
+5. rollback が rehearsal 済みである
+6. B2B Agent Interface が権限境界を越えずに task を完了できる
+7. 外部 Agent の要求が deterministic business operation へ落ち、証拠を返せる
+8. Operator escalation が正常系の throughput bottleneck になっていない
+9. 重大な判断について provenance / evidence が追跡できる
+10. 旧系固有知識が Legacy SME の頭の中だけに残っていない
+
+### 13.10 この人数モデルが示すこと
+
+従来型の10億円案件では、20マイクロサービスに対して複数の開発・テスト・管理チームを置き、数十人から100人超の体制を組むことがありうる。
+
+EAA では基本粒子が「人間の開発チーム」ではないため、人数はサービス数に比例しない。
+
+本ケースでは、
+
+```
+20 legacy microservices
+        ↓
+6 autonomous domains
+        ↓
+6 Domain Operators
++ 6 Domain Experts
++ 7 enterprise / boundary operators
++ 4 temporary legacy SMEs
+```
+
+とする。
+
+すなわち、人間の主な仕事はコードを書くことではなく、
+
+```
+Reality
+→ Ontology / Goal / Rule / Boundary
+→ Agentic System
+→ Evidence
+→ Revision
+```
+
+を成立させることである。
+
+この世界で不足するのは「実装者の人数」ではない。
+
+不足しうるのは、Domain の現実を理解し、その現実を Agent が自律的に扱える規範・意味・境界へ変換できる Operator である。
