@@ -1274,3 +1274,179 @@ Weekly Mission Review
 人間が毎日知るべきなのは Agent が何をしたかの全量ではない。
 
 人間判断が必要な場所、自律が停止した場所、境界が破れた場所だけである。
+
+
+## 15. Mission Graph / Evidence Graph による開発観測
+
+EAA では、Mission を GitHub Issue、分解された Mission を Sub-issue、実装・検証結果を PR / Actions / Comment / Artifact として残すことで、プロジェクト全体をグラフとして観測できる。
+
+概念的には、
+
+```
+Project
+= Mission Graph
++ Evidence Graph
+```
+
+と捉えられる。
+
+### 15.1 Mission Graph
+
+Mission Graph の node は Mission / Sub-mission であり、edge は例えば次の関係を表す。
+
+- parent-of
+- requires
+- blocked-by
+- caused-by
+- implements
+- verifies
+- supersedes
+
+これにより、「どの意思から、どの作業が派生したか」を後から辿れる。
+
+### 15.2 Evidence Graph
+
+Evidence Graph は、Mission が正しく達成されたと判断した根拠を結びつける。
+
+例:
+
+```
+Mission #100
+├─ Sub-issue #101
+├─ PR #150
+├─ Actions run
+├─ reconciliation result
+├─ production trace
+└─ rollback evidence
+```
+
+Evidence は単なる添付物ではなく、Mission の完了条件を支える構造として扱う。
+
+### 15.3 効率指標
+
+Mission Graph を観測すると、従来の進捗率では捉えにくかった浪費や乖離を測定できる。
+
+| Metric | 意味 |
+| --- | --- |
+| Rework Mass | やり直しになった subgraph の総コスト |
+| Detection Depth | 誤りが発生してから発見されるまでに進んだ階層深度 |
+| Detection Latency | 誤り発生から発見までの時間 |
+| Blast Radius | 一つの誤判断が影響した node / Domain の広がり |
+| Intent Drift | 親 Mission の Goal / Constraint と子孫 Mission の乖離 |
+| Blocked Mass | 停止している subgraph のコストまたは実行量 |
+| Escalation Rate | Mission あたりの Human Escalation 回数 |
+
+node ごとの cost は、少なくとも次のような複数資源で重み付けできる。
+
+```
+Cost(node)
+= Compute
++ Token
++ Human Time
++ External Cost
+```
+
+したがって、実際に発生した手戻りは、
+
+```
+Realized Rework
+= Σ Cost(node)
+  for node in rework subgraph
+```
+
+として近似できる。
+
+### 15.4 Intent Drift
+
+Agentic execution では Mission が再帰的に分解されるため、深い子 Mission が親の意図から離れる可能性がある。
+
+各 node は「どの親 Goal へ、どのように寄与するか」を説明可能であるべきである。
+
+例:
+
+```
+derived_from: #100
+contributes_to: contract-change-latency
+```
+
+親 Goal への寄与を説明できない node は、Intent Drift の候補となる。
+
+### 15.5 Discarded Graph と Waste Graph を分ける
+
+破棄された仕事をすべて浪費とはみなさない。
+
+```
+Discarded Graph != Waste Graph
+```
+
+仮説を試し、誤りであるという Evidence を得て捨てたなら、それは探索または学習のコストである。
+
+一方、新しい知識をほとんど生まず、先行する誤判断のためだけに発生した実行は Rework / Waste とみなせる。
+
+破棄理由は少なくとも区別する。
+
+- hypothesis-falsified
+- superseded
+- parent-wrong
+- intent-drift
+- duplicate
+
+### 15.6 AA の期待浪費との接続
+
+AA では、自律速度を考える基礎量として、
+
+```
+Expected Waste
+= P(wrong) × W
+```
+
+を置いている。
+
+Mission Graph / Evidence Graph を長期に観測すると、
+
+- Mission 種別ごとの誤り率
+- 誤った場合の平均 Rework Mass
+- Verification のコスト
+- Verification による早期検出率
+- Detection Depth
+
+を実測できる。
+
+すなわち、
+
+```
+P(wrong)
+W
+C(check)
+```
+
+を経験データから推定できる可能性がある。
+
+このとき D4 は単なる設計思想ではなく、実プロジェクトの履歴から学習する制御則へ近づく。
+
+### 15.7 進捗ではなく実行構造を見る
+
+EAA の観測画面は、単純な「何%完了したか」だけを中心に置かない。
+
+例:
+
+```
+Mission completion       87%
+Rework Mass              4.2%
+Intent Drift             1.1%
+Median Detection Depth   1.7
+Human Escalation         0.14 / mission
+Blocked Mass             ...
+Expected Waste           ...
+```
+
+重要なのは、作業量そのものではなく、
+
+- 意思がどれだけ正しく伝播したか
+- 誤りをどれだけ浅い場所で発見できたか
+- やり直しがどこから発生したか
+- 人間判断がどこに必要だったか
+
+を観測することである。
+
+この意味で GitHub は単なる開発管理ツールではなく、EAA の実行・因果・Evidence を記録する durable ledger として利用できる。
