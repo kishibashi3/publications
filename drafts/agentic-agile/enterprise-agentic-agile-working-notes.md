@@ -10,7 +10,7 @@
 
 ## 1. 位置づけ
 
-Enterprise Agentic Agile (EAA) は、AA から出発して Enterprise 規模の協調問題を再定義した上位の境界アーキテクチャである。
+Enterprise Agentic Agile (EAA) は、AI / Agent を主要な実行主体として扱う Enterprise 規模の開発手法・統治モデルであり、AA から出発して Enterprise 規模の協調問題を再定義した境界アーキテクチャを内部構造として持つ。
 
 AA は一つの Agentic な自律実行系の内部を扱う。
 EAA は、Agentic / Human-centered / Vendor / Package を含む複数の異種 Domain が、それぞれの自治とドメイン固有性を保ったまま企業全体として協調するための構造を扱う。
