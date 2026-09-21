@@ -4,28 +4,33 @@
 
 > Status: working notes / non-normative draft
 >
-> 本文書は、Agentic Agile (AA) を企業規模へ拡張する Enterprise Agentic Agile (EAA) の現時点の整理を保存するための作業メモである。AA Principles 本体の規範は変更しない。
+> 本文書は、Agentic Agile (AA) から出発して検討してきた Enterprise Agentic Agile (EAA) の現時点の整理を保存するための作業メモである。AA Principles 本体の規範は変更しない。
+>
+> 現在の整理では、EAA はすべての Domain に AA を要求しない。Agentic Domain では AA を内部原理として利用できるが、Scrum、Kanban、SAFe ART、Predictive、Package/Vendor 等の Domain も、EAA Core の境界条件を満たせば参加できる。
 
 ## 1. 位置づけ
 
-Enterprise Agentic Agile (EAA) は、Agentic Agile (AA) の拡張である。
+Enterprise Agentic Agile (EAA) は、AA から出発して Enterprise 規模の協調問題を再定義した上位の境界アーキテクチャである。
 
-AA が一つの Agentic な自律実行系の内部を扱うのに対し、EAA は複数の異種 Agentic System が、それぞれの自治とドメイン固有性を保ったまま企業全体として協調するための構造を扱う。
-
-```
-AA:  自律系内部の Agile
-EAA: 自律系間の Agile
-```
-
-概念上は、
+AA は一つの Agentic な自律実行系の内部を扱う。
+EAA は、Agentic / Human-centered / Vendor / Package を含む複数の異種 Domain が、それぞれの自治とドメイン固有性を保ったまま企業全体として協調するための構造を扱う。
 
 ```
-AA ⊂ EAA
+AA  = Agentic Domain 内部の自律実行原理
+EAA = 異種 Domain 間の協調原理
 ```
 
-と捉える。
+したがって、EAA は AA を置き換えないが、すべての Domain に AA を要求もしない。
 
-EAA は AA を置き換えない。EAA を構成する各サブシステム内部では AA が成立し、その上に EAA 固有の境界・意味・規範・協調の層が加わる。
+```
+EAA Instance
+├─ Agentic Domain      → AA を適用できる
+├─ Scrum Domain        → Scrum を内部利用
+├─ Predictive Domain   → Predictive を内部利用
+└─ Vendor / Package    → 独自方式を内部利用
+```
+
+EAA が共通化するのは内部 Operating Model ではなく、意味、Mission、Authority、Contract、Evidence、Escalation である。
 
 ## 2. AA が扱う世界
 
@@ -75,42 +80,56 @@ AA の中心問題は、人間の制約ではなく Agent の制約から Agile 
 
 ## 3. EAA で新たに現れる問題
 
-企業全体では、一つの Agentic System に統一されるとは限らない。
+企業全体では、一つの Agentic System や一つの Delivery Model に統一されるとは限らない。
 
 例:
 
 ```
-全体統括      AgentHub
-サブシステムA Dify
-サブシステムB GitHub Copilot
-サブシステムC 独自 Agent 基盤
+Domain A  AgentHub / Full Agentic
+Domain B  Dify
+Domain C  GitHub Copilot + Scrum
+Domain D  Predictive Vendor
+Domain E  Package implementation
 ```
 
-それぞれのドメインは、業務知識、データ、権限、SLA、法的責任、失敗モード、技術制約を独自に持つ。
+それぞれの Domain は、業務知識、データ、権限、SLA、法的責任、失敗モード、技術制約、Agent Literacy を独自に持つ。
 
-したがって EAA は、全ドメインに同じ Agent 基盤、同じモデル、同じ Agent 構成、同じ内部 Operating Model を強制してはならない。
+したがって EAA は、全 Domain に同じ Agent 基盤、同じモデル、同じ Agent 構成、同じ内部 Operating Model を強制してはならない。
 
 ```
 内部実装は自治する。
 境界を共有・統治する。
 ```
 
-EAA の問題は、異種の Agentic System をどう同質化するかではなく、異質なままどう協調させるかである。
+EAA の問題は、異種の実行系をどう同質化するかではなく、異質なままどう協調させるかである。
 
-## 4. AA と EAA の共通点
+## 4. AA と EAA の関係
+
+AA と EAA は同じ層ではない。
 
 | 観点 | AA | EAA |
 | --- | --- | --- |
-| 実行主体 | Agent 中心 | Agent 中心 |
-| 人間判断 | 希少資源 | 希少資源 |
-| 規範 | 書かれ、版管理される | 継承する |
-| 自律 | 可逆性・期待浪費に応じて拡大 | 継承する |
-| 品質 | 点ではなく分布として扱う | 継承する |
-| 改訂 | 観測を根拠に規範を改訂する | 継承する |
-| 自己権限 | 自らを縛る規則を自ら緩めない | 継承する |
-| 基本構造 | 自律実行系 | 自律実行系の連邦 |
+| 主対象 | Agentic Domain 内部 | Domain 間 |
+| 基本単位 | Agentic System | Domain / heterogeneous execution system |
+| 主問題 | 高速・確率的な自律実行 | local autonomy + global alignment |
+| 人間判断 | 希少資源として扱う | Enterprise 境界の希少判断へ集中させる |
+| 権限 | 自律系内部の Authority | Domain 間 Authority / Contract |
+| 意味 | Domain 内 context | Enterprise Ontology / semantic difference |
+| 品質 | 期待浪費、独立検証 | Evidence、provenance、cross-domain assurance |
+| 内部方式 | AA Principles | 原則として統一しない |
 
-EAA の各ドメイン内部では AA Principles がそのまま適用される。
+Agentic Domain では AA Principles を適用できる。
+非 Agentic Domain に AA の内部 Operating Model を強制する必要はない。
+
+EAA が要求するのは、その Domain が EAA Boundary を満たすことである。
+
+```
+Missionを受け取れる
+Ontology / Contractを解釈できる
+Authorityを越えない
+Evidenceを返せる
+Escalationできる
+```
 
 ## 5. AA と EAA の違い
 
@@ -120,24 +139,24 @@ AA の中心問題:
 
 EAA の中心問題:
 
-> 異なるドメイン、異なる技術、異なる Agent 基盤を持つ複数の自律系を、自治を壊さず企業全体としてどう協調させるか。
+> 異なるドメイン、異なる技術、異なる Delivery Model を持つ複数の実行系を、自治を壊さず企業全体としてどう協調させるか。
 
 したがって、
 
 ```
-AA  = 自律ループを成立させる
-EAA = 自律ループ同士を接続する
+AA  = Agentic な自律ループを成立させる
+EAA = 異種 Domain を共通境界で接続する
 ```
 
 と整理できる。
 
 ## 6. EAA の共通層
 
-現時点では、異種 Agentic System が共通して参照すべき上位層として、少なくとも次の三つを置く。
+現時点では、異種 Domain が共通して参照すべき上位層として、少なくとも次の三つを置く。
 
 ### 6.1 Enterprise Ontology — 意味
 
-全 Agent 基盤が参照できる企業レベルの意味体系を持つ。
+全 Domain / 実行系が参照できる企業レベルの意味体系を持つ。
 
 ただし、これは全社語彙を一つの意味に統一することではない。
 
@@ -159,7 +178,7 @@ Ontology + Domain / Position / Context
 → その場で使う意味を導出
 ```
 
-既存の Ontology 論にある「分裂を保持する」という原則を、Enterprise の全 Agentic System 間へ拡張する。
+既存の Ontology 論にある「分裂を保持する」という原則を、Enterprise の全 Domain 間へ拡張する。
 
 ### 6.2 Enterprise Constitution — 規範と権限
 
@@ -171,7 +190,7 @@ Ontology + Domain / Position / Context
 
 ### 6.3 Inter-system Protocol — 相互作用
 
-異なる Agent 基盤同士が最低限交換できる共通形式を持つ。
+異なる Domain / 実行系同士が最低限交換できる共通形式を持つ。
 
 候補:
 
@@ -186,7 +205,7 @@ Ontology + Domain / Position / Context
 - Escalation
 - Version / provenance
 
-重要なのは製品 API の統一ではなく、異種自律系が協調可能な接続契約を共有することである。
+重要なのは製品 API や内部プロセスの統一ではなく、異種 Domain が協調可能な接続契約を共有することである。
 
 原則的には、
 
@@ -275,25 +294,25 @@ Team
 
 というスケール構造を取る。
 
-EAA は基本粒子が異なる。
+EAA は基本粒子を人間 Team の共通プロセスではなく、自治可能な Domain として置く。
 
 ```
-Agentic System
-→ Federation of Agentic Systems
+Domain
+→ Federation of heterogeneous Domains
 ```
 
 比較すると以下のようになる。
 
 | 観点 | 既存 Enterprise Agile | EAA |
 | --- | --- | --- |
-| スケール単位 | 人間中心 Agile Team | 自律 Agentic System / Domain |
-| 内部構造 | 共通 Framework / Operating Model を共有しやすい | 内部実装は異種でよい |
-| 全体整合 | Backlog, Cadence, Event, Role | Ontology, Constitution, Protocol |
+| スケール単位 | 人間中心 Agile Team | Autonomous Domain |
+| 内部構造 | 共通 Framework / Operating Model を共有しやすい | Full Agentic / Scrum / Predictive 等を混在可能 |
+| 全体整合 | Backlog, Cadence, Event, Role | Ontology, Mission, Authority, Contract, Evidence |
 | 人間ロール | PO, SM, Architect, RTE 等 | Operator / Domain Boundary Owner |
-| 工程 | 人間職能として残る | 高速 Agentic Loop へ縮退 |
+| 工程 | Framework ごとに一定の共通形を持つ | Domain 内部へ委任 |
 | ドメイン差 | 共通プロセス内で調整 | 自治を前提に保持 |
 | 意味整合 | 会話・Backlog・仕様で調整 | Enterprise Ontology を参照 |
-| 人間介入 | 会議・レビュー・承認が通常経路に入りやすい | 例外・権限境界へ寄せる |
+| 人間介入 | 会議・レビュー・承認が通常経路に入りやすい | EAA Boundary では例外・権限境界へ寄せる |
 
 既存 Enterprise Agile と EAA は、どちらも
 
@@ -307,7 +326,7 @@ local autonomy + global alignment
 
 人間中心 Enterprise Agile では、通信、会議、認知、handoff、人数、同期コストが主要制約となる。
 
-EAA では、確率的誤り、異種 Agent 基盤、context 差、意味差、token / compute 消費、権限、自律系間契約が主要制約となる。
+EAA では、異種 Delivery Model、context 差、意味差、権限、Domain 間契約が主要制約となる。Agentic Domain ではさらに確率的誤り、token / compute 消費、Agent 間の相関失敗が加わる。
 
 同じシステム論から導出しても、制約が変わるため組織構造も変わる。
 
@@ -325,12 +344,13 @@ EAA では、確率的誤り、異種 Agent 基盤、context 差、意味差、t
 
 現時点で EAA 固有の核になりうるのは、次の組み合わせである。
 
-1. **基本粒子を人間 Team ではなく Agentic System とする**
-2. **異種 Agentic System の連邦を前提とする**
-3. **Enterprise Ontology を全 Agentic 基盤の共有意味層とする**
-4. **内部 Operating Model を統一せず、境界契約を統治する**
+1. **基本粒子を共通プロセスに従う Team ではなく Autonomous Domain とする**
+2. **Agentic / Human-centered / Vendor / Package を含む異種 Domain の連邦を前提とする**
+3. **Enterprise Ontology を全 Domain の共有意味層とする**
+4. **内部 Operating Model を統一せず、Mission / Authority / Contract / Evidence の境界を統治する**
 5. **人間ロールを工程ではなく Domain Boundary / Authority の所有へ移す**
-6. **人間の最終承認を通常経路の必須条件にせず、可逆性・期待浪費・権限境界から介入を決める**
+6. **Agentic Domain では、人間の最終承認を通常経路の必須条件にせず、AA の可逆性・期待浪費・権限境界から介入を決める**
+7. **条件付き Enterprise 統制を Core に埋め込まず、Profile として追加・解除できる**
 
 ## 11. 暫定的な核心命題
 
@@ -340,11 +360,11 @@ AA:
 
 EAA:
 
-> AA によって成立した自律システムを企業規模へ拡張し、各ドメインの自治と独自性を失わせず、共通の意味・規範・境界によって協調させる。
+> 異なる内部 Operating Model を持つ Domain を、自治と独自性を失わせず、共通の意味・Mission・権限・Contract・Evidence によって企業規模で協調させる。
 
 短く表すなら、
 
-> **AA はループを自律化する。EAA は自律したループ同士を接続する。**
+> **AA は Agentic ループを自律化する。EAA は異種 Domain を接続する。**
 
 EAA の設計思想としては、
 
@@ -358,7 +378,7 @@ EAA の設計思想としては、
 
 ## 12. 未決事項
 
-- EAA Principles を AA Principles の下位規範として独立させるか
+- EAA Core と AA Principles の形式的な関係をどう定義するか
 - Enterprise Ontology の所有者と改訂手続き
 - Operator の正式な責任範囲
 - Domain Boundary の決め方
@@ -367,7 +387,9 @@ EAA の設計思想としては、
 - ドメイン間の期待浪費をどう測るか
 - EAA 固有の観測指標
 - Human escalation の条件
-- AI-Native SAFe 等との厳密な先行研究比較
+- AI-Native SAFe、Team Topologies、Nexus / LeSS、Hybrid 等との厳密な先行研究比較
+- Profile の追加・廃止・versioning 手続き
+- Local Delivery Model の EAA compliance test
 
 
 ## 13. ケーススタディ: 10億円・1年の業務基盤刷新
@@ -380,7 +402,8 @@ EAA の設計思想としては、
 - 目的: 業務基盤を段階的に置き換える
 - 追加目的: B2B インターフェースを現代化し、外部企業の Agent が利用できる Agent Interface を提供する
 - 移行方針: 一括再構築ではなく Strangler 型で段階移行する
-- 組織方針: 20サービスを20チームに分けず、業務ドメイン単位の AA 系へ再編する
+- 組織方針: 20サービスを20チームに分けず、業務ドメイン単位へ再編する
+- Local Delivery Model: 本ケースでは比較を単純化するため、6 Domain を原則 Agentic / AA 系として仮置きする（EAA 一般要件ではない）
 
 ### 13.1 Domain 分割
 
@@ -395,7 +418,7 @@ EAA の設計思想としては、
 | Identity & Entitlement | 2 | ID、組織、権限、利用資格 |
 | Integration & B2B | 3 | 外部連携、Partner API、Agent Interface |
 
-各 Domain は一つの AA 系として扱う。旧マイクロサービスの個数は、新組織の個数を決めない。
+本ケースでは各 Domain を一つの AA 系として扱う。これはケーススタディ上の Local Delivery Model 選択であり、EAA Core が全 Domain に AA を要求することを意味しない。旧マイクロサービスの個数は、新組織の個数を決めない。
 
 ### 13.2 仮置きする AWS 構成
 
