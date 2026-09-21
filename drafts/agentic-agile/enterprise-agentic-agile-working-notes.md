@@ -213,43 +213,37 @@ Ontology + Domain / Position / Context
 
 と表現できる。
 
-## 7. Operator
+## 7. Operator / Enabler
 
 AA の内部では、設計者・実装者・テスター・レビュアーといった工程由来の人間ロールは大きく縮退する。
 
-一方、EAA ではドメイン境界そのものは消えない。
-
-そのため、各自律サブシステムに Operator を置く構造が考えられる。
-
-Operator は通常のコードレビュー担当や工程管理者ではない。通常の設計・実装・検証ループを人間の承認に通すと、人間が再びボトルネックになる。
-
-Operator が所有する候補は次のとおり。
-
-- Domain Goal
-- Authority Boundary
-- Enterprise Ontology と Domain Reality の接続
-- 他ドメインとの契約
-- 例外判断
-- 上位規範への改訂提起
-
-したがって、
+一方、EAA では二種類の人間責務が残る。
 
 ```
-Operator ≈ Domain Boundary Owner
+Operator = Stable Structure / Governance
+Enabler  = Active Change / Outcome
 ```
 
-と考えられる。
+Operator は安定した Scope の Purpose、Boundary、Authority、Constraint、Exception を所有し、現在の系を成立させる。
 
-過去に繰り返し行った Operator 判断は、可能ならルール化し Agent 側へ委任する。
+Enabler は Change の Goal、Priority、Outcome を所有し、Mission を形成して系を次の状態へ動かす。
+
+どちらも通常の設計・実装・検証を逐次承認する役ではない。
+実行は Agent または Local Delivery System に委任し、人間は境界・価値・例外へ集中する。
+
+```
+Operator ≈ Stable Scope Governor
+Enabler  ≈ Change / Outcome Owner
+```
+
+繰り返す Operator 判断は Rule / Constitution / Contract へ変換し、繰り返す Change impediment は Enabler が構造改善として扱う。
 
 ```
 Human decision
 → record
 → rule
-→ agent autonomy
+→ future autonomy
 ```
-
-Operator の仕事には、自分の判断回数を減らすことも含まれる。
 
 ## 8. 人間ロールの変化
 
@@ -270,15 +264,22 @@ Human Role = Development Phase
 
 AA では工程ループが高速に閉じるため、この区分は縮退する。
 
-EAA ではむしろ、
+EAA では、人間ロールを工程ではなく二つの責務軸で捉える。
 
 ```
-Human Role = Autonomous Domain Boundary
+Human Responsibility
+= Stable Governance
++ Active Change
 ```
 
-へ移る。
+すなわち、
 
-人間は工程を担当するのではなく、自律系がどの目的と権限の中で存在するかを所有する。
+```
+Operator = 何を成立させ続けるか
+Enabler  = 次に何を変えるか
+```
+
+である。
 
 ## 9. 既存 Enterprise Agile との比較
 
@@ -378,15 +379,20 @@ EAA の設計思想としては、
 
 ## 12. 未決事項
 
+Role Model については、Operator / Enabler の基本責務と cross-domain Mission の Outcome owner を v0.1 で確定した。
+残る未決事項は主に実装・実証側である。
+
 - EAA Core と AA Principles の形式的な関係をどう定義するか
-- Enterprise Ontology の所有者と改訂手続き
-- Operator の正式な責任範囲
-- Domain Boundary の決め方
+- Enterprise Ontology の所有・改訂プロトコル
+- Domain Boundary の決め方と再編条件
 - Inter-system Protocol の最小構成
-- 横断 mission の owner / coordinator を誰または何が担うか
+- 複数 Mission / Domain 間で優先順位や Authority が競合した場合の arbitration
 - ドメイン間の期待浪費をどう測るか
 - EAA 固有の観測指標
-- Human escalation の条件
+- Human escalation の閾値をどうEvidenceから学習するか
+- Budget / Commercial model と Mission portfolio の接続
+- Operator / Enabler の実負荷と適正 span
+- Agent Literacy / Adoption の成熟モデル
 - AI-Native SAFe、Team Topologies、Nexus / LeSS、Hybrid 等との厳密な先行研究比較
 - Profile の追加・廃止・versioning 手続き
 - Local Delivery Model の EAA compliance test
