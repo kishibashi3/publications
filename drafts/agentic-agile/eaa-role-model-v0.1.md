@@ -2,10 +2,11 @@
 
 2026-09-21 · Kazuhiro
 
-> Status: draft / non-normative
+> Status: draft / reference model
 >
-> EAA における最小の人間ロールモデルを定義する Reference Model。
-> Core の規範ではなく、案件ごとに人数・配置・名称を調整してよい。
+> EAA における最小の人間ロールモデルを具体化する Reference Model。
+> Operator / Enabler の基本責務は EAA Core Vocabulary に従う。
+> 人数、配置、Council、scope variation、既存ロールからの移行例は non-normative であり、案件ごとに調整してよい。
 
 ## 1. 三つの基本主体
 
