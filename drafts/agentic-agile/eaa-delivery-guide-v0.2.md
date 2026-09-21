@@ -32,11 +32,15 @@ GitHub、会議、レポート、AWS構成等は Pattern とする。
 
 ---
 
-## 2. 最初に覚える5語
+## 2. 最初に覚える7語
 
 EAA を始める人は、まず次の5語で会話できればよい。
 
 > **Operator**
+>
+> **Enabler**
+>
+> **Agent / Executor**
 >
 > **Domain**
 >
@@ -367,7 +371,8 @@ Agentic Domain では Daily Scrum の代わりに、自動 Evidence digest を�
 
 | Event | 目安 | 目的 |
 | --- | --- | --- |
-| Enterprise Mission Review | weekly | stopped mission、cross-domain dependency、投資判断 |
+| Enterprise Change Review | weekly / as needed | priority、stopped mission、cross-domain dependency、投資判断 |
+| Operator Council | event-driven | Authority、Boundary、Constraint、major exception |
 | Boundary Review | event-driven | Contract / responsibility conflict |
 | Ontology Review | event-driven | semantic mismatch |
 | Authority Review | event-driven | authority expansion |
@@ -378,7 +383,7 @@ Agentic Domain では Daily Scrum の代わりに、自動 Evidence digest を�
 
 ---
 
-## 13. Capability / Enabling Pattern
+## 13. Capability Ownership Pattern
 
 DBA、Security、Platform、QA 等の専門家を、全成果物の中央承認者にしない。
 
@@ -415,6 +420,9 @@ Persistent Domain Cells
 + Temporary Mission Cells
 ```
 
+Mission Cell には Mission Outcome を所有する Enabler を置く。
+関係 Domain Operator は各 Domain の Authority / Boundary / Contract を所有する。
+
 Mission Cell は恒久組織にしない。
 Mission 完了後に解散する。
 
@@ -429,12 +437,13 @@ EAA 案件の開始時に、最初から全組織を作り込まない。
 最低限:
 
 1. Enterprise Operator
-2. 最初の Mission に必要な Domain Operators
-3. Enterprise Ontology v0
-4. Constitution / Authority v0
-5. First Vertical Mission
-6. Durable Evidence path
-7. 必要最小限の Active Profiles
+2. First Vertical Mission の Enabler
+3. 最初の Mission に必要な Domain Operators
+4. Enterprise Ontology v0
+5. Constitution / Authority v0
+6. First Vertical Mission
+7. Durable Evidence path
+8. 必要最小限の Active Profiles
 
 最初の Vertical Mission は、複数 Domain を横断する実業務を選ぶ。
 
@@ -458,6 +467,7 @@ EAA 案件の開始時に、最初から全組織を作り込まない。
 
 ```
 Intent
+→ Enabler
 → Mission
 → Domain execution
 → Evidence
