@@ -133,6 +133,9 @@ Authority
 Acceptance Evidence
 ```
 
+Enabler は Mission の Goal / Outcome を所有する。
+Operator は Mission が各 Scope の Authority / Constraint / Boundary を越えないことを統治する。
+
 ### Ontology
 
 企業内の意味の地図。
