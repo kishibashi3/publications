@@ -167,15 +167,13 @@ to: boundary and semantic architect
 
 新しい責任:
 
-- Goal
-- Boundary
-- Authority
-- Exception
-- investment priority
+- Goal / Priority / Outcome は Enabler と扱う
+- Boundary / Authority / Risk / Exception は Operator と扱う
+- investment priority は Enterprise Enabler と扱う
 
 ただし、EAA は顧客にすべての技術判断を要求しない。
 
-Agent / Operator は技術的な問いを、顧客が判断可能な Business Decision へ翻訳する。
+Enabler は Change の問いを顧客が判断可能な Business Outcome へ翻訳し、Operator は governance 上の曖昧さを Authority / Constraint / Exception へ落とす。
 
 ---
 
@@ -291,7 +289,7 @@ Operator Dependency(t) ↓
 
 Operator の価値は、判断件数の多さではなく、
 
-- ambiguity を business decision へ翻訳する
+- governance ambiguity を Authority / Constraint / Exception へ翻訳する
 - exception を分類する
 - repeated decision を Rule 化する
 - Domain が自律できる境界を作る
