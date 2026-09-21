@@ -29,9 +29,14 @@ EAA Instance
 Profile は Core を弱めてはならない。
 
 ```
-Requirements(Profile) ⊇ Requirements(Core)
-Authority(Profile)    ⊆ Authority(Core)
-Evidence(Profile)     ⊇ Evidence(Core)
+Effective Requirements
+= Core Requirements ∪ Profile-added Requirements
+
+Effective Authority
+= Core Authority ∩ Profile Restrictions
+
+Effective Evidence
+= Core Evidence ∪ Profile-required Evidence
 ```
 
 Profile は以下のいずれかを追加できる。
@@ -355,7 +360,7 @@ Domain execution
 
 これらは実装方法であり、EAA の必須規範ではない。
 
-### Capability / Enabling Pattern
+### Capability Ownership Pattern
 
 Platform、DB、Security、Observability 等の専門能力を横断的に提供する構造は有用だが、すべての案件で同じ組織構造を要求しないため Pattern とする。
 
