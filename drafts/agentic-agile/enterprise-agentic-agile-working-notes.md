@@ -452,7 +452,7 @@ EAA Control Plane は巨大な共通業務基盤にはしない。最低限、On
 概念構成は次の通り。
 
 ```
-                           Enterprise Operator
+                Enterprise Operator <-> Enterprise Enabler
                                   |
                  +----------------+----------------+
                  |                                 |
@@ -487,235 +487,215 @@ Agent Interface は業務トランザクションそのものを確率的処理�
 
 ### 13.3 人員原則
 
-この案件では、Developer、Tester、QA、Reviewer、PMO を人数比例で配置しない。
+この案件では、人間ロールを工程別に人数比例で配置しない。
 
-それらは独立した恒久ロールではなく、各 AA 系の Agent が実行する機能になる。
-
-人間を配置する根拠は、主に次のいずれかである。
-
-1. Domain の現実と目的を所有する
-2. 権限または不可逆な境界を所有する
-3. Enterprise と Domain の意味を接続する
-4. 旧基盤にしか存在しない暗黙知を提供する
-5. 外部組織との契約・リリース境界を所有する
-
-### 13.4 Core Member 一覧
-
-リリースまでの Core Team を19名と仮置きする。
-
-| ID | Role | 人数 | 主責務 |
-| --- | --- | ---: | --- |
-| E01 | Enterprise Operator | 1 | 全体目的、投資配分、Domain 境界、cross-domain mission、最終的な Enterprise authority |
-| E02 | Enterprise Ontology Operator | 1 | Enterprise Ontology、意味の分裂、Domain 間 semantic mapping、ontology 改訂 |
-| E03 | EAA Platform & Reliability Operator | 1 | Control Plane、AWS platform、observability、CI/CD、可用性・運用境界 |
-| E04 | Security & Authority Operator | 1 | Identity、権限、policy、secret、外部 Agent の authority boundary、セキュリティ例外 |
-| E05 | Data Migration & Reconciliation Operator | 1 | DMS/Glue、移行順序、差分照合、データ完全性、rollback 条件 |
-| E06 | B2B Agent Interface Operator | 1 | Agent Gateway、capability 契約、Partner onboarding、外部 Agent との互換性 |
-| E07 | Release & Cutover Operator | 1 | release criteria、cutover rehearsal、本番切替、rollback、旧基盤縮退 |
-| D01 | Customer & Partner Domain Operator | 1 | 当該 Domain の目的、権限、境界、Agentic loop |
-| D02 | Contract & Product Domain Operator | 1 | 同上 |
-| D03 | Order & Workflow Domain Operator | 1 | 同上 |
-| D04 | Billing & Payment Domain Operator | 1 | 同上 |
-| D05 | Identity & Entitlement Domain Operator | 1 | 同上 |
-| D06 | Integration & B2B Domain Operator | 1 | 同上。E06 と協調し内部実装を所有 |
-| X01 | Customer & Partner Domain Expert | 1 | 現行業務、例外、業務上の正誤、ontology 訂正 |
-| X02 | Contract & Product Domain Expert | 1 | 同上 |
-| X03 | Order & Workflow Domain Expert | 1 | 同上 |
-| X04 | Billing & Payment Domain Expert | 1 | 同上 |
-| X05 | Identity & Entitlement Domain Expert | 1 | 同上 |
-| X06 | Integration & Partner Domain Expert | 1 | 同上 |
-
-Core Team:
+EAA Role Model に従い、人間の主要責務を次の二軸へ分ける。
 
 ```
-Enterprise / Cross-domain Operators   7
-Domain Operators                     6
-Domain Experts                       6
---------------------------------------
-Total                               19
+Operator = Stable Structure / Governance
+Enabler  = Active Change / Mission / Outcome
 ```
 
-Domain Operator は従来の PL / Architect / Lead Developer の単純な改名ではない。設計・実装・テストを自分で順番に処理する人でもない。その Domain の Agentic System が、自律的に設計・実装・検証・修正を回せる状態を作り、境界と例外を所有する。
+Developer、Tester、Reviewer 等の実行機能は、Agentic Domain では主に Agent が担う。
+非 Agentic Domain では Local Delivery Model が担う。
 
-Domain Expert は Agentic Agile Operator である必要はない。ただし Agentic System に現実を供給できることが必要である。業務知識を人間の会議の中だけに閉じ込めず、Ontology、Example、Rule、Acceptance Evidence へ変換する。
+人間を配置する主な根拠は次である。
 
-### 13.5 Temporary Member
+1. 安定した Domain / Scope の Purpose、Boundary、Authority、Constraint を所有する
+2. Active Change の Goal、Priority、Outcome を所有する
+3. Domain の現実・暗黙知を提供する
+4. Enterprise と Domain の意味を接続する
+5. 高リスク時の一時的 Authority / Assurance を担う
 
-旧基盤の暗黙知は、置き換え完了まで一時的に必要になる。
-
-20サービスに1人ずつ保守担当を残すのではなく、依存関係を横断して理解している SME を4名置く。
-
-| ID | Role | 人数 | 主責務 | 主な期間 |
-| --- | --- | ---: | --- | --- |
-| L01-L04 | Legacy SME | 4 | 旧20サービスの実挙動、batch、例外、hidden dependency、障害履歴の説明 | Month 1-9、以後縮退 |
-
-ピーク時の人間人数は、
+人数原則は、
 
 ```
-Core 19 + Legacy SME 4 = 23
-```
-
-を基準とする。
-
-外部 Partner 側の担当者、法務、監査、経営承認者は必要に応じて参加するが、本プロジェクトの恒常的な実行チームには含めない。
-
-### 13.6 各 Domain Operator が持つ Agent 機能
-
-一人の Domain Operator の下に、一人の「AI開発者」を置くのではない。役割の異なる Agent 群を置く。
-
-例:
-
-```
-Domain Operator
-   |
-   +-- planner / researcher
-   +-- domain model / ontology agent
-   +-- implementation agents
-   +-- test / property-test agents
-   +-- reviewer (different model lineage where needed)
-   +-- migration adapter agent
-   +-- observability / incident agent
-   +-- documentation / evidence agent
-```
-
-Agent 数は固定しない。仕事量、期待浪費、検証コストに応じて増減させる。
-
-人間人数と Agent 数を比例させない。
-
-### 13.7 意図的に置かない専任ロール
-
-本ケースでは、以下を独立した恒久ロールとして置かない。
-
-| 従来ロール | EAA での扱い |
-| --- | --- |
-| Project Manager | Enterprise Operator と機械的 mission tracking に分解 |
-| PMO | Evidence / telemetry / Agent による自動観測へ移す |
-| Solution Architect | Enterprise / Domain Operator の境界判断と Agent 設計へ分解 |
-| Lead Developer | Domain Operator + implementation agents へ分解 |
-| Developer | implementation agent の機能 |
-| Tester | test agent / executable specification の機能 |
-| QA Reviewer | independent judge / evidence rule の機能 |
-| Release Manager | Release & Cutover Operator に限定して残す |
-| Cloud Platform Team | Platform Operator + platform agents に縮退 |
-| API Team | Integration Domain と各 Domain の boundary contract に分解 |
-
-「人間を減らすこと」が目的ではない。工程ごとの人間 handoff を残す合理性がないため、結果としてこれらの恒久ロールが消える。
-
-### 13.8 リリースまでの人員変化
-
-同じ19名を一年間同じ仕事に固定しない。
-
-| 期間 | 主に重くなる人間 | 目的 |
-| --- | --- | --- |
-| Month 1-2 | E01-E06, D01-D06, X01-X06, Legacy SME | Domain 境界、Ontology v0、最初の vertical mission |
-| Month 3-5 | Domain Operators, Platform, Security, Migration | 新旧共存、最初の Domain cut、Agent Interface v0 |
-| Month 6-8 | Domain Operators, Migration, B2B Operator | 大量置換、Partner pilot、reconciliation |
-| Month 9-10 | Migration, Release, Security, Domain Operators | shadow run、cutover rehearsal、rollback 実証 |
-| Month 11-12 | Release Operator, Enterprise Operator, Domain Operators | 段階 release、旧系 write 停止、縮退 |
-
-Legacy SME は Month 1 から知識を Ontology、Rule、Test、Evidence に移し、必要人数を継続的に減らす。最後まで「人間だけが知っている仕様」が残った場合、それ自体を移行未完了として扱う。
-
-### 13.9 Release 条件
-
-リリース判断は「開発完了率100%」では行わない。
-
-最低限、次を満たす。
-
-1. 主要業務 mission が新系を通って end-to-end で完了する
-2. Domain 間 contract が versioned で機械参照可能である
-3. Enterprise Ontology から主要 cross-domain 語彙を解釈できる
-4. 新旧 dual-run の reconciliation が許容閾値内である
-5. rollback が rehearsal 済みである
-6. B2B Agent Interface が権限境界を越えずに task を完了できる
-7. 外部 Agent の要求が deterministic business operation へ落ち、証拠を返せる
-8. Operator escalation が正常系の throughput bottleneck になっていない
-9. 重大な判断について provenance / evidence が追跡できる
-10. 旧系固有知識が Legacy SME の頭の中だけに残っていない
-
-### 13.10 この人数モデルが示すこと
-
-従来型の10億円案件では、20マイクロサービスに対して複数の開発・テスト・管理チームを置き、数十人から100人超の体制を組むことがありうる。
-
-EAA では基本粒子が「人間の開発チーム」ではないため、人数はサービス数に比例しない。
-
-本ケースでは、
-
-```
-20 legacy microservices
-        ↓
-6 autonomous domains
-        ↓
-6 Domain Operators
-+ 6 Domain Experts
-+ 7 enterprise / boundary operators
-+ 4 temporary legacy SMEs
+N(Operator) ∝ Stable Decision Scopes
+N(Enabler)  ∝ Active Change Demand
 ```
 
 とする。
 
-すなわち、人間の主な仕事はコードを書くことではなく、
+### 13.4 Persistent Roles
+
+本ケースでは6 Domainを仮置きするため、Domain Operatorは概ね6名を基準とする。
+
+| Role | 人数の目安 | 主責務 |
+| --- | ---: | --- |
+| Enterprise Operator | 1 | Enterprise Constraint、Authority、Domain boundary arbitration、重大例外 |
+| Domain Operators | 6 | 各 Domain の Purpose、Boundary、Authority、Contract、Exception |
+| Domain Experts | 6 | 現行業務、例外、意味、業務上の正誤、Ontology訂正 |
+
+Domain Operator は PL / Architect / Lead Developer の単純な改名ではない。
+その Domain の実行系が自律的に動ける境界を作り、正常系の逐次承認者にはならない。
+
+Domain Expert は Operator である必要はない。
+業務知識を会議の中だけに閉じ込めず、Ontology、Example、Rule、Acceptance Evidence へ変換する。
+
+### 13.5 Enabler Pool / Active Change
+
+Enabler は Domain ごとに1名常設しない。
+
+Enterprise Enabler は Enterprise Goal から Change portfolio を形成し、優先順位と Outcome を扱う。
+Mission Enabler は一つまたは複数 Domain を横断する Active Mission を所有する。
+
+例:
 
 ```
-Reality
-→ Ontology / Goal / Rule / Boundary
-→ Agentic System
-→ Evidence
-→ Revision
+Enterprise Enabler
+   |
+   +-- Mission Enabler: First Vertical Mission
+   +-- Mission Enabler: Legacy Migration
+   +-- Mission Enabler: B2B Partner Pilot
+   +-- Mission Enabler: Cutover Readiness
+```
+
+一人の Enabler が複数 Mission を持ってもよく、大きな Mission では複数 Enabler を置いてもよい。
+
+Enabler数は固定せず、Active Change Demand に応じて増減させる。
+
+### 13.6 Capability は恒久ロール名を増やさない
+
+Ontology、Platform、Security、Migration、B2B、Release 等をすべて専用 Operator 職種として常設しない。
+
+それらは次のいずれかとして扱う。
+
+- Domain / Enterprise Operator が持つ Capability
+- Mission Enabler が呼び出す専門能力
+- Active Profile が要求する一時的 Authority / Assurance
+- temporary specialist
+- Agent / platform capability
+
+例:
+
+```
+Security
+!= Security Operator を必ず1名常設
+
+Security
+= Policy / Authority / Assurance capability
+  loaded where required
+```
+
+Cutover のように短期間だけ強い Authority が必要なら、Cutover Profile の期間だけ Cutover Commander を明示してよい。
+
+### 13.7 Temporary Member
+
+旧基盤の暗黙知は置換完了まで一時的に必要になる。
+
+本ケースでは Legacy SME を4名仮置きする。
+
+| Role | 人数 | 主責務 | 主な期間 |
+| --- | ---: | --- | --- |
+| Legacy SME | 4 | 旧20サービスの実挙動、batch、例外、hidden dependency、障害履歴 | Month 1-9、以後縮退 |
+
+同じ SME への質問が繰り返される場合、知識移行が未完了とみなす。
+
+### 13.8 既存ロールからの移行
+
+| 従来ロール | EAA での主な行き先 |
+| --- | --- |
+| Product Owner / Product Manager | Enterprise / Mission Enabler |
+| Scrum Master | Enabler capability |
+| Project Manager | Operator / Enabler に責務分解 |
+| PMO | Evidence観測 + Enterprise Operator / Enabler |
+| Solution Architect | Operator capability |
+| Lead Developer | Domain Operator候補 / Agent execution |
+| Developer | AgentまたはLocal Delivery executor |
+| Tester / QA | Assurance capability / independent verification |
+| Release Manager | Cutover Profile下の一時Authority |
+| Platform / Security | Capability Ownership |
+
+これは肩書の一対一変換ではない。
+
+### 13.9 人数モデル
+
+固定するのは「19人」という人数ではなく、配置則である。
+
+例として開始時には、
+
+```
+1 Enterprise Operator
+6 Domain Operators
+6 Domain Experts
++ Enablers proportional to active missions
++ 4 temporary Legacy SMEs
++ specialists as needed
+```
+
+となる。
+
+First Vertical Mission、Migration、B2B pilot等を並行するならEnabler需要は増える。
+Changeが収束すればEnablerは次のMissionへ移る。
+
+### 13.10 Release 条件
+
+リリース判断は「開発完了率100%」では行わない。
+
+最低限、次を確認する。
+
+1. 主要 Mission が end-to-end で完了する
+2. Domain 間 Contract が versioned で機械参照可能
+3. Enterprise Ontology から主要 cross-domain 語彙を解釈可能
+4. reconciliation が許容閾値内
+5. rollback が rehearsal 済み
+6. 外部 Agent / Partner interface が Authority を越えない
+7. Evidence と provenance を追跡可能
+8. Operator escalation が正常系 throughput の bottleneck ではない
+9. Active Mission の Outcome が Evidence で判定可能
+10. 旧系固有知識が人間の頭の中だけに残っていない
+
+この人数モデルが示すのは、人間の主な仕事がコードを書くことではなく、
+
+```
+Operator: Reality / Boundary / Authority -> Governed System
+Enabler : Goal / Change / Outcome        -> Mission
+Executor: Mission                        -> Evidence
 ```
 
 を成立させることである。
 
-この世界で不足するのは「実装者の人数」ではない。
-
-不足しうるのは、Domain の現実を理解し、その現実を Agent が自律的に扱える規範・意味・境界へ変換できる Operator である。
-
-
 ## 14. ケーススタディ運営モデル: 12か月の実行スケジュールとイベント
 
-本節では、13章の人員モデルを実際に一年間動かした場合の運営モデルを仮置きする。
-
-これは EAA の規範そのものではない。EAA から導出される一つの実装例である。
+本節では、新しい Operator / Enabler Role Model を一年間の基幹刷新へ適用する一例を仮置きする。
+これは EAA の規範ではない。
 
 ### 14.1 基本構造
 
-人間を最初に固定チームへ割り当て、そのチームを一年間維持する方式を取らない。
+```
+Stable Plane                      Change Plane
 
-組織単位は次の4種類に分ける。
+Enterprise Operator <----------> Enterprise Enabler
+       |                               |
+       |                         Active Missions
+       |                         /      |       \
+ Domain O A                 Mission E  Mission E  Mission E
+ Domain O B                      \      |      /
+ Domain O C                       Domain Operators
+ ...                                    |
+                                  Local Executors
+                                       |
+                                    Evidence
+```
+
+組織単位は次のように扱う。
 
 | Unit | 存続期間 | 目的 |
 | --- | --- | --- |
-| Enterprise Control Cell | 全期間 | Enterprise Ontology、Constitution、Authority、Platform、Migration、B2B、Release の統治 |
-| Domain Cell | 原則全期間 | 各 Domain の AA 系を自律運転する |
-| Mission Cell | 数日〜数か月 | 複数 Domain をまたぐ特定 Outcome を達成する |
-| Cutover Cell | 終盤・高リスク時のみ | rehearsal、本番切替、rollback 判断を同期的に行う |
+| Enterprise Governance | 全期間 | Enterprise Constraint / Authority / Boundary |
+| Domain Cell | 原則全期間 | 各 Domain の安定運転 |
+| Mission Cell | Mission期間 | 特定 Outcome / Change |
+| Cutover Cell | 高リスク期間のみ | 切替・rollback・GO/NO-GO |
 
-構造は次のようになる。
-
-```
-Enterprise Control Cell
-        |
-        +-- Domain Cell A
-        +-- Domain Cell B
-        +-- Domain Cell C
-        +-- Domain Cell D
-        +-- Domain Cell E
-        +-- Domain Cell F
-        |
-        +-- Mission Cell X  (temporary)
-        +-- Mission Cell Y  (temporary)
-        |
-        +-- Cutover Cell    (temporary / high-risk)
-```
-
-Mission Cell は常設チームではない。成果が出たら解散する。
+Mission Cell は Mission Enabler と必要な Domain Operator / Expert / Executor から形成し、Outcome達成後に解散する。
 
 ### 14.2 Scrum の位置づけ
 
-プロジェクト全体には Scrum を置かない。
+プロジェクト全体に Scrum を強制しない。
 
-理由は、Sprint Planning、Daily Scrum、Sprint Review が主に解いてきた問題の多くが、人間中心の実行・同期・状態共有コストに由来するためである。
+各 Domain は Scrum、Kanban、Predictive、Full Agentic等を Local Delivery Model として選べる。
 
-EAA では、
+Agentic Domain では、
 
 ```
 Observation
@@ -725,578 +705,268 @@ Observation
 → Replanning
 ```
 
-を連続的に回す。
+を連続的に回せるため、全Domain共通SprintやDaily Scrumを標準イベントにはしない。
 
-したがって、
+### 14.3 Daily Evidence
 
-- 全 Domain 共通の Sprint
-- 全 Domain 共通の Daily Scrum
-- 全社的な Scrum of Scrums
-- 2週間ごとの一斉 Planning
+Daily Evidence は一種類の進捗報告ではなく、見る責務によって分ける。
 
-は標準イベントとしない。
+Operator view:
 
-ただし Scrum、Kanban、定例会議を禁止するわけではない。特定の人間集団にとって有効なら、局所的 Application として使ってよい。
-
-```
-EAA Core     ≠ Scrum
-Scrum        = optional local coordination tool
-```
-
-### 14.3 Daily Scrum の代替: Daily Evidence
-
-人間が毎朝集まり、昨日何をしたか、今日何をするか、何に困っているかを口頭共有する必要はない。
-
-Agentic System はそれらの状態を記録できる。
-
-各 Domain Operator には、少なくとも毎日一回、次の evidence digest を自動生成する。
-
-- 完了した mission / outcome
-- production / staging change
-- failed hypothesis
+- authority violation
+- boundary conflict
+- contract violation
+- risk / incident
 - rollback
-- unresolved boundary
-- ontology mismatch
-- human escalation
-- authority violation attempt
-- expected waste / token・compute 消費
-- verification failure
-- external dependency
+- unresolved exception
 
-Operator はこれを確認し、異常がなければ何もしない。
+Enabler view:
 
-したがって、
+- Mission Outcome
+- lead time
+- blocked change
+- dependency
+- rework
+- Evidence completion
+- learning / opportunity
 
-> Daily meeting ではなく Daily Evidence
-
-を標準とする。
-
-Daily Evidence の目的は進捗報告ではなく、人間判断を投入すべき例外を抽出することである。
+異常や判断需要がなければ同期会議を開かない。
 
 ### 14.4 人間イベント
 
-平常時の人間イベントは最小限とする。
-
-| Event | 頻度 | 参加者 | 目的 |
+| Event | 発火 | 主な参加者 | 目的 |
 | --- | --- | --- | --- |
-| Enterprise Mission Review | 週1回・45分目安 | E01 + 必要な Operator | 停止中 mission、cross-domain dependency、投資配分のみを見る |
-| Boundary Review | event-driven、初期は週2回程度 | 関係 Domain Operator | Domain 間 contract / responsibility の衝突を解く |
-| Ontology Review | event-driven | E02 + 関係 Expert / Operator | semantic mismatch、意味分裂、新概念を扱う |
-| Authority Review | event-driven | E04 + 関係 Operator | 権限拡大、不可逆操作、新しい外部 Agent authority を扱う |
-| Domain Reality Session | 必要時のみ | Domain Operator + Domain Expert + SME | Agent が現実を解釈できない場所を rule / example / ontology に変換する |
-| Norm Retrospective | 月1回・60分目安 | Enterprise Operators | AA / EAA / project constitution が障害になった事例から規範を改訂する |
-| Cutover War Room | rehearsal / cutover 時のみ | Cutover Cell | 時間制約・不可逆性が高い操作を同期的に扱う |
+| Enterprise Change Review | weekly / as needed | Enterprise Enabler + Mission Enablers | priority、investment、stopped Mission |
+| Operator Council | event-driven | Enterprise / 関係 Domain Operators | Authority、Boundary、Constraint、重大例外 |
+| Enabler Council | event-driven | 関係 Enablers | cross-domain Mission、repeated blocker、学習共有 |
+| Domain Reality Session | as needed | Domain O + Expert + SME +必要なEnabler | 現実をRule / Ontology / Evidenceへ変換 |
+| Cutover War Room | rehearsal / cutover | temporary Cutover Cell | 高リスク同期判断 |
 
-会議は情報を配るためには開かない。
+進捗報告のためだけに会議を開かない。
 
-情報共有だけなら Evidence Store、Mission、Ontology、telemetry で行う。
+### 14.5 Day 0
 
-人間イベントを開く条件は、原則として次のいずれかである。
+Day 0では詳細WBSを作らない。
 
-1. 複数の正当な選択肢があり、価値判断が必要
-2. Domain boundary を変える必要がある
-3. Authority を拡大する必要がある
-4. 不可逆または高 blast-radius な操作を行う
-5. 同じ例外が繰り返され、規範自体を変える必要がある
+Enterprise Operator側で、
 
-### 14.5 Day 0: Project Cutover / Kickoff
+- Enterprise Constraint
+- 仮 Domain Boundary
+- Authority
+- 絶対に壊してはいけない条件
 
-初日は全 Core Member と Legacy SME を集める。
+を置く。
 
-ただし WBS を詳細化する場にはしない。
-
-決めるのは以下に限定する。
+Enterprise Enabler側で、
 
 - Business Goal
-- 絶対に壊してはいけない制約
-- 仮の Domain Boundary
-- Human Authority
-- 最初に扱う Enterprise Ontology の範囲
-- 最初の Vertical Mission
-- Release / rollback の最低原則
+- Change priority
+- First Vertical Mission
+- expected Outcome
 
-最初の Vertical Mission は、複数 Domain を横断する難しい業務を選ぶ。
+を置く。
 
-例:
-
-> 外部企業 Agent が契約プラン変更を要求し、Customer 確認、Contract 更新、Entitlement 更新、Billing 再計算まで行い、Evidence を返す。
-
-これは Integration、Customer、Contract、Identity、Billing の5 Domainを横断する。
-
-最初から複雑な mission を選ぶ理由は、EAA の成立性そのものを早期に検証するためである。
+最初の Vertical Mission は複数 Domain を横断する実業務を選ぶ。
 
 ### 14.6 Week 1-2: Boundary / Ontology Discovery
 
-最初から6 Domainすべてを同じ速度で立ち上げない。
+最初のMissionに必要なDomainを優先起動する。
 
-最初の Vertical Mission に必要な Domain Cell を優先起動する。
-
-例:
-
-- Enterprise Control Cell
-- Integration & B2B
-- Customer & Partner
-- Contract & Product
-- Identity & Entitlement
-- Billing & Payment
-
-Order & Workflow は最初の Mission に不要なら本格起動を遅らせてよい。
-
-各 Cell では、人間が要件定義書を書くのではなく、Agent に以下を解析させる。
-
-- 旧ソースコード
-- DB schema
-- API definition
-- batch
-- log
-- incident history
-- operation manual
-- business document
-- existing test
-- external interface
-
-Agent はそこから、
+Agent / Executorは旧ソース、DB schema、API、batch、log、incident、manual、test等を解析し、
 
 ```
 Observed reality
 → ontology candidate
 → rule candidate
 → hidden dependency
-→ domain boundary hypothesis
+→ boundary hypothesis
 → acceptance evidence
 ```
 
 を生成する。
 
-Domain Expert / Legacy SME は主に訂正を行う。
-
-Operator は、
-
-- Domain 内で自律判断してよいもの
-- 他 Domain との contract にするもの
-- Human Authority を要求するもの
-
-を分類する。
-
-#### Milestone 0 — Week 2: Boundary v0
-
-最低条件:
-
-- 最初の mission に必要な Domain が定義されている
--主要 cross-domain 語彙が Ontology v0 に存在する
--初期 authority boundary が書かれている
--旧系依存が観測可能になっている
+Domain OperatorはAuthority / Boundary / Contractを分類し、Mission EnablerはOutcome達成に必要なChangeをMissionへ整理する。
 
 ### 14.7 Week 3-6: First Autonomous Vertical Mission
 
-目的は新システムを完成させることではない。
-
-EAA の制御構造が本当に動くことを確認する。
-
-初期状態では背後に Legacy API を使ってもよい。
-
 ```
-Partner Agent
-   ↓
-Agent Gateway
-   ↓
-Customer
-   ↓
-Contract
-   ↓
-Identity / Entitlement
-   ↓
-Billing simulation
-   ↓
-Legacy adapter
-   ↓
-Evidence
+Intent
+→ Mission Enabler
+→ Mission
+→ Multiple Domains
+→ Executors
+→ Evidence
+→ Outcome
 ```
 
-ここで確認するのは、
+を end-to-end で成立させる。
 
-- Agentic System 間で mission が渡る
-- Ontology reference が共有される
-- Domain contract を機械参照できる
-- Human PM を経由せず進行する
-- 必要な場所だけ escalation する
-- Evidence が残る
+確認対象:
 
-ことである。
+- Mission Enablerがcross-domain Outcomeを所有できる
+- Domain Operatorが各Boundaryを守れる
+- Ontology / Contractを共有できる
+- Human PMを通常経路に置かず進む
+- 必要な場所だけEscalationする
+- EvidenceでOutcomeを判定できる
 
-#### Milestone 1 — Week 6: First Autonomous Vertical Mission
+成立しない場合、大量実装前にRole / Boundary / Protocolを修正する。
 
-条件:
+### 14.8 Month 2-3: Domain Activation
 
-```
-external agent request
-→ 5 domains
-→ legacy or new deterministic operation
-→ result
-→ evidence
-```
+First Missionが通った後、必要Domainを本格起動する。
 
-が end-to-end で成立する。
+Agentic DomainはAA loopを回し、非Agentic Domainは自身のLocal Delivery ModelでMissionを処理する。
 
-この milestone が成立しない場合、全 Domain の大量実装を始めない。
+人間が細かいStoryを大量作成することは前提にしない。
 
-まず EAA Control Plane、Ontology、Authority、Inter-system Protocol を修正する。
+### 14.9 Backlog / Mission Portfolio
 
-### 14.8 Month 2-3: Full Domain Activation
+Enterprise EnablerはChange portfolioを持てる。
+Mission EnablerはActive MissionのGoal / Outcome / Priorityを持つ。
 
-最初の mission が通った後、6 Domain Cell をすべて本格起動する。
-
-各 Domain は独立して AA loop を回す。
+Domain内部の細かなtask decompositionはLocal Executorへ委任する。
 
 ```
-Observation
-→ hypothesis
-→ implementation
-→ test
-→ independent verification when required
-→ deploy
-→ observe
-→ revise
+Change Portfolio
+→ Mission
+→ Domain execution
+→ Evidence
 ```
-
-固定 Sprint は要求しない。
-
-Agent が3時間で作業を終えれば、次の work item を開始する。
-
-Planning の cadence は人間のカレンダーではなく、観測と evidence によって決まる。
-
-### 14.9 Backlog の扱い
-
-Backlog は存在してよいが、人間が細かい Story を大量に作成する方式を前提としない。
-
-Domain Backlog が持つ主なものは、
-
-- 未達成 Outcome
-- Mission
-- Constraint
-- Risk
-- unresolved semantic issue
-- unresolved boundary
-- Acceptance Evidence
-
-である。
-
-例:
-
-```
-Outcome:
-  契約変更を即時反映できる
-
-Constraints:
-  過去契約を書き換えない
-  請求確定後に price を変更しない
-
-Acceptance Evidence:
-  legacy 100万件との比較差異 < threshold
-```
-
-作業分解は Agentic System が行う。
 
 ### 14.10 Month 3: First Production Slice
 
-最初の Domain を本番へ出す。
-
-全面切替を必須としない。
-
-例えば、
-
-```
-read  → new
-write → legacy + new
-```
-
-または一部 customer segment のみ new system を使う。
-
-#### Milestone 2 — Month 3: First Production Domain
+全面切替を必須とせず、小さなproduction sliceを出す。
 
 条件:
 
-- 実ユーザーまたは実トラフィックが通る
-- observability がある
-- rollback 可能
-- Legacy reconciliation 済み
--正常系では Operator 承認を待たない
+- 実traffic
+- observability
+- rollback
+- reconciliation
+- 正常系でOperator承認待ちをしない
+- Mission OutcomeをEvidenceで確認できる
 
-### 14.11 Month 4-6: Parallel Replacement
+### 14.11 Month 4-8: Parallel Change
 
-この期間から6 Domain が並列に旧基盤を置き換える。
-
-人間を人数比例で増員せず、Agent 実行量を増減させる。
-
-複数 Domain をまたぐ Outcome が生じたら Temporary Mission Cell を作る。
+複数のActive Missionを並行させる。
 
 例:
 
-> 解約時、未払い残高が存在する場合は返金ではなく相殺する。
+- Legacy write reduction
+- Partner B2B pilot
+- Billing modernization
+- Knowledge extraction
 
-必要な Domain:
+Change量が増えればEnablerを増やす。
+Domain数が変わらない限り、OperatorをChange量に比例して増やさない。
 
-- Contract
-- Billing
-- Order
+### 14.12 Month 6: Midpoint Evidence Review
 
-Mission Cell は、この3 Domain Operator と各 Agentic System から必要な Agent を束ねる。
+見るもの:
 
-Mission 達成後に解散する。
-
-Mission Cell のために恒久的な cross-functional human team を作らない。
-
-### 14.12 Month 5: B2B Agent Interface v1
-
-外部 Partner 1社以上を pilot として接続する。
-
-少なくとも以下のいずれかを実取引として通す。
-
-- 見積
-- 注文
-- 契約変更
-- 請求照会
-
-#### Milestone 3 — Month 5: External Agent Transaction
-
-外部企業の Agent が、
-
-```
-intent
-→ capability discovery
-→ authorized task
-→ deterministic business operation
-→ result
-→ evidence
-```
-
-を完了する。
-
-### 14.13 Month 6: Midpoint Evidence Review
-
-従来型の「進捗率50%」は主要評価にしない。
-
-見るのは少なくとも以下。
-
-- legacy dependency count
+- Mission Lead Time
 - autonomous mission completion
-- operator escalation / mission
+- Operator escalation / mission
+- Enabler load / active mission
+- Boundary Wait
+- Rework Mass
 - semantic mismatch
-- rollback rate
-- expected waste
-- production incident
-- reconciliation error
-- human-only knowledge count
-- partner agent task completion
+- rollback
+- human-only knowledge
+- cost / accepted outcome
 
-中心となる問いは、
+中心となる問いは「予定作業の何%か」ではなく、
 
-> 予定作業の何%を終えたか
-
-ではなく、
-
-> 旧基盤なしで成立する業務能力がどれだけ増えたか
+> **どれだけ新しい業務能力がEvidence付きで成立したか**
 
 である。
 
-### 14.14 Month 7-8: Legacy Write Reduction
+### 14.13 Month 9-10: Shadow / Reconciliation / Cutover Preparation
 
-新規 write を順次新系へ移す。
+Migration / Cutoverは恒久専用Operatorを前提とせず、Mission / Capability / Active Profileとして扱う。
 
-Legacy SME の知識は Ontology、Rule、Test、Evidence に移す。
+Cutover Profileを有効にした期間だけ、最終AuthorityとしてCutover Commanderを明示してよい。
 
-同じ SME に繰り返し質問が発生する場合、知識移行が未完了とみなす。
+参加者は必要なDomain Operator、Mission Enabler、Migration/Platform/Security等の専門家、Legacy SMEから構成する。
 
-#### Milestone 4 — Month 8: Legacy Write Majority Eliminated
+### 14.14 Month 11: Release Candidate Mode
 
-目安として、新規 write の80-90%を新系へ移行する。
-
-数値自体は案件ごとに変更してよい。
-
-同時に Legacy SME の必要人数が減っていることを確認する。
-
-### 14.15 Month 9-10: Shadow Production / Reconciliation
-
-主要 mission について、新旧の実行結果を比較する。
-
-例:
-
-- Billing: 大量請求結果
-- Order: 状態遷移
-- Contract: 有効期間と価格
-- Identity: entitlement
-- Customer: master mapping
-
-Agent が継続的に照合し、人間は差異のみを見る。
-
-専任 QA Team は原則作らない。
-
-この期間に Cutover Cell を一時的に形成する。
-
-参加者例:
-
-- Release & Cutover Operator
-- Migration Operator
-- Platform Operator
-- Security Operator
-- 6 Domain Operators
-- 必要な Legacy SME
-
-#### Cutover Rehearsal
-
-Month 9 と Month 10 に最低2回を仮置きする。
-
-この期間は同期 communication の価値が高い。
-
-不可逆性、時間制約、blast radius が高いため、War Room を使用してよい。
-
-#### Milestone 5 — Month 10: Cutover Ready
-
-条件:
-
-- major mission の shadow reconciliation が閾値内
-- rollback rehearsal 成功
-- authority / credential rotation が試験済み
-- partner agent smoke test 成功
-- production telemetry / evidence path 確認済み
-- unresolved human-only knowledge が許容範囲内
-
-### 14.16 Month 11: Release Candidate Mode
-
-通常の開発を一律凍結するのではなく、authority profile を厳しくする。
-
-通常時:
+通常Authorityを一律に捨てず、Assurance / Cutover Profileによって一時的に制約を強くする。
 
 ```
-Domain Agent
+Normal
+Executor
 → automated verification
 → production
-```
 
-Release Candidate Mode:
-
-```
-Domain Agent
-→ release candidate
-→ automated evidence
-→ elevated threshold
-→ Release Operator / policy gate when required
+High-risk window
+Executor
+→ candidate
+→ required evidence
+→ elevated assurance
+→ explicit authority where required
 → production
 ```
 
-リスクが上がるため、一時的に Human Gate を増やしてよい。
+### 14.15 Month 12: Final Cutover
 
-これは通常運用へ人間 Gate を戻すことではない。
+Final Cutoverでは一時的なcommand structureを許す。
 
-### 14.17 Month 12: Final Cutover
+平時の分散自治を、高リスク・時間制約の強い切替へ教義として強制しない。
 
-Final Cutover では、恒久的な分散自治より、一時的な command structure を優先してよい。
+Cutover完了後は一時Authorityを解除し、通常のOperator / Enabler構造へ戻す。
 
-Cutover Commander は E07 Release & Cutover Operator とする。
+### 14.16 12か月の全体像
+
+| 時期 | Stable Plane | Change Plane | Milestone |
+| --- | --- | --- | --- |
+| Day 0 | Enterprise O + initial Domain O | Enterprise E + First Mission E | Kickoff |
+| Week 1-2 | Boundary / Authority | First Mission shaping | Boundary v0 |
+| Week 3-6 | Domain governance | First Vertical Mission | First E2E Outcome |
+| Month 2-3 | Domain activation | Production Mission | First Production Slice |
+| Month 4-8 | Stable Domain O | Multiple Mission Enablers | Parallel Replacement |
+| Month 9-10 | Operator + temporary authority | Cutover readiness missions | Cutover Ready |
+| Month 11 | tightened authority | Release candidate | RC |
+| Month 12 | temporary command | Final cutover | Release |
+
+### 14.17 Event-driven Escalation
+
+人間イベントはcadenceだけで発火させない。
 
 例:
-
-| 時刻 | Event |
-| --- | --- |
-| 20:00 | Legacy write stop |
-| 20:15 | final replication |
-| 21:00 | reconciliation |
-| 22:00 | new write enable |
-| 23:00 | synthetic mission |
-| 00:00 | B2B Agent smoke test |
-| 01:00 | business reconciliation |
-| 02:00 | GO / rollback boundary |
-| 翌朝 | full traffic / normal authority restore |
-
-Cutover 中は必要な Operator を同時接続してよい。
-
-平時に非同期であることを、非常時にも強制しない。
-
-### 14.18 12か月の全体像
-
-| 時期 | 主な Unit | 主な活動 | Milestone |
-| --- | --- | --- | --- |
-| Day 0 | Enterprise Control Cell | Goal / Boundary / Authority / First Mission | Kickoff |
-| Week 1-2 | 必要 Domain Cells | Ontology / Legacy discovery | M0 Boundary v0 |
-| Week 3-6 | First Mission Cell | Cross-domain E2E | M1 First Autonomous Vertical Mission |
-| Month 2-3 | 6 Domain Cells | Continuous AA | M2 First Production Domain |
-| Month 4-5 | Domain + Mission Cells | Parallel replacement / B2B pilot | M3 External Agent Transaction |
-| Month 6 | Enterprise Control Cell | Evidence-based midpoint review | Midpoint |
-| Month 7-8 | Domain Cells | Legacy write reduction | M4 Legacy Write Majority Eliminated |
-| Month 9-10 | Domain + Cutover Cell | Shadow / reconciliation / rehearsal | M5 Cutover Ready |
-| Month 11 | Release mode | Authority tightening / RC | Release Candidate |
-| Month 12 | Cutover Cell | Final transition | M6 Release |
-
-### 14.19 Event-driven Escalation
-
-EAA の運営では、人間イベントを cadence だけで発火させない。
-
-以下のような machine-observable event を human escalation の契機とする。
 
 ```
 semantic mismatch
 boundary violation
-authority expansion request
-expected waste threshold exceeded
+authority expansion
 repeated rollback
-repeated verification disagreement
-cross-domain contract incompatibility
+verification disagreement
+contract incompatibility
 irreversible operation
-production blast-radius threshold exceeded
-legacy knowledge dependency detected
+high blast radius
+legacy knowledge dependency
+mission blocked across domains
 ```
 
-したがって、会議の量は work volume に比例しない。
+繰り返す問題は単発判断で終わらせず、EnablerがChangeとして扱う。
 
-理想的には、Agentic System が成熟するほど人間イベントは減る。
+### 14.18 この運営モデルが示すこと
 
-### 14.20 この運営モデルが示すこと
+EAAの標準的な人間構造は、
 
-従来の大規模開発では、時間を同期することで人間を同期していた。
-
-例:
-
-```
-Sprint
-Daily
-Planning
-Review
-Release Train
-```
-
-EAA では、時間ではなく意味、権限、Mission、Evidence を同期する。
-
-```
-Ontology
-Constitution
-Mission
-Contract
-Evidence
-```
-
-そのため、EAA の標準的な運営形は、
-
-> **Persistent Domain Cells + Temporary Mission Cells + Event-driven Governance**
+> **Persistent Operators + Change-driven Enablers + Local Executors + Event-driven Governance**
 
 と表現できる。
 
-平常時の人間同期は、概ね次へ圧縮される。
-
 ```
-Weekly Mission Review
-+ Event-driven Boundary / Ontology / Authority Decision
-+ Monthly Norm Retrospective
+Operator = Govern stable scope
+Enabler  = Own active change
+Executor = Execute and return Evidence
 ```
 
-そして Daily Scrum の代わりに、
-
-> **Daily Evidence**
-
-を置く。
-
-人間が毎日知るべきなのは Agent が何をしたかの全量ではない。
-
-人間判断が必要な場所、自律が停止した場所、境界が破れた場所だけである。
+人間が毎日知るべきなのは実行全量ではない。
+判断が必要な場所、Changeが止まった場所、Boundaryが破れた場所である。
 
 
 ## 15. Mission Graph / Evidence Graph による開発観測
