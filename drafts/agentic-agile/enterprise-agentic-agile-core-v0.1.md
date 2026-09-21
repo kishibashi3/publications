@@ -14,8 +14,8 @@ Enterprise Agentic Agile (EAA) は、AI / Agent を主要な実行主体とし�
 Agentic Agile (AA) が一つの Agentic な自律実行系の内部を扱うのに対し、EAA はその前提を企業規模へ拡張し、複数の異種実行系を協調させる。
 
 ```
-AA  = 自律ループを成立させる
-EAA = 自律ループ同士を接続する
+AA  = Agentic な自律ループを成立させる
+EAA = 異種の実行系を境界で接続する
 ```
 
 EAA の中心命題は次である。
@@ -89,17 +89,36 @@ Core は Local Delivery Model を統一しない。
 
 ### Operator
 
-Domain または Enterprise の Goal、Boundary、Authority、Exception を所有する人間。
+Domain または Enterprise の安定した Scope Purpose、Boundary、Authority、Constraint、Exception を所有する人間。
 
 ```
 Operator
-= Goal
+= Scope Purpose
 + Boundary
 + Authority
++ Constraint
 + Exception
 ```
 
-Operator は通常の設計・実装・テストを逐次承認する人ではない。
+Operator は現在の系を成立させる責任を持つ。
+通常の設計・実装・テストを逐次承認する人ではない。
+
+### Enabler
+
+Active Change の Goal、Priority、Outcome を所有し、Mission を形成する人間。
+
+```
+Enabler
+= Change Goal
++ Priority
++ Outcome
++ Mission
+```
+
+Enabler は特定 Domain の恒常的な統治者ではなく、現在の系を次の状態へ動かす責任を持つ。
+
+Operator と Enabler は責務の軸であり、必ずしも別人である必要はない。
+小さな Scope では同一人物が兼務してよい。
 
 ### Mission
 
@@ -211,6 +230,7 @@ Task decomposition は受け取った Domain の内部へ委任してよい。
 
 ```
 Enterprise intent
+→ Enabler
 → Mission
 → Domain execution
 → Evidence
@@ -363,9 +383,14 @@ Profile は Core を弱めてはならない。
 概念的には、
 
 ```
-Requirements(Profile) ⊇ Requirements(Core)
-Authority(Profile)    ⊆ Authority(Core)
-Evidence(Profile)     ⊇ Evidence(Core)
+Effective Requirements
+= Core Requirements ∪ Profile-added Requirements
+
+Effective Authority
+= Core Authority ∩ Profile Restrictions
+
+Effective Evidence
+= Core Evidence ∪ Profile-required Evidence
 ```
 
 複数 Profile は組み合わせてよい。
@@ -444,6 +469,8 @@ Domain Autonomy
 + Enterprise Constraints
 ```
 
-人間ロールとして最小限必要なのは、境界を所有する Operator である。
+人間の責務として最小限区別するのは、安定した Scope を統治する Operator と、Active Change の Outcome を所有する Enabler である。
+
+別人配置や人数比は Core が要求しない。
 
 > **Core は最小に保つ。案件固有の必要性は Profile として外付けする。**
