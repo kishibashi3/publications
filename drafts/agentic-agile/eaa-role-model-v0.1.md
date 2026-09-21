@@ -21,13 +21,16 @@ Agent    = Execute
 >
 > **Agent executes the change.**
 
+ここで Agent は Agentic Domain における代表的 executor を表す。
+非 Agentic Domain では、Executor は人間チーム、Vendor process、Package implementation 等の Local Delivery System でもよい。
+
 日本語では、
 
 > **Operator は現在の系を成立させる。**
 >
 > **Enabler は系を次の状態へ動かす。**
 >
-> **Agent はその変化を実行する。**
+> **Executor はその変化を実行する。**
 
 と表現する。
 
