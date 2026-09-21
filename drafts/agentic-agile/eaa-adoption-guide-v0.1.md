@@ -8,6 +8,7 @@
 > EAA Core の規範ではなく、Profile でもない。
 >
 > EAA の技術的成立性だけでなく、既存組織がその透明性、権限構造、役割変化を受容できるかを扱う。
+> Operator / Enabler / Agent の役割定義は `eaa-role-model-v0.1.md` を参照する。
 
 ## 1. 最初の最大リスク
 
