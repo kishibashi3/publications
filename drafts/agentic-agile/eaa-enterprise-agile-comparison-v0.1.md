@@ -43,7 +43,7 @@ AI / Agent 利用は B1〜B5 でも可能であり、比較軸は「AIを使う�
 
 - **設計上の表現力**と**市場での成熟度 / 実績**を混同しない
 - EAA は現在の文書化された構造を評価する
-- EAA は Core 単体ではなく、案件条件に応じた Active Profiles を含める
+- EAA は AI / Agent 時代の Enterprise 開発手法として評価し、Core 単体ではなく案件条件に応じた Active Profiles を含める
 - Local Delivery Model は Domain ごとに異なってよい
 
 ---
