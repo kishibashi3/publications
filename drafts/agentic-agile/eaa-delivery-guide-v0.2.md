@@ -7,6 +7,7 @@
 > 本文書は EAA Core と Profiles を実案件へ適用するための Reference Guide である。
 > Core の規範は `enterprise-agentic-agile-core-v0.1.md`、
 > 条件付き規範は `eaa-profiles-v0.1.md` を参照する。
+> 組織導入・役割移行・Transparency の受容については `eaa-adoption-guide-v0.1.md` を参照する。
 
 ## 1. まず層を分ける
 
@@ -436,6 +437,8 @@ EAA 案件の開始時に、最初から全組織を作り込まない。
 
 最初の Vertical Mission は、複数 Domain を横断する実業務を選ぶ。
 
+同時に、技術成立性だけでなく、役割移行・Transparency 受容・Operator 依存・Human decision latency を観測する。EAA 導入を既存組織へ適用する際は、`eaa-adoption-guide-v0.1.md` の socio-technical stress test を併用する。
+
 ---
 
 ## 16. First Six Weeks Pattern
@@ -472,6 +475,9 @@ Week 6 までに確認するのは新システム完成ではなく、
 - Required Evidence が残る
 - Human PM を通常経路に置かず進められる領域が分かる
 - 非 Agentic Domain も同じ境界で参加できる
+- Transparency が blame ではなく意思決定に使われる
+- repeated Operator judgment を Rule / Contract へ変換できる
+- 既存ロールの新しい ownership が成立する
 
 ことである。
 
