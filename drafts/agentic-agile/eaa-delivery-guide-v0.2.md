@@ -8,6 +8,7 @@
 > Core の規範は `enterprise-agentic-agile-core-v0.1.md`、
 > 条件付き規範は `eaa-profiles-v0.1.md` を参照する。
 > 組織導入・役割移行・Transparency の受容については `eaa-adoption-guide-v0.1.md` を参照する。
+> Operator / Enabler / Agent の人間ロールモデルは `eaa-role-model-v0.1.md` を参照する。
 
 ## 1. まず層を分ける
 
