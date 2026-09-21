@@ -9,7 +9,9 @@
 
 ## 1. EAA の位置づけ
 
-Agentic Agile (AA) が一つの自律実行系の内部を扱うのに対し、EAA は複数の異種実行系を企業規模で協調させる。
+Enterprise Agentic Agile (EAA) は、AI / Agent を主要な実行主体として扱う **Enterprise 規模の開発手法・統治モデル** である。
+
+Agentic Agile (AA) が一つの Agentic な自律実行系の内部を扱うのに対し、EAA はその前提を企業規模へ拡張し、複数の異種実行系を協調させる。
 
 ```
 AA  = 自律ループを成立させる
