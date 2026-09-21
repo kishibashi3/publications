@@ -133,13 +133,12 @@ EAA Instance
 
 ### 6.1 Cross-domain dependency / integration — 4
 
-Mission / Contract / Ontology / Authority は構造として存在する。
+Mission / Contract / Ontology / Authority に加え、cross-domain Mission の Outcome owner として Mission Enabler を置く構造も存在する。
 
 未解決:
 
 - Inter-system Protocol の最小仕様
 - 複数 Domain が競合する Mission の arbitration
-- cross-domain Mission owner / coordinator
 - Contract version conflict の解決
 - Domain 間 expected waste の計測
 
@@ -175,7 +174,7 @@ Annual Budget
 
 ### 6.3 Organization scale / Cognitive load — 4
 
-Capability / Enabling Pattern はある。
+Capability Ownership Pattern と Enabler Role Model はある。
 
 ただし Team Topologies のように、
 
