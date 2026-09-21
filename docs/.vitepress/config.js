@@ -49,7 +49,8 @@ export default withMermaid({
             { text: '複雑性の視覚的理解', link: '/core/supplementary/complexity-visualization' },
             { text: '具象と抽象の往復', link: '/core/supplementary/concrete-abstract-oscillation' },
             { text: '単純系→複雑系→単純系', link: '/core/supplementary/simple-complex-simple' },
-            { text: '価値の定量化', link: '/core/supplementary/value-quantification' }
+            { text: '価値の定量化', link: '/core/supplementary/value-quantification' },
+            { text: '目的誘導的創発', link: '/core/supplementary/purposive-emergence' }
           ]
         }
       ],
