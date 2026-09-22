@@ -1034,6 +1034,7 @@ Mission Graph を観測すると、従来の進捗率では捉えにくかった
 | Intent Drift | 親 Mission の Goal / Constraint と子孫 Mission の乖離 |
 | Blocked Mass | 停止している subgraph のコストまたは実行量 |
 | Escalation Rate | Mission あたりの Human Escalation 回数 |
+| Authority Tightening Rate | 一度自律に委ねた Authority を人間側へ戻した回数、または検証ゲートを追加した回数 |
 
 node ごとの cost は、少なくとも次のような複数資源で重み付けできる。
 

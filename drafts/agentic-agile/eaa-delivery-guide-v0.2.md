@@ -273,6 +273,7 @@ Mission / Evidence Graph から、作業量ではなく実行構造を観測す�
 | Intent Drift | 親 Mission と子孫 Mission の目的乖離 |
 | Blocked Mass | 停止している subgraph のコスト |
 | Escalation Rate | Mission あたり Human Escalation 回数 |
+| Authority Tightening Rate | 自律に委ねた Authority を戻した / ゲートを追加した回数 |
 
 node cost の例:
 
