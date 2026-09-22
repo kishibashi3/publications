@@ -1,8 +1,9 @@
-# EAA解説 — AAから分割とFederationへ
+# Enterprise Agentic Agile — 考え方と開発の姿
 
 > Status: explanatory draft / non-normative
 >
-> [Core](enterprise-agentic-agile-core-v0.1.md)の理由と使い方を説明する。
+> AAから分割とFederationへ進む背景と開発の姿を説明する導入文書である。
+> [Core](enterprise-agentic-agile-core-v0.1.md)の理由と使い方を説明し、新たな義務を追加しない。
 > 旧「構成原理」と「AAからの拡張」を統合した。定義はCoreと[Profiles](eaa-profiles-v0.1.md)を参照する。
 
 ## 1. AAから始める
