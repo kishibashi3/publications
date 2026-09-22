@@ -4,8 +4,8 @@
 >
 > EAA の Core / Profile / Pattern 分離に伴い、本ガイドは v0.2 へ再構成した。
 >
-> - Normative Core: `enterprise-agentic-agile-core-v0.1.md`
-> - Conditionally normative Profiles: `eaa-profiles-v0.1.md`
+> - Core 改訂草案: `enterprise-agentic-agile-core-v0.1.md`
+> - Responsibility Profiles 改訂草案: `eaa-profiles-v0.1.md`
 > - Non-normative Delivery Guide: `eaa-delivery-guide-v0.2.md`
 > - Research / case studies: `enterprise-agentic-agile-working-notes.md`
 >

@@ -1,404 +1,55 @@
-# Enterprise Agentic Agile (EAA) — Working Notes
+# Enterprise Agentic Agile — Working Notes
 
-2026-09-21 · Kazuhiro
+2026-09-22 · Kazuhiro
 
-> Status: working notes / non-normative draft
+> Status: research notes / non-normative
 >
-> 本文書は、Agentic Agile (AA) から出発して検討してきた Enterprise Agentic Agile (EAA) の現時点の整理を保存するための作業メモである。AA Principles 本体の規範は変更しない。
->
-> 現在の整理では、EAA はすべての Domain に AA を要求しない。Agentic Domain では AA を内部原理として利用できるが、Scrum、Kanban、SAFe ART、Predictive、Package/Vendor 等の Domain も、EAA Core の境界条件を満たせば参加できる。
+> 構成原理は[Cell・Profile・Federation](eaa-cell-profile-federation-draft.md)、共通ルールは[Core](enterprise-agentic-agile-core-v0.1.md)、責務仕様は[Profiles](eaa-profiles-v0.1.md)、人間配置は[Role Model](eaa-role-model-v0.1.md)を参照する。
+> 本文書は設計の動機・仮想ケース・観測方法を扱う。ケースの人数、技術、期間、イベントをEAA一般の要件にしない。
 
-## 1. 位置づけ
+## 1. AAからEAAへ
 
-Enterprise Agentic Agile (EAA) は、AI / Agent を主要な実行主体として扱う Enterprise 規模の開発手法・統治モデルであり、AA から出発して Enterprise 規模の協調問題を再定義した境界アーキテクチャを内部構造として持つ。
+AAは一つのAgenticなCellで実行と学習を成立させる。EAAは同じ責任単位を、必要に応じて分割・接続するための構成原理である。一つのCellで全責務を担ってもよい。
 
-AA は一つの Agentic な自律実行系の内部を扱う。
-EAA は、Agentic / Human-centered / Vendor / Package を含む複数の異種 Domain が、それぞれの自治とドメイン固有性を保ったまま企業全体として協調するための構造を扱う。
+組織が大きくなると、意味の違い、権限境界、異種の実行方式、外部契約、横断変更が問題になる。EAAは内部工程を統一せず、Ontology・Constitution・Contract・Evidenceと、提案・受入の手順でこれを扱う。
 
-```
-AA  = Agentic Domain 内部の自律実行原理
-EAA = 異種 Domain 間の協調原理
-```
+EnterpriseとDomainは全体と部分という位置を表す。Platformなどは責務を表す。どれも同じCell構造を持ち、子Cellはさらに分割できる。非AgenticなCellも接続できるが、1 Cellというだけでその内部方式をAAとは呼ばない。
 
-したがって、EAA は AA を置き換えないが、すべての Domain に AA を要求もしない。
+## 2. 責務を先に定義する
 
-```
-EAA Instance
-├─ Agentic Domain      → AA を適用できる
-├─ Scrum Domain        → Scrum を内部利用
-├─ Predictive Domain   → Predictive を内部利用
-└─ Vendor / Package    → 独自方式を内部利用
-```
+Profileは引受可能な責務の版付き仕様であり、Standard Profileと企業固有のDomain Profileを同じ形式で記述する。まず必要な責務を列挙し、その後で引受Cellを決める。
 
-EAA が共通化するのは内部 Operating Model ではなく、意味、Mission、Authority、Contract、Evidence、Escalation である。
+一つのCellが複数Profileを扱える。判断負荷や専門性から別Opeが必要になった時、責務・権限・資源・資産・残件を渡して独立させる。Profile数やサービス数から組織数を決めない。
 
-## 2. AA が扱う世界
+Opeは自律実行を成立させる境界・規範・例外判断を担う。Enablerは顧客と文脈を共有し、目的・優先順位・受入条件を具体化して成果実現を進める。顧客接点を持つことと最終決定権を持つことは同じではない。
 
-従来の人間中心開発では、設計・実装・テスト・レビュー・再設計というループを、複数の人間・職能・工程に分けていた。
+## 3. 分離後の自治
 
-```
-設計者 → 実装者 → テスト者 → レビュアー → 設計者
-```
+分離したCellの判断を、親Cellや横断Cellが一方的に上書きしない。PlatformからDomainへのCI/CD変更も、DomainからEnterpriseへのOntology訂正も、対象Cellへの提案と受入で成立させる。
 
-しかし Agentic な実行系では、このループは極めて短時間で回る。
+採用済みの義務は維持する。新版の発行は自動適用ではなく、影響するCellと移行を合意する。通常の実装受入はAgentに委ねられるが、規範・権限変更は正当な人間の変更権者の承認を要する。Agentによる自己権限の緩和は認めない。
 
-```
-仮説 → 設計 → 実装 → 検証 → 観測 → 修正
-```
+Cutoverも例外的な強制指揮権を作らない。関係Cellが事前合意したGO/NO-GO、停止、rollbackの条件を用い、各Cellが自己の範囲を実行する。
 
-したがって、設計者・実装者・テスト担当者といった「工程に由来する役割分担」は縮退する。工程を別組織・別担当へ handoff すること自体が、Agentic な速度を損なう可能性がある。
+## 4. 設計仮説と検証
 
-AA の中心問題は、人間の制約ではなく Agent の制約から Agile を再導出することにある。
+創発文明論との接続は、[円環構造](../../docs/core/02-circular-structure.md)、[システム価値の再帰定義](../../docs/core/06-systemic-value.md)、[上下の要請とカオスの淵](../../docs/core/supplementary/emergence-theory.md)に置く。全体と部分が同じシステム構造を持ち、上下双方の要請を扱うことを、再帰的なCellと双方向の提案・受入として具体化する。
 
-現在の AA v2 が置く主要な前提は以下である。
+ただし、ProfileやPRという実装形式まで公理から一意に決まるわけではない。合意した秩序と局所の自由を両立させるための設計選択である。また、Cell数を増やすことを創発価値そのものとしない。新しい能力や協働が成立し、持続するかを観測する。
 
-- 実行は安く、速い
-- 実行総量には上限がある
-- 人間の判断は希少である
-- 出力は確率的にばらつく
-- 同じ生成元は同じ誤りを共有しうる
+責務仕様を配置から分ければ、1 Cellから始めて責務を失わずに拡張できると考える。これは設計仮説であり、大規模運用での有効性が実証されたことを意味しない。
 
-この前提から、可逆性、期待浪費、生成と判定の分離、自己権限の固定などが導出される。
+既存方式との比較は[比較資料](eaa-enterprise-agile-comparison-v0.1.md)を参照する。旧版の採点を改訂モデルへ引き継がず、判断集中、境界待ち、合意の所要時間、成果と保証の維持を観測する。
 
-特に、自律の速度を考える基礎量として、
+## 5. 未決事項
 
-```
-期待浪費 = 誤り確率 × 誤ったまま進む実行量
-```
+合意不成立・外部制約変化・緊急時の調整、分離・再統合の移行責任、複数Cell変更の適用順と復旧は詳細未定である。Profileの詳細スキーマとFederationの状態遷移も具体例から詰める。
 
-を置ける。
+以下のケースはこれらの手続きを完成させたものではなく、責務配置と検証対象を具体化するための仮置きである。
 
-より厳密には、検証を挟むかどうかは、
+---
 
-```
-回避可能な期待浪費 > 検証コスト
-```
-
-となるかで判断できる。
-
-この見方では「小さく実装する」「早く検証する」は独立した教義ではない。有限資源下で期待浪費を抑えれば自然に導出される。
-
-## 3. EAA で新たに現れる問題
-
-企業全体では、一つの Agentic System や一つの Delivery Model に統一されるとは限らない。
-
-例:
-
-```
-Domain A  AgentHub / Full Agentic
-Domain B  Dify
-Domain C  GitHub Copilot + Scrum
-Domain D  Predictive Vendor
-Domain E  Package implementation
-```
-
-それぞれの Domain は、業務知識、データ、権限、SLA、法的責任、失敗モード、技術制約、Agent Literacy を独自に持つ。
-
-したがって EAA は、全 Domain に同じ Agent 基盤、同じモデル、同じ Agent 構成、同じ内部 Operating Model を強制してはならない。
-
-```
-内部実装は自治する。
-境界を共有・統治する。
-```
-
-EAA の問題は、異種の実行系をどう同質化するかではなく、異質なままどう協調させるかである。
-
-## 4. AA と EAA の関係
-
-AA と EAA は同じ層ではない。
-
-| 観点 | AA | EAA |
-| --- | --- | --- |
-| 主対象 | Agentic Domain 内部 | Domain 間 |
-| 基本単位 | Agentic System | Domain / heterogeneous execution system |
-| 主問題 | 高速・確率的な自律実行 | local autonomy + global alignment |
-| 人間判断 | 希少資源として扱う | Enterprise 境界の希少判断へ集中させる |
-| 権限 | 自律系内部の Authority | Domain 間 Authority / Contract |
-| 意味 | Domain 内 context | Enterprise Ontology / semantic difference |
-| 品質 | 期待浪費、独立検証 | Evidence、provenance、cross-domain assurance |
-| 内部方式 | AA Principles | 原則として統一しない |
-
-Agentic Domain では AA Principles を適用できる。
-非 Agentic Domain に AA の内部 Operating Model を強制する必要はない。
-
-EAA が要求するのは、その Domain が EAA Boundary を満たすことである。
-
-```
-Missionを受け取れる
-Ontology / Contractを解釈できる
-Authorityを越えない
-Evidenceを返せる
-Escalationできる
-```
-
-## 5. AA と EAA の違い
-
-AA の中心問題:
-
-> 一つの Agentic System を、どう速く、安全に、無駄なく自律させるか。
-
-EAA の中心問題:
-
-> 異なるドメイン、異なる技術、異なる Delivery Model を持つ複数の実行系を、自治を壊さず企業全体としてどう協調させるか。
-
-したがって、
-
-```
-AA  = Agentic な自律ループを成立させる
-EAA = 異種 Domain を共通境界で接続する
-```
-
-と整理できる。
-
-## 6. EAA の共通層
-
-現時点では、異種 Domain が共通して参照すべき上位層として、少なくとも次の三つを置く。
-
-### 6.1 Enterprise Ontology — 意味
-
-全 Domain / 実行系が参照できる企業レベルの意味体系を持つ。
-
-ただし、これは全社語彙を一つの意味に統一することではない。
-
-営業の「顧客」と CS の「顧客」が異なるなら、その分裂そのものを記録する。
-
-```
-顧客
-├─ 営業: 法人
-├─ CS: 利用者個人
-└─ 会計: 請求主体
-```
-
-Enterprise Ontology は canonical model ではなく、canonical semantic map として振る舞う。
-
-EAA が共有するのは「一つの意味」ではなく、「意味の違いを含む共通の意味地図」である。
-
-```
-Ontology + Domain / Position / Context
-→ その場で使う意味を導出
-```
-
-既存の Ontology 論にある「分裂を保持する」という原則を、Enterprise の全 Domain 間へ拡張する。
-
-### 6.2 Enterprise Constitution — 規範と権限
-
-各サブシステムの内部自治を認めつつ、上位の価値、制約、権限境界を共有する。
-
-各ドメインは上位規範に準拠し、自ドメインの下位規範を持つ。
-
-これは AA の P2「開発は憲法の連鎖である」の Enterprise への拡張と考えられる。
-
-### 6.3 Inter-system Protocol — 相互作用
-
-異なる Domain / 実行系同士が最低限交換できる共通形式を持つ。
-
-候補:
-
-- Intent / Goal
-- Constraints
-- Semantic references
-- Authority / permitted scope
-- Request
-- Result
-- Evidence
-- Failure
-- Escalation
-- Version / provenance
-
-重要なのは製品 API や内部プロセスの統一ではなく、異種 Domain が協調可能な接続契約を共有することである。
-
-原則的には、
-
-> Standardize the boundary, not the implementation.
-
-と表現できる。
-
-## 7. Operator / Enabler
-
-AA の内部では、設計者・実装者・テスター・レビュアーといった工程由来の人間ロールは大きく縮退する。
-
-一方、EAA では二種類の人間責務が残る。
-
-```
-Operator = Stable Structure / Governance
-Enabler  = Active Change / Outcome
-```
-
-Operator は安定した Scope の Purpose、Boundary、Authority、Constraint、Exception を所有し、現在の系を成立させる。
-
-Enabler は Change の Goal、Priority、Outcome を所有し、Mission を形成して系を次の状態へ動かす。
-
-どちらも通常の設計・実装・検証を逐次承認する役ではない。
-実行は Agent または Local Delivery System に委任し、人間は境界・価値・例外へ集中する。
-
-```
-Operator ≈ Stable Scope Governor
-Enabler  ≈ Change / Outcome Owner
-```
-
-繰り返す Operator 判断は Rule / Constitution / Contract へ変換し、繰り返す Change impediment は Enabler が構造改善として扱う。
-
-```
-Human decision
-→ record
-→ rule
-→ future autonomy
-```
-
-## 8. 人間ロールの変化
-
-従来:
-
-```
-Human Role = Development Phase
-```
-
-例:
-
-- Designer
-- Developer
-- Tester
-- QA
-- Architect
-- PM
-
-AA では工程ループが高速に閉じるため、この区分は縮退する。
-
-EAA では、人間ロールを工程ではなく二つの責務軸で捉える。
-
-```
-Human Responsibility
-= Stable Governance
-+ Active Change
-```
-
-すなわち、
-
-```
-Operator = 何を成立させ続けるか
-Enabler  = 次に何を変えるか
-```
-
-である。
-
-## 9. 既存 Enterprise Agile との比較
-
-既存 Enterprise Agile の中心問題は、主として複数の人間中心 Agile Team をどう整列・同期し、企業全体として価値を届けるかにある。
-
-典型的には、
-
-```
-Team
-→ Team of Teams / ART / Nexus
-→ Portfolio / Solution
-```
-
-というスケール構造を取る。
-
-EAA は基本粒子を人間 Team の共通プロセスではなく、自治可能な Domain として置く。
-
-```
-Domain
-→ Federation of heterogeneous Domains
-```
-
-比較すると以下のようになる。
-
-| 観点 | 既存 Enterprise Agile | EAA |
-| --- | --- | --- |
-| スケール単位 | 人間中心 Agile Team | Autonomous Domain |
-| 内部構造 | 共通 Framework / Operating Model を共有しやすい | Full Agentic / Scrum / Predictive 等を混在可能 |
-| 全体整合 | Backlog, Cadence, Event, Role | Ontology, Mission, Authority, Contract, Evidence |
-| 人間ロール | PO, SM, Architect, RTE 等 | Operator / Domain Boundary Owner |
-| 工程 | Framework ごとに一定の共通形を持つ | Domain 内部へ委任 |
-| ドメイン差 | 共通プロセス内で調整 | 自治を前提に保持 |
-| 意味整合 | 会話・Backlog・仕様で調整 | Enterprise Ontology を参照 |
-| 人間介入 | 会議・レビュー・承認が通常経路に入りやすい | EAA Boundary では例外・権限境界へ寄せる |
-
-既存 Enterprise Agile と EAA は、どちらも
-
-```
-local autonomy + global alignment
-```
-
-という同じシステム問題を解いている。
-
-ただし制約条件が異なる。
-
-人間中心 Enterprise Agile では、通信、会議、認知、handoff、人数、同期コストが主要制約となる。
-
-EAA では、異種 Delivery Model、context 差、意味差、権限、Domain 間契約が主要制約となる。Agentic Domain ではさらに確率的誤り、token / compute 消費、Agent 間の相関失敗が加わる。
-
-同じシステム論から導出しても、制約が変わるため組織構造も変わる。
-
-## 10. AI-Native Enterprise Agile との差
-
-既存の Enterprise Agile Framework も AI 利用へ進化しており、「AI が実装し、人間が intent や strategy に寄る」といった方向は EAA 固有ではない。
-
-したがって EAA の独自性を単に、
-
-- AI を使う
-- Agent に実装させる
-- 人間を戦略へ移す
-
-に置いてはならない。
-
-現時点で EAA 固有の核になりうるのは、次の組み合わせである。
-
-1. **基本粒子を共通プロセスに従う Team ではなく Autonomous Domain とする**
-2. **Agentic / Human-centered / Vendor / Package を含む異種 Domain の連邦を前提とする**
-3. **Enterprise Ontology を全 Domain の共有意味層とする**
-4. **内部 Operating Model を統一せず、Mission / Authority / Contract / Evidence の境界を統治する**
-5. **人間ロールを工程ではなく Domain Boundary / Authority の所有へ移す**
-6. **Agentic Domain では、人間の最終承認を通常経路の必須条件にせず、AA の可逆性・期待浪費・権限境界から介入を決める**
-7. **条件付き Enterprise 統制を Core に埋め込まず、Profile として追加・解除できる**
-
-## 11. 暫定的な核心命題
-
-AA:
-
-> 人間の制約から作られた開発構造を捨て、Agent の制約から Agile を再導出する。
-
-EAA:
-
-> 異なる内部 Operating Model を持つ Domain を、自治と独自性を失わせず、共通の意味・Mission・権限・Contract・Evidence によって企業規模で協調させる。
-
-短く表すなら、
-
-> **AA は Agentic ループを自律化する。EAA は異種 Domain を接続する。**
-
-EAA の設計思想としては、
-
-> **意味と規範は共有する。実装は自治する。**
-
-が現時点の有力な表現である。
-
-より厳密には、
-
-> **意味の違いまで共有し、内部実装は自治する。**
-
-## 12. 未決事項
-
-Role Model については、Operator / Enabler の基本責務と cross-domain Mission の Outcome owner を v0.1 で確定した。
-残る未決事項は主に実装・実証側である。
-
-- EAA Core と AA Principles の形式的な関係をどう定義するか
-- Enterprise Ontology の所有・改訂プロトコル
-- Domain Boundary の決め方と再編条件
-- Inter-system Protocol の最小構成
-- 複数 Mission / Domain 間で優先順位や Authority が競合した場合の arbitration
-- ドメイン間の期待浪費をどう測るか
-- EAA 固有の観測指標
-- Human escalation の閾値をどうEvidenceから学習するか
-- Budget / Commercial model と Mission portfolio の接続
-- Operator / Enabler の実負荷と適正 span
-- Agent Literacy / Adoption の成熟モデル
-- AI-Native SAFe、Team Topologies、Nexus / LeSS、Hybrid 等との厳密な先行研究比較
-- Profile の追加・廃止・versioning 手続き
-- Local Delivery Model の EAA compliance test
-
-
-## 13. ケーススタディ: 10億円・1年の業務基盤刷新
+## 6. ケーススタディ: 10億円・1年の業務基盤刷新
 
 ここでは EAA の人員モデルを具体化するため、次の仮想案件を置く。
 
@@ -411,9 +62,9 @@ Role Model については、Operator / Enabler の基本責務と cross-domain 
 - 組織方針: 20サービスを20チームに分けず、業務ドメイン単位へ再編する
 - Local Delivery Model: 本ケースでは比較を単純化するため、6 Domain を原則 Agentic / AA 系として仮置きする（EAA 一般要件ではない）
 
-### 13.1 Domain 分割
+### 6.1 Domain 分割
 
-20個の既存マイクロサービスを、実装単位ではなく業務上の自律境界で6 Domainへ束ねる。
+まず20個の既存マイクロサービスの責務を、6つのDomain Profileとして定義する。そのうえで、本ケースでは判断負荷・専門性に応じてそれぞれを独立Cellへ配置する案を仮置きする。初日から6 Cellを要求するものではない。
 
 | Domain | 旧サービス数 | 主な責務 |
 | --- | ---: | --- |
@@ -426,7 +77,7 @@ Role Model については、Operator / Enabler の基本責務と cross-domain 
 
 本ケースでは各 Domain を一つの AA 系として扱う。これはケーススタディ上の Local Delivery Model 選択であり、EAA Core が全 Domain に AA を要求することを意味しない。旧マイクロサービスの個数は、新組織の個数を決めない。
 
-### 13.2 仮置きする AWS 構成
+### 6.2 仮置きする AWS 構成
 
 本ケースでは、以下を標準構成として仮置きする。これは EAA の必須技術ではなく、具体例のための実装選択である。
 
@@ -491,7 +142,7 @@ Partner Agents
 
 Agent Interface は業務トランザクションそのものを確率的処理にしない。外部 Agent の意図を capability / task として受け、最終的な更新は型付きの deterministic API / event へ落とす。
 
-### 13.3 人員原則
+### 6.3 人員原則
 
 この案件では、人間ロールを工程別に人数比例で配置しない。
 
@@ -508,10 +159,10 @@ Developer、Tester、Reviewer 等の実行機能は、Agentic Domain では主�
 人間を配置する主な根拠は次である。
 
 1. 安定した Domain / Scope の Purpose、Boundary、Authority、Constraint を所有する
-2. Active Change の Goal、Priority、Outcome を所有する
+2. 顧客と文脈を共有し、Active Changeの目的・優先順位・受入条件を具体化して成果実現を進める
 3. Domain の現実・暗黙知を提供する
 4. Enterprise と Domain の意味を接続する
-5. 高リスク時の一時的 Authority / Assurance を担う
+5. 合意された範囲で高リスク時の検証・切替調整を担う
 
 人数原則は、
 
@@ -522,13 +173,13 @@ N(Enabler)  ∝ Active Change Demand
 
 とする。
 
-### 13.4 Persistent Roles
+### 6.4 Persistent Roles
 
-本ケースでは6 Domainを仮置きするため、Domain Operatorは概ね6名を基準とする。
+本ケースでは6つのDomain Profileを別々のCellへ分離する構成を仮置きするため、分離後のDomain Operatorは概ね6名とする。同じCellが複数Profileを引き受ける段階では、この人数は必要条件ではない。
 
 | Role | 人数の目安 | 主責務 |
 | --- | ---: | --- |
-| Enterprise Operator | 1 | Enterprise Constraint、Authority、Domain boundary arbitration、重大例外 |
+| Enterprise Operator | 1 | 全体目的・資源・共通規範、境界の調整提案、重大例外 |
 | Domain Operators | 6 | 各 Domain の Purpose、Boundary、Authority、Contract、Exception |
 | Domain Experts | 6 | 現行業務、例外、意味、業務上の正誤、Ontology訂正 |
 
@@ -538,12 +189,12 @@ Domain Operator は PL / Architect / Lead Developer の単純な改名ではな�
 Domain Expert は Operator である必要はない。
 業務知識を会議の中だけに閉じ込めず、Ontology、Example、Rule、Acceptance Evidence へ変換する。
 
-### 13.5 Enabler Pool / Active Change
+### 6.5 Enabler Pool / Active Change
 
 Enabler は Domain ごとに1名常設しない。
 
 Enterprise Enabler は Enterprise Goal から Change portfolio を形成し、優先順位と Outcome を扱う。
-Mission Enabler は一つまたは複数 Domain を横断する Active Mission を所有する。
+Mission Enablerは一つまたは複数Domainを横断するActive Missionの成果実現を進める。最終的な投資・業務判断は明示された権限者が行い、Enablerという役割だけで決定権を得るわけではない。
 
 例:
 
@@ -560,32 +211,15 @@ Enterprise Enabler
 
 Enabler数は固定せず、Active Change Demand に応じて増減させる。
 
-### 13.6 Capability は恒久ロール名を増やさない
+### 6.6 責務と実行能力を分ける
 
-Ontology、Platform、Security、Migration、B2B、Release 等をすべて専用 Operator 職種として常設しない。
+Platform、Security、Migration、Assurance、Cutoverなどの責務は必要なProfileとして定義する。専門家・Agent・ツールは、その責務を実行する能力である。
 
-それらは次のいずれかとして扱う。
+すべてを専用Cellや恒久職種として設置する必要はない。Enterprise Cellが複数Profileを引き受けてもよく、別Opeへ判断責任を渡す必要があれば独立Cellにする。
 
-- Domain / Enterprise Operator が持つ Capability
-- Mission Enabler が呼び出す専門能力
-- Active Profile が要求する一時的 Authority / Assurance
-- temporary specialist
-- Agent / platform capability
+横断責務の担当が他Cellへ変更を導入するときは、提案と対象Cellの受入を用いる。Cutoverの担当も、合意済みのGO/NO-GO・停止・rollback条件を調整する責務を持ち、他Cellの内部判断を上書きしない。
 
-例:
-
-```
-Security
-!= Security Operator を必ず1名常設
-
-Security
-= Policy / Authority / Assurance capability
-  loaded where required
-```
-
-Cutover のように短期間だけ強い Authority が必要なら、Cutover Profile の期間だけ Cutover Commander を明示してよい。
-
-### 13.7 Temporary Member
+### 6.7 Temporary Member
 
 旧基盤の暗黙知は置換完了まで一時的に必要になる。
 
@@ -597,7 +231,7 @@ Cutover のように短期間だけ強い Authority が必要なら、Cutover Pr
 
 同じ SME への質問が繰り返される場合、知識移行が未完了とみなす。
 
-### 13.8 既存ロールからの移行
+### 6.8 既存ロールからの移行
 
 | 従来ロール | EAA での主な行き先 |
 | --- | --- |
@@ -609,16 +243,16 @@ Cutover のように短期間だけ強い Authority が必要なら、Cutover Pr
 | Lead Developer | Domain Operator候補 / Agent execution |
 | Developer | AgentまたはLocal Delivery executor |
 | Tester / QA | Assurance capability / independent verification |
-| Release Manager | Cutover Profile下の一時Authority |
-| Platform / Security | Capability Ownership |
+| Release Manager | Cutover責務のもとで合意済み切替条件を調整 |
+| Platform / Security | 責務Profileの引受・実行能力の提供 |
 
 これは肩書の一対一変換ではない。
 
-### 13.9 人数モデル
+### 6.9 人数モデル
 
 固定するのは「19人」という人数ではなく、配置則である。
 
-例として開始時には、
+例として6 Domain Cellへの分離後には、
 
 ```
 1 Enterprise Operator
@@ -634,7 +268,7 @@ Cutover のように短期間だけ強い Authority が必要なら、Cutover Pr
 First Vertical Mission、Migration、B2B pilot等を並行するならEnabler需要は増える。
 Changeが収束すればEnablerは次のMissionへ移る。
 
-### 13.10 Release 条件
+### 6.10 Release 条件
 
 リリース判断は「開発完了率100%」では行わない。
 
@@ -661,41 +295,23 @@ Executor: Mission                        -> Evidence
 
 を成立させることである。
 
-## 14. ケーススタディ運営モデル: 12か月の実行スケジュールとイベント
+## 7. ケーススタディ運営モデル: 12か月の実行スケジュールとイベント
 
 本節では、新しい Operator / Enabler Role Model を一年間の基幹刷新へ適用する一例を仮置きする。
 これは EAA の規範ではない。
 
-### 14.1 基本構造
+### 7.1 基本構造
 
-```
-Stable Plane                      Change Plane
-
-Enterprise Operator <----------> Enterprise Enabler
-       |                               |
-       |                         Active Missions
-       |                         /      |       \
- Domain O A                 Mission E  Mission E  Mission E
- Domain O B                      \      |      /
- Domain O C                       Domain Operators
- ...                                    |
-                                  Local Executors
-                                       |
-                                    Evidence
-```
-
-組織単位は次のように扱う。
-
-| Unit | 存続期間 | 目的 |
+| 構成 | 責任 | 配置判断 |
 | --- | --- | --- |
-| Enterprise Governance | 全期間 | Enterprise Constraint / Authority / Boundary |
-| Domain Cell | 原則全期間 | 各 Domain の安定運転 |
-| Mission Cell | Mission期間 | 特定 Outcome / Change |
-| Cutover Cell | 高リスク期間のみ | 切替・rollback・GO/NO-GO |
+| Enterprise Cell | 全体目的・資源・共通規範を扱う | 初期に複数Profileを引き受けてよい |
+| Domain Cell | 引き受けたDomain Profileの成果・保証 | 独立したOpeへ判断責任を移した時に成立 |
+| 横断責務の引受Cell | Platform、Migration、Cutoverなど | 同じCellで担うか、必要に応じて独立 |
+| Mission Collaboration | Enablerと関係Cellによる成果実現の協働 | Mission終了で解消でき、これ自体をCellとはしない |
 
-Mission Cell は Mission Enabler と必要な Domain Operator / Expert / Executor から形成し、Outcome達成後に解散する。
+Cellの成立には独立した責任・権限・実行能力とOpeが必要である。短期の協働会議や参加者の集合をCellと呼ばない。
 
-### 14.2 Scrum の位置づけ
+### 7.2 Scrum の位置づけ
 
 プロジェクト全体に Scrum を強制しない。
 
@@ -713,7 +329,7 @@ Observation
 
 を連続的に回せるため、全Domain共通SprintやDaily Scrumを標準イベントにはしない。
 
-### 14.3 Daily Evidence
+### 7.3 Daily Evidence
 
 Daily Evidence は一種類の進捗報告ではなく、見る責務によって分ける。
 
@@ -738,7 +354,7 @@ Enabler view:
 
 異常や判断需要がなければ同期会議を開かない。
 
-### 14.4 人間イベント
+### 7.4 人間イベント
 
 | Event | 発火 | 主な参加者 | 目的 |
 | --- | --- | --- | --- |
@@ -746,13 +362,13 @@ Enabler view:
 | Operator Council | event-driven | Enterprise / 関係 Domain Operators | Authority、Boundary、Constraint、重大例外 |
 | Enabler Council | event-driven | 関係 Enablers | cross-domain Mission、repeated blocker、学習共有 |
 | Domain Reality Session | as needed | Domain O + Expert + SME +必要なEnabler | 現実をRule / Ontology / Evidenceへ変換 |
-| Cutover War Room | rehearsal / cutover | temporary Cutover Cell | 高リスク同期判断 |
+| Cutover War Room | rehearsal / cutover | Cutover責務の引受Cell + 関係Cell | 高リスク同期判断 |
 
 進捗報告のためだけに会議を開かない。
 
-### 14.5 Day 0
+### 7.5 Day 0
 
-Day 0では詳細WBSを作らない。
+Day 0では必要なStandard / Domain Profileを列挙し、初期の引受Cellと権限・資源を合意する。一つのCellから始めてもよい。以下は関係権限者と具体化する項目であり、他Cellへの一方的な設定ではない。
 
 Enterprise Operator側で、
 
@@ -770,13 +386,13 @@ Enterprise Enabler側で、
 - First Vertical Mission
 - expected Outcome
 
-を置く。
+を顧客などの正当な判断主体と具体化する。
 
 最初の Vertical Mission は複数 Domain を横断する実業務を選ぶ。
 
-### 14.6 Week 1-2: Boundary / Ontology Discovery
+### 7.6 Week 1-2: Boundary / Ontology Discovery
 
-最初のMissionに必要なDomainを優先起動する。
+最初のMissionに必要なProfileを優先して引き受ける。分離が必要な範囲だけ、別Opeと権限・資源を用意してCellを起動する。
 
 Agent / Executorは旧ソース、DB schema、API、batch、log、incident、manual、test等を解析し、
 
@@ -793,7 +409,7 @@ Observed reality
 
 Domain OperatorはAuthority / Boundary / Contractを分類し、Mission EnablerはOutcome達成に必要なChangeをMissionへ整理する。
 
-### 14.7 Week 3-6: First Autonomous Vertical Mission
+### 7.7 Week 3-6: First Autonomous Vertical Mission
 
 ```
 Intent
@@ -809,7 +425,7 @@ Intent
 
 確認対象:
 
-- Mission Enablerがcross-domain Outcomeを所有できる
+- Mission Enablerが顧客の文脈を共有し、関係Cellとcross-domain Outcomeを成立させられる
 - Domain Operatorが各Boundaryを守れる
 - Ontology / Contractを共有できる
 - Human PMを通常経路に置かず進む
@@ -818,18 +434,18 @@ Intent
 
 成立しない場合、大量実装前にRole / Boundary / Protocolを修正する。
 
-### 14.8 Month 2-3: Domain Activation
+### 7.8 Month 2-3: Domain Activation
 
-First Missionが通った後、必要Domainを本格起動する。
+First MissionのEvidenceから負荷・専門性を判断し、必要なProfileの責務を独立Cellへ移す。すべてを分離することを成功条件にはしない。
 
 Agentic DomainはAA loopを回し、非Agentic Domainは自身のLocal Delivery ModelでMissionを処理する。
 
 人間が細かいStoryを大量作成することは前提にしない。
 
-### 14.9 Backlog / Mission Portfolio
+### 7.9 Backlog / Mission Portfolio
 
 Enterprise EnablerはChange portfolioを持てる。
-Mission EnablerはActive MissionのGoal / Outcome / Priorityを持つ。
+Mission EnablerはActive MissionのGoal / Outcome / Priorityを顧客・関係Cellと具体化し、成果実現を進める。最終決定は明示された権限者が行う。
 
 Domain内部の細かなtask decompositionはLocal Executorへ委任する。
 
@@ -840,7 +456,7 @@ Change Portfolio
 → Evidence
 ```
 
-### 14.10 Month 3: First Production Slice
+### 7.10 Month 3: First Production Slice
 
 全面切替を必須とせず、小さなproduction sliceを出す。
 
@@ -853,7 +469,7 @@ Change Portfolio
 - 正常系でOperator承認待ちをしない
 - Mission OutcomeをEvidenceで確認できる
 
-### 14.11 Month 4-8: Parallel Change
+### 7.11 Month 4-8: Parallel Change
 
 複数のActive Missionを並行させる。
 
@@ -865,9 +481,9 @@ Change Portfolio
 - Knowledge extraction
 
 Change量が増えればEnablerを増やす。
-Domain数が変わらない限り、OperatorをChange量に比例して増やさない。
+Operator配置は独立した判断責任の範囲と負荷から見直す。Domain Profile数やChange量に比例して機械的に増やさない。
 
-### 14.12 Month 6: Midpoint Evidence Review
+### 7.12 Month 6: Midpoint Evidence Review
 
 見るもの:
 
@@ -888,55 +504,38 @@ Domain数が変わらない限り、OperatorをChange量に比例して増やさ
 
 である。
 
-### 14.13 Month 9-10: Shadow / Reconciliation / Cutover Preparation
+### 7.13 Month 9-10: Shadow / Reconciliation / Cutover Preparation
 
-Migration / Cutoverは恒久専用Operatorを前提とせず、Mission / Capability / Active Profileとして扱う。
+Migration / Cutover Profileの引受先を定め、必要な能力・資源を確保する。専用Cellは必須ではなく、独立した判断責任が必要な場合に別Opeへ分離する。
 
-Cutover Profileを有効にした期間だけ、最終AuthorityとしてCutover Commanderを明示してよい。
+関係CellはGO/NO-GO・停止・rollback・同期時刻・必要Evidence・判断主体を事前合意する。全体切替の調整責務は、各Cell内部を直接指揮する権限を意味しない。
 
-参加者は必要なDomain Operator、Mission Enabler、Migration/Platform/Security等の専門家、Legacy SMEから構成する。
+### 7.14 Month 11: Release Candidate Mode
 
-### 14.14 Month 11: Release Candidate Mode
+Assurance / Cutoverの引受先は追加検証や適用条件を提案する。規範変更は正当な人間の変更権者が承認し、影響するCellは採用・移行を合意する。Profileの有効化だけで他Cellの権限・制約は変わらない。
 
-通常Authorityを一律に捨てず、Assurance / Cutover Profileによって一時的に制約を強くする。
+各Cellが候補とEvidenceを提示し、事前合意した判定条件を満たした場合だけ切替へ進む。条件を満たさない時は合意した停止・差戻し・復旧経路を使う。
 
-```
-Normal
-Executor
-→ automated verification
-→ production
+### 7.15 Month 12: Final Cutover
 
-High-risk window
-Executor
-→ candidate
-→ required evidence
-→ elevated assurance
-→ explicit authority where required
-→ production
-```
+合意済みの条件に基づいて全体GO/NO-GOを調整し、各Cellが自己の範囲で切替と復旧を行う。高リスク期間も分離済みCellの自治を上書きしない。
 
-### 14.15 Month 12: Final Cutover
+終了後は残件・保証・監視責務を引き継ぎ、一時的な責務配置と条件を合意した終了手順で解除する。合意不成立や未想定の緊急事態の詳細手続きは未決であり、このケースが解決済みとするものではない。
 
-Final Cutoverでは一時的なcommand structureを許す。
-
-平時の分散自治を、高リスク・時間制約の強い切替へ教義として強制しない。
-
-Cutover完了後は一時Authorityを解除し、通常のOperator / Enabler構造へ戻す。
-
-### 14.16 12か月の全体像
+### 7.16 12か月の全体像
 
 | 時期 | Stable Plane | Change Plane | Milestone |
 | --- | --- | --- | --- |
-| Day 0 | Enterprise O + initial Domain O | Enterprise E + First Mission E | Kickoff |
-| Week 1-2 | Boundary / Authority | First Mission shaping | Boundary v0 |
+| Day 0 | Profile列挙 + 初期引受Cell | Enterprise E + First Mission E | Kickoff |
+| Week 1-2 | Boundary / Authority / 責務配置 | First Mission shaping | Boundary v0 |
 | Week 3-6 | Domain governance | First Vertical Mission | First E2E Outcome |
 | Month 2-3 | Domain activation | Production Mission | First Production Slice |
 | Month 4-8 | Stable Domain O | Multiple Mission Enablers | Parallel Replacement |
-| Month 9-10 | Operator + temporary authority | Cutover readiness missions | Cutover Ready |
-| Month 11 | tightened authority | Release candidate | RC |
-| Month 12 | temporary command | Final cutover | Release |
+| Month 9-10 | 合意済み切替条件と判断主体 | Cutover readiness missions | Cutover Ready |
+| Month 11 | 採用合意済みの検証・受入条件 | Release candidate | RC |
+| Month 12 | 合意に基づく同期調整 | Final cutover | Release |
 
-### 14.17 Event-driven Escalation
+### 7.17 Event-driven Escalation
 
 人間イベントはcadenceだけで発火させない。
 
@@ -957,9 +556,9 @@ mission blocked across domains
 
 繰り返す問題は単発判断で終わらせず、EnablerがChangeとして扱う。
 
-### 14.18 この運営モデルが示すこと
+### 7.18 この運営モデルが示すこと
 
-EAAの標準的な人間構造は、
+このケースで選んだ人間配置は、
 
 > **Persistent Operators + Change-driven Enablers + Local Executors + Event-driven Governance**
 
@@ -967,7 +566,7 @@ EAAの標準的な人間構造は、
 
 ```
 Operator = Govern stable scope
-Enabler  = Own active change
+Enabler  = Shape context and drive outcomes
 Executor = Execute and return Evidence
 ```
 
@@ -975,7 +574,7 @@ Executor = Execute and return Evidence
 判断が必要な場所、Changeが止まった場所、Boundaryが破れた場所である。
 
 
-## 15. Mission Graph / Evidence Graph による開発観測
+## 8. Mission Graph / Evidence Graph による開発観測
 
 EAA では、Mission を GitHub Issue、分解された Mission を Sub-issue、実装・検証結果を PR / Actions / Comment / Artifact として残すことで、プロジェクト全体をグラフとして観測できる。
 
@@ -989,7 +588,7 @@ Project
 
 と捉えられる。
 
-### 15.1 Mission Graph
+### 8.1 Mission Graph
 
 Mission Graph の node は Mission / Sub-mission であり、edge は例えば次の関係を表す。
 
@@ -1003,7 +602,7 @@ Mission Graph の node は Mission / Sub-mission であり、edge は例えば�
 
 これにより、「どの意思から、どの作業が派生したか」を後から辿れる。
 
-### 15.2 Evidence Graph
+### 8.2 Evidence Graph
 
 Evidence Graph は、Mission が正しく達成されたと判断した根拠を結びつける。
 
@@ -1021,7 +620,7 @@ Mission #100
 
 Evidence は単なる添付物ではなく、Mission の完了条件を支える構造として扱う。
 
-### 15.3 効率指標
+### 8.3 効率指標
 
 Mission Graph を観測すると、従来の進捗率では捉えにくかった浪費や乖離を測定できる。
 
@@ -1056,7 +655,7 @@ Realized Rework
 
 として近似できる。
 
-### 15.4 Intent Drift
+### 8.4 Intent Drift
 
 Agentic execution では Mission が再帰的に分解されるため、深い子 Mission が親の意図から離れる可能性がある。
 
@@ -1071,7 +670,7 @@ contributes_to: contract-change-latency
 
 親 Goal への寄与を説明できない node は、Intent Drift の候補となる。
 
-### 15.5 Discarded Graph と Waste Graph を分ける
+### 8.5 Discarded Graph と Waste Graph を分ける
 
 破棄された仕事をすべて浪費とはみなさない。
 
@@ -1091,7 +690,7 @@ Discarded Graph != Waste Graph
 - intent-drift
 - duplicate
 
-### 15.6 AA の期待浪費との接続
+### 8.6 AA の期待浪費との接続
 
 AA では、自律速度を考える基礎量として、
 
@@ -1124,7 +723,7 @@ C(check)
 
 このとき D4 は単なる設計思想ではなく、実プロジェクトの履歴から学習する制御則へ近づく。
 
-### 15.7 進捗ではなく実行構造を見る
+### 8.7 進捗ではなく実行構造を見る
 
 EAA の観測画面は、単純な「何%完了したか」だけを中心に置かない。
 

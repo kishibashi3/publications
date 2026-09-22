@@ -1,58 +1,32 @@
-# EAA Delivery Guide v0.2
+# EAA Delivery Guide — Cell／Profile改訂草案
 
-2026-09-21 · Kazuhiro
+2026-09-22 · Kazuhiro
 
 > Status: draft / non-normative
 >
 > 本文書は EAA Core と Profiles を実案件へ適用するための Reference Guide である。
 > Core の規範は `enterprise-agentic-agile-core-v0.1.md`、
-> 条件付き規範は `eaa-profiles-v0.1.md` を参照する。
+> 責務仕様は `eaa-profiles-v0.1.md` を参照する。
 > 組織導入・役割移行・Transparency の受容については `eaa-adoption-guide-v0.1.md` を参照する。
 > Operator / Enabler / Agent の人間ロールモデルは `eaa-role-model-v0.1.md` を参照する。
 
-## 1. まず層を分ける
+## 1. 責務を先に定義する
 
-EAA を導入するとき、最初に「何を全員へ強制するか」を考えない。
+一つのCellで始め、必要なStandard／Domain Profileを列挙する。
+Profileは引き受ける責務の仕様であり、ロードは責務・権限・能力を具体的なCellに結びつけることを意味する。
+その後、同じCellで担うか、別Opeが引き受ける子Cellへ分けるかを決める。
 
-```
-EAA Instance
-= Core
-+ Active Profiles
-+ Local Delivery Models
-+ Reference Patterns
-```
-
-Core は小さく保つ。
-
-案件固有の統制は Profile として追加する。
-
-Domain 内部の作り方は Local Delivery Model として自治する。
-
-GitHub、会議、レポート、AWS構成等は Pattern とする。
+Coreは分割方針とCell間の協働を定める。
+内部の作り方はLocal Delivery Modelとして自治し、GitHub・会議・AWS構成等はPatternとして選ぶ。
+Enterprise／Domainは位置の名前であり、Platformも同じCell構造で扱う。
 
 ---
 
-## 2. 最初に覚える7語
+## 2. 最初に共有する語彙
 
-EAA を始める人は、まず次の7語で会話できればよい。
-
-> **Operator**
->
-> **Enabler**
->
-> **Agent / Executor**
->
-> **Domain**
->
-> **Mission**
->
-> **Evidence**
->
-> **Escalation**
-
-例:
-
-> Mission は進んでいる。Evidence は green。Escalation はない。
+Cell、Profile、Mission、Operator、Enabler、Executor、Evidenceを区別する。
+Cellは主体、Profileは責務、Missionは具体的な変化・成果である。
+Cell間ではOntology・Constitution・Contractを参照し、提案と受入によって協働する。
 
 ---
 
@@ -89,32 +63,12 @@ Escalationできる
 
 ## 4. Profile Selection
 
-案件開始時に、必要な Profile だけ選択する。
+案件に必要なDomain ProfileとStandard Profileを列挙し、責任範囲・権限・保証を明示する。
+基幹刷新なら、契約・請求などのDomain Profileと、Platform・Portfolio・Supplier・MigrationなどのStandard Profileが候補になる。
 
-例: 大規模基幹刷新
-
-```
-Core
-+ Portfolio Profile
-+ Supplier Profile
-+ Migration Profile
-```
-
-高リスク期間:
-
-```
-+ Assurance Profile
-```
-
-Cutover 期間:
-
-```
-+ Cutover Profile
-```
-
-全 Profile を最初から有効化しない。
-
-> **必要な統制を、必要な場所と時間にだけロードする。**
+初めから全Profileを専用Cellにしない。元のCellが担える責務はまとめ、継続的な判断負荷に応じて別Opeへ分ける。
+AssuranceやCutoverなど期間・リスクに応じた責務も、その引受先と必要能力を明確にする。
+追加の検証や設定を他Cellへ導入するときは、対象Cellへの提案と受入を通じて成立させる。
 
 ---
 
@@ -152,7 +106,7 @@ Hypothesis
 
 を短い自律ループとして回す。
 
-ただし生成と判定の独立性が必要な場合は、別 Agent / 別 model lineage / independent judge を使う。
+Agentic CellではAAの生成と判定の分離に従い、別Agent・別モデル系列などによる判定を行う。
 
 > **作る仕事は統合する。判定の独立性は残す。**
 
@@ -167,11 +121,14 @@ EAA の durable provenance を実装する一例として GitHub を使う。
 ```
 Issue        = Mission
 Sub-issue    = Mission decomposition
-PR           = Implementation artifact
+PR           = Change proposal / artifact
 Actions      = Verification evidence
 Comment      = Decision / Evidence
-Close        = Mission completion
+Close        = Evidenceに基づくMission完了の記録
 ```
+
+Cell間の変更は、親子・横断を問わずPRとして提案し、対象Cellが受け入れる。
+通常の変更はAgentが判定できる。規範改訂と採用版の移行は正当な所有者が判断する。
 
 AgentHub や chat は realtime / ephemeral coordination に利用できる。
 
@@ -195,7 +152,8 @@ eaa:
   version: 0.1
   type: mission
 
-  domain: contract
+  cell: contract
+  profile: contract
   requested_by: integration
 
   goal: >
@@ -206,9 +164,20 @@ eaa:
     - 確定済み請求を変更しない
 
   ontology:
-    - enterprise://contract
-    - enterprise://billing-plan
-    - enterprise://customer
+    - ref: enterprise://contract
+      version: example-1
+    - ref: enterprise://billing-plan
+      version: example-1
+    - ref: enterprise://customer
+      version: example-1
+
+  constitution:
+    ref: enterprise-constitution
+    version: example-1
+
+  contract:
+    ref: contract-change
+    version: example-1
 
   authority:
     write:
@@ -221,6 +190,7 @@ eaa:
     - rollback-tested
 ```
 
+これは説明用の記法であり、確定スキーマではない。実際の採用版と引受条件を解決可能にする。
 その後に人間向けの背景や判断理由を書いてよい。
 
 ---
@@ -273,7 +243,7 @@ Mission / Evidence Graph から、作業量ではなく実行構造を観測す�
 | Intent Drift | 親 Mission と子孫 Mission の目的乖離 |
 | Blocked Mass | 停止している subgraph のコスト |
 | Escalation Rate | Mission あたり Human Escalation 回数 |
-| Authority Tightening Rate | 自律に委ねた Authority を戻した / ゲートを追加した回数 |
+| Authority Tightening Rate | 合意された手続きでAuthorityや受入条件を厳しくした回数 |
 
 node cost の例:
 
@@ -408,47 +378,36 @@ DBA が全 table definition を所有するのではなく、
 
 > **Domain が安全に table を所有できる環境を所有する。**
 
-Platform / Security / Data / Observability 等も同様に扱える。
+Platform / Security / Data / Observability等の責務はProfileで定義する。
+既存Cellの能力として担うか、独立Cellへ分けるかが配置Patternである。
+他Cellへの規則・検査・CI/CD導入はPRで提案し、対象Cellが受入を判断する。
 
 ---
 
-## 14. Mission Cell Pattern
+## 14. Mission Collaboration Pattern
 
-複数 Domain をまたぐ一時的な Outcome のために Mission Cell を形成してよい。
+複数CellをまたぐOutcomeのために、Enablerと関係CellのOpe・専門家・Executorが一時的に協働する。
+Enablerは成果成立を進めるが、各Cellの受入判断を代行しない。
 
-```
-Persistent Domain Cells
-+ Temporary Mission Cells
-```
-
-Mission Cell には Mission Outcome を所有する Enabler を置く。
-関係 Domain Operator は各 Domain の Authority / Boundary / Contract を所有する。
-
-Mission Cell は恒久組織にしない。
-Mission 完了後に解散する。
-
-各 Domain の内部 Operating Model は維持してよい。
+この協働体を、独立した責任・権限を持つCellと混同しない。
+独立Cell化が必要なら、引き受けるProfileとOpe、権限・資源・Contractを明示する。
+協働が終わっても、有用な能力・規範・Evidenceは責務の引受先へ残す。
 
 ---
 
 ## 15. Startup Pattern
 
-EAA 案件の開始時に、最初から全組織を作り込まない。
+1. 一つのCellとOpeを置き、顧客文脈を扱うEnablerの役割を定める。兼務してもよい。
+2. 最初のMissionに必要なStandard／Domain Profileを列挙する。
+3. Ontology・Constitution・Authority・ContractとEvidence経路を具体化する。
+4. 各Profileを同じCellで担うか、別Opeへ移して子Cellにするかを決める。
+5. 分けた場合は提案・受入・記録を接続し、最初のMissionを実行する。
 
-最低限:
+Federationを検証するPoCでは、複数の責任領域を横断する実業務を選び、少なくとも一つの実際のCell間境界を設ける。
+これはPoC上の選択であり、EAAが開始時から複数Cellを要求することを意味しない。
 
-1. Enterprise Operator
-2. First Vertical Mission の Enabler
-3. 最初の Mission に必要な Domain Operators
-4. Enterprise Ontology v0
-5. Constitution / Authority v0
-6. First Vertical Mission
-7. Durable Evidence path
-8. 必要最小限の Active Profiles
-
-最初の Vertical Mission は、複数 Domain を横断する実業務を選ぶ。
-
-同時に、技術成立性だけでなく、役割移行・Transparency 受容・Operator 依存・Human decision latency を観測する。EAA 導入を既存組織へ適用する際は、`eaa-adoption-guide-v0.1.md` の socio-technical stress test を併用する。
+役割移行・Transparency受容・Ope依存・判断待ちも観測する。
+組織導入は [Adoption Guide](eaa-adoption-guide-v0.1.md) を参照する。
 
 ---
 
@@ -456,11 +415,11 @@ EAA 案件の開始時に、最初から全組織を作り込まない。
 
 ### Week 1-2
 
-- Domain boundary 仮置き
+- 必要Profileと責任境界を仮置き
 - Ontology v0
 - Authority v0
 - Legacy discovery
-- Active Profiles 決定
+- Profileの引受先を決め、必要な境界だけ別OpeのCellへ分離
 - First Vertical Mission の Mission 化
 - Evidence path 構築
 
@@ -481,7 +440,8 @@ Intent
 
 Week 6 までに確認するのは新システム完成ではなく、
 
-- Domain 間で Mission が渡る
+- Cell間でMissionが渡り、引受条件を合意できる
+- 双方向のPR提案と対象Cellの受入判断が成立する
 - Ontology / Contract を参照できる
 - Authority を越えない
 - Required Evidence が残る
@@ -547,41 +507,25 @@ PoC等では Agent Literacy を仮に次のように扱える。
 目的は全員を L3 にすることではなく、
 
 ```
-Minimum Sufficient Literacy(domain)
+Minimum Sufficient Literacy(role, cell)
 ```
 
 を見つけることである。
+Opeは自律実行系を成立させる能力、Enablerは顧客文脈を具体化する能力を重視する。全員に同じAgent運用能力を要求しない。
 
 ---
 
-## 19. 大規模刷新での Profile 例
+## 19. 大規模刷新でのProfileとCutover
 
-10億円規模の基幹刷新での一例。
+通常期は、必要な業務責務とPlatform・Portfolio・Supplier・Migrationの責務を引受先へ割り当てる。
+Assuranceは必要な検証能力を整え、対象Cellへ検証経路やEvidence条件を提案する。
 
-### 通常期
+Cutoverでは切替全体の実施可否を判断する担当を置ける。
+各Cellが受け入れた準備条件・実行順序・GO／NO-GO・復旧条件に基づいて同期調整する。
+全体GOは、未受入の変更を他Cellへ強制適用する権限ではない。
 
-```
-Core
-+ Portfolio
-+ Supplier
-+ Migration
-```
-
-### 高リスクな Release Candidate 期間
-
-```
-+ Assurance
-```
-
-### Final Cutover
-
-```
-+ Cutover
-```
-
-Cutover 中だけ同期 communication と Human GO を強化してよい。
-
-終了後は Cutover Profile を解除し、通常 Authority へ戻す。
+切替後は残件・資産・記録・継続運用を引き継ぎ、Cutover責務を終了する。
+解除で他Cellの採用規範を自動的に書き換えない。予期しない不一致や緊急時の詳細は未決事項である。
 
 ---
 
@@ -594,4 +538,4 @@ Cutover 中だけ同期 communication と Human GO を強化してよい。
 EAA の安定性は Core を小さく保つことで確保し、
 Enterprise の多様性は Profile と Local Delivery Model で吸収する。
 
-> **Core は変えにくく、Profile は出し入れでき、Pattern は学習によって交換できる。**
+> **Coreは小さく保ち、Profileの責務を配置し、PatternはEvidenceから改善する。**

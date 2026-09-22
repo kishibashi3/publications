@@ -1,432 +1,118 @@
-# EAA Role Model v0.1
+# EAA Role Model — 改訂草案
 
-2026-09-21 · Kazuhiro
+2026-09-22 · Kazuhiro
 
 > Status: draft / reference model
 >
-> EAA における最小の人間ロールモデルを具体化する Reference Model。
-> Operator / Enabler の基本責務は EAA Core Vocabulary に従う。
-> 人数、配置、Council、scope variation、既存ロールからの移行例は non-normative であり、案件ごとに調整してよい。
+> 基本責務は [EAA Core](enterprise-agentic-agile-core-v0.1.md) に従う。
+> 配置・人数・Council・既存職種との対応はReference Modelである。
+> 旧v0.1のファイルパスは参照互換のため維持する。
 
-## 1. 三つの基本主体
+## 1. 三つの責務
 
-```
-Operator = Govern
-Enabler  = Change
-Agent    = Execute
-```
+| 役割 | 所有する責任 |
+| --- | --- |
+| Operator | Cellを成立させ続ける条件、境界、権限、規範、例外判断 |
+| Enabler | 顧客・関係者の文脈から目的と受入条件を具体化し、成果成立まで変化を進める |
+| Executor | 設計・実装・運用・検証などを実行し、Evidenceを返す |
 
-> **Operator owns what is.**
->
-> **Enabler owns what should change.**
->
-> **Agent executes the change.**
-
-ここで Agent は Agentic Domain における代表的 executor を表す。
-非 Agentic Domain では、Executor は人間チーム、Vendor process、Package implementation 等の Local Delivery System でもよい。
-
-日本語では、
-
-> **Operator は現在の系を成立させる。**
->
-> **Enabler は系を次の状態へ動かす。**
->
-> **Executor はその変化を実行する。**
-
-と表現する。
-
----
+EnablerとOpeは異なる責務を持つpeerである。
+同一人物が兼務できるが、何の責任と権限で判断するかを区別する。
+Agentic CellではAgentが代表的なExecutorとなり、他のCellでは人間チームやVendorも担う。
 
 ## 2. Operator
 
-Operator は bounded scope の統治と継続的成立条件を所有する。
+Opeは、自分のCellが引き受けたProfileを成立させる責任を持つ。
+業務の意味と不変条件を理解し、Agentが動ける規範・環境・判定条件へ落とす。
 
-主な責務:
+通常の全成果物を逐次承認する役ではない。
+繰り返される判断を規範へ変換し、実行と検証を自律系へ渡す。
+規範の改訂は正当な所有者の承認を経る。
 
-- Authority
-- Constraint
-- Policy
-- Risk / Exception
-- Domain Boundary
-- Contract
-- Evidence requirement
-- Escalation
-- scope の健全性
+人物像としては、業務と技術に通じ、権限と責任を持ったアーキテクトに近い。
+自分で全部判断し続ける能力より、判断を明示して任せられる能力を重視する。
 
-Operator は「最も多くコードを書く人」ではない。
-
-```
-Leader Output
-!= Code
-
-Leader Output
-= Better Governed Autonomous System
-```
-
-### Operator は安定した責任境界に属する
-
-```
-Enterprise Operator
-Area Operator
-Domain Operator
-```
-
-は別職種ではなく、すべて `Operator(scope)` である。
-
-```
-N(Operator) ∝ N(stable decision scopes)
-```
-
-Domain を基本単位にするなら、
-
-```
-N(Operator) ∝ N(Domain)
-```
-
-と考えられる。
-
----
+OpeのAgenticなリテラシーは、CellがFull／Half／Legacyのどの実行方式を取れるかに大きく影響する。
+実行方式は技術・契約・対象業務の条件にも左右される。
 
 ## 3. Enabler
 
-Enabler は Change を所有する。
+Enablerは顧客と信頼関係を作り、言葉の背景、優先順位、暗黙の事情を理解する。
+実行側の疑問や制約を顧客が判断できる形へ返し、決定をMission・Ontology・Contractなどの記録へ戻す。
 
-Change は障害改善だけではない。
+PO的な役割だが、顧客接点を持つことが最終決定権を意味するわけではない。
+最終決定権を顧客等が持つ場合も、Enablerは判断を成立させ、成果が得られるまで変化を進める責任を持つ。
 
-- 新しい顧客価値
-- 新機能
-- Legacy 撤去
-- Agent 自律範囲の拡張
-- Human Gate の Rule 化
-- Boundary Wait の削減
-- 新しい業務能力
-
-など、現在状態から望ましい状態へ移すものすべてを含む。
-
-EAA では micro task ではなく Mission を主語にする。
-
-```
-Mission
-= a change or problem worth solving
-```
-
-したがって、
-
-> **Enabler は問題ではなく Active Change に属する。**
-
-```
-N(Enabler) ∝ Active Change Demand
-```
-
-であり、
-
-```
-N(Enabler) != N(Operator)
-```
-
-でよい。
-
----
-
-## 4. Stable Plane と Change Plane
-
-```
-Operator Plane
-= Stable Structure / Governance
-
-Enabler Plane
-= Change / Mission / Opportunity
-
-Agent Plane
-= Execution
-```
-
-概念図:
-
-```
-                 Enterprise
-        +-------------------------+
-        |                         |
- Enterprise Operator      Enterprise Enabler
-        |                         |
-   stable governance        portfolio / change
-        |                         |
-   +----+----+              +-----+------+
-   |         |              |            |
-Domain O   Domain O      Mission E     Mission E
-   |         |              |            |
-   +---------+------ Agents +------------+
-```
-
-> **Operator は構造に属し、Enabler は変化に属する。**
-
----
-
-## 5. Operator と Enabler
-
-一つの Change に対して責務を分ける。
-
-```
-Enabler
-- 何を変えるべきか
-- 何を達成したいか
-- Priority / Outcome
-
-Operator
-- どこまで任せてよいか
-- 何を守るべきか
-- Authority / Constraint / Evidence
-```
-
-Enabler は Operator の補佐ではなく、Operator も Enabler の単純な承認者ではない。
-異なる責務を持つ peer とする。
-
----
-
-## 6. Cross-domain Mission
-
-重要な Change は複数 Domain を横断しうる。
-
-```
-             Mission Enabler
-                  |
-       +----------+----------+
-       |          |          |
- Contract O   Billing O   Customer O
-       |          |          |
-       +--------- Agents -----+
-```
-
-Enabler が Mission Outcome を所有し、Operator は各 Domain の Authority / Boundary / Contract を所有する。
-
----
-
-## 7. Enterprise Operator
-
-Enterprise Operator はスーパーPMではない。
-
-扱うのは Enterprise scope でしか解けない統治判断である。
-
-- Enterprise-wide Constraint
-- Enterprise Authority
-- Domain boundary arbitration
-- cross-domain conflict
-- major risk / exception
-- Profile activation
-- Enterprise-level Contract
-
-通常の Domain 判断や Mission 進捗を抱え込まない。
-
-### 過負荷は診断信号
-
-```
-Enterprise O overloaded
-        |
-        +-- local decision
-        |      -> delegate Authority
-        |
-        +-- repeated conflict
-        |      -> Enabler に構造改善を渡す
-        |
-        +-- too many scopes
-        |      -> split scope
-        |
-        +-- truly enterprise-wide
-               -> Enterprise Operator
-```
-
-成熟するほど `Enterprise Operator Load` は下がるべきである。
-
----
-
-## 8. Enterprise Enabler
-
-Enterprise Enabler は Enterprise の Change / Value / Portfolio を所有する。
-
-従来の Product Owner に最も近い EAA ロールである。
-
-```
-Product Owner
-「次に何を作るべきか」
-
-Enterprise Enabler
-「Enterprise は次に何を変えるべきか」
-```
-
-主な責務:
-
-- Enterprise Goal を Change へ落とす
-- Opportunity / Problem を発見する
-- Mission を形成する
-- Priority を決める
-- 必要な Domain を招集する
-- Outcome を Evidence で確認する
-
-概念的には、
-
-```
-Enterprise Enabler
-≈ Product Owner
-+ Portfolio Change Leadership
-```
-
-と捉えられる。
-
----
-
-## 9. 顧客との接点
-
-顧客接点も Governance と Change に分ける。
-
-```
-Customer Overall Lead
-        |
-        +-- Goal / Priority / Outcome
-        |          ↕
-        |   Enterprise Enabler
-        |
-        +-- Authority / Constraint / Risk
-                   ↕
-            Enterprise Operator
-```
-
-各 Domain では、
-
-```
-Customer Domain Owner
-        ↕
-   Domain Operator
-```
-
-を基本とする。
-
-Active Mission では Enabler が Domain Owner / SME と直接対話してよい。
-
-PM を介した伝言ゲームを作らず、決定事項は Mission / Authority / Contract として durable source に戻す。
-
----
-
-## 10. 既存ロールからの移行
-
-| Existing role | 主な移行先 |
+| 区別 | 扱い |
 | --- | --- |
-| Product Owner / Product Manager | Enabler / Enterprise Enabler |
-| Scrum Master | Enabler capability |
-| Project Manager | Operator / Enabler |
-| PMO | Enterprise Operator / Enabler |
-| Architect | Operator |
-| Tech Lead | Domain Operator |
-| QA / Test Lead | Operator / Enabler |
-| SRE | Operator / Enabler |
-| Security | Operator |
-| BA / 業務SE | Enabler / Domain Expert |
+| Goal・Priorityの最終決定 | 明示された権限者が行う。Enablerが権限を持つ場合もある |
+| Missionの具体化・阻害解消・成果確認 | Enablerが進める |
+| 各Cellの変更受入 | 対象Cellが規範に従って判断する |
 
-EAA Core は PO / Scrum Master を必須としない。
-Scrum を Local Delivery Model として採用する Domain では残してよい。
+Enablerは伝言だけで完了しない。各Cellの局所完了を集めるだけでなく、横断したOutcomeをEvidenceで確認する。
+Agentの高度な運用能力は中核要件ではない。顧客理解と文脈の往復を強みとする人が担える。
 
-PO の Goal / Value / Priority は Enabler へ、
-SM の Flow / impediment / learning / organizational change は Enabler capability へ移りうる。
+## 4. Profileと配置
 
----
+先に必要なProfileを定義し、その責務を引き受けるCell・Opeを決める。
+一人のOpeが一つのCellで複数Profileを担ってよい。
+責務を別Opeへ渡して自律判断できるようにすると、独立した子Cellになる。
 
-## 11. 横断構造
+Enterprise／Domain／PlatformのOpeは別職種ではなく、同じOperatorが異なる責任範囲を担う呼び名である。
+独立した判断責任をいくつに分けるかがOpeの配置を決める。Profile数だけOpeを置く必要はない。
 
-必要なら二つの council / community を持てる。
+Enablerの需要はActive Changeの量と複雑さで決まる。
+Cellごとの常設やOpeとの1:1配置を要求せず、一人のEnablerが複数CellのMissionを進められる。
 
-### Operator Council
+## 5. Enterpriseの責務
 
-- Authority conflict
-- Domain Boundary
-- Enterprise Constraint
-- shared Contract
-- major risk / exception
-- Profile activation
+Enterprise Opeは、全体の目的・制約・資源配分・責任境界を扱う。
+分離前は複数の業務・基盤Profileも担える。負荷に応じて別Opeへ責務を渡す。
 
-### Enabler Council
+分離後は、子Cellの判断を一方的に上書きしない。
+境界の調停は合意を形成する仕事であり、内部変更の強制ではない。
+Profile採用や変更も、引受先Cellとの合意を伴う。
 
-- Change portfolio
-- cross-domain Mission
-- repeated blocker
-- shared enabling capability
-- Rule / Evidence 化
-- Agent Literacy
-- local learning の enterprise 化
+Enterprise Enablerは、全体の顧客文脈と変更要求を把握し、Mission群と優先順位を具体化する。
+各Enablerとの協働を通じて全体のOutcomeを確認する。
+全体の役割を担うことは、他Cellの資源や受入判断を自由に使えることを意味しない。
 
-どちらも定例進捗会議である必要はない。
+## 6. 顧客との接点
 
----
+Goal・Priority・OutcomeについてはEnablerが対話を進める。
+業務の不変条件、Authority、Constraint、RiskについてはOpeが関わる。
+専門家・顧客Domain Ownerとの直接対話を許し、固定的な伝言経路を作らない。
 
-## 12. 人数原則
+その場の理解を個人に閉じず、意味・決定・未決事項を正本へ戻す。
+同じ顧客説明を毎回人間が仲介しなくても、実行系が解釈できる状態へ育てる。
 
-EAA は Operator と Enabler の 1:1 配置を要求しない。
+## 7. 横断協働と受入
 
-```
-N(Operator) ∝ Stable Decision Scopes
-N(Enabler)  ∝ Active Change Demand
-```
+複数CellのMissionでは、EnablerがOutcomeの成立を進め、各Opeが自Cellの境界と保証を持つ。
+一時的な協働体を独立Cellと同一視しない。別のOpe・責任・権限を持たなければ、既存Cellの協働である。
 
-より簡単には、
+必要に応じてOperator Council、Enabler Councilを設けてよい。
+Council自体が他Cellの自治を上書きする権限を持つわけではなく、合意と記録に戻す。
 
-> **Operator は Domain の数に比例する。**
->
-> **Enabler は解きたい Change の量に比例する。**
+受入判断は既存規範の範囲でAgentが行える。
+自らを縛る規範の改訂は、実行者の自己承認にしない。
 
-一つの Enabler が複数 Operator と横断 Mission を進めてもよい。
-一人の Operator が複数 Enabler と異なる Change を扱ってもよい。
+## 8. 既存職種との対応例
 
----
+| 既存の経験 | 活かせる責務 |
+| --- | --- |
+| PO・事業開発・BA | 顧客理解、Mission具体化、価値と優先順位の調整 |
+| Architect・Tech Lead | Cellの成立条件、境界、規範、実行環境 |
+| PM・PMO | Ope／Enablerへの責務分解、全体Evidenceと阻害の観測 |
+| QA・Security・SRE | 専門Profileの遂行、検証・運用能力の整備 |
+| Scrum Master | Flow改善、阻害解消、学習支援というEnabler能力 |
 
-## 13. 成熟
+肩書の置換表ではない。Scrum等を内部方式に選んだCellでは、内部の役割を維持できる。
 
-良い Operator は自分に判断を集中させない。
+## 9. 成熟の方向
 
-```
-Operator judgment
-→ Rule / Constitution / Contract
-→ machine-readable control
-→ Agent autonomy
-```
+Opeの判断がRule・Constitution・Contractへ蓄積され、Enablerが進めたChangeが能力・仕組み・学習として残る。
+成果と安全性を維持しつつ、反復判断・手動調整・特定個人への依存を減らす。
 
-良い Enabler は自分に Change を永久依存させない。
-
-```
-Change
-→ capability / rule / platform / learning
-→ stable operation
-→ Enabler released
-```
-
-理想的には、
-
-```
-Repeated Human Judgment ↓
-Operator Dependency     ↓
-Manual Coordination     ↓
-
-Safe Autonomy           ↑
-Rule Coverage           ↑
-Evidence Quality        ↑
-Change Throughput       ↑
-```
-
-する。
-
----
-
-## 14. 最小ロールモデル
-
-EAA のロール体系を必要以上に増やさない。
-
-```
-Operator
-Enabler
-Agent
-```
-
-専門性は新しい恒久ロール名ではなく、scope、Profile、Capability で表現する。
-
-> **Core を小さく保つのと同じように、Role Model も小さく保つ。**
-
-要約すると、
-
-> **Operator は構造を成立させる。Enabler は構造を変える。Agent は実行する。**
+分離が有効だったかは、親Opeへの判断集中が実際に減ったか、外部への保証を維持したかで観測する。
+人員やCellの数自体を成熟指標にしない。

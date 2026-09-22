@@ -1,389 +1,123 @@
-# EAA Profiles v0.1
+# EAA Profiles — 責務仕様の改訂草案
 
-2026-09-21 · Kazuhiro
+2026-09-22 · Kazuhiro
 
-> Status: draft / conditionally normative
+> Status: draft / responsibility profile specification
 >
-> Profile は Enterprise Agentic Agile Core に、特定条件下で追加する versioned な規範集合である。
-> Profile は Core の例外ではなく、Core に追加制約を加える。
+> 旧v0.1の「条件付き追加規範」を、Cellが引き受ける責務仕様へ再定義した草案。
+> ファイルパスは参照互換のため維持する。Profileの確定スキーマや承認済みの新版を意味しない。
+> 共通原則は [EAA Core](enterprise-agentic-agile-core-v0.1.md) に従う。
 
-## 1. Profile の目的
+## 1. Profileとは
 
-EAA Core をあらゆる Enterprise 条件へ対応させようとすると、Core は急速に肥大化する。
+Profileは、Cellが引き受ける責務を定義する、版付きの仕様である。
+何を成立させ、どこまで自律的に判断し、外部へ何を保証し、その成立をどう確認するかを明示する。
 
-そのため、業界、契約、移行、監査、リリース等の条件付き要求は Profile として分離する。
+| 概念 | 役割 |
+| --- | --- |
+| Profile | 引き受ける責務の定義 |
+| Cell | 責務を引き受ける主体 |
+| Mission | 今回達成する変化・成果 |
+| Constitution | 採用する目的・価値・制約・権限の規範 |
+| Contract | 外部との境界合意 |
+| Pattern | 配置・実装・運営の具体例 |
 
-```
-EAA Instance
-= Core
-+ Active Profiles
-+ Local Delivery Models
-```
+横断的な制約や検証を他Cellへ導入し、機能する状態にすることも責務に含める。
+その責務は他Cellへの強制変更権限を伴わない。変更を提案し、対象Cellが受入を判断する。
 
-> **普遍でない規範を Core へ入れない。**
+## 2. Standard ProfileとDomain Profile
 
----
+| 分類 | 定義元・用途 | 例 |
+| --- | --- | --- |
+| Standard Profile | EAAが再利用可能な責務として提供する | Platform、Portfolio、Supplier、Assurance、Regulated、Migration、Cutover |
+| Domain Profile | Enterpriseが業務の意味・不変条件・責任をもとに定義する | 契約、請求、受注 |
 
-## 2. Profile の不変条件
+形式とロードの意味は共通である。Cellの種類を二つに分けるものではない。
+汎用のDomain Profileを再利用するときも、そのEnterpriseの実際の意味と条件へ適合させる。
 
-Profile は Core を弱めてはならない。
+## 3. 責務定義と割当
 
-```
-Effective Requirements
-= Core Requirements ∪ Profile-added Requirements
+Profileは、少なくとも以下を解釈できる仕様にする。項目名・記法・必須フィールドの確定は次の設計対象とする。
 
-Effective Authority
-= Core Authority ∩ Profile Restrictions
+- 目的と、責任を負う範囲・負わない範囲。
+- 業務上の意味と参照Ontology。
+- 必要な権限、守る制約と参照規範。
+- 提供能力、依存先、外部への保証とContract。
+- 成立を示すEvidence、自律判断できない条件。
 
-Effective Evidence
-= Core Evidence ∪ Profile-required Evidence
-```
+引受Cell・Ope・資源・対象範囲・採用版は実際の割当として明示する。
+Profile本文に特定の担当者やAgent製品を固定しない。
+汎用の権限要求を記載することと、実際に権限が付与されることを区別する。
 
-Profile は以下のいずれかを追加できる。
+## 4. ロード・合成・改訂・解除
 
-- Constraint
-- Required Evidence
-- Independent Verification
-- Human Judgment condition
-- Retention / audit requirement
-- Commercial responsibility
-- Time window
-- Rollback / recovery requirement
+ロードは、指定範囲の責務をCellが引き受け、必要な権限と能力を確保することで成立する。
+Enterprise Cellが複数Profileをまとめて引き受けてよい。Domain内部だけで完結する実行方式までEAAで規定しない。
 
-Profile は Core の Authority 制約や Evidence 要求を削除できない。
+複数Profileを担う場合、責任の空白、重複する決定権、両立しない保証を確認する。
+旧版の「権限の積集合」だけでは責務の合成を表現できない。制約を守ったうえで、誰が何を引き受けるかを合意する。
 
----
+改訂は変更提案として扱い、既存の採用先へ自動適用しない。
+解除は責務の終了または移管であり、未完了Mission・残件・外部への保証・記録を処理する必要がある。
 
-## 3. Scope と Lifecycle
+## 5. 分離可能な責務
 
-Profile は次の scope で有効化できる。
+必要なProfileを列挙してから、同じCellで担うか、別Opeが引き受ける独立Cellにするかを決める。
+Profile一つにつきCell一つ、という配置を要求しない。
 
-- Enterprise
-- Domain
-- Mission
-- Time window
+分離時には、責務の定義に加え、権限・資源・資産・記録・進行中の仕事を引き継ぐ。
+配置が変わっても外部保証を維持できるようにする。保証を変える場合は関係Cellとの再合意を行う。
+詳細な引継ぎ手順は未決事項として残す。
 
-例:
+## 6. Standard Profileの初期カタログ
 
-```yaml
-profile:
-  name: cutover
-  version: 0.1
-  scope: enterprise
-  active_from: release-candidate
-  active_until: cutover-complete
-```
+以下は新定義に沿った責務の骨格であり、完成したスキーマや全件必須の配置ではない。
+専用Cellを置く場合も、元のCellが担う場合も、同じ責務を扱う。
 
-Profile はプロジェクト開始時に固定する必要はない。
+| Profile | 成立させる責務 | 主な提供・変更提案 | Evidenceの例 |
+| --- | --- | --- | --- |
+| Platform | 各実行系が必要な共通基盤を利用できる | 基盤提供、CI/CD導入PR、運用改善 | IaC検証、ポリシー適合、払い出し・復旧結果 |
+| Portfolio | 全体目的と投資・資源配分を接続する | 優先順位、資源配分、継続・停止条件の提案 | 投資判断の根拠、費用帰属、Outcome |
+| Supplier | 契約主体をまたぐ責任と受入を成立させる | 商取引上の境界、受入条件、変更手続きの整備 | 受入結果、責任・費用・判断の来歴 |
+| Assurance | 成果を独立した根拠で判定できる状態にする | 独立検証、検証経路やEvidence要件の導入提案 | 独立判定、性能・復旧・照合の結果 |
+| Regulated | 適用される外部義務を実行・監査可能な条件へ落とす | 職務分離、承認・保存・情報管理の仕組みを提案 | 規範の版、承認記録、監査証跡 |
+| Migration | 旧系から新系への移行を成立させる | 移行実行、照合、切り戻し、依存解消の調整・提案 | 移行完全性、照合、復旧リハーサル |
+| Cutover | 合意した条件と順序で切替全体を成立させる | 適用順序、準備確認、GO／NO-GO、復旧の調整 | リハーサル、最終照合、各Cellの準備・実行結果 |
 
-```
-Profile = Profile(scope, time, risk)
-```
+AssuranceやRegulatedを担うCellが存在しても、各対象Cellの既存義務は消えない。
+義務を満たす変更をどう導入するかは、提案と受入で進める。
+外部義務の変化を拒否して旧条件を無期限に続けられると仮定せず、履行不能時の扱いは未決の調整手順へ戻す。
 
-リスクが変化したら Profile を追加・解除してよい。
+## 7. 横断責務の実行
 
-解除時も、その Profile 下で生成された Evidence と決定履歴は保持する。
+Platformを担うCellは、他Cell向けのCI/CD変更をPRする。対象Cellが自分の規範とContractへの適合を確認して受け入れる。
+同様に、Domain側からPlatformの提供条件やEnterpriseのOntologyへ変更提案できる。
 
----
+提案・受入はすべてのCellに共通する。Profileごとに特別な他Cell操作権限を作らない。
+導入を目的とするMissionは、提案提出だけでは完了しない。導入後の成立をEvidenceで確認する。
 
-## 4. Profile の合成
+## 8. Cutoverと一時的な調整
 
-複数 Profile は同時に有効化できる。
+切替期間には同期連絡や全体GO／NO-GOの判断者を置ける。
+判断者が決めるのは、関係Cellが合意した条件に基づく切替全体の実施可否である。
+各Cellの内部変更を一方的に受け入れさせる権限は持たない。
 
-```
-Active Requirements
-= Core Requirements
-∪ Portfolio
-∪ Supplier
-∪ Migration
-∪ ...
-```
+切替・停止・復旧の条件と、それに従う各Cellの行動を事前に合意する。
+実行時の人間承認の要否は合意済み規範による。新しい条件や例外は合意を改訂する必要がある。
+予期しない不一致や緊急時の詳細手順は未決であり、一時的な指揮系統を自治原則の例外にしない。
 
-Authority は最も厳しい制約を採用する。
+## 9. Domain Profileの定義
 
-```
-Active Authority
-= Core Authority
-∩ Profile A
-∩ Profile B
-∩ ...
-```
+Enterprise Cellは、必要な業務責務を明らかにし、顧客・業務専門家・引受候補のOpeと意味と境界を具体化する。
+先に組織を増やす必要はない。
 
-Evidence は必要条件を加算する。
+例えばBilling Profileなら、請求・入金・返金の整合性、請求主体の意味、確定済み請求の扱い、Contract側との責任境界、照合Evidenceを定義する。
+その責務を元のCellが担うか、別Opeへ移してBilling Cellを形成するかは次に決める。
 
-矛盾する Profile が存在する場合は、自動的に片方を無効化せず Human Escalation する。
+全業務を初日から網羅せず、最初のMissionに必要な範囲を明示する。未確定部分を暗黙の権限にしない。
+Profile Templateは、この意味とライフサイクルを表現する形式として別途具体化する。
 
----
+## 10. 今後定める仕様
 
-# Initial Profile Catalog
-
-## 5. Portfolio Profile
-
-### 適用条件
-
-複数 Domain / Mission へ有限の予算・人間判断・実行資源を配分する必要がある場合。
-
-### 追加構造
-
-```
-Strategic Goal
-→ Investment
-→ Enterprise Mission
-→ Domain Mission
-→ Evidence
-```
-
-### 追加要求
-
-- Mission は少なくとも一つの Strategic Goal または Investment Theme へ寄与を説明できる
-- Investment allocation の決定を durable に残す
-- 停止・継続・増額の判断を Evidence に基づける
-- Cost を可能な範囲で Mission / Domain へ帰属させる
-
-### 追加 Evidence
-
-- outcome progress
-- cost / accepted outcome
-- investment change rationale
-- blocked investment mass
-- realized rework cost
-
-Portfolio Profile は固定年度計画や特定の Portfolio Event を要求しない。
-
----
-
-## 6. Assurance Profile
-
-### 適用条件
-
-誤りの blast radius、不可逆性、金銭・安全・信用への影響が通常より大きい場合。
-
-### 原則
-
-```
-Risk ↑
-→ Required Assurance ↑
-```
-
-### 追加要求の例
-
-Low risk:
-
-```
-automated evidence
-→ deploy
-```
-
-Medium risk:
-
-```
-automated evidence
-→ independent verification
-→ deploy
-```
-
-High / irreversible:
-
-```
-automated evidence
-→ independent verification
-→ rehearsal / recovery evidence
-→ explicit authority check
-→ deploy
-```
-
-### 追加 Evidence
-
-- independent verification
-- rollback / recovery result
-- performance / security evidence
-- reconciliation
-- blast-radius estimate
-
-固定工程 Gate を要求するのではなく、Risk に応じて Assurance を増やす。
-
----
-
-## 7. Supplier Profile
-
-### 適用条件
-
-外部 Vendor、複数契約主体、委託先が同じ Enterprise Mission に参加する場合。
-
-### 追加要求
-
-- commercial boundary と Domain boundary を区別する
-- Supplier が所有する Mission / Contract / Evidence を明示する
-- Acceptance Evidence を契約上の受入条件と接続する
-- 仕様変更・顧客判断・Vendor判断の provenance を保持する
-- Cost / rework を可能な範囲で causal source へ帰属する
-
-### 追加 Evidence
-
-- supplier acceptance result
-- contractual decision
-- responsibility provenance
-- cost provenance
-- external dependency
-
-Supplier の内部 SDLC は EAA が統一しない。
-
-Vendor が Predictive でも Scrum でも、EAA Boundary を満たせばよい。
-
----
-
-## 8. Regulated Profile
-
-### 適用条件
-
-法令、規制、監査、強い記録保持義務が存在する場合。
-
-### 追加要求の候補
-
-- segregation of duties
-- mandatory independent verification
-- evidence retention
-- immutable audit history
-- required approver / authority
-- data residency / handling constraints
-- policy version provenance
-
-### 追加 Evidence
-
-- approval evidence where legally required
-- policy version
-- audit trace
-- retention proof
-- security / compliance scan
-
-法的に Human approval が必要な場合、Human Gate は例外ではなく Profile による明示的要求となる。
-
----
-
-## 9. Migration Profile
-
-### 適用条件
-
-Legacy から新システムへ段階移行する場合。
-
-### 追加要求
-
-- source / target の責任境界を明示する
-- data / behavior reconciliation を行う
-- dual-run または shadow-run の要否を決める
-- rollback boundary を定義する
-- Legacy にのみ存在する知識を可視化する
-- migration Mission の完了を新系実装完了だけで判定しない
-
-### 追加 Evidence
-
-- reconciliation result
-- migration completeness
-- rollback rehearsal
-- legacy dependency count
-- human-only knowledge count
-- shadow production result
-
----
-
-## 10. Cutover Profile
-
-### 適用条件
-
-時間制約が強く、不可逆性または blast radius が高い本番切替期間。
-
-Cutover Profile は通常時の自律運転を否定しない。
-一時的に Authority と同期条件を厳しくする。
-
-### 追加構造
-
-```
-Normal Mode
-Domain execution
-→ automated verification
-→ production
-
-Cutover Profile
-Domain execution
-→ candidate
-→ required evidence
-→ reconciliation
-→ rollback readiness
-→ explicit GO / NO-GO boundary
-→ production
-```
-
-### 追加要求
-
-- Cutover Commander または最終 Authority を明示する
-- time-boxed synchronous coordination を許可する
-- GO / NO-GO / rollback 条件を事前定義する
-- credential / routing / write-stop 等の切替順序を記録する
-- Profile 終了条件を定義する
-
-### 追加 Evidence
-
-- rehearsal
-- rollback rehearsal
-- final reconciliation
-- smoke / synthetic mission
-- production telemetry
-- authority confirmation
-
-> 平時の非同期性を、高リスクの切替時にも教義として強制しない。
-
----
-
-## 11. Profile ではないもの
-
-次は通常 Profile ではない。
-
-### Local Delivery Model
-
-- Scrum
-- Kanban
-- SAFe ART
-- Predictive
-- Full Agentic
-- Package implementation
-
-これらは Domain 内部の実行方式であり、Core の上に追加される Enterprise 規範ではない。
-
-### Reference Pattern
-
-- GitHub Mission Ledger
-- Daily Evidence
-- Weekly Mission Review
-- Transparency Report
-- AWS architecture
-- AgentHub
-
-これらは実装方法であり、EAA の必須規範ではない。
-
-### Capability Ownership Pattern
-
-Platform、DB、Security、Observability 等の専門能力を横断的に提供する構造は有用だが、すべての案件で同じ組織構造を要求しないため Pattern とする。
-
----
-
-## 12. 今後の Profile 候補
-
-PoC / 実案件の Evidence に応じて追加を検討する。
-
-候補:
-
-- Resilience Profile
-- Data Governance Profile
-- Safety-Critical Profile
-- External Agent Profile
-- Cost-Control Profile
-- Incident Profile
-
-追加前に必ず、
-
-> これは本当に Core ではなく Profile か。
-> 既存 Profile の組合せで表現できないか。
-
-を確認する。
-
-Profile catalog 自体も肥大化させない。
+Profileの詳細スキーマ、責務をさらに分割する手続き、ロード完了の確認方法、分離・再統合の移行手順は未確定である。
+Coreの自治・権限・Evidenceの原則を維持し、具体例を通じて必要な項目から確定する。

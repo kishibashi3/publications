@@ -1,6 +1,6 @@
 # EAA Adoption Guide v0.1
 
-2026-09-21 · Kazuhiro
+2026-09-22 · Kazuhiro
 
 > Status: draft / non-normative
 >
@@ -171,6 +171,8 @@ to: boundary and semantic architect
 - Boundary / Authority / Risk / Exception は Operator と扱う
 - investment priority は Enterprise Enabler と扱う
 
+Enablerは顧客との文脈共有と成果実現を進める。最終的な投資・業務判断は、その権限を持つ顧客などが行う。Enablerであることだけで最終決定権は生じない。
+
 ただし、EAA は顧客にすべての技術判断を要求しない。
 
 Enabler は Change の問いを顧客が判断可能な Business Outcome へ翻訳し、Operator は governance 上の曖昧さを Authority / Constraint / Exception へ落とす。
@@ -274,10 +276,15 @@ EAA の成熟は、Operator の判断を規範へ変換し、Operator dependence
 ```
 Operator Judgment
 → Recorded Decision
+→ Proposal and legitimate approval / affected Cell acceptance
 → Rule / Constitution / Contract
 → Machine-readable Control
 → Future Autonomy
 ```
+
+別Cellに影響する規範化は提案として行い、正当な規範変更権者の承認と対象Cellの採用合意を得る。反復判断を機械化することは、Agentによる自己権限の緩和ではない。
+
+一つのCellが複数Profileを引き受けて始めてよい。負荷・専門性に応じて、責務と権限・資源を別Opeへ渡し、Cellを分離する。Profile数や業務Domain数を、そのまま必要Ope数にしない。
 
 したがって、
 
@@ -309,7 +316,8 @@ Existing Organization
 → connect with EAA Core
 → retain Local Delivery Models
 → observe Evidence
-→ add Profiles where necessary
+→ define and assign responsibility Profiles
+→ split Cells only where independent judgment is needed
 → remove only constraints proven unnecessary
 ```
 

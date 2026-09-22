@@ -1,12 +1,13 @@
 # EAA vs Enterprise Agile Alternatives — Comparison v0.1
 
-2026-09-21 · Kazuhiro
+2026-09-22 · Kazuhiro
 
-> Status: working comparison / non-normative
+> Status: historical comparison + reevaluation plan / non-normative
 >
 > 本文書は Enterprise Agentic Agile (EAA) と、代表的な Enterprise delivery / scaling model を同一の観点で比較するための作業資料である。
 > EAA Core の規範ではない。
-> 点数は普遍的な優劣ではなく、**10億円規模・複数 Domain / Vendor・基幹刷新・約1年**の案件へ適用した場合の現時点の設計適合度仮説である。
+> 点数は2026-09-21時点の旧モデル（Profile = 条件付き追加規範）について、**10億円規模・複数 Domain / Vendor・基幹刷新・約1年**の案件を想定した設計適合度仮説である。
+> 2026-09-22の改訂モデル（Profile = 責務仕様）には引き継がない。現在の点数は未評価であり、旧表は検討履歴として残す。
 >
 > PoC / 実案件の Evidence に基づき再採点することを前提とする。
 
@@ -16,7 +17,7 @@
 
 | ID | Model | 概要 |
 | --- | --- | --- |
-| A | **EAA** | Core + Active Profiles + Local Delivery Models + Reference Patterns |
+| A | **EAA** | 旧評価: Core + 追加規範Profiles + Local Delivery Models + Reference Patterns |
 | B1 | **Hybrid Large-Scale Agile** | Program Governance / PMO と Domain 内 Agile / DevOps の組合せ |
 | B2 | **SAFe Large Solution** | ART / Solution Train / Portfolio 等による大規模統合 |
 | B3 | **Team Topologies + DDD + DevOps** | Domain / team boundary、fast flow、platform / enabling を中心とする |
@@ -42,7 +43,7 @@ AI / Agent 利用は B1〜B5 でも可能であり、比較軸は「AIを使う�
 重要:
 
 - **設計上の表現力**と**市場での成熟度 / 実績**を混同しない
-- EAA は現在の文書化された構造を評価する
+- 旧表は2026-09-21の文書化された構造を対象とする
 - EAA は AI / Agent 時代の Enterprise 開発手法として評価し、Core 単体ではなく案件条件に応じた Active Profiles を含める
 - Local Delivery Model は Domain ごとに異なってよい
 
@@ -69,7 +70,7 @@ AI / Agent 利用は B1〜B5 でも可能であり、比較軸は「AIを使う�
 
 ---
 
-## 4. Current Comparison
+## 4. 旧モデルの比較表（2026-09-21、参考履歴）
 
 | Enterprise concern | EAA | B1 Hybrid | B2 SAFe | B3 TT + DDD | B4 Nexus / LeSS | B5 Predictive |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -90,164 +91,36 @@ AI / Agent 利用は B1〜B5 でも可能であり、比較軸は「AIを使う�
 | **Total / 70** | **64** | 59 | **62** | 57 | 56 | 54 |
 | **Normalized** | **91%** | 84% | **89%** | 81% | 80% | 77% |
 
-この表は「EAA が証明済みである」という意味ではない。
-
-> **EAA は現時点で、Enterprise Agile の主要関心事を広く表現できる設計になった。**
->
-> **その表現力が実運用で成立することはまだ証明されていない。**
+この表は実証結果ではない。旧モデルで64/70とした採点を、責務仕様とCell分割を中心に再構成したモデルの評価として引用しない。他方式の点数も当時の作業仮説であり、本改訂で再調査・検証した値ではない。
 
 ---
 
-## 5. EAA が前回評価から上がった理由
+## 5. 今回の構造変更
 
-Core / Profile 分離前は、Portfolio、Cutover、Supplier、Assurance 等が EAA の不足として見えていた。
+改訂モデルは、必要なStandard / Domain Profileを先に定義し、引受Cellを割り当てる。一つのCellに複数Profileを配置でき、独立した判断責任を別Opeへ渡すときにCellを分離する。
 
-現在は、
+Profileを定義できることだけで、該当能力が実現済みとは評価しない。権限・資源・実行能力の確保と、成果を示すEvidenceが必要である。
 
-```
-EAA Instance
-= Core
-+ Active Profiles
-+ Local Delivery Models
-+ Reference Patterns
-```
+## 6. 再評価が必要な領域
 
-と分離した。
+- 分離前後で責任の空白・判断権の重複を避けられるか。
+- 元のOpeへの判断集中が減り、成果と保証を維持できるか。
+- 双方向の提案・受入で横断変更が進み、合意待ちが律速にならないか。
+- Ontology・Constitution・Contractの採用版と移行を追跡できるか。
+- Cutoverを含め、合意された義務と独立Cellの自治を両立できるか。
+- 管理会計、契約、規制、導入・育成の具体的能力を確保できるか。
 
-これにより、Enterprise に必要な能力を Core へ常設せず、条件付きで追加できる。
+合意不成立、分離・再統合、複数Cell変更の復旧には未決の詳細がある。文書の単純化と実運用上の完成度は別に検証する。
 
-| Concern | Before | Current | 主因 |
-| --- | ---: | ---: | --- |
-| Strategy / Portfolio | 3 | **5** | Portfolio Profile |
-| Governance / Compliance | 4 | **5** | Authority + Assurance / Regulated Profile |
-| Quality / Assurance | 4 | **5** | Assurance Profile |
-| Multi-vendor | 5 | **5** | Supplier Profile により明示化 |
-| Migration / Cutover | 3 | **5** | Migration + Cutover Profile |
-| Budget / Commercial | 3 | **4** | Portfolio + Supplier Profile |
-| Flow | 5 | **5** | Core を肥大化させず維持 |
-| Adoption maturity | 2 | **2** | 実績不足は設計変更では解消しない |
+## 7. EAAと既存方式の関係
+
+各Cellは採用した責務・規範・Contractを満たす内部方式を選ぶ。Full Agentic、Half Agentic、Scrum、Predictive、Vendor processなどを共存させられるという設計である。
+
+Enterpriseや横断Cellからの変更も対象Cellへ提案する。規範の新版発行だけで他Cellの採用版や内部工程は変わらない。一つのCellで始める場合も同じ責務仕様を使える。
 
 ---
 
-## 6. EAA がまだ 5 でない領域
-
-### 6.1 Cross-domain dependency / integration — 4
-
-Mission / Contract / Ontology / Authority に加え、cross-domain Mission の Outcome owner として Mission Enabler を置く構造も存在する。
-
-未解決:
-
-- Inter-system Protocol の最小仕様
-- 複数 Domain が競合する Mission の arbitration
-- Contract version conflict の解決
-- Domain 間 expected waste の計測
-
-PoC で最優先に検証する。
-
-### 6.2 Budget / Commercial control — 4
-
-Portfolio / Supplier Profile により構造は存在する。
-
-ただし、
-
-```
-Annual Budget
-→ Investment
-→ Enterprise Mission
-→ Domain Mission
-→ Actual Cost
-→ Forecast
-```
-
-までの管理会計モデルは未成熟。
-
-特に、
-
-- forecast
-- committed vs actual
-- vendor commercial model
-- capital / expense distinction
-- change cost
-- rework attribution
-
-は既存 PMO / ERP / commercial management の方が成熟している。
-
-### 6.3 Organization scale / Cognitive load — 4
-
-Capability Ownership Pattern と Enabler Role Model はある。
-
-ただし Team Topologies のように、
-
-- cognitive load
-- interaction mode
-- platform as a product
-- team boundary evolution
-
-を中心問題として体系化してはいない。
-
-EAA ではこれを Core に入れず、Capability / Organization Profile または Pattern として扱う余地がある。
-
-### 6.4 Adoption maturity — 2
-
-これは文書では解決しない。
-
-不足:
-
-- 実案件 Evidence
-- Operator 育成
-- Agent Literacy
-- Reference implementation
-- 失敗パターン
-- 教育教材
-- 市場人材
-- 導入 playbook
-
-PoC の主要成果対象とする。
-
----
-
-## 7. EAA と既存方式の関係
-
-EAA は既存 Framework を全社レベルで排除しない。
-
-```
-                 EAA Core
-                    |
-             Active Profiles
-                    |
-     +--------------+--------------+
-     |              |              |
-Full Agentic     Scrum          SAFe ART
-Domain           Domain         Domain
-     |              |              |
-     +--------- EAA Boundary -------+
-```
-
-EAA Boundary の最低条件:
-
-```
-Mission を受け取れる
-Ontology / Contract を解釈できる
-Authority を越えない
-Required Evidence を返せる
-Durable provenance を残せる
-Escalation できる
-```
-
-したがって、
-
-```
-EAA Compliance
-!= Internal Process Compliance
-```
-
-である。
-
-SAFe、Scrum、Predictive、Vendor proprietary process 等は Local Delivery Model として EAA 内に共存しうる。
-
----
-
-## 8. 各方式の主要な強み
+## 8. 各方式についての旧比較メモ
 
 ### B1 Hybrid Large-Scale Agile
 
@@ -331,7 +204,7 @@ SAFe、Scrum、Predictive、Vendor proprietary process 等は Local Delivery Mod
 
 ## 9. PoC での再評価方法
 
-この表の点数は仮説である。
+旧表の点数は仮説である。改訂モデルの適用範囲と評価条件を明記して再評価する。
 
 PoC 後、主観的な印象ではなく Evidence から再採点する。
 
@@ -348,7 +221,9 @@ PoC 後、主観的な印象ではなく Evidence から再採点する。
 | Multi-vendor | cross-boundary acceptance / wait |
 | Migration | reconciliation / rollback rehearsal |
 | Budget | Cost / Accepted Mission / Rework Cost |
-| Cognitive load | human decision count / Operator load |
+| Cognitive load | human decision count / Operator load / 分離前後の判断集中 |
+| Federation | 提案から合意までの時間 / 採用版不整合 / 自律性の侵害 |
+| Responsibility transfer | 責任の空白 / 決定権の重複 / 成果・保証の維持 |
 | Adoption | literacy before-after / escalation trend |
 
 PoC 後の比較表は同じ軸を維持する。
@@ -383,24 +258,6 @@ B1〜B5 の方が十分に優れる領域が残る場合、その能力を、
 
 ## 11. 現時点の評価
 
-現在の EAA は、Core / Profile / Local Delivery Model / Pattern の分離により、既存方式の強みを局所的に保持しながら、Enterprise 全体へ一つの Operating Model を強制しない構造になった。
+構造は「責務を定義する → 引受Cellを決める → 必要時に分離する → 合意に基づき協働する」へ整理された。Profileごとに組織や専用職種を増やす必要がなく、1 Cellからの連続的な拡張を記述できる。
 
-設計上の狙いは、
-
-```
-既存 Enterprise Agile が解いてきた問題
-                 +
-Agent 時代に不要になった人間由来の制約の除去
-                 +
-Agent 時代に新しく現れた制約への対応
-```
-
-である。
-
-現時点で最大の不足は、Core の機能数ではない。
-
-```
-Missing = Empirical Evidence
-```
-
-PoC / 実案件によって、この比較表そのものを更新する。
+これは単純化と一貫性に関する設計上の改善である。大規模な合意形成、例外処理、コスト、育成を含む実効性は未実証であり、他方式への優位や完成を宣言しない。
