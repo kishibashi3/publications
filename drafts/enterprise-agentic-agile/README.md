@@ -26,8 +26,10 @@
 
 ## AA・共通規範との関係
 
-[AA](../agentic-agile/README.md)は、一つのAgentic Cell内部の実行原則を扱う。
-EAAはCellの分割と相互作用を扱い、Cell内部にはAA以外の実行方式も選べる。一つのAgentic Cellで全責務を担って始めてもよい。
+[AA](../agentic-agile/README.md)は単独で成立する。EAAはその開発主体をCellとして扱い、責務の分割とFederationによって拡張する。
+AAの定義はEAAを必要としない。全責務を担うAAも、分割後のCellを担うAAも同じ原則で動く。
+Federationは内部実装に踏み込まず、AA以外の方式で動くCellとも接続できる。
+具体的な対応は[AAからの拡張](aa-scaling-and-federation.md)を参照する。
 
 規範の所有・改訂・版参照という共通基盤は[自己改訂規範アーキテクチャ](../self-revising-norm-architecture/README.md)に分けて置く。
 
