@@ -10,25 +10,16 @@
 > 組織導入・役割移行・Transparency の受容については `eaa-adoption-guide-v0.1.md` を参照する。
 > Operator / Enabler / Agent の人間ロールモデルは `eaa-role-model-v0.1.md` を参照する。
 
-## 1. 責務を先に定義する
+## 1. このガイドの使い方
 
-一つのCellで始め、必要なStandard／Domain Profileを列挙する。
-Profileは引き受ける責務の仕様であり、ロードは責務・権限・能力を具体的なCellに結びつけることを意味する。
-その後、同じCellで担うか、別Opeが引き受ける子Cellへ分けるかを決める。
+境界の条件は[Core](enterprise-agentic-agile-core-v0.1.md)、責務仕様は[Profiles](eaa-profiles-v0.1.md)を参照する。
+以下は実装・配置・運営の選択例であり、全部を導入する必要はない。
 
-Coreは分割方針とCell間の協働を定める。
-内部の作り方はLocal Delivery Modelとして自治し、GitHub・会議・AWS構成等はPatternとして選ぶ。
-Enterprise／Domainは位置の名前であり、Platformも同じCell構造で扱う。
+## 2. 判断と役割の配置
 
----
-
-## 2. 最初に共有する語彙
-
-Cell、Profile、Mission、Operator、Enabler、Executor、Evidenceを区別する。
-Cellは主体、Profileは責務、Missionは具体的な変化・成果である。
-Cell間ではOntology・Constitution・Contractを参照し、提案と受入によって協働する。
-
----
+[Role Model](eaa-role-model-v0.1.md)はOperator・Enabler・Executorへ責務を配置する参考例である。
+人間判断を例外へ集中する運営では、反復判断を正当な改訂手続きで規範・Contractへ戻し、Enablerが繰り返す阻害を改善Missionにする。
+人間判断の削減と成果・安全性の維持を一緒に観測する。人間中心の内部方式へ同じ運営を要求するものではない。
 
 ## 3. Local Delivery Model
 
@@ -529,13 +520,24 @@ Cutoverでは切替全体の実施可否を判断する担当を置ける。
 
 ---
 
-## 20. この Guide の位置づけ
+## 20. Profile改訂・採用 Pattern
 
-この文書にある Pattern は EAA そのものではない。
+Profile仕様の「正本改訂と採用の分離」を、通常のPRで実装する例である。
 
-案件の Evidence によって改善・置換してよい。
+実装例として、引受側のCLAUDE.mdから提供側のProfileの固定版を参照できる。
+CLAUDE.mdは引受側が編集できるが、編集だけで参照先の義務を削除・緩和したり、自分へ権限を追加したりはできない。
+正本改訂のPRと、採用版を更新するPRを別々に扱えば、各文書の所有者が、自分の管理する文書の改訂を判断できる。
+規範の提起者と承認者の分離など、各段階の既存の承認条件は維持する。この例は専用のGitHub承認機能を前提としない。
 
-EAA の安定性は Core を小さく保つことで確保し、
-Enterprise の多様性は Profile と Local Delivery Model で吸収する。
+| 起点 | 正本側のPR | 採用側のPR |
+| --- | --- | --- |
+| 提供側が変更したい | 正本を改訂し、承認済みの新版を公開する | 提供側が新版の採用を提案し、引受側が判断する |
+| 引受側が変更したい | 引受側が改訂を提案し、提供側が判断・公開する | 引受側が公開内容を確認し、採用版を更新する |
 
-> **Coreは小さく保ち、Profileの責務を配置し、PatternはEvidenceから改善する。**
+参照は変更されるlatestではなく、承認済み内容を特定できる固定版にする。
+二つのPRと採用結果を関連づけ、双方が実際の採用版を追跡できるようにする。
+規範改訂の提起者と承認者の分離は、同じ所有者が管理する文書でも維持する。
+
+## 21. この Guide の位置づけ
+
+各Patternは案件のEvidenceに基づいて改善・置換できる。CoreとProfilesの条件を変える場合は、その仕様の改訂と採用手続きを別に行う。

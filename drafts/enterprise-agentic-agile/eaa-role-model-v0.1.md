@@ -2,9 +2,10 @@
 
 2026-09-22 · Kazuhiro
 
-> Status: draft / reference model
+> Status: draft / non-normative application guide
 >
-> 基本責務は [EAA Core](enterprise-agentic-agile-core-v0.1.md) に従う。
+> [適用ガイド](eaa-delivery-guide-v0.2.md)の役割編。Coreの責任・判断主体を人間とAgentへ配置する参考モデルである。
+> [EAA Core](enterprise-agentic-agile-core-v0.1.md)に従い、内部の職名・人数・工程を参加条件にしない。
 > 配置・人数・Council・既存職種との対応はReference Modelである。
 > 旧v0.1のファイルパスは参照互換のため維持する。
 
