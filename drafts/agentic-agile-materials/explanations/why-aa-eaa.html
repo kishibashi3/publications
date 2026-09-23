@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="人間の判断を最も価値のある判断に使うために、どんな開発の構造が必要になるのか。現実の問題と別の対処の限界から設計理由を説明する。"><title>AIが仕事を進めるほど、人間の仕事を設計し直す必要がある。— 実行と判断の設計</title><style>
+:root{--ink:#243330;--muted:#53645f;--paper:#fbfaf6;--white:#fff;--line:#d8ded7;--green:#175b4d;--light:#eaf1eb;--orange:#ad552d;--warm:#f6ede3;--serif:"Noto Serif CJK JP","Yu Mincho","Hiragino Mincho ProN",serif;--sans:-apple-system,BlinkMacSystemFont,"Noto Sans CJK JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:32px}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.95 var(--sans);overflow-wrap:anywhere}
+a{color:var(--green);text-underline-offset:.22em}a:hover{color:var(--orange)}a:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:5px}
+.skip{position:absolute;left:12px;top:-100px;background:white;padding:10px;z-index:10}.skip:focus{top:12px}
+.topbar{max-width:1240px;margin:auto;display:flex;justify-content:space-between;gap:20px;padding:24px 42px 18px;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.08em;color:var(--muted)}
+.brand{font-weight:750;color:var(--green)}
+.hero{max-width:1120px;margin:auto;padding:72px 40px 58px}
+.eyebrow{color:var(--orange);font-size:12px;font-weight:750;letter-spacing:.16em;margin:0 0 22px}
+h1{font-family:var(--serif);font-weight:650;font-size:clamp(32px,4.1vw,53px);line-height:1.5;letter-spacing:.01em;margin:0 0 26px;max-width:1000px}
+.subtitle{font-size:21px;line-height:1.9;color:var(--green);margin:0 0 24px}
+.hero .lead{max-width:810px;font-size:18px;color:var(--muted)}
+.meta{font-size:12px;color:var(--muted);margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+.tag{border:1px solid var(--line);border-radius:3px;padding:3px 10px}
+.layout{max-width:1120px;margin:auto;display:grid;grid-template-columns:205px minmax(0,1fr);gap:58px;padding:0 40px 80px}
+nav{align-self:start;position:sticky;top:26px;font-size:12px;line-height:1.7;padding-top:9px}
+.nav-title{font-weight:700;letter-spacing:.12em;color:var(--muted);margin-bottom:16px}
+nav ol{padding:0;list-style:none;margin:0}nav li{margin:0 0 12px}nav a{display:flex;gap:9px;text-decoration:none;color:var(--muted)}nav a span{font-size:10px;padding-top:2px;color:var(--orange);font-variant-numeric:tabular-nums}
+article{min-width:0}section{margin-bottom:65px}h2{font-size:27px;line-height:1.65;font-weight:750;margin:0 0 25px;letter-spacing:.01em}h2 .num{display:block;font-size:11px;color:var(--orange);letter-spacing:.16em;margin:0 0 10px}
+h3{font-size:20px;line-height:1.7;margin:31px 0 14px}p{margin:0 0 20px}strong{font-weight:750}ul,ol{padding-left:1.5em}li{margin:.5em 0}
+.opening{border-top:3px solid var(--green);padding-top:30px}
+.callout{background:var(--light);padding:25px 28px;border-left:3px solid var(--green);margin:28px 0}.callout p:last-child{margin-bottom:0}.callout .label{font-size:11px;font-weight:750;letter-spacing:.1em;color:var(--green);margin-bottom:10px}
+.aside{font-size:14px;color:var(--muted);border-left:2px solid var(--line);padding-left:18px;margin:24px 0}
+figure{margin:30px 0}figcaption{font-size:12px;line-height:1.8;color:var(--muted);margin-top:11px}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:27px 0}
+.panel{padding:24px;border:1px solid var(--line);background:var(--white)}.panel h3{margin:0 0 12px;font-size:20px}.panel p{font-size:15px;margin-bottom:0}.panel .initial{font-size:12px;letter-spacing:.12em;color:var(--orange);font-weight:750;margin-bottom:10px}
+.table-wrap{overflow-x:auto;margin:24px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.8}th{text-align:left;background:var(--light);font-weight:700}th,td{padding:14px 15px;border-bottom:1px solid var(--line);vertical-align:top}tbody th{background:transparent;min-width:110px}
+.formula{background:var(--ink);color:var(--paper);padding:26px 28px;margin:28px 0;font-size:20px;line-height:1.7;font-weight:600}.formula small{display:block;color:#cddad4;font-size:13px;font-weight:400;margin-top:9px}
+.steps{list-style:none;counter-reset:step;padding:0;margin:26px 0}.steps li{counter-increment:step;position:relative;padding:0 0 25px 47px;margin:0;border-left:1px solid var(--line);margin-left:16px}.steps li:last-child{border-left-color:transparent;padding-bottom:0}.steps li:before{content:counter(step);position:absolute;left:-16px;top:0;width:31px;height:31px;border-radius:50%;background:var(--green);color:white;text-align:center;font-size:13px;line-height:31px}.steps strong{display:block;margin-bottom:6px}.steps p{font-size:15px;margin:0}
+.arch{border:1px solid var(--line);padding:24px;background:var(--white)}.arch .outer{border:1px solid #9aafa4;padding:20px;background:#f5f8f3}.arch .outer-title{font-weight:700;font-size:16px;margin-bottom:6px}.arch .hint{font-size:13px;color:var(--muted);margin:0 0 18px}.arch .cells{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.arch .cell{border-top:3px solid var(--green);padding:14px 12px;background:white;font-size:13px;line-height:1.8}.arch .cell b{display:block;font-size:15px;margin-bottom:6px}.arch .agreement{padding:12px 0 0;font-size:13px;color:var(--green);text-align:center}
+details{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:15px 0;margin:28px 0;font-size:15px}summary{cursor:pointer;color:var(--green);font-weight:700}details p{margin:17px 0 4px}
+.endnote{border-top:3px solid var(--green);padding-top:28px}.endnote .statement{font:600 25px/1.8 var(--serif);color:var(--green)}
+.sources{border-top:1px solid var(--line);padding-top:25px;font-size:13px;color:var(--muted)}.sources h2{font-size:18px}.sources li{margin:8px 0}.sources p{margin-bottom:12px}
+footer{max-width:1120px;margin:auto;padding:24px 40px 45px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:32px;max-width:810px}nav{position:static;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}nav ol{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}nav li{margin-bottom:8px}.hero{max-width:810px;padding-top:45px}.topbar{padding-left:28px;padding-right:28px}}
+@media(max-width:560px){body{font-size:16px;line-height:1.95}.topbar{padding:18px 22px;font-size:10px}.topbar .edition{display:none}.hero{padding:36px 22px 32px}h1{font-size:31px}.subtitle{font-size:18px}.hero .lead{font-size:16px}.layout{padding:0 22px 40px;gap:28px}h2{font-size:23px}h3{font-size:18px}section{margin-bottom:48px}.dual{grid-template-columns:1fr}.panel{padding:20px}.callout{padding:21px 20px}.arch{padding:14px}.arch .outer{padding:14px}.arch .cells{grid-template-columns:1fr}.arch .cell{padding:13px}.formula{padding:22px;font-size:18px}th,td{padding:12px 10px}table{font-size:13px;min-width:470px}nav ol{grid-template-columns:1fr 1fr}footer{padding:22px;display:block}.endnote .statement{font-size:22px}}
+@media print{body{background:white;color:#111;font-size:10.5pt;line-height:1.75}.topbar{padding:0 0 12px}.hero{padding:28px 0 25px}h1{font-size:27pt}.subtitle{font-size:14pt}.layout{display:block;padding:0;max-width:none}nav{display:none}article{width:100%}section{margin-bottom:26px}h2{font-size:17pt;break-after:avoid}h3{break-after:avoid}.dual,.callout,.formula,.arch,tr{break-inside:avoid}.panel,.callout,.arch{padding:15px}.table-wrap{overflow:visible}table{min-width:0}a{color:inherit}details{display:none}footer{padding:15px 0}.sources{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.visual{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 22px 17px;margin:30px 0 34px;break-inside:avoid}
+.visual-heading{display:flex;gap:12px;align-items:baseline;margin-bottom:14px}.visual-heading>span{white-space:nowrap;color:var(--orange);font-size:11px;letter-spacing:.08em;font-weight:750}.visual-heading h3{font-size:18px;line-height:1.6;margin:0}.visual svg{display:block;width:100%;max-width:550px;height:auto;margin:0 auto}.visual figcaption{border-top:1px solid var(--line);padding-top:12px}
+.visual-route{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:30px 0 0;max-width:810px}.visual-route a{position:relative;display:block;background:var(--light);padding:20px;text-decoration:none;border-radius:12px}.visual-route b{display:block;color:var(--orange);font-size:13px}.visual-route strong{display:block;font-size:20px;margin-top:5px}.visual-route small{display:block;color:var(--muted);font-size:12px}
+@media(max-width:560px){.visual{padding:13px 9px 14px;margin:25px -9px;border-radius:12px}.visual-heading{padding:0 5px;gap:9px}.visual-heading h3{font-size:17px}.visual figcaption{padding:10px 7px 0}.visual-route{gap:7px}.visual-route a{padding:13px 10px}.visual-route strong{font-size:14px}.visual-route small{font-size:11px}}
+@media print{.visual{padding:12px;margin:18px 0;max-height:none}.visual svg{max-width:440px}.visual-route{display:none}}
+
+/* Reader-first editorial structure */
+.hero{padding-bottom:28px}.hero .lead{max-width:790px}.layout{grid-template-columns:180px minmax(0,1fr);gap:40px}.overview{max-width:900px;margin:30px 0 0}.overview svg{max-width:none}.visual>h3{margin:0 0 20px;color:var(--green);font-size:19px}.chapter-intro{font-size:20px;line-height:1.8;color:var(--green);font-weight:600}.scene{border:1px solid #dac5ae;background:var(--warm);padding:23px 26px;margin:26px 0;border-radius:12px}.scene .label{font-size:12px;color:var(--orange);font-weight:750;letter-spacing:.07em;margin:0 0 7px}.scene p:last-child{margin:0}.scene blockquote{font-size:23px;line-height:1.7;margin:8px 0 14px;font-weight:650}.key{font-size:18px;font-weight:650;background:var(--light);padding:19px 24px;border-radius:10px;margin:24px 0}.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}.card{background:white;border:1px solid var(--line);padding:19px;border-radius:10px}.card h3{font-size:17px;margin:0 0 8px}.card p{font-size:15px;margin:0}.card .small{font-size:12px;color:var(--orange);margin-bottom:6px}.answer{border-top:2px solid var(--green);padding-top:16px;margin-top:26px;font-size:17px}.answer b{color:var(--green)}.scene ol{margin-bottom:0}.scene li{font-size:16px}.sequence{list-style:none;padding:0;counter-reset:seq}.sequence>li{counter-increment:seq;display:grid;grid-template-columns:38px 1fr;gap:13px;padding:16px 0;border-top:1px solid var(--line);margin:0}.sequence>li:before{content:counter(seq);width:32px;height:32px;line-height:32px;text-align:center;background:var(--green);color:white;border-radius:50%;font-size:14px}.sequence strong{display:block;margin-bottom:5px}.sequence p{margin:0;font-size:15px}.readtime{font-size:13px;color:var(--muted)}details{background:#f3f3ed;padding:17px 20px;border:0;border-radius:9px}details h3{font-size:17px}details p{font-size:15px}.sources{margin-top:40px}.visual-route{max-width:none}.visual-route strong{font-size:18px}.visual-route small{font-size:13px}.table-wrap caption{text-align:left;font-size:13px;margin-bottom:10px;color:var(--muted)}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:28px}}
+@media(max-width:560px){.cards{grid-template-columns:1fr}.scene{padding:19px}.scene blockquote{font-size:20px}.chapter-intro{font-size:18px}.overview{margin-left:-10px;margin-right:-10px}.visual-route{grid-template-columns:1fr}.visual-route a{display:grid;grid-template-columns:30px 1fr;gap:0 8px}.visual-route strong{margin:0;font-size:17px}.visual-route small{grid-column:2}.key{padding:17px;font-size:17px}.visual svg{min-width:0}.hero{padding-bottom:26px}}
+@media print{.cards,.scene,.key{break-inside:avoid}.layout{display:block}details{display:block}details>*{display:block}.overview svg{max-width:570px}.visual svg{max-height:480px}.visual-route{display:none}}
+
+.term-map{margin:34px 0 28px;font-size:14px;line-height:1.7}.tm-intro h2{font-size:26px;margin:0 0 8px}.tm-intro p{margin-bottom:12px}.tm-intro .eyebrow{margin-bottom:9px}.tm-eaa{border:2px solid #ad552d;border-radius:16px;padding:20px;background:#f6ede3}.tm-term{background:white;border:1px solid #d8ded7;border-radius:9px;padding:13px 17px;min-width:0}.tm-term strong{display:block;font-size:18px;line-height:1.5;color:#175b4d}.tm-term strong small{display:inline-block;margin-left:12px;font-size:13px;font-weight:500;color:#53645f}.tm-term p{font-size:14px;line-height:1.75;margin:5px 0 0}.tm-banner{border:0;background:transparent;padding:0 0 10px}.tm-banner strong{font-size:25px}.tm-eaa>.tm-banner strong{color:#ad552d}.tm-band{font-size:16px;font-weight:750;margin:22px 0 12px;border-top:1px solid #dac5ae;padding-top:17px}.tm-band span{color:#ad552d;margin-right:10px}.tm-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.tm-branch{display:flex;flex-direction:column;gap:10px;border-left:2px solid #c4b9a9;padding-left:12px}.tm-link,.tm-down{text-align:center;font-size:13px;color:#175b4d;padding:10px 0;margin:0}.tm-federation{padding:17px;background:#fffaf4;border:1px solid #dac5ae;border-radius:10px}.tm-peer{display:flex;align-items:center;justify-content:center;gap:18px;margin:8px 0 18px}.tm-peer b{border:1px solid #175b4d;border-radius:6px;padding:8px 18px;background:white}.tm-peer span{color:#175b4d;font-size:14px}.tm-aa{padding:18px;background:#eaf1eb;border:2px solid #175b4d;border-radius:12px}.tm-note{font-size:13px!important;color:#53645f;line-height:1.7;margin:10px 0 15px!important}.tm-aa>.tm-term{margin-top:10px}.tm-conditions{border-left:2px solid #91aa9a;margin:12px 0 0 18px;padding-left:12px}.tm-conditions .tm-term strong{font-size:16px}.tm-cycle{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;padding:14px 0 0;font-size:14px;color:#175b4d}.tm-return{font-size:14px;color:#175b4d;margin:16px 0 0!important;font-weight:600}.tm-bottom{margin-bottom:0!important}.term-map figcaption{font-size:13px}.term-jump{font-size:12px;text-decoration:none}
+@media(max-width:620px){.tm-grid{grid-template-columns:1fr}.tm-eaa{padding:12px}.tm-aa,.tm-federation{padding:12px}.tm-term{padding:12px}.tm-term strong small{display:block;margin:2px 0 0}.tm-banner strong{font-size:22px}.tm-peer{gap:8px}.tm-peer b{padding:6px 10px;white-space:nowrap}.tm-peer span{font-size:12px}.tm-conditions{margin-left:8px;padding-left:8px}.tm-band{font-size:15px}.tm-link,.tm-down{font-size:12px}}
+@media print{.term-map{break-inside:auto}.tm-term,.tm-band{break-inside:avoid}.tm-grid{break-inside:avoid}.tm-eaa{padding:12px}.tm-band{break-after:avoid}.tm-term p{font-size:10pt}.tm-term strong{font-size:12pt}.tm-note{font-size:9pt!important}}
+.questions details{background:white;border:1px solid var(--line);padding:21px 24px}.questions summary{font-size:18px;line-height:1.7}.questions details p{margin:18px 0 0}.questions details h3{margin-top:24px}.questions .scene p{margin-top:12px}.questions .table-wrap{margin:20px 0}.questions details .scene p:first-child{margin-top:0}@media(max-width:560px){.questions details{padding:18px}.questions summary{font-size:17px}}
+
+.tm-governed{border:2px solid #8b634a;border-radius:12px;background:#f9faf6;margin-top:16px;padding:16px}.tm-constitution{padding:0 0 13px;border-bottom:2px solid #8b634a}.tm-constitution>strong{display:block;font-size:21px;color:#805033;line-height:1.5}.tm-constitution small{display:block;font-size:13px;font-weight:500;color:#805033}.tm-constitution p{font-size:14px;line-height:1.75;margin:6px 0 0}.tm-scope-note{font-size:12px;color:#805033;text-align:center;margin:12px 0!important}.tm-return small{font-size:12px;font-weight:400}.tm-governed>.tm-term{margin-top:10px}@media(max-width:620px){.tm-governed{padding:10px}.tm-governed .tm-conditions{margin-left:0;padding-left:7px}.tm-constitution>strong{font-size:20px}}
+
+.tm-profile{padding:15px;border:2px solid #8b634a;background:#f8f4ed;border-radius:12px}.tm-profile .tm-term{padding:11px}.tm-profile .tm-banner{padding:0 0 8px;background:transparent}.tm-label{font-weight:750;color:#805033;font-size:14px;margin:0 0 12px!important}.tm-responsibility{grid-template-columns:minmax(160px,.65fr) minmax(0,2fr);align-items:start}.tm-profile .tm-banner strong{font-size:23px}.tm-profile .tm-term strong small{display:block;margin-left:0}.tm-people{border:2px solid #175b4d;border-radius:12px;padding:15px;background:#fff;margin:16px 0}.tm-people .tm-term strong{font-size:27px}.tm-people .tm-term small{display:block;margin-left:0;font-size:13px}.tm-customer{text-align:center;color:#53645f;background:#f3f3ed;padding:10px;border:1px dashed #87918b;border-radius:8px}.tm-customer small{display:block;font-size:11px}.person-mark{font-size:14px;vertical-align:middle}.tm-people .tm-note:last-child{margin-bottom:0!important}@media(max-width:780px){.tm-responsibility{grid-template-columns:1fr}}@media(max-width:620px){.tm-profile,.tm-people{padding:10px}.tm-profile .tm-grid{gap:8px}}
+
+.reading-map{margin:32px 0 24px}.reading-map>h2{font-size:28px;margin-bottom:18px}.map-figure{background:white;border:1px solid var(--line);border-radius:14px;padding:22px;margin:22px 0}.map-figure h3{margin:0 0 16px;font-size:21px}.map-scroll{overflow-x:auto}.map-scroll svg{display:block;width:100%;max-width:720px;height:auto;margin:auto}.map-definitions{display:grid;grid-template-columns:1fr 1fr;gap:12px}.map-definition{border-left:3px solid var(--green);background:#fff;padding:13px 17px;font-size:14px;line-height:1.75}.map-definition>b{display:block;font-size:19px;color:var(--green)}.map-definition small{display:block;font-size:12px;font-weight:500;color:var(--muted)}.map-definition p{margin:6px 0 0;font-size:14px}.map-bridge{font-size:14px;color:var(--muted);margin:18px 0}.map-federation{border:2px solid var(--orange);padding:20px;border-radius:12px;background:var(--warm);font-size:15px;margin:24px 0}.map-federation>b{font-size:21px;color:var(--orange)}.map-federation p{margin:10px 0 0}.map-peer{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:18px}.map-peer span{padding:8px 25px;background:#fff;border:1px solid var(--orange);border-radius:8px}.map-peer strong{font-size:30px;color:var(--orange)}.protocol-table td{font-size:15px}.protocol-table th{min-width:120px}.map-scroll:focus-visible{outline:3px solid var(--orange)}
+@media(max-width:620px){.map-definitions{grid-template-columns:1fr}.map-figure{padding:14px 10px}.map-scroll svg{min-width:520px}.map-figure figcaption:before{content:"図は横にスクロールできます。 ";color:var(--orange)}.map-figure h3{font-size:19px}.map-federation{padding:15px}.map-federation>b{font-size:18px}.map-peer{gap:12px}.map-peer span{padding:8px 15px}}
+@media print{.map-scroll{overflow:visible}.map-scroll svg{min-width:0;max-width:510px}.map-figure{break-inside:avoid}.map-definitions{break-inside:avoid}.protocol-table table{min-width:0}.protocol-table td{font-size:10pt}}
+
+.hero{padding-bottom:45px}.purpose{font:600 25px/1.8 var(--serif);color:var(--green);border-left:4px solid var(--green);padding:15px 24px;margin:25px 0}.diagram{background:white;border:1px solid var(--line);border-radius:14px;padding:25px;margin:28px 0}.diagram-label{font-size:11px;letter-spacing:.1em;color:var(--orange);font-weight:750;margin-bottom:18px}.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.role{padding:20px;background:var(--warm);border-top:3px solid var(--orange)}.role.ope{background:var(--light);border-color:var(--green)}.role h3{margin:0 0 8px}.role p{font-size:14px;margin:0}.join{text-align:center;font-size:14px;color:var(--muted);padding:16px 0}.agents{border:2px solid var(--green);padding:22px;text-align:center;border-radius:9px}.agents b{display:block;font-size:22px;color:var(--green)}.agents p{font-size:14px;margin:7px 0}.loop{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.loop>div{background:var(--light);padding:18px;border-radius:7px}.loop small{display:block;color:var(--orange);font-weight:700}.loop b{display:block;font-size:18px}.loop p{font-size:14px;margin:6px 0 0}.feedback{border:1px solid var(--green);padding:15px;margin-top:14px;font-size:14px;color:var(--green);text-align:center}.norms{display:grid;gap:12px}.norm{border-left:3px solid var(--green);padding:17px 20px;background:var(--light)}.norm:nth-child(2){margin-left:24px}.norm:nth-child(3){margin-left:48px}.norm b{display:block}.norm p{font-size:14px;margin:5px 0 0}.diagram figcaption{margin-top:18px}.principle{padding:22px 0;border-top:1px solid var(--line)}.principle .id{font-size:12px;letter-spacing:.1em;color:var(--orange)}.principle h3{margin:5px 0 12px}.principle p{margin-bottom:0}.role-grid .balance{grid-column:1/-1;padding:16px;background:var(--paper);font-size:15px}.endnote{margin-top:35px} @media(max-width:560px){.role-grid,.loop{grid-template-columns:1fr}.diagram{padding:18px}.purpose{font-size:21px;padding:12px 17px}.norm:nth-child(2){margin-left:12px}.norm:nth-child(3){margin-left:24px}.role-grid .balance{grid-column:auto}} @media print{.diagram,.principle{break-inside:avoid}nav{display:none}}
+
+.reason{border-top:3px solid var(--green);padding:22px 0 4px;margin-top:28px}.reason p{font-weight:650;color:var(--green)}
+.part{margin:65px 0 35px;padding:18px 0;border-top:1px solid var(--orange);color:var(--orange);font-size:14px;font-weight:750;letter-spacing:.06em}
+.small-note{font-size:13px;color:var(--muted)}.route{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}.route>div{background:var(--light);padding:20px;min-width:0}.route strong{display:block;color:var(--green);font-size:19px}.route p{font-size:14px;margin:8px 0 0}.scene h3{margin-top:0}.compact-list li{margin-bottom:13px}.source-ref{font-size:12px;font-weight:400;white-space:nowrap}.formula{font-size:19px}.topbar{flex-wrap:wrap}
+@media(max-width:560px){.route{grid-template-columns:1fr}nav ol{grid-template-columns:1fr}.part{margin-top:45px}.formula{font-size:17px}h1{font-size:29px}}
+@media print{.part{break-before:page}.reason{break-inside:avoid}.route{break-inside:avoid}.scene{break-inside:auto}p{orphans:3;widows:3}}
+</style></head><body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="topbar"><span class="brand">実行と判断の設計</span><span class="edition">設計の理由を読む</span></header>
+<div class="hero"><p class="eyebrow">実行を任せるために、何を変える必要があるのか。</p>
+<h1>AIが仕事を進めるほど、<br>人間の仕事を設計し直す必要がある。</h1>
+<p class="subtitle">AIに任せても、人間の確認は減らない。<br>その問題を、一件の仕事から考える。</p>
+<p class="lead">AIが依頼を受けて作業を計画し、道具を使い、結果を確かめて修正する。本資料では、そのように仕事を進めるAIを「Agent（エージェント）」と呼びます。実行が速くなった先で、開発全体も速くなるとは限りません。判断待ちが積み上がり、誤った前提が広がり、各担当が完了しても顧客の問題は残る。そのとき、さらにAgentを増やすだけで解けるでしょうか。</p>
+
+<p class="lead">まず、実行をAIに任せると人間の仕事に何が起きるかを考えます。次に、仕事を複数の担当へ分けたとき、何を揃えなければ全体が成立しないかを考えます。必要な仕組みを一つずつ導き、その後で、それらを組み立てた開発の考え方を紹介します。</p>
+<p class="small-note">本資料は設計理由の解説です。例と数値は説明用の仮定であり、導入実績ではありません。開発手法についての事前知識は必要ありません。</p>
+</div>
+<main id="main" class="layout"><nav aria-label="目次"><div class="nav-title">現実から、設計へ</div><ol>
+<li><a href="#start">01　速さが成果につながらない</a></li>
+<li><a href="#judgment">02　判断を繰り返さない</a></li>
+<li><a href="#written">03　任せられる条件を書く</a></li>
+<li><a href="#delegation">04　どこまで、どの速さで任せるか</a></li>
+<li><a href="#quality">05　正しさを、何で確かめるか</a></li>
+<li><a href="#roles">06　二つの価値を判断に入れる</a></li>
+<li><a href="#cell">07　作業と一緒に判断も分ける</a></li>
+<li><a href="#meaning">08　意味と約束をつなぐ</a></li>
+<li><a href="#change">09　改善しながら約束を守る</a></li>
+<li><a href="#outcome">10　全体の成果まで引き受ける</a></li>
+<li><a href="#trial">11　最初の一件で確かめる</a></li>
+</ol></nav><article>
+<section id="start" class="opening"><h2><span class="num">01 / 出発点</span>コードはできた。<br>でも、仕事は終わっていない。</h2>
+<div class="scene"><p class="label">この資料を通して考える例</p><blockquote>契約を変更したら、1時間以内に<br>正しい請求予定額を確認できるようにしたい。</blockquote><p>Agentが契約変更APIと請求計算を実装し、テストも通しました。しかし、「月途中の変更はいつから有効か」「確定済みの請求を変更してよいか」「契約側の完了は請求側への反映まで含むか」は、まだ決まっていません。</p></div>
+<p>実装能力の不足で止まっているのであれば、実装を速くすることは効きます。しかし、この例で残っているのは、業務の意味、変更してよい範囲、責任の境界です。コードを追加しても、その正当な答えは自動的には決まりません。</p>
+<p>Agentがもっともらしい解釈を選べば、動くものはできるかもしれません。それでも、その解釈を顧客が望み、責任者が承認したことにはならない。逆に、すべてを人間へ確認させれば、実行は人間の返答を待ち続けます。</p>
+<p>ここで考えるのは、Agentが主要な実行主体となり、人間の判断能力には限りがあり、出力にはばらつきがある状況です。実行の費用や総量も無限ではありません。この前提のもとで、成果を増やしながら、人間を確認作業で埋めない開発をどう成立させるか。ここから考え始めます。</p>
+<div class="route"><div><strong>前半：実行を任せる</strong><p>人間の判断をどう残せば、Agentが次の仕事を自律的に進められるか。</p></div><div><strong>後半：責任を分ける</strong><p>責任主体を分けたとき、各主体の自律性を保ちながら全体の成果をどう成立させるか。</p></div></div>
+<p>速く継続的に成果を届けることは重要です。そのために、実行を速くするだけでなく、実行を止め、誤らせ、つながらなくする条件に手を入れます。</p>
+</section>
+<div class="part">PART I — 人間の判断を、次の自律性へ変える</div>
+<section id="judgment"><h2><span class="num">02 / 判断の配分</span>毎回答える人を増やすだけでは、<br>判断への依存は減らない。</h2>
+<p>仮に、10体のAgentが1日に6件ずつ判断を求め、一件の確認に10分かかるとします。必要な時間は合計10時間です。これは能力の実測値ではなく、判断要求の総量を見るための例です。個々のAgentの待ち時間を短くしても、人間側の処理能力を超える要求が続けば、未処理の判断は残ります。</p>
+<p>詳しい人を増やす、会議を増やす、返答を急ぐ。いずれも一時的な容量は増やせます。ただし、同じ判断を毎回人間が引き受ける構造は残る。実行能力と同じ割合で人間の対応を増やせないなら、いずれ拡大を制限します。</p>
+<h3>一度の判断を、何回分の仕事に効かせられるか。</h3>
+<p>先ほどの請求変更で、毎回「この契約は日割りか」を確認するなら、答えを返すだけでなく、適用条件と計算規則を明示し、対象契約を識別できるようにし、正しい計算例で検証できるようにする。次の同種の仕事では、人間へ戻らず進められます。</p>
+<p>もちろん、価値判断が変わる案件や、情報不足の判断まで無理に規則化してはいけません。大切なのは、人間へ戻った判断を見て、「今回だけ答えるべきもの」と「答えを仕組みに残せるもの」を区別することです。</p>
+<div class="reason"><p>人間の判断量を実行量に比例させずに拡大したいなら、繰り返される判断を、再利用できる実行条件へ変えなければならない。</p></div>
+<p>このように、限られた判断をどこへ使うかを変えます。人間の成果には、自分が判断しなくても適切に動く系を作ることも含まれる。新しい目的を選ぶことも、未解決の問題を考えることも、そのために判断の余地を作ることも、人間の仕事です。<a class="source-ref" href="#ref-aa">［原則書：D1］</a></p>
+</section>
+<section id="written"><h2><span class="num">03 / 明示と改訂</span>暗黙の了解は、<br>委任できる判断条件にならない。</h2>
+<p>「請求はいつものルールで」「その顧客には特別対応で」。経験のある人間同士なら、これで話が通ることがあります。そこで省略できているのは、意味が不要だからではなく、参加者が背景を持っているからです。</p>
+<p>Agentの文脈が変わり、担当が替わり、複数の実行が並ぶと、その背景が共有されている保証はありません。推測で補わせれば解釈が分かれる。毎回人間に聞かせれば、前章の判断待ちに戻ります。したがって、正当な判断の根拠は、実行者が参照できる形で残す必要があります。</p>
+<div class="scene"><p class="label">「請求を直して」から、任せられる依頼へ</p><p><strong>目的：</strong>対象契約の変更後の請求予定額を1時間以内に確認可能にする。<br><strong>制約：</strong>確定済み請求を変えず、既存契約への影響を検証する。<br><strong>権限：</strong>検証環境での実装と修正を任せ、本番反映は定めた手順に従う。<br><strong>判定条件：</strong>合意した業務例で金額が一致し、反映時刻と利用者からの確認結果を記録する。</p></div>
+<p>ここから「権威は書かれたものに宿る」という原則を置きます。実行者が従う判断の根拠を、参照できる形で明示するということです。何でも書いてあれば命令になる、という意味ではありません。誰が正当に定め、どの実行者へ適用される規範なのかも必要です。背景を知ることと、権限を持つことは別です。</p>
+<h3>すべての手順を人間が先に書くと、別の限界に当たる。</h3>
+<p>細かな作業まで人間が定義するなら、人間は今度は手順を書くことで忙しくなります。目的・制約・権限・判定条件が明示されていれば、実行者はその範囲で計画し、必要な下位の仕事を定義できます。Agentも、与えられた権限を越えない範囲で他のAgentへ任せられる。</p>
+<p>各層の目的・価値・制約・権限を定める基本規範を、ここでは「憲法」と呼びます。上位の条件を守りながら下位の条件を具体化するのが「憲法の連鎖」です。責任と制約を保ったまま、計画する仕事自体も分散させるための構造です。</p>
+<p>最初に書いた規範が、すべての現実を扱えるわけでもありません。未定義の契約条件に出会ったら照会し、その判断と根拠を改訂へ戻す。書いたまま固定すれば、例外対応が人間へ蓄積してしまいます。</p>
+<div class="reason"><p>推測に任せず、手順の全量を人間が抱えず、同じ例外を繰り返さない。そのために、規範を明示し、範囲内で具体化を委ね、観測から改訂する。</p></div>
+<p>明示し、範囲内で具体化し、観測から改訂する。この循環で、実行を任せる条件を育てます。改訂案を作る能力と、それを承認する権限は分けます。実行者が「困ったから」という理由だけで、自分への制約を緩められては、委任の条件そのものが失われます。<a class="source-ref" href="#ref-aa">［原則書：P1–P3・D8］</a></p>
+</section>
+<section id="delegation"><h2><span class="num">04 / 委任の尺度</span>全部確認するか、全部任せるか。<br>その二択では仕事が進まない。</h2>
+<p>検証環境で計算処理を試すことと、顧客へ請求を確定して送信することは、同じ「実行」でも戻しやすさが違います。一律に承認を求めれば試行が止まり、一律に任せれば取り戻せない影響まで広がります。</p>
+<p>そこで、まず任せる範囲を、誤ったときに戻せる範囲として考えます。検証環境、対象の限定、段階的な反映、復旧経路を用意すれば、以前は任せられなかった試行を任せられるようになる。可逆性は、作業に最初から備わった性質だけでなく、設計によって増やせます。</p>
+<h3>戻せる仕事でも、間違ったまま大量に進めてよいわけではない。</h3>
+<p>一つの誤った前提で、1万件分の実装・変換・検証を進めてから誤りに気づく。取り消せても、その間の実行費用と時間は戻りません。したがって、任せる範囲とは別に、どのくらい進んだら確かめるかを決める必要があります。</p>
+<div class="formula">期待浪費 ＝ 誤り確率 × 誤ったまま進む実行量<small>次の確認まで、どれだけ実行を進めるかを考える尺度。以下は、同じ単位で実行量を比べる単純化した例。</small></div>
+<p>ある前提が誤っている確率を仮に1%と見積もり、誤っていた場合に次の確認まで1万単位の実行が無駄になるなら、期待浪費は100単位です。同じ条件で100単位ごとに確かめられれば、1区間の期待浪費は1単位になります。ただし、確認を増やす費用と、検証で誤りを発見できる度合いも考える必要があります。</p>
+<p>これは金銭的損害や顧客への影響をすべて表す式ではありません。誤り確率も最初から正確には分からない。だから小さく試し、誤りと進みすぎた量を観測し、確認間隔を調整します。精度の高いAgentでも、誤りが見つかるまでの実行量が巨大なら、安心してよいとは限りません。</p>
+<div class="reason"><p>自律性を広げるには、承認を単に外すのではなく、戻せる範囲を作り、誤ったまま進みすぎない確認間隔を設計する必要がある。</p></div>
+<p>小さな処理でも、合計すると戻せない影響になるなら累積で判断します。また、自分の権限や制約を緩める変更は、取り消せるからといって自己承認に渡しません。<a class="source-ref" href="#ref-aa">［原則書：D4・D7・D8］</a></p>
+</section>
+<section id="quality"><h2><span class="num">05 / 検証と境界</span>同じ思い違いから作ったテストは、<br>同じ思い違いを見逃す。</h2>
+<p>Agentが「月途中の変更は翌月から」と解釈し、その解釈で実装とテストの両方を作ったとします。テストは成功しても、顧客が求めた「当月の日割り」は成立していません。生成したもの同士の整合だけでは、元の解釈の誤りを検出できないからです。</p>
+<p>もう一度よく見直すことは役立ちます。しかし、同じ主体が同じ前提で確認を重ねても、見落としの根を共有する可能性は残ります。そこで、生成と判定を別の主体またはモデル系列へ分け、自らの成果を自ら承認しない構造を置きます。</p>
+<p>分ければ完全になるわけでもありません。別のAgentに同じ誤った仕様を渡せば、同じ答えに達し得ます。請求の例なら、業務側が確認した具体例、実データの照合、守るべき不変条件など、生成物の説明だけに依存しない判定根拠が必要です。</p>
+<h3>一回成功したことと、任せ続けられることは違う。</h3>
+<p>通常契約では成功しても、月末・取消・遡及変更では失敗するかもしれません。一件の成功を「品質」として扱うと、この偏りを見失う。どの条件で成功し、どこで手戻りや見逃しが起きるかを見る。品質を一回の成否ではなく分布として扱うのは、繰り返し任せる判断には、そのばらつきが必要だからです。</p>
+<p>情報と権限にも同じ配慮が要ります。参照範囲を広げれば文脈は増えますが、請求検証のために全顧客情報を送信できる必要はありません。必要な情報を使えることと、不要な情報へアクセス・送信できることを分ければ、誤解や誤操作の影響範囲を限定できます。</p>
+<div class="reason"><p>任せ続ける判断には、生成から分かれた判定、条件ごとの品質の観測、役割に必要な情報の境界が要る。成功した出力だけでは、その根拠にならない。</p></div>
+<p>これらは、任せることを遅らせる付属作業ではありません。どこなら任せられるかを判断し、その範囲を広げるための能力です。<a class="source-ref" href="#ref-aa">［原則書：D3・D5・D6］</a></p>
+</section>
+<div class="callout" id="introduce-aa"><p class="label">ここまでの設計に、名前を付ける</p><h3>Agentic Agile（AA）</h3><p>人間の判断を繰り返し消費する代わりに、次から任せられる規範・環境・検証へ変える。任せる範囲と速度を調整し、観測から任せ方を改善する。ここまで説明した構造を、Agentが主要な実行主体となる開発の原則としてまとめたものが、<strong>Agentic Agile（エージェンティック・アジャイル、以下AA）</strong>です。</p><p>その目的を「人間の判断を、最も価値のある判断に使い切る」と置いています。単に人間の確認を省くのでなく、品質と責任を維持しながら、判断を使う場所そのものを変える考え方です。</p></div>
+<section id="roles"><h2><span class="num">06 / 人間の責務</span>今回の成果も、<br>次を引き受けられる系も、失えない。</h2>
+<p>顧客から「今月に間に合わせたい」と言われたとき、特例を増やせば今回の成果を成立させられるかもしれません。しかし、特例のたびに手動照合が必要になるなら、次の仕事を引き受ける能力を使い潰します。一方、実行系の都合が整うまで依頼を断り続ければ、顧客の問題は解けません。</p>
+<p>ここには、単純な正解と誤りではなく、二つの正当な価値があります。今回の変化を成立させる価値と、その変化を引き受け続けられる実行系を成立させる価値です。どちらかを善意や余力に任せると、忙しいときほど抜け落ちます。</p>
+<div class="role-grid"><div class="role"><h3>成果を成立させる責務<br><small>Enabler（イネーブラー）</small></h3><p><strong>それで顧客の問題は解けるか。</strong><br>顧客の背景を理解し、目的と受入条件を具体化し、阻害を解き、成果が成立するまで変化を進める。</p></div><div class="role ope"><h3>実行系を成立させ続ける責務<br><small>Operator（オペレーター）</small></h3><p><strong>その引き受け方で、系は責務を果たし続けられるか。</strong><br>規範・権限・構成・道具・検証環境を整え、必要な実行能力を維持し、育てる。</p></div></div>
+<p>例えば、Enablerは「全契約を一度に扱う必要があるか」を顧客と調整できる。Operatorは「限定した契約を自動照合できれば、今月から引き受けられる」と実行能力を変えられる。二つの責務が同じ判断に参加すると、要求を押すか断るか以外の選択肢が生まれます。</p>
+<div class="reason"><p>成果と継続的な実行能力を両立するには、両方を引き受ける責務を明確にし、一つの判断の中ですり合わせる必要がある。</p></div>
+<p>OperatorとEnablerは、そのための役割モデルです。二人の専任者を必ず置くという原則ではありません。同一人物が兼務しても、何の責任で判断しているかを区別する。Operatorは全件承認者ではなく、Enablerも依頼を渡したら終わる伝言役ではありません。<a class="source-ref" href="#ref-role">［役割モデル］</a></p>
+</section>
+<div class="part">PART II — 自律した仕事を、責任ある全体につなぐ</div>
+<section id="cell"><h2><span class="num">07 / 責務の分割</span>作業を分けても、判断が戻ってくるなら、<br>責任は分散していない。</h2>
+<p>最初は一人のOperatorと複数のAgentで、契約も請求も扱えるかもしれません。対象が増えると、契約の意味、請求の整合、移行、基盤、運用の判断が同じ人へ集まります。そこで担当を分けても、担当者が決められず、すべてを元の責任者へ持ち帰るなら、実行の窓口が増えただけです。</p>
+<p>逆に、「任せた」と言って責任だけを渡しても、変更権限や検証環境や必要な資源がなければ、引受先は成果を保証できません。自律的に引き受けてもらうには、責務とともに判断権限と実行能力を渡す必要があります。</p>
+<p>このように責任・権限・実行能力を一緒に持つ単位を、ここでは<strong>Cell（セル）</strong>と呼びます。CellはAgent一体のことでも、単なる作業チームの別名でもありません。一定の目的について、責任・権限・実行能力を持ち、外部との合意に基づいて成果を実現する単位です。</p>
+<h3>引き受ける責務と、今回の依頼を分ける。</h3>
+<p>「請求の整合を維持する」は継続する責務です。「今回の契約変更を請求へ反映する」は、その責務のもとで今回実現する変化です。後者を終えても、前者の責任は消えません。</p>
+<p>この二つを区別するため、引き受ける責務の仕様を<strong>Profile（プロファイル）</strong>、今回の変化・成果を<strong>Mission（ミッション）</strong>と呼びます。この区別によって、一件の作業完了や担当変更のたびに、継続する保証まで消えてしまうことを防ぎます。</p>
+<div class="reason"><p>判断集中を減らすために分割するなら、作業だけでなく、責任・権限・能力を一緒に引き渡さなければならない。</p></div>
+<p>最初から多数のCellを置く必要はありません。一つのCellが複数の責務を担い、必要になった範囲を分けられます。AAは単独で成立し、その全体を一つのCellとして扱えます。分割後も、AAを使うCellの原則は同じです。<a class="source-ref" href="#ref-core">［構成仕様：0・1］</a> <a class="source-ref" href="#ref-profiles">［責務仕様：1–5］</a></p>
+</section>
+<section id="meaning"><h2><span class="num">08 / 意味と境界合意</span>同じ「完了」でも、<br>同じ現実を指しているとは限らない。</h2>
+<p>契約Cellは「変更を受け付けた」時点で完了とし、請求Cellは「計算に反映した」時点で完了とする。両方が完了を報告しても、利用者が正しい金額を見られることまでは、誰も確かめていないかもしれません。</p>
+<p>全社で「完了」の意味を一つに統一すればよいでしょうか。受付完了と計算完了は、そもそも異なる出来事です。その違いは消してはいけません。一方、同じ言葉だから同じ意味だと推測させれば、接続で誤解が起きます。</p>
+<p>必要なのは、<strong>どの文脈の、どの意味かを特定し、異なる意味の対応を明示すること</strong>です。この意味の違いと対応を保持する仕組みを、<strong>Ontology（オントロジー）</strong>と呼びます。AAの「意味の一意性」も、すべての文脈を統一することではなく、一つの文脈で意味を曖昧にしないことを求めます。</p>
+<h3>意味が分かっても、それだけでは仕事を引き受けたことにならない。</h3>
+<p>変更イベントの項目が理解できても、いつ届くか、重複時にどう扱うか、失敗時に誰が対応するかが決まっていなければ、請求側は「1時間以内」を保証できません。APIの型だけでは、相互の責任までは定まりません。</p>
+<p>そこで、提供条件、入出力、相互の責任、成立を示す記録を<strong>Contract（境界合意）</strong>として合意します。ここでのContractは境界での業務上・技術上の約束を指します。契約Cellの内部手順を請求Cellがすべて知る必要はなくても、自分の保証が依存する条件は知る必要があります。</p>
+<div class="scene"><p class="label">同じ例で区別する</p><p><strong>意味：</strong>「契約変更受付済み」と「請求計算反映済み」は別の状態。<br><strong>境界の約束：</strong>契約側が何をいつ提供し、請求側がどの条件でいつまでに反映するか。<br><strong>成立の記録：</strong>対象ID、採用した計算条件、受信・反映時刻、照合結果。</p></div>
+<div class="reason"><p>内部の違いを認めたまま協働するには、違いを解釈できる意味体系と、依存してよい条件を示す境界合意が必要になる。</p></div>
+<p>全業務の辞書を初日に完成させる必要はありません。最初のMissionが越える境界から、曖昧な意味と必要な約束を明らかにします。<a class="source-ref" href="#ref-aa">［原則書：D2］</a> <a class="source-ref" href="#ref-core">［構成仕様：2・3］</a></p>
+</section>
+<section id="change"><h2><span class="num">09 / 自治と変更</span>自由に改善できても、<br>他者との約束まで勝手には変えられない。</h2>
+<p>契約Cellが処理を改善し、従来の「変更の都度通知」を「夜間一括通知」に変えたとします。契約側だけを見れば、処理負荷が下がる良い変更かもしれません。しかし請求側は、1時間以内に反映するという保証を果たせなくなります。</p>
+<p>これを防ぐために内部の変更をすべて中央承認へ戻せば、自律的に判断するために分けたはずの仕事が、再び中央へ集まります。全体を固定すれば改善が止まり、各自に任せきれば約束が壊れる。この両方を避けるには、内部で変えてよいことと、関係者と合意して変えることを分けなければなりません。</p>
+<p>そこで、各Cellは採用済みの規範とContractの範囲で内部方式を決め、境界の条件を変えるときは関係するCellと合意する構造を置きます。他Cellに影響する変更は、内容・理由・根拠を示して提案し、対象Cellが受入・修正要求・不受入を判断します。既存の条件に基づく受入なら、Agentによる判定も可能です。すべてを人間の会議へ戻すという意味ではありません。</p>
+<h3>「最新版が出た」と「その条件を引き受けた」は違う。</h3>
+<p>共通仕様を書き換えただけで、全Cellの義務まで変わるなら、各Cellは自分が何を保証しているかを管理できません。だから、規範や責務仕様の新版の公開と、各Cellによる採用を分けます。新しい版への移行が成立するまでは、採用中の合意が有効です。</p>
+<p>ここで必要な版は、表紙に更新日を飾るためのものではありません。「この仕事は、どの条件のもとで引き受けたか」を固定するための識別です。Gitは内容を識別できますが、コミットが存在すること自体は、関係者がその義務を引き受けた証拠にはなりません。内容と採用判断の両方が必要です。</p>
+<div class="reason"><p>自律性と外部への保証を両立するには、変更を提案と受入で接続し、規範の改訂と採用を区別する必要がある。</p></div>
+<p>この扱いは親Cellや共通基盤を担うCellにも適用します。責任を引き受けたCellの判断を外から自由に上書きできるなら、そのCellは自分の保証を管理できなくなるからです。全体の責任者は、目的・制約・資源配分・責任境界を整え、必要な合意を形成します。</p>
+<p>自治は、既存義務を一方的に捨てる権利ではありません。履行できないなら明示して調整へ戻す必要があります。なお、ここで説明している設計では、合意不成立や緊急時の詳細手順、移行中の責任と部分失敗の復旧は未確定です。ここまでの構造上の理由と、実運用の手順が完成していることは分けて評価します。<a class="source-ref" href="#ref-core">［構成仕様：2–4・未決の手順］</a></p>
+</section>
+<section id="outcome"><h2><span class="num">10 / 成果と記録</span>各担当の完了を足しても、<br>顧客の成果になるとは限らない。</h2>
+<p>契約側の変更が終わり、請求側の実装が終わり、基盤側の配備が終わった。それでも、反映タイミングがずれていれば、利用者は正しい金額を見られません。局所の完了は、全体の成立に必要であっても、それだけで十分ではありません。</p>
+<p>そこで、最終的な判定を「契約変更から1時間以内に、利用者が正しい請求予定額を確認できたか」に置きます。テスト結果だけでなく、対象、適用条件、反映時刻、照合結果、受入判断までつながっていれば、成立したことも、どこで途切れたかも確かめられます。この検証可能な記録を<strong>Evidence（成立を示す記録）</strong>と呼びます。</p>
+<p>単にログを大量に保存すればよいわけではありません。どの目的と条件で実行され、何を根拠に達成を認めたのかを辿れる必要があります。記録が個人の会話だけに残れば、次の担当者もAgentも、その判断を使えません。</p>
+<p>複数Cellを横断する変化では、Enablerが全体の成果成立を進め、各Operatorが自Cellの境界と保証を持ちます。全体を調整する人が、各Cellの内部を一方的に操作する必要はありません。目的と条件を共有し、各Cellが引き受けた結果を、全体の成果で確かめます。</p>
+<div class="reason"><p>責務を分けても成果を分断しないためには、全体の達成条件と、それを検証できる記録、成立まで進める責務を残さなければならない。</p></div>
+<p>この境界で接続できるなら、内部がすべて同じ方式である必要はありません。AAを使うCell、人間のチーム、外部委託先が混在しても、意味・責任・合意・成果をつなげられる。このように、自治を持つ単位が合意に基づいてつながる構成を<strong>Federation（連合）</strong>と呼びます。内部の作業方式が違っても、接続の条件を揃えることで協働できます。<a class="source-ref" href="#ref-core">［構成仕様：0・5］</a> <a class="source-ref" href="#ref-role">［役割モデル：3・7］</a></p>
+</section>
+<div class="callout" id="introduce-eaa"><p class="label">責任を分けてつなぐ設計に、名前を付ける</p><h3>Enterprise Agentic Agile（EAA）</h3><p>責任・権限・能力を持つ単位に仕事を分け、意味と約束を接続し、互いの自治を保ちながら変更と成果を成立させる。後半で説明したこの構成を、<strong>Enterprise Agentic Agile（エンタープライズ・エージェンティック・アジャイル、以下EAA）</strong>と呼びます。</p><p>AAは、一つの開発主体がAgentへ実行を任せる原則として単独で成立します。EAAは、そのような主体を責任の単位として分け、つなぐ構成です。参加するすべての主体がAAを使う必要はなく、人間のチームや外部委託先も接続できます。現在は仕様を検討している段階です。</p></div>
+<section id="trial"><h2><span class="num">11 / 最初の一件</span>設計の筋が通ることを、<br>実際に機能することへつなぐ。</h2>
+<p>ここまでの議論から導けるのは、明示・委任・検証・責任境界が必要になる理由です。特定の役職名や文書形式が唯一の解だということでも、AAやEAAの効果が実証済みだということでもありません。実際の判断負荷が下がり、成果と品質を維持できるかは、仕事を一件通して確かめます。</p>
+<p>最初から組織全体を再編する必要はありません。この例なら対象の契約パターンを限定し、目的・制約・権限・判定条件を明示する。検証環境と戻せる範囲を用意し、その中で計画から検証までを任せる。責任主体が複数なら、今回越える境界の意味と約束だけを明らかにします。</p>
+<h3>観測するのは、Agentの働いた量だけではない。</h3>
+<ul class="compact-list"><li><strong>顧客の成果：</strong>合意した時間内に、正しい請求予定額を確認できたか。</li><li><strong>人間へ戻った判断：</strong>何を聞かれ、何に時間を使い、同種の質問が何回繰り返されたか。</li><li><strong>委任の誤り：</strong>不可逆操作の誤実行、判断待ちで止まった時間、誤り一件あたりに進んだ実行量はどうだったか。</li><li><strong>次に残った能力：</strong>規範・照合・道具を改善した後、同種の仕事で反復判断が減ったか。改善と確認の費用も含めて確かめる。</li><li><strong>分割した場合の責任：</strong>元の責任者へ判断が戻り続けていないか。局所完了と全体の成果にずれがないか。</li></ul>
+<p>AA Principlesが最初の循環で検証対象としているのは、可逆性と期待浪費に基づく委任です。上の項目は、その検証を業務の一件として読むための観測案です。制度を一度に作り込むより、過剰に止まった箇所と任せすぎた箇所を記録し、次の条件を直します。</p>
+<p>条件を明示するための負担が大きいのに、判断の再利用がほとんど起きないなら、対象の選び方や仕組みを見直すべきです。Cellを分けた結果、調整が増えて判断集中も減らないなら、分け方や権限の渡し方を見直す。枠組みに合わせて成功と呼ぶのではなく、狙った変化が起きたかを確かめます。</p>
+<div class="callout"><p class="label">同僚と、まず一件について話す</p><p>この仕事では、誰のどんな判断が繰り返されているだろうか。<br>その判断を次から不要にするには、何を明示し、何を検証できればよいだろうか。<br>他の担当へ渡したときにも、最後の成果を誰がどう確かめるだろうか。</p></div>
+</section>
+<section class="endnote"><p class="statement">実行を任せるほど、<br>判断の根拠と責任の境界が重要になる。</p>
+<p>同じ判断を人間が繰り返すなら、実行能力を増やしても人間への依存は減りません。責任を分けても、意味と約束がつながらなければ、成果は全体として成立しません。</p>
+<p>AAは、人間の判断を次の自律性へ変えるために、規範・委任・検証・改訂を組み立てます。EAAは、その自律性を失わずに責務を分けるために、意味・合意・変更・成果を境界でつなぎます。</p>
+<p><strong>人間の判断を最も価値のある判断に使い、責任を保ったまま実行を広げる。その目的を諦めないなら、これらの問題を解く構造が要る。</strong>AAとEAAは、その構造を一つの設計として提示しています。</p>
+</section>
+<section class="sources" id="sources"><h2>定義元と、この資料の位置づけ</h2><p>本資料は非規範の解説です。論証・業務例・観測案は説明のためのもので、正本へ新しい義務を追加しません。AA Principlesは正本、EAA CoreとProfilesは検討中の仕様案、役割モデルは適用例です。</p><ul>
+<li id="ref-aa"><a href="https://github.com/kishibashi3/publications/blob/29d565161b46ce5f1900118f420653c103f576a2/drafts/agentic-agile/principles.md">Agentic Agile Principles</a> — 目的、前提、P1–P3、D1–D8、最初の検証対象。</li>
+<li id="ref-core"><a href="https://github.com/kishibashi3/publications/blob/29d565161b46ce5f1900118f420653c103f576a2/drafts/enterprise-agentic-agile/core.md">Enterprise Agentic Agile Core</a> — Cell、自治、意味と合意、変更、成果と記録。</li>
+<li id="ref-profiles"><a href="https://github.com/kishibashi3/publications/blob/29d565161b46ce5f1900118f420653c103f576a2/drafts/enterprise-agentic-agile/profiles.md">EAA Profiles</a> — 責務の引受、分割、改訂と採用。</li>
+<li id="ref-role"><a href="https://github.com/kishibashi3/publications/blob/29d565161b46ce5f1900118f420653c103f576a2/drafts/enterprise-agentic-agile/role-model.md">EAA Role Model</a> — OperatorとEnablerの責務配置。</li>
+</ul><p>参照はPR #71のコミット29d5651に固定しています。文書の変更履歴と、各現場が採用する条件・承認の記録は区別します。</p></section>
+</article></main><footer><span>Agentic Agile / Enterprise Agentic Agile</span><span>設計の理由を読む</span></footer>
+</body></html>
