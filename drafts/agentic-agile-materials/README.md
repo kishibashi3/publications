@@ -9,7 +9,7 @@ HTMLをダウンロードしてブラウザで開く。スタイルは各ファ�
 
 | 資料 | 用途 |
 | --- | --- |
-| [設計の理由](explanations/why-aa-eaa.html) | 前提知識なしで、現場の問題からAA・EAAの設計が必要になる理由を辿る。同僚への説明の入口 |
+| [設計の理由](explanations/why-aa-eaa.html) | 前提知識なしで、AAの内部設計とEAAの責任・接続設計を独立した編で読む。冒頭に見取り図、末尾に両者の接続を示す。同僚への説明の入口 |
 | [AA単独版](explanations/aa-introduction.html) | AAの目的、人間とAgentsの役割、原則、委任と学習を説明する |
 | [AA・EAA全体紹介](explanations/aa-eaa-introduction.html) | 全体の構造と、一件の仕事が成果になるまでを図と例で説明する |
 
