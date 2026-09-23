@@ -1,11 +1,8 @@
-# Enterprise Agentic Agile — Working Notes
+# EAA Working Notes
 
-2026-09-22 · Kazuhiro
-
-> Status: research notes / non-normative
->
-> 構成原理は[Cell・Profile・Federation](eaa-cell-profile-federation-draft.md)、共通ルールは[Core](enterprise-agentic-agile-core-v0.1.md)、責務仕様は[Profiles](eaa-profiles-v0.1.md)、人間配置は[Role Model](eaa-role-model-v0.1.md)を参照する。
-> 本文書は設計の動機・仮想ケース・観測方法を扱う。ケースの人数、技術、期間、イベントをEAA一般の要件にしない。
+> 位置づけ：検討資料（非規範）
+> 対象：理論との接続、仮想ケース、観測方法。人数・技術・期間は一般要件ではない。
+> 参照：定義元は[Core](core.md)・[Profiles](profiles.md)。役割は[Role Model](role-model.md)。
 
 ## 1. AAからEAAへ
 
@@ -39,7 +36,7 @@ Cutoverも例外的な強制指揮権を作らない。関係Cellが事前合意
 
 責務仕様を配置から分ければ、1 Cellから始めて責務を失わずに拡張できると考える。これは設計仮説であり、大規模運用での有効性が実証されたことを意味しない。
 
-既存方式との比較は[比較資料](eaa-enterprise-agile-comparison-v0.1.md)を参照する。旧版の採点を改訂モデルへ引き継がず、判断集中、境界待ち、合意の所要時間、成果と保証の維持を観測する。
+既存方式との比較は[比較資料](comparison.md)を参照する。現行モデルは未採点であり、判断集中、境界待ち、合意の所要時間、成果と保証の維持を観測する。
 
 ## 5. 未決事項
 
@@ -749,4 +746,3 @@ Expected Waste           ...
 を観測することである。
 
 この意味で GitHub は単なる開発管理ツールではなく、EAA の実行・因果・Evidence を記録する durable ledger として利用できる。
-

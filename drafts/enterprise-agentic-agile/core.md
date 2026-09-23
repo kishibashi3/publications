@@ -1,13 +1,10 @@
-# Enterprise Agentic Agile Core — 改訂草案
+# Enterprise Agentic Agile Core
 
-2026-09-22 · Kazuhiro
+> 位置づけ：規範案（未確定）
+> 対象：Cellの責務分割・自治・意味と合意・変更・成果と記録の定義。
+> 参照：責務仕様は[Profiles](profiles.md)。解説・適用例は本書に規範を追加しない。
 
-> Status: draft / proposed normative core
->
-> 本書はEAAの共通原則の定義元である。旧v0.1のパスは参照互換のため維持する。
-> 責務仕様は[Profiles](eaa-profiles-v0.1.md)で具体化する。解説・適用例は本書に規範を追加しない。
-
-## 目的と範囲
+## 0. 目的と範囲
 
 EAAは、自律した開発主体をCellとして扱い、責務の分割とFederationによって拡張する構成原理である。
 [AA](../agentic-agile/README.md)が全責務を担う構成は1 CellのEAAであり、分割後のCellを担うAAも同じAAである。
@@ -70,7 +67,7 @@ Cell間の変更は、提案側が内容・理由・根拠を示し、対象Cell
 AAおよび[自己改訂規範アーキテクチャ v1・最小構成](../self-revising-norm-architecture/self-revising-norm-architecture-minimal.md)に従う規範体系では、所有者は人間であり、改訂の提起者はその改訂を承認しない。
 この参照は、参加Cellの内部規範に同アーキテクチャの採用を要求するものではない。内部の改訂手続きは各Cellが定め、Cell間の合意の変更と採用には本書の境界条件を適用する。
 実行者が自分を縛る規範を緩める変更を自己承認したり、自ら権限を拡大したりしてはならない。
-Profile正本の改訂と採用版の扱いは[Profiles](eaa-profiles-v0.1.md)で定める。
+Profile正本の改訂と採用版の扱いは[Profiles](profiles.md)で定める。
 
 ## 5. 成果と記録
 

@@ -1,7 +1,8 @@
 # Agentic Agile — 考え方と開発の姿
 
-> 本文書は非規範の導入解説である。[Principles v2・書き直し案](agentic-agile-principles-rewrite.md)が目指す開発の姿を説明する。
-> ここにある仕事の流れや道具は適用例であり、原則に新しい義務を追加しない。
+> 位置づけ：導入解説（非規範）
+> 対象：AAの背景、実行・検証・学習の循環と具体例。
+> 参照：[Principles](principles.md)が定義元。仕事の流れや道具は適用例であり、新たな義務を追加しない。
 
 ## 1. なぜ開発を組み直すのか
 
@@ -102,5 +103,5 @@ Agentは規則の改善案を作れる。自分を縛る条件を緩和する案
 
 ## 原則を読む
 
-[Principles v2・書き直し案](agentic-agile-principles-rewrite.md)は、この開発系を成立させる原則を短く記した文書である。
-各原則の導出・意味・先行版との対応は[原則の解説](commentary.md)を参照する。
+[Principles](principles.md)は、この開発系を成立させる原則を短く記した文書である。
+各原則の導出・意味は[原則の解説](commentary.md)を参照する。

@@ -1,6 +1,8 @@
-# Agentic Agile Principles v2（書き直し案）
+# Agentic Agile Principles
 
-2026-09-19 · Kazuhiro
+> 位置づけ：規範（正本）
+> 対象：Agentを主要な実行主体とする開発の原則と指針。
+> 参照：[自己改訂規範アーキテクチャ・最小構成](../self-revising-norm-architecture/self-revising-norm-architecture-minimal.md)。
 
 本書は、AIエージェントが開発の実行主体となる環境における開発の原則を定める。準拠先は「[自己改訂規範アーキテクチャ v1・最小構成](../self-revising-norm-architecture/self-revising-norm-architecture-minimal.md)」である。
 

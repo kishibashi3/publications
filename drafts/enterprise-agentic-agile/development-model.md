@@ -1,10 +1,8 @@
 # Enterprise Agentic Agile — 考え方と開発の姿
 
-> Status: explanatory draft / non-normative
->
-> AAから分割とFederationへ進む背景と開発の姿を説明する導入文書である。
-> [Core](enterprise-agentic-agile-core-v0.1.md)の理由と使い方を説明し、新たな義務を追加しない。
-> 旧「構成原理」と「AAからの拡張」を統合した。定義はCoreと[Profiles](eaa-profiles-v0.1.md)を参照する。
+> 位置づけ：導入解説（非規範）
+> 対象：AAから責務の分割とFederationへ拡張する理由と具体例。
+> 参照：[Core](core.md)と[Profiles](profiles.md)が定義元。本書は新たな義務を追加しない。
 
 ## 1. AAから始める
 
@@ -47,14 +45,14 @@ Federationは、責任・権限・合意・Evidenceを通して相手と接続�
 そこで、変更の提案と対象Cellの受入を分ける。DomainからEnterpriseへのOntology訂正も、PlatformからDomainへのCI/CD導入も同じ関係である。
 
 共通規範の正本を一つにしても、各Cellが採用する版を固定すれば、一方的な変更の波及を防げる。
-正本を改訂する権限と、それを採用する判断は別になる。具体的なライフサイクルはProfiles、PRでの実装例は[適用ガイド](eaa-delivery-guide-v0.2.md)を参照する。
+正本を改訂する権限と、それを採用する判断は別になる。具体的なライフサイクルはProfiles、PRでの実装例は[適用ガイド](delivery-guide.md)を参照する。
 
 自治には、既に引き受けた保証を果たす責任も伴う。
 変更を受け入れない場合に既存義務まで消えるわけではなく、履行不能は調整の対象となる。
 
 ## 5. IaC化からPlatformを分離する例
 
-これは構成例であり、効果の実証ではない。役割の配置は[Role Model](eaa-role-model-v0.1.md)の例を使う。
+これは構成例であり、効果の実証ではない。役割の配置は[Role Model](role-model.md)の例を使う。
 
 1. 一つの開発主体で業務機能と基盤を扱う。
 2. Enablerが顧客との会話・問題・残件をIssueへ戻し、OpeとAgentが土台・計画・実装・検証を進める。

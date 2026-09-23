@@ -1,13 +1,8 @@
-# EAA Role Model — 改訂草案
+# EAA Role Model
 
-2026-09-22 · Kazuhiro
-
-> Status: draft / non-normative application guide
->
-> [適用ガイド](eaa-delivery-guide-v0.2.md)の役割編。Coreの責任・判断主体を人間とAgentへ配置する参考モデルである。
-> [EAA Core](enterprise-agentic-agile-core-v0.1.md)に従い、内部の職名・人数・工程を参加条件にしない。
-> 配置・人数・Council・既存職種との対応はReference Modelである。
-> 旧v0.1のファイルパスは参照互換のため維持する。
+> 位置づけ：適用例（非規範）
+> 対象：責任と判断をOperator・Enabler・Executorへ配置する参考モデル。
+> 参照：[Core](core.md)・[Profiles](profiles.md)。[Delivery Guide](delivery-guide.md)の役割編。
 
 ## 1. 三つの責務
 

@@ -1,14 +1,8 @@
-# EAA Adoption Guide v0.1
+# EAA Adoption Guide
 
-2026-09-22 · Kazuhiro
-
-> Status: draft / non-normative
->
-> 本文書は Enterprise Agentic Agile (EAA) を既存 Enterprise へ導入する際の、組織・役割・受容性に関する Reference Guide である。
-> EAA Core の規範ではなく、Profile でもない。
->
-> EAA の技術的成立性だけでなく、既存組織がその透明性、権限構造、役割変化を受容できるかを扱う。
-> Operator / Enabler / Agent の役割定義は `eaa-role-model-v0.1.md` を参照する。
+> 位置づけ：適用例（非規範）
+> 対象：既存組織への導入、役割移行、透明性の受容。
+> 参照：[Core](core.md)・[Profiles](profiles.md)。役割の配置は[Role Model](role-model.md)。
 
 ## 1. 最初の最大リスク
 

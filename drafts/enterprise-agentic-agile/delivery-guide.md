@@ -1,23 +1,17 @@
-# EAA Delivery Guide — Cell／Profile改訂草案
+# EAA Delivery Guide
 
-2026-09-22 · Kazuhiro
-
-> Status: draft / non-normative
->
-> 本文書は EAA Core と Profiles を実案件へ適用するための Reference Guide である。
-> Core の規範は `enterprise-agentic-agile-core-v0.1.md`、
-> 責務仕様は `eaa-profiles-v0.1.md` を参照する。
-> 組織導入・役割移行・Transparency の受容については `eaa-adoption-guide-v0.1.md` を参照する。
-> Operator / Enabler / Agent の人間ロールモデルは `eaa-role-model-v0.1.md` を参照する。
+> 位置づけ：適用例（非規範）
+> 対象：GitHub・記録・運営への適用パターン。
+> 参照：[Core](core.md)・[Profiles](profiles.md)。役割は[Role Model](role-model.md)、導入は[Adoption Guide](adoption-guide.md)。
 
 ## 1. このガイドの使い方
 
-境界の条件は[Core](enterprise-agentic-agile-core-v0.1.md)、責務仕様は[Profiles](eaa-profiles-v0.1.md)を参照する。
+境界の条件は[Core](core.md)、責務仕様は[Profiles](profiles.md)を参照する。
 以下は実装・配置・運営の選択例であり、全部を導入する必要はない。
 
 ## 2. 判断と役割の配置
 
-[Role Model](eaa-role-model-v0.1.md)はOperator・Enabler・Executorへ責務を配置する参考例である。
+[Role Model](role-model.md)はOperator・Enabler・Executorへ責務を配置する参考例である。
 人間判断を例外へ集中する運営では、反復判断を正当な改訂手続きで規範・Contractへ戻し、Enablerが繰り返す阻害を改善Missionにする。
 人間判断の削減と成果・安全性の維持を一緒に観測する。人間中心の内部方式へ同じ運営を要求するものではない。
 
@@ -398,7 +392,7 @@ Federationを検証するPoCでは、複数の責任領域を横断する実業�
 これはPoC上の選択であり、EAAが開始時から複数Cellを要求することを意味しない。
 
 役割移行・Transparency受容・Ope依存・判断待ちも観測する。
-組織導入は [Adoption Guide](eaa-adoption-guide-v0.1.md) を参照する。
+組織導入は [Adoption Guide](adoption-guide.md) を参照する。
 
 ---
 

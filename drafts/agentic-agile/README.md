@@ -1,29 +1,24 @@
 # Agentic Agile（AA）
 
-AIエージェントが開発の実行主体となる環境で、人間の判断とAgentの実行・検証・学習をどう成立させるかを扱う。
-目的・規範・権限に従って開発を進め、観測をもとに改善する、単独で成立する開発原則である。
+> 位置づけ：案内（非規範）
+> 対象：単独で成立するAgenticな開発原則と、その解説。
+> 参照：原則の定義元は[Principles](principles.md)。
+
+AAは、AIエージェントが開発の実行主体となる環境で、人間の判断とAgentの実行・検証・学習をどう成立させるかを扱う。
 
 ## 読む順序
 
-初めて読む場合は、考え方と開発の姿、原則、詳細解説の順に読む。
-運用中に原則を確認する場合はPrinciplesを直接参照する。
+| 用途 | 文書 |
+| --- | --- |
+| 考え方と開発の姿を知る | [導入解説](development-model.md) |
+| 原則と指針を確認する | [Principles](principles.md) |
+| 成立理由を理解する | [原則の解説](commentary.md) |
 
-| 段階 | 文書 | 位置づけ |
-| --- | --- | --- |
-| 1. 考え方と開発の姿 | [導入解説](development-model.md) | 背景、開発ループ、具体例。非規範 |
-| 2. 原則・仕様 | [Principles v2・書き直し案](agentic-agile-principles-rewrite.md) | 改訂案。原則3項目と指針8項目 |
-| 3. 詳細解説・適用例 | [原則の解説](commentary.md) | 各原則の成立理由・意味・先行版との対応。非規範 |
+Principlesを正本とする。解説は新たな義務を追加しない。
+旧Principlesと書き直しの経緯はGit履歴とPRに残す。
 
-原則の定義はPrinciplesに置き、解説は新たな義務を追加しない。
-Principles v2は書き直し案であり、案内の順序は承認・採用を意味しない。
+## 関連文書
 
-## 検討履歴・参考資料
-
-[Principles v1](agentic-agile-principles.md)は先行する原則文書である。
-書き直し案との違いは原則の解説で確認する。
-
-## 関連する文書群
-
-規範の所有・改訂・版参照は[自己改訂規範アーキテクチャ](../self-revising-norm-architecture/README.md)を参照する。
+規範の所有・改訂は[自己改訂規範アーキテクチャ](../self-revising-norm-architecture/README.md)、Gitでの参照方法は[文書管理](../document-management.md)を参照する。
 
 [下書きの案内へ](../README.md)
