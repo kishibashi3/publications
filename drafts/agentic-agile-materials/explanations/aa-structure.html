@@ -1,0 +1,330 @@
+<!--
+  ============================================================
+  上ほど、動かない — AA/EAA 紹介 2/3（AA の構造）
+  ============================================================
+
+  配布範囲
+    社内・社外の両方。出し分けをしない 1 本。
+
+  読者
+    1/3「二つの崩れ方のあいだ」で問題の形を見た人。
+    「で、その形に対して何をどう置いたのか」を知りたい。
+
+  読んだ後にどうなってほしいか
+    AA が部品の集まりであり、各部品が問題のどこを受けているかが対応づく。
+    そして AA の実体が「一個の規範文書」だと分かる。
+
+  この文書がやらないこと
+    主体が複数になったときの話（3/3 が扱う）。導入手順。事例。
+
+  組
+    1/3 問題空間の構造 … 二つの崩れ方のあいだ
+    2/3 AA の構造      … 本書（一つの主体の中）
+    3/3 EAA の構造     … 主体と主体のあいだ
+  ============================================================
+-->
+<title>上ほど、動かない</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap">
+<style>
+  :root{
+    --paper:#f5f6f4;--ink:#1c2422;--muted:#5a6562;--faint:#8b9491;
+    --line:#dcdfda;--panel:#eaeee8;
+    --path:#16564a;--path-soft:#e3ece8;
+    --eaa:#234e70;--eaa-soft:#e4eaef;
+    --fail-a:#8a6420;--fail-a-soft:#f1eadd;
+    --fail-b:#9b3527;--fail-b-soft:#f3e5e2;
+    --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+    --sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+      --line:#2b3432;--panel:#1c2322;--path:#6fbfa6;--path-soft:#1a2a26;
+      --eaa:#7aa9d4;--eaa-soft:#19242e;--fail-a:#d3ad63;--fail-a-soft:#272218;
+      --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+    --line:#2b3432;--panel:#1c2322;--path:#6fbfa6;--path-soft:#1a2a26;
+    --eaa:#7aa9d4;--eaa-soft:#19242e;--fail-a:#d3ad63;--fail-a-soft:#272218;
+    --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15.5px/1.95 var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:35em;margin-inline:auto;padding-inline:20px;
+    padding-block:56px 80px;display:flex;flex-direction:column;gap:56px}
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--path);outline-offset:3px}
+
+  .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
+    line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
+    line-height:1.6;margin:0;text-wrap:balance}
+  .lead{font-size:16.5px;line-height:2.05}
+  section{display:flex;flex-direction:column;gap:20px}
+  .sec-head{display:flex;flex-direction:column;gap:7px}
+
+  /* 規範文書の項目 */
+  .fields{margin:0;display:grid;grid-template-columns:auto 1fr;
+    gap:0;border-top:1px solid var(--line)}
+  .fields dt{
+    font:500 11.5px/1.9 var(--mono);color:var(--path);
+    border-bottom:1px solid var(--line);padding:11px 14px 11px 0;white-space:nowrap;
+  }
+  .fields dd{
+    margin:0;min-width:0;border-bottom:1px solid var(--line);
+    padding:11px 0;font-size:14.5px;line-height:1.85;
+  }
+  .fields dt.key,.fields dd.key{background:var(--path-soft)}
+  .fields dt.key{padding-left:10px}
+  .fields dd.key{padding-right:10px}
+
+  /* 三層 */
+  .layers{display:flex;flex-direction:column;gap:6px}
+  .layer{
+    border:1px solid var(--c);background:var(--bg);
+    padding:14px 16px;display:grid;grid-template-columns:auto 1fr;
+    gap:4px 14px;align-items:baseline;
+  }
+  .layer .n{font:500 11px/1.8 var(--mono);color:var(--c);white-space:nowrap}
+  .layer>div{min-width:0;display:flex;flex-direction:column;gap:3px}
+  .layer b{font-size:15.5px;line-height:1.7;font-weight:700}
+  .layer span{font-size:13.5px;line-height:1.85;color:var(--muted)}
+  .l1{--c:var(--path);--bg:var(--path-soft)}
+  .l2{--c:var(--path);--bg:transparent}
+  .l3{--c:var(--line);--bg:transparent}
+  .layer.l3 .n{color:var(--faint)}
+  .movement{
+    display:flex;justify-content:space-between;align-items:center;
+    font:500 10.5px/1.6 var(--mono);color:var(--faint);
+    letter-spacing:.06em;padding-inline:2px;
+  }
+
+  /* 対応表 */
+  .map{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .map>li{
+    border-bottom:1px solid var(--line);padding-block:15px;
+    display:grid;grid-template-columns:1fr;gap:8px;
+  }
+  .map .q{font-size:14.5px;line-height:1.9;color:var(--muted)}
+  .map .a{
+    display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;
+  }
+  .map .id{
+    font:500 11px/1.7 var(--mono);color:var(--path);
+    border:1px solid var(--path);padding:1px 7px;white-space:nowrap;
+  }
+  .map .a b{min-width:0;font-size:15px;line-height:1.75;font-weight:700}
+
+  /* 連鎖 */
+  .chain{display:flex;flex-direction:column;align-items:stretch;gap:0}
+  .chain .node{
+    border:1px solid var(--c);background:var(--bg);color:var(--ink);
+    padding:13px 16px;display:flex;flex-direction:column;gap:3px;
+  }
+  .chain .node b{font-size:14.5px;line-height:1.7;font-weight:700}
+  .chain .node span{font-size:12.5px;line-height:1.8;color:var(--muted)}
+  .chain .arr{
+    align-self:center;font:500 11px/2.4 var(--mono);color:var(--faint);
+    letter-spacing:.05em;text-align:center;
+  }
+  .chain .root{--c:var(--fail-a);--bg:var(--fail-a-soft)}
+  .chain .self{--c:var(--path);--bg:var(--path-soft)}
+  .chain .down{--c:var(--line);--bg:transparent}
+
+  blockquote{margin:0;border-left:3px solid var(--path);padding:4px 0 4px 18px;
+    font-family:var(--serif);font-size:17px;line-height:1.85;font-weight:500}
+
+  .notes{background:var(--panel);padding:22px;display:flex;flex-direction:column;
+    gap:11px;font-size:13px;line-height:1.9;color:var(--muted)}
+  .notes h2{font:500 11px/1.6 var(--mono);font-family:var(--mono);
+    letter-spacing:.1em;color:var(--faint);margin:0}
+  footer{border-top:1px solid var(--line);padding-top:18px;
+    font-size:12px;line-height:1.9;color:var(--faint)}
+
+  @media (max-width:520px){
+    .fields{grid-template-columns:1fr}
+    .fields dt{border-bottom:0;padding-bottom:0}
+    .fields dd{padding-top:3px}
+    .fields dt.key{padding-top:11px}
+    .layer{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="label">AGENTIC AGILE ／ 紹介 2 of 3</p>
+    <h1>上ほど、動かない。</h1>
+  </header>
+
+  <section>
+    <p class="lead">1 枚目で見たのは、問題の形でした。人間が全部承認しても、Agent に判断ごと渡しても壊れる。その間を通る細い道。</p>
+    <p>ここでは、その形に対して<strong>何をどう置いたか</strong>を見ます。扱うのは一つの開発主体の中だけです。主体が複数になったときは 3 枚目で扱います。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">01 ／ 実体</p>
+      <h2>AA は、一個の<br>規範文書である。</h2>
+    </div>
+    <p>方法論の名前に見えますが、実体は文書が 1 本です。全部で 60 行ほど。そしてその文書は、規範文書が持つべき項目を、自分についても持っています。</p>
+    <dl class="fields">
+      <dt>目的</dt><dd>人間の判断を、価値のある判断に配分する</dd>
+      <dt>ルール</dt><dd>原則 3 つと、指針 8 つ</dd>
+      <dt>実行者</dt><dd>この文書に準拠して案件規則を作り、運用する人間と Agent</dd>
+      <dt class="key">所有者</dt><dd class="key">人間ひとり。変更を承認する</dd>
+      <dt class="key">観測</dt><dd class="key">この文書が妨げになった、または足りなかった事例</dd>
+      <dt>見直しの契機</dt><dd>その事例が記録されたとき</dd>
+      <dt class="key">準拠先</dt><dd class="key">従う上位の規範文書と、その版</dd>
+    </dl>
+    <p class="on">色をつけた 3 つが、方法論ではあまり見ない項目です。<strong>誰が変えられるか。何を根拠に変えるか。何に従っているか。</strong>この 3 つを持っているから、文書が改訂の対象になります。持っていない方法論は、良いか悪いかしか言えません。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">02 ／ 層</p>
+      <h2>中は、三層になっている。</h2>
+    </div>
+    <div class="layers">
+      <div class="layer l1">
+        <span class="n">3 文</span>
+        <div><b>前提</b><span>問題の形。これが変われば、下は全部書き直しになる</span></div>
+      </div>
+      <p class="movement"><span>↓ 導く</span><span>動きにくい</span></p>
+      <div class="layer l2">
+        <span class="n">3 つ</span>
+        <div><b>原則</b><span>権威はどこに宿るか。層はどう積むか。規範はどう変わるか</span></div>
+      </div>
+      <p class="movement"><span>↓ 導く</span><span></span></p>
+      <div class="layer l3">
+        <span class="n">8 つ</span>
+        <div><b>指針</b><span>判断の配分、意味の一意性、生成と判定の分離、委任の尺度ほか</span></div>
+      </div>
+      <p class="movement"><span>↑ 改訂はここから起きる</span><span>動きやすい</span></p>
+    </div>
+    <p>八つの指針のうち七つは、原則を経由して出ています。一つだけ——品質を点ではなく分布として扱う——が前提から直接出ていて、<strong>前提が覆れば最初に落ちます。</strong>逆に、原則が全部書き換わっても、その一つは残ります。</p>
+    <p class="on">どの指針がどこから出たかを書いてあるのは、<strong>撤回するときに何を巻き込むかが分かるようにするため</strong>です。出典を書かない規則は、消すときに影響範囲が読めません。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">03 ／ 対応</p>
+      <h2>どの部品が、<br>どの問題を受けるか。</h2>
+    </div>
+    <p>左が問題の形、右がそれを受ける部品です。部品が先にあって問題を探したのではなく、<strong>問題が先にあって部品が付いています。</strong></p>
+    <ul class="map">
+      <li>
+        <p class="q">実行者は背景を共有しない。書かれていないものを参照しようとすると、「参照できなかった」とは言わず、もっともらしく埋める。しかも毎回違う埋め方をする。</p>
+        <p class="a"><span class="id">P1</span><b>権威は書かれたものに宿る</b></p>
+      </li>
+      <li>
+        <p class="q">執行だけの層は、不具合を見つけても反映する先がない。下位を書くだけの層は、自分で執行しないので観測がない。</p>
+        <p class="a"><span class="id">P2</span><b>開発は憲法の連鎖である</b></p>
+      </li>
+      <li>
+        <p class="q">前提は動く。規範が固定なら、実行者にできるのは「従って失敗する」か「黙って外す」かだけで、どちらも記録に残らない。</p>
+        <p class="a"><span class="id">P3</span><b>憲法は改訂される</b></p>
+      </li>
+      <li>
+        <p class="q">人間の判断が希少。実行が速くなるほど、判断待ちが律速になる。</p>
+        <p class="a"><span class="id">D1</span><b>判断の配分</b></p>
+      </li>
+      <li>
+        <p class="q">同じ語が二通りに読めると、書いてあるのに従う先が決まらない。黙って意味が変わると、文書を変えずに義務が変わる。</p>
+        <p class="a"><span class="id">D2</span><b>意味の一意性</b></p>
+      </li>
+      <li>
+        <p class="q">同じ生成元は同じ誤りを共有する。自分の出力を自分で点検しても、共有された誤りは残る。</p>
+        <p class="a"><span class="id">D3</span><b>生成と判定の分離</b></p>
+      </li>
+      <li>
+        <p class="q">取り消せない操作がある。そして実行の総量に上限があるので、誤った方向へ流した量が損失になる。</p>
+        <p class="a"><span class="id">D4</span><b>委任の尺度（可逆性と期待浪費）</b></p>
+      </li>
+      <li>
+        <p class="q">出力が確率的にばらつく。一度うまくいったことは、次もうまくいく保証にならない。</p>
+        <p class="a"><span class="id">D5</span><b>確率的品質</b></p>
+      </li>
+      <li>
+        <p class="q">情報を知ったことと、決定権を得たことが混ざる。逆に、遮断しすぎると目的が理解できなくなる。</p>
+        <p class="a"><span class="id">D6</span><b>境界</b></p>
+      </li>
+      <li>
+        <p class="q">可逆性は操作に固有の性質ではなく、刻み方で変えられる量である。ただし刻んだ全体が不可逆なら、買えたのは見かけだけ。</p>
+        <p class="a"><span class="id">D7</span><b>可逆性は設計で買える</b></p>
+      </li>
+      <li>
+        <p class="q">権限を緩める操作は、設定としては取り消せることが多い。けれど緩めてから戻すまでの窓に入った実行は戻らない。<strong>可逆かつ権限増加という組み合わせが実在する。</strong></p>
+        <p class="a"><span class="id">D8</span><b>自己権限の固定</b></p>
+      </li>
+    </ul>
+    <p class="on">十一の部品のうち、<strong>D7 だけが他の部品を出典に取っています。</strong>可逆性が自律の範囲を決めるというのは D4 の言明で、前提から直接は出ません。だから D4 を撤回すると D7 も一緒に落ちます。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">04 ／ 上下</p>
+      <h2>この文書自身にも、<br>上と下がある。</h2>
+    </div>
+    <p>AA は一番上ではありません。上に準拠先があり、下に案件ごとの規則を書きます。各層が<strong>自分に適用される規範のもとで執行し、その範囲内で下位を書く</strong>——これが P2 の形です。</p>
+
+    <div class="chain">
+      <div class="node root">
+        <b>自己改訂規範アーキテクチャ</b>
+        <span>体系の根。版は所有者の承認そのもので成立し、その手続きは体系の外にある</span>
+      </div>
+      <p class="arr">↑ 準拠　／　↓ 適用</p>
+      <div class="node self">
+        <b>Agentic Agile Principles</b>
+        <span>本書が扱っているもの。前提 3・原則 3・指針 8</span>
+      </div>
+      <p class="arr">↑ 準拠　／　↓ 適用</p>
+      <div class="node down">
+        <b>案件規則</b>
+        <span>この案件で守る条件、任せる範囲、成果の判定条件</span>
+      </div>
+      <p class="arr">↑ 準拠　／　↓ 適用</p>
+      <div class="node down">
+        <b>個別作業の条件</b>
+        <span>一件ごとの目的・制約・権限・受入条件</span>
+      </div>
+    </div>
+
+    <p>層を一つ増やしても減らしても、形は変わりません。<strong>層は役割ではなく、「何に従い、何を書くか」という関係で決まります。</strong>だから人間が担当する層と Agent が担当する層に、構造上の違いがありません。委任が進んでも規範を書き直さずに済むのは、これが理由です。</p>
+
+    <p class="on">版の扱いに一行あります。</p>
+    <blockquote>上位の版が上がっても、<br>下位は自動では追随しない。</blockquote>
+    <p>上を改訂しても、下は旧版を指したままでよい。移るかどうかは下の所有者が決めます。これがないと、上を書き換えるだけで下の義務が変わってしまいます。</p>
+    <p class="on">そして改訂には非対称が一つ入ります。<strong>改訂を提起した者は、その改訂を承認しない。</strong>執行しながら下位を書くことは許し、自分の提起を自分で通すことは許さない。この一つで、二重性が利益相反になるのを止めています。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">05 ／ 大きさ</p>
+      <h2>短いのは、<br>改訂できる大きさに<br>保っているから。</h2>
+    </div>
+    <p>前提は 3 文、原則は 3 つ、指針は 8 つ。書かれていないことのほうが多い文書です。価値の優先順位も、指針ごとの反証条件も、実行系の構成も、置いてありません。</p>
+    <p class="on">決めていないのではなく、<strong>決める時期を決めてあります。</strong>必要になった時点で、記録を根拠に追加する。先に決めれば、決めた理由が記録より古くなります。</p>
+    <p>いま反証にかけているのは D4 の一つだけです。不可逆操作の誤実行件数、承認待ちで停止した時間、誤り一件あたりの実行量——この三つで見ます。</p>
+  </section>
+
+  <section class="notes">
+    <h2>付記</h2>
+    <p>本書は解説であり、新たな義務を追加しません。原則と指針の定義元は Agentic Agile Principles です。</p>
+    <p>ここでいう Agent は、計画し、道具を使い、実行結果を確かめて修正する AI を指します。</p>
+    <p>指針の番号（D1〜D8）と原則の番号（P1〜P3）は定義元のものです。1 枚目では導出の順に並べ替えて (1)〜(8) と振っているため、番号は一致しません。</p>
+  </section>
+
+  <footer>AA・EAA 紹介 2 / 3 ／ 前｜二つの崩れ方のあいだ（問題空間の構造）　次｜EAA の構造（主体と主体のあいだ）</footer>
+
+</div>
