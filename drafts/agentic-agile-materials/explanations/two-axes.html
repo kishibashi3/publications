@@ -1,0 +1,320 @@
+<!--
+  ============================================================
+  手戻り、誤り、調整、そして判断 — AA/EAA 紹介 0/4
+  ============================================================
+
+  配布範囲
+    社内・社外の両方。
+
+  読者
+    WF も Agile も実地でやってきた人。SAFe や Scrum の経験がある。
+    「また新しい方法論か」と身構えている。
+    自分がやってきたことを否定されるなら、最初の段落で読むのをやめる。
+
+  読んだ後にどうなってほしいか
+    どの方法も条件に合っていたから使われてきた、と分かる。
+    そのうえで、Agent が来て条件の「軸」が一本増えたこと、
+    既存の 3 つはどれもその軸を持っていないことが分かる。
+    自分の規律が否定されたのではなく、置き場所が変わると受け取る。
+
+  この文書がやらないこと
+    WF の否定。Agile の否定。優劣の判定。AA/EAA の中身（1〜3 が扱う）。
+
+  出典について
+    引用はすべて @deep-research が一次資料から取得したもの。
+    deep-research/research-archive/2026-09-25-wf-agile-scaled-self-declared-aims.md
+    archive で [relayed] の印が付いた引用（DORA・METR 等）は原文照合が
+    済んでいないため、本書では使っていない。
+
+  組
+    0/4 手戻り、誤り、調整、そして判断 … 手法史からの入口（本書）
+    1/4 二つの崩れ方のあいだ           … 問題空間の構造
+    2/4 どの部品が、どの問題を受けるか … AA の構造（一つの主体の中）
+    3/4 相手の中には、入れない         … EAA の構造（主体と主体のあいだ）
+  ============================================================
+-->
+<title>手戻り、誤り、調整、そして判断</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap">
+<style>
+  :root{
+    --paper:#f5f6f4;--ink:#1c2422;--muted:#5a6562;--faint:#8b9491;
+    --line:#dcdfda;--panel:#eaeee8;
+    --past:#6b716c;--past-soft:#eceeea;
+    --now:#16564a;--now-soft:#e3ece8;
+    --warn:#8a6420;--warn-soft:#f1eadd;
+    --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+    --sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+      --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+      --now:#6fbfa6;--now-soft:#1a2a26;--warn:#d3ad63;--warn-soft:#272218;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+    --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+    --now:#6fbfa6;--now-soft:#1a2a26;--warn:#d3ad63;--warn-soft:#272218;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15.5px/1.95 var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:35em;margin-inline:auto;padding-inline:20px;
+    padding-block:56px 80px;display:flex;flex-direction:column;gap:56px}
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--now);outline-offset:3px}
+
+  .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
+    line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
+    line-height:1.6;margin:0;text-wrap:balance}
+  .lead{font-size:16.5px;line-height:2.05}
+  section{display:flex;flex-direction:column;gap:20px}
+  .sec-head{display:flex;flex-direction:column;gap:7px}
+
+  /* 時代 */
+  .eras{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .era{border-bottom:1px solid var(--line);padding-block:18px;
+    display:grid;grid-template-columns:7.5em 1fr;gap:6px 16px}
+  .era .when{font:500 11.5px/1.9 var(--mono);color:var(--faint);white-space:nowrap}
+  .era>div{min-width:0;display:flex;flex-direction:column;gap:8px}
+  .era h3{margin:0;font-size:17px;line-height:1.7;font-weight:700}
+  .era p{font-size:14.5px;line-height:1.95;color:var(--muted)}
+  .era p.on{color:var(--ink)}
+  .era.live{background:var(--now-soft)}
+  .era.live .when{color:var(--now)}
+
+  /* 引用 */
+  .q{border-left:2px solid var(--past);padding:2px 0 2px 16px;
+    display:flex;flex-direction:column;gap:5px}
+  .q .t{font-size:14px;line-height:1.85}
+  .q .src{font:400 11.5px/1.7 var(--mono);color:var(--faint)}
+  .q.hi{border-left-color:var(--now)}
+
+  blockquote{margin:0;border-left:3px solid var(--now);padding:4px 0 4px 18px;
+    font-family:var(--serif);font-size:17px;line-height:1.85;font-weight:500}
+
+  /* 軸 */
+  .axis-box{border:1px solid var(--c);background:var(--bg);padding:20px;
+    display:flex;flex-direction:column;gap:10px}
+  .axis-box.old{--c:var(--line);--bg:var(--past-soft)}
+  .axis-box.new{--c:var(--now);--bg:var(--now-soft)}
+  .axis-box .n{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--cc)}
+  .axis-box.old .n{--cc:var(--faint)}
+  .axis-box.new .n{--cc:var(--now)}
+  .axis-box .f{font-family:var(--serif);font-size:clamp(17px,4vw,21px);
+    line-height:1.7;font-weight:600;text-wrap:balance}
+  .axis-box p{font-size:14px;line-height:1.9;color:var(--muted)}
+
+  /* 持っていない表 */
+  .lack{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .lack li{border-bottom:1px solid var(--line);padding-block:13px;
+    display:grid;grid-template-columns:8em 1fr;gap:6px 14px;align-items:baseline}
+  .lack b{font-size:15px;line-height:1.75;font-weight:700}
+  .lack span{min-width:0;font-size:14.5px;line-height:1.9;color:var(--muted)}
+
+  /* 訂正 */
+  .myth{border-left:3px solid var(--warn);background:var(--warn-soft);
+    padding:17px 19px;display:flex;flex-direction:column;gap:9px}
+  .myth .tag{font:500 11px/1.6 var(--mono);letter-spacing:.07em;color:var(--warn)}
+  .myth p{font-size:14.5px;line-height:1.95}
+
+  .notes{background:var(--panel);padding:22px;display:flex;flex-direction:column;
+    gap:11px;font-size:13px;line-height:1.9;color:var(--muted)}
+  .notes h2{font:500 11px/1.6 var(--mono);font-family:var(--mono);
+    letter-spacing:.1em;color:var(--faint);margin:0}
+  footer{border-top:1px solid var(--line);padding-top:18px;
+    font-size:12px;line-height:1.9;color:var(--faint)}
+
+  @media (max-width:520px){
+    .era{grid-template-columns:1fr}
+    .lack li{grid-template-columns:1fr;gap:3px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="label">AGENTIC AGILE ／ 紹介 0 of 4</p>
+    <h1>手戻り、誤り、調整、<br>そして判断。</h1>
+  </header>
+
+  <section>
+    <p class="lead">どの開発手法も、<strong>そのとき一番高くついたものを節約する形</strong>をしています。何が高いかが変われば、合う形も変わる。</p>
+    <p>だからこれは、置き換わってきた歴史の話ではありません。<strong>いま何が高いのか</strong>の話です。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">01 ／ 節約してきたもの</p>
+      <h2>何が高いかで、<br>形が決まってきた。</h2>
+    </div>
+
+    <div class="eras">
+      <div class="era">
+        <p class="when">〜1990s</p>
+        <div>
+          <h3>先に決める</h3>
+          <p>作り直しが高くついた。だから作る前に決める。要求を固め、設計を固め、順に降りていく。</p>
+          <p class="on">節約したのは<strong>手戻り</strong>です。</p>
+        </div>
+      </div>
+
+      <div class="era">
+        <p class="when">2001〜</p>
+        <div>
+          <h3>作って確かめる</h3>
+          <p>要求が動くことが分かった。先に決めても当たらない。だから短く回して、早く間違いに気づく。</p>
+          <p class="on">節約したのは<strong>誤った方向に進む量</strong>です。</p>
+          <div class="q">
+            <p class="t">完全に定義されていない工程を、完全に定義された工程として扱うと、予測できない結果が出る。</p>
+            <p class="src">Schwaber 1995（Scrum の初出論文）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="era">
+        <p class="when">2000s〜</p>
+        <div>
+          <h3>チーム間を合わせる</h3>
+          <p>規模が大きくなると、チームの中を速くしても全体が進まない。依存、統合、意味のずれ。そこに同期の仕組みを置いた。</p>
+          <p class="on">節約したのは<strong>調整</strong>です。</p>
+          <p>ただし、この三つは同じ問題を言っていません。Nexus はチーム間の依存と統合、LeSS は組織的な解決策そのものが問題を増やすこと、SAFe は数百人規模での整合と協調を挙げています。</p>
+        </div>
+      </div>
+
+      <div class="era live">
+        <p class="when">いま</p>
+        <div>
+          <h3>実行が、安くなった</h3>
+          <p class="on">Agent が実装を担えるようになり、作ることの値段が下がりました。<strong>では、何を節約する形になるのか。</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">02 ／ 軸</p>
+      <h2>一本目の軸は、<br>もう書かれている。</h2>
+    </div>
+    <p>WF と Agile を分けているものは、当事者が明示しています。</p>
+
+    <div class="q">
+      <p class="t">リファクタリングは安いと仮定する（アジャイル）／ リファクタリングは高いと仮定する（計画駆動）</p>
+      <p class="src">Boehm &amp; Turner 2003 の対比表</p>
+    </div>
+    <div class="q">
+      <p class="t">変更のしやすさ …… であれば、予測型のアプローチが最良である。</p>
+      <p class="src">PMBOK 第 7 版</p>
+    </div>
+
+    <div class="axis-box old">
+      <p class="n">一本目の軸</p>
+      <p class="f">変更のコスト ÷ 実行のコスト</p>
+      <p>変更が実行より高いなら、先に決めるのが正しい。実行が変更より高いなら、作って確かめるのが正しい。</p>
+    </div>
+
+    <p class="on">この軸で見ると、<strong>いまも先に決めるべき仕事が実在します。</strong>移行、切替、他社仕様への準拠、契約で責任分界と検収を先に固定する仕事。予測型は 2024 年の調査でも最多です（58% から 43.9% へ減ってはいます）。</p>
+    <p>そしてアジャイルの側も、自分を条件つきで定義しています。Scrum Guide 2020 が対象とするのは「複雑な問題」であり、Agile Manifesto の書き手自身が「方法論に反対しているのではない。均衡を取り戻したい」と書いています。<strong>どちらも、全部に当てはまるとは言っていません。</strong></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">03 ／ 訂正</p>
+      <h2>ここで、二つ直しておく。</h2>
+    </div>
+
+    <div class="myth">
+      <p class="tag">その一</p>
+      <p><strong>Royce の 1970 年の論文に「waterfall」という語はありません。</strong>名前を付けたのは 1976 年の別の論文です。しかも Royce は、一方通行で実装することを「危険であり、失敗を招く」と書いています。</p>
+      <p>ただし裏返しも違います。同じ論文で、順次に進む考え方そのものは<strong>「基本的に健全」</strong>だとも書いています。「Royce は否定した」も、俗説を裏返しただけです。</p>
+    </div>
+
+    <div class="myth">
+      <p class="tag">その二</p>
+      <p><strong>規格は、工程を要求していません。</strong>米国防総省の規格は 1985 年の版の本文で既に反復を認めており、次の版以降は特定の開発手法を指定しないと明記しています。医療機器・航空分野の規格も、特定のライフサイクルを求めていません。</p>
+      <p class="on">規格が求めているのは<strong>証跡</strong>です。何を根拠に、誰が、いつ決めたか。順序ではありません。</p>
+    </div>
+
+    <p>「規制案件だから先に全部決める」は、規格の要求ではなく<strong>証跡を残す手段としての選択</strong>です。手段なら、ほかの手段もありえます。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">04 ／ 分離</p>
+      <h2>判断と実行が、<br>初めて離れた。</h2>
+    </div>
+    <p>実行が安くなっただけなら、話は一本目の軸で済みます。変更が安くなった側に倒れるだけ。<strong>「もっと速く回せるようになった」で終わります。</strong></p>
+    <p class="on">実際に起きたのは、それだけではありませんでした。</p>
+
+    <blockquote>判断する人と、実行する人が、<br>同じでなくなった。</blockquote>
+
+    <p>これまでの三つの時代は、すべて<strong>判断と実行が同じ人に付いていた</strong>時代です。設計した人が作り、作った人がレビューする。実行を 2 倍にするには、人を 2 倍にするしかなかった。<strong>判断の量と実行の量が、連動していました。</strong></p>
+    <p class="on">だから、別々に数える必要がありませんでした。一本目の軸だけで足りた。</p>
+    <p>実行だけが安くなると、連動が切れます。実行は 10 倍にできる。<strong>判断は 10 倍にできない。</strong></p>
+
+    <div class="axis-box new">
+      <p class="n">二本目の軸</p>
+      <p class="f">判断のコスト ÷ 実行のコスト</p>
+      <p>実行を増やすほど、判断が律速になる。この比が、任せ方と確かめ方を決める。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">05 ／ 空席</p>
+      <h2>三つとも、この軸を<br>持っていない。</h2>
+    </div>
+    <p>持っていないのは手落ちではありません。<strong>必要がなかったからです。</strong>三つとも、実行が希少だった時代に、実行を節約する形で作られています。</p>
+
+    <ul class="lack">
+      <li><b>先に決める</b><span>判断を前倒しするだけで、判断の量は減らない。むしろ、まだ分からないことまで決めることになる</span></li>
+      <li><b>作って確かめる</b><span>反復のたびに判断が要る。速く回すほど、判断の回数が増える</span></li>
+      <li><b>チーム間を合わせる</b><span>同期点を増やす。調整のための判断が、さらに積み上がる</span></li>
+    </ul>
+
+    <p class="on">だから、Agent を既存の形に差し込んでも、詰まる場所は動きません。<strong>工程に差し込めば、工程ごとの確認が増える。役割を割り当てれば、役割間の受け渡しが増える。</strong>どちらも実行を速くして、判断を速くしていない。</p>
+    <p>いまある Agentic 系の枠組みは、おおむねこの二つのどちらかです。そう名乗っているものもあります。ある大規模フレームワークは、AI が組み込まれても<strong>「中核の考え方は置き換えられるのではなく、増幅される」</strong>と自ら書いています。</p>
+    <p class="on">増幅は正しい観察です。<strong>判断待ちも一緒に増幅されます。</strong></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">06 ／ 移る</p>
+      <h2>規律は、消えない。<br>置き場所が変わる。</h2>
+    </div>
+    <p>先に決めてきた人たちが守ってきたものは、<strong>取り返しのつかないことを、取り返しがつかないまま進めない</strong>という規律でした。証跡を残し、誰が決めたかを残し、検収の条件を先に握る。</p>
+    <p class="on">それは無くなりません。<strong>戻せない操作は、実行がいくら安くなっても戻せない</strong>からです。</p>
+    <p>変わるのは範囲です。<strong>戻せるところからは退き、戻せないところに集中して残る。</strong>そして証跡は、人が後から書く報告書ではなく、実行そのものが残す記録になります。</p>
+    <p class="on">短く回してきた人たちが守ってきたものも、同じように残ります。<strong>早く間違いに気づく</strong>という規律。実行が速くなるほど、気づくまでに進む量が増えるので、むしろ効きが強くなります。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">07 ／ 次</p>
+      <h2>では、二本目の軸で<br>何を設計するのか。</h2>
+    </div>
+    <p>ここから先が、この資料の本編です。判断をどこに置くか、何を任せ、何を人に戻すか。そして主体が複数になったとき、それをどう保つか。</p>
+    <p class="on">次の 1 枚は、<strong>誰もが試す二つのやり方が、どちらも壊れる</strong>ところから始まります。人間が全部承認しても、Agent に判断ごと渡しても、うまくいかない。その間を通る道があるかどうかの話です。</p>
+  </section>
+
+  <section class="notes">
+    <h2>付記</h2>
+    <p>引用はいずれも一次資料から取得したものです。原文が英語のものは訳しています。書誌と原文は別途の調査記録にあります。</p>
+    <p>本書は手法の優劣を判定しません。どれも、それが答えようとした条件の下では機能しています。</p>
+    <p>「実行が安くなった」の裏づけには、売り手側の調査が多く含まれます。逆向きの観測（AI を使うとかえって遅くなったとする実測）もあります。本書はこの点を、確定した事実としては扱っていません。</p>
+    <p>ここでいう Agent は、計画し、道具を使い、実行結果を確かめて修正する AI を指します。</p>
+  </section>
+
+  <footer>AA・EAA 紹介 0 / 4 ／ 次｜二つの崩れ方のあいだ（問題空間の構造）</footer>
+
+</div>

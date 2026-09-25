@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EAA vs Enterprise Agile Alternatives — Comparison v0.1</title>
+<style>
+:root{--ink:#17202a;--muted:#61707c;--line:#d9e0e6;--accent:#0f6f78;--blue:#2d6cdf;--paper:#fff;--bg:#edf1f4}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;line-height:1.6}
+main{width:min(1180px,95vw);margin:28px auto 70px} section{background:#fff;border:1px solid #dde4e9;border-radius:18px;padding:48px 54px;margin-bottom:20px;box-shadow:0 16px 40px rgba(30,50,70,.07)}
+h1{font-size:42px;line-height:1.15;margin:.2em 0} h2{font-size:28px;border-bottom:2px solid #eef3f6;padding-bottom:10px} h3{margin-bottom:6px}
+.lead{font-size:21px;color:#30414d} .eyebrow{font-size:13px;color:var(--accent);font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.callout{border-left:5px solid var(--accent);background:#f2f8f8;padding:16px 18px;border-radius:10px;margin:18px 0;font-size:17px}
+.warn{border-left-color:#c38b11;background:#fff9eb} .formula{padding:18px;border-radius:12px;background:#102c34;color:white;font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:800;font-size:18px}
+.wrap{overflow-x:auto} table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0} th,td{border:1px solid var(--line);padding:9px 10px;vertical-align:top} th{background:#f2f5f7;text-align:left;white-space:nowrap}
+.s5{background:#edf7f1;color:#1f6a44;font-weight:850;text-align:center} .s4{background:#f3f7fb;color:#315f8d;font-weight:800;text-align:center} .s3{background:#fff8e8;color:#8c6500;font-weight:800;text-align:center} .s2{background:#fff0f0;color:#963b3b;font-weight:800;text-align:center}
+.total{font-size:32px;font-weight:900} .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px} .card{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff} .muted{color:var(--muted)} ul{padding-left:22px}
+@media(max-width:800px){section{padding:30px 22px;border-radius:0}main{width:100%;margin:0}.grid{grid-template-columns:1fr}h1{font-size:34px}}
+@media print{body{background:#fff}main{width:auto;margin:0}section{box-shadow:none;border:none;border-radius:0;page-break-after:always;margin:0}}
+</style>
+</head>
+<body><main>
+<section>
+<div class="eyebrow">Working Comparison / Non-normative</div>
+<h1>EAA vs Enterprise Agile Alternatives</h1>
+<p class="lead">10億円規模・複数Domain / Vendor・基幹刷新・約1年を想定し、Enterprise Agileで共通する関心事を同じ軸で比較する。</p>
+<div class="formula">EAA Instance = Core + Active Profiles + Local Delivery Models + Reference Patterns</div>
+<div class="callout warn"><strong>点数は実績ランキングではありません。</strong> 現時点の設計適合度仮説です。PoC後、同じ軸を維持してEvidenceから再採点します。</div>
+</section>
+<section>
+<div class="eyebrow">01 / Comparison Matrix</div><h2>Enterprise共通関心事による比較</h2>
+<div class="wrap"><table>
+<thead><tr><th>Enterprise concern</th><th>EAA</th><th>Hybrid</th><th>SAFe</th><th>TT+DDD</th><th>Nexus/LeSS</th><th>Predictive</th></tr></thead>
+<tbody>
+<tr><td>Strategy / Portfolio alignment</td><td class="s5">5</td><td class="s5">5</td><td class="s5">5</td><td class="s3">3</td><td class="s4">4</td><td class="s4">4</td></tr><tr><td>Business Value / Outcome</td><td class="s5">5</td><td class="s4">4</td><td class="s4">4</td><td class="s5">5</td><td class="s5">5</td><td class="s3">3</td></tr><tr><td>Change responsiveness</td><td class="s5">5</td><td class="s4">4</td><td class="s4">4</td><td class="s5">5</td><td class="s5">5</td><td class="s2">2</td></tr><tr><td>Cross-domain dependency / integration</td><td class="s4">4</td><td class="s4">4</td><td class="s5">5</td><td class="s4">4</td><td class="s5">5</td><td class="s3">3</td></tr><tr><td>Architecture / Domain / semantic alignment</td><td class="s5">5</td><td class="s4">4</td><td class="s4">4</td><td class="s5">5</td><td class="s4">4</td><td class="s4">4</td></tr><tr><td>Governance / Authority / Compliance</td><td class="s5">5</td><td class="s5">5</td><td class="s5">5</td><td class="s3">3</td><td class="s3">3</td><td class="s5">5</td></tr><tr><td>Quality / Assurance / Release confidence</td><td class="s5">5</td><td class="s4">4</td><td class="s5">5</td><td class="s4">4</td><td class="s5">5</td><td class="s5">5</td></tr><tr><td>Transparency / Traceability</td><td class="s5">5</td><td class="s3">3</td><td class="s4">4</td><td class="s4">4</td><td class="s4">4</td><td class="s4">4</td></tr><tr><td>Flow / Handoff reduction</td><td class="s5">5</td><td class="s3">3</td><td class="s3">3</td><td class="s5">5</td><td class="s4">4</td><td class="s2">2</td></tr><tr><td>Multi-vendor / heterogeneous delivery</td><td class="s5">5</td><td class="s5">5</td><td class="s5">5</td><td class="s4">4</td><td class="s3">3</td><td class="s5">5</td></tr><tr><td>Migration / Cutover</td><td class="s5">5</td><td class="s5">5</td><td class="s5">5</td><td class="s3">3</td><td class="s3">3</td><td class="s5">5</td></tr><tr><td>Budget / Commercial control</td><td class="s4">4</td><td class="s5">5</td><td class="s5">5</td><td class="s3">3</td><td class="s3">3</td><td class="s5">5</td></tr><tr><td>Organization scale / Cognitive load</td><td class="s4">4</td><td class="s3">3</td><td class="s3">3</td><td class="s5">5</td><td class="s4">4</td><td class="s2">2</td></tr><tr><td>Adoption maturity / talent availability</td><td class="s2">2</td><td class="s5">5</td><td class="s5">5</td><td class="s4">4</td><td class="s4">4</td><td class="s5">5</td></tr>
+<tr><td><strong>Total / 70</strong></td><td><strong>64</strong></td><td><strong>59</strong></td><td><strong>62</strong></td><td><strong>57</strong></td><td><strong>56</strong></td><td><strong>54</strong></td></tr>
+<tr><td><strong>Normalized</strong></td><td><strong>91%</strong></td><td><strong>84%</strong></td><td><strong>89%</strong></td><td><strong>81%</strong></td><td><strong>80%</strong></td><td><strong>77%</strong></td></tr>
+</tbody></table></div>
+</section>
+<section>
+<div class="eyebrow">02 / Interpretation</div><h2>現在のEAAの位置</h2>
+<div class="grid">
+<div class="card"><div class="muted">EAA</div><div class="total">64 / 70</div><p>主要Enterprise concernを広く表現できる構造になった。</p></div>
+<div class="card"><div class="muted">Strong conventional alternative</div><div class="total">SAFe 62</div><p>大規模依存・Governance・Supplier・Complianceは依然として非常に成熟。</p></div>
+<div class="card"><div class="muted">Largest EAA weakness</div><div class="total">Maturity 2</div><p>文書では解消できない。実案件Evidence、Operator育成、Reference implementationが必要。</p></div>
+</div>
+<div class="callout"><strong>EAAはAI/Agent中心のEnterprise開発手法だが、移行期や局所要件のために既存方式を排除しない。</strong> SAFe ART、Scrum、Predictive VendorなどをLocal Delivery ModelとしてDomain内に置き、EAA Boundaryで接続できる。</div>
+</section>
+<section>
+<div class="eyebrow">03 / Why Profiles Matter</div><h2>上位互換を狙う鍵は、Coreを太らせないこと</h2>
+<p>Portfolio、Assurance、Supplier、Regulated、Migration、CutoverをCoreへ固定すると、全案件が重くなる。EAAでは条件付き統制をProfileとして外付けする。</p>
+<div class="formula">Normal = Core + selected Profiles<br>High Risk = + Assurance<br>Cutover Window = + Cutover</div>
+<p><strong>Coreは変えにくく、Profileは出し入れでき、Patternは学習によって交換できる。</strong></p>
+</section>
+<section>
+<div class="eyebrow">04 / Re-score after PoC</div><h2>PoCではこの表をEvidenceで更新する</h2>
+<div class="wrap"><table>
+<thead><tr><th>Concern</th><th>Evidence candidate</th></tr></thead>
+<tbody>
+<tr><td>Change responsiveness</td><td>Mission Lead Time</td></tr>
+<tr><td>Cross-domain integration</td><td>Boundary Wait / blocked mission</td></tr>
+<tr><td>Governance</td><td>authority violation / escalation / audit trace</td></tr>
+<tr><td>Quality</td><td>escaped defect / Detection Depth / rollback</td></tr>
+<tr><td>Transparency</td><td>Evidence Coverage / provenance completeness</td></tr>
+<tr><td>Flow</td><td>Human Touch Time / handoff count</td></tr>
+<tr><td>Migration</td><td>reconciliation / rollback rehearsal</td></tr>
+<tr><td>Budget</td><td>Cost / Accepted Mission / Rework Cost</td></tr>
+<tr><td>Cognitive load</td><td>human decision count / Operator load</td></tr>
+<tr><td>Adoption</td><td>literacy before-after / escalation trend</td></tr>
+</tbody></table></div>
+<div class="callout warn">PoCの目的はEAAを勝たせることではない。<strong>Hypothesis → Execute → Evidence → Re-score → Adopt / Modify / Reject</strong>。</div>
+</section>
+</main></body></html>

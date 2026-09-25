@@ -1,0 +1,364 @@
+<!--
+  ============================================================
+  相手の中には、入れない — AA/EAA 紹介 3/4（EAA の構造）
+  ============================================================
+
+  配布範囲
+    社内・社外の両方。出し分けをしない 1 本。
+
+  読者
+    1/4 で問題の形を、2/4 で AA の部品を見た人。
+    自分の案件が一つの主体では収まらないことを知っている。
+    「主体が増えたとき、何が変わるのか」を知りたい。
+
+  読んだ後にどうなってほしいか
+    EAA が AA の続きではなく、同じ崩れ方を別の軸で扱うものだと分かる。
+    そして「分割は組織図ではなく責務から」「版は自動追随しない」の
+    二つが、自治を宣言から実体に変えている箇所だと分かる。
+
+  この文書がやらないこと
+    導入手順。役割ごとの影響。効果の実証。
+    EAA Core / Profiles は未確定の仕様案なので、確定として書かない。
+
+  組
+    0/4 手戻り、誤り、調整、そして判断 … 手法史からの入口
+    1/4 二つの崩れ方のあいだ           … 問題空間の構造
+    2/4 どの部品が、どの問題を受けるか … AA の構造（一つの主体の中）
+    3/4 相手の中には、入れない         … EAA の構造（主体と主体のあいだ）（本書）
+  ============================================================
+-->
+<title>相手の中には、入れない</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap">
+<style>
+  :root{
+    --paper:#f5f6f4;--ink:#1c2422;--muted:#5a6562;--faint:#8b9491;
+    --line:#dcdfda;--panel:#eaeee8;
+    --aa:#16564a;--aa-soft:#e3ece8;
+    --eaa:#234e70;--eaa-soft:#e2e9f0;
+    --fail-a:#8a6420;--fail-a-soft:#f1eadd;
+    --fail-b:#9b3527;--fail-b-soft:#f3e5e2;
+    --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+    --sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+      --line:#2b3432;--panel:#1c2322;--aa:#6fbfa6;--aa-soft:#1a2a26;
+      --eaa:#7aa9d4;--eaa-soft:#18242e;--fail-a:#d3ad63;--fail-a-soft:#272218;
+      --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+    --line:#2b3432;--panel:#1c2322;--aa:#6fbfa6;--aa-soft:#1a2a26;
+    --eaa:#7aa9d4;--eaa-soft:#18242e;--fail-a:#d3ad63;--fail-a-soft:#272218;
+    --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15.5px/1.95 var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:35em;margin-inline:auto;padding-inline:20px;
+    padding-block:56px 80px;display:flex;flex-direction:column;gap:56px}
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--eaa);outline-offset:3px}
+
+  .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
+    line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
+    line-height:1.6;margin:0;text-wrap:balance}
+  .lead{font-size:16.5px;line-height:2.05}
+  section{display:flex;flex-direction:column;gap:20px}
+  .sec-head{display:flex;flex-direction:column;gap:7px}
+
+  /* 加わる前提 */
+  .added{list-style:none;margin:0;padding:0;
+    display:flex;flex-direction:column;gap:11px}
+  .added li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline}
+  .added li::before{content:"";width:7px;height:7px;
+    border:1.5px solid var(--eaa);transform:translateY(-1px)}
+  .added li>span{min-width:0;font-size:15.5px;line-height:1.9}
+
+  /* 崩れ方 */
+  .forks{display:flex;flex-direction:column;gap:14px}
+  .fork{border-left:3px solid var(--c);background:var(--bg);
+    padding:17px 19px;display:flex;flex-direction:column;gap:8px}
+  .fork.c{--c:var(--fail-a);--bg:var(--fail-a-soft)}
+  .fork.d{--c:var(--fail-b);--bg:var(--fail-b-soft)}
+  .fork .tag{font:500 11px/1.6 var(--mono);letter-spacing:.07em;color:var(--c)}
+  .fork strong{font-size:16.5px;line-height:1.7;font-weight:700;display:block}
+  .fork p.d{color:var(--muted);font-size:14.5px;line-height:1.9}
+  .fork .echo{font:500 11px/1.7 var(--mono);color:var(--faint)}
+
+  /* 対応表 */
+  .map{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .map>li{border-bottom:1px solid var(--line);padding-block:15px;
+    display:flex;flex-direction:column;gap:8px}
+  .map .q{font-size:14.5px;line-height:1.9;color:var(--muted)}
+  .map .a{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline}
+  .map .id{font:500 11px/1.7 var(--mono);color:var(--eaa);
+    border:1px solid var(--eaa);padding:1px 7px;white-space:nowrap}
+  .map .a b{min-width:0;font-size:15px;line-height:1.75;font-weight:700}
+  .map.proc .id{color:var(--fail-b);border-color:var(--fail-b)}
+
+  /* 縦と横 */
+  .axes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .axis{border:1px solid var(--line);background:var(--bg);padding:20px 16px;
+    display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
+  .axis.aa{--bg:var(--aa-soft);--c:var(--aa)}
+  .axis.eaa{--bg:var(--eaa-soft);--c:var(--eaa)}
+  .axis .cap{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--c)}
+  .axis .what{font-size:13.5px;line-height:1.8;color:var(--muted)}
+  .axis b{font-size:14.5px;font-weight:700;color:var(--ink);display:block;line-height:1.7}
+  .stack{display:flex;flex-direction:column;align-items:center;gap:5px}
+  .row{display:flex;align-items:center;gap:5px}
+  .box{border:1.5px solid var(--c);color:var(--c);
+    font:500 10.5px/1 var(--mono);padding:7px 9px;white-space:nowrap}
+  .tick{font:500 11px/1 var(--mono);color:var(--c)}
+
+  blockquote{margin:0;border-left:3px solid var(--eaa);padding:4px 0 4px 18px;
+    font-family:var(--serif);font-size:17px;line-height:1.85;font-weight:500}
+
+  /* 満たすこと */
+  .must{border:1px solid var(--line);background:var(--panel);padding:18px 20px;
+    display:flex;flex-direction:column;gap:9px}
+  .must p.h{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--eaa)}
+  .must ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+  .must li{font-size:14.5px;line-height:1.85;display:grid;
+    grid-template-columns:auto 1fr;gap:10px}
+  .must li::before{content:"—";color:var(--faint);font-family:var(--mono);font-size:12px}
+  .must li>span{min-width:0}
+
+  /* 未確定 */
+  .draft{border-left:3px solid var(--fail-a);background:var(--fail-a-soft);
+    padding:17px 19px;display:flex;flex-direction:column;gap:9px}
+  .draft .tag{font:500 11px/1.6 var(--mono);letter-spacing:.07em;color:var(--fail-a)}
+  .draft p{font-size:14.5px;line-height:1.95}
+
+  .notes{background:var(--panel);padding:22px;display:flex;flex-direction:column;
+    gap:11px;font-size:13px;line-height:1.9;color:var(--muted)}
+  .notes h2{font:500 11px/1.6 var(--mono);font-family:var(--mono);
+    letter-spacing:.1em;color:var(--faint);margin:0}
+  footer{border-top:1px solid var(--line);padding-top:18px;
+    font-size:12px;line-height:1.9;color:var(--faint)}
+
+  @media (max-width:520px){ .axes{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="label">ENTERPRISE AGENTIC AGILE ／ 紹介 3 of 4</p>
+    <h1>相手の中には、入れない。</h1>
+  </header>
+
+  <section>
+    <p class="lead">2 枚目は、一つの開発主体の<strong>中</strong>の話でした。主体が複数になると、同じ崩れ方が別の軸で現れます。</p>
+    <p>ここでは、そのときに何を置いたかを見ます。EAA は AA の次の段階ではありません。<strong>見ている場所が違います。</strong></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">01 ／ 前提</p>
+      <h2>三つ、加わる。</h2>
+    </div>
+    <p>一つの主体の中では、前提は三つで足りました。主体が増えると、三つ足されます。</p>
+    <ul class="added">
+      <li><span>同じ語が、主体ごとに別のものを指す。</span></li>
+      <li><span>内部のやり方が違う。人間のチームも、外部の委託先も、Agent を使わない主体もいる。</span></li>
+      <li><span>引き受けた約束が、相手の都合で消えることがある。</span></li>
+    </ul>
+    <p class="on">この三つは、一つの主体の中では起きません。<strong>中では、語の意味も、やり方も、約束も、同じ規範のもとにあります。</strong>境界をまたぐと、その前提が消えます。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">02 ／ 崩れ方</p>
+      <h2>1 枚目と、同じ形。</h2>
+    </div>
+    <div class="forks">
+      <div class="fork c">
+        <p class="tag">崩れ方 C</p>
+        <strong>全体の責任者が、全部決める</strong>
+        <p class="d">境界をまたぐ変更を一箇所で判断する。整合は取れます。けれど主体を増やすほど、その一箇所に調整が集まって待ちが伸びる。</p>
+        <p class="echo">＝ 崩れ方 A（人間が全部承認する）の、横版</p>
+      </div>
+      <div class="fork d">
+        <p class="tag">崩れ方 D</p>
+        <strong>各主体に、無条件で任せる</strong>
+        <p class="d">待ちをなくすには任せるしかない。けれど任せた先が、外部への約束まで自分の判断で変えられるなら、引き受けた保証は保証ではなくなる。</p>
+        <p class="echo">＝ 崩れ方 B（Agent が自分を承認する）の、横版</p>
+      </div>
+    </div>
+    <p class="on">そして 1 枚目と同じく、<strong>宣言では解けません。</strong></p>
+    <blockquote>「自律してよい」と宣言しても、<br>親が後から条件を直接書き換えられるなら、<br>判断権限は安定しない。</blockquote>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">03 ／ 対応</p>
+      <h2>どの部品が、<br>どの問題を受けるか。</h2>
+    </div>
+    <p>左が問題、右がそれを受ける部品です。まず、<strong>境界に置くもの</strong>から。</p>
+    <ul class="map">
+      <li>
+        <p class="q">誰が何に責任を持つのかが、組織図からは読めない。肩書きは責任範囲を表していない。</p>
+        <p class="a"><span class="id">Profile</span><b>引き受ける責務の、版付きの仕様</b></p>
+      </li>
+      <li>
+        <p class="q">責任だけ渡しても自律できない。判断する権限と、実行する能力が要る。</p>
+        <p class="a"><span class="id">Cell</span><b>責任・権限・実行能力を持つ単位</b></p>
+      </li>
+      <li>
+        <p class="q">責務が決まっても、今回何を実現するのかは決まらない。</p>
+        <p class="a"><span class="id">Mission</span><b>今回の変化と成果。目的・制約・権限・受入条件を明示する</b></p>
+      </li>
+      <li>
+        <p class="q">同じ語が主体ごとに別のものを指す。「契約」も「顧客」も、隣では違う意味で動いている。</p>
+        <p class="a"><span class="id">Ontology</span><b>意味の違いと対応を保つ体系</b></p>
+      </li>
+      <li>
+        <p class="q">何を守るかが主体ごとに違う。守る条件を共有しないまま任せると、越えたことにも気づかない。</p>
+        <p class="a"><span class="id">Constitution</span><b>採用した目的・価値・制約・権限・禁止事項</b></p>
+      </li>
+      <li>
+        <p class="q">引き受けた約束が、相手の都合で消える。新しい提案を断ることと、既にある義務を一方的に捨てることが区別されない。</p>
+        <p class="a"><span class="id">Contract</span><b>相互の責任・提供条件・必要な記録を定める境界合意</b></p>
+      </li>
+      <li>
+        <p class="q">完了したかどうかの判定が、各自の申告になる。作業をしたことと、成果が出たことが混ざる。</p>
+        <p class="a"><span class="id">Evidence</span><b>成立を検証可能にする記録</b></p>
+      </li>
+    </ul>
+
+    <p class="on">そして、<strong>やりとりの仕方</strong>を決めるものが二つ。ここが自治を成り立たせている部分です。</p>
+    <ul class="map proc">
+      <li>
+        <p class="q">上位や横断の主体が、下位の条件を直接書き換えられる。書き換えられるなら、自律は名前だけになる。</p>
+        <p class="a"><span class="id">手続き</span><b>提案と受入を分ける</b></p>
+      </li>
+      <li>
+        <p class="q">おおもとの規範を改訂すると、それを採用している相手の義務まで一緒に変わってしまう。</p>
+        <p class="a"><span class="id">手続き</span><b>版を固定する。自動では追随しない</b></p>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">04 ／ 回転</p>
+      <h2>縦でやったことを、<br>横でもう一度やる。</h2>
+    </div>
+    <p>2 枚目では、執行しながら下位の規範を書くことは許し、<strong>自分が提起した改訂を自分で承認することは許さない</strong>、という非対称を入れました。ここでも同じことをします。</p>
+
+    <div class="axes">
+      <div class="axis aa">
+        <p class="cap">2/4 ／ 中</p>
+        <div class="stack">
+          <div class="box">上位の規範</div>
+          <div class="tick">↕</div>
+          <div class="box">執行する層</div>
+          <div class="tick">↕</div>
+          <div class="box">下位の規範</div>
+        </div>
+        <p class="what"><b>層のあいだ</b>提起と承認を分ける</p>
+      </div>
+      <div class="axis eaa">
+        <p class="cap">3/4 ／ あいだ</p>
+        <div class="stack">
+          <div class="row">
+            <div class="box">主体</div>
+            <div class="tick">↔</div>
+            <div class="box">主体</div>
+          </div>
+          <div class="tick">↕</div>
+          <div class="box">主体</div>
+        </div>
+        <p class="what"><b>主体のあいだ</b>提案と受入を分ける</p>
+      </div>
+    </div>
+
+    <p>基盤側から業務側への CI/CD 導入も、業務側から全体への用語訂正も、<strong>同じ関係です。</strong>親子でも、兄弟でも、横断でも変わりません。方向によって特別な権限を作らない。</p>
+    <p class="on">変更を提案できることは、<strong>相手のものを書き換えてよいという意味ではありません。</strong>受け入れるかどうかは、その主体が自分の規範に照らして決めます。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">05 ／ 実体</p>
+      <h2>自治を宣言から<br>実体に変える、一行。</h2>
+    </div>
+    <blockquote>上位の版が上がっても、<br>下位は自動では追随しない。</blockquote>
+    <p>これがなければ、おおもとを改訂するだけで相手の義務が変わってしまいます。<strong>おおもとを改訂する権限と、それを採用する判断は、別のものです。</strong></p>
+    <p class="on">新しい版を出すことは、相手に採用を提案することでしかありません。採用するかどうかは相手が決め、移るまでは旧版の合意が生きています。<strong>この一行があって初めて、「自律してよい」が宣言ではなくなります。</strong></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">06 ／ 順序</p>
+      <h2>組織より先に、<br>責務を置く。</h2>
+    </div>
+    <p>専門能力が増えるたびに専用の組織を作ると、調整先も一緒に増えます。先に責務を定義しておけば、<strong>同じ主体で担うことと、別の主体へ移すことを、あとから選べます。</strong>責務の数だけ組織を置く必要はありません。</p>
+    <p class="on">分割とは、<strong>責務と、自律的な判断権限を、別の責任主体へ引き渡すこと</strong>です。作業を Agent や下請けに配ることは、分割ではありません。判断が戻ってくるなら、責任は分散していない。</p>
+    <p>そして再帰します。分割した先も、さらに分割できます。維持するのは責任・権限・合意・自治の境界であって、内部の作りが同じであることではありません。<strong>子を持つ主体も、外に対しては自分が引き受けた責任を果たします。</strong></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">07 ／ 範囲</p>
+      <h2>中の作り方は、<br>指定しない。</h2>
+    </div>
+    <p>EAA が揃えるのは、中の作り方ではなく<strong>外とのつながり方</strong>です。各主体が満たすのは、これだけです。</p>
+    <div class="must">
+      <p class="h">境界で満たすこと</p>
+      <ul>
+        <li><span>Mission を受け取る</span></li>
+        <li><span>Ontology と Contract を解釈する</span></li>
+        <li><span>与えられた権限を越えない</span></li>
+        <li><span>Evidence を返す</span></li>
+        <li><span>判断できないことは、正当な判断者へ戻す</span></li>
+      </ul>
+    </div>
+    <p class="on">これを満たせば、中は何でも構いません。Scrum でも、従来型の工程でも、外部の委託先でも、パッケージ導入でも接続できます。<strong>相手が Agent を使うかどうかは、接続の条件になりません。</strong></p>
+    <p>だから <strong>AA と EAA は、設計対象の名前です。</strong>一つの主体が全責務を担う構成は 1 Cell の EAA であり、分割後の各主体を担うのも同じ AA。段階の前後ではなく、見ている場所が違います。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">08 ／ 状態</p>
+      <h2>ここまでは、まだ仕様案。</h2>
+    </div>
+    <div class="draft">
+      <p class="tag">2 枚目との違い</p>
+      <p>2 枚目で扱った AA Principles は、所有者が承認した正本です。<strong>本書で扱った EAA の仕様は、未確定の案です。</strong>同じ顔で並べると、決まっているものと決まっていないものの区別が消えます。</p>
+    </div>
+    <p>決まっていないものを挙げておきます。合意が成立しないときの調整、外部の条件が変わったときの扱い、移行中の責任、複数の主体にまたがる変更の適用順と、途中で失敗したときの復旧。Profile の詳細な形式も決めていません。</p>
+    <p class="on">これらは、<strong>具体的な事例から決めます。</strong>先に決めれば、決めた理由が記録より古くなります。</p>
+    <p>そして未決の部分を、他の主体への一方的な強制で埋めない。決まっていない間も、境界の条件は生きています。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">09 ／ 始め方</p>
+      <h2>一つから始められる。</h2>
+    </div>
+    <p>最初から複数の主体を置く必要はありません。<strong>一つの主体と、その責任者を置く。</strong>最初の仕事に必要な責務を並べる。意味・守る条件・権限・境界合意と、記録の経路を具体化する。</p>
+    <p class="on">そのうえで、それぞれの責務を同じ主体で担うか、別の責任者へ移して分けるかを決めます。<strong>分けた数を成果とはしません。</strong>見るのは、元の責任者への判断の集中が実際に減ったかと、外への保証を維持できたかです。</p>
+  </section>
+
+  <section class="notes">
+    <h2>付記</h2>
+    <p>本書は解説であり、新たな義務を追加しません。仕様の定義元は EAA Core と Profiles で、いずれも未確定の案です。</p>
+    <p>ここでいう Agent は、計画し、道具を使い、実行結果を確かめて修正する AI を指します。</p>
+    <p>Cell・Profile・Mission などの語は、この体系の中での意味です。同じ語が社内の他の文脈で別の意味を持つなら、それ自体が 03 の Ontology が扱う問題です。</p>
+    <p>本書で「上位」「下位」と呼ぶのは、規範の準拠関係の向きです。指揮命令の関係ではありません。</p>
+  </section>
+
+  <footer>AA・EAA 紹介 3 / 4 ／ 前｜どの部品が、どの問題を受けるか（AA の構造）</footer>
+
+</div>
