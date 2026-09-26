@@ -284,14 +284,36 @@
   }
   .tick{font:500 11px/1 var(--mono);color:var(--c)}
 
-  /* ── mermaid ── */
-  .diagram{
-    background:#eef0ec;
-    border:1px solid #d7dbd4;
-    padding:20px 12px;
-    overflow-x:auto;
+  /* ── 改訂の循環 ── */
+  .cycle{
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:20px 18px;
+    display:flex;flex-direction:column;gap:14px;
   }
-  .diagram pre{margin:0;text-align:center}
+  .cycle .side{display:flex;flex-direction:column;gap:9px}
+  .cycle .who{
+    font:500 11px/1.6 var(--mono);letter-spacing:.08em;
+    color:var(--faint);
+  }
+  .cycle .own .who{color:var(--path)}
+  .steps3{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+  .cycle .node{
+    border:1.5px solid var(--faint);color:var(--ink);
+    font-size:14px;line-height:1.6;padding:8px 14px;
+  }
+  .cycle .node.hi{border-color:var(--path);color:var(--path);font-weight:700}
+  .cycle .to{font:500 11px/1 var(--mono);color:var(--faint);padding-left:14px}
+  .cycle .gate{display:flex;align-items:center;gap:10px}
+  .cycle .gate .line{flex:1;height:0;border-top:2px dashed var(--fail-b)}
+  .cycle .gate .gl{
+    font:500 10.5px/1.6 var(--mono);letter-spacing:.06em;
+    color:var(--fail-b);white-space:nowrap;
+  }
+  .cycle .back{
+    font:500 11px/1.7 var(--mono);color:var(--faint);
+    border-top:1px solid var(--line);padding-top:11px;
+  }
   .cap-note{font-size:13px;line-height:1.85;color:var(--muted)}
 
   /* ── 検証 ── */
@@ -508,19 +530,27 @@
     <blockquote>根の版は、所有者の承認そのものによって成立する。<br>その手続きは、体系の外にある。</blockquote>
     <p>根は人間です。内側の規範については改訂の循環を体系に入れ、根については外に置くと、書いてある。</p>
 
-    <div class="diagram">
-      <pre class="mermaid">%%{init:{"theme":"base","themeVariables":{"primaryColor":"#e3ece8","primaryTextColor":"#1c2422","primaryBorderColor":"#16564a","lineColor":"#5a6562","fontSize":"13px","clusterBkg":"#f6f8f5","clusterBorder":"#c9d0c8"}}}%%
-flowchart LR
-  subgraph S1["実行者"]
-    direction TB
-    E["執行する"] --> O["観測が残る"] --> P["改訂を提起する"]
-  end
-  subgraph S2["所有者（人間）"]
-    A["承認する"]
-  end
-  P --> A
-  A --> N["新しい版"]
-  N --> E</pre>
+    <div class="cycle">
+      <div class="side exec">
+        <p class="who">実行者</p>
+        <div class="steps3">
+          <span class="node">執行する</span>
+          <span class="to">↓</span>
+          <span class="node">観測が残る</span>
+          <span class="to">↓</span>
+          <span class="node">改訂を提起する</span>
+        </div>
+      </div>
+      <div class="gate"><span class="line"></span><span class="gl">ここから先へは進めない</span><span class="line"></span></div>
+      <div class="side own">
+        <p class="who">所有者（人間）</p>
+        <div class="steps3">
+          <span class="node hi">承認する</span>
+          <span class="to">↓</span>
+          <span class="node hi">新しい版</span>
+        </div>
+      </div>
+      <p class="back">↑ 新しい版のもとで、また執行する</p>
     </div>
     <p class="cap-note">実行者は提起までしか進めない。承認は境界の向こうにあり、そこを越えた改訂だけが新しい版になる。</p>
 
