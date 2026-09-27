@@ -114,6 +114,7 @@
   }
 
   /* 対応表 */
+  .label.group{margin:22px 0 8px}
   .map{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
   .map>li{
     border-bottom:1px solid var(--line);padding-block:15px;
@@ -175,6 +176,7 @@
   <section>
     <p class="lead">1 枚目で見たのは、問題の形でした。人間が全部承認しても、Agent に判断ごと渡しても壊れる。その間を通る細い道。</p>
     <p>ここでは、その形に対して<strong>何をどう置いたか</strong>を見ます。扱うのは一つの開発主体の中だけです。主体が複数になったときは 3 枚目で扱います。</p>
+    <p class="on">この枚のあとは、<strong>二手に分かれます。</strong>AA を自分の案件で使うなら <a class="ref" href="hand-over-conditions.html">4 枚目「作業ではなく、条件を渡す」</a>へ。会社やチームをまたぐ開発なら <a class="ref" href="eaa-structure.html">3 枚目「相手の中には、入れない」</a>へ。どちらか一方だけ読めば足ります。</p>
   </section>
 
   <section>
@@ -227,6 +229,9 @@
       <h2>どの部品が、<br>どの問題を受けるか。</h2>
     </div>
     <p>左が問題の形、右がそれを受ける部品です。部品が先にあって問題を探したのではなく、<strong>問題が先にあって部品が付いています。</strong></p>
+    <p>十一組のうち P1〜P3・D4・D7・D8 は、1 枚目の八つを部品の名前で言い直したものです。1 枚目を読んだなら、<a class="ref" href="#s04">次の節へ飛ばして</a>構いません。</p>
+    <p>原則の名前に出てくる「憲法」は、国の憲法のことではありません。<strong>その層が従う、ルールを書いた文書</strong>のことです。</p>
+    <p class="label group">原則 3 つ</p>
     <ul class="map">
       <li>
         <p class="q">実行者は背景を共有しない。書かれていないものを参照しようとすると、「参照できなかった」とは言わず、もっともらしく埋める。しかも毎回違う埋め方をする。</p>
@@ -240,6 +245,9 @@
         <p class="q">前提は動く。規範が固定なら、実行者にできるのは「従って失敗する」か「黙って外す」かだけで、どちらも記録に残らない。</p>
         <p class="a" id="p3"><span class="id">P3</span><b>憲法は改訂される</b></p>
       </li>
+    </ul>
+    <p class="label group">指針 8 つ</p>
+    <ul class="map">
       <li>
         <p class="q">人間の判断が希少。実行が速くなるほど、判断待ちが律速になる。</p>
         <p class="a" id="d1"><span class="id">D1</span><b>判断の配分</b></p>
@@ -276,7 +284,7 @@
     <p class="on">十一の部品のうち、<strong>D7 だけが他の部品を出典に取っています。</strong>可逆性が自律の範囲を決めるというのは D4 の言明で、前提から直接は出ません。だから D4 を撤回すると D7 も一緒に落ちます。</p>
   </section>
 
-  <section>
+  <section id="s04">
     <div class="sec-head">
       <p class="label">04 ／ 上下</p>
       <h2>この文書自身にも、<br>上と下がある。</h2>
