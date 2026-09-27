@@ -193,6 +193,18 @@
     transform:translateY(-1px);
   }
   .premise li>span{min-width:0;font-size:15.5px;line-height:1.9}
+  .mesh{display:block;width:100%;max-width:320px;height:auto;margin-inline:auto}
+  .mesh text{fill:var(--ink);font-size:13px}
+  .mesh text.b{fill:var(--path);font-weight:700}
+  .mesh text.s{fill:var(--muted);font-weight:700}
+  .mesh text.tg{fill:var(--faint);font:500 10.5px var(--mono);letter-spacing:.06em}
+  .mesh text.n{font-size:12px}
+  .mesh rect{fill:none;stroke:var(--faint);stroke-width:1.5}
+  .mesh rect.hi{stroke:var(--path)}
+  .mesh rect.nt{stroke-dasharray:4 3}
+  .mesh .ln{stroke:var(--faint);stroke-width:1.5}
+  .mesh .hd{fill:var(--faint)}
+  .mesh .dl{stroke:var(--faint);stroke-width:1.5;stroke-dasharray:3 3}
 
   /* ── 細い道 ── */
   .steps{
@@ -418,7 +430,26 @@
     <p class="on">正確には、<strong>値段がゼロなら使いたい量</strong>と比べています。単価が下がるほど、試したいことは際限なく増えます。仮説を十本立てて全部走らせる、総当たりで確かめる、駄目なら捨ててやり直す。単価が高かった頃には候補にすら挙がらなかった使い方が、安くなった瞬間に全部現実味を持つ。だから<strong>総量がどれだけ大きくても、枠にはぶつかります。</strong></p>
     <p>この前提が効いてくるのは一点、<strong>使えば減る</strong>というところです。誤った方向へ流した量は、後で使える量から引かれる。上限がなければ、誤り確率がいくら高くても、量を流すことに値段がつきません。そうなると <a class="ref" href="#s6">(6)</a>（範囲は可逆性で、速度は期待浪費で決める）の期待浪費は、尺度になりません。必要なのはそこまでです。</p>
     <p>書かれていない前提もあります。人が有限であること、要求が変わること。前提としては正しいけれど、以前と変わっていない。変わっていない前提から出る結論は、以前と同じ結論になります。だから書かない。</p>
-    <p>この三つは、互いに噛み合っています。実行が安いから何度でも試せる。何度でも試せるから人間が全部は見られない。見られないから、判断をどこに置くかが問題になる。ただし総量に上限があるので、試すこと自体にも値段がつく。そして出力がばらつくので、一度見て良かったことは、次も良いことを保証しない。</p>
+    <p>この三つは、次のように噛み合っています。</p>
+    <svg class="mesh" viewBox="0 0 320 254" width="320" height="254" role="img" aria-labelledby="mesh-t">
+      <title id="mesh-t">実行が安いから何度でも試せる。何度でも試せるから人間が全部は見られない。見られないから、判断をどこに置くかが問題になる。ただし総量に上限があるので、試すことにも値段がつく。出力がばらつくので、一度見て良くても次は保証されない。</title>
+      <text class="tg" x="0" y="11">一行目</text>
+      <rect class="" x="0" y="16" width="184" height="32"/><text x="92" y="37" text-anchor="middle">実行が安い</text>
+      <line class="ln" x1="92" y1="48" x2="92" y2="72"/><path class="hd" d="M87 71 L92 78 L97 71Z"/>
+      <rect class="" x="0" y="78" width="184" height="32"/><text x="92" y="99" text-anchor="middle">何度でも試せる</text>
+      <line class="ln" x1="92" y1="110" x2="92" y2="134"/><path class="hd" d="M87 133 L92 140 L97 133Z"/>
+      <text class="tg" x="0" y="135">二行目</text>
+      <rect class="" x="0" y="140" width="184" height="32"/><text x="92" y="161" text-anchor="middle">人間が全部は見られない</text>
+      <line class="ln" x1="92" y1="172" x2="92" y2="196"/><path class="hd" d="M87 195 L92 202 L97 195Z"/>
+      <rect class="hi" x="0" y="202" width="184" height="50"/><text class="b" x="92" y="223" text-anchor="middle">判断をどこに置くかが</text><text class="b" x="92" y="241" text-anchor="middle">問題になる</text>
+
+      <line class="dl" x1="184" y1="94" x2="196" y2="94"/>
+      <text class="tg" x="196" y="67">一行目</text>
+      <rect class="nt" x="196" y="72" width="124" height="56"/><text class="s n" x="203" y="89">総量に上限がある</text><text class="n" x="203" y="106">試すことにも</text><text class="n" x="203" y="122">値段がつく</text>
+      <line class="dl" x1="184" y1="164" x2="196" y2="164"/>
+      <text class="tg" x="196" y="147">三行目</text>
+      <rect class="nt" x="196" y="152" width="124" height="56"/><text class="s n" x="203" y="169">出力がばらつく</text><text class="n" x="203" y="186">一度良くても、</text><text class="n" x="203" y="202">次は保証されない</text>
+    </svg>
     <blockquote>一件ずつ見て確かめる方法が効かなくなるのは、<br>この三つが同時に成り立つときです。</blockquote>
   </section>
 
