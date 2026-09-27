@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 254" width="320" height="254" role="img" aria-labelledby="t">
+  <title id="t">一件目の四つの欄では、守る条件の日割りの基準日が空欄で、確かめ方の照合も毎回書いている。そこで決めたことと作ったテストが、次回に残る能力になる。二件目では、基準日の欄が最初から埋まり、確かめ方は照合のテストを使える。</title>
+  <style>
+    text{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;font-size:13px;fill:#1c2422}
+    .b{font-weight:700}.m{fill:#5a6562}.sm{font-size:12px}.xs{font-size:11px}
+    .r{fill:#9b3527}.g{fill:#16564a}
+    .cell{fill:none;stroke:#dcdfda;stroke-width:1.5}
+    .cell.gap{stroke:#9b3527;stroke-dasharray:4 3}
+    .cell.done{stroke:#16564a}
+    .ar{stroke:#16564a;stroke-width:1.5}.hd{fill:#16564a}
+    @media (prefers-color-scheme:dark){
+      text{fill:#e6eae7}.m{fill:#9ea8a4}.r{fill:#e0857a}.g{fill:#6fbfa6}
+      .cell{stroke:#2b3432}.cell.gap{stroke:#e0857a}.cell.done{stroke:#6fbfa6}
+      .ar{stroke:#6fbfa6}.hd{fill:#6fbfa6}
+    }
+  </style>
+  <text class="b" x="62" y="14" text-anchor="middle">一件目</text>
+  <rect class="cell" x="0" y="24" width="124" height="46"/>
+  <text class="m sm" x="8" y="52">目的</text>
+  <rect class="cell gap" x="0" y="76" width="124" height="46"/>
+  <text class="m sm" x="8" y="94">守る条件</text>
+  <text class="sm r" x="8" y="113">基準日：空欄</text>
+  <rect class="cell" x="0" y="128" width="124" height="46"/>
+  <text class="m sm" x="8" y="156">任せる範囲</text>
+  <rect class="cell " x="0" y="180" width="124" height="46"/>
+  <text class="m sm" x="8" y="198">確かめ方</text>
+  <text class="sm m" x="8" y="217">照合を毎回書く</text>
+  <text class="b" x="258" y="14" text-anchor="middle">二件目</text>
+  <rect class="cell" x="196" y="24" width="124" height="46"/>
+  <text class="m sm" x="204" y="52">目的</text>
+  <rect class="cell done" x="196" y="76" width="124" height="46"/>
+  <text class="m sm" x="204" y="94">守る条件</text>
+  <text class="sm g" x="204" y="113">基準日：書いてある</text>
+  <rect class="cell" x="196" y="128" width="124" height="46"/>
+  <text class="m sm" x="204" y="156">任せる範囲</text>
+  <rect class="cell done" x="196" y="180" width="124" height="46"/>
+  <text class="m sm" x="204" y="198">確かめ方</text>
+  <text class="sm g" x="204" y="217">照合のテストを使う</text>
+  <line class="ar" x1="128" y1="105" x2="185" y2="105"/><path class="hd" d="M185 100 L192 105 L185 110Z"/><text class="g xs" x="160" y="98" text-anchor="middle">決めて書く</text>
+  <line class="ar" x1="128" y1="209" x2="185" y2="209"/><path class="hd" d="M185 204 L192 209 L185 214Z"/><text class="g xs" x="160" y="202" text-anchor="middle">テスト化</text>
+  <text class="g xs" x="160" y="246" text-anchor="middle">矢印で渡るものが、次回に残る能力</text>
+</svg>
