@@ -384,10 +384,12 @@
     color:var(--faint);
   }
 
+  br.narrow{display:none}
   @media (max-width:520px){
     .axes{grid-template-columns:1fr}
     .steps>li{grid-template-columns:1fr;gap:8px}
     .steps>li::before{padding-top:0}
+    br.narrow{display:inline}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
@@ -459,7 +461,7 @@
       <text class="tg" x="196" y="147">三行目</text>
       <rect class="nt" x="196" y="152" width="124" height="56"/><text class="s n" x="203" y="169">出力がばらつく</text><text class="n" x="203" y="186">一度良くても、</text><text class="n" x="203" y="202">次は保証されない</text>
     </svg>
-    <blockquote>一件ずつ見て確かめる方法が効かなくなるのは、<br>この三つが同時に成り立つときです。</blockquote>
+    <blockquote>一件ずつ見て確かめる方法が<br class="narrow">効かなくなるのは、<br>この三つが同時に成り立つときです。</blockquote>
   </section>
 
   <section>
@@ -541,10 +543,10 @@
   <section>
     <div class="sec-head">
       <p class="label">03 ／ 主体のあいだ</p>
-      <h2>同じ問題を、<br>主体のあいだで見ると EAA になる。</h2>
+      <h2>同じ問題を、<br>主体のあいだで見ると<br class="narrow">EAA になる。</h2>
     </div>
     <p>ここまでは、一つの開発主体の<strong>中</strong>の話でした。主体が複数になると、同じ崩れ方が別の軸で現れます。</p>
-    <blockquote>「自律してよい」と宣言しても、<br>親が後から条件を直接書き換えられるなら、<br>判断権限は安定しない。</blockquote>
+    <blockquote>「自律してよい」と宣言しても、<br>親が後から条件を<br class="narrow">直接書き換えられるなら、<br>判断権限は安定しない。</blockquote>
     <p>縦（層のあいだ）で「提起と承認を分ける」と言ったことと、横（主体のあいだ）で「提案と受入を分ける」と言うことは、同じ形です。基盤側から業務側への CI/CD 導入も、業務側から全体への用語訂正も、同じ関係になります。</p>
 
     <div class="axes">
@@ -610,7 +612,7 @@
     </div>
     <p class="cap-note">実行者は提起までしか進めない。承認は境界の向こうにあり、そこを越えた改訂だけが新しい版になる。</p>
 
-    <blockquote>根の版は、所有者の承認そのものによって成立する。<br>その手続きは、体系の外にある。</blockquote>
+    <blockquote>根の版は、<br class="narrow">所有者の承認そのものによって成立する。<br>その手続きは、体系の外にある。</blockquote>
 
     <p class="on">これは書き漏れではなく、<strong>再帰を止める場所の宣言</strong>です。そしてここが、ほかの枠組みとの本当の差でした。監督の強度を可逆性で決める枠組みも、仕様を正本に据えた枠組みも、その決め方自体を誰がどう改訂するかを書いていない。書き忘れているというより、問いとして立っていない。</p>
     <p>明示的に外に置くことと、問いとして立っていないことは、違います。</p>

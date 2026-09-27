@@ -157,7 +157,8 @@
   footer{border-top:1px solid var(--line);padding-top:18px;
     font-size:12px;line-height:1.9;color:var(--faint)}
 
-  @media (max-width:520px){ .axes{grid-template-columns:1fr} }
+  br.narrow{display:none}
+  @media (max-width:520px){ .axes{grid-template-columns:1fr} br.narrow{display:inline} }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -210,7 +211,7 @@
       </div>
     </div>
     <p class="on">そして 1 枚目と同じく、<strong>宣言では解けません。</strong></p>
-    <blockquote>「自律してよい」と宣言しても、<br>親が後から条件を直接書き換えられるなら、<br>判断権限は安定しない。</blockquote>
+    <blockquote>「自律してよい」と宣言しても、<br>親が後から条件を<br class="narrow">直接書き換えられるなら、<br>判断権限は安定しない。</blockquote>
   </section>
 
   <section>

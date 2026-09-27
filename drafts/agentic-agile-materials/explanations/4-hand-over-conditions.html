@@ -189,8 +189,10 @@
   footer{border-top:1px solid var(--line);padding-top:18px;
     font-size:12px;line-height:1.9;color:var(--faint)}
 
+  br.narrow{display:none}
   @media (max-width:520px){
     .conds,.vs,.roles,.two{grid-template-columns:1fr}
+    br.narrow{display:inline}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -411,7 +413,7 @@
   </section>
 
   <section>
-    <blockquote>人間の判断から、実行条件を作る。<br>Agent の実行から、次の能力を育てる。</blockquote>
+    <blockquote>人間の判断から、実行条件を作る。<br>Agent の実行から、<br class="narrow">次の能力を育てる。</blockquote>
     <p>最初にやることは一つです。一件を選び、四つの欄を書いて、渡す。</p>
   </section>
 
