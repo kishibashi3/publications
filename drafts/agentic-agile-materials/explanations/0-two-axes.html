@@ -1,6 +1,11 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--
   ============================================================
-  手戻り、誤り、調整、そして判断 — AA/EAA 紹介 0/4
+  手戻り、誤り、調整、そして判断 — AA 紹介 0/4
   ============================================================
 
   配布範囲
@@ -18,7 +23,7 @@
     自分の規律が否定されたのではなく、置き場所が変わると受け取る。
 
   この文書がやらないこと
-    WF の否定。Agile の否定。優劣の判定。AA/EAA の中身（1〜3 が扱う）。
+    WF の否定。Agile の否定。優劣の判定。AA の中身（1〜3 が扱う）。
 
   出典について
     引用はすべて @deep-research が一次資料から取得したもの。
@@ -29,8 +34,10 @@
   組
     0/4 手戻り、誤り、調整、そして判断 … 手法史からの入口（本書）
     1/4 二つの崩れ方のあいだ           … 問題空間の構造
-    2/4 どの部品が、どの問題を受けるか … AA の構造（一つの主体の中）
-    3/4 相手の中には、入れない         … EAA の構造（主体と主体のあいだ）
+    2/4 どの問題に、どの部品で応えるか … AA の構造
+    3/4 作業ではなく、条件を渡す       … AA の実務
+    読む順: 0 → 1 → 2 → 3 の 1 本道。分岐は置かない。
+    複数の開発主体のあいだ（EAA）は、この組では扱わない（別の組にする）。
   ============================================================
 -->
 <title>手戻り、誤り、調整、そして判断</title>
@@ -71,6 +78,7 @@
   :focus-visible{outline:2px solid var(--now);outline-offset:3px}
 
   .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  .byline{font:500 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--muted);margin:14px 0 0}
   h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
     line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
   h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
@@ -133,18 +141,23 @@
   footer{border-top:1px solid var(--line);padding-top:18px;
     font-size:12px;line-height:1.9;color:var(--faint)}
 
+  .fig{margin:0}
+  .fig img{display:block;max-width:100%;height:auto;margin-inline:auto}
   @media (max-width:520px){
     .era{grid-template-columns:1fr}
     .lack li{grid-template-columns:1fr;gap:3px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+</head>
+<body>
 
 <div class="wrap">
 
   <header>
-    <p class="label">AGENTIC AGILE ／ 紹介 0 of 4</p>
+    <p class="label">AGENTIC AGILE ／ 紹介 0 ／ 0〜3 の 4 枚組</p>
     <h1>手戻り、誤り、調整、<br>そして判断。</h1>
+    <p class="byline">kishibashi3 ／ 最終更新 <time datetime="2026-09-28">2026-09-28</time></p>
   </header>
 
   <section>
@@ -253,19 +266,18 @@
       <p class="label">04 ／ 分離</p>
       <h2>判断と実行が、<br>初めて離れた。</h2>
     </div>
-    <p>実行が安くなっただけなら、話は一本目の軸で済みます。変更が安くなった側に倒れるだけ。<strong>「もっと速く回せるようになった」で終わります。</strong></p>
+    <p>実行が安くなっただけなら、話は一本目の軸で済みます。作って確かめる側が、さらに有利になるだけです。<strong>「もっと速く回せるようになった」で終わります。</strong></p>
     <p class="on">実際に起きたのは、それだけではありませんでした。</p>
 
     <blockquote>判断する人と、実行する人が、<br>同じでなくなった。</blockquote>
 
-    <p>これまでの三つの時代は、すべて<strong>判断と実行が同じ人に付いていた</strong>時代です。設計した人が作り、作った人がレビューする。実行を 2 倍にするには、人を 2 倍にするしかなかった。<strong>判断の量と実行の量が、連動していました。</strong></p>
-    <p class="on">だから、別々に数える必要がありませんでした。一本目の軸だけで足りた。</p>
-    <p>実行だけが安くなると、連動が切れます。実行は 10 倍にできる。<strong>判断は 10 倍にできない。</strong></p>
+    <p>これまでの三つの時代は、<strong>判断と実行が同じ人に付いていた</strong>ので、別々に数える必要がなく、一本目の軸だけで足りました。</p>
+    <figure class="fig"><img src="figures/0-04-decoupling.svg" width="320" height="196" alt="これまで：実行を 2 倍にするには人を 2 倍にするしかなく、判断も一緒に 2 倍になった。いま：実行だけが安くなり、実行は 10 倍にできるが、判断は 1 倍のまま。"></figure>
 
     <div class="axis-box new">
       <p class="n">二本目の軸</p>
       <p class="f">判断のコスト ÷ 実行のコスト</p>
-      <p>実行を増やすほど、判断が律速になる。この比が、任せ方と確かめ方を決める。</p>
+      <p>実行を増やすほど、全体の速さが判断で決まるようになる。この比が、任せ方と確かめ方を決める。</p>
     </div>
   </section>
 
@@ -303,7 +315,7 @@
       <p class="label">07 ／ 次</p>
       <h2>では、二本目の軸で<br>何を設計するのか。</h2>
     </div>
-    <p>ここから先が、この資料の本編です。判断をどこに置くか、何を任せ、何を人に戻すか。そして主体が複数になったとき、それをどう保つか。</p>
+    <p>ここから先が、この資料の本編です。判断をどこに置くか、何を任せ、何を人に戻すか。</p>
     <p class="on">次の 1 枚は、<strong>誰もが試す二つのやり方が、どちらも壊れる</strong>ところから始まります。人間が全部承認しても、Agent に判断ごと渡しても、うまくいかない。その間を通る道があるかどうかの話です。</p>
   </section>
 
@@ -315,6 +327,9 @@
     <p>ここでいう Agent は、計画し、道具を使い、実行結果を確かめて修正する AI を指します。</p>
   </section>
 
-  <footer>AA・EAA 紹介 0 / 4 ／ 次｜二つの崩れ方のあいだ（問題空間の構造）</footer>
+  <footer>AA 紹介 0（0〜3 の 4 枚組）／ 次｜<a href="1-between-two-collapses.html">二つの崩れ方のあいだ</a>（問題空間の構造）</footer>
 
 </div>
+
+</body>
+</html>

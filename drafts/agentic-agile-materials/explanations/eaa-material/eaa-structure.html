@@ -1,13 +1,18 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--
   ============================================================
-  相手の中には、入れない — AA/EAA 紹介 3/4（EAA の構造）
+  相手の中には、入れない — AA/EAA 紹介 3/5（EAA の構造）
   ============================================================
 
   配布範囲
     社内・社外の両方。出し分けをしない 1 本。
 
   読者
-    1/4 で問題の形を、2/4 で AA の部品を見た人。
+    1/5 で問題の形を、2/5 で AA の部品を見た人。
     自分の案件が一つの主体では収まらないことを知っている。
     「主体が増えたとき、何が変わるのか」を知りたい。
 
@@ -21,10 +26,14 @@
     EAA Core / Profiles は未確定の仕様案なので、確定として書かない。
 
   組
-    0/4 手戻り、誤り、調整、そして判断 … 手法史からの入口
-    1/4 二つの崩れ方のあいだ           … 問題空間の構造
-    2/4 どの部品が、どの問題を受けるか … AA の構造（一つの主体の中）
-    3/4 相手の中には、入れない         … EAA の構造（主体と主体のあいだ）（本書）
+    0/5 手戻り、誤り、調整、そして判断 … 手法史からの入口
+    1/5 二つの崩れ方のあいだ           … 問題空間の構造
+    2/5 どの問題に、どの部品で応えるか … AA の構造（一つの主体の中）
+    3/5 相手の中には、入れない         … EAA の構造（主体と主体のあいだ）（本書）
+    4/5 作業ではなく、条件を渡す       … AA の実務
+    読む順: 0 → 1 → 2 のあと、二手に分かれる。番号順に 5 枚読む前提ではない。
+      AA の線  … 2 → 4（4 が AA の線の終着点）
+      EAA の線 … 2 → 3
   ============================================================
 -->
 <title>相手の中には、入れない</title>
@@ -68,6 +77,7 @@
   :focus-visible{outline:2px solid var(--eaa);outline-offset:3px}
 
   .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  .byline{font:500 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--muted);margin:14px 0 0}
   h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
     line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
   h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
@@ -147,15 +157,19 @@
   footer{border-top:1px solid var(--line);padding-top:18px;
     font-size:12px;line-height:1.9;color:var(--faint)}
 
-  @media (max-width:520px){ .axes{grid-template-columns:1fr} }
+  br.narrow{display:none}
+  @media (max-width:520px){ .axes{grid-template-columns:1fr} br.narrow{display:inline} }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+</head>
+<body>
 
 <div class="wrap">
 
   <header>
-    <p class="label">ENTERPRISE AGENTIC AGILE ／ 紹介 3 of 4</p>
+    <p class="label">ENTERPRISE AGENTIC AGILE ／ 紹介 3 ／ 0〜4 の 5 枚組</p>
     <h1>相手の中には、入れない。</h1>
+    <p class="byline">kishibashi3 ／ 最終更新 <time datetime="2026-09-27">2026-09-27</time></p>
   </header>
 
   <section>
@@ -197,15 +211,15 @@
       </div>
     </div>
     <p class="on">そして 1 枚目と同じく、<strong>宣言では解けません。</strong></p>
-    <blockquote>「自律してよい」と宣言しても、<br>親が後から条件を直接書き換えられるなら、<br>判断権限は安定しない。</blockquote>
+    <blockquote>「自律してよい」と宣言しても、<br>親が後から条件を<br class="narrow">直接書き換えられるなら、<br>判断権限は安定しない。</blockquote>
   </section>
 
   <section>
     <div class="sec-head">
       <p class="label">03 ／ 対応</p>
-      <h2>どの部品が、<br>どの問題を受けるか。</h2>
+      <h2>どの問題に、<br>どの部品で応えるか。</h2>
     </div>
-    <p>左が問題、右がそれを受ける部品です。まず、<strong>境界に置くもの</strong>から。</p>
+    <p>左が問題、右がそれに応える部品です。まず、<strong>境界に置くもの</strong>から。</p>
     <ul class="map">
       <li>
         <p class="q">誰が何に責任を持つのかが、組織図からは読めない。肩書きは責任範囲を表していない。</p>
@@ -252,14 +266,14 @@
 
   <section>
     <div class="sec-head">
-      <p class="label">04 ／ 回転</p>
+      <p class="label">04 ／ 縦と横</p>
       <h2>縦でやったことを、<br>横でもう一度やる。</h2>
     </div>
     <p>2 枚目では、執行しながら下位の規範を書くことは許し、<strong>自分が提起した改訂を自分で承認することは許さない</strong>、という非対称を入れました。ここでも同じことをします。</p>
 
     <div class="axes">
       <div class="axis aa">
-        <p class="cap">2/4 ／ 中</p>
+        <p class="cap">2/5 ／ 中</p>
         <div class="stack">
           <div class="box">上位の規範</div>
           <div class="tick">↕</div>
@@ -270,7 +284,7 @@
         <p class="what"><b>層のあいだ</b>提起と承認を分ける</p>
       </div>
       <div class="axis eaa">
-        <p class="cap">3/4 ／ あいだ</p>
+        <p class="cap">3/5 ／ あいだ</p>
         <div class="stack">
           <div class="row">
             <div class="box">主体</div>
@@ -338,7 +352,7 @@
       <p>2 枚目で扱った AA Principles は、所有者が承認した正本です。<strong>本書で扱った EAA の仕様は、未確定の案です。</strong>同じ顔で並べると、決まっているものと決まっていないものの区別が消えます。</p>
     </div>
     <p>決まっていないものを挙げておきます。合意が成立しないときの調整、外部の条件が変わったときの扱い、移行中の責任、複数の主体にまたがる変更の適用順と、途中で失敗したときの復旧。Profile の詳細な形式も決めていません。</p>
-    <p class="on">これらは、<strong>具体的な事例から決めます。</strong>先に決めれば、決めた理由が記録より古くなります。</p>
+    <p class="on">これらは、<strong>具体的な事例から決めます。</strong>先に決めると、あとで記録が集まったとき、決めた理由のほうが古い情報になります。</p>
     <p>そして未決の部分を、他の主体への一方的な強制で埋めない。決まっていない間も、境界の条件は生きています。</p>
   </section>
 
@@ -353,12 +367,15 @@
 
   <section class="notes">
     <h2>付記</h2>
-    <p>本書は解説であり、新たな義務を追加しません。仕様の定義元は EAA Core と Profiles で、いずれも未確定の案です。</p>
+    <p>本書は解説であり、新たな義務を追加しません。仕様の定義元は EAA <a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/enterprise-agentic-agile/core.md">Core</a> と <a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/enterprise-agentic-agile/profiles.md">Profiles</a> で、いずれも未確定の案です。</p>
     <p>ここでいう Agent は、計画し、道具を使い、実行結果を確かめて修正する AI を指します。</p>
     <p>Cell・Profile・Mission などの語は、この体系の中での意味です。同じ語が社内の他の文脈で別の意味を持つなら、それ自体が 03 の Ontology が扱う問題です。</p>
     <p>本書で「上位」「下位」と呼ぶのは、規範の準拠関係の向きです。指揮命令の関係ではありません。</p>
   </section>
 
-  <footer>AA・EAA 紹介 3 / 4 ／ 前｜どの部品が、どの問題を受けるか（AA の構造）</footer>
+  <footer>AA・EAA 紹介 3（0〜4 の 5 枚組）／ 前｜<a href="2-aa-structure.html">どの問題に、どの部品で応えるか</a>（AA の構造）　次｜<a href="4-hand-over-conditions.html">作業ではなく、条件を渡す</a>（AA の実務）</footer>
 
 </div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" width="320" height="120" role="img" aria-labelledby="t">
+  <title id="t">権限を緩めてから戻すまでのあいだに、承認を通らない実行が何回も入る。戻るのは設定だけで、そのあいだの実行の効果は残る。</title>
+  <style>
+    text{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;font-size:13px;fill:#1c2422}
+    .m{fill:#5a6562}.f{fill:#8b9491}.b{font-weight:700}.r{fill:#9b3527}.g{fill:#16564a}
+    .sm{font-size:12px}
+    .set{stroke:#16564a;stroke-width:2;fill:none}
+    .ex{fill:#9b3527}
+    .tick{stroke:#8b9491;stroke-width:1;stroke-dasharray:3 3}
+    .cell{fill:none;stroke:#dcdfda;stroke-width:1.5}
+    .cell.hot{fill:#f3e5e2;stroke:#9b3527}
+    @media (prefers-color-scheme:dark){
+      text{fill:#e6eae7}.m{fill:#9ea8a4}.f{fill:#79837f}.r{fill:#e0857a}.g{fill:#6fbfa6}
+      .set{stroke:#6fbfa6}.ex{fill:#e0857a}.tick{stroke:#79837f}
+      .cell{stroke:#2b3432}.cell.hot{fill:#2a1d1a;stroke:#e0857a}
+    }
+  </style>
+
+  <line class="tick" x1="60" y1="18" x2="60" y2="90"/>
+  <line class="tick" x1="258" y1="18" x2="258" y2="90"/>
+  <text class="m" x="60" y="13" text-anchor="middle">緩める</text>
+  <text class="m" x="258" y="13" text-anchor="middle">戻す</text>
+  <text class="f sm" x="159" y="28" text-anchor="middle">緩んでいるあいだ</text>
+  <text class="m" x="0" y="50">設定</text>
+  <path class="set" d="M36 56 H60 V34 H258 V56 H320"/>
+  <text class="m" x="0" y="85">実行</text>
+  <rect class="ex" x="70" y="76" width="9" height="9"/><rect class="ex" x="84" y="76" width="9" height="9"/><rect class="ex" x="98" y="76" width="9" height="9"/><rect class="ex" x="112" y="76" width="9" height="9"/><rect class="ex" x="126" y="76" width="9" height="9"/><rect class="ex" x="140" y="76" width="9" height="9"/><rect class="ex" x="154" y="76" width="9" height="9"/><rect class="ex" x="168" y="76" width="9" height="9"/><rect class="ex" x="182" y="76" width="9" height="9"/><rect class="ex" x="196" y="76" width="9" height="9"/><rect class="ex" x="210" y="76" width="9" height="9"/><rect class="ex" x="224" y="76" width="9" height="9"/><rect class="ex" x="238" y="76" width="9" height="9"/>
+  <text class="r" x="159" y="110" text-anchor="middle">戻るのは設定だけ。この実行は残る</text>
+</svg>
