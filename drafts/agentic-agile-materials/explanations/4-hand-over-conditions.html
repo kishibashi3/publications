@@ -154,6 +154,8 @@
     padding:15px 18px;display:flex;flex-direction:column;gap:6px}
   .caveat .tag{font:500 11px/1.6 var(--mono);letter-spacing:.07em;color:var(--fail-a)}
   .caveat p{font-size:14px;line-height:1.9}
+  .fig{margin:0}
+  .fig img{display:block;max-width:100%;height:auto;margin-inline:auto}
 
   /* 残る二つ */
   .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -203,7 +205,8 @@
     <p class="muted">以下、任せる相手の AI を Agent と呼びます。計画し、道具を使い、実行結果を確かめて修正する AI です。</p>
     <div class="caveat">
       <p class="tag">この資料の補足 — AA の原則の外</p>
-      <p>「Agent に渡す」を「ベンダーに渡す」に置き換えて、外注先への依頼の書き方に当てる読み方もあります。ただし AA が扱うのは AI への委任で、外注に同じように効くとは AA の原則にも導入解説にも書かれていません。</p>
+      <p>「Agent に渡す」を「ベンダーに渡す」と読み替えることもできますが、AA の原則と導入解説が扱うのは、下の図の後ろの矢印だけです。</p>
+      <figure class="fig"><img src="figures/4-00-two-delegations.svg" width="320" height="244" alt="発注者から委託先への委託は、この資料の外。委託先から Agent への AI への委任だけを、AA が扱う。"></figure>
     </div>
   </section>
 
@@ -411,7 +414,6 @@
     <p>四つの条件と、成果と Evidence の扱いは、AA の導入解説「<a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/agentic-agile/development-model.md">考え方と開発の姿</a>」に拠っています。原則と指針の定義元は <a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/agentic-agile/principles.md">Agentic Agile Principles</a> です。本書は解説であり、新たな義務を追加しません。</p>
     <p>Enabler と Operator は、EAA の<a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/enterprise-agentic-agile/role-model.md">役割モデル</a>（適用例・非規範）から借りた参考モデルです。最初の一件の五手は、この資料の提案です。</p>
     <p>原則と指針の番号（P1〜P3、D1〜D8）は、2 枚目と同じく定義元のものです。</p>
-    <p>冒頭の「ベンダーに渡す」への読み替えは、この資料の補足です。定義元は AI への委任だけを扱っており、人間の外注について述べた箇所はありません。</p>
   </section>
 
   <footer>AA・EAA 紹介 4（0〜4 の 5 枚組の最後）／ 前｜<a href="2-aa-structure.html">どの問題に、どの部品で応えるか（AA の構造）</a><br>定義元は <a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/agentic-agile/principles.md">AA Principles</a>、および準拠先の<a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/self-revising-norm-architecture/README.md">自己改訂規範アーキテクチャ</a>。本書は解説であり、新たな義務を追加しません。</footer>
