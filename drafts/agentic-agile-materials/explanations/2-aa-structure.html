@@ -130,6 +130,11 @@
     border:1px solid var(--path);padding:1px 7px;white-space:nowrap;
   }
   .map .a b{min-width:0;font-size:15px;line-height:1.75;font-weight:700}
+  .map .a:has(.was-g){grid-template-columns:auto 1fr auto}
+  .map .was-g{font:500 11px/1.7 var(--mono);color:var(--faint);white-space:nowrap}
+  .map .was{color:inherit}
+  .map>li.seen .q,.map>li.seen .a b{color:var(--faint)}
+  .map>li.seen .id{color:var(--faint);border-color:var(--faint)}
 
   /* 連鎖 */
   .chain{display:flex;flex-direction:column;align-items:stretch;gap:0}
@@ -231,21 +236,21 @@
       <h2>どの問題に、<br>どの部品で応えるか。</h2>
     </div>
     <p>左が問題の形、右がそれに応える部品です。部品が先にあって問題を探したのではなく、<strong>問題が先にあって部品が付いています。</strong></p>
-    <p>十一組のうち P1〜P3・D4・D7・D8 は、1 枚目の八つを部品の名前で言い直したものです。1 枚目を読んだなら、<a class="ref" href="#s04">次の節へ飛ばして</a>構いません。</p>
+    <p>灰色の六組は、1 枚目の八つを部品の名前で言い直したもので、右端に 1 枚目の番号を添えてあります。</p>
     <p>原則の名前に出てくる「憲法」は、国の憲法のことではありません。<strong>その層が従う、ルールを書いた文書</strong>のことです。</p>
     <p class="label group">原則 3 つ</p>
     <ul class="map">
-      <li>
+      <li class="seen">
         <p class="q">実行者は背景を共有しない。書かれていないものを参照しようとすると、「参照できなかった」とは言わず、もっともらしく埋める。しかも毎回違う埋め方をする。</p>
-        <p class="a" id="p1"><span class="id">P1</span><b>権威は書かれたものに宿る</b></p>
+        <p class="a" id="p1"><span class="id">P1</span><b>権威は書かれたものに宿る</b><span class="was-g">1 枚目 <a class="was" href="1-between-two-collapses.html#s1">(1)</a></span></p>
       </li>
-      <li>
+      <li class="seen">
         <p class="q">執行だけの層は、不具合を見つけても反映する先がない。下位を書くだけの層は、自分で執行しないので観測がない。</p>
-        <p class="a" id="p2"><span class="id">P2</span><b>開発は憲法の連鎖である</b></p>
+        <p class="a" id="p2"><span class="id">P2</span><b>開発は憲法の連鎖である</b><span class="was-g">1 枚目 <a class="was" href="1-between-two-collapses.html#s3">(3)</a> <a class="was" href="1-between-two-collapses.html#s5">(5)</a></span></p>
       </li>
-      <li>
+      <li class="seen">
         <p class="q">前提は動く。規範が固定なら、実行者にできるのは「従って失敗する」か「黙って外す」かだけで、どちらも記録に残らない。</p>
-        <p class="a" id="p3"><span class="id">P3</span><b>憲法は改訂される</b></p>
+        <p class="a" id="p3"><span class="id">P3</span><b>憲法は改訂される</b><span class="was-g">1 枚目 <a class="was" href="1-between-two-collapses.html#s2">(2)</a> <a class="was" href="1-between-two-collapses.html#s4">(4)</a></span></p>
       </li>
     </ul>
     <p class="label group">指針 8 つ</p>
@@ -262,9 +267,9 @@
         <p class="q">同じ生成元は同じ誤りを共有する。自分の出力を自分で点検しても、共有された誤りは残る。</p>
         <p class="a" id="d3"><span class="id">D3</span><b>生成と判定の分離</b></p>
       </li>
-      <li>
+      <li class="seen">
         <p class="q">取り消せない操作がある。そして実行の総量に上限があるので、誤った方向へ流した量が損失になる。</p>
-        <p class="a" id="d4"><span class="id">D4</span><b>委任の尺度（可逆性と期待浪費）</b></p>
+        <p class="a" id="d4"><span class="id">D4</span><b>委任の尺度（可逆性と期待浪費）</b><span class="was-g">1 枚目 <a class="was" href="1-between-two-collapses.html#s6">(6)</a></span></p>
       </li>
       <li>
         <p class="q">出力が確率的にばらつく。一度うまくいったことは、次もうまくいく保証にならない。</p>
@@ -274,13 +279,13 @@
         <p class="q">情報を知ったことと、決定権を得たことが混ざる。逆に、遮断しすぎると目的が理解できなくなる。</p>
         <p class="a" id="d6"><span class="id">D6</span><b>境界</b></p>
       </li>
-      <li>
+      <li class="seen">
         <p class="q">可逆性は操作に固有の性質ではなく、刻み方で変えられる量である。ただし刻んだ全体が不可逆なら、得られたのは見かけだけ。</p>
-        <p class="a" id="d7"><span class="id">D7</span><b>可逆性は設計で買える</b></p>
+        <p class="a" id="d7"><span class="id">D7</span><b>可逆性は設計で買える</b><span class="was-g">1 枚目 <a class="was" href="1-between-two-collapses.html#s7">(7)</a></span></p>
       </li>
-      <li>
+      <li class="seen">
         <p class="q">権限を緩める操作は、設定としては取り消せることが多い。けれど緩めてから戻すまでのあいだに行われた実行は戻らない。<strong>可逆かつ権限増加という組み合わせが実在する。</strong></p>
-        <p class="a" id="d8"><span class="id">D8</span><b>自己権限の固定</b></p>
+        <p class="a" id="d8"><span class="id">D8</span><b>自己権限の固定</b><span class="was-g">1 枚目 <a class="was" href="1-between-two-collapses.html#s8">(8)</a></span></p>
       </li>
     </ul>
     <p class="on">十一の部品のうち、<strong>D7 だけが他の部品を出典に取っています。</strong>可逆性が自律の範囲を決めるというのは D4 の言明で、前提から直接は出ません。だから D4 を撤回すると D7 も一緒に落ちます。</p>
