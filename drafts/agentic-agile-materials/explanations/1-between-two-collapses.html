@@ -193,6 +193,8 @@
     transform:translateY(-1px);
   }
   .premise li>span{min-width:0;font-size:15.5px;line-height:1.9}
+  .fig{margin:0}
+  .fig img{display:block;max-width:100%;height:auto;margin-inline:auto}
   .mesh{display:block;width:100%;max-width:320px;height:auto;margin-inline:auto}
   .mesh text{fill:var(--ink);font-size:13px}
   .mesh text.b{fill:var(--path);font-weight:700}
@@ -518,8 +520,10 @@
       <li id="s8"><div>
         <h3>自分の権限だけは、小さく刻んでも取り消せるようにならない</h3>
         <p class="src">2 枚目の <a class="ref" href="2-aa-structure.html#d8">D8</a></p>
-        <p>権限を緩める操作は、設定としては取り消せることが多い。けれど実行は安く速いので、緩めてから戻すまでのあいだに、承認を通さない実行が何回でも入ります。取り消せるのは設定だけで、そのあいだに出た効果はそのまま残ります。</p>
-        <p class="on">可逆性と権限増加は、独立に決まる軸です。<strong>可逆かつ権限増加という組み合わせは実在します。</strong><a class="ref" href="#s6">(6)</a> は範囲を可逆性で決めると言っているので、これを別に立てないと、その組み合わせは自律の側に落ちます。</p>
+        <p>権限を緩める操作は、設定としては取り消せることが多い。けれど実行は安く速いので、戻すまでのあいだに承認を通らない実行が何回でも入ります。</p>
+        <figure class="fig"><img src="figures/1-s8-window.svg" width="320" height="120" alt="権限を緩めてから戻すまでのあいだに、承認を通らない実行が何回も入る。戻るのは設定だけで、そのあいだの実行の効果は残る。"></figure>
+        <p class="on"><a class="ref" href="#s6">(6)</a> は範囲を可逆性で決めると言っているので、これを別に立てないと、<strong>可逆かつ権限が増える</strong>升目は自律の側に落ちます。</p>
+        <figure class="fig"><img src="figures/1-s8-grid.svg" width="320" height="172" alt="可逆性と権限増加の二つの軸。不可逆なら (6) で人間に通る。可逆で権限が増えない操作は自律。可逆で権限が増える操作は、(6) だけだと自律の側に落ちるので、(8) で人間に通す。"></figure>
         <p class="drop"><span class="arrow">抜くと</span><span class="t">「可逆だから安全」という、正しそうな理屈を通って <b>崩れ方 B へ落ちる。</b></span></p>
       </div></li>
     </ol>

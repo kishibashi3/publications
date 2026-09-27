@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 172" width="320" height="172" role="img" aria-labelledby="t">
+  <title id="t">可逆性と権限増加の二つの軸。不可逆なら (6) で人間に通る。可逆で権限が増えない操作は自律。可逆で権限が増える操作は、(6) だけだと自律の側に落ちるので、(8) で人間に通す。</title>
+  <style>
+    text{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;font-size:13px;fill:#1c2422}
+    .m{fill:#5a6562}.f{fill:#8b9491}.b{font-weight:700}.r{fill:#9b3527}.g{fill:#16564a}
+    .sm{font-size:12px}
+    .set{stroke:#16564a;stroke-width:2;fill:none}
+    .ex{fill:#9b3527}
+    .tick{stroke:#8b9491;stroke-width:1;stroke-dasharray:3 3}
+    .cell{fill:none;stroke:#dcdfda;stroke-width:1.5}
+    .cell.hot{fill:#f3e5e2;stroke:#9b3527}
+    @media (prefers-color-scheme:dark){
+      text{fill:#e6eae7}.m{fill:#9ea8a4}.f{fill:#79837f}.r{fill:#e0857a}.g{fill:#6fbfa6}
+      .set{stroke:#6fbfa6}.ex{fill:#e0857a}.tick{stroke:#79837f}
+      .cell{stroke:#2b3432}.cell.hot{fill:#2a1d1a;stroke:#e0857a}
+    }
+  </style>
+
+  <text class="m" x="133" y="14" text-anchor="middle">可逆</text>
+  <text class="m" x="259" y="14" text-anchor="middle">不可逆</text>
+  <text class="m" x="0" y="48">権限が</text><text class="m" x="0" y="65">増えない</text>
+  <text class="m" x="0" y="118">権限が</text><text class="m" x="0" y="135">増える</text>
+
+  <rect class="cell" x="72" y="24" width="122" height="60"/>
+  <text x="133" y="59" text-anchor="middle">自律</text>
+  <rect class="cell" x="198" y="24" width="122" height="60"/>
+  <text x="259" y="51" text-anchor="middle">人間へ</text>
+  <text class="f sm" x="259" y="69" text-anchor="middle">(6) で止まる</text>
+
+  <rect class="cell hot" x="72" y="88" width="122" height="80"/>
+  <text class="r sm" x="133" y="116" text-anchor="middle">(6) だけだと</text>
+  <text class="r sm" x="133" y="133" text-anchor="middle">自律に落ちる</text>
+  <text class="b g" x="133" y="155" text-anchor="middle">(8) で人間へ</text>
+  <rect class="cell" x="198" y="88" width="122" height="80"/>
+  <text x="259" y="125" text-anchor="middle">人間へ</text>
+  <text class="f sm" x="259" y="143" text-anchor="middle">(6) で止まる</text>
+</svg>
