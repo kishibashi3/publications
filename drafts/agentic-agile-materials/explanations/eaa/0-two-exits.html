@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  ============================================================
+  あいだの合意を、誰が持つのか — EAA 紹介 0/4
+  ============================================================
+
+  配布範囲
+    社内・社外の両方。
+
+  読者
+    大規模 Agile を入れた社内側（RTE、変革リード、Agile コーチ、PMO）。
+    複数チーム・複数ベンダーを束ねる発注側（情シス、発注側 PM、PMO）。
+    AA の組を読んだ人（要約の検算役）。経営側は 0 枚目だけを読む。
+    自分が入れた手法を否定されるなら、最初の段落で読むのをやめる。
+
+  読んだ後にどうなってほしいか
+    大規模開発の手法が、あいだの合意の持ち方に二つの出口を作り、
+    どちらも上限を自分で書いていたと分かる。
+    実行が安くなって、その二つがどちらも狭くなる理由が分かる。
+    「一人にも会議にも預けずに、誰がどう持つのか」という問いを持って 1 枚目へ進む。
+
+  この文書がやらないこと
+    手法の否定。優劣の判定。EAA の答え（1〜3 が扱う）。
+    AA の中身の再説（要るところは AA の枚へリンクする）。
+
+  出典について
+    引用はすべて @deep-research が一次資料から取得し、原文照合したもの。
+    deep-research/research-archive/2026-09-28-eaa-intro-zero-two-lineages.md
+    deep-research/research-archive/2026-09-28-eaa-intro-zero-detour-return.md
+    崩れ方 A・B の書き方と、散らす出口の帰結の文は @philosopher の判定による。
+    philosopher/2026-09-28-eaa-intro-zero-collapse-direction.md
+
+  組
+    0/4 あいだの合意を、誰が持つのか … 歴史と AA からの入口（本書）
+    1/4〜3/4 準備中
+    AA の組（../0-〜../3-）とは別の組。枚どうしのリンクは相対パス。
+  ============================================================
+-->
+<title>あいだの合意を、誰が持つのか</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap">
+<style>
+  :root{
+    --paper:#f5f6f4;--ink:#1c2422;--muted:#5a6562;--faint:#8b9491;
+    --line:#dcdfda;--panel:#eaeee8;
+    --past:#6b716c;--past-soft:#eceeea;
+    --path:#16564a;--path-soft:#e3ece8;
+    --fail-a:#8a6420;--fail-a-soft:#f1eadd;
+    --fail-b:#9b3527;--fail-b-soft:#f3e5e2;
+    --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+    --sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+      --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+      --path:#6fbfa6;--path-soft:#1a2a26;
+      --fail-a:#d3ad63;--fail-a-soft:#272218;
+      --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+    --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+    --path:#6fbfa6;--path-soft:#1a2a26;
+    --fail-a:#d3ad63;--fail-a-soft:#272218;
+    --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15.5px/1.95 var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:35em;margin-inline:auto;padding-inline:20px;
+    padding-block:56px 80px;display:flex;flex-direction:column;gap:56px}
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--path);outline-offset:3px}
+
+  .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  .byline{font:500 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--muted);margin:14px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
+    line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
+    line-height:1.6;margin:0;text-wrap:balance}
+  h3{margin:0;font-size:17px;line-height:1.7;font-weight:700}
+  .lead{font-size:16.5px;line-height:2.05}
+  section{display:flex;flex-direction:column;gap:20px}
+  .sec-head{display:flex;flex-direction:column;gap:7px}
+  .on{color:var(--ink)}
+  .sub{font-size:15px;line-height:2;color:var(--muted)}
+
+  /* 出口 */
+  .exit{border-left:3px solid var(--past);background:var(--past-soft);
+    padding:18px 20px;display:flex;flex-direction:column;gap:9px}
+  .exit .tag{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--faint)}
+  .exit strong{font-size:17px;line-height:1.7;font-weight:700;display:block}
+  .exit p.d{color:var(--muted);font-size:14.5px;line-height:1.9}
+
+  /* 引用 */
+  .q{border-left:2px solid var(--past);padding:2px 0 2px 16px;
+    display:flex;flex-direction:column;gap:5px}
+  .q .t{font-size:14px;line-height:1.85}
+  .q .src{font:400 11.5px/1.7 var(--mono);color:var(--faint)}
+
+  /* 軸 */
+  .axis-box{border:1px solid var(--path);background:var(--path-soft);padding:20px;
+    display:flex;flex-direction:column;gap:10px}
+  .axis-box .n{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--path)}
+  .axis-box .f{font-family:var(--serif);font-size:clamp(17px,4vw,21px);
+    line-height:1.7;font-weight:600;text-wrap:balance}
+  .axis-box p{font-size:14px;line-height:1.9;color:var(--muted)}
+
+  /* 崩れ方 */
+  .forks{display:flex;flex-direction:column;gap:14px}
+  .fork{border-left:3px solid var(--c);background:var(--bg);
+    padding:18px 20px;display:flex;flex-direction:column;gap:9px}
+  .fork.a{--c:var(--fail-a);--bg:var(--fail-a-soft)}
+  .fork.b{--c:var(--fail-b);--bg:var(--fail-b-soft)}
+  .fork .tag{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--c)}
+  .fork strong{font-size:17px;line-height:1.7;font-weight:700;display:block}
+  .fork p.d{color:var(--muted);font-size:14.5px;line-height:1.9}
+
+  .ref{color:var(--path);font:500 .92em/1 var(--mono);text-decoration:none;
+    border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  blockquote{margin:0;border-left:3px solid var(--path);padding:4px 0 4px 18px;
+    font-family:var(--serif);font-size:17px;line-height:1.85;font-weight:500}
+  blockquote .a{color:var(--fail-a)}
+  blockquote .b{color:var(--fail-b)}
+
+  .between{text-align:center;font-family:var(--serif);
+    font-size:clamp(18px,4.2vw,21px);line-height:1.75;font-weight:600;
+    color:var(--path);border-block:1px solid var(--line);padding-block:20px}
+
+  .notes{background:var(--panel);padding:22px;display:flex;flex-direction:column;
+    gap:11px;font-size:13px;line-height:1.9;color:var(--muted)}
+  .notes h2{font:500 11px/1.6 var(--mono);font-family:var(--mono);
+    letter-spacing:.1em;color:var(--faint);margin:0}
+  footer{border-top:1px solid var(--line);padding-top:18px;
+    font-size:12px;line-height:1.9;color:var(--faint)}
+
+  br.narrow{display:none}
+  @media (max-width:520px){br.narrow{display:inline}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <p class="label">ENTERPRISE AGENTIC AGILE ／ 紹介 0 ／ 0〜3 の 4 枚組</p>
+    <h1>あいだの合意を、<br>誰が持つのか。</h1>
+    <p class="byline">kishibashi3 ／ 最終更新 <time datetime="2026-09-28">2026-09-28</time></p>
+  </header>
+
+  <section>
+    <p class="lead">開発が一つのチームに収まらなくなると、チームとチームのあいだに合意が要るようになります。インターフェース、依存、順序、優先順位。<strong>このあいだの合意を誰が持つか</strong>に、大規模開発の手法はそれぞれ答えてきました。</p>
+    <p>答えは二つの方向に分かれました。そして<strong>どの手法も、自分の答えの上限を、自分で書いていました。</strong></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">01 ／ 二つの出口</p>
+      <h2>集めるか、散らすか。</h2>
+    </div>
+    <p>SAFe・LeSS・Spotify の三つを、当事者が書いたもので見ます。</p>
+
+    <div class="exit">
+      <p class="tag">出口 1 ／ 集める</p>
+      <strong>一人か、定例の場に預ける</strong>
+      <p class="d">優先順位の最終決定を一人に置く。チーム間の計画を、決まった周期の場でまとめて立てる。</p>
+    </div>
+
+    <p>LeSS は、優先順位の最終決定を一人の Product Owner（PO）に置き、その上限を数字で書いています。</p>
+    <div class="q">
+      <p class="t">50 チームなら、1 iteration だけで PBI は 200 件になる。1 iteration に 200 件の優先順位を付けるのは、一人の PO には多すぎる。</p>
+      <p class="src">LeSS — Area Product Owner</p>
+    </div>
+    <p>Area Product Owner を置く主な理由も、<strong>「Product Owner が過負荷になるのを防ぐため」</strong>と書かれています。</p>
+
+    <p>SAFe は、ART 全体で PI Planning を行い、チーム間の依存を含む計画を周期ごとに立てます。計画を受け入れるかどうかは Business Owners が判断します。そのうえで、中央に集める決定の範囲を、自分で限っています。</p>
+    <div class="q">
+      <p class="t">ほとんどの決定に管理者の関与が必要だと、決定を求める列ができ、進行を止める。</p>
+      <p class="src">SAFe — Principle #9 Decentralize Decision-Making</p>
+    </div>
+    <p>集めるのは、頻度が低く、長く効き、規模の経済が大きい決定だけ。<strong>それ以外は散らす</strong>、としています。</p>
+
+    <div class="exit">
+      <p class="tag">出口 2 ／ 散らす</p>
+      <strong>チームどうしで、直接合わせる</strong>
+      <p class="d">一人や定例の場を通さず、関係するチームどうしで話して合わせる。</p>
+    </div>
+
+    <p>LeSS は、優先順位は一人の PO に集めつつ、チーム間の調整はこちらに寄せています。</p>
+    <div class="q">
+      <p class="t">調整が要るなら、相手のチームのところへ行くか、電話するか、最悪でもメールを送って "just talk"（とにかく話す）。調整のために、正式で、たいてい遅い仕組みは要らない。</p>
+      <p class="src">LeSS — Coordination and Integration</p>
+    </div>
+
+    <p>Spotify は、この出口に大きく寄りました。目指したのは「疎結合だが、しっかり揃った」チームです。大きな案件について、当事者はこう書いています。</p>
+    <div class="q">
+      <p class="t">大きな案件の進め方は、まだたくさん実験していて、まだうまくない。</p>
+      <p class="src">Henrik Kniberg — Spotify Engineering Culture part 2（2014）</p>
+    </div>
+    <div class="q">
+      <p class="t">エンジニアリングチームの成果に責任を持ち、同じ責任の水準で作業の優先順位を交渉できる人が、一人もいなかった。</p>
+      <p class="src">Jeremiah Lee（元 Spotify のプロダクトマネージャー、2020）</p>
+    </div>
+
+    <p class="on">どれも「失敗した」とは書いていません。書いているのは、<strong>その出口がどこまで持つか</strong>です。LeSS も SAFe も、どちらか一方を選んではいません。集める範囲を限り、残りを散らしています。</p>
+    <p>三つとも一社の中の手法ですが、複数社で組む現場にも同じ二つの出口があります。発注側の定例会議で合わせて、契約と検収の条件に書く。あるいは、ベンダーどうしで直接合わせてもらう。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">02 ／ いま変わったこと</p>
+      <h2>実行が安くなり、<br>判断が先に尽きる。</h2>
+    </div>
+    <p>一つの開発主体の中で Agent に開発を任せる考え方を、AA（Agentic Agile）として<a class="ref" href="../0-two-axes.html">別の 4 枚組</a>にまとめています。ここで要るのは、そのうちの二つだけです。自分のチームや組んでいるベンダーにまだ Agent が入っていなくても、入った時点でこうなります。</p>
+
+    <div class="axis-box">
+      <p class="n">一つ目 ／ 軸</p>
+      <p class="f">判断のコスト ÷ 実行のコスト</p>
+      <p>Agent が実装を担えるようになり、実行が安くなった。判断する人と実行する人が、同じでなくなった。実行を増やすほど、全体の速さが判断で決まるようになる。</p>
+    </div>
+
+    <p>二つ目は、任せ方が崩れるときの形です。二つあります。</p>
+    <div class="forks">
+      <div class="fork a">
+        <p class="tag">崩れ方 A</p>
+        <strong>判断が一箇所に集まり、そこが先に尽きる</strong>
+        <p class="d">AA では、Agent の出力を人間が一つずつ承認する形がこれでした。実行が速くなるほど、確認待ちの列が伸びる。</p>
+      </div>
+      <div class="fork b">
+        <p class="tag">崩れ方 B</p>
+        <strong>取り決めが、誰の承認も経ずに書き換わり、取り決めでなくなる</strong>
+        <p class="d">AA では、実行者が自分を縛る規則を自分で緩められる形がこれでした。</p>
+      </div>
+    </div>
+    <p class="sub">詳しくは AA 紹介 1 の<a class="ref" href="../1-between-two-collapses.html">二つの崩れ方のあいだ</a>。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">03 ／ 狭くなる</p>
+      <h2>二つの出口が、<br>どちらも狭くなる。</h2>
+    </div>
+    <p>AA が扱うのは、一つの主体の中だけです。チームとチームのあいだの問いに、AA は答えていません。AA が示すのは、<strong>二つの出口が、どちらもいまは狭くなる理由</strong>です。</p>
+
+    <h3>集める出口</h3>
+    <p>LeSS は、一人の PO が持てる範囲を、1 iteration あたりの PBI の数で測っていました。実行が安くなると、一つのチームが 1 iteration で出すものが増える。<strong>同じ一人が持てるチームの数が減り、上限が早く来ます。</strong>決定を求める列も、同じ理由で早く伸びます。</p>
+    <p>落ちる先は、崩れ方 A だけです。</p>
+
+    <h3>散らす出口</h3>
+    <p>"just talk" で合わせた内容は、書かれていませんでした。人間が実行していたころは、合わせた本人が実行したので、書かなくても実行に届きました。</p>
+    <p class="on">Agent が実行するようになると、合わせた人と実行する者が分かれます。AA は<a class="ref" href="../1-between-two-collapses.html#s1">書かれたものだけが効く</a>を前提に置いています。Agent は書かれていない前提を持たず、欠けたところをもっともらしく、毎回違う形で埋めるからです。</p>
+    <blockquote>書かれていないと、揃ったかどうかが分からない。確かめるには、合わせた人が全部を見るしかない<span class="a">（A）</span>。見なければ、揃わないまま進む<span class="b">（B）</span>。</blockquote>
+    <p class="on"><strong>集める出口は、A にしか落ちません。散らす出口は、書かないかぎり、A か B のどちらかに落ちます。</strong></p>
+    <p>相手の中が Agent で動くかどうかは、こちらからは選べません。組んでいる一社が実行を Agent に移せば、その一社とのあいだの合意に、同じことが起きます。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">04 ／ 問い</p>
+      <h2>二つの系譜が、<br>同じ問いに行き着く。</h2>
+    </div>
+    <p class="between">あいだの合意を、<br>一人にも会議にも預けずに、<br>誰がどう持つのか。</p>
+    <p>決める人をなくす、という話ではありません。何を作るか、何に投資するかは、決める人がこれまでどおり決めます。問うているのは、その下でチームのあいだに毎日生まれる合意——インターフェースの変更、依存、順序——を、その人の判断待ちの列にも、定例の場にも積まずに持てるか、です。</p>
+    <p>複数社で組むなら、これは契約・検収・責任分界の問いでもあります。あいだの合意を誰が確定させ、どこに記録し、検収で何と照らすのか。各社の中の作り方が違ったままで、それが成り立つのか。</p>
+    <p class="on">答えは、<strong>EAA（Enterprise Agentic Agile）</strong>が次の 3 枚で出します。</p>
+  </section>
+
+  <section class="notes">
+    <h2>付記</h2>
+    <p>引用はいずれも一次資料から取得し、原文と照合したものです。原文は英語で、訳しています。SAFe は 2023 年版の公開本文、Spotify の Kniberg は動画での発言です。</p>
+    <p>本書は手法の優劣を判定しません。三つとも、それぞれが答えようとした条件の下では機能しています。Spotify のやり方は、フレームワークとして定義されたものではなく、一社の実践の記述です。</p>
+    <p>「同じ一人が持てるチームの数が減る」「決定を求める列が早く伸びる」は、LeSS と SAFe の書いたことに AA の前提を当てた推論で、実測ではありません。</p>
+    <p>「実行が安くなった」の裏づけには、売り手側の調査が多く含まれます。逆向きの観測（AI を使うとかえって遅くなったとする実測）もあります。本書はこの点を、確定した事実としては扱っていません。</p>
+    <p>ここでいう Agent は、計画し、道具を使い、実行結果を確かめて修正する AI を指します。</p>
+  </section>
+
+  <footer>EAA 紹介 0（0〜3 の 4 枚組）／ 次｜1 枚目（準備中）<br>AA の組は <a href="../0-two-axes.html">AA 紹介 0「手戻り、誤り、調整、そして判断」</a>から。</footer>
+
+</div>
+
+</body>
+</html>
