@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIエージェント活用型 基幹刷新PoC 提案書</title>
+<style>
+:root{
+  --ink:#17202a; --muted:#5f6b76; --line:#d9e0e6; --soft:#f5f7f9; --soft2:#eef3f7;
+  --accent:#0f6f78; --accent2:#2d6cdf; --ok:#247a4a; --warn:#9b6a00; --bad:#a53b3b;
+  --paper:#ffffff; --bg:#e9eef2;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  line-height:1.65;
+}
+.toolbar{
+  position:fixed;right:20px;bottom:18px;z-index:50;
+  display:flex;gap:8px;background:rgba(255,255,255,.94);border:1px solid var(--line);
+  padding:8px;border-radius:999px;box-shadow:0 8px 30px rgba(0,0,0,.12)
+}
+.toolbar button{
+  border:1px solid var(--line);background:white;color:var(--ink);border-radius:999px;
+  padding:8px 12px;font-weight:700;cursor:pointer
+}
+.doc{width:min(1100px,94vw);margin:28px auto 80px}
+.page{
+  background:var(--paper);margin:0 0 22px;border:1px solid #dfe5ea;border-radius:18px;
+  padding:58px 66px;box-shadow:0 18px 45px rgba(30,50,70,.08);
+}
+.cover{
+  min-height:720px;display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(140deg,#ffffff 0%,#f8fbfc 52%,#eef6f7 100%);
+}
+.eyebrow{font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:48px;line-height:1.15;letter-spacing:-.035em;margin:14px 0 18px}
+h2{font-size:30px;line-height:1.25;letter-spacing:-.02em;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--soft2)}
+h3{font-size:20px;margin:24px 0 8px}
+p{font-size:17px;margin:8px 0 14px}
+.lead{font-size:23px;line-height:1.55;max-width:900px}
+.small{font-size:13px;color:var(--muted)}
+.accent{color:var(--accent);font-weight:800}
+.blue{color:var(--accent2);font-weight:800}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#edf7f7;color:#155b62;border:1px solid #cbe4e5;font-size:13px;font-weight:800;margin:4px 5px 0 0}
+.callout{
+  margin:20px 0;padding:16px 18px;border-left:5px solid var(--accent);
+  background:#f2f8f8;border-radius:10px;font-size:18px
+}
+.warning{border-left-color:#d39a16;background:#fff9eb}
+.quote{
+  font-size:24px;font-weight:800;line-height:1.5;padding:22px 0;color:#18323b
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:14px;padding:18px;background:white}
+.card.soft{background:var(--soft)}
+.card h3{margin-top:0}
+.metric{font-size:34px;font-weight:850;letter-spacing:-.035em}
+.label{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+ul{margin:8px 0 0;padding-left:22px}
+li{margin:6px 0;font-size:16px}
+table{width:100%;border-collapse:collapse;margin:14px 0 8px;font-size:15px}
+th,td{border:1px solid var(--line);padding:11px 12px;vertical-align:top}
+th{background:#f2f5f7;text-align:left}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.flow{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0
+}
+.node{
+  padding:10px 13px;border:1px solid #b9c9d5;border-radius:10px;background:#f9fbfc;font-weight:800
+}
+.arrow{color:var(--accent);font-size:22px;font-weight:900}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.phase{border-top:4px solid var(--accent);background:#f7fafb;border-radius:10px;padding:13px;min-height:150px}
+.phase:nth-child(2n){border-top-color:var(--accent2)}
+.phase .wk{font-size:12px;color:var(--muted);font-weight:800}
+.phase .ttl{font-size:17px;font-weight:850;margin:5px 0}
+.phase .desc{font-size:14px;color:#42505d}
+.kpirow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:15px 0}
+.kpi{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px}
+.kpi .v{font-size:26px;font-weight:850}.kpi .n{font-size:12px;color:var(--muted);font-weight:800}
+.status-ok{color:var(--ok);font-weight:800}.status-warn{color:var(--warn);font-weight:800}.status-bad{color:var(--bad);font-weight:800}
+.graph{
+  border:1px solid var(--line);border-radius:14px;padding:18px;background:#fbfcfd;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;font-size:14px;line-height:1.55
+}
+.footerline{margin-top:30px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+.note{background:#fbfcfd;border:1px dashed #c8d3dc;border-radius:12px;padding:14px 16px;color:#46525c}
+
+.arch{
+  display:grid;grid-template-columns:1fr;gap:12px;margin:18px 0
+}
+.archrow{
+  display:grid;grid-template-columns:180px 1fr;gap:14px;align-items:start;
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff
+}
+.archrow .archname{
+  font-size:18px;font-weight:850;color:#17323a
+}
+.archrow.core{border-left:6px solid var(--accent)}
+.archrow.profile{border-left:6px solid var(--accent2)}
+.archrow.local{border-left:6px solid #6f7f8f}
+.archrow.pattern{border-left:6px solid #9aa7b3}
+.formula{
+  margin:18px 0;padding:18px 20px;border-radius:14px;background:#102c34;color:#fff;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:19px;font-weight:800
+}
+.score5{background:#edf7f1;font-weight:850;color:#1f6a44;text-align:center}
+.score4{background:#f3f7fb;font-weight:800;color:#315f8d;text-align:center}
+.score3{background:#fff8e8;font-weight:800;color:#8c6500;text-align:center}
+.score2{background:#fff0f0;font-weight:800;color:#963b3b;text-align:center}
+.tablewrap{overflow-x:auto}
+.tight td,.tight th{padding:9px 10px;font-size:13px}
+.pill{
+  display:inline-block;padding:4px 8px;border-radius:999px;background:#eef4f8;border:1px solid #d4e0e8;
+  font-size:12px;font-weight:800;margin:2px 4px 2px 0
+}
+
+@media(max-width:800px){
+  .page{padding:34px 24px;border-radius:0}.doc{width:100%;margin:0}
+  h1{font-size:36px}.lead{font-size:20px}
+  .grid2,.grid3,.timeline,.kpirow{grid-template-columns:1fr}.archrow{grid-template-columns:1fr}
+}
+@media print{
+  body{background:white}.toolbar{display:none}.doc{width:auto;margin:0}
+  .page{box-shadow:none;border:none;border-radius:0;page-break-after:always;margin:0;min-height:95vh}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button onclick="window.print()">PDF / 印刷</button>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">先頭へ</button>
+</div>
+
+<div class="doc">
+
+<section class="page cover">
+  <div>
+    <div class="eyebrow">RFI / Proof of Concept Proposal</div>
+    <h1>AIエージェント活用型<br>基幹刷新PoC 提案書</h1>
+    <p class="lead">
+      10億円規模の基幹刷新に先立ち、<span class="accent">AI駆動開発を異なるDelivery Modelと共存させながらEnterprise規模で成立させられるか</span>、
+      そのうえでどのDomainにどの程度のAgenticityとAgent Literacyが必要かを、3か月・約3,000万円で実測する。
+    </p>
+    <div>
+      <span class="badge">3 Months</span>
+      <span class="badge">Approx. ¥30M</span>
+      <span class="badge">Full / Half / Legacy Team Comparison</span>
+      <span class="badge">EAA Core + Profiles</span>
+      <span class="badge">Mission & Evidence Graph</span>
+      <span class="badge">Monthly Transparency Report</span>
+    </div>
+  </div>
+  <div class="callout">
+    EAAはAI駆動開発の手法です。ただし、単なるAIコーディング手法ではありません。<br>
+    Full Agentic、Scrum、Predictive、Vendor独自方式などを同一Enterprise境界で接続し、
+    必要な統制だけをProfileとして追加できるかを実証します。
+  </div>
+  <div class="footerline"><span>Enterprise Agentic Agile (EAA) PoC Draft</span><span>2026</span></div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">01 / Executive Summary</div>
+  <h2>PoCで答えるべき問い</h2>
+  <p class="quote">「全チームをFull Agenticにすべきか？」ではなく、<br>
+  <span class="accent">「どこまでAgent化すれば十分なのか？」</span>を明らかにします。</p>
+
+  <div class="grid2">
+    <div class="card soft">
+      <h3>本番前に知りたいこと</h3>
+      <ul>
+        <li>Agentic開発は基幹領域で本当に成立するか</li>
+        <li>従来型チームは周囲の速度についていけるか</li>
+        <li>Full AgenticとHalf Agenticの差はどこに出るか</li>
+        <li>どのDomainに高いAgent Literacyが必要か</li>
+        <li>EAA Coreで異種Delivery Modelを接続し、必要なProfileだけを追加できるか</li>
+        <li>品質・統制・説明責任を保てるか</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>PoC終了時に返すもの</h3>
+      <ul>
+        <li>Domain別 推奨Delivery Model</li>
+        <li>Domain別 必要Agent Literacy</li>
+        <li>生産性・品質・人間負荷の実測値</li>
+        <li>Cross-domain bottleneck map</li>
+        <li>10億円本番向け EAA Core / Active Profiles / Local Delivery構成</li>
+        <li>組織・教育・統制案</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    「Full Agenticが最も速い」という結論を前提にしません。差が小さいなら、それ自体が本番での過剰投資を防ぐ重要な成果です。
+  </div>
+</section>
+
+
+<section class="page">
+  <div class="eyebrow">02 / What is EAA</div>
+  <h2>EAAはAI駆動開発をEnterprise規模で成立させる開発・統治モデル</h2>
+
+  <p class="quote">内部の作り方を統一しない。<br>
+  <span class="accent">意味・Mission・権限・境界・Evidenceだけを企業として共有する。</span></p>
+
+  <div class="formula">EAA Instance = Core + Active Profiles + Local Delivery Models + Reference Patterns</div>
+
+  <div class="arch">
+    <div class="archrow core">
+      <div class="archname">Core</div>
+      <div>
+        <strong>すべてのEAAに必須の最小規範。</strong><br>
+        Domain / Mission / Ontology / Authority / Contract / Evidence / Durable Provenance / Escalation / Enterprise Constraints
+        <div style="margin-top:8px"><span class="pill">普遍でない規範をCoreへ入れない</span></div>
+      </div>
+    </div>
+
+    <div class="archrow profile">
+      <div class="archname">Profiles</div>
+      <div>
+        <strong>案件条件に応じて追加・解除する統制。</strong><br>
+        Portfolio / Assurance / Supplier / Regulated / Migration / Cutover
+        <div style="margin-top:8px"><span class="pill">必要な統制を</span><span class="pill">必要な場所と時間にだけロード</span></div>
+      </div>
+    </div>
+
+    <div class="archrow local">
+      <div class="archname">Local Delivery</div>
+      <div>
+        <strong>Domain内部の実行方式は自治。</strong><br>
+        Full Agentic / Human + Agent / Scrum / Kanban / SAFe ART / Predictive / Package / Vendor proprietary process
+      </div>
+    </div>
+
+    <div class="archrow pattern">
+      <div class="archname">Patterns</div>
+      <div>
+        <strong>交換可能な非規範的実装例。</strong><br>
+        GitHub Mission Ledger / Mission & Evidence Graph / Daily Evidence / Transparency Report / Capability & Enabling
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>EAA Compliance ≠ Internal Process Compliance</strong><br>
+    DomainがMissionを受け取り、Ontology / Contractを解釈し、Authorityを越えず、Required Evidenceを返し、Escalationできれば、
+    内部がAgenticでもScrumでもPredictiveでもよい。
+  </div>
+</section>
+
+
+<section class="page">
+  <div class="eyebrow">03 / Enterprise Agile Comparison</div>
+  <h2>既存方式を否定せず、同じEnterprise関心事で比較する</h2>
+
+  <p>以下は、10億円級・複数Domain / Vendor・基幹刷新を想定した<strong>設計適合度の仮説</strong>です。
+  市場実績や人材成熟度を含み、PoC後に同じ軸で再採点します。</p>
+
+  <div class="tablewrap">
+  <table class="tight">
+    <thead>
+      <tr>
+        <th>Enterprise concern</th>
+        <th>EAA</th><th>Hybrid</th><th>SAFe</th><th>TT+DDD</th><th>Nexus/LeSS</th><th>Predictive</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Strategy / Portfolio</td><td class="score5">5</td><td class="score5">5</td><td class="score5">5</td><td class="score3">3</td><td class="score4">4</td><td class="score4">4</td></tr>
+      <tr><td>Value / Outcome</td><td class="score5">5</td><td class="score4">4</td><td class="score4">4</td><td class="score5">5</td><td class="score5">5</td><td class="score3">3</td></tr>
+      <tr><td>Change responsiveness</td><td class="score5">5</td><td class="score4">4</td><td class="score4">4</td><td class="score5">5</td><td class="score5">5</td><td class="score2">2</td></tr>
+      <tr><td>Cross-domain integration</td><td class="score4">4</td><td class="score4">4</td><td class="score5">5</td><td class="score4">4</td><td class="score5">5</td><td class="score3">3</td></tr>
+      <tr><td>Architecture / Semantics</td><td class="score5">5</td><td class="score4">4</td><td class="score4">4</td><td class="score5">5</td><td class="score4">4</td><td class="score4">4</td></tr>
+      <tr><td>Governance / Compliance</td><td class="score5">5</td><td class="score5">5</td><td class="score5">5</td><td class="score3">3</td><td class="score3">3</td><td class="score5">5</td></tr>
+      <tr><td>Quality / Assurance</td><td class="score5">5</td><td class="score4">4</td><td class="score5">5</td><td class="score4">4</td><td class="score5">5</td><td class="score5">5</td></tr>
+      <tr><td>Transparency / Traceability</td><td class="score5">5</td><td class="score3">3</td><td class="score4">4</td><td class="score4">4</td><td class="score4">4</td><td class="score4">4</td></tr>
+      <tr><td>Flow / Handoff reduction</td><td class="score5">5</td><td class="score3">3</td><td class="score3">3</td><td class="score5">5</td><td class="score4">4</td><td class="score2">2</td></tr>
+      <tr><td>Multi-vendor / Heterogeneous</td><td class="score5">5</td><td class="score5">5</td><td class="score5">5</td><td class="score4">4</td><td class="score3">3</td><td class="score5">5</td></tr>
+      <tr><td>Migration / Cutover</td><td class="score5">5</td><td class="score5">5</td><td class="score5">5</td><td class="score3">3</td><td class="score3">3</td><td class="score5">5</td></tr>
+      <tr><td>Budget / Commercial</td><td class="score4">4</td><td class="score5">5</td><td class="score5">5</td><td class="score3">3</td><td class="score3">3</td><td class="score5">5</td></tr>
+      <tr><td>Organization / Cognitive load</td><td class="score4">4</td><td class="score3">3</td><td class="score3">3</td><td class="score5">5</td><td class="score4">4</td><td class="score2">2</td></tr>
+      <tr><td>Adoption maturity / Talent</td><td class="score2">2</td><td class="score5">5</td><td class="score5">5</td><td class="score4">4</td><td class="score4">4</td><td class="score5">5</td></tr>
+      <tr><td><strong>Total / 70</strong></td><td class="score5"><strong>64</strong></td><td><strong>59</strong></td><td><strong>62</strong></td><td><strong>57</strong></td><td><strong>56</strong></td><td><strong>54</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="grid2">
+    <div class="card soft">
+      <h3>現在のEAAが強い仮説</h3>
+      <p>Outcome / Change / Semantics / Governance / Transparency / Flow / Heterogeneous delivery</p>
+    </div>
+    <div class="card">
+      <h3>まだ証明が必要</h3>
+      <p>Cross-domain protocol、Commercial control、Cognitive load、そして何より実案件での成熟度。</p>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <strong>91%はベンチマーク実績ではありません。</strong>
+    現在の設計がEnterpriseの主要関心事をどこまで表現できるかという仮説です。
+    PoCの目的はEAAを勝たせることではなく、この表をEvidenceで再採点することです。
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">04 / Experiment Design</div>
+  <h2>3種類のDelivery Teamを同じEnterprise Deliveryに入れる</h2>
+
+  <table>
+    <thead>
+      <tr><th>Team</th><th>想定Agent Literacy</th><th>開発モデル</th><th>PoCで見ること</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Full Agentic</strong></td>
+        <td>L3</td>
+        <td>Mission単位でAgentへ委任。再帰分解、実装、検証、Evidence生成までAgent主体</td>
+        <td>自律実行の上限、Human Touch Time、品質、Evidence密度</td>
+      </tr>
+      <tr>
+        <td><strong>Half Agentic</strong></td>
+        <td>L2</td>
+        <td>Scrum/Kanban + Agent。Issue単位で設計〜実装を委任</td>
+        <td>現実的なAI活用でどこまで差を縮められるか</td>
+      </tr>
+      <tr>
+        <td><strong>Legacy</strong></td>
+        <td>L1以下</td>
+        <td>現行に近いScrum/工程型。AI利用は禁止しない</td>
+        <td>周囲がAgentic化した際の待ち時間・負荷・必要最低Literacy</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    Legacy Teamを「AI禁止」にしないことが重要です。途中でAgent利用を増やす必要が生じたなら、それ自体を実験結果として扱います。
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">05 / Agent Literacy</div>
+  <h2>Agent LiteracyをL1〜L3で仮定義し、実験後に修正する</h2>
+
+  <div class="grid3">
+    <div class="card">
+      <div class="label">L1</div>
+      <div class="metric">Assisted</div>
+      <p>人間が仕事を分解し、Agentを道具として使う。</p>
+      <ul><li>調査</li><li>コード生成</li><li>テスト生成</li><li>文書化</li></ul>
+    </div>
+    <div class="card">
+      <div class="label">L2</div>
+      <div class="metric">Delegated</div>
+      <p>Issue / Outcome単位でAgentへ委任できる。</p>
+      <ul><li>設計</li><li>実装</li><li>テスト</li><li>レビュー補助</li></ul>
+    </div>
+    <div class="card">
+      <div class="label">L3</div>
+      <div class="metric">Agentic</div>
+      <p>Mission単位で自律系を運営する。</p>
+      <ul><li>再帰分解</li><li>並列Agent</li><li>独立検証</li><li>Evidence生成</li></ul>
+    </div>
+  </div>
+
+  <p class="quote">目的は全員をL3にすることではなく、<br><span class="accent">DomainごとのMinimum Sufficient Literacyを見つけること。</span></p>
+</section>
+
+<section class="page">
+  <div class="eyebrow">06 / Two Types of Work</div>
+  <h2>比較実験とEnterprise統合実験を分ける</h2>
+
+  <div class="grid2">
+    <div class="card soft">
+      <h3>A. Comparable Missions</h3>
+      <p>3チームへ同程度の課題を与え、Delivery Modelそのものの差を比較する。</p>
+      <ul>
+        <li>API追加</li>
+        <li>DB schema変更</li>
+        <li>業務ルール変更</li>
+        <li>障害修正</li>
+        <li>Legacy調査</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>B. Enterprise Vertical Mission</h3>
+      <p>3チームが異なるDomainを担当し、一つの業務OutcomeをEnd-to-Endで完成させる。</p>
+      <div class="flow">
+        <span class="node">Partner</span><span class="arrow">→</span>
+        <span class="node">Full</span><span class="arrow">→</span>
+        <span class="node">Half</span><span class="arrow">→</span>
+        <span class="node">Legacy</span><span class="arrow">→</span>
+        <span class="node">Evidence</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    これにより「Domainが難しかったから遅い」のか、「Delivery Modelの差で遅い」のかを分離して観察できます。
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">07 / 12-Week Plan</div>
+  <h2>3か月の実施計画</h2>
+
+  <div class="timeline">
+    <div class="phase"><div class="wk">Week 1–2</div><div class="ttl">Setup</div><div class="desc">Domain / Mission / Evidence / Ontology / Authority / 計測基盤を準備</div></div>
+    <div class="phase"><div class="wk">Week 3–5</div><div class="ttl">Baseline</div><div class="desc">3チームをそのまま走らせ、比較Mission＋Vertical Missionを実行</div></div>
+    <div class="phase"><div class="wk">Week 6–8</div><div class="ttl">Change & Literacy</div><div class="desc">仕様変更・境界変更を投入し、途中からAgent Literacy教育を介入</div></div>
+    <div class="phase"><div class="wk">Week 9–12</div><div class="ttl">Second Wave & Decision</div><div class="desc">再測定、Stress Test、月次透明性レポート、10億円本番案を作成</div></div>
+  </div>
+
+  <h3>意図的に入れる「揺さぶり」</h3>
+  <div class="grid2">
+    <div class="card"><strong>業務ルール変更</strong><p>途中で前提を変更し、Rework MassとDetection Depthを見る。</p></div>
+    <div class="card"><strong>Cross-domain Contract変更</strong><p>どのTeamが境界待ちを生むかを見る。</p></div>
+    <div class="card"><strong>Legacy仕様の誤解</strong><p>誤りがどこまで伝播してから発見されるかを見る。</p></div>
+    <div class="card"><strong>障害 / rollback</strong><p>EvidenceとHuman Escalationが機能するかを見る。</p></div>
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">08 / Measurement</div>
+  <h2>測定するのは「速さ」だけではない</h2>
+
+  <table>
+    <thead><tr><th>主要指標</th><th>意味</th><th>本番判断への使い方</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Mission Lead Time</strong></td><td>Outcomeまでの時間</td><td>Delivery速度</td></tr>
+      <tr><td><strong>Human Touch Time</strong></td><td>人間が拘束された時間</td><td>希少な判断資源の消費量</td></tr>
+      <tr><td><strong>Boundary Wait Time</strong></td><td>他Domain待ち</td><td>Enterprise bottleneckの特定</td></tr>
+      <tr><td><strong>Rework Mass</strong></td><td>やり直したsubgraphの実行量</td><td>意思決定・設計品質</td></tr>
+      <tr><td><strong>Detection Depth</strong></td><td>誤りから発見までの階層深度</td><td>早期検出能力</td></tr>
+      <tr><td><strong>Evidence Coverage</strong></td><td>完了Missionのうち検証可能な割合</td><td>説明責任・監査性</td></tr>
+      <tr><td><strong>Cost / Accepted Mission</strong></td><td>受入済Outcomeあたりコスト</td><td>経済性</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    特に重視するのは <strong>Human Touch Time</strong>。Agentic化の価値を「AIの処理速度」ではなく、「人間の判断時間をどれだけ解放したか」で見ます。
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">09 / Mission & Evidence Graph</div>
+  <h2>プロジェクトの実態を、GitHub上の因果グラフとして残す</h2>
+
+  <div class="graph">Mission #420 契約プラン変更
+├─ #421 Customer確認
+├─ #422 Contract変更
+│  ├─ PR #812
+│  └─ Actions #9912
+├─ #423 Billing再計算
+│  ├─ #430 schema change
+│  └─ #431 reconciliation
+└─ Evidence
+   ├─ E2E pass
+   ├─ rollback pass
+   └─ decision log</div>
+
+  <div class="grid2">
+    <div class="card soft">
+      <h3>Mission Graph</h3>
+      <p>どの意思から、どのSub-issueと作業が派生したか。</p>
+    </div>
+    <div class="card">
+      <h3>Evidence Graph</h3>
+      <p>なぜそのMissionを「完了」と判断できるのか。</p>
+    </div>
+  </div>
+
+  <p class="quote">Project = <span class="accent">Mission Graph</span> + <span class="blue">Evidence Graph</span></p>
+</section>
+
+<section class="page">
+  <div class="eyebrow">10 / Monthly Transparency Report</div>
+  <h2>10億円本番で、毎月このレポートが出る状態をPoCで実証する</h2>
+
+  <div class="kpirow">
+    <div class="kpi"><div class="n">Accepted Missions</div><div class="v">43</div><div class="small">前月 +12</div></div>
+    <div class="kpi"><div class="n">Mission Lead Time</div><div class="v">2.8日</div><div class="small status-ok">-21%</div></div>
+    <div class="kpi"><div class="n">Rework Mass</div><div class="v">8.7%</div><div class="small status-bad">+3.1pt</div></div>
+    <div class="kpi"><div class="n">Evidence Coverage</div><div class="v">96.4%</div><div class="small status-ok">+2.0pt</div></div>
+  </div>
+
+  <table>
+    <thead><tr><th>今月の主要事実</th><th>値</th><th>解釈</th></tr></thead>
+    <tbody>
+      <tr><td>最大のBoundary Wait</td><td class="num">Billing 186h</td><td>Legacy TeamがCross-domain待ちの最大要因</td></tr>
+      <tr><td>最大Rework</td><td class="num">¥1.24M</td><td>Mission #420 の業務ルール変更</td></tr>
+      <tr><td>Human Escalation</td><td class="num">17件</td><td>うち11件がAuthority関連</td></tr>
+      <tr><td>Human Touch Time</td><td class="num">184h</td><td>前月比 -14%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    レポートはPMOの作文ではなく、GitHub Issue / PR / Actions / Test / Telemetryから機械生成します。
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">11 / Truthfulness by Design</div>
+  <h2>「嘘をつけない」ではなく、「曖昧にしにくい」管理へ</h2>
+
+  <div class="grid2">
+    <div class="card soft">
+      <h3>従来の月次報告</h3>
+      <p>設計 100% / 製造 85% / テスト 42% / 総合進捗 71%</p>
+      <p class="small">何が完成し、何が壊れ、なぜ遅れたかは分かりにくい。</p>
+    </div>
+    <div class="card">
+      <h3>EAA Transparency</h3>
+      <ul>
+        <li>どのMissionが完了したか</li>
+        <li>何がBlockedか</li>
+        <li>どこで手戻りしたか</li>
+        <li>どの意思決定が原因か</li>
+        <li>何をEvidenceとして完了したか</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Reworkの原因も両方向に見える</h3>
+  <div class="graph">Rework ¥6.8M
+├─ Customer requirement change    ¥2.6M
+├─ Vendor design error            ¥1.7M
+├─ Legacy behavior discovery      ¥1.4M
+├─ Cross-domain misunderstanding  ¥0.8M
+└─ Experiment / learning          ¥0.3M</div>
+
+  <div class="note">発注者・受注者のどちらか一方を監視する仕組みではなく、プロジェクト全体の因果を透明化する仕組みです。</div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">12 / Literacy Intervention</div>
+  <h2>Full Agentic Teamが早く終わったら、教育投資の効果まで測る</h2>
+
+  <div class="flow">
+    <span class="node">Baseline</span><span class="arrow">→</span>
+    <span class="node">差を観測</span><span class="arrow">→</span>
+    <span class="node">L1→L2 / L2→L3 教育</span><span class="arrow">→</span>
+    <span class="node">再測定</span>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>教育前</h3>
+      <ul><li>Lead Time</li><li>Human Touch Time</li><li>Boundary Wait</li><li>Evidence Coverage</li></ul>
+    </div>
+    <div class="card soft">
+      <h3>教育後</h3>
+      <p>同程度のMissionを再度流し、教育によって性能差が縮むかを確認。</p>
+      <p class="accent">Education ROI = Saved Delivery Cost / Training Cost</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    これにより、本番で「全員にL3教育」ではなく、「このDomainには最低L2」という投資判断が可能になります。
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">13 / Budget</div>
+  <h2>概算費用：3か月・約3,000万円</h2>
+
+  <table>
+    <thead><tr><th>区分</th><th>概算</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td>PoC設計・Delivery運営・分析</td><td class="num">¥22–24M</td><td>EAA Lead、Agentic Platform、Coach、Measurement/Analysis</td></tr>
+      <tr><td>Agent / LLM / Cloud / GitHub等</td><td class="num">¥2–3M</td><td>モデル利用、CI、環境、観測基盤</td></tr>
+      <tr><td>Agent Literacy教育</td><td class="num">¥1–2M</td><td>介入Phaseの教育・ワークショップ</td></tr>
+      <tr><td>予備費</td><td class="num">¥3–5M</td><td>追加検証、環境差異、外部連携対応</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    前提：顧客側から各Domainの開発者・業務有識者に参加いただく。PoCが顧客自身のAgent Literacyを測る実験でもあるためです。
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">14 / Deliverables</div>
+  <h2>PoCの成果物はPrototypeではなく、10億円本番のDecision Package</h2>
+
+  <div class="grid2">
+    <div class="card soft">
+      <h3>実装・運用成果</h3>
+      <ul>
+        <li>実動Vertical Slice</li>
+        <li>Mission / Evidence Graph</li>
+        <li>Ontology v0 / Authority Model</li>
+        <li>Domain Contract</li>
+        <li>月次Transparency Report × 3</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>本番判断成果</h3>
+      <ul>
+        <li>Domain × 推奨Delivery Model</li>
+        <li>Domain × 必要Agent Literacy</li>
+        <li>Agenticity × 生産性 / 品質 / 人間負荷</li>
+        <li>本番向け組織・教育計画</li>
+        <li>残存リスクと追加検証事項</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="quote"><span class="accent">3,000万円で機能を買うのではなく、10億円の使い方を決める。</span></p>
+</section>
+
+<section class="page">
+  <div class="eyebrow">15 / Exit Criteria</div>
+  <h2>PoC成功条件</h2>
+
+  <table>
+    <thead><tr><th>#</th><th>成功条件</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Full / Half / Legacy の異なるDelivery Modelが同一のEnterprise Missionで協働できる</td></tr>
+      <tr><td>2</td><td>Mission / Evidence Graphから生産性・手戻り・待ち時間を計測できる</td></tr>
+      <tr><td>3</td><td>Agenticityによる性能差、または差が小さいことを実測できる</td></tr>
+      <tr><td>4</td><td>Agent Literacy介入の効果をBefore / Afterで測定できる</td></tr>
+      <tr><td>5</td><td>月次Transparency Reportを機械生成し、原Evidenceまで遡れる</td></tr>
+      <tr><td>6</td><td>本番10億円案件のDomain構成・体制・教育・統制案を更新できる</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warning">
+    「Full Agenticが最も速いこと」は成功条件ではありません。最適な適用範囲を判断できることが成功です。
+  </div>
+</section>
+
+<section class="page">
+  <div class="eyebrow">16 / Customer Value</div>
+  <h2>このPoCがお客様にもたらすもの</h2>
+
+  <div class="grid3">
+    <div class="card">
+      <div class="label">Investment</div>
+      <div class="metric">過剰投資を防ぐ</div>
+      <p>全社一律のAgent化・教育を避け、必要なDomainへだけ投資。</p>
+    </div>
+    <div class="card">
+      <div class="label">Delivery</div>
+      <div class="metric">詰まりを特定</div>
+      <p>チーム単体速度ではなく、Enterprise全体の待ち時間を可視化。</p>
+    </div>
+    <div class="card">
+      <div class="label">Governance</div>
+      <div class="metric">透明性を上げる</div>
+      <p>毎月、Mission・Evidence・Rework・責任原因まで追跡可能。</p>
+    </div>
+  </div>
+
+  <p class="quote">本番開始前に、<span class="accent">「この方式で本当に任せられるか」</span>を、お客様自身のデータで判断できます。</p>
+</section>
+
+<section class="page">
+  <div class="eyebrow">17 / Next Step</div>
+  <h2>開始時に合意したい事項</h2>
+
+  <div class="grid2">
+    <div class="card soft">
+      <h3>業務・対象</h3>
+      <ul>
+        <li>PoC対象となる3 Domain</li>
+        <li>比較用Comparable Missions</li>
+        <li>Enterprise Vertical Mission</li>
+        <li>利用可能なLegacy資産・データ</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>運営・計測</h3>
+      <ul>
+        <li>顧客参加メンバー</li>
+        <li>Agent利用可能範囲</li>
+        <li>GitHub / CI / LLM環境</li>
+        <li>月次Transparency Reportの閲覧者</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    PoC開始後2週間で計測基盤を整備し、Month 1終了時点から実データによるTransparency Reportを発行します。
+  </div>
+
+  <div class="footerline"><span>AIエージェント活用型 基幹刷新PoC 提案書</span><span>Draft</span></div>
+</section>
+
+</div>
+</body>
+</html>
