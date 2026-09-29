@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  ============================================================
+  合意を、版にして渡す — EAA 紹介 3/4
+  ============================================================
+
+  配布範囲
+    社内・社外の両方。
+
+  読者
+    2 枚目を読んで、3 枚目へ進んだ人。
+    主な読者は、複数の委託先を束ねる発注側（PMO、情シス、発注側 PM）。
+    契約・検収・責任分界が出てこなければ、ここで読むのをやめる。
+    全ベンダーが同じ手法を使う、または全ベンダーが Agent で動く前提に読めても、やめる。
+    途中の 1 枚としてこの枚だけを受け取った人（定例の画面共有、検索）。
+
+  読んだ後にどうなってほしいか
+    一本の線の例で、相手の Cell に何を渡し、何を受け取るかが分かる。
+    0 枚目の問い（誰が確定させ、どこに記録し、検収で何と照らすか。
+    中の作り方が違ったままで成り立つか）に、Core 版 2 がどう答えるかが分かる。
+    Contract の所有者が片側の 1 人でも、片側だけでは取り決めが変わらない理由が分かる。
+
+  この文書がやらないこと
+    相手の中の作り方の指定。商取引上の契約書の書き方。
+    未決の 4 件（所有者が抜けたとき、Ontology・Evidence の様式の所有者、
+    揃わずに離れたとき、所有者自身の改訂の承認者）の答え。
+
+  出典について
+    定義は EAA Core 版 2 と Profiles（publications 091c944）。
+    Contract の所有者と移行は、Core 版 2 で入った 2 文（core:64、core:82）。
+    所有者を 1 人に置く理由は「採用がすでに両側の同意になっている」の側に置く。
+    @philosopher の判定による。
+    philosopher/2026-09-29-eaa-contract-owner-single-vs-joint.md（Q1、Q5）
+    主な読者の設定は reader/personas/briefing-eaa.md（E2）。
+
+  組
+    0/4 あいだの合意を、誰が持つのか
+    1/4 あいだにも、二つの崩れ方がある
+    2/4 どの問題に、どの部品で応えるか
+    3/4 合意を、版にして渡す（本書）
+  ============================================================
+-->
+<title>合意を、版にして渡す — EAA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap">
+<style>
+  :root{
+    --paper:#f5f6f4;--ink:#1c2422;--muted:#5a6562;--faint:#8b9491;
+    --line:#dcdfda;--panel:#eaeee8;
+    --past:#6b716c;--past-soft:#eceeea;
+    --path:#16564a;--path-soft:#e3ece8;
+    --fail-a:#8a6420;--fail-a-soft:#f1eadd;
+    --fail-b:#9b3527;--fail-b-soft:#f3e5e2;
+    --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+    --sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+      --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+      --path:#6fbfa6;--path-soft:#1a2a26;
+      --fail-a:#d3ad63;--fail-a-soft:#272218;
+      --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+    --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+    --path:#6fbfa6;--path-soft:#1a2a26;
+    --fail-a:#d3ad63;--fail-a-soft:#272218;
+    --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15.5px/1.95 var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:35em;margin-inline:auto;padding-inline:20px;
+    padding-block:56px 80px;display:flex;flex-direction:column;gap:56px}
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--path);outline-offset:3px}
+
+  .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  .byline{font:500 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--muted);margin:14px 0 0}
+  .source{font-size:12px;line-height:1.8;color:var(--faint);margin:6px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
+    line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
+    line-height:1.6;margin:0;text-wrap:balance}
+  h3{margin:0;font-size:17px;line-height:1.7;font-weight:700}
+  .lead{font-size:16.5px;line-height:2.05}
+  section{display:flex;flex-direction:column;gap:20px}
+  .sec-head{display:flex;flex-direction:column;gap:7px}
+  .on{color:var(--ink)}
+  .sub{font-size:15px;line-height:2;color:var(--muted)}
+
+  /* 線 */
+  .axis-box{border:1px solid var(--path);background:var(--path-soft);padding:20px;
+    display:flex;flex-direction:column;gap:10px}
+  .axis-box .n{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--path)}
+  .axis-box .f{font-family:var(--serif);font-size:clamp(17px,4vw,21px);
+    line-height:1.7;font-weight:600;text-wrap:balance}
+  .axis-box p{font-size:14px;line-height:1.9;color:var(--muted)}
+
+  /* 崩れ方 */
+  .forks{display:flex;flex-direction:column;gap:14px}
+  .fork{border-left:3px solid var(--c);background:var(--bg);
+    padding:18px 20px;display:flex;flex-direction:column;gap:9px}
+  .fork.a{--c:var(--fail-a);--bg:var(--fail-a-soft)}
+  .fork.b{--c:var(--fail-b);--bg:var(--fail-b-soft)}
+  .fork .tag{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--c)}
+  .fork strong{font-size:17px;line-height:1.7;font-weight:700;display:block}
+  .fork p.d{color:var(--muted);font-size:14.5px;line-height:1.9}
+
+  /* 前提 */
+  .premise{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+  .premise li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline}
+  .premise li::before{content:"";width:7px;height:7px;border:1.5px solid var(--path);
+    transform:translateY(-1px)}
+  .premise li>span{min-width:0;font-size:15.5px;line-height:1.9}
+
+  /* 細い道 */
+  .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
+    gap:36px;counter-reset:s}
+  .steps>li{display:grid;grid-template-columns:2.6em 1fr;gap:4px 14px;scroll-margin-top:24px}
+  .steps>li::before{counter-increment:s;content:"(" counter(s) ")";
+    font:500 12.5px/1.9 var(--mono);color:var(--path);padding-top:3px}
+  .steps>li>div{min-width:0;display:flex;flex-direction:column;gap:11px}
+  .steps h3{font-size:17.5px}
+  .steps p{color:var(--muted);font-size:15px;line-height:2}
+  .steps p.on{color:var(--ink)}
+  .steps p.src{font-size:12px;line-height:1.7;color:var(--faint);margin:2px 0 4px}
+  .drop{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;
+    border-top:1px dashed var(--line);padding-top:11px;font-size:13.5px;line-height:1.85}
+  .drop .arrow{font:500 12px/1.9 var(--mono);color:var(--fail-b)}
+  .drop.a .arrow{color:var(--fail-a)}
+  .drop span.t{min-width:0;color:var(--muted)}
+  .drop b{font-weight:700;color:var(--fail-b)}
+  .drop.a b{color:var(--fail-a)}
+  .axis-box .drop{border-top-color:var(--line)}
+
+  /* 根 */
+  .cycle{border:1px solid var(--line);background:var(--panel);padding:20px 18px;
+    display:flex;flex-direction:column;gap:14px}
+  .cycle .side{display:flex;flex-direction:column;gap:9px}
+  .cycle .who{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--faint)}
+  .cycle .own .who{color:var(--path)}
+  .cycle .col{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+  .cycle .node{border:1.5px solid var(--faint);color:var(--ink);
+    font-size:14px;line-height:1.6;padding:8px 14px}
+  .cycle .node.hi{border-color:var(--path);color:var(--path);font-weight:700}
+  .cycle .to{font:500 11px/1 var(--mono);color:var(--faint);padding-left:14px}
+  .cycle .gate{display:flex;align-items:center;gap:10px}
+  .cycle .gate .line{flex:1;height:0;border-top:2px dashed var(--fail-b)}
+  .cycle .gate .gl{font:500 10.5px/1.6 var(--mono);letter-spacing:.06em;
+    color:var(--fail-b);white-space:nowrap}
+  .cap-note{font-size:13px;line-height:1.85;color:var(--muted)}
+
+  /* 部品 */
+  .parts{margin:0;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .parts>div{border-bottom:1px solid var(--line);padding-block:14px;
+    display:flex;flex-direction:column;gap:4px}
+  .parts dt{font:500 12.5px/1.7 var(--mono);color:var(--path);letter-spacing:.04em}
+  .parts dd{margin:0;font-size:15px;line-height:1.9}
+
+  /* 対応 */
+  .pairs{display:flex;flex-direction:column;gap:14px}
+  .pair{border-left:3px solid var(--c,var(--past));background:var(--bg,var(--past-soft));
+    padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .pair.a{--c:var(--fail-a);--bg:var(--fail-a-soft)}
+  .pair.b{--c:var(--fail-b);--bg:var(--fail-b-soft)}
+  .pair .prob{font-size:14.5px;line-height:1.9;color:var(--muted)}
+  .pair .ans{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+  .pair .ans b{font:500 13px/1.6 var(--mono);color:var(--path);border:1.5px solid var(--path);
+    padding:2px 8px;white-space:nowrap}
+  .pair .ans span{font-size:15px;line-height:1.8;font-weight:700}
+  .pair .ans small{font:400 11.5px/1.7 var(--mono);color:var(--faint)}
+  .pair .how{font-size:14px;line-height:1.9;color:var(--muted)}
+  .pair .tag{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--c,var(--faint))}
+
+  /* 図：線に文書を載せる */
+  .fed{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:4px 0}
+  .fed .cell{border:1.5px solid var(--ink);background:var(--paper);padding:10px 14px;
+    display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 12px}
+  .fed .cell b{font-size:15px;line-height:1.6;font-weight:700}
+  .fed .cell small{font:400 11.5px/1.6 var(--mono);color:var(--faint)}
+  .fed .link{display:grid;grid-template-columns:2px 1fr;gap:14px;margin-left:28px;padding-block:10px}
+  .fed .link .bar{background:var(--path)}
+  .fed .link .docs{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+  .fed .doc{font:500 12px/1.5 var(--mono);color:var(--path);background:var(--path-soft);
+    border:1px solid var(--path);padding:4px 9px}
+  .fed-note{font-size:13.5px;line-height:1.85;color:var(--muted)}
+
+  .ref{color:var(--path);font:500 .92em/1 var(--mono);text-decoration:none;
+    border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  blockquote{margin:0;border-left:3px solid var(--path);padding:4px 0 4px 18px;
+    font-family:var(--serif);font-size:17px;line-height:1.85;font-weight:500}
+
+  .between{text-align:center;font-family:var(--serif);
+    font-size:clamp(18px,4.2vw,21px);line-height:1.75;font-weight:600;
+    color:var(--path);border-block:1px solid var(--line);padding-block:20px}
+
+  .notes{background:var(--panel);padding:22px;display:flex;flex-direction:column;
+    gap:11px;font-size:13px;line-height:1.9;color:var(--muted)}
+  .notes h2{font:500 11px/1.6 var(--mono);font-family:var(--mono);
+    letter-spacing:.1em;color:var(--faint);margin:0}
+  footer{border-top:1px solid var(--line);padding-top:18px;
+    font-size:12px;line-height:1.9;color:var(--faint)}
+
+  br.narrow{display:none}
+  @media (max-width:520px){br.narrow{display:inline}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* この枚で足したもの */
+  .scope{border:1px solid var(--line);background:var(--panel);padding:16px 18px;
+    display:flex;flex-direction:column;gap:6px}
+  .scope .tag{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--faint)}
+  .scope p{font-size:14px;line-height:1.9;color:var(--muted)}
+  .fields{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .fields>div{border-bottom:1px solid var(--line);padding-block:14px;
+    display:flex;flex-direction:column;gap:4px}
+  .fields .k{font:500 12.5px/1.7 var(--mono);color:var(--path);letter-spacing:.04em}
+  .fields .v{font-size:15px;line-height:1.9}
+  .fields .q{font-size:12.5px;line-height:1.8;color:var(--faint)}
+  .vtable-wrap{overflow-x:auto}
+  .vtable{border-collapse:collapse;width:100%;font-size:13.5px;line-height:1.7}
+  .vtable caption{text-align:left;font:500 11px/1.6 var(--mono);letter-spacing:.08em;
+    color:var(--faint);padding-bottom:8px}
+  .vtable th,.vtable td{border-bottom:1px solid var(--line);padding:8px 8px;text-align:left;
+    vertical-align:top}
+  .vtable thead th{font:500 11.5px/1.6 var(--mono);color:var(--muted);white-space:nowrap}
+  .vtable tbody th{font-weight:400;color:var(--muted)}
+  .vtable td{font-family:var(--mono);white-space:nowrap}
+  .vtable td.hi{color:var(--path);font-weight:500}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <p class="label">ENTERPRISE AGENTIC AGILE ／ 紹介 3 ／ 0〜3 の 4 枚組の最後</p>
+    <h1>合意を、<br>版にして渡す。</h1>
+    <p class="byline">kishibashi3 ／ 最終更新 <time datetime="2026-09-30">2026-09-30</time></p>
+    <p class="source">定義元：<a href="https://github.com/kishibashi3/publications/blob/091c94418e6cf3999c8f7cf1078679dbf620425e/drafts/enterprise-agentic-agile/core.md">EAA Core 版 2</a>、<a href="https://github.com/kishibashi3/publications/blob/091c94418e6cf3999c8f7cf1078679dbf620425e/drafts/enterprise-agentic-agile/profiles.md">EAA Profiles</a>。本書は解説であり、新たな義務を追加しません。</p>
+  </header>
+
+  <section>
+    <p class="lead">複数の会社やチームで組む開発では、インターフェースの変更が定例で決まり、結合で食い違い、検収で「どちらの責任か」が問われます。</p>
+    <p>0 枚目の最後に、問いを残しました。あいだの合意を<strong>誰が確定させ、どこに記録し、検収で何と照らすのか</strong>。各社の中の作り方が違ったままで、それが成り立つのか。</p>
+    <p>この 1 枚は、2 枚目の図の線を一本だけ取り出し、相手に何を渡し、何を受け取るかで、この問いに答えます。</p>
+    <div class="scope">
+      <p class="tag">この枚が扱うもの</p>
+      <p>扱うのは、線の上だけです。相手の中が Agent で動いていても、人間のチームでも、委託先の標準工程でも、この枚の手続きは変わりません。相手の中の作り方を、こちらから指定することもありません。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">— ／ 一本の線</p>
+      <h2>在庫と、物流のあいだ。</h2>
+    </div>
+    <p>例を一つ、最後まで使います。2 枚目の図の、在庫と物流を結ぶ線です。</p>
+    <div class="fed" role="img" aria-label="在庫と物流（委託先）の二つの Cell が線で結ばれ、線の上に Contract（出荷指示）が載っている図。">
+      <div class="cell"><b>在庫</b><small>中：Scrum（自社のチーム）</small></div>
+      <div class="link"><span class="bar"></span><div class="docs">
+        <span class="doc">Contract（出荷指示）</span>
+      </div></div>
+      <div class="cell"><b>物流（委託先）</b><small>中：委託先の標準工程（請負）</small></div>
+    </div>
+    <p>在庫は、出荷してよい品目を引き当てて、物流に出荷を指示します。物流は、指示を受けて出荷し、結果を返します。二つの中の作り方は違い、互いに指定しません。</p>
+    <p>いま、在庫の側に「出荷指示に、配送の希望時間帯を足したい」という要望が来ています。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">01 ／ 線を引くとき</p>
+      <h2>決めるのは、<br>四つの欄と、所有者一人。</h2>
+    </div>
+    <p>線を引くときに、Contract を一つ作ります。Core の定義では、Contract は「相互の責任、提供条件、入出力、必要な Evidence を定める境界合意」です。この四つを欄にして、例で埋めます。下の小さな字は、自分の案件で埋めるときに使う問いです。</p>
+
+    <div class="fields">
+      <div>
+        <p class="k">相互の責任</p>
+        <p class="v">在庫は、引き当て済みの品目だけを指示に載せる。物流は、受けた指示を出荷し、結果を返す。</p>
+        <p class="q">相手に何を約束し、相手から何を約束してもらうか</p>
+      </div>
+      <div>
+        <p class="k">提供条件</p>
+        <p class="v">平日 15 時までに受けた指示は、その日のうちに出荷する。</p>
+        <p class="q">どんな条件の下でなら、その約束を守れるか</p>
+      </div>
+      <div>
+        <p class="k">入出力</p>
+        <p class="v">渡す：出荷指示（品目・数量・届け先）。受け取る：出荷結果（出荷番号・出荷日時・欠品の有無と理由）。</p>
+        <p class="q">何を渡し、何を受け取るか。その形は</p>
+      </div>
+      <div>
+        <p class="k">必要な Evidence</p>
+        <p class="v">指示と結果を 1 件ずつ突き合わせた記録。欠品は理由とともに残す。</p>
+        <p class="q">何が残っていたら、約束が果たされたと言えるか</p>
+      </div>
+    </div>
+
+    <p>もう一つ、<strong>所有者を一人</strong>決めます。Core 版 2 は、Contract の所有者を「Contract を結ぶ Cell に属する 1 人」とし、Contract を作るときに、それらの Cell が合意して決めるとしています。所有者は人間です。例では、物流の窓口の責任者を所有者にしました。</p>
+    <p>書き上げた Contract は版 1 です。在庫と物流の<strong>両方が版 1 を採用したときに</strong>、Contract は版 1 で成り立ちます。採用するかを決めるのは、それぞれの Cell の規範の所有者です。</p>
+    <p class="sub">四つの欄のうち埋まらない欄があれば、それは両側でまだ合意していないことです。線を引く前に決めます。</p>
+
+    <div class="scope">
+      <p class="tag">Contract という語について</p>
+      <p>Core の Contract は、Cell どうしの境界合意として定義された語です。法律上の契約書としては定義されておらず、委託契約・請負契約との関係を Core は定めていません。Profiles は、契約主体をまたぐ責任と受入を成り立たせることを、Supplier という責務の一つとして挙げています。</p>
+    </div>
+    <p class="sub">一回きりの仕事を頼むときに渡すのは、Contract ではなく Mission です。目的・守る条件・任せる範囲・確かめ方を書きます（Core「2」）。AA 紹介 3 の四つの欄と同じ形です。本書は、続いていく取り決めである Contract を扱います。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">02 ／ 変えるとき</p>
+      <h2>公開しても、<br>まだ何も変わらない。</h2>
+    </div>
+    <p>在庫の側が、希望時間帯を足したい。この変更は、次の順で通ります。</p>
+
+    <ol class="steps">
+      <li><div>
+        <h3>提案する</h3>
+        <p class="src">Core「4. 提案と変更」</p>
+        <p class="on">在庫の側が、内容・理由・根拠を示して、所有者に提案します。「出荷指示に希望時間帯の欄を足したい。店舗からの要望が増えているため」。</p>
+        <p>所有者は検証して、受け入れる・直してもらう・受け入れない、を決めます。在庫が受け取るのは、この判断です。</p>
+      </div></li>
+      <li><div>
+        <h3>所有者が承認し、新しい版を公開する</h3>
+        <p class="src">Core「4. 提案と変更」</p>
+        <p class="on">所有者が承認すると、版 2 が公開されます。</p>
+        <p>改訂を提起した者は、その改訂を承認しません。この例では、提起したのは在庫の側で、承認するのは物流の所有者なので、分かれています。</p>
+      </div></li>
+      <li><div>
+        <h3>それぞれが、採用するかを決める</h3>
+        <p class="src">Core「3. 意味と合意」「4. 提案と変更」</p>
+        <p class="on">新しい版を公開することと、各 Cell がそれを採用することは、別の行為です。公開しただけでは、どちらの義務も変わりません。</p>
+        <p>在庫も物流も、それぞれの規範の所有者が、版 2 を採用するかを決めます。所有者のいる物流の側も、自分の所有者が出した版に自動では従いません。</p>
+      </div></li>
+      <li><div>
+        <h3>全部が同じ版になったとき、移る</h3>
+        <p class="src">Core「3. 意味と合意」</p>
+        <p class="on">Contract を結ぶ Cell のすべてが版 2 を採用中になったときに、版 2 への移行が成り立ちます。それまでは版 1 が効いています。</p>
+      </div></li>
+    </ol>
+
+    <div class="vtable-wrap">
+      <table class="vtable">
+        <caption>採用の進み方と、効いている版</caption>
+        <thead><tr><th scope="col">できごと</th><th scope="col">在庫が採用中</th><th scope="col">物流が採用中</th><th scope="col">効いている版</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">両方が版 1 を採用する</th><td>1</td><td>1</td><td class="hi">1（成立）</td></tr>
+          <tr><th scope="row">所有者が版 2 を公開する</th><td>1</td><td>1</td><td>1</td></tr>
+          <tr><th scope="row">在庫が版 2 を採用する</th><td>2</td><td>1</td><td>1</td></tr>
+          <tr><th scope="row">物流が版 2 を採用する</th><td>2</td><td>2</td><td class="hi">2（移行）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>三行目で、在庫は版 2 を採用していますが、効いているのは版 1 です。在庫は、物流に版 2 に従えとは言えません。物流が版 2 を採用しないと決めれば、版 1 のままです。新しい提案を受け入れないのは、受け手の自由です。</p>
+    <p class="sub">採用が揃うまでのあいだ、誰が何に責任を持つか（移行中の責任）の詳しい手順は、Core が自分で「未定」と書いています。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">03 ／ 所有者は一人</p>
+      <h2>所有者が片側にいても、<br>片側だけでは変わらない。</h2>
+    </div>
+    <p>所有者が物流の人なら、物流の都合で取り決めを書き換えられるのではないか。1 枚目の崩れ方 B（取り決めが、誰の承認も経ずに書き換わる）の心配です。</p>
+    <p>所有者が決められるのは、本文と版までです。版が相手を縛るのは、相手がその版を採用したときだけです。そして採用は、それぞれの Cell が自分で決めます。</p>
+    <blockquote>採用が、すでに両側の同意になっている。</blockquote>
+    <p>所有者でない側も、新しい版を採用しなければ、前の版のままです。<strong>止める力は、両側に同じだけあります。</strong>両側を所有者にしても、この同意がもう一度、本文を書く段階で重なるだけです。</p>
+    <p>逆向きも同じです。物流の側が、締めの時刻を 15 時から 14 時に早めたいとします。所有者が承認して版を出しても、在庫が採用しなければ、15 時のままです。所有者の側も、すでに合意した義務を一方的に捨てることはできません（Core「2」）。</p>
+
+    <div class="pairs">
+      <div class="pair">
+        <p class="tag">発注側は、どこに立つか</p>
+        <p class="how">所有者になれるのは、その線を結ぶ Cell に属する人だけです（Core「4」）。線を結んでいない者は、その線の所有者にはなりません。発注側がどこに立つかを、Core は決めていません。発注側があいだの取り決めを持つなら、その線を結ぶ Cell の一つとして立つことになります。どの線も一人で持つ立場は、この形からは出てきません。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">04 ／ 受け取るもの</p>
+      <h2>検収は、<br>合意した記録と照らす。</h2>
+    </div>
+    <p>物流から受け取るのは、出荷結果と、Contract の「必要な Evidence」の欄に書いた記録です。</p>
+    <p>Core は、作業したこと、変更を受け入れたことだけでは完了にならないとし、完了に、合意した受入の Evidence が揃っていることを求めています。何を Evidence とし、どの形で残すかは、Evidence の様式として、Cell 間で共有する文書に書きます。</p>
+    <p>在庫は、物流の中——どの工程で、誰が、何を使って出荷したか——を見ません。<strong>見るのは、欄と記録が合っているかです。</strong>相手の中の作り方が違っても、確かめ方は変わりません。</p>
+    <p>Core は「検収」という語を使っていません。発注側の検収に当てると、照らす先は、採用中の版の Contract の「必要な Evidence」と、合意した Evidence の様式です。結合で食い違ったときも、「どの版の、どの欄に反したか」で言えます。どちらの版が効いていたかは、02 の表のとおり、採用で決まっています。</p>
+    <p>記録にも同じことが言えます。Core は、受入・改訂を含めて追跡できるように残し、重要な決定を一時的な会話だけに閉じ込めないとしています。定例で話すことは妨げられていません。ただ、定例で決まったことは、版になって両側に採用されるまで、この線の上では効きません。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">05 ／ 0 枚目の問いに</p>
+      <h2>四つの問いに、<br>こう答える。</h2>
+    </div>
+    <dl class="parts">
+      <div><dt>誰が確定させるか</dt><dd>本文と版は、線を結ぶ Cell に属する所有者一人が決める。効かせるのは、両側の採用。全部が同じ版を採用中になったときに成り立ち、移る。</dd></div>
+      <div><dt>どこに記録するか</dt><dd>版のついた Contract と、その提案・受入・改訂の記録。重要な決定を、会話だけに残さない。</dd></div>
+      <div><dt>検収で何と照らすか</dt><dd>採用中の版の Contract の「必要な Evidence」と、合意した Evidence の様式。</dd></div>
+      <div><dt>中の作り方が違ったままで<br>成り立つか</dt><dd>成り立つ。どの手続きも線の上で起き、相手の中の作り方を問わない。Federation は内部方式を指定しない。</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">06 ／ 最初の一本</p>
+      <h2>何から始めるか。</h2>
+    </div>
+    <p>ここからは Core ではなく、この資料からの提案です。</p>
+    <ol class="steps">
+      <li><div>
+        <h3>線を一本だけ選ぶ</h3>
+        <p>定例で毎回持ち越されるインターフェースや、検収で揉めたことのある受け渡しから。</p>
+      </div></li>
+      <li><div>
+        <h3>四つの欄を、相手と書く</h3>
+        <p>相互の責任、提供条件、入出力、必要な Evidence。埋まらない欄は、まだ合意していないことです。</p>
+      </div></li>
+      <li><div>
+        <h3>所有者を一人決める</h3>
+        <p>線を結ぶ両側が合意して、どちらかの Cell の一人に決めます。</p>
+      </div></li>
+      <li><div>
+        <h3>両側が版 1 を採用する</h3>
+        <p>それぞれの規範の所有者が決め、採用したことを記録します。</p>
+      </div></li>
+      <li><div>
+        <h3>次の変更を、この順で一度通す</h3>
+        <p>提案、承認と公開、両側の採用。定例で決まったことも、版にしてから効かせます。</p>
+      </div></li>
+    </ol>
+    <p class="between">書く人は一人でも、<br class="narrow">効かせるのは両側。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">07 ／ 未決</p>
+      <h2>まだ決まっていないこと。</h2>
+    </div>
+    <p>Contract の所有者と移行の決まりは、Core 版 2 で入りました。その周りに、まだ決まっていないことが四つあります。</p>
+    <ul class="premise">
+      <li><span><strong>所有者が Cell を抜けたとき</strong>、誰に付け替えるか。所有者は一人なので、残った人が代わりに承認することもできません。<a class="ref" href="https://github.com/kishibashi3/publications/issues/92">#92</a></span></li>
+      <li><span><strong>共有する Ontology と Evidence の様式の所有者</strong>を、誰にするか。Contract と同じ決め方にするかも決まっていません。<a class="ref" href="https://github.com/kishibashi3/publications/issues/93">#93</a></span></li>
+      <li><span>全部の Cell が同じ版に移ったあと、<strong>揃わずに別々の版へ離れたとき</strong>。たとえば在庫は版 1 へ戻り、物流は版 3 へ進んだとき、誰も採用していない版 2 が効いたまま残ります。<a class="ref" href="https://github.com/kishibashi3/publications/issues/94">#94</a></span></li>
+      <li><span><strong>所有者自身が変えたいとき</strong>、誰が承認するか。改訂を提起した者は承認しないので、所有者が一人だと、承認できる人がいません。<a class="ref" href="https://github.com/kishibashi3/publications/issues/97">#97</a></span></li>
+    </ul>
+    <p>このほかに、合意が成り立たないとき、外部の制約が変わったとき、緊急時の調整、移行中の責任、複数の Cell にまたがる変更の互換性・適用順・部分失敗からの復旧は、詳しい手順が未定だと Core が自分で書いています。そして、その未定の部分を、ほかの Cell からの一方的な強制で埋めない、としています。</p>
+  </section>
+
+  <section class="notes">
+    <h2>付記</h2>
+    <p>在庫・物流の例、欄の中身、版の番号は、説明のための仮定です。</p>
+    <p>「検収」「責任分界」への当てはめ、定例についての文、発注側の立ち位置は、本書の読みです。Core はこれらの語を使っていません。</p>
+    <p>所有者を一人に置く理由を、本書は「採用がすでに両側の同意になっている」ことに置いています。06 の最初の一本は、この資料の提案です。</p>
+    <p>ここでいう Agent は、計画し、道具を使い、実行結果を確かめて修正する AI を指します。</p>
+  </section>
+
+  <footer>EAA 紹介 3（0〜3 の 4 枚組の最後）／ 前｜<a href="2-parts.html">どの問題に、どの部品で応えるか</a><br>組のはじめは <a href="0-two-exits.html">EAA 紹介 0「あいだの合意を、誰が持つのか」</a>。AA の組は <a href="../0-two-axes.html">AA 紹介 0「手戻り、誤り、調整、そして判断」</a>から。一回きりの仕事の渡し方は <a href="../3-hand-over-conditions.html">AA 紹介 3「作業ではなく、条件を渡す」</a>。</footer>
+
+</div>
+
+</body>
+</html>
