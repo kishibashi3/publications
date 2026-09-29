@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  ============================================================
+  どの問題に、どの部品で応えるか — EAA 紹介 2/4
+  ============================================================
+
+  配布範囲
+    社内・社外の両方。
+
+  読者
+    1 枚目を読んで、2 枚目へ進んだ人。
+    途中の 1 枚としてこの枚だけを受け取った人（定例の画面共有、検索）。
+
+  読んだ後にどうなってほしいか
+    1 枚目の問題それぞれに、Core のどの部品が応えるかが分かる。
+    Federation が「全体」ではなく「関係」であり、
+    図が枠ではなく、主体どうしを結ぶ線に共有する文書を載せた形になる理由が分かる。
+
+  この文書がやらないこと
+    実務の手順（3 枚目）。
+    線に載る文書の所有者を、片側に置くか両側で持つか（未決）。
+
+  出典について
+    部品の定義は EAA Core 版 1 の概念表から引いた（publications 0b3f309）。
+    図の形（枠ではなく線）は @reviewer の判定による。
+    reviewer/feedback-archive/2026-09-28-eaa-core-revision-proposal.md（Federation は「関係」）
+    問題と部品の対応は @deep-research の整理による。
+    deep-research/research-archive/2026-09-29-eaa-intro-1-2-issues-after-core.md
+
+  組
+    0/4 あいだの合意を、誰が持つのか
+    1/4 あいだにも、二つの崩れ方がある
+    2/4 どの問題に、どの部品で応えるか（本書）
+    3/4 準備中
+  ============================================================
+-->
+<title>どの問題に、どの部品で応えるか — EAA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap">
+<style>
+  :root{
+    --paper:#f5f6f4;--ink:#1c2422;--muted:#5a6562;--faint:#8b9491;
+    --line:#dcdfda;--panel:#eaeee8;
+    --past:#6b716c;--past-soft:#eceeea;
+    --path:#16564a;--path-soft:#e3ece8;
+    --fail-a:#8a6420;--fail-a-soft:#f1eadd;
+    --fail-b:#9b3527;--fail-b-soft:#f3e5e2;
+    --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+    --sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+      --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+      --path:#6fbfa6;--path-soft:#1a2a26;
+      --fail-a:#d3ad63;--fail-a-soft:#272218;
+      --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+    --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+    --path:#6fbfa6;--path-soft:#1a2a26;
+    --fail-a:#d3ad63;--fail-a-soft:#272218;
+    --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15.5px/1.95 var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:35em;margin-inline:auto;padding-inline:20px;
+    padding-block:56px 80px;display:flex;flex-direction:column;gap:56px}
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--path);outline-offset:3px}
+
+  .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  .byline{font:500 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--muted);margin:14px 0 0}
+  .source{font-size:12px;line-height:1.8;color:var(--faint);margin:6px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
+    line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
+    line-height:1.6;margin:0;text-wrap:balance}
+  h3{margin:0;font-size:17px;line-height:1.7;font-weight:700}
+  .lead{font-size:16.5px;line-height:2.05}
+  section{display:flex;flex-direction:column;gap:20px}
+  .sec-head{display:flex;flex-direction:column;gap:7px}
+  .on{color:var(--ink)}
+  .sub{font-size:15px;line-height:2;color:var(--muted)}
+
+  /* 線 */
+  .axis-box{border:1px solid var(--path);background:var(--path-soft);padding:20px;
+    display:flex;flex-direction:column;gap:10px}
+  .axis-box .n{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--path)}
+  .axis-box .f{font-family:var(--serif);font-size:clamp(17px,4vw,21px);
+    line-height:1.7;font-weight:600;text-wrap:balance}
+  .axis-box p{font-size:14px;line-height:1.9;color:var(--muted)}
+
+  /* 崩れ方 */
+  .forks{display:flex;flex-direction:column;gap:14px}
+  .fork{border-left:3px solid var(--c);background:var(--bg);
+    padding:18px 20px;display:flex;flex-direction:column;gap:9px}
+  .fork.a{--c:var(--fail-a);--bg:var(--fail-a-soft)}
+  .fork.b{--c:var(--fail-b);--bg:var(--fail-b-soft)}
+  .fork .tag{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--c)}
+  .fork strong{font-size:17px;line-height:1.7;font-weight:700;display:block}
+  .fork p.d{color:var(--muted);font-size:14.5px;line-height:1.9}
+
+  /* 前提 */
+  .premise{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+  .premise li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline}
+  .premise li::before{content:"";width:7px;height:7px;border:1.5px solid var(--path);
+    transform:translateY(-1px)}
+  .premise li>span{min-width:0;font-size:15.5px;line-height:1.9}
+
+  /* 細い道 */
+  .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
+    gap:36px;counter-reset:s}
+  .steps>li{display:grid;grid-template-columns:2.6em 1fr;gap:4px 14px;scroll-margin-top:24px}
+  .steps>li::before{counter-increment:s;content:"(" counter(s) ")";
+    font:500 12.5px/1.9 var(--mono);color:var(--path);padding-top:3px}
+  .steps>li>div{min-width:0;display:flex;flex-direction:column;gap:11px}
+  .steps h3{font-size:17.5px}
+  .steps p{color:var(--muted);font-size:15px;line-height:2}
+  .steps p.on{color:var(--ink)}
+  .steps p.src{font-size:12px;line-height:1.7;color:var(--faint);margin:2px 0 4px}
+  .drop{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;
+    border-top:1px dashed var(--line);padding-top:11px;font-size:13.5px;line-height:1.85}
+  .drop .arrow{font:500 12px/1.9 var(--mono);color:var(--fail-b)}
+  .drop.a .arrow{color:var(--fail-a)}
+  .drop span.t{min-width:0;color:var(--muted)}
+  .drop b{font-weight:700;color:var(--fail-b)}
+  .drop.a b{color:var(--fail-a)}
+  .axis-box .drop{border-top-color:var(--line)}
+
+  /* 根 */
+  .cycle{border:1px solid var(--line);background:var(--panel);padding:20px 18px;
+    display:flex;flex-direction:column;gap:14px}
+  .cycle .side{display:flex;flex-direction:column;gap:9px}
+  .cycle .who{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--faint)}
+  .cycle .own .who{color:var(--path)}
+  .cycle .col{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+  .cycle .node{border:1.5px solid var(--faint);color:var(--ink);
+    font-size:14px;line-height:1.6;padding:8px 14px}
+  .cycle .node.hi{border-color:var(--path);color:var(--path);font-weight:700}
+  .cycle .to{font:500 11px/1 var(--mono);color:var(--faint);padding-left:14px}
+  .cycle .gate{display:flex;align-items:center;gap:10px}
+  .cycle .gate .line{flex:1;height:0;border-top:2px dashed var(--fail-b)}
+  .cycle .gate .gl{font:500 10.5px/1.6 var(--mono);letter-spacing:.06em;
+    color:var(--fail-b);white-space:nowrap}
+  .cap-note{font-size:13px;line-height:1.85;color:var(--muted)}
+
+  /* 部品 */
+  .parts{margin:0;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .parts>div{border-bottom:1px solid var(--line);padding-block:14px;
+    display:flex;flex-direction:column;gap:4px}
+  .parts dt{font:500 12.5px/1.7 var(--mono);color:var(--path);letter-spacing:.04em}
+  .parts dd{margin:0;font-size:15px;line-height:1.9}
+
+  /* 対応 */
+  .pairs{display:flex;flex-direction:column;gap:14px}
+  .pair{border-left:3px solid var(--c,var(--past));background:var(--bg,var(--past-soft));
+    padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .pair.a{--c:var(--fail-a);--bg:var(--fail-a-soft)}
+  .pair.b{--c:var(--fail-b);--bg:var(--fail-b-soft)}
+  .pair .prob{font-size:14.5px;line-height:1.9;color:var(--muted)}
+  .pair .ans{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+  .pair .ans b{font:500 13px/1.6 var(--mono);color:var(--path);border:1.5px solid var(--path);
+    padding:2px 8px;white-space:nowrap}
+  .pair .ans span{font-size:15px;line-height:1.8;font-weight:700}
+  .pair .ans small{font:400 11.5px/1.7 var(--mono);color:var(--faint)}
+  .pair .how{font-size:14px;line-height:1.9;color:var(--muted)}
+  .pair .tag{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--c,var(--faint))}
+
+  /* 図：線に文書を載せる */
+  .fed{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:4px 0}
+  .fed .cell{border:1.5px solid var(--ink);background:var(--paper);padding:10px 14px;
+    display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 12px}
+  .fed .cell b{font-size:15px;line-height:1.6;font-weight:700}
+  .fed .cell small{font:400 11.5px/1.6 var(--mono);color:var(--faint)}
+  .fed .link{display:grid;grid-template-columns:2px 1fr;gap:14px;margin-left:28px;padding-block:10px}
+  .fed .link .bar{background:var(--path)}
+  .fed .link .docs{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+  .fed .doc{font:500 12px/1.5 var(--mono);color:var(--path);background:var(--path-soft);
+    border:1px solid var(--path);padding:4px 9px}
+  .fed-note{font-size:13.5px;line-height:1.85;color:var(--muted)}
+
+  .ref{color:var(--path);font:500 .92em/1 var(--mono);text-decoration:none;
+    border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  blockquote{margin:0;border-left:3px solid var(--path);padding:4px 0 4px 18px;
+    font-family:var(--serif);font-size:17px;line-height:1.85;font-weight:500}
+
+  .between{text-align:center;font-family:var(--serif);
+    font-size:clamp(18px,4.2vw,21px);line-height:1.75;font-weight:600;
+    color:var(--path);border-block:1px solid var(--line);padding-block:20px}
+
+  .notes{background:var(--panel);padding:22px;display:flex;flex-direction:column;
+    gap:11px;font-size:13px;line-height:1.9;color:var(--muted)}
+  .notes h2{font:500 11px/1.6 var(--mono);font-family:var(--mono);
+    letter-spacing:.1em;color:var(--faint);margin:0}
+  footer{border-top:1px solid var(--line);padding-top:18px;
+    font-size:12px;line-height:1.9;color:var(--faint)}
+
+  br.narrow{display:none}
+  @media (max-width:520px){br.narrow{display:inline}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <p class="label">ENTERPRISE AGENTIC AGILE ／ 紹介 2 ／ 0〜3 の 4 枚組</p>
+    <h1>どの問題に、<br>どの部品で応えるか。</h1>
+    <p class="byline">kishibashi3 ／ 最終更新 <time datetime="2026-09-29">2026-09-29</time></p>
+    <p class="source">定義元：<a href="https://github.com/kishibashi3/publications/blob/0b3f309e7b4f95e25b2be7a24c5fd0b34a8e2aa2/drafts/enterprise-agentic-agile/core.md">EAA Core 版 1</a>、<a href="https://github.com/kishibashi3/publications/blob/0b3f309e7b4f95e25b2be7a24c5fd0b34a8e2aa2/drafts/enterprise-agentic-agile/profiles.md">EAA Profiles</a>。本書は解説であり、新たな義務を追加しません。</p>
+  </header>
+
+  <section>
+    <p class="lead">1 枚目で見たのは、あいだの問題の形でした。一つの主体が全部を決めても、各主体に無条件で任せても壊れる。その間を通る、線が一本と部品が五つ。</p>
+    <p>ここでは、その形に対して<strong>Core が何を置いたか</strong>を見ます。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">01 ／ 部品</p>
+      <h2>四つの語で、<br>あいだを持つ。</h2>
+    </div>
+    <p>Core の概念表から、1 枚目の問題に応える四つを引きます。定義は Core の文のままです。</p>
+    <dl class="parts">
+      <div><dt>Cell</dt><dd>一定の目的に対する責任・権限・実行能力を持ち、外部との合意に基づいて自律的に成果を実現する単位</dd></div>
+      <div><dt>Federation</dt><dd>Cell どうしが互いの内部方式を指定せず、Cell 間で共有する文書を通して責任・権限・合意・Evidence を接続する<strong>関係</strong></dd></div>
+      <div><dt>Contract</dt><dd>相互の責任、提供条件、入出力、必要な Evidence を定める境界合意</dd></div>
+      <div><dt>Evidence</dt><dd>成果や判断の成立を検証可能にする記録</dd></div>
+      <div><dt>Evidence の様式</dt><dd>Evidence として何を、どの形で残すかを定める、Cell 間で共有する文書</dd></div>
+    </dl>
+    <p class="sub">1 枚目で「主体」と呼んだものが Cell です。Core にはほかに Profile（引き受ける責務の仕様）・Mission・Ontology・Constitution があります。本書では、1 枚目の問題に直接応えるものだけを見ます。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">02 ／ 対応</p>
+      <h2>問題が先にあって、<br>部品が付いている。</h2>
+    </div>
+    <p>どの組も、上の文が問題、枠で囲んだ名前がそれに応える部品です。</p>
+
+    <div class="pairs">
+      <div class="pair a">
+        <p class="tag">崩れ方 A の側</p>
+        <p class="prob">主体を分けても、分けた判断が一箇所に戻る。</p>
+        <p class="ans"><b>Cell</b><span>判断の権限ごと渡す</span><small>1 枚目 線（中）</small></p>
+        <p class="how">分けるとは、責務と自律的な判断権限を、別の責任主体に引き渡すことです。渡した先の判断は、親や横断の Cell でも一方的に上書きしません。Cell は「判断の責任者が別」という単位で、中の作り方の単位ではありません。</p>
+      </div>
+      <div class="pair a">
+        <p class="tag">崩れ方 A の側</p>
+        <p class="prob">中の作り方が違う相手とは、つながれない。つなぐために中を揃えさせると、揃えた側に判断が集まる。</p>
+        <p class="ans"><b>Federation</b><span>中を指定しない関係</span><small>1 枚目 線（中）</small></p>
+        <p class="how">Federation は内部方式を指定しません。だから AA 以外の開発主体——人間のチームも、自社の標準工程で動く委託先も——つながれます。</p>
+      </div>
+      <div class="pair b">
+        <p class="tag">崩れ方 B の側</p>
+        <p class="prob">交わした取り決めが、相手の側だけで書き換わる。</p>
+        <p class="ans"><b>Contract</b><span>共有する文書として、版で持つ</span><small>1 枚目 線（あいだ）・(2)・(3)</small></p>
+        <p class="how">Contract は Cell 間で共有する文書です。所有者は人間で、改訂を提起した者は承認しません。依存する版を特定し、新しい版を公開しただけでは既存の合意は変わりません。</p>
+      </div>
+      <div class="pair">
+        <p class="tag">確かめる</p>
+        <p class="prob">相手が約束どおりに果たしたかを、相手の中を見ずに確かめられない。</p>
+        <p class="ans"><b>Evidence</b><span>何を、どの形で残すかを先に合わせる</span><small>1 枚目 (4)</small></p>
+        <p class="how">作業したことや受け入れたことだけでは、完了しません。完了には、合意した受入の Evidence がそろっていることが要ります。何を Evidence とするかは、Evidence の様式として Cell 間で共有する文書に書きます。</p>
+      </div>
+    </div>
+    <p class="sub">1 枚目の (1) 提案と受入、(5) 自分の権限を自分で広げない、は部品ではなく、部品のあいだの動き方の決まりです（Core「4. 提案と変更」）。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">03 ／ 形</p>
+      <h2>枠ではなく、<br>線。</h2>
+    </div>
+    <p>Federation を「全体」と定義すると、全体を持つ誰かが要ります。それは 1 枚目の崩れ方 A の一箇所です。Core は Federation を<strong>関係</strong>と定義しました。だから図は、Cell を大きな枠で囲む形になりません。<strong>Cell どうしを結ぶ線に、共有する文書が載る形</strong>になります。</p>
+
+    <div class="fed" role="img" aria-label="三つの Cell が縦に並び、隣り合う Cell のあいだの線に、共有する文書が載っている図。外側を囲む枠はない。">
+      <div class="cell"><b>注文</b><small>中：AA</small></div>
+      <div class="link"><span class="bar"></span><div class="docs">
+        <span class="doc">Contract（注文→在庫 API）版 3</span>
+        <span class="doc">Evidence の様式 版 1</span>
+        <span class="doc">Ontology（商品・在庫の語）版 2</span>
+      </div></div>
+      <div class="cell"><b>在庫</b><small>中：Scrum</small></div>
+      <div class="link"><span class="bar"></span><div class="docs">
+        <span class="doc">Contract（出荷指示）版 5</span>
+        <span class="doc">Profile（物流連携の責務）版 2</span>
+      </div></div>
+      <div class="cell"><b>物流（委託先）</b><small>中：委託先の標準工程</small></div>
+    </div>
+    <p class="fed-note">例の名前と版は説明のための仮定です。外側を囲む枠はありません。注文と物流のあいだには線がないので、この二つは何も共有しておらず、互いに何も求めません。</p>
+
+    <p>線に載る文書は、それぞれが版を持ち、それぞれに所有者（人間）がいます。どの線も、1 枚目の「提案と受入」で変わります。<strong>一本の線を変えても、ほかの線は変わりません。</strong></p>
+    <p>箱の中は、各 Cell が決めます。図の「中：」の欄は、Federation が指定しないものです。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">04 ／ Core の位置</p>
+      <h2>Core も、<br>線の上の文書と並ぶ。</h2>
+    </div>
+    <p>Core は、線の上の文書を外から囲む枠としては書かれていません。Cell 間で共有する文書と Core は、<strong>並んで</strong>同じ規則——自己改訂規範アーキテクチャ——に従い、どれも所有者・観測・準拠先を持ちます。</p>
+    <p>この要求は、各 Cell の中の規範には及びません。中の改訂の手続きは、各 Cell が決めます。</p>
+    <p>AA との関係も、この図で言えます。<a class="ref" href="../2-aa-structure.html">AA の組</a>が扱ったのは、一つの箱の中です。AA が全責務を担う構成は 1 Cell の EAA で、分けた後の Cell を担う AA も同じ AA です。AA は単独で成り立ち、分けたときに要るのが、この線です。</p>
+  </section>
+
+  <section class="notes">
+    <h2>付記</h2>
+    <p>線に載る文書の所有者を、片側の Cell に置くか、両側で持つかは、まだ決まっていません。どちらの場合も、変えたい側だけでは変えられず、相手が採用するまで前の版が生きます。</p>
+    <p>Core に置かれていない部品の順序や組み合わせ方は、本書の読みです。定義の文は Core の概念表のとおりです。</p>
+    <p>ここでいう Agent は、計画し、道具を使い、実行結果を確かめて修正する AI を指します。</p>
+  </section>
+
+  <footer>EAA 紹介 2（0〜3 の 4 枚組）／ 前｜<a href="1-between-two-collapses.html">あいだにも、二つの崩れ方がある</a>　次｜3 枚目（準備中）<br>AA の組は <a href="../0-two-axes.html">AA 紹介 0「手戻り、誤り、調整、そして判断」</a>から。</footer>
+
+</div>
+
+</body>
+</html>
