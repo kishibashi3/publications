@@ -72,7 +72,6 @@ docs/
 ├── applications/          # 応用（アジャイル、教育）
 ├── ai/                    # AI関連シリーズ（設計概論・実装概論・リテラシー）
 ├── notes/                 # 公開メモ
-├── en/                    # 旧構想の残骸（stub のみ。新規の英語版はここに置かない）
 ├── contributing.md        # 貢献ガイド
 └── .vitepress/config.js   # VitePress設定
 ```
@@ -101,7 +100,7 @@ npm run lint:link      # リンク切れチェック
   - ja: `<name>.ja.md` / en: `<name>.md`（例: `docs/ai/agent-design/tag-as-document-dual-track.ja.md` と `tag-as-document-dual-track.md`）
   - 英語版を持たないページは `<name>.md` / `<name>.ja.md` のどちらでもよい（連載など ja 主体のページは既に `.ja.md`。sidebar link が確定しているため `.md` へ戻さない）。`<name>.md` のページに英語版を追加するときは、日本語側を `<name>.ja.md` にリネームしてから en を `<name>.md` に置く
   - 理由: (a) 既存の前例が併置である、(b) 日英を兄弟ファイルにしておくと片翻訳の drift を検出しやすい
-  - 日英の両方があるページは、タイトルの直後に言語の行を置き、互いにリンクする。ja 側は `> **Language**: 日本語 | [English](./<name>.md)`、en 側は `> **Language**: English | [日本語](./<name>.ja.md)`。en ページへの入口はこの行である
+  - 日英の両方があるページは、frontmatter の直後・H1 の前に言語の行を置き、互いにリンクする。ja 側は `> **Language**: 日本語 | [English](./<name>.md)`、en 側は `> **Language**: English | [日本語](./<name>.ja.md)`。en ページへの入口はこの行である
   - 翻訳の本文が無い en ページ（「coming soon」だけのページ）は置かない。`docs/en/` は旧構想の置き場所で、stub 5 件は削除済み（#54）
 
 ### Markdown で使えるプラグイン
