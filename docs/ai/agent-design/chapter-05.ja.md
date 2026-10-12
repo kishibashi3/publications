@@ -314,7 +314,9 @@ AIが自律的に動くが、特定のチェックポイントで人間が介在
 
 実装では、権限を緩める方向の変更と厳しくする方向の変更を非対称に扱えばよい。緩める方向（都度確認 → 自動実行、ロール昇格、許可リストの拡張、認証情報の付与）だけを承認に通す。厳しくする方向は自律で構わない。安全側に倒す変更を止める理由はない。
 
-この区別は公開実装でも表面化している。承認ゲートを持つエージェント実行環境で、設定ファイル経由で実行中の承認ゲートを緩められる経路が指摘され、修正された（[local-operator #1282](https://github.com/damianvtran/local-operator/issues/1282) → [PR #1291](https://github.com/damianvtran/local-operator/pull/1291)）。制御プレーン経由の `ask → auto` を同じ境界として扱う提案（[#1310](https://github.com/damianvtran/local-operator/issues/1310)）は、本稿執筆時点で未解決である。どちらも同一の報告者（[@Nakagawa-master](https://github.com/Nakagawa-master)）による起票で、後者では "authority-increasing transition" と明示されている。本条件と同じ枠組みだ。第三者による独立の追認ではなく、同じ境界線を実装の側から引き直した例として読んでほしい。
+この区別は公開実装でも表面化している。承認ゲートを持つエージェント実行環境で、設定ファイル経由で実行中の承認ゲートを緩められる経路が指摘され、修正された（[local-operator #1282](https://github.com/damianvtran/local-operator/issues/1282) → [PR #1291](https://github.com/damianvtran/local-operator/pull/1291)）。制御プレーン経由の `ask → auto` を同じ境界として扱う提案（[#1310](https://github.com/damianvtran/local-operator/issues/1310)）は、本稿執筆時点（2026-09-20）で未解決である。どちらも同一の報告者（[@Nakagawa-master](https://github.com/Nakagawa-master)）による起票で、後者では "authority-increasing transition" と明示されている。本条件と同じ枠組みだ。第三者による独立の追認ではなく、同じ境界線を実装の側から引き直した例として読んでほしい。
+
+**追記（2026-10-12）**: 上の「未解決」は2026-09-20時点の状態である。その後、#1310 は2026-09-21に完了として閉じられた。修正は報告者とは別の開発者が [PR #1324](https://github.com/damianvtran/local-operator/pull/1324) で実装し、[v0.61.11](https://github.com/damianvtran/local-operator/releases/tag/v0.61.11) に収録されている。この追記が加えるのは、条件5（不可逆性）と条件6（制約される側が自分の権限を増やせない）を別の軸として扱う必要があったという論点に対する、後続の実装と配布の事実までである。本書全体の独立した検証ではなく、利用者一般にとっての安全性の証明でもない。上の段落の読み方も変わらない。
 
 ---
 
