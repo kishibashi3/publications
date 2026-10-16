@@ -56,9 +56,9 @@ IDE の補完やチャットを使う形。いちばん広く使われていま�
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g class="t" text-anchor="middle"><text x="125" y="60">要件</text><text x="335" y="60">設計</text><text x="545" y="60">実装</text><text x="755" y="60">テスト</text></g>
   <g class="a"><rect x="50" y="85" width="150" height="56" rx="6"/><rect x="260" y="85" width="150" height="56" rx="6"/><rect x="470" y="85" width="150" height="56" rx="6"/><rect x="680" y="85" width="150" height="56" rx="6"/></g>
-  <g class="ts on" text-anchor="middle"><text x="125" y="119">AI が書く</text><text x="335" y="119">AI が書く</text><text x="545" y="119">AI が書く</text><text x="755" y="119">AI が書く</text></g>
+  <g class="ts" text-anchor="middle"><text class="on" x="125" y="119">AI が書く</text><text class="on" x="335" y="119">AI が書く</text><text class="on" x="545" y="119">AI が書く</text><text class="on" x="755" y="119">AI が書く</text></g>
   <g class="h"><rect x="50" y="175" width="150" height="56" rx="6"/><rect x="260" y="175" width="150" height="56" rx="6"/><rect x="470" y="175" width="150" height="56" rx="6"/><rect x="680" y="175" width="150" height="56" rx="6"/></g>
-  <g class="ts on" text-anchor="middle"><text x="125" y="209">人が確かめる</text><text x="335" y="209">人が確かめる</text><text x="545" y="209">人が確かめる</text><text x="755" y="209">人が確かめる</text></g>
+  <g class="ts" text-anchor="middle"><text class="on" x="125" y="209">人が確かめる</text><text class="on" x="335" y="209">人が確かめる</text><text class="on" x="545" y="209">人が確かめる</text><text class="on" x="755" y="209">人が確かめる</text></g>
   <path d="M125,141 V171" class="ln" marker-end="url(#arr)"/><path d="M335,141 V171" class="ln" marker-end="url(#arr)"/><path d="M545,141 V171" class="ln" marker-end="url(#arr)"/><path d="M755,141 V171" class="ln" marker-end="url(#arr)"/>
   <path d="M200,203 Q230,203 230,160 Q230,113 256,113" class="ln" marker-end="url(#arr)"/><path d="M410,203 Q440,203 440,160 Q440,113 466,113" class="ln" marker-end="url(#arr)"/><path d="M620,203 Q650,203 650,160 Q650,113 676,113" class="ln" marker-end="url(#arr)"/>
   <text x="440" y="272" class="ts sub" text-anchor="middle">人が確かめてから、次の工程へ渡す</text>
