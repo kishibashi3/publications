@@ -1,0 +1,9 @@
+{
+  "name": "aa-eaa-textbook-build",
+  "private": true,
+  "type": "module",
+  "description": "AA・EAA 教科書の build/dev。md の ```dot を build 時に SVG にし、1 ファイルの HTML にする",
+  "dependencies": {
+    "@hpcc-js/wasm-graphviz": "1.29.2"
+  }
+}

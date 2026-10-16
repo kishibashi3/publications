@@ -22,3 +22,6 @@ npm-debug.log*
 # Temporary files
 *.tmp
 .temp/
+
+# AA・EAA 教科書の build 出力
+drafts/aa-eaa-textbook/build/
