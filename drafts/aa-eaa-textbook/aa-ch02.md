@@ -132,7 +132,7 @@
 
 同じ元のレビューを何回重ねても、穴は同じ所に並びます。増やすのは回数ではありません。元を分けます。
 
-## 作った者が、退けたら
+## 作った者が、突き返したら
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -185,10 +185,12 @@
   <path d="M160,40 V270" class="lt"/>
   <rect x="180" y="44" width="130" height="34" rx="5" class="a"/><text x="245" y="67" class="ts on" text-anchor="middle">LGTM ✅</text>
   <rect x="330" y="104" width="190" height="34" rx="5" class="a"/><text x="425" y="127" class="ts on" text-anchor="middle">公開の可否を人に聞く</text>
-  <rect x="530" y="104" width="160" height="34" rx="5" class="a"/><text x="610" y="127" class="ts on" text-anchor="middle">聞かれて「GO ✅」</text>
+  <rect x="530" y="104" width="160" height="34" rx="5" class="a"/><text x="610" y="127" class="ts on" text-anchor="middle">「GO ✅」と返す</text>
   <text x="530" y="98" class="tx" text-anchor="middle">2 分後</text>
+  <rect x="440" y="164" width="200" height="34" rx="5" class="a"/><text x="540" y="187" class="ts on" text-anchor="middle">書いた AI に「GO？」</text>
+  <path d="M570,164 V142" class="ln" marker-end="url(#arr)"/>
   <rect x="660" y="164" width="90" height="34" rx="5" class="a"/><text x="705" y="187" class="ts on" text-anchor="middle">merge</text>
-  <path d="M640,140 L695,160" class="ln" marker-end="url(#arr)"/>
+  <path d="M660,140 L695,160" class="ln" marker-end="url(#arr)"/>
   <rect x="425" y="224" width="400" height="34" class="w"/><text x="625" y="247" class="ts sub" text-anchor="middle">まだ答えていない</text>
   <path d="M425,140 V220" class="lt dash"/>
   <rect x="760" y="164" width="90" height="34" rx="5" class="x"/><text x="805" y="187" class="ts on" text-anchor="middle">公開</text>
@@ -199,7 +201,7 @@
 </svg>
 ```
 
-書いた AI は「文章は良い」の意味で GO と書き、merge する AI は「出してよい」と読みました。誰も、ずるをしていません。
+merge する AI に聞かれ、書いた AI は「文章は良い」の意味で GO と返し、merge する AI は「出してよい」と読みました。誰も、ずるをしていません。
 
 出典: kishibashi3/publications PR #40（merge 2026-09-19T16:09:17Z）と巻き戻しの PR #47（16:10:28Z）。著者の場で起きた。
 
@@ -302,7 +304,7 @@
   <rect x="610" y="50" width="230" height="270" rx="10" fill="#fff" stroke="#bbb" stroke-width="2" class="dash"/>
   <text x="725" y="96" class="t sub" text-anchor="middle" font-weight="700">輪から人を外す</text>
   <use href="#i-pile" x="685" y="132" width="80" height="80" opacity="0.25"/>
-  <path d="M660,250 H790" stroke="#bbb" stroke-width="2"/>
+  <path d="M660,251 H790" class="xl" stroke-width="3"/>
   <text x="725" y="256" class="ts sub" text-anchor="middle">間違いが速く増える</text>
   <text x="725" y="296" class="ts ac" text-anchor="middle">元を分けた判定で、外れる</text>
   <rect x="380" y="145" width="160" height="80" rx="8" class="box"/>
@@ -311,7 +313,7 @@
 </svg>
 ```
 
-人を外しても、間違いが同じ速さでは増えません。板挟みの片側が外れます。
+元を分けて判定すれば、人を外しても間違いは同じ速さでは増えません。右の壁が外れるので、左の壁から離れられます。
 
 ※ p.15「どちらにいても、挟まれる」の描き直し。
 
@@ -339,20 +341,22 @@
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="60" width="800" height="230" rx="10" class="soft"/>
-  <text x="70" y="98" class="ts sub">AA の条文　D3 生成と判定の分離（全文）</text>
+  <rect x="40" y="50" width="800" height="300" rx="10" class="soft"/>
+  <text x="70" y="88" class="ts sub">AA（Agentic Agile）の条文　D3 生成と判定の分離（全文）</text>
   <text x="70" y="160" style="font-size:22px" textLength="550" lengthAdjust="spacingAndGlyphs">判定は、生成と異なる主体またはモデルの系列で行う。</text>
   <text x="70" y="225" style="font-size:22px" textLength="286" lengthAdjust="spacingAndGlyphs">自らの成果を自ら承認しない</text>
   <text x="362" y="225" style="font-size:22px" textLength="198" lengthAdjust="spacingAndGlyphs">（P1・P2・前提）</text>
   <path d="M180,168 H604" class="al"/><text x="604" y="186" class="tx" text-anchor="end">p.27 穴の位置が、ずれる</text>
   <path d="M70,233 H356" class="hl"/><text x="356" y="251" class="tx" text-anchor="end">p.29・p.31 作った者が通す</text>
-  <path d="M376,233 H406" class="al"/><text x="376" y="275" class="tx">P1 → p.33</text>
-  <path d="M417,233 H447" class="hl"/><text x="466" y="275" class="tx">P2 → p.29</text>
-  <path d="M458,233 H542" class="xl"/><text x="556" y="275" class="tx">前提 → p.19・p.27</text>
+  <path d="M376,233 H406" class="al"/><path d="M417,233 H447" class="hl"/><path d="M458,233 H542" class="xl"/>
+  <text x="70" y="274" class="tx">括弧の中は、この 1 行の理由。条文の先のほうに書いてある原則</text>
+  <path d="M376,292 H406" class="al"/><text x="416" y="297" class="ts">P1 書かれていないものは、無いものとして扱う → p.33</text>
+  <path d="M376,313 H406" class="hl"/><text x="416" y="318" class="ts">P2 どの層も、決まりに従って働き、下の決まりを書く → p.29</text>
+  <path d="M376,334 H406" class="xl"/><text x="416" y="339" class="ts">前提（第 1 章 p.21）→ p.19・p.27</text>
 </svg>
 ```
 
-この章で見たことは、AA の条文では D3 の 1 行です。括弧の中は、理由が 3 つあるという印です。
+この章で見たことは、AA の条文では D3 の 1 行です。P1・P2 は、第 4 章・第 8 章で正面から扱います。
 
 ## 人は、どこへ行ったか
 
