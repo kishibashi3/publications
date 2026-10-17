@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 244" width="320" height="244" role="img" aria-labelledby="t">
+  <title id="t">発注者から委託先への委託は、この資料の外。委託先から Agent への AI への委任だけを、AA が扱う。</title>
+  <style>
+    text{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;font-size:13px;fill:#1c2422}
+    .box{fill:#f5f6f4;stroke:#5a6562;stroke-width:1.5}
+    .box.on{stroke:#16564a}
+    .out{stroke:#8b9491;stroke-width:1.5;stroke-dasharray:4 4;fill:none}
+    .in{stroke:#16564a;stroke-width:2;fill:none}
+    .head-out{fill:#8b9491}.head-in{fill:#16564a}
+    .lab{font-weight:700}
+    .faint{fill:#8b9491}.path{fill:#16564a}
+    @media (prefers-color-scheme:dark){
+      text{fill:#e6eae7}
+      .box{fill:#151a19;stroke:#9ea8a4}.box.on{stroke:#6fbfa6}
+      .out{stroke:#79837f}.in{stroke:#6fbfa6}
+      .head-out,.faint{fill:#79837f}.head-in,.path{fill:#6fbfa6}
+    }
+  </style>
+  <g transform="translate(28 0)">
+
+  <rect class="box" x="20" y="8" width="110" height="40"/>
+  <text x="75" y="33" text-anchor="middle">発注者</text>
+
+  <line class="out" x1="75" y1="48" x2="75" y2="92"/>
+  <path class="head-out" d="M69 90 L75 100 L81 90 Z"/>
+  <text class="lab faint" x="96" y="70">委託</text>
+  <text class="faint" x="96" y="88">この資料の外</text>
+
+  <rect class="box" x="20" y="100" width="110" height="40"/>
+  <text x="75" y="125" text-anchor="middle">委託先</text>
+
+  <line class="in" x1="75" y1="140" x2="75" y2="184"/>
+  <path class="head-in" d="M69 182 L75 192 L81 182 Z"/>
+  <text class="lab path" x="96" y="162">AI への委任</text>
+  <text class="path" x="96" y="180">AA が扱うのは、ここだけ</text>
+
+  <rect class="box on" x="20" y="192" width="110" height="40"/>
+  <text x="75" y="217" text-anchor="middle">Agent</text>
+  </g>
+</svg>

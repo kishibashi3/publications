@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  ============================================================
+  作業ではなく、条件を渡す — AA 紹介 3/4（AA の実務）
+  ============================================================
+
+  配布範囲
+    社内・社外の両方。出し分けをしない 1 本。
+
+  読者
+    案件のリード / アーキテクト。
+    0〜2 を読んで、筋は通ったと思っている。
+
+  読む状況
+    「で、月曜に何をすればいいのか」。10 分ほどで一人で読む。
+    このページだけが共有されることもあるので、冒頭は単独で通るようにする。
+
+  読んだ後にどうなってほしいか
+    一件を選んで、実際に渡してみられる。
+    四つの条件（目的 / 守る条件 / 任せる範囲 / 確かめ方）を自分の案件で埋められる。
+
+  この文書がやらないこと
+    原則 P1〜P3・指針 D1〜D8 の説明（2 が扱う。名前を添えて参照するだけ）。
+    期待浪費の式（2）。二つの崩れ方（1）。手法史（0）。
+    複数主体の話（EAA。この組の外）。導入手順、組織の話、効果の実証。
+
+  確度
+    四つの条件         … 正本系（AA 考え方と開発の姿 §2 の表）
+    成果と Evidence    … 正本系（同 §5）
+    Enabler / Operator … EAA 役割モデル（適用例・非規範）からの借用。本文で断る
+    最初の一件の 5 手  … 既存の紹介資料（aa-introduction.html §06）の提案。本文で断る
+    一人で始めるとき   … 準拠先 README で未決。未決と書く
+
+  組
+    0/4 手戻り、誤り、調整、そして判断 … 手法史からの入口
+    1/4 二つの崩れ方のあいだ           … 問題空間の構造
+    2/4 どの問題に、どの部品で応えるか … AA の構造
+    3/4 作業ではなく、条件を渡す       … AA の実務（本書）
+    読む順: 0 → 1 → 2 → 3 の 1 本道。分岐は置かない。
+    複数の開発主体のあいだ（EAA）は、この組では扱わない（別の組にする）。
+  ============================================================
+-->
+<title>作業ではなく、条件を渡す</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap">
+<style>
+  :root{
+    --paper:#f5f6f4;--ink:#1c2422;--muted:#5a6562;--faint:#8b9491;
+    --line:#dcdfda;--panel:#eaeee8;
+    --path:#16564a;--path-soft:#e3ece8;
+    --eaa:#234e70;--eaa-soft:#e4eaef;
+    --fail-a:#8a6420;--fail-a-soft:#f1eadd;
+    --fail-b:#9b3527;--fail-b-soft:#f3e5e2;
+    --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+    --sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+      --line:#2b3432;--panel:#1c2322;--path:#6fbfa6;--path-soft:#1a2a26;
+      --eaa:#7aa9d4;--eaa-soft:#19242e;--fail-a:#d3ad63;--fail-a-soft:#272218;
+      --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+    --line:#2b3432;--panel:#1c2322;--path:#6fbfa6;--path-soft:#1a2a26;
+    --eaa:#7aa9d4;--eaa-soft:#19242e;--fail-a:#d3ad63;--fail-a-soft:#272218;
+    --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15.5px/1.95 var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:35em;margin-inline:auto;padding-inline:20px;
+    padding-block:56px 80px;display:flex;flex-direction:column;gap:56px}
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--path);outline-offset:3px}
+
+  .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  .byline{font:500 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--muted);margin:14px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
+    line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
+    line-height:1.6;margin:0;text-wrap:balance}
+  h3{margin:0;font-size:17px;line-height:1.7;font-weight:700}
+  .lead{font-size:16.5px;line-height:2.05}
+  section{display:flex;flex-direction:column;gap:20px}
+  .sec-head{display:flex;flex-direction:column;gap:7px}
+  .muted{color:var(--muted)}
+
+  .ref{color:var(--path);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  /* 依頼の一文 */
+  .ask{border:1px solid var(--line);background:var(--panel);padding:18px 20px;
+    display:flex;flex-direction:column;gap:6px}
+  .ask .cap{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--faint)}
+  .ask .say{font-family:var(--serif);font-size:18px;line-height:1.8;font-weight:500}
+
+  /* 抜けているもの */
+  .gaps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .gaps li{border-bottom:1px solid var(--line);padding-block:11px;
+    display:grid;grid-template-columns:auto 1fr;gap:12px;font-size:15px;line-height:1.85}
+  .gaps li::before{content:"?";font:500 12px/1.9 var(--mono);color:var(--fail-a)}
+  .gaps li>span{min-width:0}
+
+  /* 四つの条件 */
+  .conds{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .cond{border-top:3px solid var(--path);background:var(--path-soft);
+    padding:15px 16px;display:flex;flex-direction:column;gap:6px}
+  .cond .en{font:500 10.5px/1.6 var(--mono);letter-spacing:.08em;color:var(--path)}
+  .cond b{font-size:16px;line-height:1.6;font-weight:700}
+  .cond .fill{font-size:14px;line-height:1.85}
+  .cond .ask2{font-size:12.5px;line-height:1.8;color:var(--muted);
+    border-top:1px dashed var(--line);padding-top:7px;margin-top:2px}
+
+  /* 動的構造 */
+  .loop{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);padding:16px}
+  .loop .frame{font:500 10.5px/1.6 var(--mono);letter-spacing:.06em;color:var(--path);margin-bottom:10px}
+  .loop .st{display:grid;grid-template-columns:2.2em 1fr;gap:4px 10px;align-items:baseline}
+  .loop .st .n{font:500 11px/1.9 var(--mono);color:var(--path)}
+  .loop .st>div{min-width:0;display:flex;flex-direction:column;gap:2px}
+  .loop .st b{font-size:15px;line-height:1.7;font-weight:700}
+  .loop .st span{font-size:13px;line-height:1.8;color:var(--muted)}
+  .loop .to{font:500 11px/2 var(--mono);color:var(--faint);padding-left:.4em}
+  .loop .back{font:500 11px/1.7 var(--mono);color:var(--faint);
+    border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
+  .loop .out{font:500 11px/1.7 var(--mono);color:var(--fail-a)}
+
+  /* 返ってくるもの */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .vs>div{border:1px solid var(--c);background:var(--bg);padding:15px 16px;
+    display:flex;flex-direction:column;gap:7px}
+  .vs .cap{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--c)}
+  .vs ul{margin:0;padding-left:1.1em;font-size:14px;line-height:1.85}
+  .vs .old{--c:var(--line);--bg:transparent}
+  .vs .old .cap{color:var(--faint)}
+  .vs .old ul{color:var(--muted)}
+  .vs .new{--c:var(--path);--bg:var(--path-soft)}
+
+  /* 二つの問い */
+  .roles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .role{border-left:3px solid var(--eaa);background:var(--eaa-soft);padding:15px 16px;
+    display:flex;flex-direction:column;gap:7px}
+  .role .en{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--eaa)}
+  .role b{font-family:var(--serif);font-size:16.5px;line-height:1.75;font-weight:600}
+  .role span{font-size:13.5px;line-height:1.85;color:var(--muted)}
+
+  .caveat{border-left:3px solid var(--fail-a);background:var(--fail-a-soft);
+    padding:15px 18px;display:flex;flex-direction:column;gap:6px}
+  .caveat .tag{font:500 11px/1.6 var(--mono);letter-spacing:.07em;color:var(--fail-a)}
+  .caveat p{font-size:14px;line-height:1.9}
+  .fig{margin:0}
+  .fig img{display:block;max-width:100%;height:auto;margin-inline:auto}
+
+  /* 残る二つ */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .two>div{border:1px solid var(--path);padding:15px 16px;display:flex;flex-direction:column;gap:6px}
+  .two .cap{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--path)}
+  .two b{font-size:16px;line-height:1.65;font-weight:700}
+  .two span{font-size:13.5px;line-height:1.85;color:var(--muted)}
+  .two .next{background:var(--path-soft)}
+
+  /* 5 手 */
+  .moves{list-style:none;margin:0;padding:0;counter-reset:m;border-top:1px solid var(--line)}
+  .moves>li{counter-increment:m;border-bottom:1px solid var(--line);padding-block:13px;
+    display:grid;grid-template-columns:2.2em 1fr;gap:4px 12px}
+  .moves>li::before{content:counter(m);font:500 13px/1.8 var(--mono);color:var(--path)}
+  .moves>li>div{min-width:0;display:flex;flex-direction:column;gap:3px}
+  .moves b{font-size:15.5px;line-height:1.75;font-weight:700}
+  .moves span{font-size:14px;line-height:1.85;color:var(--muted)}
+
+  blockquote{margin:0;border-left:3px solid var(--path);padding:4px 0 4px 18px;
+    font-family:var(--serif);font-size:17px;line-height:1.85;font-weight:500}
+
+  .notes{background:var(--panel);padding:22px;display:flex;flex-direction:column;
+    gap:11px;font-size:13px;line-height:1.9;color:var(--muted)}
+  .notes h2{font:500 11px/1.6 var(--mono);font-family:var(--mono);
+    letter-spacing:.1em;color:var(--faint);margin:0}
+  footer{border-top:1px solid var(--line);padding-top:18px;
+    font-size:12px;line-height:1.9;color:var(--faint)}
+
+  br.narrow{display:none}
+  @media (max-width:520px){
+    .conds,.vs,.roles,.two{grid-template-columns:1fr}
+    br.narrow{display:inline}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <p class="label">AGENTIC AGILE ／ 紹介 3 ／ 0〜3 の 4 枚組の最後</p>
+    <h1>作業ではなく、<br>条件を渡す。</h1>
+    <p class="byline">kishibashi3 ／ 最終更新 <time datetime="2026-09-28">2026-09-28</time></p>
+  </header>
+
+  <section>
+    <p class="lead">AI に開発を任せると、レビュー待ちが人間の側に積み上がるか、誰が何を確かめたのか分からない成果が返ってくるか、になりがちです。</p>
+    <p>分かれ目は、依頼に何を書くかです。渡すのは作業の手順ではなく、<strong>仕事が成り立つ条件</strong>です。目的、守る条件、任せる範囲（どこまで AI が決めてよく、どこから人間が責任を持つか）、確かめ方。この四つが書かれていれば、AI は計画から検証までを自分で回せます。</p>
+    <p>この 1 枚は、その四つを一件の例で埋め、<strong>最初の一件を選んで渡すところまで</strong>を扱います。</p>
+    <p class="muted">以下、任せる相手の AI を Agent と呼びます。計画し、道具を使い、実行結果を確かめて修正する AI です。</p>
+    <div class="caveat">
+      <p class="tag">この資料の補足 — AA の原則の外</p>
+      <p>「Agent に渡す」を「ベンダーに渡す」と読み替えることもできますが、AA の原則と導入解説が扱うのは、下の図の後ろの矢印だけです。</p>
+      <figure class="fig"><img src="figures/3-00-two-delegations.svg" width="320" height="244" alt="発注者から委託先への委託は、この資料の外。委託先から Agent への AI への委任だけを、AA が扱う。"></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">— ／ 一文の依頼</p>
+      <h2>「これを作って」には、<br>書かれていないことが多い。</h2>
+    </div>
+    <p>例を一つ、最後まで使います。契約と請求を扱う開発で、こう頼まれたとします。</p>
+    <div class="ask">
+      <p class="cap">依頼</p>
+      <p class="say">契約プランを変更したら、<br>1 時間以内に請求へ反映したい。</p>
+    </div>
+    <p>Agent は作ります。けれど、この一文には次のことが書かれていません。</p>
+    <ul class="gaps">
+      <li><span>もう確定した請求を、書き換えてよいのか</span></li>
+      <li><span>月の途中で変わったとき、何日を基準に日割りするのか</span></li>
+      <li><span>本番に出してよいのか、どこまでなら試してよいのか</span></li>
+      <li><span>何が確認できたら、終わりなのか</span></li>
+    </ul>
+    <p>同じ現場に長くいる人なら、聞き返すか、慣習で埋めます。Agent は聞き返さずに<strong>もっともらしく埋める</strong>ことがあり、埋め方は毎回同じとは限りません。2 枚目の <a class="ref" href="2-aa-structure.html#p1">P1 権威は書かれたものに宿る</a> は、この問題に応えるための原則です。</p>
+    <p>そこで出力を一つずつ人間が確かめると、1 枚目の<a class="ref" href="1-between-two-collapses.html#fail-a">崩れ方 A（人間が全部を承認する）</a>に入ります。作業を細かく分けて渡しても、分けた数だけ確認が人間に戻ってきます。</p>
+    <p class="on"><strong>手順を渡すのをやめて、条件を書きます。</strong>条件の中であれば、どう分けるか、どの順でやるかは Agent が決められます。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">01 ／ 四つの条件</p>
+      <h2>何を渡すのか。</h2>
+    </div>
+    <p>先の依頼を、四つの欄で書き直します。下の小さな字は、自分の案件で埋めるときに使う問いです。</p>
+
+    <div class="conds">
+      <div class="cond">
+        <p class="en">GOAL</p>
+        <b>目的</b>
+        <p class="fill">変更受付から 1 時間以内に、正しい請求予定額を確認できる。</p>
+        <p class="ask2">何が成り立てば、利用者にとって嬉しいか。なぜそれが要るのか</p>
+      </div>
+      <div class="cond">
+        <p class="en">CONSTRAINTS</p>
+        <b>守る条件</b>
+        <p class="fill">確定済みの請求は変更しない。日割り計算と日付の基準を明記する。</p>
+        <p class="ask2">速くできても、壊してはいけないものは何か</p>
+      </div>
+      <div class="cond">
+        <p class="en">AUTHORITY</p>
+        <b>任せる範囲</b>
+        <p class="fill">隔離した環境で、調査・変更・検証を進めてよい。本番への反映は権限者が判断する。</p>
+        <p class="ask2">どこまでなら、戻せるか。何を見てよく、何を外へ出してよいか</p>
+      </div>
+      <div class="cond">
+        <p class="en">ACCEPTANCE EVIDENCE</p>
+        <b>確かめ方</b>
+        <p class="fill">反映時間、期待金額との一致、重複して請求しないことを、あとから確かめ直せる記録で示す。</p>
+        <p class="ask2">何が見えたら、終わったと言えるか</p>
+      </div>
+    </div>
+
+    <p>目的には、<strong>背景も添えます。</strong>「なぜ 1 時間なのか」が書いてあれば、Agent は 1 時間に収まらない案を自分で捨てられます。何を決めてよいかは、三つ目の欄「任せる範囲」にだけ書きます。背景は知ってよいことで、知ったことで権限は広がりません。</p>
+    <p>四つを書こうとして埋まらない欄があれば、それが<strong>人間の側でまだ決まっていない判断</strong>です。日割りの基準日が誰にも言えないなら、それは Agent に渡す前に決めることの一覧に入ります。</p>
+
+    <p class="on">四つが揃うと、その中で次の往復が回ります。</p>
+    <div class="loop">
+      <p class="frame">合意した四つの条件の中で</p>
+      <div class="st"><span class="n">01</span><div><b>調べて、計画する</b><span>今の請求処理を調べ、仮説を立て、作業に分ける</span></div></div>
+      <p class="to">↓</p>
+      <div class="st"><span class="n">02</span><div><b>小さく実行する</b><span>限った変更を実装し、結果と差分を残す</span></div></div>
+      <p class="to">↓</p>
+      <div class="st"><span class="n">03</span><div><b>独立した根拠で判定する</b><span>作った者とは別の判定者が、期待金額や別経路の照合で確かめる</span></div></div>
+      <p class="to">↓</p>
+      <div class="st"><span class="n">04</span><div><b>結果から組み替える</b><span>合わなければ原因を調べ、範囲の中で直し、計画し直して判定へ戻る</span></div></div>
+      <p class="back">↑ 01 へ戻る</p>
+      <p class="out">→ 意味が決まっていないこと、範囲の外の判断は、人間へ戻る</p>
+    </div>
+    <p>月末の金額が合わないとき、実装の誤りなら範囲の中で直せます。業務のルール自体が決まっていないなら、それは人間へ戻り、決まった内容が条件に書き足されてから再開します。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">02 ／ 返ってくるもの</p>
+      <h2>返ってくるのは、<br>成果と、その記録。</h2>
+    </div>
+    <p>作業を渡したときに返ってくるのは、何をやったかの報告です。条件を渡したときに返ってくるのは、<strong>何が成り立ったか</strong>です。</p>
+    <p>成り立ったことを示す記録を、ここでは <strong>Evidence</strong> と呼びます。差分、検証の結果、残っている未解決事項。あとから第三者が見て、同じ判定を確かめ直せるものです。</p>
+
+    <div class="vs">
+      <div class="old">
+        <p class="cap">作業報告</p>
+        <ul>
+          <li>計算処理を修正しました</li>
+          <li>テストを追加し、通りました</li>
+          <li>レビューをお願いします</li>
+        </ul>
+      </div>
+      <div class="new">
+        <p class="cap">成果と Evidence</p>
+        <ul>
+          <li>変更から反映まで、計測で 1 時間以内</li>
+          <li>期待金額と、別経路の照合で一致</li>
+          <li>同じ変更で二重に請求されないことを確認</li>
+          <li>未解決：月末をまたぐ変更の扱い</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>「成果と Evidence」の記録は、四つ目の欄「確かめ方」にそのまま対応しています。<strong>確かめ方を先に書いておくと、返ってくるものの形が決まります。</strong>人間が見るのは、欄と記録が合っているかどうかです。</p>
+    <p>判定は、作った者とは別の者が行います。同じ生成元は同じ誤りを共有するので、作った Agent 自身の「確認しました」は Evidence に数えません（2 枚目の <a class="ref" href="2-aa-structure.html#d3">D3 生成と判定の分離</a>）。</p>
+    <p class="on">そして、最後に確かめるのは業務の上での成果です。この例なら、本番に反映したあと、利用者が時間内に正しい請求予定額を見られたか。<strong>テストが通った、コードができた、は途中の記録です。</strong></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">03 ／ 人間側の二つの責務</p>
+      <h2>条件を書く側には、<br>問いが二つある。</h2>
+    </div>
+    <p>四つの欄を埋めるとき、人間は二つの違う問いに答えています。</p>
+
+    <div class="roles">
+      <div class="role">
+        <p class="en">ENABLER</p>
+        <b>今回、何を成り立たせるか。</b>
+        <span>顧客の文脈を理解し、目的と確かめ方を具体にする。止まっているものを解き、成果が成り立つまで変化を進める。</span>
+      </div>
+      <div class="role">
+        <p class="en">OPERATOR</p>
+        <b>その引き受け方を、続けられるか。</b>
+        <span>任せる範囲、Agent の構成、道具、検証の環境を整え、成果を出し続けられる状態を保つ。</span>
+      </div>
+    </div>
+
+    <p>二つが分かれて見えるのは、ぶつかる場面です。急ぎの請求変更を求められたとき、<strong>対象の契約を絞って先に届ける</strong>のか、<strong>照合の能力を増やして広い範囲を扱う</strong>のか。前者は Enabler が成果の条件を調整する動き、後者は Operator が仕組みの能力を変える動きです。どちらか一方だけで決めると、今回の成果か、次からの引き受け方か、どちらかが削られます。</p>
+    <p>Enabler の仕事は、成果が成り立つまで続きます。Operator の仕事は、一つずつ承認しなくても進む状態を整えることです。どちらの判断も、条件と仕組みに書き残すほど、次の一件を広く任せられるようになります。</p>
+
+    <div class="caveat">
+      <p class="tag">この二つの名前について</p>
+      <p>Enabler と Operator は、複数の開発主体を扱う EAA（Enterprise Agentic Agile）の、<strong>規範ではない適用例</strong>から借りた、役割配置の参考モデルです。AA の原則には、この役割名は出てきません。二人に固定するものでもなく、兼務もできます。AA が求めているのは、二つの問いを区別して答えることです。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">04 ／ 一周して残る二つ</p>
+      <h2>次回の能力も、<br>成果として数える。</h2>
+    </div>
+    <p>一件が終わると、残るものが二つあります。</p>
+
+    <div class="two">
+      <div>
+        <p class="cap">今回に残る成果</p>
+        <b>使える請求機能</b>
+        <span>契約変更が時間内に反映される機能と、金額・時間・重複防止を確かめた記録。</span>
+      </div>
+      <div class="next">
+        <p class="cap">次回に残る能力</p>
+        <b>同じ問いで止まらない仕組み</b>
+        <span>月末のルール、照合のテスト、検証用のデータ。次の Agent が同じ確認を繰り返さずに済む条件。</span>
+      </div>
+    </div>
+
+    <p>「次回に残る能力」は、次の一件で四つの欄を書くときに効きます。</p>
+    <figure class="fig"><img src="figures/3-04-next-case.svg" width="320" height="254" alt="一件目の四つの欄では、守る条件の日割りの基準日が空欄で、確かめ方の照合も毎回書いている。そこで決めたことと作ったテストが、次回に残る能力になる。二件目では、基準日の欄が最初から埋まり、確かめ方は照合のテストを使える。"></figure>
+    <p class="on">定義元の開発モデルは、<strong>自分が判断しなくても動く仕組みを作ることも、人間の成果に含めています。</strong></p>
+    <p>直す対象は、規則のほかにもあります。照合の手間が毎回大きいなら、検証の道具を作る。得意分野が違うなら、Agent の構成を変える。同じ問い合わせが繰り返されるなら、意味や判断の条件を書き足す。</p>
+    <p class="on">ただし、条件を書き換えるときに一つだけ決まりがあります。Agent は条件の改訂を<strong>提起</strong>できますが、自分を縛る条件を緩める改訂を、自分で<strong>承認</strong>することはできません（2 枚目の <a class="ref" href="2-aa-structure.html#p3">P3 憲法は改訂される</a>、<a class="ref" href="2-aa-structure.html#d8">D8 自己権限の固定</a>）。ここでの憲法は、その層が従うルールを書いた文書のことです。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">05 ／ 最初の一件</p>
+      <h2>何から始めるか。</h2>
+    </div>
+    <p>ここからは原則ではなく、この資料からの提案です。五手で一周します。</p>
+
+    <ol class="moves">
+      <li><div><b>成果を一つ選ぶ</b><span>業務の上で成り立ったかを確かめられるものにする。例なら、全部の契約ではなく、限った契約パターンから。取り消せる範囲で完結するものほど、最初に向いています。</span></div></li>
+      <li><div><b>四つの条件を書く</b><span>目的と背景、守る条件、任せる範囲、確かめ方。二つの問いに、それぞれ誰が答えるかも決める。埋まらない欄は、渡す前に決める。</span></div></li>
+      <li><div><b>計画から検証までを任せる</b><span>使ってよい実行の量と範囲を区切り、その中で Agent が分け、直し、計画し直せるようにする。</span></div></li>
+      <li><div><b>成果と、人間に戻ってきた判断を見る</b><span>判断待ちで止まった時間、手戻り、検証にかかった手間、見逃した誤り。</span></div></li>
+      <li><div><b>条件を直して、次の一件へ</b><span>成果と品質を保ったまま、同じ判断の繰り返しが減ったか、任せられる範囲が広がったかを見る。</span></div></li>
+    </ol>
+
+    <p>四手目で見る「人間に戻ってきた判断」が、二件目で書き足す欄の一覧になります。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">06 ／ 一人で始めるとき</p>
+      <h2>二つの問いは、<br>一人でも分けられる。</h2>
+    </div>
+    <p>一人で始めて構いません。Enabler と Operator を兼ねても、<strong>いまどちらの問いに答えているか</strong>は区別します。成果の条件を緩めて先に届けるのか、仕組みの能力を足すのか。同じ人が決めるときほど、どちらで決めたかを書き残しておくと、あとで直す場所が分かります。</p>
+    <p>判定の分離も、一人で保てます。作った Agent とは別の Agent、または別のモデル系列に判定させます。</p>
+    <p class="on">一つだけ、分けられない場面があります。<strong>すでに使っている規範の改訂を、所有者である自分が提起したとき</strong>です。AA が従う上位の規範は、改訂を提起した者と承認する者を分けることを求めています。自分のほかに承認者を置けない場合の扱いは、その上位の規範でも<strong>未決</strong>とされています。</p>
+    <p>一件を渡し、成果と Evidence を受け取るまでは、この未決の問題に触れずに進められます。未決に当たるのは、一周したあとで条件の元になっている規範そのものを書き換えるときです。</p>
+  </section>
+
+  <section>
+    <blockquote>人間の判断から、実行条件を作る。<br>Agent の実行から、<br class="narrow">次の能力を育てる。</blockquote>
+    <p>最初にやることは一つです。一件を選び、四つの欄を書いて、渡す。</p>
+  </section>
+
+  <section class="notes">
+    <h2>付記</h2>
+    <p>請求の例と数値は、説明のための仮定です。</p>
+    <p>これまでの手法は、人に作業を割り当ててきました（<a class="ref" href="0-two-axes.html">0 枚目</a>）。Agent には、書かれたものだけが効きます（<a class="ref" href="2-aa-structure.html#p1">2 枚目</a>）。本書は、この二つが実務で重なる「何を渡すか」の場面を扱っています。</p>
+    <p>四つの条件と、成果と Evidence の扱いは、AA の導入解説「<a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/agentic-agile/development-model.md">考え方と開発の姿</a>」に拠っています。原則と指針の定義元は <a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/agentic-agile/principles.md">Agentic Agile Principles</a> です。本書は解説であり、新たな義務を追加しません。</p>
+    <p>Enabler と Operator は、EAA の<a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/enterprise-agentic-agile/role-model.md">役割モデル</a>（適用例・非規範）から借りた参考モデルです。最初の一件の五手は、この資料の提案です。</p>
+    <p>原則と指針の番号（P1〜P3、D1〜D8）は、2 枚目と同じく定義元のものです。</p>
+  </section>
+
+  <footer>AA 紹介 3（0〜3 の 4 枚組の最後）／ 前｜<a href="2-aa-structure.html">どの問題に、どの部品で応えるか（AA の構造）</a><br>定義元は <a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/agentic-agile/principles.md">AA Principles</a>、および準拠先の<a href="https://github.com/kishibashi3/publications/blob/ee0894c5904271e218da8ecfb80f331766ed96bb/drafts/self-revising-norm-architecture/README.md">自己改訂規範アーキテクチャ</a>。本書は解説であり、新たな義務を追加しません。</footer>
+
+</div>
+
+</body>
+</html>
