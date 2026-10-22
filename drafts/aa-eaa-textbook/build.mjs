@@ -315,7 +315,8 @@ export function render(files, extraHead = '', full = false) {
 
 // 公開 repo に出さない語の検査。語の一覧は repo の外に置く（一覧そのものが出してはいけない語のため）。
 // 一覧: 環境変数 AA_PRIVATE_WORDS のファイル、無ければ ホーム/app/aa-eaa-textbook/private-words.txt。1 行 1 個の正規表現（大文字小文字は区別しない）、# で始まる行は無視。
-// build のたびに、このディレクトリの全ファイル（node_modules・build・package-lock.json・ドットで始まるファイルを除く）を引き、当たれば止まる。
+// build のたびに、このディレクトリの全ファイル（node_modules・build・package-lock.json・ドットで始まる .md を除く）を引き、当たれば止まる。
+// 飛ばすのは .gitignore で外れる .*.md だけ。.env.note のようなドットで始まる .md 以外のファイルは git に載りうるので引く。
 // 読み手に出さない作業用の文書（計画・控え・試作など）は名前をドットで始める（.plan.md など）。.gitignore の .*.md で git に載らない。
 // ドット無しの plan.md が在れば止まる。ドットで始まる文書が git から外れていなければ止まる。
 export function checkPrivate() {
@@ -327,7 +328,7 @@ export function checkPrivate() {
   const list = process.env.AA_PRIVATE_WORDS || path.join(os.homedir(), 'app', 'aa-eaa-textbook', 'private-words.txt');
   if (!fs.existsSync(list)) fail(`出さない語の一覧が無い: ${path.basename(list)}（AA_PRIVATE_WORDS で場所を指定）`);
   const res = fs.readFileSync(list, 'utf8').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#')).map(l => new RegExp(l, 'i'));
-  const walk = d => fs.readdirSync(d).filter(n => !['node_modules', 'build'].includes(n) && !n.startsWith('.')).flatMap(n =>
+  const walk = d => fs.readdirSync(d).filter(n => !['node_modules', 'build'].includes(n) && !(n.startsWith('.') && n.endsWith('.md'))).flatMap(n =>
     fs.statSync(path.join(d, n)).isDirectory() ? walk(path.join(d, n)) : [path.join(d, n)]);
   for (const f of walk(ROOT).filter(f => path.basename(f) !== 'package-lock.json')) {
     fs.readFileSync(f, 'utf8').split('\n').forEach((l, i) => {
