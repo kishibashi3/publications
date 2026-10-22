@@ -1,125 +1,99 @@
-# 第 1 章　板挟み
+# 第 1 章　問題の発見
+
+> 人がレビューすると遅く、外すと間違いが増える
+
+<!-- 扉の絵（@ope-ultp1635 msg f0419ae4）: 章全体の主張 1 つ。本文の絵の使い回しはしない -->
+```svg
+<svg viewBox="0 0 880 300" width="880" height="300">
+  <path d="M150,30 V250 H790" class="ln"/>
+  <path d="M160,62 C 330,70 560,190 780,228" fill="none" stroke="#b5b5b5" stroke-width="7"/>
+  <path d="M160,228 C 380,190 610,70 780,62" fill="none" stroke="#c62828" stroke-width="7"/>
+  <use href="#i-wait" x="96" y="42" width="30" height="42"/>
+  <text x="200" y="50" class="t" font-weight="700">待ち</text>
+  <use href="#i-pile" x="800" y="38" width="44" height="44"/>
+  <text x="680" y="50" class="t xc" font-weight="700">間違い</text>
+  <text x="150" y="278" class="ts hc" text-anchor="middle">人が全部見る</text>
+  <text x="790" y="278" class="ts" text-anchor="middle">人が見ない</text>
+  <path d="M330,272 H600" class="ln" marker-end="url(#arr)"/>
+  <text x="465" y="294" class="tx" text-anchor="middle">人のレビューを減らす</text>
+  <rect x="352" y="196" width="236" height="28" fill="#fff"/><text x="470" y="216" class="ts sub" text-anchor="middle">どこに置いても、どちらかが残る</text>
+</svg>
+```
 
 <!--
 試作（絵の形）。未 commit。依頼元 @ope-ultp1635 msg 39d13cfe（kishibashi3「どうしても文章を読ませたいの？ 文章減らせないの？ build にして、各ページに絵を一ついれるくらいにしてほしい」）。
-入り方の改訂: @ope-ultp1635 msg 65edc748（kishibashi3「やっぱりベースラインがないから難しいのかな。一般的な ai 駆動開発から始める？」）。いま普通にやっている AI 駆動開発 3 つの形 → 3 つとも同じ輪 → 良い形で描く → そこから板挟みが出る、の順にした。輪（p.4）は本の最後まで描き直して使う（plan §B.4）。
-底本: 解説 §1・Principles §2 前提（origin/docs/eaa-working-notes 1dc3935）。旧形の書き出し aa-ch01-opening.md の内容を絵にし直した。
+入り方の改訂: @ope-ultp1635 msg 65edc748（kishibashi3「やっぱりベースラインがないから難しいのかな。一般的な ai 駆動開発から始める？」）。いま普通にやっている AI 駆動開発 3 つの形 → 3 つとも同じ輪 → 良い形で描く → そこから板挟みが出る、の順にした。輪（p.3）は本の最後まで描き直して使う（plan §B.4）。
+第 14 版（plan §F, @ope-ultp1635 msg 467fb7b2）で読み手を上げ、言い換えを戻し p.1〜3・4〜5・7〜8 を畳んだ。
+第 17 版（plan 冒頭, @ope-ultp1635 msg ad92916c）で「AA とは」を第 0 章（aa-ch00.md）へ出し、このページ（通し p.19）を「AA の目的＝板挟みへの答え」に改題。第 0 章で 2 ページ増えたので、本文の通し番号の参照を全章 +2 した。
 build: ./build.sh → build/aa.html。1 ページ = ## 1 つ。絵はちょうど 1 枚、文は 80 字まで（plan §B.3）。
 -->
 
 いま普通にやっている AI 駆動開発から始めます。そこから何が起きるかを見ます。
 
-## 形 1：人が書き、AI が手伝う
+## よくある 3 つの形：補完・PR・工程ごと
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="100" y="112" class="t" text-anchor="end">あなた</text>
-  <text x="100" y="212" class="t" text-anchor="end">AI</text>
-  <rect x="120" y="80" width="720" height="50" class="h"/>
-  <text x="480" y="111" class="ts on" text-anchor="middle">書く・読む・直す</text>
-  <rect x="120" y="180" width="720" height="50" class="soft"/>
-  <rect x="150" y="180" width="10" height="50" class="a"/><rect x="232" y="180" width="6" height="50" class="a"/><rect x="300" y="180" width="12" height="50" class="a"/><rect x="390" y="180" width="6" height="50" class="a"/><rect x="455" y="180" width="10" height="50" class="a"/><rect x="540" y="180" width="6" height="50" class="a"/><rect x="610" y="180" width="12" height="50" class="a"/><rect x="700" y="180" width="6" height="50" class="a"/><rect x="772" y="180" width="10" height="50" class="a"/>
-  <g class="lt"><path d="M155,135 V176 M235,135 V176 M306,135 V176 M393,135 V176 M460,135 V176 M543,135 V176 M616,135 V176 M703,135 V176 M777,135 V176"/></g>
-  <text x="480" y="262" class="ts sub" text-anchor="middle">補完・チャット。頼まれたときに、候補を出す</text>
-  <text x="440" y="330" class="tl" text-anchor="middle">1 回の大きさ：数行</text>
+  <path d="M295,30 V320 M585,30 V320" class="lt dash"/>
+  <g class="t" text-anchor="middle" font-weight="700"><text x="150" y="40">1　補完・チャット</text><text x="440" y="40">2　エージェントが PR</text><text x="730" y="40">3　工程ごとに AI</text></g>
+  <text x="40" y="86" class="ts">あなた</text>
+  <rect x="40" y="94" width="220" height="40" class="h"/><text x="150" y="120" class="ts on" text-anchor="middle">書く・読む・直す</text>
+  <text x="40" y="176" class="ts">AI</text>
+  <rect x="40" y="184" width="220" height="40" class="soft"/>
+  <rect x="58" y="184" width="8" height="40" class="a"/><rect x="100" y="184" width="5" height="40" class="a"/><rect x="140" y="184" width="9" height="40" class="a"/><rect x="185" y="184" width="5" height="40" class="a"/><rect x="225" y="184" width="8" height="40" class="a"/>
+  <g class="lt"><path d="M62,138 V180 M102,138 V180 M144,138 V180 M187,138 V180 M229,138 V180"/></g>
+  <text x="150" y="256" class="ts sub" text-anchor="middle">頼まれたときに候補を出す</text>
+  <rect x="350" y="62" width="180" height="36" rx="6" class="h"/><text x="440" y="86" class="ts on" text-anchor="middle">課題を渡す</text>
+  <rect x="350" y="114" width="180" height="36" rx="6" class="a"/><text x="440" y="138" class="ts on" text-anchor="middle">エージェントが作る</text>
+  <rect x="350" y="166" width="180" height="36" rx="6" class="box"/><text x="430" y="190" class="ts" text-anchor="middle">PR・CI</text><use href="#i-ok" x="474" y="173" width="22" height="22"/>
+  <rect x="350" y="218" width="180" height="36" rx="6" class="h"/><text x="440" y="242" class="ts on" text-anchor="middle">人がレビュー</text>
+  <rect x="350" y="270" width="180" height="36" rx="6" class="box"/><text x="440" y="294" class="ts" text-anchor="middle">merge</text>
+  <path d="M440,98 V111" class="ln" marker-end="url(#arr)"/><path d="M440,150 V163" class="ln" marker-end="url(#arr)"/><path d="M440,202 V215" class="ln" marker-end="url(#arr)"/><path d="M440,254 V267" class="ln" marker-end="url(#arr)"/>
+  <path d="M530,236 H556 V132 H534" class="hl" marker-end="url(#arr)"/>
+  <g class="ts" text-anchor="start"><text x="600" y="86">要件</text><text x="600" y="146">設計</text><text x="600" y="206">実装</text><text x="600" y="266">テスト</text></g>
+  <g class="a"><rect x="652" y="64" width="96" height="34" rx="5"/><rect x="652" y="124" width="96" height="34" rx="5"/><rect x="652" y="184" width="96" height="34" rx="5"/><rect x="652" y="244" width="96" height="34" rx="5"/></g>
+  <g class="h"><rect x="760" y="64" width="96" height="34" rx="5"/><rect x="760" y="124" width="96" height="34" rx="5"/><rect x="760" y="184" width="96" height="34" rx="5"/><rect x="760" y="244" width="96" height="34" rx="5"/></g>
+  <g class="ts on" text-anchor="middle"><text x="700" y="87">AI が書く</text><text x="700" y="147">AI が書く</text><text x="700" y="207">AI が書く</text><text x="700" y="267">AI が書く</text><text x="808" y="87">人が確認</text><text x="808" y="147">人が確認</text><text x="808" y="207">人が確認</text><text x="808" y="267">人が確認</text></g>
+  <path d="M808,98 L708,120" class="ln" marker-end="url(#arr)"/><path d="M808,158 L708,180" class="ln" marker-end="url(#arr)"/><path d="M808,218 L708,240" class="ln" marker-end="url(#arr)"/>
+  <g class="t" text-anchor="middle"><text x="150" y="352">1 周：数行</text><text x="440" y="352">1 周：PR 1 本</text><text x="730" y="352">1 周：工程 1 つ</text></g>
 </svg>
 ```
 
-IDE の補完やチャットを使う形。いちばん広く使われています。書いたものは、全部あなたが読んでいます。
+補完は最も広く使われ、PR を出すエージェントはここ 1〜2 年で広がりました。国内で「AI 駆動開発」と呼ぶときは、多くが 3 です。
 
-出典: Google「Inside our 2025 DORA report」（2025-09-23）。約 5,000 人の調査で、AI を使う人は 90%。
+出典: 1 は DORA 2025 報告（AI 利用 90%）、2 は GitHub Docs（Copilot の PR）、3 は WEEL「AI駆動開発（AIDD）の定義とは？」（2026-08-24）。
 
-## 形 2：課題を渡すと、PR が来る
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="20" y="140" width="120" height="70" rx="6" class="h"/><text x="80" y="172" class="t on" text-anchor="middle">課題を</text><text x="80" y="196" class="t on" text-anchor="middle">渡す</text>
-  <rect x="180" y="140" width="140" height="70" rx="6" class="a"/><text x="250" y="172" class="t on" text-anchor="middle">エージェント</text><text x="250" y="196" class="t on" text-anchor="middle">が作る</text>
-  <use href="#i-pr" x="344" y="150" width="40" height="50"/><text x="364" y="228" class="ts" text-anchor="middle">PR</text>
-  <rect x="410" y="140" width="120" height="70" rx="6" class="box"/><text x="462" y="182" class="t" text-anchor="middle">CI</text><use href="#i-ok" x="490" y="163" width="24" height="24"/>
-  <rect x="570" y="140" width="150" height="70" rx="6" class="h"/><text x="645" y="172" class="t on" text-anchor="middle">人が</text><text x="645" y="196" class="t on" text-anchor="middle">レビュー</text>
-  <rect x="760" y="140" width="100" height="70" rx="6" class="box"/><text x="810" y="182" class="t" text-anchor="middle">merge</text>
-  <path d="M140,175 H176" class="ln" marker-end="url(#arr)"/><path d="M320,175 H340" class="ln" marker-end="url(#arr)"/><path d="M388,175 H406" class="ln" marker-end="url(#arr)"/><path d="M530,175 H566" class="ln" marker-end="url(#arr)"/><path d="M720,175 H756" class="ln" marker-end="url(#arr)"/>
-  <path d="M645,212 V262 H250 V214" class="hl" marker-end="url(#arr)"/>
-  <text x="448" y="286" class="ts hc" text-anchor="middle">直してほしい所をコメントすると、直して返ってくる</text>
-  <text x="440" y="340" class="tl" text-anchor="middle">1 回の大きさ：PR 1 本</text>
-</svg>
-```
-
-課題をエージェントに渡し、来た PR を人がレビューして merge する形。ここ 1〜2 年で広がりました。
-
-出典: GitHub Docs「Reviewing a pull request created by Copilot」。Copilot の PR は、頼んだ人の承認を数えず、別の人の承認が要る。
-
-## 形 3：工程ごとに、AI に作らせる
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <g class="t" text-anchor="middle"><text x="125" y="60">要件</text><text x="335" y="60">設計</text><text x="545" y="60">実装</text><text x="755" y="60">テスト</text></g>
-  <g class="a"><rect x="50" y="85" width="150" height="56" rx="6"/><rect x="260" y="85" width="150" height="56" rx="6"/><rect x="470" y="85" width="150" height="56" rx="6"/><rect x="680" y="85" width="150" height="56" rx="6"/></g>
-  <g class="ts" text-anchor="middle"><text class="on" x="125" y="119">AI が書く</text><text class="on" x="335" y="119">AI が書く</text><text class="on" x="545" y="119">AI が書く</text><text class="on" x="755" y="119">AI が書く</text></g>
-  <g class="h"><rect x="50" y="175" width="150" height="56" rx="6"/><rect x="260" y="175" width="150" height="56" rx="6"/><rect x="470" y="175" width="150" height="56" rx="6"/><rect x="680" y="175" width="150" height="56" rx="6"/></g>
-  <g class="ts" text-anchor="middle"><text class="on" x="125" y="209">人が確かめる</text><text class="on" x="335" y="209">人が確かめる</text><text class="on" x="545" y="209">人が確かめる</text><text class="on" x="755" y="209">人が確かめる</text></g>
-  <path d="M125,141 V171" class="ln" marker-end="url(#arr)"/><path d="M335,141 V171" class="ln" marker-end="url(#arr)"/><path d="M545,141 V171" class="ln" marker-end="url(#arr)"/><path d="M755,141 V171" class="ln" marker-end="url(#arr)"/>
-  <path d="M200,203 Q230,203 230,160 Q230,113 256,113" class="ln" marker-end="url(#arr)"/><path d="M410,203 Q440,203 440,160 Q440,113 466,113" class="ln" marker-end="url(#arr)"/><path d="M620,203 Q650,203 650,160 Q650,113 676,113" class="ln" marker-end="url(#arr)"/>
-  <text x="440" y="272" class="ts sub" text-anchor="middle">人が確かめてから、次の工程へ渡す</text>
-  <text x="440" y="340" class="tl" text-anchor="middle">1 回の大きさ：工程 1 つ</text>
-</svg>
-```
-
-各工程で AI が書き、人が確かめて次へ渡す形。国内で「AI 駆動開発」と呼ぶとき、多くはこれです。
-
-出典: WEEL「AI駆動開発（AIDD）の定義とは？」（2026-08-24）ほか。どの解説も、最終判断は人が持つとする。
-
-## 3 つとも、同じ輪
+## 3 つとも同じ輪：最後は人が approve
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="30" y="150" width="120" height="60" rx="6" class="h"/><text x="90" y="186" class="t on" text-anchor="middle">頼む</text>
   <rect x="190" y="150" width="120" height="60" rx="6" class="a"/><text x="250" y="186" class="t on" text-anchor="middle">AI が作る</text>
   <rect x="350" y="150" width="120" height="60" rx="6" class="box"/><text x="398" y="186" class="t" text-anchor="middle">テスト</text><use href="#i-ok" x="436" y="168" width="24" height="24"/>
-  <rect x="510" y="150" width="140" height="60" rx="6" class="h"/><text x="580" y="186" class="t on" text-anchor="middle">人が確かめる</text>
-  <rect x="690" y="150" width="120" height="60" rx="6" class="box"/><text x="750" y="186" class="t" text-anchor="middle">次へ</text>
+  <rect x="510" y="150" width="140" height="60" rx="6" class="h"/><text x="580" y="186" class="t on" text-anchor="middle">人が approve</text>
+  <rect x="690" y="150" width="120" height="60" rx="6" class="box"/><text x="750" y="186" class="t" text-anchor="middle">merge</text>
   <path d="M150,180 H186" class="ln" marker-end="url(#arr)"/><path d="M310,180 H346" class="ln" marker-end="url(#arr)"/><path d="M470,180 H506" class="ln" marker-end="url(#arr)"/><path d="M650,180 H686" class="ln" marker-end="url(#arr)"/>
   <path d="M750,210 V280 H90 V214" class="ln" marker-end="url(#arr)"/>
   <text x="420" y="306" class="ts" text-anchor="middle">次の仕事へ</text>
-  <rect x="130" y="40" width="620" height="60" rx="8" class="soft"/>
-  <text x="440" y="64" class="ts sub" text-anchor="middle">1 周の大きさが違うだけ</text>
-  <g class="ts" text-anchor="middle"><text x="240" y="88">形 1：数行</text><text x="440" y="88">形 2：PR 1 本</text><text x="640" y="88">形 3：工程 1 つ</text></g>
-</svg>
-```
-
-大きさは違っても、AI が作り、人が確かめてから次へ進みます。この本は、この輪を最後まで使います。
-
-## いちばん良い形で描くと
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="30" y="150" width="120" height="60" rx="6" class="h"/><text x="90" y="186" class="t on" text-anchor="middle">頼む</text>
-  <rect x="190" y="150" width="120" height="60" rx="6" class="a"/><text x="250" y="186" class="t on" text-anchor="middle">AI が作る</text>
-  <rect x="350" y="150" width="120" height="60" rx="6" class="box"/><text x="398" y="186" class="t" text-anchor="middle">テスト</text><use href="#i-ok" x="436" y="168" width="24" height="24"/>
-  <rect x="510" y="150" width="140" height="60" rx="6" class="h"/><text x="580" y="186" class="t on" text-anchor="middle">人が確かめる</text>
-  <rect x="690" y="150" width="120" height="60" rx="6" class="box"/><text x="750" y="186" class="t" text-anchor="middle">次へ</text>
-  <path d="M150,180 H186" class="ln" marker-end="url(#arr)"/><path d="M310,180 H346" class="ln" marker-end="url(#arr)"/><path d="M470,180 H506" class="ln" marker-end="url(#arr)"/><path d="M650,180 H686" class="ln" marker-end="url(#arr)"/>
-  <path d="M750,210 V280 H90 V214" class="ln" marker-end="url(#arr)"/>
   <rect x="190" y="40" width="300" height="56" rx="6" fill="#fff" class="al"/>
-  <text x="340" y="64" class="ts ac" text-anchor="middle">テストと AI のレビューを先に回し、</text><text x="340" y="86" class="ts ac" text-anchor="middle">人が見る前に落とす</text>
+  <text x="340" y="64" class="ts ac" text-anchor="middle">CI のテストと AI レビューを先に回し、</text><text x="340" y="86" class="ts ac" text-anchor="middle">人が見る前に落とす</text>
   <path d="M340,96 L400,146" class="lt"/>
   <rect x="520" y="40" width="300" height="56" rx="6" fill="#fff" class="hl"/>
-  <text x="670" y="64" class="ts hc" text-anchor="middle">承認するのは、</text><text x="670" y="86" class="ts hc" text-anchor="middle">頼んだ人とは別の人</text>
+  <text x="670" y="64" class="ts hc" text-anchor="middle">approve するのは、</text><text x="670" y="86" class="ts hc" text-anchor="middle">作成者とは別の人</text>
   <path d="M640,96 L590,146" class="lt"/>
   <use href="#i-ok" x="250" y="318" width="28" height="28"/>
-  <text x="290" y="340" class="t">入った変更は、全部だれかが読んでいる</text>
+  <text x="290" y="340" class="t">merge した変更は、全部だれかが読んでいる</text>
 </svg>
 ```
 
-テストも AI のレビューも先に回し、承認は別の人。弱い形ではありません。よくできた形です。
+3 つとも、1 周の大きさが違うだけの同じ輪です。テストも AI レビューも先に回し、approve は別の人。この本はこの輪を最後まで使います。
 
-## 10 周目も、同じ輪
+## 10 周回しても、人が見る所は同じ
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g class="t" text-anchor="middle"><text x="300" y="34">1 周目</text><text x="520" y="34">5 周目</text><text x="740" y="34">10 周目</text></g>
-  <g class="ts" text-anchor="end"><text x="170" y="150">コード</text><text x="170" y="240">AI への決まり</text><text x="170" y="304">やり方</text></g>
+  <g class="ts" text-anchor="end"><text x="170" y="150">コード</text><text x="170" y="240">指示ファイル</text><text x="170" y="304">やり方</text></g>
   <path d="M190,198 H850" class="lt"/>
   <rect x="265" y="178" width="70" height="16" class="a"/>
   <rect x="270" y="212" width="60" height="44" rx="3" class="box"/>
@@ -159,62 +133,38 @@ IDE の補完やチャットを使う形。いちばん広く使われていま�
   <rect x="786" y="284" width="34" height="30" rx="4" class="h"/>
   <path d="M694,299 H702 M736,299 H744 M778,299 H786" class="ln"/>
   <path d="M190,272 H850" class="lt"/>
-  <text x="520" y="352" class="ts sub" text-anchor="middle">やり方（p.5 の輪：頼む → AI が作る → テスト → 人が確かめる）は毎周同じ</text>
+  <text x="520" y="352" class="ts sub" text-anchor="middle">やり方（p.6 の輪：頼む → AI が作る → テスト → 人が approve）は毎周同じ</text>
 </svg>
 ```
 
-回すほど、コードは育ちます。決まりのファイルも少し増えます。でも、人が確かめる所は 1 周目と同じです。
+回すほどコードは育ち、指示ファイルも少し増えます。でも、人がレビューする所は 1 周目と同じです。
 
-※ 説明のために作った絵です。決まりのファイルの例: GitHub Copilot の .github/copilot-instructions.md（GitHub Docs）。
+※ 説明のために作った絵です。指示ファイルの例: GitHub Copilot の .github/copilot-instructions.md（GitHub Docs）。
 
-## それでも、AI は待っている
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="100" y="92" class="t" text-anchor="end">AI</text>
-  <text x="100" y="192" class="t" text-anchor="end">あなた</text>
-  <rect x="120" y="60" width="720" height="50" class="w"/>
-  <rect x="120" y="60" width="13.3" height="50" class="a"/><rect x="246.7" y="60" width="13.3" height="50" class="a"/><rect x="393.3" y="60" width="13.3" height="50" class="a"/><rect x="560" y="60" width="13.3" height="50" class="a"/><rect x="706.7" y="60" width="13.3" height="50" class="a"/>
-  <rect x="172" y="60" width="4" height="50" class="a"/><rect x="298" y="60" width="4" height="50" class="a"/><rect x="445" y="60" width="4" height="50" class="a"/><rect x="611" y="60" width="4" height="50" class="a"/><rect x="758" y="60" width="4" height="50" class="a"/>
-  <text x="505" y="91" class="ts sub" text-anchor="middle">待っている</text>
-  <rect x="133.3" y="160" width="706.7" height="50" class="h"/>
-  <path d="M174,160 V210 M300,160 V210 M447,160 V210 M613,160 V210 M760,160 V210" stroke="#fff" stroke-width="2"/>
-  <text x="530" y="191" class="ts on" text-anchor="middle">読んでいる</text>
-  <path d="M120,235 H840" class="ln"/>
-  <g class="tx" text-anchor="middle"><text x="120" y="255">9:00</text><text x="200" y="255">10:00</text><text x="280" y="255">11:00</text><text x="360" y="255">12:00</text><text x="440" y="255">13:00</text><text x="520" y="255">14:00</text><text x="600" y="255">15:00</text><text x="680" y="255">16:00</text><text x="760" y="255">17:00</text><text x="840" y="255">18:00</text></g>
-  <rect x="120" y="290" width="18" height="18" class="a"/><text x="146" y="305" class="ts">AI が手を動かした時間　合計 55 分</text>
-  <rect x="120" y="322" width="18" height="18" class="w"/><text x="146" y="337" class="ts">残りの 8 時間あまり</text>
-  <text x="704" y="318" class="ts" text-anchor="end">まだ読んでいない PR</text>
-  <use href="#i-pr" x="716" y="292" width="24" height="30"/><use href="#i-pr" x="746" y="292" width="24" height="30"/><use href="#i-pr" x="776" y="292" width="24" height="30"/>
-</svg>
-```
-
-PR は 10 分で来る。読むのに 30 分。直しは 1 分で来て、また読む。人が承認しないと merge できないからです。
-
-※ 説明のために作った例です。
-
-## AI が 10 倍速くなっても
+## 律速はレビュー 60 分：AI 10 倍でも同じ
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <text x="230" y="40" class="ts sub">PR 1 本が merge されるまで（1 周）</text>
   <g class="t" text-anchor="end"><text x="210" y="102">いま</text><text x="210" y="192">AI が 10 倍</text><text x="210" y="282">AI が 100 倍</text></g>
   <rect x="230" y="70" width="88" height="50" class="a"/><text x="274" y="101" class="ts on" text-anchor="middle">AI 11 分</text>
-  <rect x="318" y="70" width="480" height="50" class="h"/><text x="558" y="101" class="ts on" text-anchor="middle">人の確認 60 分</text>
+  <rect x="318" y="70" width="480" height="50" class="h"/><text x="558" y="101" class="ts on" text-anchor="middle">人のレビュー 60 分</text>
   <text x="810" y="102" class="t">71 分</text>
   <rect x="230" y="160" width="8.8" height="50" class="a"/>
-  <rect x="238.8" y="160" width="480" height="50" class="h"/><text x="478.8" y="191" class="ts on" text-anchor="middle">人の確認 60 分</text>
+  <rect x="238.8" y="160" width="480" height="50" class="h"/><text x="478.8" y="191" class="ts on" text-anchor="middle">人のレビュー 60 分</text>
   <text x="730" y="192" class="t">61 分</text>
   <rect x="230" y="250" width="2" height="50" class="a"/>
-  <rect x="232" y="250" width="480" height="50" class="h"/><text x="472" y="281" class="ts on" text-anchor="middle">人の確認 60 分</text>
+  <rect x="232" y="250" width="480" height="50" class="h"/><text x="472" y="281" class="ts on" text-anchor="middle">人のレビュー 60 分</text>
   <text x="724" y="282" class="t">60 分</text>
   <text x="440" y="355" class="tl" text-anchor="middle">縮むのは、青だけ</text>
 </svg>
 ```
 
-ループの速さは、いちばん遅い所で決まります。速くなるのは、AI があなたを待つ時間の割合だけです。
+PR は 10 分で来て、レビューと直しの往復に 60 分。AI が 10 倍速くなっても、縮むのは AI の時間だけです。
 
-## 同じ所で止まっている人は多い
+※ 説明のために作った数字です。AI 11 分は、PR を作る 10 分と直し 1 分。
+
+## 調査：85% が「ボトルネックはレビュー」
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -233,7 +183,7 @@ PR は 10 分で来る。読むのに 30 分。直しは 1 分で来て、また
 
 出典: GitLab *AI Accountability Report*（2026）のプレスリリース（2026-06-23）による。調査は The Harris Poll、n=1,528。
 
-## 外せば、速くなる
+## 人のレビューを AI レビューに替えると速い
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -245,22 +195,22 @@ PR は 10 分で来る。読むのに 30 分。直しは 1 分で来て、また
   <path d="M150,180 H186" class="ln" marker-end="url(#arr)"/><path d="M310,180 H346" class="ln" marker-end="url(#arr)"/><path d="M470,180 H506" class="ln" marker-end="url(#arr)"/><path d="M650,180 H686" class="ln" marker-end="url(#arr)"/>
   <path d="M750,210 V280 H90 V214" class="ln" marker-end="url(#arr)"/>
   <rect x="510" y="40" width="140" height="56" rx="6" class="hl dash"/>
-  <text x="580" y="74" class="t hc" text-anchor="middle">人が確かめる</text>
+  <text x="580" y="74" class="t hc" text-anchor="middle">人の approve</text>
   <use href="#i-no" x="636" y="26" width="28" height="28"/>
-  <text x="580" y="118" class="ts sub" text-anchor="middle">外して、AI に替えた</text>
+  <text x="580" y="118" class="ts sub" text-anchor="middle">外して、AI レビューに替えた</text>
   <text x="420" y="306" class="ts" text-anchor="middle">次の仕事へ。止まる所が無い</text>
 </svg>
 ```
 
-同じ輪から、人の確認を外して AI のレビューに替える。テストが通れば次へ。本当に速くなります。
+同じ輪から人の approve を外し、AI のレビューに替える。CI が通れば merge。本当に速くなります。
 
-## 同じ所で、読み違える
+## 同じ AI が実装もレビューも：同じ所を誤る
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <text x="40" y="34" class="t">頼んだこと：「10 月 1 日から 10 月 31 日」</text>
   <g class="tx" text-anchor="middle"><text x="400" y="86">1〜28 日</text><text x="515" y="86">29 日</text><text x="595" y="86">30 日</text><text x="675" y="86">31 日</text></g>
-  <g class="ts" text-anchor="end"><text x="310" y="123">使う人が思っていたこと</text><text x="310" y="183">AI が作った検索</text><text x="310" y="243">AI が書いたテスト</text><text x="310" y="303">AI のレビュー</text></g>
+  <g class="ts" text-anchor="end"><text x="310" y="123">ユーザーが思っていたこと</text><text x="310" y="183">AI が書いたクエリ</text><text x="310" y="243">AI が書いたテスト</text><text x="310" y="303">AI のレビュー</text></g>
   <rect x="330" y="95" width="140" height="44" class="h"/><rect x="480" y="95" width="70" height="44" class="h"/><rect x="560" y="95" width="70" height="44" class="h"/><rect x="640" y="95" width="70" height="44" class="h"/>
   <rect x="330" y="155" width="140" height="44" class="a"/><rect x="480" y="155" width="70" height="44" class="a"/><rect x="560" y="155" width="70" height="44" class="a"/><rect x="641" y="156" width="68" height="42" class="box"/>
   <rect x="330" y="215" width="140" height="44" class="a"/><rect x="480" y="215" width="70" height="44" class="a"/><rect x="560" y="215" width="70" height="44" class="a"/><rect x="641" y="216" width="68" height="42" class="box"/>
@@ -272,38 +222,38 @@ PR は 10 分で来る。読むのに 30 分。直しは 1 分で来て、また
 </svg>
 ```
 
-テストを書いたのも、レビューしたのも、作ったのと同じ AI です。だから、同じ所で同じように読み違えます。
+テストを書いたのも、レビューしたのも、実装したのと同じ AI です。だから、同じ所で同じように読み違えます。
 
-## 間違いの上に、速く積む
+## 人を外すと、バグも速く積み上がる
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="230" y="22" width="300" height="42" rx="6" fill="#fbe9d7" class="hl"/>
   <text x="380" y="50" class="t hc" text-anchor="middle">「31 日のデータが出ない」</text>
-  <text x="218" y="50" class="ts sub" text-anchor="end">使う人</text>
+  <text x="218" y="50" class="ts sub" text-anchor="end">ユーザー</text>
   <path d="M150,345 V96" class="ln" marker-end="url(#arr)"/>
   <text x="138" y="230" class="ts sub" text-anchor="end">日が経つ</text>
-  <rect x="200" y="300" width="360" height="42" class="x"/><text x="380" y="327" class="ts on" text-anchor="middle">31 日を含めない検索</text>
+  <rect x="200" y="300" width="360" height="42" class="x"/><text x="380" y="327" class="ts on" text-anchor="middle">31 日を含めないクエリ</text>
   <g class="xw" stroke="#c62828" stroke-width="1.5">
     <rect x="200" y="255" width="176" height="40"/><rect x="384" y="255" width="176" height="40"/>
     <rect x="220" y="210" width="102" height="40"/><rect x="329" y="210" width="102" height="40"/><rect x="438" y="210" width="102" height="40"/>
     <rect x="250" y="165" width="126" height="40"/><rect x="384" y="165" width="126" height="40"/>
     <rect x="300" y="120" width="160" height="40"/>
   </g>
-  <text x="380" y="145" class="ts sub" text-anchor="middle">その上に積んだ仕事</text>
+  <text x="380" y="145" class="ts sub" text-anchor="middle">その上に積んだ PR</text>
   <path d="M585,120 H600 V342 H585" class="xl"/>
   <text x="614" y="237" class="t xc">ここまで全部、直すもの</text>
 </svg>
 ```
 
-人が気づくのは、使う人に言われたときです。作るのが速いぶんだけ、間違いも速く増えます。
+人が気づくのは、ユーザーに言われたときです。作るのが速いぶんだけ、バグも速く積み上がります。
 
-## 中身の無い仕事も、速く増える
+## 実例：調査 AI の報告 55 版、14 版は無駄
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <text x="50" y="50" class="t">1 つの報告の書き直し　55 回</text>
-  <text x="50" y="78" class="ts sub">調べ物を任された AI が書いた報告</text>
+  <text x="50" y="78" class="ts sub">調査担当のエージェントが書いた報告</text>
   <g class="a">
     <rect x="50" y="120" width="11" height="140"/><rect x="64" y="120" width="11" height="140"/><rect x="78" y="120" width="11" height="140"/><rect x="92" y="120" width="11" height="140"/><rect x="106" y="120" width="11" height="140"/><rect x="120" y="120" width="11" height="140"/><rect x="134" y="120" width="11" height="140"/><rect x="148" y="120" width="11" height="140"/><rect x="162" y="120" width="11" height="140"/><rect x="176" y="120" width="11" height="140"/>
     <rect x="190" y="120" width="11" height="140"/><rect x="204" y="120" width="11" height="140"/><rect x="218" y="120" width="11" height="140"/><rect x="232" y="120" width="11" height="140"/><rect x="246" y="120" width="11" height="140"/><rect x="260" y="120" width="11" height="140"/><rect x="274" y="120" width="11" height="140"/><rect x="288" y="120" width="11" height="140"/><rect x="302" y="120" width="11" height="140"/><rect x="316" y="120" width="11" height="140"/>
@@ -324,11 +274,11 @@ PR は 10 分で来る。読むのに 30 分。直しは 1 分で来て、また
 </svg>
 ```
 
-調べる係・まとめる係と、何体もの AI に仕事を分けて頼み合わせた場で起きたことです。間違いだけではありません。中身の無い仕事も、同じ速さで増えます。
+役割を分けた複数のエージェントが、互いに依頼し合う場で起きたことです。間違いだけでなく、中身の無い仕事も同じ速さで増えます。
 
 出典: 著者が AI を働かせている場の共通の決まりに、この件を受けて足された理由書き（agent-hub-roles CLAUDE.md、2026-09-21）。
 
-## どちらにいても、挟まれる
+## 人が見れば遅く、外せば間違いが増える
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -349,7 +299,7 @@ PR は 10 分で来る。読むのに 30 分。直しは 1 分で来て、また
 
 あなたのチームは、たぶんもう、どちらかにいます。PR によって、行き来しているかもしれません。
 
-## 線をどこに引いても
+## 「大事な PR だけ人が見る」も解決しない
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -373,7 +323,13 @@ PR は 10 分で来る。読むのに 30 分。直しは 1 分で来て、また
 
 「大事な PR だけ見る」は、あいだを取った答えに見えます。でも、1 本ずつ見ると、どの PR もどちらかの側にいます。
 
-## 待っていても、消えない
+※ p.2 の「選んだ所だけ人」とは別です。p.2 では見ない PR も作成者以外の AI が判定し（第 2 章）、人が見るのは大事さでなく、revert できない操作と AI の権限緩和です（第 3 章）。
+
+<!--
+第 19 版（@reader msg c2f1b9fb の (5)）: 第 0 章を先に置いたら、p.2 を持ったまま読んだ 6 人中 3 人がここで「p.2 の『選んだ所だけ人』と同じでは？」と p.2 に戻り、ほどけたのは 1 人だけだった。違いは 2 つ（見ない側を誰が判定するか・線を何で引くか）で、どちらも第 2・3 章の題にある。ぶつかる所で、行き先だけ注に置いた。本文と絵は変えていない。
+-->
+
+## AI が賢くなっても、待ちと間違いは残る
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -395,9 +351,9 @@ PR は 10 分で来る。読むのに 30 分。直しは 1 分で来て、また
 
 AI が賢く速くなるのを待っても、この板挟みは消えません。
 
-※ 左は p.9 の数字（AI 11 分・人 60 分）から出した。60 ÷ 71 で 85%。p.10 の 85%（調査の数字）とは別の数字で、たまたま同じ値。右は、間違える割合が変わらないとした場合。
+※ 左は p.8 の数字（AI 11 分・人 60 分）から出した。60 ÷ 71 で 85%。p.9 の 85%（調査の数字）とは別の数字で、たまたま同じ値。右は、間違える割合が変わらないとした場合。
 
-## なぜ挟まれるのか：全部は見られない
+## 原因 1：試行が多すぎて人が全部見られない
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -419,12 +375,12 @@ AI が賢く速くなるのを待っても、この板挟みは消えません�
 
 実行が安いから、何度でも試せる。何度でも試せるから、人が全部は見られない。
 
-## なぜ挟まれるのか：同じ穴が並ぶ
+## 原因 2：同じ文脈の出力には同じ穴がある
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="345" y="10" width="250" height="36" rx="6" class="a"/>
-  <text x="470" y="34" class="ts on" text-anchor="middle">同じ AI から出た 3 つ</text>
+  <text x="470" y="34" class="ts on" text-anchor="middle">同じ文脈の AI から出た 3 つ</text>
   <path d="M400,46 L330,70 M470,46 V70 M540,46 L610,70" class="lt"/>
   <g fill="#dbe7f5" stroke="#2f6fb3" stroke-width="2">
     <rect x="300" y="70" width="60" height="240" rx="8"/><rect x="440" y="70" width="60" height="240" rx="8"/><rect x="580" y="70" width="60" height="240" rx="8"/>
@@ -437,13 +393,13 @@ AI が賢く速くなるのを待っても、この板挟みは消えません�
   <path d="M140,200 H820" stroke="#c62828" stroke-width="4" marker-end="url(#arr-x)"/>
   <text x="140" y="186" class="ts xc">31 日の読み違い</text>
   <text x="830" y="186" class="ts xc" text-anchor="end">通り抜ける</text>
-  <g class="ts" text-anchor="middle"><text x="330" y="338">作る</text><text x="470" y="338">テストを書く</text><text x="610" y="338">レビュー</text></g>
+  <g class="ts" text-anchor="middle"><text x="330" y="338">実装</text><text x="470" y="338">テストを書く</text><text x="610" y="338">レビュー</text></g>
 </svg>
 ```
 
-出力はばらつく。でも、同じ元から出たものは、同じ所に穴がある。31 日の件はこれでした。
+出力はばらつく。でも、同じ会話と前提を積んだ AI から出たものは、同じ所に穴がある。31 日のバグはこれでした。
 
-## なぜ挟まれるのか：使ったぶんは戻らない
+## 原因 3：やり直しが計算と費用を食う
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -465,25 +421,53 @@ AI が賢く速くなるのを待っても、この板挟みは消えません�
 
 実行の総量には上限がある。だから、人を外して速く回すことにも、値段がつきます。
 
-## 条文では、前提の 3 文にある
+## AA の目的＝板挟みへの答え
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <text x="40" y="26" class="ts sub">AA の条文から逐語（左の札）と、この本での意味（右）</text>
+  <rect x="40" y="40" width="800" height="100" rx="10" class="soft"/>
+  <rect x="40" y="40" width="10" height="100" class="h"/>
+  <text x="70" y="72" class="t" font-weight="700">目的</text><text x="70" y="94" class="tx">条文の目的の表</text>
+  <text x="200" y="74" style="font-size:22px">人間の判断を、最も価値のある判断に使い切る</text>
+  <text x="200" y="118" class="ts hc">全部の PR を見るのでも、人を外すのでもない。人の判断の置き場所を選ぶ</text>
+  <rect x="40" y="152" width="800" height="100" rx="10" class="soft"/>
+  <rect x="40" y="152" width="10" height="100" class="a"/>
+  <text x="70" y="184" class="t" font-weight="700">Agentic</text><text x="70" y="206" class="tx">条文の冒頭</text>
+  <text x="200" y="186" style="font-size:22px">AIエージェントが開発の実行主体となる環境</text>
+  <text x="200" y="230" class="ts ac">作るのは主に AI エージェント。人は作業から判断の側へ回る</text>
+  <rect x="40" y="264" width="800" height="100" rx="10" class="soft"/>
+  <rect x="40" y="264" width="10" height="100" fill="#555"/>
+  <text x="70" y="296" class="t" font-weight="700">Agile</text><text x="70" y="318" class="tx">条文の冒頭</text>
+  <text x="200" y="291" style="font-size:19px">特定の宣言や枠組みではなく、素早さそのものを指す。</text>
+  <text x="200" y="316" style="font-size:19px" textLength="620" lengthAdjust="spacingAndGlyphs">前提が変わって答えが変わる部分だけを書き、変わらない部分は書かない。</text>
+  <text x="200" y="348" class="ts" textLength="630" lengthAdjust="spacingAndGlyphs">スクラム等の型の名前ではない。決まりは、変わった前提の所だけ書き直す（前提は次のページ）</text>
+</svg>
+```
+
+p.2 の「人の判断の置き場所を選ぶ」は、p.14 の板挟みへの答えです。条文では目的の 1 行です。第 2 章から、置き場所を決めていきます。
+
+出典: AA の条文は、著者が書いた開発の決まり（草稿）。目的は条文の目的の表、Agentic・Agile は条文の冒頭の 2 文。使う条文は、この本の中でその場に引く。
+
+## 3 原因＝AA の前提
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="40" y="60" width="800" height="230" rx="10" class="soft"/>
-  <text x="70" y="98" class="ts sub">AA（Agentic Agile。この本が説明する開発のやり方）の条文　§2 前提（全文）</text>
+  <text x="70" y="98" class="ts sub">AA の条文　前提（全文）</text>
   <text x="70" y="150" style="font-size:22px" textLength="440" lengthAdjust="spacingAndGlyphs">実行は安く、速いが、総量には上限がある。</text>
   <text x="70" y="205" style="font-size:22px" textLength="462" lengthAdjust="spacingAndGlyphs">希少なのは人間の判断と、実行の総量である。</text>
   <text x="70" y="260" style="font-size:22px" textLength="616" lengthAdjust="spacingAndGlyphs">出力は確率的にばらつき、同じ生成元は同じ誤りを共有する。</text>
-  <path d="M70,158 H246" class="al"/><text x="248" y="176" class="tx" text-anchor="end">p.18 全部は見られない</text>
-  <path d="M290,158 H488" class="xl"/><text x="488" y="176" class="tx" text-anchor="end">p.20 使ったぶんは戻らない</text>
-  <path d="M180,213 H290" class="hl"/><text x="290" y="231" class="tx" text-anchor="end">p.18 全部は見られない</text>
-  <path d="M334,268 H664" class="al"/><text x="664" y="286" class="tx" text-anchor="end">p.19 同じ穴が並ぶ</text>
+  <path d="M70,158 H246" class="al"/><text x="248" y="176" class="tx" text-anchor="end">p.17 原因 1</text>
+  <path d="M290,158 H488" class="xl"/><text x="488" y="176" class="tx" text-anchor="end">p.19 原因 3</text>
+  <path d="M180,213 H290" class="hl"/><text x="290" y="231" class="tx" text-anchor="end">p.17 原因 1</text>
+  <path d="M334,268 H664" class="al"/><text x="664" y="286" class="tx" text-anchor="end">p.18 原因 2</text>
 </svg>
 ```
 
-この本が説明するやり方を AA（Agentic Agile）と呼びます。この章で見た板挟みは、AA の条文では、この 3 文に入っています。
+原因 1〜3 は、AA の条文では前提の 3 文です。前のページの「前提が変わって答えが変わる部分」が、この 3 文です。
 
-## この本が書くこと
+## この本の内容：人を待たずに回す方法
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -500,11 +484,31 @@ AI が賢く速くなるのを待っても、この板挟みは消えません�
   <text x="520" y="303" class="t ac" text-anchor="middle" font-weight="700">第 2 章　ほどき方</text>
   <path d="M655,296 H700" class="ln dash" marker-end="url(#arr)"/>
   <rect x="705" y="268" width="150" height="56" rx="8" fill="#fff" class="al"/>
-  <text x="780" y="303" class="ts ac" text-anchor="middle">第 9 章　輪が育つ</text>
+  <text x="780" y="303" class="ts ac" text-anchor="middle">第 8 章　輪が育つ</text>
 </svg>
 ```
 
 この本は、板挟みのほどき方と、回すほど人を待たなくなる輪を書きます。各章で、はじめの輪を描き直して比べます。
 
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)
+※ 組み方は、各章の終わりの「実装イメージ」と、通しの 1 枚の巻末 p.163 に。
+
+## 実装イメージ：出発点の組み方
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <rect x="40" y="40" width="160" height="70" rx="6" class="h"/><text x="120" y="82" class="t on" text-anchor="middle">人 1 人</text>
+  <rect x="340" y="40" width="200" height="70" rx="6" class="a"/><text x="440" y="72" class="ts on" text-anchor="middle">AI のセッション</text><text x="440" y="96" class="ts on" text-anchor="middle">1 つ</text>
+  <path d="M200,64 H336" class="ln" marker-end="url(#arr)"/><text x="268" y="54" class="tx" text-anchor="middle">会話で頼む</text>
+  <path d="M540,75 H636" class="ln" marker-end="url(#arr)"/>
+  <use href="#i-pr" x="642" y="56" width="30" height="38"/><text x="690" y="82" class="ts">PR・テスト</text>
+  <path d="M657,112 C657,200 200,170 130,116" class="hl" marker-end="url(#arr)"/>
+  <text x="400" y="190" class="ts hc" text-anchor="middle">人が全部の PR を読み、merge を押す</text>
+  <rect x="40" y="226" width="800" height="104" rx="8" fill="#fff" class="lt dash"/>
+  <text x="60" y="256" class="ts sub">まだ無い物</text>
+  <g class="ts"><text x="60" y="288">判定する別の AI（第 2 章）・線の右の表（第 3 章）・依頼ファイル（第 4 章）</text>
+    <text x="60" y="316">役ごとの権限設定（第 6 章）・決まりを変える手順（第 9 章）</text></g>
+  <text x="440" y="362" class="ts sub" text-anchor="middle">第 2 章から、章の終わりで 1 つずつ足していく</text>
+</svg>
+```
+
+出発点は、AI のセッション 1 つと人 1 人です。AI が PR を出し、人が全部読んで merge します。各章の終わりで、ここに 1 つずつ足します。

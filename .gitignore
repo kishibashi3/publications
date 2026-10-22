@@ -25,3 +25,5 @@ npm-debug.log*
 
 # AA・EAA 教科書の build 出力
 drafts/aa-eaa-textbook/build/
+# 読み手に出さない作業用の文書（計画・控え・試作・測定の記録など）は名前をドットで始める。どの branch でも git に載らない
+.*.md
