@@ -25,3 +25,5 @@ npm-debug.log*
 
 # AA・EAA 教科書の build 出力
 drafts/aa-eaa-textbook/build/
+# AA 教科書の書き手の計画は repo の外に置く（build.mjs の checkPrivate が、このディレクトリに在れば止める）
+drafts/aa-eaa-textbook/plan.md
