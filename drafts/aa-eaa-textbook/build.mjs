@@ -324,14 +324,19 @@ export function render(files, extraHead = '', full = false) {
 
 // 公開 repo に出さない語の検査。語の一覧は repo の外に置く（一覧そのものが出してはいけない語のため）。
 // 一覧: 環境変数 AA_PRIVATE_WORDS のファイル、無ければ ホーム/app/aa-eaa-textbook/private-words.txt。1 行 1 個の正規表現、# で始まる行は無視。
-// build のたびに、このディレクトリの全ファイル（node_modules・build・package-lock.json を除く）を引き、当たれば止まる。
-// 書き手の計画（plan.md）はこのディレクトリに置かない。置いてあれば build が止まる（置き場所は repo の外。git に載せない）
+// build のたびに、このディレクトリの全ファイル（node_modules・build・package-lock.json・ドットで始まるファイルを除く）を引き、当たれば止まる。
+// 読み手に出さない作業用の文書（計画・控え・試作など）は名前をドットで始める（.plan.md など）。.gitignore の .*.md で git に載らない。
+// ドット無しの plan.md が在れば止まる。ドットで始まる文書が git から外れていなければ止まる。
 export function checkPrivate() {
-  if (fs.existsSync(path.join(ROOT, 'plan.md'))) fail('plan.md がある（repo の外に置く）');
+  if (fs.existsSync(path.join(ROOT, 'plan.md'))) fail('plan.md がある（.plan.md にする）');
+  for (const n of fs.readdirSync(ROOT).filter(n => n.startsWith('.') && n.endsWith('.md'))) {
+    try { execFileSync('git', ['check-ignore', '-q', n], { cwd: ROOT }); }
+    catch { fail(`${n} が git から外れていない（.gitignore の .*.md を確かめる）`); }
+  }
   const list = process.env.AA_PRIVATE_WORDS || path.join(os.homedir(), 'app', 'aa-eaa-textbook', 'private-words.txt');
   if (!fs.existsSync(list)) fail(`出さない語の一覧が無い: ${path.basename(list)}（AA_PRIVATE_WORDS で場所を指定）`);
   const res = fs.readFileSync(list, 'utf8').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#')).map(l => new RegExp(l));
-  const walk = d => fs.readdirSync(d).filter(n => !['node_modules', 'build'].includes(n)).flatMap(n =>
+  const walk = d => fs.readdirSync(d).filter(n => !['node_modules', 'build'].includes(n) && !n.startsWith('.')).flatMap(n =>
     fs.statSync(path.join(d, n)).isDirectory() ? walk(path.join(d, n)) : [path.join(d, n)]);
   for (const f of walk(ROOT).filter(f => path.basename(f) !== 'package-lock.json')) {
     fs.readFileSync(f, 'utf8').split('\n').forEach((l, i) => {
