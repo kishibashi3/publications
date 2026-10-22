@@ -557,6 +557,3 @@ O は人の判断そのものではない（operator は AI）。だから文は
 ```
 
 札 1 枚は、以後の周すべてに効きます。間違った札も同じです。だから、札を足す手続きは重くしてあります。それが第 9 章です。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

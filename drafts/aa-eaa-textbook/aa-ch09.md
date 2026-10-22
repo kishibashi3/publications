@@ -451,6 +451,3 @@ LGTM の付いた PR を merge に回す見張りが、4 か月止まってい�
 この条文を守るとは：決まりの変更を PR だけで行い、出した者に merge させないことです。PR 本文には、何を見て変えたかの欄を必ず置きます。
 
 ※ 「なぜ」欄の無い決まりの PR は、判定する AI が返す（roles/judge.md に書く）。旧を残して直す手順は p.154。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

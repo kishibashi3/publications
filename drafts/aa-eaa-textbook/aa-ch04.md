@@ -532,6 +532,3 @@ AA も先に書きます。ただ先に書くのは、作る物の中身では�
 ```
 
 書いて渡し、1 回うまく通りました。次も通るのでしょうか。それが第 5 章です。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

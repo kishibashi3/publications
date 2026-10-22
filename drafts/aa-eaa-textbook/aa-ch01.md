@@ -512,6 +512,3 @@ p.2 の「人の判断の置き場所を選ぶ」は、p.14 の板挟みへの�
 ```
 
 出発点は、AI のセッション 1 つと人 1 人です。AI が PR を出し、人が全部読んで merge します。各章の終わりで、ここに 1 つずつ足します。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

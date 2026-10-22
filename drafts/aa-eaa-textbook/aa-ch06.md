@@ -268,6 +268,3 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
 ```
 
 判定も権限も効いていても、1 回の変更が大きいと、戻すときに巻き込む物が増えます。どう刻むかが第 7 章です。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

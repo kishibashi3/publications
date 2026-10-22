@@ -104,6 +104,3 @@ AA（Agentic Agile）は、AI エージェントが作る開発で、人の判�
 <!-- 2026-10-19（@ope-ultp1635 msg be924e53 GO）: p.62 の測定で注の「解説 P1」が「解説の 1 ページ目」と読まれた（@reader 2026-10-19 p62）。注の 22 か所を「P1 の解説」「解説の §3」に変え、「解説」が何かをここで 1 回言う -->
 
 ※ 各章の終わりに、条文を現場でどう組むかの「実装イメージ」を置いた。通しの形は巻末 p.163 に 1 枚で。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

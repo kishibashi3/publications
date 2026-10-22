@@ -35,7 +35,3 @@
 最初に作るのは右上の 3 つです。役は人・作る AI・判定する AI に分け、線の右と決まりの変更だけ人が通します。大きな場では、常駐の AI チームで回す形もあります。
 
 ※ 始めは第 1 章の出発点から、表と依頼ファイルを足すだけでよい。判定する AI と自動 merge は、表ができてから足す。
-
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

@@ -26,7 +26,6 @@ export const BODY_MAX = 80;   // 1 ページの文の上限（字。空白と md
 export const NOTE_MAX = 90;   // 注の上限
 const COURSE_MAX = 40;        // 読み方の 1 枚のコースの上限
 const HEAD_MAX = 20;          // 見出しの上限
-const SIGNATURE = '@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)';
 
 export class BuildError extends Error {}
 const fail = msg => { throw new BuildError(msg); };
@@ -54,14 +53,6 @@ function figure(kind, src, where) {
 }
 
 // ---------- md → ページ ----------
-function dropSignature(md) {
-  const lines = md.replace(/\s+$/, '').split('\n');
-  if (lines.at(-1) !== SIGNATURE) return md;
-  lines.pop();
-  while (lines.length && lines.at(-1).trim() === '') lines.pop();
-  if (lines.at(-1) === '---') lines.pop();
-  return lines.join('\n') + '\n';
-}
 const pandoc = md => md.trim() ? execFileSync('pandoc', ['-f', 'gfm', '-t', 'html5', '--wrap=none'], { input: md, encoding: 'utf8' }) : '';
 
 export function readChapter(file) {
@@ -69,7 +60,7 @@ export function readChapter(file) {
   // 骨格の章: 書き手のメモに「build: skeleton」と書くと、絵がまだ無くてよい（代わりに枠を出す）。
   // 本物の絵を 1 枚入れたページは、その絵を出す。文の上限は本物と同じ（骨格のうちから守る）
   const skeleton = /<!--[\s\S]*?build:\s*skeleton[\s\S]*?-->/.test(raw);
-  let md = dropSignature(raw).replace(/<!--[\s\S]*?-->/g, '');
+  let md = raw.replace(/<!--[\s\S]*?-->/g, '');
   const name = path.basename(file);
   const h1 = md.match(/^# (.+)$/m) || fail(`${name}: 章の題（# …）が無い`);
   const parts = md.split(/^## /m);
@@ -244,7 +235,7 @@ const FRONT = path.join(ROOT, 'aa-yomikata.md');
 const chNo = ch => Number((ch.title.match(/^第 (\d+) 章/) || fail(`${ch.name}: 章題が「第 N 章」で始まらない`))[1]);
 function readFront(chs) {
   chs = chs.filter(ch => !ch.appendix);
-  const md = dropSignature(fs.readFileSync(FRONT, 'utf8')).replace(/<!--[\s\S]*?-->/g, '');
+  const md = fs.readFileSync(FRONT, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
   const where = path.basename(FRONT);
   const title = (md.match(/^## (.+)$/m) || fail(`${where}: 題（## …）が無い`))[1].trim();
   if (countChars(title) > HEAD_MAX) fail(`${where}: 見出しが ${countChars(title)} 字（上限 ${HEAD_MAX}）`);
@@ -323,7 +314,7 @@ export function render(files, extraHead = '', full = false) {
 }
 
 // 公開 repo に出さない語の検査。語の一覧は repo の外に置く（一覧そのものが出してはいけない語のため）。
-// 一覧: 環境変数 AA_PRIVATE_WORDS のファイル、無ければ ホーム/app/aa-eaa-textbook/private-words.txt。1 行 1 個の正規表現、# で始まる行は無視。
+// 一覧: 環境変数 AA_PRIVATE_WORDS のファイル、無ければ ホーム/app/aa-eaa-textbook/private-words.txt。1 行 1 個の正規表現（大文字小文字は区別しない）、# で始まる行は無視。
 // build のたびに、このディレクトリの全ファイル（node_modules・build・package-lock.json・ドットで始まるファイルを除く）を引き、当たれば止まる。
 // 読み手に出さない作業用の文書（計画・控え・試作など）は名前をドットで始める（.plan.md など）。.gitignore の .*.md で git に載らない。
 // ドット無しの plan.md が在れば止まる。ドットで始まる文書が git から外れていなければ止まる。
@@ -335,7 +326,7 @@ export function checkPrivate() {
   }
   const list = process.env.AA_PRIVATE_WORDS || path.join(os.homedir(), 'app', 'aa-eaa-textbook', 'private-words.txt');
   if (!fs.existsSync(list)) fail(`出さない語の一覧が無い: ${path.basename(list)}（AA_PRIVATE_WORDS で場所を指定）`);
-  const res = fs.readFileSync(list, 'utf8').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#')).map(l => new RegExp(l));
+  const res = fs.readFileSync(list, 'utf8').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#')).map(l => new RegExp(l, 'i'));
   const walk = d => fs.readdirSync(d).filter(n => !['node_modules', 'build'].includes(n) && !n.startsWith('.')).flatMap(n =>
     fs.statSync(path.join(d, n)).isDirectory() ? walk(path.join(d, n)) : [path.join(d, n)]);
   for (const f of walk(ROOT).filter(f => path.basename(f) !== 'package-lock.json')) {

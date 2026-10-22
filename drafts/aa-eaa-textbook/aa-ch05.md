@@ -278,6 +278,3 @@ AI からの報告です。この報告だけで merge してよいでしょう�
 ```
 
 判定が見るのは、出来上がった物だけです。作る途中で AI が何を読み、どこへ送ったかは、残るとは限りません。それが第 6 章です。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

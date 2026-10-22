@@ -279,6 +279,3 @@ AI の権限を緩める変更は、どれだけ小さく刻んでも人が通�
 ```
 
 判定も、円を広げるのも、床も、作った AI の外で決めました。なぜ同じ形が何度も出るのか。答えは、4 枚を書き足していく第 8 章にあります。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

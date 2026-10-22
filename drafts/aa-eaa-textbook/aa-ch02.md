@@ -453,6 +453,3 @@ merge する AI に聞かれ、書いた AI は「文章は良い」の意味で
 ```
 
 人は輪の外に出ました。でも、revert できない操作の手前には、人を残すかもしれません。それが第 3 章です。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)

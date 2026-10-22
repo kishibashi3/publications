@@ -562,6 +562,3 @@ D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の�
 ```
 
 人が毎日触るのは、「頼む」だけになりました。そこで何を渡せば、輪は人を待たずに回るのでしょう。それが第 4 章です。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)
