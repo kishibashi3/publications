@@ -1,0 +1,111 @@
+# 思考の本棚 (u-biosis Publications)
+
+> 一般システム論をベースにした個人の思考アーカイブ。創発文明論（Core）を起点に、社会物理学・統治・経済・応用へ展開する理論系の文書群と、AI エージェントの設計・実装を扱う文書群がある。
+
+このファイルは、AI に最初に読ませるための目次です。全文ではありません。本文は各リンク先を読んでください。
+
+- サイト: https://pubs.u-biosis.com/
+- ソース: https://github.com/kishibashi3/publications （`docs/` 配下の markdown が公開物の原本。`drafts/` は未公開の草稿で、公開物ではない）
+- 言語: 本文は日本語が主。Pure Agent OS Lab と一部の補論は英語。
+
+## How to read this site
+
+- **公開されていることは、現在の正本であることを意味しない。** 文書ごとの身分（正本・補助・旧版など）はまだ決まっていない。身分の集合と付け方は issue #116 で設計中。
+- 理論系（とくに Core）には、整合性に関する未解決の指摘が open issue として多数ある。主張を引用・依拠する前に、関連 issue を確認すること: https://github.com/kishibashi3/publications/issues
+- 下の一覧で「未決」と書いたものは、正本の形が決まっていない。決まっていないものを正本として扱わないこと。
+
+## Current revisions
+
+- 価値論（Core 第6章「システム価値の定式化」と、Core 補足資料の価値関連文書）は、正本を「絶対値」とするか「基底価値 + 差分評価」とするかが未決（#114）。#114 によれば、Core / 補足資料には「外部基準を必要としない」「絶対的測定可能」といった強い表現が残っており、現在の著者見解は後者に近いが、確定していない。関連: #66, #73。
+- #66 など一部の指摘は、#114 の結論によって問題設定そのものが変わる（#114 本文）。修理順の整理は #69 / #113。
+- 下の一覧で文書の後ろに付けた issue 番号は例示であり、網羅ではない。
+- index / sidebar と実際の公開物にずれがある（#115）。このファイルは sidebar ではなく `docs/` の実ファイルから作った。
+
+## Suggested reading paths
+
+目的別に 3 つ。順序は各シリーズの章番号と、各文書が前提として名指している文書に沿っている。
+
+- 理論から読む: Core 序章〜第7章 → 社会物理学 → 民主主義v2（統治）→ 経済v2 → 応用
+- AI 設計から読む: AIエージェント設計概論（入門・序章〜第9章）→ AIエージェント実装概論（序章〜第11章）→ データエージェント設計 → オントロジー → Agent Authority Control Plane
+- 統治から読む: 民主主義v2（01〜06）→ 経済v2（01〜04）→ 必要に応じて Core 第6章
+
+## Core — 創発文明論
+
+あらゆる存在をシステムとして捉え、価値創造をその所以とするメタ科学の公理化の試み。
+
+- [創発文明論（目次）](https://pubs.u-biosis.com/core/)
+- [第6章 統合の倫理](https://pubs.u-biosis.com/core/06-systemic-value): 創発したサブシステムの価値の和としてシステム価値を定式化する。価値論の正本の形は未決（#114）
+
+Core 補足資料は 13 本。ここに載せたのは、目次から辿れない 8 本と、価値論に関わる 2 本（目次からも辿れる）。残り 3 本は Core の目次から辿れる。本論との関係・身分は未決（#116）。価値関連の文書は #114 の対象に含まれる。
+
+- [創発価値論](https://pubs.u-biosis.com/core/supplementary/emergence-value-theory-complete): 創発の総量と存続期間でシステムの価値を定量化する一般理論
+- [システム価値の定式化](https://pubs.u-biosis.com/core/supplementary/system-value-formula): 価値 = Σ(創発したサブシステムの価値) × 生存期間 の定義
+- [一般システム論 - 全学問のメタ](https://pubs.u-biosis.com/core/supplementary/general-systems-as-meta): 一般システム論を諸学問の上位に置く見方
+- [スケール不変の価値](https://pubs.u-biosis.com/core/supplementary/god-in-all-scales): 価値にスケールの上下はない、という主張（#73 で第6章との両立が問われている）
+- [観測可能性の限界](https://pubs.u-biosis.com/core/supplementary/observation-limits): システム論は観測可能な範囲でのみ有効
+- [カオスの淵の最適化](https://pubs.u-biosis.com/core/supplementary/chaos-edge-optimization): 創発を最大化するためにカオスの淵を維持する方法
+- [複雑性とカオスの淵](https://pubs.u-biosis.com/core/supplementary/complexity-visualization): 秩序相・カオス相・無秩序相の視覚的整理
+- [具象と抽象の往復運動](https://pubs.u-biosis.com/core/supplementary/concrete-abstract-oscillation): 具象と抽象を往復して考えを練る思考の方法論
+- [単純系→複雑系→単純系](https://pubs.u-biosis.com/core/supplementary/simple-complex-simple): 秩序と無秩序の両端が異なる理由で単純になる、システムの生と死
+- [価値の定量化手法](https://pubs.u-biosis.com/core/supplementary/value-quantification): 創発価値論の測定・運用面
+
+## Social Physics — 社会物理学
+
+一般システム論の公理から、社会や人間のふるまいを物理学の言語で記述する試み。
+
+- [社会物理学（目次）](https://pubs.u-biosis.com/social-physics/)
+- [社会温度論](https://pubs.u-biosis.com/social-physics/social-temperature): 社会のエントロピーを温度として定式化し、政治を温度調節機構として記述する（#75 に未解決の指摘あり）
+- [粒子的自己と波動的自己](https://pubs.u-biosis.com/social-physics/wave-particle-self): 自己の肉体と関係性の二重構造から利他主義を再定義する
+- [社会の過学習](https://pubs.u-biosis.com/social-physics/social-overfitting): 特定の歴史的経験に固着して汎化能力を失う社会の現象
+
+## Governance — 民主主義v2の設計
+
+v1 民主主義の構造的欠陥を特定し、原理からの演繹で v2 を設計する連作（01〜06）。
+
+- [民主主義v2の設計（目次・全体像）](https://pubs.u-biosis.com/governance/)
+
+同じディレクトリにある独立論考（sidebar では「分析・批評」）。v2 連作との関係は本文で明示されていない（#115）。
+
+- [イデオロギーを超えた生存戦略](https://pubs.u-biosis.com/governance/ideology-transcendence): 右翼も左翼も国家の生存戦略に過ぎない
+- [代議制民主主義の構造](https://pubs.u-biosis.com/governance/representative-democracy-reality): 「声を聞く」ことの物理的制約と情報の非対称性
+- [民主主義の再設計 — 平均余命連動投票力](https://pubs.u-biosis.com/governance/democracy-redesign): 投票力を平均余命に連動させる提案
+- [国家存続の優先性と防衛の論理](https://pubs.u-biosis.com/governance/national-survival): 国家の存続を他の価値の前提条件とみる
+- [グローバリズムと格差](https://pubs.u-biosis.com/governance/globalism-inequality): 国内のマネーフローの変化から格差を説明する
+- [民主主義の三本柱](https://pubs.u-biosis.com/governance/democracy-principles): 結果を引き受ける者が決定する、という正統性の原則
+- [民主主義 ≠ 多数決](https://pubs.u-biosis.com/governance/democracy-is-not-majority-rule): 民主主義の原理はプロフェッショナリズムへの委任の連鎖
+- [動的ガバナンス論](https://pubs.u-biosis.com/governance/dynamic-governance): 信頼を媒介とした自己強化ループとしてのガバナンス
+
+## Economy — 経済v2の設計
+
+社会の基本単位を家族として再定義する設計。本文自身が、制度設計は民主主義v2ほど詰められていないと述べている。
+
+- [経済v2の設計（目次・全体像）](https://pubs.u-biosis.com/economy/)
+- [観光立国ではなく、観光選別国へ](https://pubs.u-biosis.com/economy/tourism-selection): 文化ストックを摩耗させない観光の国家戦略
+
+## Applications — 応用
+
+創発文明論の枠組みを身近なシステムに当てはめる。処方箋ではなく構造の観察。
+
+- [応用（目次）](https://pubs.u-biosis.com/applications/)
+- [アジャイル開発とカオスの淵](https://pubs.u-biosis.com/applications/agile-chaos-edge): 開発チームをカオスの淵に維持して創発を最大化する
+- [教育システムと創発](https://pubs.u-biosis.com/applications/education-systems): 共通の土台づくりと創発の促進を別の仕事として設計する
+
+## AI — エージェント設計・実装
+
+- [AIエージェント設計概論（目次）](https://pubs.u-biosis.com/ai/agent-design/): エージェントを「文脈」「実行」「時間」の三軸で整理するシリーズ
+- [AIエージェント実装概論（目次）](https://pubs.u-biosis.com/ai/agent-implementation/): エージェントを壊さずに実装するための構造論（序章〜第11章）
+  - [補足 確率的システムの品質保証](https://pubs.u-biosis.com/ai/agent-implementation/chapter-quality-assurance): 確率的な LLM システムの品質保証の原則
+  - [補足 Quality by Design](https://pubs.u-biosis.com/ai/agent-implementation/chapter-quality-by-design): 検証可能なエージェントアーキテクチャの設計原則
+- [データエージェント設計（目次）](https://pubs.u-biosis.com/ai/data-agent-design/): データ層の正しさとエージェントのコンテキスト制約を分けて設計する
+- [オントロジー（目次）](https://pubs.u-biosis.com/ai/ontology/): 業務資料から抽出した語彙の記述を、要件定義・設計・データエージェントの起点にする
+- [Agent Authority Control Plane](https://pubs.u-biosis.com/ai/agent-authority-control-plane): Agent が外部世界に起こす効果を Agent の外側で強制・記録する統制面の構想。完成した方式の提案ではない（merge 時の残件は #126）
+- [Instruction Paging Pattern](https://pubs.u-biosis.com/ai/instruction-paging-pattern): LLM エージェントのコンテキスト汚染を構造で解決するパターン
+- [AIリテラシー（目次）](https://pubs.u-biosis.com/ai/literacy/): 生成AIリテラシー10 の地形図と具体的な地図（2 部）
+- [Pure Agent OS Lab](https://pubs.u-biosis.com/ai/pure-agent-os/): agent-hub とその運用層 Pure Agent OS の実験ノート（英語）
+
+## Not listed here
+
+- 目次ページから辿れる章・連作の個別ページは載せていない。各シリーズの目次ページを開くこと。ただし、正本の扱いに関わるもの（Core 第6章など）と、目次からリンクされていない文書は個別に載せた。
+- Agentic Agile / Enterprise Agentic Agile (EAA) の文書は、現時点でサイトに公開されていない。repo の `drafts/` にある草稿は公開物ではない。
+- 本文のない stub ページ、CHANGELOG、About / Contributing、AI の目次ページ（/ai/）はこの一覧に含めていない。
+- Research Notes（/notes/）は現時点で本文の公開物がない。
