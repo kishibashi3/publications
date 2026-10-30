@@ -1,5 +1,387 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
 
+/* ==========================================================================
+ * 思考の本棚 — 読み物としての体裁
+ *
+ * VitePress default theme の CSS 変数と .vp-doc の要素スタイルを上書きする。
+ * ページ個別の layout は持たない。全ページに同じ規則が効く。
+ * ========================================================================== */
+
+/* --------------------------------------------------------------------------
+ * 1. 文字
+ * ----------------------------------------------------------------------- */
+
 :root {
   --vp-font-family-base: 'Noto Serif JP', serif;
+  --vp-font-family-ui: system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic UI', sans-serif;
+  --vp-font-family-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Mono', Menlo, Consolas, monospace;
+
+  /* 本文 */
+  --pub-text-size: 17px;
+  --pub-text-leading: 2;
+  --pub-text-tracking: 0.04em;
+  /* 1 行の長さ。17px + 字送り 0.04em で全角およそ 38〜40 字 */
+  --pub-measure: 720px;
+}
+
+/* 画面の枠（nav・sidebar・目次・検索）は本文と分けてゴシックにする */
+.VPNav,
+.VPLocalNav,
+.VPSidebar,
+.VPDocAside,
+.VPDocFooter,
+.VPFooter,
+.DocSearch,
+.VPLocalSearchBox {
+  font-family: var(--vp-font-family-ui);
+}
+
+/* --------------------------------------------------------------------------
+ * 2. 配色 — 明: 生成りの紙と墨 / 暗: 夜の書斎（青みを抜いた炭色）
+ *    差し色は藍 1 色。明暗で同じ色相を保つ
+ * ----------------------------------------------------------------------- */
+
+:root {
+  --vp-c-bg: #fbf9f4;
+  --vp-c-bg-alt: #f4f1ea;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #efebe2;
+
+  --vp-c-text-1: #26241f;
+  --vp-c-text-2: #57534a;
+  --vp-c-text-3: #8a857a;
+
+  --vp-c-divider: #e3ded2;
+  --vp-c-border: #d6d0c2;
+  --vp-c-gutter: #e3ded2;
+
+  --vp-c-brand-1: #2c5a7a;
+  --vp-c-brand-2: #3a6d90;
+  --vp-c-brand-3: #2c5a7a;
+  --vp-c-brand-soft: rgba(44, 90, 122, 0.1);
+
+  --vp-code-bg: rgba(87, 83, 74, 0.08);
+  --vp-code-color: #8a3b2c;
+  --vp-code-block-bg: #f1ede4;
+
+  --pub-quote-bg: #f3efe6;
+  --pub-th-bg: #f1ede4;
+  --pub-rule: #c9c2b2;
+}
+
+.dark {
+  --vp-c-bg: #1b1a18;
+  --vp-c-bg-alt: #161513;
+  --vp-c-bg-elv: #23221f;
+  --vp-c-bg-soft: #262420;
+
+  --vp-c-text-1: #e8e3d8;
+  --vp-c-text-2: #b5afa2;
+  --vp-c-text-3: #847e72;
+
+  --vp-c-divider: #33302b;
+  --vp-c-border: #403c35;
+  --vp-c-gutter: #12110f;
+
+  --vp-c-brand-1: #8fb9d4;
+  --vp-c-brand-2: #a6c8de;
+  --vp-c-brand-3: #5f8fae;
+  --vp-c-brand-soft: rgba(143, 185, 212, 0.14);
+
+  --vp-code-bg: rgba(232, 227, 216, 0.08);
+  --vp-code-color: #e0a98f;
+  --vp-code-block-bg: #211f1c;
+
+  --pub-quote-bg: #23211e;
+  --pub-th-bg: #24221f;
+  --pub-rule: #4a463e;
+}
+
+::selection {
+  background: var(--vp-c-brand-soft);
+}
+
+/* --------------------------------------------------------------------------
+ * 3. 本文の版面
+ * ----------------------------------------------------------------------- */
+
+@media (min-width: 960px) {
+  .VPDoc .content .content-container.content-container {
+    max-width: var(--pub-measure);
+  }
+}
+
+.vp-doc {
+  font-size: var(--pub-text-size);
+  line-height: var(--pub-text-leading);
+  letter-spacing: var(--pub-text-tracking);
+  text-autospace: normal;
+  hanging-punctuation: allow-end;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+
+.vp-doc p,
+.vp-doc summary {
+  margin: 1.1em 0;
+}
+
+.vp-doc p {
+  line-height: var(--pub-text-leading);
+}
+
+.vp-doc ul,
+.vp-doc ol {
+  margin: 1.1em 0;
+}
+
+.vp-doc li + li {
+  margin-top: 0.35em;
+}
+
+.vp-doc li > p {
+  margin: 0.4em 0;
+}
+
+.vp-doc strong {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc a {
+  font-weight: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: color-mix(in srgb, var(--vp-c-brand-1) 40%, transparent);
+}
+
+.vp-doc a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* 見出しのアンカーリンクには下線を引かない */
+.vp-doc .header-anchor {
+  text-decoration: none;
+}
+
+.vp-doc hr {
+  margin: 3em auto;
+  width: 4em;
+  border: 0;
+  border-top: 1px solid var(--pub-rule);
+}
+
+/* 区切り線の直後の h2 は罫を重ねない */
+.vp-doc hr + h2 {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.vp-doc hr + h2 .header-anchor {
+  top: 0;
+}
+
+/* --------------------------------------------------------------------------
+ * 4. 見出し — 大きさの差より、上の余白で区切りを見せる
+ * ----------------------------------------------------------------------- */
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4 {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-feature-settings: 'palt';
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc h1 {
+  font-size: 2rem;
+  line-height: 1.45;
+  margin-bottom: 0.6em;
+}
+
+.vp-doc h2 {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin: 3.2em 0 1em;
+  padding-top: 1.4em;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc h3 {
+  font-size: 1.22rem;
+  line-height: 1.55;
+  margin: 2.4em 0 0.8em;
+}
+
+/* h3 に小さな差し色の印を付け、h2 との階層差を形でも示す */
+.vp-doc h3::before {
+  content: '';
+  display: inline-block;
+  width: 0.35em;
+  height: 0.35em;
+  margin: 0 0.55em 0.18em 0;
+  border-radius: 1px;
+  background: var(--vp-c-brand-1);
+  vertical-align: middle;
+}
+
+.vp-doc h4 {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 2em 0 0.6em;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc h2 .header-anchor {
+  top: 1.4em;
+}
+
+/* h1 直後の 1 段落（リード文）は少し大きく、色を落とす */
+.vp-doc h1 + p {
+  font-size: 1.08em;
+  color: var(--vp-c-text-2);
+}
+
+/* --------------------------------------------------------------------------
+ * 5. 引用
+ * ----------------------------------------------------------------------- */
+
+.vp-doc blockquote {
+  margin: 1.8em 0;
+  padding: 0.9em 1.3em;
+  border-left: 3px solid var(--vp-c-brand-3);
+  border-radius: 0 6px 6px 0;
+  background: var(--pub-quote-bg);
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc blockquote > p {
+  font-size: 0.96em;
+  line-height: 1.9;
+  margin: 0.5em 0;
+}
+
+.vp-doc blockquote > :first-child {
+  margin-top: 0;
+}
+
+.vp-doc blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+ * 6. 表 — 縦罫を外し、横罫だけで読ませる
+ * ----------------------------------------------------------------------- */
+
+.vp-doc table {
+  margin: 1.8em 0;
+  font-size: 0.9em;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  border-collapse: collapse;
+  border-top: 2px solid var(--pub-rule);
+  border-bottom: 2px solid var(--pub-rule);
+  /* VitePress 既定の display:block + overflow-x:auto は残す（狭い画面で横に流す） */
+}
+
+.vp-doc tr,
+.vp-doc tr:nth-child(2n) {
+  background-color: transparent;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: 0;
+  padding: 0.65em 1em;
+  vertical-align: top;
+  /* 狭い画面で 1 列が 2〜3 字に潰れないよう、最低幅を持たせる */
+  min-width: 7em;
+}
+
+.vp-doc th {
+  font-size: 0.95em;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  background-color: var(--pub-th-bg);
+  white-space: nowrap;
+}
+
+.vp-doc td code {
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------------------
+ * 7. コード
+ * ----------------------------------------------------------------------- */
+
+.vp-doc :not(pre) > code {
+  font-size: 0.86em;
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+  letter-spacing: 0;
+}
+
+.vp-doc div[class*='language-'] {
+  margin: 1.6em 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  letter-spacing: 0;
+}
+
+.vp-doc div[class*='language-'] code {
+  font-size: 0.82rem;
+  line-height: 1.75;
+}
+
+:root {
+  --vp-code-line-height: 1.75;
+  --vp-code-font-size: 0.82rem;
+}
+
+/* --------------------------------------------------------------------------
+ * 8. 枠まわり
+ * ----------------------------------------------------------------------- */
+
+.VPSidebar .text,
+.VPDocAsideOutline .outline-link {
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+ * 9. 狭い画面
+ * ----------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  :root {
+    --pub-text-size: 16px;
+    --pub-text-leading: 1.9;
+    --pub-text-tracking: 0.03em;
+  }
+
+  .vp-doc h1 {
+    font-size: 1.6rem;
+  }
+
+  .vp-doc h2 {
+    font-size: 1.32rem;
+    margin-top: 2.6em;
+  }
+
+  .vp-doc h3 {
+    font-size: 1.12rem;
+  }
+
+  .vp-doc blockquote {
+    padding: 0.8em 1em;
+  }
+
+  .vp-doc th,
+  .vp-doc td {
+    padding: 0.55em 0.8em;
+  }
 }
