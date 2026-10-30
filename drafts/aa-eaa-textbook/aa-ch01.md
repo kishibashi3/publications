@@ -505,6 +505,3 @@ AI が賢く速くなるのを待っても、この板挟みは消えません�
 ```
 
 この本は、板挟みのほどき方と、回すほど人を待たなくなる輪を書きます。各章で、はじめの輪を描き直して比べます。
-
----
-@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)
