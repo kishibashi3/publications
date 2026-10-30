@@ -19,7 +19,6 @@ const OUT = path.join(ROOT, 'build');
 export const BODY_MAX = 80;   // 1 ページの文の上限（字。空白と md の記号を除く）。plan §B.3
 export const NOTE_MAX = 90;   // 注の上限
 const HEAD_MAX = 20;          // 見出しの上限
-const SIGNATURE = '@writer-ja [bridge-claude2] (operator-supervised · k-ishibashi-ntv/agent-hub)';
 
 export class BuildError extends Error {}
 const fail = msg => { throw new BuildError(msg); };
@@ -47,18 +46,10 @@ function figure(kind, src, where) {
 }
 
 // ---------- md → ページ ----------
-function dropSignature(md) {
-  const lines = md.replace(/\s+$/, '').split('\n');
-  if (lines.at(-1) !== SIGNATURE) return md;
-  lines.pop();
-  while (lines.length && lines.at(-1).trim() === '') lines.pop();
-  if (lines.at(-1) === '---') lines.pop();
-  return lines.join('\n') + '\n';
-}
 const pandoc = md => md.trim() ? execFileSync('pandoc', ['-f', 'gfm', '-t', 'html5', '--wrap=none'], { input: md, encoding: 'utf8' }) : '';
 
 export function readChapter(file) {
-  let md = dropSignature(fs.readFileSync(file, 'utf8')).replace(/<!--[\s\S]*?-->/g, '');
+  let md = fs.readFileSync(file, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
   const name = path.basename(file);
   const h1 = md.match(/^# (.+)$/m) || fail(`${name}: 章の題（# …）が無い`);
   const parts = md.split(/^## /m);
