@@ -1,7 +1,8 @@
 {
   "ignorePatterns": [
     { "pattern": "^https?://" },
-    { "pattern": "^/[^/]+\\.(png|jpg|jpeg|gif|svg|webp)$" }
+    { "pattern": "^/[^/]+\\.(png|jpg|jpeg|gif|svg|webp)$" },
+    { "pattern": "^#$" }
   ],
   "aliveStatusCodes": [200, 206, 301, 302]
 }
