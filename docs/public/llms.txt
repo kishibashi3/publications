@@ -1,0 +1,164 @@
+# 思考の本棚 (u-biosis Publications)
+
+> 一般システム論をベースにした個人の思考アーカイブ。創発文明論（Core）を起点に、社会物理学・統治・経済・応用へ展開する理論系の文書群と、AI エージェントの設計・実装を扱う文書群がある。
+
+このファイルは、AI に最初に読ませるための目次です。全文ではありません。本文は各リンク先を読んでください。
+
+- サイト: https://pubs.u-biosis.com/
+- ソース: https://github.com/kishibashi3/publications （`docs/` 配下の markdown が公開物の原本。`drafts/` は未公開の草稿で、公開物ではない）
+- 言語: 本文は日本語が主。Pure Agent OS Lab と一部の補論は英語。
+
+## How to read this site
+
+- **公開されていることは、現在の正本であることを意味しない。** 文書ごとの身分（正本・補助・旧版など）はまだ決まっていない。身分の集合と付け方は issue #116 で設計中。
+- 理論系（とくに Core）には、整合性に関する未解決の指摘が open issue として多数ある。主張を引用・依拠する前に、関連 issue を確認すること: https://github.com/kishibashi3/publications/issues
+- 下の一覧で「未決」と書いたものは、正本の形が決まっていない。決まっていないものを正本として扱わないこと。
+
+## Current revisions
+
+- 価値論（Core 第6章「システム価値の定式化」と、Core 補足資料の価値関連文書）は、正本を「絶対値」とするか「基底価値 + 差分評価」とするかが未決（#114）。#114 によれば、Core / 補足資料には「外部基準を必要としない」「絶対的測定可能」といった強い表現が残っており、現在の著者見解は後者に近いが、確定していない。関連: #66, #68, #73。
+- #66 など一部の指摘は、#114 の結論によって問題設定そのものが変わる（#114 本文）。修理順の整理は #69 / #113。
+- 下の一覧で文書の後ろに付けた issue 番号は例示であり、網羅ではない。
+- index / sidebar と実際の公開物にずれがある（#115）。このファイルは sidebar ではなく `docs/` の実ファイルから作った。
+
+## Suggested reading paths
+
+目的別に 3 つ。順序は各シリーズの章番号と、各文書が前提として名指している文書に沿っている。
+
+- 理論から読む: Core 序章〜第7章 → 社会物理学 → 民主主義v2（統治）→ 経済v2 → 応用
+- AI 設計から読む: AIエージェント設計概論（入門・序章〜第9章）→ AIエージェント実装概論（序章〜第11章）→ データエージェント設計 → オントロジー → Agent Authority Control Plane
+- 統治から読む: 民主主義v2（01〜06）→ 経済v2（01〜04）→ 必要に応じて Core 第6章
+
+## Core — 創発文明論
+
+あらゆる存在をシステムとして捉え、価値創造をその所以とするメタ科学の公理化の試み。
+
+- [創発文明論（目次）](https://pubs.u-biosis.com/core/)
+- [序章 なぜ文明は創発しなくなったのか](https://pubs.u-biosis.com/core/00-preface): 精密に設計されながら創発しなくなった現代文明という問題設定
+- [第1章 存在の公理](https://pubs.u-biosis.com/core/01-axiom-of-existence): 無を除くすべてはシステムである、という存在の定義
+- [第2章 システムの円環構造](https://pubs.u-biosis.com/core/02-circular-structure): 最小と最大のシステムが接続する円環として階層を捉える
+- [第3章 粒子性と波動性](https://pubs.u-biosis.com/core/03-particle-wave): 存在の個体性と関係性を相補的な二重構造として扱う
+- [第4章 熱力学的存在論](https://pubs.u-biosis.com/core/04-thermodynamic-ontology): 温度を秩序と自由の比率と読み替え、倫理を温度として記述する
+- [第5章 再関係の倫理](https://pubs.u-biosis.com/core/05-re-relational-ethics): 社会問題を関係の断絶として捉え、システムの修復を論じる
+- [第6章 統合の倫理](https://pubs.u-biosis.com/core/06-systemic-value): 創発したサブシステムの価値の和としてシステム価値を定式化する。価値論の正本の形は未決（#114）
+- [第7章 終焉と創発](https://pubs.u-biosis.com/core/07-ai-resonance): 世界が自らを観測し始める局面として AI との共鳴を論じる
+- [附録A 対話記録](https://pubs.u-biosis.com/core/appendix-a-dialogue): 体系が生まれた後の、人間と AI の対話の記録
+- [附録B AIの視点](https://pubs.u-biosis.com/core/appendix-b-ai-perspective): 創発を観測する者としての AI の側からの記述
+
+Core 補足資料（13 本）。本論との関係・身分は未決（#116）。価値関連の文書は #114 の対象に含まれる。
+
+- [カオスの淵 図解](https://pubs.u-biosis.com/core/supplementary/chaos-edge-diagrams): カオスの淵理論と社会温度理論の図解
+- [創発理論](https://pubs.u-biosis.com/core/supplementary/emergence-theory): 創発はカオスの淵で最大化される、という主張
+- [創発価値論](https://pubs.u-biosis.com/core/supplementary/emergence-value-theory-complete): 創発の総量と存続期間でシステムの価値を定量化する一般理論
+- [階層の円環性](https://pubs.u-biosis.com/core/supplementary/hierarchy-circularity): システムの階層に絶対的な上下はない
+- [システム価値の定式化](https://pubs.u-biosis.com/core/supplementary/system-value-formula): 価値 = Σ(創発したサブシステムの価値) × 生存期間 の定義
+- [一般システム論 - 全学問のメタ](https://pubs.u-biosis.com/core/supplementary/general-systems-as-meta): 一般システム論を諸学問の上位に置く見方
+- [スケール不変の価値](https://pubs.u-biosis.com/core/supplementary/god-in-all-scales): 価値にスケールの上下はない、という主張（#73 で第6章との両立が問われている）
+- [観測可能性の限界](https://pubs.u-biosis.com/core/supplementary/observation-limits): システム論は観測可能な範囲でのみ有効
+- [カオスの淵の最適化](https://pubs.u-biosis.com/core/supplementary/chaos-edge-optimization): 創発を最大化するためにカオスの淵を維持する方法
+- [複雑性とカオスの淵](https://pubs.u-biosis.com/core/supplementary/complexity-visualization): 秩序相・カオス相・無秩序相の視覚的整理
+- [具象と抽象の往復運動](https://pubs.u-biosis.com/core/supplementary/concrete-abstract-oscillation): 具象と抽象を往復して考えを練る思考の方法論
+- [単純系→複雑系→単純系](https://pubs.u-biosis.com/core/supplementary/simple-complex-simple): 秩序と無秩序の両端が異なる理由で単純になる、システムの生と死
+- [価値の定量化手法](https://pubs.u-biosis.com/core/supplementary/value-quantification): 創発価値論の測定・運用面
+
+## Social Physics — 社会物理学
+
+一般システム論の公理から、社会や人間のふるまいを物理学の言語で記述する試み。
+
+- [社会物理学（目次）](https://pubs.u-biosis.com/social-physics/)
+- [社会温度論](https://pubs.u-biosis.com/social-physics/social-temperature): 社会のエントロピーを温度として定式化し、政治を温度調節機構として記述する（#75 に未解決の指摘あり）
+- [粒子的自己と波動的自己](https://pubs.u-biosis.com/social-physics/wave-particle-self): 自己の肉体と関係性の二重構造から利他主義を再定義する
+- [社会の過学習](https://pubs.u-biosis.com/social-physics/social-overfitting): 特定の歴史的経験に固着して汎化能力を失う社会の現象
+
+## Governance — 民主主義v2の設計
+
+v1 民主主義の構造的欠陥を特定し、原理からの演繹で v2 を設計する連作（01〜06）。
+
+- [民主主義v2の設計（目次・全体像）](https://pubs.u-biosis.com/governance/)
+- [01. v1民主主義の構造的欠陥](https://pubs.u-biosis.com/governance/01-structural-flaws): 時間軸の歪み、領域と手法のミスマッチ、空間的歪み
+- [02. 民主主義の再定義](https://pubs.u-biosis.com/governance/02-redefinition): 結果責任を正統性の源泉とする分散統治
+- [03. v2の設計 - 衆議院](https://pubs.u-biosis.com/governance/03-house-of-representatives): 民意と内政の府、余命連動選挙、支持者比例投票権
+- [04. v2の設計 - 参議院](https://pubs.u-biosis.com/governance/04-house-of-councillors): プロフェッショナリズムと外交安全保障の府
+- [05. 二院の相互チェック](https://pubs.u-biosis.com/governance/05-mutual-check): 異なる原理による構造的抑制
+- [06. 危機事態](https://pubs.u-biosis.com/governance/06-crisis): 両院が妥協不能に陥った時の機能
+
+同じディレクトリにある独立論考（sidebar では「分析・批評」）。v2 連作との関係は本文で明示されていない（#115）。
+
+- [イデオロギーを超えた生存戦略](https://pubs.u-biosis.com/governance/ideology-transcendence): 右翼も左翼も国家の生存戦略に過ぎない
+- [代議制民主主義の構造](https://pubs.u-biosis.com/governance/representative-democracy-reality): 「声を聞く」ことの物理的制約と情報の非対称性
+- [民主主義の再設計 — 平均余命連動投票力](https://pubs.u-biosis.com/governance/democracy-redesign): 投票力を平均余命に連動させる提案
+- [国家存続の優先性と防衛の論理](https://pubs.u-biosis.com/governance/national-survival): 国家の存続を他の価値の前提条件とみる
+- [グローバリズムと格差](https://pubs.u-biosis.com/governance/globalism-inequality): 国内のマネーフローの変化から格差を説明する
+- [民主主義の三本柱](https://pubs.u-biosis.com/governance/democracy-principles): 結果を引き受ける者が決定する、という正統性の原則
+- [民主主義 ≠ 多数決](https://pubs.u-biosis.com/governance/democracy-is-not-majority-rule): 民主主義の原理はプロフェッショナリズムへの委任の連鎖
+- [動的ガバナンス論](https://pubs.u-biosis.com/governance/dynamic-governance): 信頼を媒介とした自己強化ループとしてのガバナンス
+
+## Economy — 経済v2の設計
+
+社会の基本単位を家族として再定義する設計。本文自身が、制度設計は民主主義v2ほど詰められていないと述べている。
+
+- [経済v2の設計（目次・全体像）](https://pubs.u-biosis.com/economy/)
+- [01. 外部調達社会の診断](https://pubs.u-biosis.com/economy/01-external-sourcing): 将来世代を外部から調達する現代社会の構造原理
+- [02. GDPの限界と共同体経済](https://pubs.u-biosis.com/economy/02-gdp-critique): 貨幣交換だけを価値とみなす指標の誤謬
+- [03. 家族の再定義](https://pubs.u-biosis.com/economy/03-family-redefinition): 共同体として機能する家族の再設計
+- [04. 家族中心の経済設計](https://pubs.u-biosis.com/economy/04-economy-design): 家族を経済の基本単位とする設計原理と今後の課題
+- [観光立国ではなく、観光選別国へ](https://pubs.u-biosis.com/economy/tourism-selection): 文化ストックを摩耗させない観光の国家戦略
+
+## Applications — 応用
+
+創発文明論の枠組みを身近なシステムに当てはめる。処方箋ではなく構造の観察。
+
+- [応用（目次）](https://pubs.u-biosis.com/applications/)
+- [アジャイル開発とカオスの淵](https://pubs.u-biosis.com/applications/agile-chaos-edge): 開発チームをカオスの淵に維持して創発を最大化する
+- [教育システムと創発](https://pubs.u-biosis.com/applications/education-systems): 共通の土台づくりと創発の促進を別の仕事として設計する
+
+## AI — エージェント設計・実装
+
+- [AIエージェント設計概論（目次）](https://pubs.u-biosis.com/ai/agent-design/): エージェントを「文脈」「実行」「時間」の三軸で整理するシリーズ
+  - [入門](https://pubs.u-biosis.com/ai/agent-design/introduction.ja): "API脳"を捨てよ、構造を理解せよ
+  - [序章](https://pubs.u-biosis.com/ai/agent-design/chapter-00.ja): 全体論と還元論 — エージェント設計に必要なパラダイム転換
+  - [第1章](https://pubs.u-biosis.com/ai/agent-design/chapter-01.ja): エージェント設計とは何か
+  - [第2章](https://pubs.u-biosis.com/ai/agent-design/chapter-02.ja): 文脈とペルソナ — 役割の本質
+  - [第3章](https://pubs.u-biosis.com/ai/agent-design/chapter-03.ja): タスク外部化とテンプレート設計
+  - [第4章](https://pubs.u-biosis.com/ai/agent-design/chapter-04.ja): エージェントOS実装 — 文脈・役割・価値観の持ち方
+  - [第5章](https://pubs.u-biosis.com/ai/agent-design/chapter-05.ja): 創発タスクと非創発タスクの境界線
+  - [第6章](https://pubs.u-biosis.com/ai/agent-design/chapter-06.ja): レポート化アーキテクチャ — データ分析は事前計算である
+  - [第7章](https://pubs.u-biosis.com/ai/agent-design/chapter-07.ja): 暴走・ループ・コスト爆発を構造で防ぐ安定性設計
+  - [第8章](https://pubs.u-biosis.com/ai/agent-design/chapter-08.ja): エージェントOS構想
+  - [第9章](https://pubs.u-biosis.com/ai/agent-design/chapter-09.ja): 品質保証 — eval を頑張るな、アーキテクチャで勝て
+  - [補論 確率と決定論の並走](https://pubs.u-biosis.com/ai/agent-design/tag-as-document-dual-track.ja): タグを共有意味空間にして確定的検索と確率的検索を並走させる（[English](https://pubs.u-biosis.com/ai/agent-design/tag-as-document-dual-track)）
+- [AIエージェント実装概論（目次）](https://pubs.u-biosis.com/ai/agent-implementation/): エージェントを壊さずに実装するための構造論（序章〜第11章）
+  - [序章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-00.ja): なぜエージェントは壊れるのか
+  - [第1章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-01.ja): AIエージェントの5層構造
+  - [第2章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-02.ja): どこまでLLMに任せるか
+  - [第3章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-03.ja): フレームワークの4つの型
+  - [第4章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-04.ja): エージェントOS実装 — 文脈制御の具体化
+  - [第5章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-05.ja): タスクOS — MCPで実行を思考から追放する
+  - [第6章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-06.ja): メモリOS — 永続レポート
+  - [第7章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-07.ja): 安定性OS
+  - [第8章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-08.ja): Role / Memory / Task / Reports の統合
+  - [第9章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-09.ja): AIエージェントスタック比較 — フレームワークの思想
+  - [第10章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-10.ja): エージェント実装ロードマップ
+  - [第11章](https://pubs.u-biosis.com/ai/agent-implementation/chapter-11.ja): 品質保証OS — 多層検証
+  - [補足 確率的システムの品質保証](https://pubs.u-biosis.com/ai/agent-implementation/chapter-quality-assurance): 確率的な LLM システムの品質保証の原則
+  - [補足 Quality by Design](https://pubs.u-biosis.com/ai/agent-implementation/chapter-quality-by-design): 検証可能なエージェントアーキテクチャの設計原則
+- [データエージェント設計（目次）](https://pubs.u-biosis.com/ai/data-agent-design/): データ層の正しさとエージェントのコンテキスト制約を分けて設計する
+  - [第1章](https://pubs.u-biosis.com/ai/data-agent-design/chapter-01.ja): 正しさとサイズの分離 — Gold の横に実行時ウィンドウ Platinum を開く
+  - [第2章](https://pubs.u-biosis.com/ai/data-agent-design/chapter-02.ja): 選択基準の透明性 — 判断をデータと同格に観測可能にする
+- [オントロジー（目次）](https://pubs.u-biosis.com/ai/ontology/): 業務資料から抽出した語彙の記述を、要件定義・設計・データエージェントの起点にする
+  - [第1章 分裂と摩擦](https://pubs.u-biosis.com/ai/ontology/ch1-fragmentation-and-friction): 語彙の分裂を統一せず保持する
+  - [第2章 仮説を先に持つ](https://pubs.u-biosis.com/ai/ontology/ch2-hypothesis-before-hearing): 抽出した語彙をヒアリング前の仮説として使う
+  - [第3章 配るのではなく導出する](https://pubs.u-biosis.com/ai/ontology/ch3-deriving-agent-behavior): オントロジーからデータエージェントの振る舞いを導出する
+- [Agent Authority Control Plane](https://pubs.u-biosis.com/ai/agent-authority-control-plane): Agent が外部世界に起こす効果を Agent の外側で強制・記録する統制面の構想。完成した方式の提案ではない（merge 時の残件は #126）
+- [Instruction Paging Pattern](https://pubs.u-biosis.com/ai/instruction-paging-pattern): LLM エージェントのコンテキスト汚染を構造で解決するパターン
+- [AIリテラシー（目次）](https://pubs.u-biosis.com/ai/literacy/)
+  - [生成AIリテラシー10 ― 地形図](https://pubs.u-biosis.com/ai/literacy/part1-terrain-map): 世界を生成として見るための地形図
+  - [生成AIリテラシー10 ― 具体的な地図](https://pubs.u-biosis.com/ai/literacy/part2-detailed-map): 生成AIリテラシーの10段階の詳細
+- [Pure Agent OS Lab](https://pubs.u-biosis.com/ai/pure-agent-os/): agent-hub とその運用層 Pure Agent OS の実験ノート（英語）
+  - [Pure Agent OS — A Manifesto](https://pubs.u-biosis.com/ai/pure-agent-os/01-manifesto): AI を呼び出される関数ではなく @handle を持つ参加者として扱う、という賭け
+
+## Not listed here
+
+- Agentic Agile / Enterprise Agentic Agile (EAA) の文書は、現時点でサイトに公開されていない。repo の `drafts/` にある草稿は公開物ではない。
+- 本文のない stub ページ、CHANGELOG、About / Contributing、AI の目次ページ（/ai/）はこの一覧に含めていない。
+- Research Notes（/notes/）は現時点で本文の公開物がない。
