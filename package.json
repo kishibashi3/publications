@@ -10,7 +10,7 @@
     "lint": "run-s lint:*",
     "lint:text": "textlint \"docs/**/*.md\"",
     "lint:text:fix": "textlint --fix \"docs/**/*.md\"",
-    "lint:link": "markdown-link-check docs/**/*.md --config .markdown-link-check.json"
+    "lint:link": "markdown-link-check docs --config .markdown-link-check.json"
   },
   "license": "MIT",
   "devDependencies": {
