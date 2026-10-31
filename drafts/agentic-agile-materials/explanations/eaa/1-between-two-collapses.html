@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  ============================================================
+  あいだにも、二つの崩れ方がある — EAA 紹介 1/4
+  ============================================================
+
+  配布範囲
+    社内・社外の両方。
+
+  読者
+    0 枚目を読んで、1 枚目へ進んだ人。
+    大規模 Agile を入れた社内側、複数ベンダーを束ねる発注側、AA の組を読んだ人。
+
+  読んだ後にどうなってほしいか
+    あいだの合意の持ち方にも、AA と同じ二つの崩れ方があると分かる。
+    その間を通る道が「中は自由、あいだは共有する文書」の線一本ではなく、
+    線と五つの部品でできていると分かる。
+    あいだの規則を一人が書いても、それだけでは全部を決めることにならない理由が分かる。
+
+  この文書がやらないこと
+    部品の定義と図（2 枚目）。実務の手順（3 枚目）。
+    Contract の所有者の決め方（3 枚目）。
+
+  出典について
+    崩れ方 A・B の題と損失の書き方は @philosopher の判定による。
+    philosopher/2026-09-28-eaa-intro-collapse-a-and-axis.md
+    細い道の部品と、抜いたときの行き先は @deep-research の整理による（行番号は取り直した）。
+    deep-research/research-archive/2026-09-28-eaa-intro-set-issue-allocation.md
+    deep-research/research-archive/2026-09-29-eaa-intro-1-2-issues-after-core.md
+    定義元は EAA Core 版 2 と Profiles（publications 091c944 時点）。
+    Contract の所有者と移行の成立は Core 版 2（core.md「3」「4」）。
+
+  組
+    0/4 あいだの合意を、誰が持つのか
+    1/4 あいだにも、二つの崩れ方がある（本書）
+    2/4 どの問題に、どの部品で応えるか
+    3/4 合意を、版にして渡す
+  ============================================================
+-->
+<title>あいだにも、二つの崩れ方がある</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap">
+<style>
+  :root{
+    --paper:#f5f6f4;--ink:#1c2422;--muted:#5a6562;--faint:#8b9491;
+    --line:#dcdfda;--panel:#eaeee8;
+    --past:#6b716c;--past-soft:#eceeea;
+    --path:#16564a;--path-soft:#e3ece8;
+    --fail-a:#8a6420;--fail-a-soft:#f1eadd;
+    --fail-b:#9b3527;--fail-b-soft:#f3e5e2;
+    --serif:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+    --sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+      --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+      --path:#6fbfa6;--path-soft:#1a2a26;
+      --fail-a:#d3ad63;--fail-a-soft:#272218;
+      --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151a19;--ink:#e6eae7;--muted:#9ea8a4;--faint:#79837f;
+    --line:#2b3432;--panel:#1c2322;--past:#8b938d;--past-soft:#1e2321;
+    --path:#6fbfa6;--path-soft:#1a2a26;
+    --fail-a:#d3ad63;--fail-a-soft:#272218;
+    --fail-b:#e0857a;--fail-b-soft:#2a1d1a;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15.5px/1.95 var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:35em;margin-inline:auto;padding-inline:20px;
+    padding-block:56px 80px;display:flex;flex-direction:column;gap:56px}
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--path);outline-offset:3px}
+
+  .label{font:500 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--faint);margin:0}
+  .byline{font:500 12px/1.6 var(--mono);letter-spacing:.04em;color:var(--muted);margin:14px 0 0}
+  .source{font-size:12px;line-height:1.8;color:var(--faint);margin:6px 0 0}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,7.5vw,44px);
+    line-height:1.45;letter-spacing:.01em;margin:10px 0 0;text-wrap:balance}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,4.8vw,26px);
+    line-height:1.6;margin:0;text-wrap:balance}
+  h3{margin:0;font-size:17px;line-height:1.7;font-weight:700}
+  .lead{font-size:16.5px;line-height:2.05}
+  section{display:flex;flex-direction:column;gap:20px}
+  .sec-head{display:flex;flex-direction:column;gap:7px}
+  .on{color:var(--ink)}
+  .sub{font-size:15px;line-height:2;color:var(--muted)}
+
+  /* 線 */
+  .axis-box{border:1px solid var(--path);background:var(--path-soft);padding:20px;
+    display:flex;flex-direction:column;gap:10px}
+  .axis-box .n{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--path)}
+  .axis-box .f{font-family:var(--serif);font-size:clamp(17px,4vw,21px);
+    line-height:1.7;font-weight:600;text-wrap:balance}
+  .axis-box p{font-size:14px;line-height:1.9;color:var(--muted)}
+
+  /* 崩れ方 */
+  .forks{display:flex;flex-direction:column;gap:14px}
+  .fork{border-left:3px solid var(--c);background:var(--bg);
+    padding:18px 20px;display:flex;flex-direction:column;gap:9px}
+  .fork.a{--c:var(--fail-a);--bg:var(--fail-a-soft)}
+  .fork.b{--c:var(--fail-b);--bg:var(--fail-b-soft)}
+  .fork .tag{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--c)}
+  .fork strong{font-size:17px;line-height:1.7;font-weight:700;display:block}
+  .fork p.d{color:var(--muted);font-size:14.5px;line-height:1.9}
+
+  /* 前提 */
+  .premise{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+  .premise li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline}
+  .premise li::before{content:"";width:7px;height:7px;border:1.5px solid var(--path);
+    transform:translateY(-1px)}
+  .premise li>span{min-width:0;font-size:15.5px;line-height:1.9}
+
+  /* 細い道 */
+  .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
+    gap:36px;counter-reset:s}
+  .steps>li{display:grid;grid-template-columns:2.6em 1fr;gap:4px 14px;scroll-margin-top:24px}
+  .steps>li::before{counter-increment:s;content:"(" counter(s) ")";
+    font:500 12.5px/1.9 var(--mono);color:var(--path);padding-top:3px}
+  .steps>li>div{min-width:0;display:flex;flex-direction:column;gap:11px}
+  .steps h3{font-size:17.5px}
+  .steps p{color:var(--muted);font-size:15px;line-height:2}
+  .steps p.on{color:var(--ink)}
+  .steps p.src{font-size:12px;line-height:1.7;color:var(--faint);margin:2px 0 4px}
+  .drop{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;
+    border-top:1px dashed var(--line);padding-top:11px;font-size:13.5px;line-height:1.85}
+  .drop .arrow{font:500 12px/1.9 var(--mono);color:var(--fail-b)}
+  .drop.a .arrow{color:var(--fail-a)}
+  .drop span.t{min-width:0;color:var(--muted)}
+  .drop b{font-weight:700;color:var(--fail-b)}
+  .drop.a b{color:var(--fail-a)}
+  .axis-box .drop{border-top-color:var(--line)}
+
+  /* 根 */
+  .cycle{border:1px solid var(--line);background:var(--panel);padding:20px 18px;
+    display:flex;flex-direction:column;gap:14px}
+  .cycle .side{display:flex;flex-direction:column;gap:9px}
+  .cycle .who{font:500 11px/1.6 var(--mono);letter-spacing:.08em;color:var(--faint)}
+  .cycle .own .who{color:var(--path)}
+  .cycle .col{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+  .cycle .node{border:1.5px solid var(--faint);color:var(--ink);
+    font-size:14px;line-height:1.6;padding:8px 14px}
+  .cycle .node.hi{border-color:var(--path);color:var(--path);font-weight:700}
+  .cycle .to{font:500 11px/1 var(--mono);color:var(--faint);padding-left:14px}
+  .cycle .gate{display:flex;align-items:center;gap:10px}
+  .cycle .gate .line{flex:1;height:0;border-top:2px dashed var(--fail-b)}
+  .cycle .gate .gl{font:500 10.5px/1.6 var(--mono);letter-spacing:.06em;
+    color:var(--fail-b);white-space:nowrap}
+  .cap-note{font-size:13px;line-height:1.85;color:var(--muted)}
+
+  .ref{color:var(--path);font:500 .92em/1 var(--mono);text-decoration:none;
+    border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  blockquote{margin:0;border-left:3px solid var(--path);padding:4px 0 4px 18px;
+    font-family:var(--serif);font-size:17px;line-height:1.85;font-weight:500}
+
+  .between{text-align:center;font-family:var(--serif);
+    font-size:clamp(18px,4.2vw,21px);line-height:1.75;font-weight:600;
+    color:var(--path);border-block:1px solid var(--line);padding-block:20px}
+
+  .notes{background:var(--panel);padding:22px;display:flex;flex-direction:column;
+    gap:11px;font-size:13px;line-height:1.9;color:var(--muted)}
+  .notes h2{font:500 11px/1.6 var(--mono);font-family:var(--mono);
+    letter-spacing:.1em;color:var(--faint);margin:0}
+  footer{border-top:1px solid var(--line);padding-top:18px;
+    font-size:12px;line-height:1.9;color:var(--faint)}
+
+  br.narrow{display:none}
+  @media (max-width:520px){br.narrow{display:inline}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <p class="label">ENTERPRISE AGENTIC AGILE ／ 紹介 1 ／ 0〜3 の 4 枚組</p>
+    <h1>あいだにも、<br>二つの崩れ方がある。</h1>
+    <p class="byline">kishibashi3 ／ 最終更新 <time datetime="2026-09-29">2026-09-29</time></p>
+    <p class="source">定義元：<a href="https://github.com/kishibashi3/publications/blob/091c94418e6cf3999c8f7cf1078679dbf620425e/drafts/enterprise-agentic-agile/core.md">EAA Core 版 2</a>、<a href="https://github.com/kishibashi3/publications/blob/091c94418e6cf3999c8f7cf1078679dbf620425e/drafts/enterprise-agentic-agile/profiles.md">EAA Profiles</a>。本書は解説であり、新たな義務を追加しません。</p>
+  </header>
+
+  <section>
+    <p class="lead">0 枚目の問いは、<strong>あいだの合意を、一人にも会議にも預けずに、誰がどう持つのか</strong>でした。預け先を考えると、誰もが試す二つのやり方に行き着きます。どちらも壊れます。</p>
+
+    <div class="forks">
+      <div class="fork a">
+        <p class="tag">崩れ方 A</p>
+        <strong>一つの主体が、全部を決める</strong>
+        <p class="d">あいだの合意を、一つの主体に集めて決めてもらう。揃って見えます。けれど実行が安く速くなるほど、その一箇所に判断が集まり、そこが先に尽きる。主体を分けたのは判断を分けるためだったのに、判断が一箇所に戻ります。</p>
+      </div>
+      <div class="fork b">
+        <p class="tag">崩れ方 B</p>
+        <strong>各主体に、無条件で任せる</strong>
+        <p class="d">集めないなら、任せるしかない。けれど任せた先で、交わした取り決めを自分の側だけで変えられるなら、<strong style="display:inline;font-size:inherit">取り決めが、誰の承認も経ずに書き換わり、取り決めでなくなる</strong>。インターフェースも受入の条件も、相手の都合でいつでも変わりうるものになります。</p>
+      </div>
+    </div>
+
+    <p class="between">この二つのあいだに、<br>通れる道はあるか。</p>
+    <p class="sub">AA 紹介 1 の<a class="ref" href="../1-between-two-collapses.html">二つの崩れ方</a>（人間が全部を承認する／Agent に判断も任せる）が、主体と主体のあいだに現れた形です。</p>
+    <p class="sub">「全部を決める」の全部は、何を作るか・何に投資するかではありません。0 枚目で見た、チームのあいだに毎日生まれる合意——インターフェースの変更、依存、順序——のほうです。何を作るかは、決める人がこれまでどおり決めます。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">01 ／ 前提</p>
+      <h2>AA の三つに、<br>二つ足す。</h2>
+    </div>
+    <p>AA の<a class="ref" href="../1-between-two-collapses.html">三つの前提</a>（実行は安いが総量に上限がある／人間の判断は希少／出力はばらつく）は、そのまま置きます。主体が複数になると、次の二つが足されます。</p>
+    <ul class="premise">
+      <li><span><strong>判断する主体が、複数ある。</strong>判断の責任者が別なら、別の主体と数えます。</span></li>
+      <li><span><strong>主体ごとに、中の作り方が違う。</strong>Agent で動く主体も、人間のチームも、自社の標準工程で動く委託先もいます。</span></li>
+    </ul>
+    <p>一つ目から、崩れ方 A の置き場所が変わります。主体が一つなら、全部を決める一箇所は AA の A と同じ「人間」です。主体が複数になると、その一箇所は<strong>主体と主体のあいだ</strong>に立ちます。</p>
+    <p>二つ目から、A に入る経路がもう一つ見えます。あいだを揃えるために相手の中の作り方まで指定すると、それを採れない相手——委託先や既存のチーム——はつながれなくなる。相手の中の規範を決めるのは、指定した側になります。<strong>どちらも、分けた判断が一箇所に戻る形です。</strong></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">02 ／ 細い道</p>
+      <h2>線が一本と、<br>部品が五つ。</h2>
+    </div>
+    <p>道の範囲を決める線が一本あります。ただし線だけでは通れません。線の上を通るのに、部品が五つ要ります。</p>
+
+    <div class="axis-box">
+      <p class="n">線</p>
+      <p class="f">中は、各主体が決める。<br>あいだは、共有する文書で持つ。</p>
+      <p>各主体は、合意して採用した範囲で、中の方式と実行を決めます。ほかの主体は、上位や横断の立場であっても、その判断を一方的に上書きしません。</p>
+      <p>あいだで共有する文書——Contract など——は、自己改訂規範アーキテクチャに従います。所有者は人間で、<strong>改訂を提起した者は、その改訂を承認しません。</strong>この要求は、相手の中の規範には及びません。</p>
+      <p class="drop a"><span class="arrow">中まで指定すると</span><span class="t">つながれる相手が減り、残った一箇所に判断が集まる。<b>崩れ方 A へ。</b></span></p>
+      <p class="drop"><span class="arrow">あいだを放すと</span><span class="t">あいだの文書を持つ側が、自分で改訂を通せる。<b>崩れ方 B へ。</b></span></p>
+    </div>
+    <p class="sub">定義元は Core「2. 自治と権限」「4. 提案と変更」。</p>
+
+    <ol class="steps">
+      <li id="s1"><div>
+        <h3>提案と受入を、分ける</h3>
+        <p class="src">Core「4. 提案と変更」、Profiles「7. 横断責務の実行」</p>
+        <p>変えたい側は、内容・理由・根拠を示して提案する。相手はそれを検証して、受け入れる・直してもらう・受け入れない、を決める。親子でも、兄弟でも、横断でも同じです。</p>
+        <p class="on">基盤を担う主体であっても、相手の中を直接書き換える権限は持ちません。<strong>方向によって特別な権限を作らない</strong>ことで、上から下へも、下から上へも、同じ一本の手続きになります。</p>
+        <p class="drop a"><span class="arrow">抜くと</span><span class="t">上位や横断の主体が、相手の中を直接書き換える。<b>崩れ方 A へ。</b></span></p>
+      </div></li>
+
+      <li id="s2"><div>
+        <h3>版を固定し、自動では追随しない</h3>
+        <p class="src">Core「3. 意味と合意」、Profiles「4. ロード・合成・改訂・解除」</p>
+        <p>提案や引受では、依存する文書の版を特定します。規範の新しい版を公開することと、各主体がそれを採用することは、別の行為です。</p>
+        <p class="on"><strong>新しい版を公開しただけでは、既存の合意は変わりません。</strong>採用中の合意は、移行が成り立つまで有効です。Contract では、結ぶ主体のすべてが同じ版を採用中になったときに、その版への移行が成り立ちます。</p>
+        <p class="drop a"><span class="arrow">抜くと</span><span class="t">おおもとの文書を書き換えるだけで、全員の義務が変わる。<b>崩れ方 A へ。</b></span></p>
+      </div></li>
+
+      <li id="s3"><div>
+        <h3>断ることと、捨てることを分ける</h3>
+        <p class="src">Core「2. 自治と権限」、Profiles「4. ロード・合成・改訂・解除」</p>
+        <p>新しい提案を受け入れないのは、受け手の自由です。けれど、すでに合意した義務を一方的に捨てることは、それとは違います。</p>
+        <p class="on"><strong>合意した義務を外すにも、相手との合意が要ります。</strong>履行できなくなったときは、それを明示して、判断できる主体との調整に戻します。</p>
+        <p class="drop"><span class="arrow">抜くと</span><span class="t">引き受けた約束が、相手の都合で消える。<b>崩れ方 B へ。</b></span></p>
+      </div></li>
+
+      <li id="s4"><div>
+        <h3>成り立ったことを、記録で示す</h3>
+        <p class="src">Core「5. 成果と記録」— Evidence</p>
+        <p>作業したこと、変更を受け入れたことだけでは、完了になりません。成果や判断が成り立ったことを、検証できる記録——Evidence——で示します。</p>
+        <p class="on">相手の中は見えません。見えないまま確かめられるのは、<strong>合意した形で残された記録だけ</strong>です。</p>
+        <p class="drop"><span class="arrow">抜くと</span><span class="t">確かめるには、相手の中を全部見るしかない（A）。見なければ、完了は各自の申告になる。<b>崩れ方 B へ。</b></span></p>
+      </div></li>
+
+      <li id="s5"><div>
+        <h3>自分の権限を、自分で広げない</h3>
+        <p class="src">Core「4. 提案と変更」</p>
+        <p>実行する主体が、自分を縛る規範を緩める変更を自分で承認したり、自分で権限を広げたりしてはならない。AA の<a class="ref" href="../1-between-two-collapses.html#s8">(8)</a>が、主体と主体のあいだでもそのまま効きます。</p>
+        <p class="drop"><span class="arrow">抜くと</span><span class="t">「必要だと判断した」で、取り決めが外せるものに変わる。<b>崩れ方 B へ。</b></span></p>
+      </div></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">03 ／ 根</p>
+      <h2>あいだの規則を、<br>一人が書くと。</h2>
+    </div>
+    <p>A に入る経路は、もう一つあります。<strong>あいだの規則そのもの</strong>——EAA Core——を、一人が書いていることです。その一人の承認で全部のあいだの規則が決まるなら、それ自体が崩れ方 A です。</p>
+    <p>Core の所有者は一人です。けれど Core は、書くことと効かせることを分けています。</p>
+
+    <div class="cycle">
+      <div class="side">
+        <p class="who">Core の所有者</p>
+        <div class="col">
+          <span class="node">改訂する</span>
+          <span class="to">↓</span>
+          <span class="node">新しい版を公開する</span>
+        </div>
+      </div>
+      <div class="gate"><span class="line"></span><span class="gl">ここから先へは進めない</span><span class="line"></span></div>
+      <div class="side own">
+        <p class="who">各主体の承認者（Core の所有者ではない人間）</p>
+        <div class="col">
+          <span class="node hi">採用するかを決める</span>
+          <span class="to">↓</span>
+          <span class="node hi">記録する（その主体が管理する）</span>
+        </div>
+      </div>
+    </div>
+    <p class="cap-note">公開と採用は別の行為で、自動では追随しない。各主体で採用を承認するのは、その主体の規範の所有者のうち、Core の所有者ではない人間。承認者を置けない主体は、Core を採用しない。採用の記録は、Core の所有者が書き換えない。（Core「3」「6. 本書の採用」）</p>
+
+    <blockquote>書く人は一人でも、<br class="narrow">効かせるかどうかは、<br>各主体が決める。</blockquote>
+
+    <p>AA では、根の版は所有者の承認そのもので成り立ち、その手続きは体系の外に置かれていました。AA は一つの主体の中なので、根を一人が持っても崩れ方にはなりません。あいだでは、そのままにすると A になる。だから Core は、<strong>根の版が効く場所を、各主体の承認の向こう側に置いています。</strong></p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="label">04 ／ 未決</p>
+      <h2>抜けたいときは、<br>まだ書かれていない。</h2>
+    </div>
+    <p>崩れ方 B を塞ぐと、次に「では一度結んだら抜けられないのか」が問われます。いま Core と Profiles が言っているのは、<strong>合意した義務を外すにも相手との合意が要る</strong>こと、そして外すときは残件・外部への保証・記録を引き継ぎ、責任の空白を残さないことです。</p>
+    <p>合意が成り立たないとき、外部の制約が変わったとき、緊急時の調整の詳細な手順は、Core が自分で「未定」と書いています。そして、その未定の部分を、ほかの主体からの一方的な強制で埋めない、としています。</p>
+  </section>
+
+  <section class="notes">
+    <h2>付記</h2>
+    <p>「抜くと」の行き先は、Core の本文に書かれたものではなく、本書の読みです。</p>
+    <p>本書でいう「主体」は、Core の語では Cell です。部品の名前（Cell・Federation・Contract・Evidence）は 2 枚目で扱います。</p>
+    <p>あいだで共有する文書のうち Profile は、正本を提供側が持つと決まっています（Profiles「4」）。Contract の所有者は、Contract を結ぶ Cell に属する 1 人で、Contract を作るときにそれらの Cell が合意して決めます（Core 版 2「4」）。所有者が片側にいても、本書の道は同じ形で通ります。変えたい側だけでは変えられず、相手が採用するまで前の取り決めが生きるからです。Evidence の様式の所有者は、まだ決まっていません。</p>
+    <p>ここでいう Agent は、計画し、道具を使い、実行結果を確かめて修正する AI を指します。</p>
+  </section>
+
+  <footer>EAA 紹介 1（0〜3 の 4 枚組）／ 前｜<a href="0-two-exits.html">あいだの合意を、誰が持つのか</a>　次｜<a href="2-parts.html">どの問題に、どの部品で応えるか</a><br>AA の組は <a href="../0-two-axes.html">AA 紹介 0「手戻り、誤り、調整、そして判断」</a>から。</footer>
+
+</div>
+
+</body>
+</html>

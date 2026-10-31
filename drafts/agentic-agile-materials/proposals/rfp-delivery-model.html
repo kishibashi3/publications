@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIエージェント協働型 基幹刷新デリバリーモデル</title>
+<style>
+:root{
+  --bg:#07111f;--bg2:#0d1b2a;--panel:#10243a;--text:#eef6ff;--muted:#9fb4c8;
+  --accent:#59d0c4;--accent2:#7cb8ff;--warn:#ffcf70;--line:#2c4660;--ok:#84e1a8;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#020814;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
+.deck{padding:22px 0 88px}
+.slide{
+  width:min(94vw,1440px);aspect-ratio:16/9;margin:0 auto 28px;padding:52px 64px;
+  background:radial-gradient(circle at 82% 10%,rgba(89,208,196,.12),transparent 27%),linear-gradient(145deg,var(--bg),var(--bg2));
+  border:1px solid #1e3550;border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.38);
+  position:relative;overflow:hidden;display:flex;flex-direction:column
+}
+.kicker{color:var(--accent);font-size:17px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+h1{font-size:54px;line-height:1.08;margin:16px 0 18px;letter-spacing:-.03em}
+h2{font-size:38px;line-height:1.2;margin:6px 0 22px;letter-spacing:-.02em}
+h3{font-size:23px;margin:0 0 10px}
+p{font-size:20px;line-height:1.55;margin:8px 0;color:#dce9f6}
+.lead{font-size:27px;line-height:1.5;max-width:1050px}
+.small{font-size:15px;color:var(--muted)}
+.accent{color:var(--accent)} .blue{color:var(--accent2)} .warn{color:var(--warn)} .ok{color:var(--ok)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;flex:1;min-height:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;flex:1;min-height:0}
+.card{background:linear-gradient(180deg,rgba(18,43,69,.96),rgba(12,31,51,.96));border:1px solid var(--line);border-radius:16px;padding:20px}
+.card p{font-size:18px}.card li{font-size:18px}
+.metric{font-size:40px;font-weight:850;letter-spacing:-.03em}
+.label{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.node{padding:13px 16px;border-radius:12px;background:#10263e;border:1px solid #34516c;font-size:17px;font-weight:750}
+.arrow{font-size:24px;color:var(--accent)}
+.footer{position:absolute;left:64px;right:64px;bottom:20px;display:flex;justify-content:space-between;color:#7890a8;font-size:13px}
+.badge{display:inline-block;padding:7px 11px;border-radius:999px;border:1px solid #375875;background:#10283f;color:#dcecff;font-size:14px;margin-right:6px}
+ul{margin:8px 0 0;padding-left:24px} li{font-size:19px;line-height:1.48;margin:6px 0;color:#dce9f6}
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:18px}
+.phase{border-top:4px solid var(--accent2);background:#0d2238;border-radius:10px;padding:13px 11px;min-height:145px}
+.phase:nth-child(2n){border-top-color:var(--accent)}
+.phase .m{font-size:13px;color:var(--muted);margin-bottom:7px}.phase .t{font-size:17px;font-weight:800}.phase .d{font-size:14px;color:#c0d0df;margin-top:8px;line-height:1.4}
+.diagram{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;flex:1}
+.stack{display:flex;flex-direction:column;gap:10px}.layer{padding:14px 18px;border-radius:12px;background:#10263e;border:1px solid #31506b}
+.layer.main{border-color:var(--accent);box-shadow:inset 4px 0 0 var(--accent)}
+.bigbox{background:linear-gradient(135deg,#10344b,#11283e);border:1px solid #2f5978;border-radius:18px;padding:25px}
+.callout{border-left:4px solid var(--warn);padding:9px 0 9px 17px;margin-top:14px;color:#ffe7b3;font-size:19px}
+.quote{font-size:31px;line-height:1.38;font-weight:820;max-width:1080px;margin:auto 0}
+.table{display:grid;grid-template-columns:1.25fr 1fr 1fr;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.cell{padding:13px 15px;border-bottom:1px solid var(--line);font-size:16px;background:#0e2237}
+.head{font-weight:800;background:#16314c}.cell:nth-last-child(-n+3){border-bottom:none}
+.center{display:flex;align-items:center;justify-content:center}.muted{color:var(--muted)}
+nav{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:10px;z-index:20;background:rgba(4,12,24,.86);padding:9px 13px;border:1px solid #233a52;border-radius:999px;backdrop-filter:blur(8px)}
+button{background:#10283f;color:white;border:1px solid #35536d;border-radius:999px;padding:8px 14px;font-weight:700;cursor:pointer}
+#counter{padding:8px 8px;color:#9fb4c8;font-size:14px}
+@media(max-width:900px){
+  .slide{width:100vw;border-radius:0;padding:34px 28px;aspect-ratio:auto;min-height:100vh}
+  h1{font-size:39px}.lead{font-size:22px}.grid2,.grid3,.diagram{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}.footer{left:28px;right:28px}
+}
+@media print{
+  body{background:white}.deck{padding:0}nav{display:none}
+  .slide{page-break-after:always;width:13.333in;height:7.5in;aspect-ratio:auto;margin:0;border-radius:0;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="slide">
+<div class="kicker">RFP Delivery Model</div>
+<h1>AIエージェント協働型<br>基幹刷新デリバリーモデル</h1>
+<p class="lead">10億円規模・12か月の基幹システム刷新を、<span class="accent">AIエージェントを実行主体</span>として安全に進めるための開発・移行プロセス。</p>
+<div class="flow"><span class="badge">20 legacy microservices</span><span class="badge">6 autonomous domains</span><span class="badge">Agent-driven delivery</span><span class="badge">Evidence-based governance</span></div>
+<div class="callout">ポイントは「AIに任せる」ことではなく、AIが高速に実行しても壊れない境界・権限・証拠を先に設計することです。</div>
+<div class="footer"><span>Enterprise Agentic Agile / Proposal Draft</span><span>01</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">Executive Question</div>
+<h2>本当に、Agentで基幹刷新ができるのか？</h2>
+<div class="grid2">
+<div class="card"><h3>Agentに任せる領域</h3><ul><li>既存コード・DB・ログ・仕様の大量解析</li><li>設計・実装・テスト・修正の高速反復</li><li>大量のSub-issueへの分解と並列実行</li><li>新旧比較、回帰試験、Evidence生成</li><li>運用監視と異常検知</li></ul></div>
+<div class="card"><h3>人が握る領域</h3><ul><li>事業目的と優先順位</li><li>業務境界と責任境界</li><li>不可逆な判断と権限拡大</li><li>意味の衝突・例外判断</li><li>本番切替・rollback判断</li></ul></div>
+</div>
+<div class="callout"><strong>Agentが自律できる範囲を設計し、越えた時だけ人へEscalationします。</strong></div>
+<div class="footer"><span>Human judgment is scarce</span><span>02</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">Delivery Structure</div>
+<h2>20サービスを20チームにしない。6つの業務Domainへ再編する</h2>
+<div class="grid3">
+<div class="card"><h3>Customer & Partner</h3><p>顧客・取引先・連絡先・取引関係</p></div>
+<div class="card"><h3>Contract & Product</h3><p>商品・価格・契約・契約変更</p></div>
+<div class="card"><h3>Order & Workflow</h3><p>受注・申請・承認・業務フロー</p></div>
+<div class="card"><h3>Billing & Payment</h3><p>請求・入金・返金・債権</p></div>
+<div class="card"><h3>Identity & Entitlement</h3><p>ID・組織・権限・利用資格</p></div>
+<div class="card"><h3>Integration & B2B</h3><p>外部連携・Partner API・Agent Interface</p></div>
+</div>
+<div class="footer"><span>基本粒子は「人間チーム」ではなく「自律Domain」</span><span>03</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">Local Autonomy</div>
+<h2>EAAは、全Domainを同じ開発手法に統一しない</h2>
+<div class="grid3">
+<div class="card"><div class="label">Domain A</div><div class="metric">Agentic</div><p>Agentが設計・実装・検証を連続実行。Operatorは例外のみ判断。</p></div>
+<div class="card"><div class="label">Domain B</div><div class="metric">Scrum</div><p>人間中心・2週間Sprint。PO、Daily、Reviewを使ってもよい。</p></div>
+<div class="card"><div class="label">Domain C</div><div class="metric">Hybrid</div><p>パッケージ導入、ベンダー開発、Agent支援などを混在してよい。</p></div>
+</div>
+<div class="quote"><span class="accent">EAAが揃えるのは「中の作り方」ではなく、「外とのつながり方」。</span></div>
+<div class="flow"><span class="node">Ontology</span><span class="arrow">+</span><span class="node">Contract</span><span class="arrow">+</span><span class="node">Authority</span><span class="arrow">+</span><span class="node">Evidence</span></div>
+<div class="footer"><span>Standardize the boundary, not the implementation.</span><span>04</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">How Agents Build</div>
+<h2>Agentは、1つのMissionを再帰的に分解して実行する</h2>
+<div class="diagram">
+<div class="stack">
+<div class="layer main"><strong>Mission #100</strong><br>「取引先Agentから契約変更できるようにする」</div>
+<div class="layer">#101 Agent認証</div><div class="layer">#102 契約変更Capability</div><div class="layer">#103 Contract Domain変更</div><div class="layer">#104 Billing再計算</div><div class="layer">#105 Entitlement更新</div>
+</div>
+<div class="bigbox"><div class="label">Agent Loop</div><div class="metric">Observe → Act → Verify</div><p>Sub-issueをさらに分解し、実装・テスト・レビュー・修正を短いループで回します。</p><p><span class="accent">Issue数を減らすのではなく、人間が読むIssue数を減らします。</span></p></div>
+</div>
+<div class="footer"><span>Mission Graph</span><span>05</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">Control Plane</div>
+<h2>Agentを制御するのは、会議ではなく「意味・権限・証拠」</h2>
+<div class="grid3">
+<div class="card"><div class="label">Meaning</div><h3>Enterprise Ontology</h3><p>「顧客」「契約」「請求」などの意味とDomain差を共有。</p></div>
+<div class="card"><div class="label">Authority</div><h3>Constitution / Policy</h3><p>何をAgentが自律実行でき、何を人間判断へ上げるかを定義。</p></div>
+<div class="card"><div class="label">Proof</div><h3>Evidence</h3><p>テスト、Actions、trace、reconciliation、rollback結果を紐付ける。</p></div>
+</div>
+<div class="quote">「Agentが速く作る」だけでは基幹刷新にならない。<br><span class="accent">意味と権限とEvidenceまで機械可読にする。</span></div>
+<div class="footer"><span>Enterprise Control Plane</span><span>06</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">Human Role</div>
+<h2>人間は工程を担当せず、Domainの境界を所有する</h2>
+<div class="grid2">
+<div class="card"><h3>従来</h3><div class="flow"><span class="node">設計</span><span class="arrow">→</span><span class="node">実装</span><span class="arrow">→</span><span class="node">テスト</span><span class="arrow">→</span><span class="node">レビュー</span></div><p>工程ごとに人から人へhandoff。</p></div>
+<div class="card"><h3>EAA</h3><div class="flow"><span class="node">Operator</span><span class="arrow">→</span><span class="node">Goal</span><span class="arrow">→</span><span class="node">Boundary</span><span class="arrow">→</span><span class="node">Authority</span></div><p>Agentが内部ループを回し、人間は例外・境界・不可逆判断に集中。</p></div>
+</div>
+<div class="callout">例：DBAは「全テーブルを承認する人」ではなく、「各Domainが安全にDBを所有できるルールと基盤を作る人」へ。</div>
+<div class="footer"><span>Operator = Goal + Boundary + Authority + Exception</span><span>07</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">Execution Rhythm</div>
+<h2>Daily Scrumではなく、Daily Evidence</h2>
+<div class="grid2">
+<div class="bigbox"><div class="label">Agent-generated Daily Evidence</div><div class="metric">異常だけを見る</div><ul><li>完了 / failed Mission</li><li>rollback / verification failure</li><li>Ontology mismatch</li><li>Authority violation / escalation</li><li>Expected Waste / compute消費</li></ul></div>
+<div class="card"><h3>人間イベント</h3><ul><li><strong>Weekly Mission Review</strong><br>停止Mission・依存・投資配分だけ</li><li><strong>Boundary / Ontology / Authority Review</strong><br>必要時のみ</li><li><strong>Monthly Norm Retrospective</strong><br>同じ例外を次回から自動化</li></ul></div>
+</div>
+<div class="footer"><span>情報共有のための会議は減らす</span><span>08</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">12-Month Plan</div>
+<h2>最初の6週間で、EAA自体が成立するかを実証する</h2>
+<div class="timeline">
+<div class="phase"><div class="m">Week 1–2</div><div class="t">Boundary v0</div><div class="d">Domain / Ontology / Authority / Legacy discovery</div></div>
+<div class="phase"><div class="m">Week 3–6</div><div class="t">First Vertical Mission</div><div class="d">外部Agent→5 Domain→Evidenceまで通す</div></div>
+<div class="phase"><div class="m">Month 2–3</div><div class="t">First Production Domain</div><div class="d">実トラフィック、rollback、reconciliation</div></div>
+<div class="phase"><div class="m">Month 4–6</div><div class="t">Parallel Replacement</div><div class="d">6 Domain並列、B2B Agent pilot</div></div>
+<div class="phase"><div class="m">Month 7–10</div><div class="t">Legacy Reduction</div><div class="d">新旧照合、shadow、cutover rehearsal</div></div>
+<div class="phase"><div class="m">Month 11–12</div><div class="t">RC / Cutover</div><div class="d">Authority tightening、本番切替、rollback判断</div></div>
+</div>
+<div class="callout">Week 6のVertical Missionが通らなければ、実装量を増やさず、EAAの境界設計を修正します。</div>
+<div class="footer"><span>まず制御構造を証明してからスケールする</span><span>09</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">Safety Model</div>
+<h2>品質保証は「全件人間レビュー」ではなく、Riskに応じて変える</h2>
+<div class="table">
+<div class="cell head">変更の性質</div><div class="cell head">扱い</div><div class="cell head">人間介入</div>
+<div class="cell">可逆・小さい・Evidence十分</div><div class="cell">自動実行</div><div class="cell ok">原則不要</div>
+<div class="cell">中程度のblast radius</div><div class="cell">独立検証を追加</div><div class="cell">必要時のみ</div>
+<div class="cell">不可逆・高額・外部影響</div><div class="cell">Authority threshold引上げ</div><div class="cell warn">Operator判断</div>
+<div class="cell">Cutover / credential / data loss risk</div><div class="cell">War Room / rollback boundary</div><div class="cell warn">同期判断</div>
+</div>
+<p class="lead" style="margin-top:22px"><span class="accent">間違えてもよい。壊してはならない。</span><br>誤り確率 × 誤ったまま進む実行量を小さく保ちます。</p>
+<div class="footer"><span>Expected Waste based governance</span><span>10</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">Proof of Progress</div>
+<h2>「進捗率」ではなく、Mission GraphとEvidence Graphで証明する</h2>
+<div class="grid3">
+<div class="card"><div class="label">Rework Mass</div><div class="metric">手戻り量</div><p>誤判断で捨てたSubgraphの実コスト。</p></div>
+<div class="card"><div class="label">Detection Depth</div><div class="metric">発見深度</div><p>誤りを何階層進む前に止められたか。</p></div>
+<div class="card"><div class="label">Intent Drift</div><div class="metric">意思乖離</div><p>子Missionが親Goalから逸れていないか。</p></div>
+<div class="card"><div class="label">Blast Radius</div><div class="metric">影響範囲</div><p>一つの誤判断が何Domainへ伝播したか。</p></div>
+<div class="card"><div class="label">Escalation Rate</div><div class="metric">人判断率</div><p>人間が正常系のボトルネックになっていないか。</p></div>
+<div class="card"><div class="label">Evidence Coverage</div><div class="metric">証拠率</div><p>完了Missionが検証可能な証拠を持つ割合。</p></div>
+</div>
+<div class="footer"><span>Project = Mission Graph + Evidence Graph</span><span>11</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">B2B Agent Interface</div>
+<h2>外部企業のAgentにも、基幹システムを直接触らせない</h2>
+<div class="center" style="flex:1"><div>
+<div class="flow" style="justify-content:center"><span class="node">Partner Agent</span><span class="arrow">→</span><span class="node">Agent Interface</span><span class="arrow">→</span><span class="node">Capability / Task</span><span class="arrow">→</span><span class="node">Deterministic API</span><span class="arrow">→</span><span class="node">Domain System</span></div>
+<p class="lead" style="text-align:center;margin-top:32px">高レベルなintentはAgentで受ける。<br><span class="accent">実際の更新は型付き・決定論的な業務操作へ落とす。</span></p>
+</div></div>
+<div class="callout">移行中はAgent InterfaceをAnti-Corruption Layerとして使い、裏側がLegacyでもNewでも外部契約を維持します。</div>
+<div class="footer"><span>Intent ≠ Transaction</span><span>12</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">What We Ask the Customer</div>
+<h2>顧客にお願いするのは、詳細な仕様書ではなく「判断の所有」</h2>
+<div class="grid2">
+<div class="card"><h3>顧客側で必要</h3><ul><li>事業Goalと優先順位</li><li>Domain Expertの参加</li><li>業務例外・禁止事項の明示</li><li>不可逆判断・法務・契約判断</li><li>Cutover時のGO / rollback権限</li></ul></div>
+<div class="card"><h3>我々が担う</h3><ul><li>Agentic delivery systemの設計・運営</li><li>Mission分解と並列実行</li><li>実装・テスト・Evidence生成</li><li>Ontology / Contract / Authority整備</li><li>移行・照合・本番切替の実証</li></ul></div>
+</div>
+<div class="footer"><span>顧客判断を希少資源として扱う</span><span>13</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">Why This Is Credible</div>
+<h2>「AIが賢いから」ではなく、失敗しても止められる構造だから成立する</h2>
+<div class="grid3">
+<div class="card"><h3>① 小さく切る</h3><p>Domain / Mission / Sub-issueに分解し、blast radiusを限定。</p></div>
+<div class="card"><h3>② 証拠を残す</h3><p>Issue・PR・Actions・traceをEvidence Graphとして接続。</p></div>
+<div class="card"><h3>③ 権限を固定する</h3><p>子Missionは親より強いAuthorityを持てない。</p></div>
+<div class="card"><h3>④ 独立に検証する</h3><p>必要な場所では生成と判定を別Agent / model lineageへ分離。</p></div>
+<div class="card"><h3>⑤ 早期に本番へ出す</h3><p>Month 3からProduction Sliceを作り、机上設計を長期化しない。</p></div>
+<div class="card"><h3>⑥ Cutoverは別物</h3><p>不可逆性が高い局面では一時的にhuman gateとwar roomを増やす。</p></div>
+</div>
+<div class="footer"><span>Control, Evidence, Reversibility</span><span>14</span></div>
+</section>
+
+<section class="slide">
+<div class="kicker">RFP Alignment</div>
+<h2>RFP段階で合意したい6項目</h2>
+<div class="grid2">
+<div class="card"><div class="metric">01–03</div><ul><li><strong>Business Goal</strong><br>何を刷新成功とするか</li><li><strong>Initial Domain Boundary</strong><br>どこを自律単位にするか</li><li><strong>Authority Boundary</strong><br>何をAgentが自律判断できるか</li></ul></div>
+<div class="card"><div class="metric">04–06</div><ul><li><strong>First Vertical Mission</strong><br>最初の6週間で何を通すか</li><li><strong>Evidence / Acceptance</strong><br>何をもって正しいと判断するか</li><li><strong>Cutover / Rollback Principle</strong><br>最後に何を守るか</li></ul></div>
+</div>
+<div class="quote"><span class="accent">まず6週間で「この開発方式が本当に回る」ことを共同で証明します。</span></div>
+<div class="footer"><span>Proposed next step</span><span>15</span></div>
+</section>
+
+</div>
+<nav><button onclick="prev()">◀</button><span id="counter">1 / 15</span><button onclick="next()">▶</button><button onclick="window.print()">PDF</button></nav>
+<script>
+const slides=[...document.querySelectorAll('.slide')]; let idx=0;
+function show(i){idx=Math.max(0,Math.min(slides.length-1,i));slides[idx].scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('counter').textContent=(idx+1)+' / '+slides.length}
+function next(){show(idx+1)} function prev(){show(idx-1)}
+window.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')next();if(e.key==='ArrowLeft'||e.key==='PageUp')prev()})
+const io=new IntersectionObserver(es=>{for(const e of es){if(e.isIntersecting){idx=slides.indexOf(e.target);document.getElementById('counter').textContent=(idx+1)+' / '+slides.length}}},{threshold:.6});
+slides.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
