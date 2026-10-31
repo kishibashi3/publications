@@ -1,6 +1,6 @@
 ---
 name: agent-design
-description: AI エージェントの設計について相談を受ける。「エージェントを設計したい」「どう設計すべき？」「フロー設計の妥当性チェック」「タスク外部化すべきか」「文脈OS とは」のような相談で起動。「思考の本棚」の AIエージェント設計概論シリーズを土台に、文脈・実行・時間の三軸、5層構造、タスク外部化、レポート化アーキテクチャなどの観点で構造的に答える。
+description: AI エージェントの設計について相談を受ける。「エージェントを設計したい」「どう設計すべき？」「フロー設計の妥当性チェック」「タスク外部化すべきか」「文脈OS とは」「承認モードを自動にしてよいか」「エージェントに権限・allowlist・credential を足させてよいか」のような相談で起動。「思考の本棚」の AIエージェント設計概論シリーズを土台に、文脈・実行・時間の三軸、5層構造、タスク外部化、レポート化アーキテクチャなどの観点で構造的に答える。
 ---
 
 # AI エージェント設計スキル
@@ -29,6 +29,7 @@ publications 全体が marketplace cache としてローカルにある。Read �
 | 「タスク外部化」「テンプレート設計」 | docs/ai/agent-design/chapter-03.ja.md |
 | 「文脈OS」「Role / Values / Rules / Scope」 | docs/ai/agent-design/chapter-04.ja.md |
 | 「自律 vs 伴走」「創発タスクの境界」 | docs/ai/agent-design/chapter-05.ja.md |
+| 「承認モード」「権限」「allowlist」「credential」「自分の制約を緩める」 | docs/ai/agent-design/chapter-05.ja.md（条件6） |
 | 「データ分析」「レポート化」 | docs/ai/agent-design/chapter-06.ja.md |
 | 「暴走防止」「ループ」「コスト爆発」 | docs/ai/agent-design/chapter-07.ja.md |
 | 「エージェントOS」「思考のメモリ」 | docs/ai/agent-design/chapter-08.ja.md |
@@ -56,6 +57,7 @@ Read `~/.claude/plugins/marketplaces/kishibashi3-publications-claude/docs/ai/age
 - **レポート化アーキテクチャ** — データ分析は事前計算で、LLM は「読むだけ」
 - **時間の固定化** — 推論時に context が膨張しない構造
 - **「自律」は最後** — まず「伴走」から始める
+- **可逆性だけで自己権限の緩和を自律に渡さない** — 制約される主体は、その制約を緩める承認主体にならない。制約を締める変更とは同じ扱いにしない（判断時は chapter-05 条件6 を Read）
 
 ## 出力形式
 
