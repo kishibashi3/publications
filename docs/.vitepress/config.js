@@ -136,7 +136,8 @@ export default withMermaid({
         {
           text: 'パターン',
           items: [
-            { text: 'Instruction Paging Pattern', link: '/ai/instruction-paging-pattern' }
+            { text: 'Instruction Paging Pattern', link: '/ai/instruction-paging-pattern' },
+            { text: 'Agent Authority Control Plane', link: '/ai/agent-authority-control-plane' }
           ]
         }
       ],
