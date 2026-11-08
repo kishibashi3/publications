@@ -8,6 +8,22 @@
 - ソース: https://github.com/kishibashi3/publications （`docs/` 配下の markdown が公開物の原本。`drafts/` は未公開の草稿で、公開物ではない）
 - 言語: 本文は日本語が主。Pure Agent OS Lab と一部の補論は英語。
 
+## How to fetch the links
+
+下の一覧のリンクは、書かれている URL をそのまま取得すれば本文が返る。
+
+- **URL を書き換えない。** 拡張子は付けない。`.md` を付けると 404 になる（このサイトは markdown を配信しない）。
+  - 取得してよい: `https://pubs.u-biosis.com/core/06-systemic-value`
+  - 404 になる: `https://pubs.u-biosis.com/core/06-systemic-value.md`
+- **末尾のスラッシュは、書かれているとおりにする。** 個別ページの URL にスラッシュを足すと 404 になる。目次ページの URL（`/core/` など）はスラッシュ付きで書いてあり、そのまま取得する。
+  - 404 になる: `https://pubs.u-biosis.com/core/06-systemic-value/`
+- **markdown のリンク `[題](URL)` から URL を取り出すとき、閉じ括弧 `)` を含めない。** 含めると 404 になる。
+- 本文は配信される HTML の中に入っている。JavaScript を実行しなくても読める。応答は `text/html`。
+- 拡張子付きで取得したいツールは `.html` を付ける（例: `https://pubs.u-biosis.com/core/06-systemic-value.html`）。目次ページは `index.html` を付ける（例: `https://pubs.u-biosis.com/core/index.html`）。
+- markdown の原本が必要なら、ソース repo から取得する。ページの URL のパスに `docs/` を前置し、末尾に `.md` を付ける（目次ページは `index.md`）。
+  - 例: `https://raw.githubusercontent.com/kishibashi3/publications/main/docs/core/06-systemic-value.md`
+  - 例: `https://raw.githubusercontent.com/kishibashi3/publications/main/docs/core/index.md`
+
 ## How to read this site
 
 - **公開されていることは、現在の正本であることを意味しない。** 文書ごとの身分（正本・補助・旧版など）はまだ決まっていない。身分の集合と付け方は issue #116 で設計中。
