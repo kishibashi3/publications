@@ -1,7 +1,7 @@
 # 第 4 章　Constitution と Federation
 
 群: Cell の境界と責務
-副題: Cell は自分の規範で中を決め、中の方式を指定せずにつながる
+副題: 中は規範と Contract の範囲で決め、相手の中は指定しない
 
 <!--
 構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v6.md（87be3308）の第 4 章。着手: @ope-ultp1635 msg df6c27d8（v6 の 3 便目）。本文 GO: @ope-ultp1635 msg 8c181d1b、kishibashi3「うん」。
@@ -23,6 +23,7 @@
 章番号: この章の本文・注・絵は v6 の章番号で書いた。
 p.「上書きを許すと文脈が戻る」は書き手の読み（注のまま）。p.「例：決済と推薦の Constitution」の欄の中身は書き手が作った（注に書いた）。
 絵の Cell の枠は入れ子にしない（core.md:43）。
+082ceb2 の検算 3 便目を受けて直した（@ope-ultp1635 msg 468b4a37、判定の正本 @reviewer 2026-11-09-eaa-textbook-082ceb2-ch04-constitution-federation 97306492）: p.「Constitution の版を特定する」の絵の「採用するまで」を「移行が成り立つまで」にし（Contract は結ぶ Cell の全部が採用して移る、core.md:80）、絵に Contract の移り方（core.md:80）を 1 行足した。p.「Constitution は Cell の規範」に core.md:37 の「採用した」を戻し、誰が書いた Constitution をどの Cell が採用するかは Core に無いこと（core.md:94 の列挙にも無い）を版のページの注に、採用の判断主体（core.md:91）を同じページの絵に書いた。この本の読み（Cell が採用した Constitution をその Cell の規範と読む）は p.「Constitution は Cell の規範」の注のまま。p.「規範の範囲で中を決める」に core.md:62 の Contract を戻し（題・本文・絵。題は p.「規範と Contract の範囲で中を決める」）、章の概要・副題も同じにした。p.「Federation は中を指定しない」の名付けを概念表 core.md:29 の全体（中を指定しない＋共有する文書を通してつながる）にし、Contract が縛るのは合意した欄（core.md:38）でその範囲の中は各 Cell が決める、を絵に足した（core.md:62 と core.md:18 が両立すること）。「委託先の工程」→「委託先」（core.md:18「AA以外の開発主体」。工程は中の方式に当たる）、絵の「同じ形で」→「共有する文書で」。p.「断ることと義務を捨てることは別」の「合意した義務」→「すでに負っている義務」（core.md:70「既存義務」）。最後のページの送りを第 5 章の副題に揃えて「Contract に書いて明示する」にした。
 -->
 
 ```svg
@@ -40,11 +41,11 @@ p.「上書きを許すと文脈が戻る」は書き手の読み（注のまま
   <text x="440" y="164" class="tx" text-anchor="middle">Contract・Ontology など</text>
   <path d="M290,145 H320 M560,145 H590" class="ln"/>
   <text x="440" y="234" class="tx" text-anchor="middle">相手の中の方式は指定しない</text>
-  <text x="440" y="310" class="t" text-anchor="middle" font-weight="700">中は自分の規範で決め、あいだは共有する文書でつなぐ</text>
+  <text x="440" y="310" class="t" text-anchor="middle" font-weight="700">中は規範と Contract の範囲で決め、あいだは共有する文書でつなぐ</text>
 </svg>
 ```
 
-各 Cell は自分の規範（Constitution）の範囲で中を決め、ほかの Cell は上書きせずに提案します。Cell どうしは中の方式を指定せず、共有する文書でつながります。
+各 Cell は採用した規範（Constitution）と結んだ Contract の範囲で中を決め、ほかの Cell は上書きせずに提案します。Cell どうしは中の方式を指定せず、共有する文書でつながります。
 
 ## Constitution は Cell の規範
 
@@ -60,9 +61,9 @@ p.「上書きを許すと文脈が戻る」は書き手の読み（注のまま
 </svg>
 ```
 
-価値は一つのループに置かず、各 Cell の規範に書きます。Core は、目的・価値・制約・権限・禁止事項を定める規範を Constitution と呼びます。
+価値は一つのループに置かず、各 Cell の規範に書きます。Core は、採用した目的・価値・制約・権限・禁止事項を定める規範を Constitution と呼びます。
 
-出典: EAA Core 版 6 の概念表「Constitution」。※ 各 Cell の規範を Constitution と読むのは書き手の読み。Core の定義に「Cell ごと」の字は無い。
+出典: EAA Core 版 6 の概念表「Constitution」。※ 採用した規範をその Cell の Constitution と読むのは書き手の読み。定義に「Cell ごと」の字は無い。
 
 ## 例：決済と推薦の Constitution
 
@@ -90,24 +91,25 @@ p.「上書きを許すと文脈が戻る」は書き手の読み（注のまま
 </svg>
 ```
 
-第 2 章で価値の違いで切った、決済と推薦の Constitution です。障害が出た日に変更を出すかで答えが逆になる理由を、それぞれの規範の字で読めます。
+第 2 章で価値で切った、決済と推薦がそれぞれ採用した Constitution です。障害が出た日に変更を出すかで答えが逆になる理由を、それぞれの規範の字で読めます。
 
 ※ 例は説明のために作った。欄は概念表「Constitution」の目的・価値・制約・権限・禁止事項（絵では「禁止」）。欄の書き方は Core に無い。
 
-## 規範の範囲で中を決める
+## 規範と Contract の範囲で中を決める
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="200" y="40" width="480" height="250" rx="10" class="hl" style="fill:#fff"/>
   <text x="440" y="74" class="t hc" text-anchor="middle" font-weight="700">決済の Cell</text>
-  <rect x="240" y="100" width="400" height="44" rx="6" class="soft"/><text x="440" y="128" class="ts" text-anchor="middle">Constitution：止めないことを優先する</text>
+  <rect x="230" y="100" width="200" height="44" rx="6" class="soft"/><text x="330" y="128" class="ts" text-anchor="middle">Constitution</text>
+  <rect x="450" y="100" width="200" height="44" rx="6" class="soft"/><text x="550" y="128" class="ts" text-anchor="middle">結んだ Contract</text>
   <path d="M440,148 V180" class="ln" marker-end="url(#arr)"/>
   <rect x="300" y="190" width="280" height="60" rx="30" class="a"/><text x="440" y="226" class="ts on" text-anchor="middle">中の方式と実行を決める</text>
   <text x="440" y="340" class="t" text-anchor="middle" font-weight="700">判断のたびに価値を選び直さない</text>
 </svg>
 ```
 
-各 Cell は、採用した規範の範囲で中の方式と実行を決めます。決済の Cell は、止めないことを優先する規範の下で、自分の判断を下します。
+各 Cell は、合意して採用した規範と結んだ Contract の範囲で、中の方式と実行を決めます。決済の Cell は、止めないことを優先する規範の下で判断します。
 
 出典: EAA Core 版 6「2. 自治と権限」。
 
@@ -169,13 +171,13 @@ p.「上書きを許すと文脈が戻る」は書き手の読み（注のまま
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="40" y="60" width="380" height="220" rx="10" class="box"/><text x="230" y="96" class="t" text-anchor="middle" font-weight="700">新しい提案を受け入れない</text>
   <use href="#i-ok" x="218" y="140" width="24" height="24"/><text x="230" y="200" class="ts" text-anchor="middle">受けた Cell が決めてよい</text>
-  <rect x="460" y="60" width="380" height="220" rx="10" class="xl" style="fill:#fff"/><text x="650" y="96" class="t xc" text-anchor="middle" font-weight="700">合意した義務を捨てる</text>
+  <rect x="460" y="60" width="380" height="220" rx="10" class="xl" style="fill:#fff"/><text x="650" y="96" class="t xc" text-anchor="middle" font-weight="700">すでに負っている義務を捨てる</text>
   <use href="#i-no" x="638" y="140" width="24" height="24"/><text x="650" y="200" class="ts" text-anchor="middle">一方的にはしない</text>
   <text x="440" y="336" class="ts sub" text-anchor="middle">果たせない・自分の権限で判断できないときは示して、正当な判断主体との調整に戻す</text>
 </svg>
 ```
 
-提案を受け入れないことと、合意した義務を一方的に捨てることは別です。果たせないときや、自分の権限で判断できないときは、示して正当な判断主体との調整に戻します。
+提案を受け入れないことと、すでに負っている義務を一方的に捨てることは別です。果たせない・自分の権限で判断できないときは、示して正当な判断主体との調整に戻します。
 
 出典: EAA Core 版 6「2. 自治と権限」。
 
@@ -190,14 +192,15 @@ p.「上書きを許すと文脈が戻る」は書き手の読み（注のまま
   <rect x="480" y="40" width="360" height="100" rx="6" class="soft"/>
   <text x="660" y="84" class="ts" text-anchor="middle">依存する版：Constitution 版 1</text><text x="660" y="114" class="tx" text-anchor="middle">Ontology・Contract の版も同じ</text>
   <rect x="480" y="170" width="360" height="100" rx="6" class="box"/>
-  <text x="660" y="212" class="ts" text-anchor="middle">版 2 を公開した</text><text x="660" y="242" class="tx" text-anchor="middle">採用するまで、版 1 の合意が効く</text>
+  <text x="660" y="202" class="ts" text-anchor="middle">版 2 を公開した</text><text x="660" y="230" class="tx" text-anchor="middle">移行が成り立つまで、版 1 の合意が効く</text><text x="660" y="256" class="tx" text-anchor="middle">Contract は結ぶ Cell の全部が採用して移る</text>
   <text x="440" y="334" class="t" text-anchor="middle" font-weight="700">新しい版の公開と、各 Cell の採用は別</text>
+  <text x="440" y="366" class="ts sub" text-anchor="middle">採用するかは、採用する側の規範の正当な所有者が決める（第 8 章）</text>
 </svg>
 ```
 
 Profile の引受、Mission、提案では、依存する Constitution の版を特定します。新しい版を公開しても、採用中の合意は移るまで効きます。
 
-出典: EAA Core 版 6「3. 意味と合意」（自動では追随しない）。Mission の依存する版は第 6 章、採用の手続きは第 8 章。
+出典: EAA Core 版 6「3.」「4.」。Mission の版は第 6 章、採用の手続きは第 8 章。※ 誰が書いた Constitution をどの Cell が採用するかは Core に無い。
 
 ## Federation は中を指定しない
 
@@ -209,16 +212,17 @@ Profile の引受、Mission、提案では、依存する Constitution の版を
     <rect x="320" y="60" width="240" height="200" rx="10" class="hl" style="fill:#fff"/><text x="440" y="96" class="ts hc" text-anchor="middle" font-weight="700">Cell</text>
     <rect x="370" y="140" width="140" height="40" rx="6" class="h"/><text x="440" y="166" class="ts on" text-anchor="middle">人のチーム</text>
     <rect x="600" y="60" width="240" height="200" rx="10" class="hl" style="fill:#fff"/><text x="720" y="96" class="ts hc" text-anchor="middle" font-weight="700">Cell</text>
-    <rect x="640" y="140" width="160" height="40" rx="6" class="soft"/><text x="720" y="166" class="ts" text-anchor="middle">委託先の工程</text>
+    <rect x="640" y="140" width="160" height="40" rx="6" class="soft"/><text x="720" y="166" class="ts" text-anchor="middle">委託先</text>
   </g>
   <path d="M280,220 H320 M560,220 H600" class="ln"/>
-  <text x="440" y="320" class="t" text-anchor="middle" font-weight="700">中の作り方は問わず、同じ形でつながる</text>
+  <text x="440" y="320" class="t" text-anchor="middle" font-weight="700">中の作り方は問わず、共有する文書でつながる</text>
+  <text x="440" y="356" class="ts sub" text-anchor="middle">Contract が縛るのは合意した欄だけ。その範囲の中は各 Cell が決める</text>
 </svg>
 ```
 
-Cell どうしは互いの中の方式を指定せず、中が Agent でも、人のチームでも、委託先の工程でもつながれます。この関係を Federation と呼びます。
+Cell どうしが互いの中の方式を指定せず、共有する文書を通してつながる関係を Federation と呼びます。中が人のチームや委託先でも構いません。
 
-出典: EAA Core 版 6「0. 目的と範囲」、概念表「Federation」。AA は単独でも成り立ち、分けた後の Cell を担う AA も同じ AA（同「0.」）。
+出典: EAA Core 版 6「0.」「2.」、概念表「Federation」「Contract」。AA は単独でも成り立ち、分けた後の Cell を担う AA も同じ AA（同「0.」）。
 
 ## Cell どうしは共有する文書でつなぐ
 
@@ -251,4 +255,4 @@ Federation は、共有する文書を通して Cell どうしの責任・権限
 </svg>
 ```
 
-責務と規範を書いて切っても、Cell のあいだで渡すものは残ります。第 5 章から、その結合を共有する文書に書いて持つやり方を見ます。
+責務と規範を書いて切っても、Cell のあいだで渡すものは残ります。第 5 章から、その結合を Contract に書いて明示するやり方を見ます。

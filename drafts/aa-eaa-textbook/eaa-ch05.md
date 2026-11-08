@@ -1,7 +1,7 @@
 # 第 5 章　Contract
 
 群: 切っても残る結合の持ち方
-副題: 残る結合は、書いた取り決め（Contract）に集める
+副題: 残る結合は、書いた取り決め（Contract）で明示する
 
 <!--
 構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v5.md（7a7f5737）の第 6 章。着手: @ope-ultp1635 msg 6ad8d3f2（群三）。
@@ -18,6 +18,7 @@ Core 版 6 は「契約」「検収」の語を使っていない（core.md を 
 絵: 在庫と物流の Cell は横に並べ、Contract は二つの Cell のあいだに置き、どちらの枠の中にも入れない。
 77a7fc9 の検算と通読を受けて直した（@ope-ultp1635 msg 614590ff。判定の正本 @reviewer 2026-11-08-eaa-textbook-77a7fc9-ch00-04 / ch05-08 / ch09-12-furoku、@reader 2026-11-08-eaa-textbook-v5-215p-6readers-r3）: 「EAA 紹介 3」の説明が本に無かった（@reader の読者 3 体）。最初に出る p.「例：在庫と物流のあいだ」の注に書いた。付録 p.「引用の確かめ方」の注にも置いた。
 v6 の 3 便目（着手: @ope-ultp1635 msg df6c27d8。構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v6.md 87be3308）で、ファイルを eaa-ch06.md から eaa-ch05.md に、章を第 6 章から第 5 章にした。本文・注・絵の「第 N 章」を v6 の番号にした（第 6 章以降は 1 ずつ減らした）。旧第 3〜5 章を指していた所: p.「切っても渡すものは残る」の本文「第 4 章で在庫と物流をドメインの境界で切りました」を第 2 章に（ドメインの例は第 2 章 p.「例：ドメインで切る」）。この上の記録の章番号は、そのときの番号のまま。
+082ceb2 の検算 3 便目を受けて直した（@ope-ultp1635 msg 468b4a37、判定の正本 @reviewer 2026-11-09-eaa-textbook-082ceb2-ch04-constitution-federation 97306492）: 副題の「集める」を「明示する」にした。Contract に集めるのはこの本の読みで（p.「Core はここまでしか決めていない」）、Evidence の様式も共有する文書として並ぶ（p.「欄のほかに、所有者・観測・準拠先を持つ」）。第 4 章の送りも「Contract に書いて明示する」に揃えた。
 -->
 
 > Contract には、渡すもの・条件・確かめ方を書き、結ぶ Cell のすべてが同じ版を採用して成り立たせる。暗黙の結合は、相手の文脈を読みに行かせる。
