@@ -10,23 +10,23 @@
 いまの本のどこにも無く、新しく書いたページと出典:
 - p.「Profile に書くこと」— profiles.md:36〜42（「3.」の 5 項目）。項目名・記法・必須項目は未確定（profiles.md:36）
 - p.「例：在庫の Profile」— 書き手の例。5 項目を在庫に当てた。在庫・物流・「出荷日」は第 2 章 p.「例：ドメインで切る」と同じ
-- p.「Standard Profile と Domain Profile」— profiles.md:24〜32（「2.」）
+- p.「Standard Profile と Domain Profile」— profiles.md:24〜32（「2.」）。Domain の例は原典の 3 つ（契約・請求・受注）のまま
 - p.「Standard Profile の初期カタログ」— profiles.md:85〜102（「6.」）。表の「成り立たせる責務」の列は Profiles の字を平らに言い直した
 - p.「書くことと割り当てることは別」— profiles.md:44〜46（「3.」）、core.md:50（「1.」記述だけで権限は発生しない）
 - p.「判断責任者は責務ごとに置く」— core.md:49（「1.」）。例は 62b9aa0 の第 5 章 p.「例：最後に誰が決めるか」から持ってきた（注文画面・在庫連携は @reader のペルソナの設定から借りた形で、書き手が作った例）
-- p.「合わせて担うときに確かめること」— profiles.md:53・54（「4.」）。三つの言い直しは書き手。分け直すときの同じ確かめ（core.md:58）は第 10 章 p.「責任の空白と、決定権の重なり」
-- p.「ロードで引き受ける」— profiles.md:50・51・56・57（「4.」）。Enterprise Cell の説明は Working Notes の表（working-notes.md:304「全体目的・資源・共通規範を扱う」。適用例）による
+- p.「合わせて担うときに確かめること」— profiles.md:53・54（「4.」）。三つの言い直しは書き手。分け直すときの同じ確かめ（core.md:58）は第 10 章 p.「責任の空白と、決定権の重なり」。空白と重なりは第 10 章と同じく持ち主（割当の判断責任者、profiles.md:44）で言い直した。Profile の字で言い直すと p.「書くことと割り当てることは別」（core.md:50・profiles.md:46）と食い違うため（@reviewer 2026-11-09 ch03 の「3-2」）
+- p.「ロードで引き受ける」— profiles.md:50・51・56・57（「4.」）。Enterprise Cell は profiles.md:51 の字のまま引き、説明は付けない。「全体を扱う」は working-notes.md:304 の字で、その節は :297〜298 で EAA の規範ではないとしているため出典から外した（@reviewer 同「2.」）
 - p.「横断責務も Profile」— core.md:31（概念表「横断責務」）、profiles.md:21・22（「1.」）・109（「7.」）
 - p.「Domain Profile は最初の Mission に要る範囲から」— profiles.md:122〜131（「9.」）。Billing の例は Profiles の例をそのまま訳した
-- p.「正本は提供する側、採用版は引き受けた側」— profiles.md:61〜63・70（「4.」の「改訂元と採用先を分ける」）。手続きの表は第 8 章 p.「正本の改訂と、採用版の変更を分ける」（いまの第 9 章）が既に持つので、ここは誰が何を持つかだけにした
-- p.「Core はここまでしか決めていない」— profiles.md:135・136（「10.」）。題は第 8〜11 章（いまの第 9〜12 章）の同題のページに揃えた。右の項目は Core ではなく Profiles が未確定としたもので、絵と出典でそう断った
+- p.「正本は提供する側、採用版は引き受けた側」— profiles.md:61〜63・70（「4.」の「改訂元と採用先を分ける」）。手続きの表は第 8 章 p.「正本の改訂と、採用版の変更を分ける」が既に持つので、ここは誰が何を持つかだけにした
+- p.「Core はここまでしか決めていない」— 左は Core の字だけ（core.md:30・50・52・53・31・63）。見出しは第 8・10 章に揃えて「Core が決めていること」。右は Core の観測欄の既知の不足のうち分け直しに関わる「移行中の責任」（core.md:11、第 10 章と同じ）と、Profiles が未決・未確定とした所（profiles.md:83・102・120・131・135）。題は第 5〜11 章の同題のページに揃えた
 移したページ（v6 の表のとおり）:
 - p.「Profile は、引き受ける責務の仕様」← 62b9aa0 第 4 章 p.「責務は Profile に書く」。在庫の Profile の絵は p.「例：在庫の Profile」へ移し、このページの絵は Profiles「1.」の概念表（Profile・Cell・Mission）にした
 - p.「判断責任者は責務ごとに置く」← 62b9aa0 第 5 章 p.「例：最後に誰が決めるか」
 - p.「分割は、責務と判断権限を渡すこと」← 62b9aa0 第 5 章 p.「分割は判断権限ごと渡す」＋ 第 2 章 p.「増えるのは判断を渡すとき」（渡す先は責任主体で人に限らない・責任を複数の人で負ってよい。core.md:42・52。@reviewer 2-1 の直しのまま）
 - p.「渡した判断は相手のもの」← 62b9aa0 第 5 章 同題。注の章番号を v6 に（Profile はこの章、版の採用は第 8 章）
 - p.「親・子は由来の呼び名」← 62b9aa0 第 5 章 同題
-- p.「一つの Cell が複数を担う」← 62b9aa0 第 4 章 同題 ＋ profiles.md:78・79（「5.」）
+- p.「一つの Cell が複数を担う」← 62b9aa0 第 4 章 同題 ＋ profiles.md:78・79（「5.」）。旧第 4 章の判定「語と記録が混ざらないなら」を、第 2 章の判定（ch02 文脈＝語と記録・価値・権限）に直した
 p.「〜」の参照: 移したページの題を本文・注・絵の中で引いている所は、第 11 章（いまの番号）の注（p.「親・子は由来の呼び名」、題は変えていない）と、旧第 5 章の注の中だけで、どちらもリンクではない。章番号で旧第 4・5 章を指している所（eaa-ch08.md:134 本文「第 5 章の分割」・eaa-ch11.md:103 注「分割の決まりは第 5 章」・eaa-ch12.md:177 絵「（第 4 章）」・eaa-furoku.md:200 絵「（第 5 章）」）は、3 便目の章番号の直しで行き先をこの章にする。
 章番号: この章の本文・注・絵は v6 の章番号で書いた（第 2 章 Cell の境界、第 4 章 Constitution と Federation、第 5 章 Contract、第 7 章 Evidence と Ontology、第 8 章 版の公開と採用、第 9 章 改訂の承認と権限、第 10 章 Cell の分け直し）。3 便目の章番号の直しで、この章はずらさない。
 書き手の読み: p.「判断責任者は責務ごとに置く」の帰結（二つなら提案・一つなら責務の責任者）、p.「合わせて担うときに確かめること」の言い直し。注で断った。
@@ -120,14 +120,14 @@ Profile には、責務の範囲と意味、要る権限と制約、外への保
   <text x="230" y="176" class="tx" text-anchor="middle">Platform・Assurance・Migration など</text>
   <rect x="460" y="40" width="380" height="220" rx="3" class="box"/><text x="650" y="76" class="t" text-anchor="middle" font-weight="700">Domain Profile</text>
   <text x="650" y="124" class="ts" text-anchor="middle">企業が、業務の意味・不変条件・責任から書く</text>
-  <text x="650" y="176" class="tx" text-anchor="middle">契約・請求・受注・在庫など</text>
+  <text x="650" y="176" class="tx" text-anchor="middle">契約・請求・受注など</text>
   <text x="440" y="310" class="t" text-anchor="middle" font-weight="700">形式も引き受け方も同じ。Cell の種類は分けない</text>
 </svg>
 ```
 
 Standard Profile は EAA が再利用できる形で出し、Domain Profile は企業が業務から書きます。形式は同じで、Cell の種類は分けません。
 
-出典: EAA Profiles「2.」。よそで書かれた Domain Profile を使うときも、自分の企業の意味と条件に合わせる（同）。
+出典: EAA Profiles「2.」。汎用の Domain Profile を再利用するときも、自分の企業の意味と条件に合わせる（同）。
 
 ## Standard の初期カタログ
 
@@ -135,7 +135,7 @@ Standard Profile は EAA が再利用できる形で出し、Domain Profile は�
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g class="ts">
     <text x="60" y="44" font-weight="700">Standard Profile</text><text x="280" y="44" font-weight="700">成り立たせる責務</text>
-    <text x="60" y="88">Platform</text><text x="280" y="88">各 Cell が要る共通の基盤を使える</text>
+    <text x="60" y="88">Platform</text><text x="280" y="88">各実行系が要る共通の基盤を使える</text>
     <text x="60" y="126">Portfolio</text><text x="280" y="126">全体の目的と、投資・資源の配分をつなぐ</text>
     <text x="60" y="164">Supplier</text><text x="280" y="164">契約主体をまたぐ責任と受け入れを成り立たせる</text>
     <text x="60" y="202">Assurance</text><text x="280" y="202">成果を独立した根拠で判定できるようにする</text>
@@ -249,8 +249,8 @@ Core は、責務ごとに担う Cell と正当な判断責任者を明らかに
     <rect x="240" y="130" width="180" height="50" rx="6" class="soft"/><text x="330" y="160">在庫の Profile</text>
     <rect x="460" y="130" width="180" height="50" rx="6" class="soft"/><text x="550" y="160">発注の Profile</text>
   </g>
-  <text x="440" y="236" class="ts" text-anchor="middle">語と記録が混ざらないなら、分けずに置く</text>
-  <text x="440" y="336" class="ts sub" text-anchor="middle">混ざるかどうかは、第 2 章の判定で見る</text>
+  <text x="440" y="236" class="ts" text-anchor="middle">担う者が文脈を切り替えずに済むなら、分けずに置く</text>
+  <text x="440" y="336" class="ts sub" text-anchor="middle">済むかどうかは、第 2 章の判定（語と記録・価値・権限）で見る</text>
 </svg>
 ```
 
@@ -265,17 +265,17 @@ Core は、責務ごとに担う Cell と正当な判断責任者を明らかに
   <rect x="200" y="20" width="480" height="50" rx="10" class="hl" style="fill:#fff"/><text x="440" y="52" class="ts hc" text-anchor="middle" font-weight="700">一つの Cell が、在庫と発注の Profile を担う</text>
   <path d="M440,74 V96" class="ln" marker-end="url(#arr)"/>
   <g class="ts">
-    <rect x="40" y="104" width="250" height="180" rx="6" class="box"/><text x="165" y="140" text-anchor="middle" font-weight="700">責任の空白</text><text x="165" y="190" text-anchor="middle" class="tx">どちらの Profile にも</text><text x="165" y="214" text-anchor="middle" class="tx">書かれていない責務</text>
-    <rect x="315" y="104" width="250" height="180" rx="6" class="box"/><text x="440" y="140" text-anchor="middle" font-weight="700">重なる決定権</text><text x="440" y="190" text-anchor="middle" class="tx">同じことを、両方の Profile が</text><text x="440" y="214" text-anchor="middle" class="tx">決めると書いている</text>
+    <rect x="40" y="104" width="250" height="180" rx="6" class="box"/><text x="165" y="140" text-anchor="middle" font-weight="700">責任の空白</text><text x="165" y="190" text-anchor="middle" class="tx">どの判断責任者も</text><text x="165" y="214" text-anchor="middle" class="tx">引き受けていない責務</text>
+    <rect x="315" y="104" width="250" height="180" rx="6" class="box"/><text x="440" y="140" text-anchor="middle" font-weight="700">重なる決定権</text><text x="440" y="190" text-anchor="middle" class="tx">同じことを、二人の</text><text x="440" y="214" text-anchor="middle" class="tx">判断責任者が決める</text>
     <rect x="590" y="104" width="250" height="180" rx="6" class="box"/><text x="715" y="140" text-anchor="middle" font-weight="700">両立しない保証</text><text x="715" y="190" text-anchor="middle" class="tx">片方を守ると、</text><text x="715" y="214" text-anchor="middle" class="tx">もう片方が守れない</text>
   </g>
-  <text x="440" y="336" class="ts sub" text-anchor="middle">制約を守ったうえで、誰が何を引き受けるかを合意する</text>
+  <text x="440" y="336" class="ts sub" text-anchor="middle">決定権は割当で生まれる。Profile の本文だけでは決まらない</text>
 </svg>
 ```
 
-一つの Cell が複数の Profile を担うときは、責任の空白、重なる決定権、両立しない保証が無いかを確かめます。そのうえで、誰が何を引き受けるかを合意します。
+複数の Profile を担うときは、割当を見て、責任の空白、重なる決定権、両立しない保証が無いかを確かめます。そのうえで、誰が何を引き受けるかを合意します。
 
-出典: EAA Profiles「4.」。※ 三つの言い直しは書き手による。分け直すときの空白と重なりは第 10 章で見る。
+出典: EAA Profiles「3.」「4.」、EAA Core 版 6「1.」。※ 三つの言い直しは書き手による。空白と重なりを持ち主で見るのは、第 10 章の分け直しと同じ。
 
 ## ロードで引き受ける
 
@@ -293,7 +293,7 @@ Core は、責務ごとに担う Cell と正当な判断責任者を明らかに
 
 Cell が Profile を引き受けることをロードと呼び、要る権限と能力を確保したときに成り立ちます。改訂は、既に引き受けた Cell に自動では当たりません。
 
-出典: EAA Profiles「4.」。全体を扱う Cell（Enterprise Cell）が、複数の Profile をまとめて引き受けてもよい（同）。解除の引き継ぎは第 10 章。
+出典: EAA Profiles「4.」。Enterprise Cell（定義は原典に無い）が複数の Profile をまとめて引き受けてもよい（同）。解除の引き継ぎは第 10 章。
 
 ## 横断責務も Profile
 
@@ -353,22 +353,23 @@ Profile の正本は提供する側が持ち、引き受けた側は採用した
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="40" y="30" width="380" height="290" rx="10" class="soft"/>
-  <text x="60" y="64" class="t" font-weight="700">決めていること</text>
+  <text x="60" y="64" class="t" font-weight="700">Core が決めていること</text>
   <g class="ts"><use href="#i-ok" x="60" y="88" width="22" height="22"/><text x="92" y="105">Profile は版付きの責務の仕様</text>
-  <use href="#i-ok" x="60" y="128" width="22" height="22"/><text x="92" y="145">書くことと割り当てることは別</text>
+  <use href="#i-ok" x="60" y="128" width="22" height="22"/><text x="92" y="145">記述だけでは権限は生まれない</text>
   <use href="#i-ok" x="60" y="168" width="22" height="22"/><text x="92" y="185">分割は責務と判断権限を渡す</text>
-  <use href="#i-ok" x="60" y="208" width="22" height="22"/><text x="92" y="225">改訂は採用先に自動で当たらない</text>
-  <use href="#i-ok" x="60" y="248" width="22" height="22"/><text x="92" y="265">横断の責務も提案で変える</text></g>
+  <use href="#i-ok" x="60" y="208" width="22" height="22"/><text x="92" y="225">渡した範囲は、採用まで変わらない</text>
+  <use href="#i-ok" x="60" y="248" width="22" height="22"/><text x="92" y="265">横断の責務も Profile、上書きしない</text></g>
   <rect x="460" y="30" width="380" height="290" rx="10" fill="url(#hatch)"/>
   <text x="480" y="64" class="t" font-weight="700">決めていないこと</text>
-  <g class="ts"><text x="480" y="102" class="ts" font-weight="700">Profiles が未確定とした</text><text x="480" y="140" class="ts">Profile の詳しいスキーマ</text><text x="480" y="174" class="ts">責務をさらに分割する手続き</text><text x="480" y="208" class="ts">ロードが済んだことの確かめ方</text><text x="480" y="242" class="ts">分離・再統合の移行の手順</text></g>
+  <g class="ts"><text x="480" y="98" class="ts" font-weight="700">既知の不足（Core の冒頭が挙げた）</text><text x="480" y="122" class="ts">移行中の責任</text>
+  <text x="480" y="156" class="ts" font-weight="700">Profiles が未決・未確定とした</text><text x="480" y="180" class="ts">Profile の詳しいスキーマと Template</text><text x="480" y="204" class="ts">責務をさらに分割する手続き</text><text x="480" y="228" class="ts">ロードが済んだことの確かめ方</text><text x="480" y="252" class="ts">分離の引継ぎと、分離・再統合の移行の手順</text><text x="480" y="276" class="ts">外部の義務を履行できないときの扱い</text><text x="480" y="300" class="ts">切替時の予期しない不一致・緊急時の手順</text></g>
   <text x="440" y="356" class="ts sub" text-anchor="middle">Core の自治・権限・Evidence の原則を保ち、具体例から決めていく</text>
 </svg>
 ```
 
-左は Core と Profiles が決めていること、右は Profiles が未確定としたことです。原則は保ったまま、具体例から要る項目を決めるとしています。
+左は Core が決めていること、右は Core と Profiles が未決としたことです。Profiles は、原則を保ったまま具体例から要る項目を決めるとしています。
 
-出典: EAA Profiles「10. 今後定める仕様」、EAA Core 版 6「1.」。
+出典: EAA Core 版 6 冒頭の観測欄・概念表・「1.」「2.」、EAA Profiles「5.」「6.」「8.」「9.」「10.」。※ Core の「移行」は版の移行の語。
 
 ## 次章へ：Constitution
 
