@@ -33,7 +33,7 @@
 2026-10-19 第 8 章を畳み、旧第 10 章を第 9 章にした（plan 第 24 版、@ope-ultp1635 msg 682c5acc）。上の行の p.150 は旧番号（新 p.142）。
 -->
 
-第 8 章で、条件の札が輪を育てると見ました。この章では、札 1 枚を足すのにどれだけかかるかを見ます。
+第 8 章で、書き足した決まりがループを育てると見ました。この章では、決まりを 1 行足すのにどれだけかかるかを見ます。
 
 ## いまの形：決まりの変更はコードと同じ重さ
 
@@ -59,11 +59,11 @@
 
 ※ 決まりのファイル＝AI への指示ファイルなど。repo に入っていれば PR として残る。残らないのは「何を見て変えたか」（p.148）。
 
-## 札 1 枚を足すのに 5 段、人は 2 回
+## 決まりを 1 行足すのに 5 段、人は 2 回
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="30" y="60" class="ts">AA で、第 8 章の札「期間の終わりの日は含める」を 1 枚足す</text>
+  <text x="30" y="60" class="ts">AA で、第 8 章の決まり「期間の終わりの日は含める」を 1 行足す</text>
   <rect x="30" y="90" width="140" height="56" rx="6" class="box"/><rect x="200" y="90" width="140" height="56" rx="6" class="a"/><rect x="370" y="90" width="140" height="56" rx="6" class="h"/><rect x="540" y="90" width="140" height="56" rx="6" class="box"/><rect x="710" y="90" width="140" height="56" rx="6" class="h"/>
   <path d="M170,118 H200 M340,118 H370 M510,118 H540 M680,118 H710" class="ln"/>
   <g class="ts" text-anchor="middle"><text x="100" y="124">1 観測を記録</text><text x="270" y="124" class="on">2 書き足しを提起</text><text x="440" y="124" class="on">3 持ち主が承認</text><text x="610" y="124">4 新しい版</text><text x="780" y="124" class="on">5 下が採用</text></g>
@@ -75,7 +75,7 @@
 </svg>
 ```
 
-第 8 章の札 1 枚を足すのに、5 段を通ります。人が通すのは 2 回です。毎日のコードより遅い道です。この章では、1 段ずつ外してみます。
+第 8 章の決まりを 1 行足すのに、5 段を通ります。人が通すのは 2 回です。毎日のコードより遅い道です。この章では、1 段ずつ外してみます。
 
 ※ 5 段目に人が要るのは、この本の読み。下が新しい版を採るのも下の決まりを直すことなので、「言い出した者は通さない」が当たる。
 
@@ -95,7 +95,7 @@
   <rect x="290" y="116" width="130" height="80" rx="6" class="soft"/>
   <g class="tx"><text x="302" y="140">観測</text><text x="302" y="162">1・2 周目に同じ質問</text><text x="302" y="182">「31 日は含める？」</text></g>
   <use href="#i-ok" x="148" y="226" width="24" height="24"/><text x="240" y="244" class="ts" text-anchor="middle">何を見て書いたか</text>
-  <text x="240" y="268" class="ts" text-anchor="middle">が、札に付いている</text>
+  <text x="240" y="268" class="ts" text-anchor="middle">が、決まりに付いている</text>
   <rect x="490" y="116" width="200" height="80" rx="6" class="box"/>
   <text x="590" y="148" class="ts" text-anchor="middle">+ 期間の終わりの日は</text><text x="590" y="172" class="ts" text-anchor="middle">含める</text>
   <path d="M690,156 H720" class="ln dash"/>
@@ -107,7 +107,7 @@
 </svg>
 ```
 
-札には、何を見て書いたかの記録が付きます。これが無いと、決まりは思いつきで変わるか、変わらないかのどちらかになります。
+決まりには、何を見て書いたかの記録が付きます。これが無いと、決まりは思いつきで変わるか、変わらないかのどちらかになります。
 
 ※ 見直しの根拠に何を記録するかは、決まり自身が持つ。見直し・変更の言い出し・通したかどうかは、書き足すだけの記録に残す。
 
@@ -119,12 +119,12 @@
   <path d="M250,29 H270 M370,29 H390 M490,29 H510 M610,29 H630" class="ln"/>
   <g class="tx" text-anchor="middle"><text x="200" y="34">1 観測</text><text x="320" y="34" class="on">2 提起</text><text x="440" y="34" class="on">3 承認</text><text x="560" y="34">4 版</text><text x="680" y="34" class="on">5 採用</text></g>
   <rect x="384" y="8" width="112" height="42" rx="6" fill="none" stroke="#222" stroke-width="3"/>
-  <rect x="40" y="100" width="120" height="56" rx="6" class="a"/><text x="100" y="126" class="ts on" text-anchor="middle">札を書いた</text><text x="100" y="146" class="ts on" text-anchor="middle">AI</text>
+  <rect x="40" y="100" width="120" height="56" rx="6" class="a"/><text x="100" y="126" class="ts on" text-anchor="middle">決まりを書いた</text><text x="100" y="146" class="ts on" text-anchor="middle">AI</text>
   <rect x="210" y="100" width="190" height="56" rx="6" class="box"/><text x="305" y="124" class="ts" text-anchor="middle">期間の終わりの日は</text><text x="305" y="144" class="ts" text-anchor="middle">含める</text>
   <path d="M160,128 H210" class="al"/>
   <rect x="470" y="88" width="16" height="80" class="h"/><text x="478" y="190" class="tx" text-anchor="middle">通す</text>
   <path d="M400,128 H455" class="al"/><path d="M440,114 L462,142 M462,114 L440,142" class="xl"/>
-  <rect x="40" y="220" width="120" height="56" rx="6" class="h"/><text x="100" y="246" class="ts on" text-anchor="middle">札の持ち主</text><text x="100" y="266" class="ts on" text-anchor="middle">（人）</text>
+  <rect x="40" y="220" width="120" height="56" rx="6" class="h"/><text x="100" y="246" class="ts on" text-anchor="middle">決まりの持ち主</text><text x="100" y="266" class="ts on" text-anchor="middle">（人）</text>
   <path d="M160,248 C330,248 400,190 470,160" class="hl"/>
   <text x="560" y="104" class="ts">以後の周</text>
   <path d="M560,128 H850" class="lt"/>
@@ -137,7 +137,7 @@
 </svg>
 ```
 
-札を足すのは、AI の「聞く」という縛りを緩める変更にあたります。だから書いた AI は通しません。本人が通せたら、どの決まりも外せる物になります。
+決まりを足すのは、AI の「聞く」という縛りを緩める変更にあたります。だから書いた AI は通しません。本人が通せたら、どの決まりも外せる物になります。
 
 ※ 決まりの変更を言い出した者は、その変更を通さない。この線が無いと、どの決まりも、AI が要ると思えば外せる物になる。
 
@@ -168,11 +168,11 @@
 
 出典: 著者の場の決まりの改訂（2026-09-21 の監査の後・対象の repo は非公開）。締める向きは、承認の記録なしで直してよいままにした。
 
-## 札でない縛りは、緩める向きだけ重い
+## 文書でない縛りは、緩める向きだけ重い
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="40" y="44" class="ts sub">承認の設定（札ではない縛り）</text>
+  <text x="40" y="44" class="ts sub">承認の設定（文書ではない縛り）</text>
   <rect x="40" y="80" width="150" height="56" rx="6" class="box"/><text x="115" y="114" class="ts" text-anchor="middle">確認あり</text>
   <path d="M190,108 H650" class="ln" marker-end="url(#arr)"/>
   <rect x="660" y="80" width="150" height="56" rx="6" class="box"/><text x="735" y="114" class="ts" text-anchor="middle">確認なし</text>
@@ -188,9 +188,9 @@
 </svg>
 ```
 
-札でない縛りにも、同じ線があります。D8 です。止めるのは緩める向きだけです。札そのものの改訂は、締める向きでも 5 段を通ります。
+文書でない縛りにも、同じ線があります。D8 です。止めるのは緩める向きだけです。決まり（文書）そのものの改訂は、締める向きでも 5 段を通ります。
 
-※ D8「実行者は、自らを縛る規則を緩める変更を自ら承認しない」。札（文書）の改訂は、向きによらず「言い出した者は通さない」を通る。
+※ D8「実行者は、自らを縛る規則を緩める変更を自ら承認しない」。決まり（文書）の改訂は、向きによらず「言い出した者は通さない」を通る。
 
 ## 段 4 版：どの版に従ったかが残る
 
@@ -214,7 +214,7 @@
 </svg>
 ```
 
-札は直すたびに版が上がります。どの周がどの版に従ったかが残るので、誤った札がいつ入ったかが分かり、前の中身に戻せます。
+決まりは直すたびに版が上がります。どの周がどの版に従ったかが残るので、誤った決まりがいつ入ったかが分かり、前の中身に戻せます。
 
 ※ 版は直すたびに増える番号で、大小の順序のほかに意味を持たない。
 
@@ -241,7 +241,7 @@
 
 ※ 上の版が上がっても、下は自動ではついていかない。採るのに人が要るのは、この本の読み。層は p.126。
 
-## 誤った札は、旧を残したまま直す
+## 誤った決まりは、旧を残したまま直す
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -257,7 +257,7 @@
 </svg>
 ```
 
-札が誤っていたら、いきなり差し替えません。旧を残して新を足し、ログを見て、旧を止め、最後に消します。消すまでは、いつでも戻せます。
+決まりが誤っていたら、いきなり差し替えません。旧を残して新を足し、ログを見て、旧を止め、最後に消します。消すまでは、いつでも戻せます。
 
 出典: 著者の場の決まり（2026-06、片側だけ名前を変えて 4 件続けて壊れた後に書き足した）。
 
@@ -266,7 +266,7 @@
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g class="tx" text-anchor="middle"><text x="250" y="50">1 周</text><text x="310" y="50">2</text><text x="370" y="50">3</text><text x="430" y="50">4</text><text x="490" y="50">5</text><text x="550" y="50">6</text><text x="610" y="50">7</text><text x="670" y="50">8</text><text x="730" y="50">9</text><text x="790" y="50">…</text></g>
-  <g class="ts" text-anchor="end"><text x="200" y="118">コードの誤り</text><text x="200" y="248">札の誤り</text></g>
+  <g class="ts" text-anchor="end"><text x="200" y="118">コードの誤り</text><text x="200" y="248">決まりの誤り</text></g>
   <path d="M220,112 H820" class="lt"/><path d="M220,242 H820" class="lt"/>
   <g class="box"><rect x="232" y="94" width="36" height="36" rx="4"/><rect x="292" y="94" width="36" height="36" rx="4"/><rect x="412" y="94" width="36" height="36" rx="4"/><rect x="472" y="94" width="36" height="36" rx="4"/><rect x="532" y="94" width="36" height="36" rx="4"/><rect x="592" y="94" width="36" height="36" rx="4"/><rect x="652" y="94" width="36" height="36" rx="4"/><rect x="712" y="94" width="36" height="36" rx="4"/></g>
   <rect x="352" y="94" width="36" height="36" rx="4" class="x"/>
@@ -275,15 +275,15 @@
   <g class="x"><rect x="352" y="224" width="36" height="36" rx="4"/><rect x="412" y="224" width="36" height="36" rx="4"/><rect x="472" y="224" width="36" height="36" rx="4"/><rect x="532" y="224" width="36" height="36" rx="4"/><rect x="592" y="224" width="36" height="36" rx="4"/><rect x="652" y="224" width="36" height="36" rx="4"/><rect x="712" y="224" width="36" height="36" rx="4"/></g>
   <text x="790" y="248" class="ts xc" text-anchor="middle">…</text>
   <text x="550" y="296" class="ts xc" text-anchor="middle">入った周から、直すまで毎周</text>
-  <text x="440" y="350" class="ts sub" text-anchor="middle">札が人を待つ所を全部消せるのと、同じ理由</text>
+  <text x="440" y="350" class="ts sub" text-anchor="middle">決まりが人を待つ所を全部消せるのと、同じ理由</text>
 </svg>
 ```
 
-コードの誤りは、その周の判定で止まります。札の誤りは、以後の周すべてに効きます。札が人を待つ所を消せるのと同じ理由です。だから重くします。
+コードの誤りは、その周の判定で止まります。決まりの誤りは、以後の周すべてに効きます。決まりが人を待つ所を消せるのと同じ理由です。だから重くします。
 
-※ 第 8 章 p.130 の裏返し。1 回の approve が以後の質問を全部引き受けるように、誤った札も以後の周を全部引き受ける。
+※ 第 8 章 p.130 の裏返し。1 回の approve が以後の質問を全部引き受けるように、誤った決まりも以後の周を全部引き受ける。
 
-## 代償：直したい札も、すぐには直らない
+## 代償：直したい決まりも、すぐには直らない
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -302,7 +302,7 @@
 </svg>
 ```
 
-決まりの道は遅いままです。誤りに気づいた札も、5 段を通るまで直りません。その間も、誤った札は効き続けます。それでも重くします。
+決まりの道は遅いままです。誤りに気づいた決まりも、5 段を通るまで直りません。その間も、誤った決まりは効き続けます。それでも重くします。
 
 ## 実例：守らせる仕組みが、黙って止まった
 
@@ -336,7 +336,7 @@ LGTM の付いた PR を merge に回す見張りが、4 か月止まってい�
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <text x="60" y="50" class="ts">人の判断（限られている）</text>
-  <rect x="60" y="74" width="170" height="64" class="h"/><text x="145" y="112" class="ts on" text-anchor="middle">床（D8）</text>
+  <rect x="60" y="74" width="170" height="64" class="h"/><text x="145" y="112" class="ts on" text-anchor="middle">権限緩和（D8）</text>
   <rect x="230" y="74" width="590" height="64" class="soft"/><path d="M230,74 H820 V138 H230" class="ln"/>
   <path d="M250,106 H500" class="hl"/><path d="M500,106 L488,98 M500,106 L488,114" class="hl"/>
   <path d="M800,106 H560" class="ln"/><path d="M560,106 L572,98 M560,106 L572,114" class="ln"/>
@@ -352,7 +352,7 @@ LGTM の付いた PR を merge に回す見張りが、4 か月止まってい�
 </svg>
 ```
 
-床の上の配分は、この本では決めません。決めるときも、思いつきでは決めません。記録が溜まるまで、決まっていないと書いておきます。
+権限緩和を除いた残りの配分は、この本では決めません。決めるときも、思いつきでは決めません。記録が溜まるまで、決まっていないと書いておきます。
 
 ※ 第 3 章 p.58・p.59。どれを先にするかは、要るようになった時点で、記録を根拠に足す。
 
@@ -394,13 +394,13 @@ LGTM の付いた PR を merge に回す見張りが、4 か月止まってい�
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g class="ts" text-anchor="middle"><text x="610" y="44">どの道？</text><text x="760" y="44">人は何回？</text></g>
   <g class="soft"><rect x="40" y="64" width="800" height="58"/><rect x="40" y="134" width="800" height="58"/><rect x="40" y="204" width="800" height="58"/><rect x="40" y="274" width="800" height="58"/></g>
-  <g class="t"><text x="60" y="100">A　コードの不具合を直す</text><text x="60" y="170">B　札「期間の終わりの日は含める」</text><text x="60" y="240">C　承認の設定を「確認あり」に締める</text><text x="60" y="310">D　承認の設定を「確認なし」に緩める</text></g>
+  <g class="t"><text x="60" y="100">A　コードの不具合を直す</text><text x="60" y="170">B　決まり「期間の終わりの日は含める」</text><text x="60" y="240">C　承認の設定を「確認あり」に締める</text><text x="60" y="310">D　承認の設定を「確認なし」に緩める</text></g>
   <g fill="#fff" class="lt dash"><rect x="550" y="74" width="120" height="38" rx="4"/><rect x="550" y="144" width="120" height="38" rx="4"/><rect x="550" y="214" width="120" height="38" rx="4"/><rect x="550" y="284" width="120" height="38" rx="4"/><rect x="710" y="74" width="100" height="38" rx="4"/><rect x="710" y="144" width="100" height="38" rx="4"/><rect x="710" y="214" width="100" height="38" rx="4"/><rect x="710" y="284" width="100" height="38" rx="4"/></g>
-  <text x="440" y="362" class="ts sub" text-anchor="middle">どちらの向きか、札か札でないか</text>
+  <text x="440" y="362" class="ts sub" text-anchor="middle">どちらの向きか、文書か文書でないか</text>
 </svg>
 ```
 
-絵の変更のうち、どれが毎日のコードの道を、どれが決まりの道を通るでしょう。札でない縛りはどうでしょう。人は何回要るでしょう。
+絵の変更のうち、どれが毎日のコードの道を、どれが決まりの道を通るでしょう。文書でない縛りはどうでしょう。人は何回要るでしょう。
 
 ※ 答え：A は毎日の道で人 0（別の AI が判定）。B は決まりの道の 5 段で人 2。C は柵なし、自分で入れてよい。D は本人以外の人が通す（D8）。
 
@@ -412,24 +412,24 @@ LGTM の付いた PR を merge に回す見張りが、4 か月止まってい�
   <text x="64" y="54" class="ts sub">AA の条文（抜き書き）</text>
   <text x="64" y="88" style="font-size:18px">改訂を提起した者は、その改訂を承認しない</text>
   <path d="M100,96 H460" class="hl"/>
-  <text x="100" y="114" class="tx">p.149 札を書いた AI は、自分の札を通さない</text>
+  <text x="100" y="114" class="tx">p.149 決まりを書いた AI は、自分の決まりを通さない</text>
   <text x="64" y="150" style="font-size:18px">上位の版が上がっても、下位は自動では追随しない</text>
   <path d="M100,158 H520" class="hl"/>
   <text x="100" y="176" class="tx">p.153 下が採るのは、別の承認</text>
   <text x="64" y="212" style="font-size:18px">D8 実行者は、自らを縛る規則を緩める変更を自ら承認しない</text>
   <path d="M100,220 H560" class="hl"/>
-  <text x="100" y="238" class="tx">p.151 札でない縛りは、緩める向きだけ止める</text>
+  <text x="100" y="238" class="tx">p.151 文書でない縛りは、緩める向きだけ止める</text>
   <text x="64" y="262" class="tx">（D8 より上は決まりを直す手続き、D8 は指針）</text>
   <rect x="150" y="304" width="100" height="30" rx="4" class="box"/><rect x="270" y="304" width="100" height="30" rx="4" class="a"/><rect x="390" y="304" width="100" height="30" rx="4" class="h"/><rect x="510" y="304" width="100" height="30" rx="4" class="box"/><rect x="630" y="304" width="100" height="30" rx="4" class="h"/>
   <path d="M250,319 H270 M370,319 H390 M490,319 H510 M610,319 H630" class="ln"/>
   <g class="tx" text-anchor="middle"><text x="200" y="324">1 観測</text><text x="320" y="324" class="on">2 提起</text><text x="440" y="324" class="on">3 承認</text><text x="560" y="324">4 版</text><text x="680" y="324" class="on">5 採用</text></g>
-  <text x="440" y="362" class="ts sub" text-anchor="middle">札 1 枚に、毎回この 5 段</text>
+  <text x="440" y="362" class="ts sub" text-anchor="middle">決まり 1 行に、毎回この 5 段</text>
 </svg>
 ```
 
-この章の条文は、決まりを直す手続き（言い出した者は通さない・下は自動でついていかない）と D8 です。札 1 枚を足す手続きは、コードより重くしてあります。
+この章の条文は、決まりを直す手続き（言い出した者は通さない・下は自動でついていかない）と D8 です。決まりを 1 行足す手続きは、コードより重くしてあります。
 
-※ 決まりを直す手続きが扱うのは札（文書）の改訂、D8 は承認の設定のような文書でない縛り。片方だけでは穴が残る。
+※ 決まりを直す手続きが扱うのは決まり（文書）の改訂、D8 は承認の設定のような文書でない縛り。片方だけでは穴が残る。
 
 ## 実装イメージ：5 段を git に残す
 

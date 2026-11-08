@@ -1,6 +1,6 @@
 # 第 7 章　変更の大きさと可逆性
 
-群: 頼み方・判定・権限・刻み
+群: プロンプト・判定・権限・刻み
 副題: 小さく刻むと、revert できる範囲が広がる
 
 <!-- 2026-11-08（@ope-ultp1635 msg 8b20f53a）: 章題を名詞句にし、主張の 1 文は副題へ移した（root CLAUDE.md「成果物の文章の作法」二）。EAA と同じ形 -->
@@ -33,7 +33,7 @@
 例は作り物: p.103 の大きな 1 本、p.106・107 の毎日のデータの書き換えとバックアップ 7 世代、p.109 の列の名前の変更。
 -->
 
-第 6 章で、AI が読める・送れる範囲を絞りました。最後は大きさです。4 枚の外にあって、物差しの上の位置を決めます。
+第 6 章で、AI が読める・送れる範囲を絞りました。最後は大きさです。4 枚の外にあって、revert できるかを決めます。
 
 ## 4 枚が正しくても、1 回が大きい
 
@@ -45,22 +45,22 @@
   <g fill="#fff" class="hl"><rect x="40" y="60" width="96" height="40" rx="4"/><rect x="146" y="60" width="96" height="40" rx="4"/><rect x="252" y="60" width="96" height="40" rx="4"/><rect x="358" y="60" width="96" height="40" rx="4"/></g>
   <g class="tx hc" text-anchor="middle"><text x="88" y="85">1 目的</text><text x="194" y="85">2 条件</text><text x="300" y="85">3 権限</text><text x="406" y="85">4 判定</text></g>
   <path d="M40,108 V118 H454 V108" class="ln"/>
-  <text x="247" y="140" class="ts" text-anchor="middle">4 枚が書くのは「この一筋の分」</text>
-  <text x="247" y="162" class="tx" text-anchor="middle">一筋の大きさは、どの 1 枚にも無い</text>
+  <text x="247" y="140" class="ts" text-anchor="middle">4 枚が書くのは「この 1 本の分」</text>
+  <text x="247" y="162" class="tx" text-anchor="middle">1 本の大きさは、4 枚のどれにも無い</text>
   <path d="M60,290 H820" class="ln" marker-end="url(#arr)"/>
   <text x="60" y="320" class="ts sub">revert できる</text><text x="820" y="320" class="ts sub" text-anchor="end">revert できない</text>
   <path d="M440,190 V340" stroke="#d9822b" stroke-width="5"/>
   <rect x="400" y="156" width="80" height="34" rx="6" class="h"/><text x="440" y="179" class="ts on" text-anchor="middle">人</text>
   <rect x="500" y="190" width="320" height="86" rx="6" fill="#fff" stroke="#555" stroke-width="3"/>
   <text x="660" y="226" class="t" text-anchor="middle">大きな 1 本</text>
-  <text x="660" y="254" class="tx" text-anchor="middle">戻せない部分が少しでも入れば、1 本ごと線の右</text>
+  <text x="660" y="254" class="tx" text-anchor="middle">戻せない部分が少しでも入れば、1 本ごと戻せない側</text>
   <path d="M247,170 Q300,240 494,230" class="lt dash" marker-end="url(#arr)"/>
 </svg>
 ```
 
-4 枚は「この一筋の分」を書く物でした（p.78）。一筋の大きさは、どの 1 枚にも書かれていません。大きいほど、物差しの右に寄ります。
+4 枚は「この 1 本の分」を書く物でした（p.78）。1 本の大きさは、4 枚のどれにも書かれていません。大きいほど、revert できない側に寄ります。
 
-※ 物差しは第 3 章 p.44。大きな 1 本は、戻すときに巻き込む物も多い。
+※ revert できるかの並びは第 3 章 p.44。大きな 1 本は、戻すときに巻き込む物も多い。
 
 ## 刻むと、revert できる範囲が広がる
 
@@ -83,9 +83,9 @@
 </svg>
 ```
 
-刻むと、戻せる札は線の左へ移り、戻せない所だけが小さく右に残ります。人が見るのはその 1 本です。条文 D7 は、これを可逆性を買うと言います。
+刻むと、戻せる分は revert できる側へ移り、戻せない所だけが小さく残ります。人が見るのはその 1 本です。条文 D7 は、これを可逆性を買うと言います。
 
-※ D7「小さく刻むとは、可逆性を買う行為である」。例は作り物。第 3 章 p.48 で減ったのは捨てる量、ここで動くのは物差しの上の位置。
+※ D7「小さく刻むとは、可逆性を買う行為である」。例は作り物。第 3 章 p.48 で減ったのは捨てる量、ここで変わるのは revert できるかどうか。
 
 ## アジャイルでは心がけ、AA では帰結
 
@@ -107,7 +107,7 @@
 </svg>
 ```
 
-刻まないと、大きな 1 本は人の線の手前で止まり、人を待ちます。守らせる心がけではなく、刻まないと自分が止まるので刻みます。
+刻まないと、大きな 1 本は人の承認の手前で止まり、人を待ちます。守らせる心がけではなく、刻まないと自分が止まるので刻みます。
 
 ※ アジャイルでは、刻むのは守らせる処方で、規律が要る。D4 の下では、刻まないと自分が止まる。処方が帰結に変わる。
 
@@ -116,27 +116,27 @@
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <path d="M440,20 V300" stroke="#d9822b" stroke-width="5"/>
-  <text x="220" y="40" class="ts sub" text-anchor="middle">線の左：人を呼ばない</text><text x="660" y="40" class="ts sub" text-anchor="middle">線の右：人を呼ぶ</text>
+  <text x="220" y="40" class="ts sub" text-anchor="middle">戻せる側：人を呼ばない</text><text x="660" y="40" class="ts sub" text-anchor="middle">戻せない側：人を呼ぶ</text>
   <rect x="480" y="70" width="360" height="60" rx="6" fill="#fff" class="xl"/>
   <text x="660" y="106" class="ts xc" text-anchor="middle">戻せない 1 本</text>
   <g fill="#fff" class="al"><rect x="60" y="170" width="34" height="56" rx="3"/><rect x="104" y="170" width="34" height="56" rx="3"/><rect x="148" y="170" width="34" height="56" rx="3"/><rect x="192" y="170" width="34" height="56" rx="3"/><rect x="236" y="170" width="34" height="56" rx="3"/><rect x="280" y="170" width="34" height="56" rx="3"/><rect x="324" y="170" width="34" height="56" rx="3"/><rect x="368" y="170" width="34" height="56" rx="3"/></g>
   <path d="M520,134 C460,160 440,180 404,196" class="xl dash" marker-end="url(#arr-x)"/>
   <text x="230" y="256" class="ts ac" text-anchor="middle">1 本ずつは小さく、戻せるように見える</text>
   <rect x="60" y="300" width="760" height="50" rx="6" class="xw"/>
-  <text x="440" y="331" class="ts xc" text-anchor="middle">足し合わせると、線の右の 1 本と同じ</text>
+  <text x="440" y="331" class="ts xc" text-anchor="middle">足し合わせると、戻せない 1 本と同じ</text>
 </svg>
 ```
 
 刻むと、人を呼ばずに済む範囲が広がります。ならば、人を呼ばないためだけに刻む道も同時に開きます。D7 の但し書きは、この道をふさぎます。
 
-※ 但し書きは 3 つ。全体が 1 か所から見える（p.116）、累積に対して判断する（p.117）、床は買えない（p.118）。
+※ 但し書きは 3 つ。全体が 1 か所から見える（p.116）、累積に対して判断する（p.117）、権限緩和は買えない（p.118）。
 
 ## 刻んだ全体が、まとめて見えること
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="30" y="40" width="360" height="290" rx="10" fill="#fff" class="lt"/>
-  <text x="210" y="70" class="ts sub" text-anchor="middle">散らばった札</text>
+  <text x="210" y="70" class="ts sub" text-anchor="middle">散らばった PR</text>
   <g fill="#fff" class="al"><rect x="60" y="100" width="90" height="40" rx="4"/><rect x="230" y="120" width="90" height="40" rx="4"/><rect x="100" y="190" width="90" height="40" rx="4"/><rect x="250" y="220" width="90" height="40" rx="4"/><rect x="70" y="270" width="90" height="40" rx="4"/></g>
   <g class="tx" text-anchor="middle"><text x="105" y="125">書き換え 1</text><text x="275" y="145">書き換え 2</text><text x="145" y="215">書き換え 3</text><text x="295" y="245">書き換え 4</text><text x="115" y="295">書き換え 5</text></g>
   <text x="300" y="300" class="tl" text-anchor="middle">?</text>
@@ -150,7 +150,7 @@
 </svg>
 ```
 
-刻んだ札が別々の所に散ると、全体で何が変わったかを誰も言えません。全部が 1 枚の台帳から見えることを、刻む条件にします。
+刻んだ PR が別々の所に散ると、全体で何が変わったかを誰も言えません。全部が 1 枚の台帳から見えることを、刻む条件にします。
 
 ※ D7「ただし刻んだ全体が一箇所から見えること」。台帳の中身は、次のページで使う作り物。
 
@@ -175,12 +175,12 @@
 
 ※ D7「累積が不可逆なら、判断は累積に対して求める」。例は作り物。
 
-## 床は、刻んでも買えない
+## 権限緩和は、刻んでも買えない
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="60" y="210" width="760" height="110" class="h"/>
-  <text x="440" y="256" class="t on" text-anchor="middle">床：AI が自分の権限を緩める変更</text>
+  <text x="440" y="256" class="t on" text-anchor="middle">権限緩和：AI が自分の権限を緩める変更</text>
   <text x="440" y="290" class="ts on" text-anchor="middle">どれだけ小さくても、人が approve（第 3 章 p.52）</text>
   <g fill="#fff" class="al"><rect x="120" y="120" width="80" height="60" rx="4"/><rect x="230" y="120" width="80" height="60" rx="4"/><rect x="340" y="120" width="80" height="60" rx="4"/></g>
   <g class="tx ac" text-anchor="middle"><text x="160" y="155">1 文</text><text x="270" y="155">1 文</text><text x="380" y="155">1 文</text></g>
@@ -189,12 +189,12 @@
   <text x="540" y="72" class="ts sub">第 3 章 p.53 の実例</text>
   <text x="540" y="108" class="ts">「確認は要らない」という</text>
   <text x="540" y="132" class="ts">一文の書き足し</text>
-  <text x="540" y="164" class="ts hc">小さくても、床の上</text>
-  <text x="270" y="350" class="ts sub" text-anchor="middle">刻んだ札も、床の上に落ちる</text>
+  <text x="540" y="164" class="ts hc">小さくても、権限緩和</text>
+  <text x="270" y="350" class="ts sub" text-anchor="middle">刻んだ 1 本も、権限緩和に当たる</text>
 </svg>
 ```
 
-AI の権限を緩める変更は、どれだけ小さく刻んでも人が通します。第 3 章の実例は 1 文の書き足しでした。小ささは、床の抜け道になりません。
+AI の権限を緩める変更は、どれだけ小さく刻んでも人が通します。第 3 章の実例は 1 文の書き足しでした。小ささは、権限緩和の抜け道になりません。
 
 ※ D7「D8 が範囲の外に置くものは、刻んでも買えない」。
 
@@ -213,11 +213,11 @@ AI の権限を緩める変更は、どれだけ小さく刻んでも人が通�
 </svg>
 ```
 
-表の列の名前を変え、旧い列を消す変更を 1 本で出します。どう刻めば戻せる札になるでしょう。刻めずに残るのはどこでしょう。
+表の列の名前を変え、旧い列を消す変更を 1 本で出します。どう刻めば戻せる 1 本になるでしょう。刻めずに残るのはどこでしょう。
 
 ※ 答え：新しい列を足す・両方に書く・読みを新しい列へ、は戻せる。旧い列を消す 1 本は刻めずに残り、人が見る（p.113）。
 
-## まとめ：刻めば戻せる、全体・累積・床は別
+## まとめ：刻む。全体・累積・権限緩和は別
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -230,13 +230,13 @@ AI の権限を緩める変更は、どれだけ小さく刻んでも人が通�
   <text x="64" y="192" style="font-size:18px">　　累積が不可逆なら、判断は累積に対して求める。</text>
   <path d="M100,200 H460" class="hl"/><text x="650" y="196" class="tx">p.117 積み重ね</text>
   <text x="64" y="244" style="font-size:18px">　　D8 が範囲の外に置くものは、刻んでも買えない</text>
-  <path d="M100,252 H470" class="hl"/><text x="650" y="248" class="tx">p.118 床</text>
+  <path d="M100,252 H470" class="hl"/><text x="650" y="248" class="tx">p.118 権限緩和</text>
   <text x="64" y="292" style="font-size:18px">　　（D4・D8・前提）</text>
   <text x="440" y="358" class="ts sub" text-anchor="middle">壊れる所（判定・権限・大きさ）のうち：大きさ</text>
 </svg>
 ```
 
-この章を条文で書くと、D7 の 1 行です。刻めば戻せる範囲が広がり、全体・積み重ね・床は別に見ます。
+この章を条文で書くと、D7 の 1 行です。刻めば戻せる範囲が広がり、全体・積み重ね・権限緩和は別に見ます。
 
 ※ 条文の一覧は p.3。
 
@@ -259,7 +259,7 @@ AI の権限を緩める変更は、どれだけ小さく刻んでも人が通�
   <text x="90" y="310" class="tx">1 本ずつ、1 回の revert で戻せる大きさ</text>
   <path d="M330,268 H630" class="hl" marker-end="url(#arr)"/>
   <rect x="636" y="232" width="210" height="72" rx="6" class="h"/>
-  <text x="741" y="262" class="ts on" text-anchor="middle">人が approve</text><text x="741" y="288" class="tx on" text-anchor="middle">戻せない 1 本（線の右）</text>
+  <text x="741" y="262" class="ts on" text-anchor="middle">人が approve</text><text x="741" y="288" class="tx on" text-anchor="middle">戻せない 1 本</text>
   <text x="660" y="110" class="ts">台帳を先に作る</text><text x="660" y="136" class="tx">全体で何が変わるかを</text><text x="660" y="156" class="tx">台帳で見せる（p.116）</text>
   <text x="440" y="368" class="tx" text-anchor="middle">番号と列の名前は作り物。第 7 章の練習問題（p.119）の刻み方</text>
 </svg>
@@ -267,7 +267,7 @@ AI の権限を緩める変更は、どれだけ小さく刻んでも人が通�
 
 この条文を守るとは：大きな依頼は、刻む前に台帳の issue を作ることです。1 本は 1 回の revert で戻せる大きさにし、全部を台帳に並べます。
 
-※ 積むと戻せない物（毎日のデータの書き換えなど）は、台帳の段階で人が approve する（p.117）。床の変更は、どれだけ小さくても人が merge する（p.118）。
+※ 積むと戻せない物（毎日のデータの書き換えなど）は、台帳の段階で人が approve する（p.117）。権限緩和の変更は、どれだけ小さくても人が merge する（p.118）。
 
 ## 次章へ：なぜ同じ形が何度も出るのか
 
@@ -275,7 +275,7 @@ AI の権限を緩める変更は、どれだけ小さく刻んでも人が通�
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g fill="#fff" class="lt"><rect x="30" y="60" width="152" height="170" rx="8"/><rect x="200" y="60" width="152" height="170" rx="8"/><rect x="370" y="60" width="152" height="170" rx="8"/><rect x="540" y="60" width="152" height="170" rx="8"/><rect x="710" y="60" width="152" height="170" rx="8"/></g>
   <g class="ts" text-anchor="middle" font-weight="700"><text x="106" y="90">第 2 章</text><text x="276" y="90">第 3 章</text><text x="446" y="90">第 5 章</text><text x="616" y="90">第 6 章</text><text x="786" y="90">第 7 章</text></g>
-  <g class="ts" text-anchor="middle"><text x="106" y="124">成果の</text><text x="106" y="146">approve</text><text x="276" y="124">権限を</text><text x="276" y="146">緩める変更</text><text x="446" y="124">毎回の</text><text x="446" y="146">判定</text><text x="616" y="124">円を</text><text x="616" y="146">広げる</text><text x="786" y="124">刻んだ</text><text x="786" y="146">床の札</text></g>
+  <g class="ts" text-anchor="middle"><text x="106" y="124">成果の</text><text x="106" y="146">approve</text><text x="276" y="124">権限を</text><text x="276" y="146">緩める変更</text><text x="446" y="124">毎回の</text><text x="446" y="146">判定</text><text x="616" y="124">範囲を</text><text x="616" y="146">広げる</text><text x="786" y="124">刻んだ</text><text x="786" y="146">権限緩和</text></g>
   <g class="tx" text-anchor="middle"><text x="106" y="204">作った AI の外</text><text x="276" y="204">作った AI の外</text><text x="446" y="204">作った AI の外</text><text x="616" y="204">作った AI の外</text><text x="786" y="204">作った AI の外</text></g>
   <g class="lt"><path d="M50,172 H162 M220,172 H332 M390,172 H502 M560,172 H672 M730,172 H842"/></g>
   <text x="440" y="300" class="tl" text-anchor="middle">?</text>
@@ -283,4 +283,4 @@ AI の権限を緩める変更は、どれだけ小さく刻んでも人が通�
 </svg>
 ```
 
-判定も、円を広げるのも、床も、作った AI の外で決めました。なぜ同じ形が何度も出るのか。答えは、4 枚を書き足していく第 8 章にあります。
+判定も、範囲を広げるのも、権限緩和も、作った AI の外で決めました。なぜ同じ形が何度も出るのか。答えは、決まりを書き足していく第 8 章にあります。

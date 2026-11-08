@@ -1,6 +1,6 @@
-# 第 4 章　目的・条件・権限・判定
+# 第 4 章　目的・制約・権限・受け入れ条件
 
-群: 頼み方・判定・権限・刻み
+群: プロンプト・判定・権限・刻み
 副題: AI は行間を読まないので、書いて渡す
 
 <!-- 2026-11-08（@ope-ultp1635 msg 8b20f53a）: 章題を名詞句にし、主張の 1 文は副題へ移した（root CLAUDE.md「成果物の文章の作法」二）。EAA と同じ形 -->
@@ -16,7 +16,7 @@
   <path d="M370,50 H560" class="xl dash"/><use href="#i-no" x="560" y="38" width="26" height="26"/>
   <text x="466" y="40" class="ts xc" text-anchor="middle">届かない</text>
   <rect x="180" y="132" width="130" height="136" rx="3" fill="#fff" class="hl"/>
-  <g class="ts" text-anchor="start"><text x="198" y="164">目的</text><text x="198" y="194">守る条件</text><text x="198" y="224">使える権限</text><text x="198" y="254">判定の条件</text></g>
+  <g class="ts" text-anchor="start"><text x="198" y="164">目的</text><text x="198" y="194">制約</text><text x="198" y="224">使える権限</text><text x="198" y="254">受け入れ条件</text></g>
   <text x="245" y="290" class="ts hc" text-anchor="middle">書いた物</text>
   <path d="M130,150 H174" class="ln" marker-end="url(#arr)"/>
   <path d="M310,200 H636" class="ln" marker-end="url(#arr)"/><use href="#i-ok" x="460" y="166" width="26" height="26"/>
@@ -134,7 +134,7 @@ AI は聞かずに埋めます。もっともらしく、しかも渡すたび�
 
 ※ 代償として、書かれていない良い慣行も、いったん効かなくなる。困った所で見つかり、書いた時点で戻る（第 8 章）。
 
-## 人が渡すのは目的・条件・権限・判定
+## 人が渡す：目的・制約・権限・受け入れ条件
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -145,7 +145,7 @@ AI は聞かずに埋めます。もっともらしく、しかも渡すたび�
   <rect x="518" y="20" width="80" height="44" rx="6" class="box"/><text x="558" y="48" class="ts" text-anchor="middle">次へ</text>
   <g class="ln"><path d="M126,42 H142" marker-end="url(#arr)"/><path d="M242,42 H258" marker-end="url(#arr)"/><path d="M358,42 H374" marker-end="url(#arr)"/><path d="M498,42 H514" marker-end="url(#arr)"/></g>
   <path d="M78,64 L40,96 M78,64 L840,96" class="lt dash"/>
-  <g class="ts hc" font-weight="700"><text x="50" y="128">1 目的</text><text x="250" y="128">2 守る条件</text><text x="450" y="128">3 使える権限</text><text x="650" y="128">4 判定の条件</text></g>
+  <g class="ts hc" font-weight="700"><text x="50" y="128">1 目的</text><text x="250" y="128">2 制約</text><text x="450" y="128">3 使える権限</text><text x="650" y="128">4 受け入れ条件</text></g>
   <g fill="#fff" class="hl"><rect x="40" y="100" width="190" height="230" rx="6"/><rect x="240" y="100" width="190" height="230" rx="6"/><rect x="440" y="100" width="190" height="230" rx="6"/><rect x="640" y="100" width="200" height="230" rx="6"/></g>
   <g class="tx"><text x="50" y="152">何を達成したいか</text><text x="250" y="152">何を守るか</text><text x="450" y="152">どこまで任せるか</text><text x="650" y="152">何をもって成果とするか</text></g>
   <g class="ts">
@@ -158,9 +158,9 @@ AI は聞かずに埋めます。もっともらしく、しかも渡すたび�
 </svg>
 ```
 
-「頼む」の中身は、この 4 枚です。作り方は入っていません。コードでない仕事でも、4 枚目は「数字がどれも元の票まで辿れる」のように書けます。
+「頼む」の中身は、この 4 枚です。作り方は入っていません。コードでない仕事でも、受け入れ条件は「数字がどれも元の票まで辿れる」のように書けます。
 
-※ 人が整えるのは、目的・守る条件・使える権限・できたかの判定条件。設計・実装・確かめ・計画の立て直しは、AI がその範囲で進める。
+※ 人が整えるのは、目的・制約・使える権限・受け入れ条件。設計・実装・確かめ・計画の立て直しは、AI がその範囲で進める。
 
 ## 要件→設計→実装→テストは誰から誰へ
 
@@ -292,7 +292,7 @@ AI は聞かずに埋めます。もっともらしく、しかも渡すたび�
 
 ※ 「設計書が本体なら、工程で区切る形の設計工程こそ AI に合うのでは」への答え。
 
-## 一部の要件から merge まで一筋通す
+## 一部の要件から merge まで通す
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -311,11 +311,11 @@ AI は聞かずに埋めます。もっともらしく、しかも渡すたび�
 </svg>
 ```
 
-実装が安い今は、そろった一部から、テストと merge まで一筋通して確かめた方が早いのです。見えた物から、次の要件が出ます。
+実装が安い今は、そろった一部から、テストと merge まで通して確かめた方が早いのです。見えた物から、次の要件が出ます。
 
 ※ 設計・実装・テストを、決まった担当者のあいだで順に引き継ぐ形にしなくてよい。
 
-## 先に書くのは中身でなく判定の条件
+## 先に書くのは中身でなく受け入れ条件
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -327,14 +327,14 @@ AI は聞かずに埋めます。もっともらしく、しかも渡すたび�
   <text x="220" y="94" class="ts" text-anchor="middle">先に固めるのは、作る物の中身</text>
   <text x="220" y="330" class="ts sub" text-anchor="middle">全部・後から直さない</text>
   <rect x="590" y="160" width="140" height="90" rx="6" fill="#fff" class="hl"/>
-  <text x="660" y="196" class="ts hc" text-anchor="middle">判定の条件</text><text x="660" y="222" class="tx" text-anchor="middle">注文が 1 件だけ残る</text>
-  <text x="660" y="94" class="ts" text-anchor="middle">先に書くのは、判定の条件</text>
-  <text x="660" y="290" class="ts sub" text-anchor="middle">この一筋の分だけ</text>
+  <text x="660" y="196" class="ts hc" text-anchor="middle">受け入れ条件</text><text x="660" y="222" class="tx" text-anchor="middle">注文が 1 件だけ残る</text>
+  <text x="660" y="94" class="ts" text-anchor="middle">先に書くのは、受け入れ条件</text>
+  <text x="660" y="290" class="ts sub" text-anchor="middle">この PR 1 本の分だけ</text>
   <text x="660" y="330" class="ts sub" text-anchor="middle">中身は AI が組み、書いた物も直す</text>
 </svg>
 ```
 
-AA も先に書きます。ただ先に書くのは、作る物の中身ではなく判定の条件で、それもこの一筋の分だけです。書いた物も、後で直します。
+AA も先に書きます。ただ先に書くのは、作る物の中身ではなく受け入れ条件で、それもこの PR 1 本の分だけです。書いた物も、後で直します。
 
 ※ 書いた物の直し方は第 8 章。
 
@@ -422,23 +422,23 @@ AA も先に書きます。ただ先に書くのは、作る物の中身では�
 
 ※ 工程ごとに AI を差し込んでも、増えるのは量だけで、境目で人を待つ形は残る。契約の区切りとしての工程は、この本では扱いません。
 
-## 練習問題：この頼み方で AI は何を埋めるか
+## 練習問題：このプロンプトで AI が埋める所
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="40" y="50" width="520" height="150" rx="8" fill="#fff" class="hl"/>
-  <text x="60" y="84" class="ts hc">頼み方</text>
+  <text x="60" y="84" class="ts hc">プロンプト</text>
   <text x="60" y="124" class="t">ログイン画面に、パスワード再設定を</text>
   <text x="60" y="156" class="t">付けてください。いい感じにお願いします。</text>
   <g fill="#fff" class="hl"><rect x="620" y="50" width="220" height="44" rx="6"/><rect x="620" y="104" width="220" height="44" rx="6"/><rect x="620" y="158" width="220" height="44" rx="6"/><rect x="620" y="212" width="220" height="44" rx="6"/></g>
-  <g class="ts"><text x="636" y="78">1 目的</text><text x="636" y="132">2 守る条件</text><text x="636" y="186">3 使える権限</text><text x="636" y="240">4 判定の条件</text></g>
+  <g class="ts"><text x="636" y="78">1 目的</text><text x="636" y="132">2 制約</text><text x="636" y="186">3 使える権限</text><text x="636" y="240">4 受け入れ条件</text></g>
   <g class="lt dash" fill="#fff"><rect x="740" y="60" width="86" height="24" rx="3"/><rect x="740" y="114" width="86" height="24" rx="3"/><rect x="740" y="168" width="86" height="24" rx="3"/><rect x="740" y="222" width="86" height="24" rx="3"/></g>
   <text x="300" y="260" class="ts sub" text-anchor="middle">4 枚のどれが空いているか</text>
   <text x="440" y="320" class="t" text-anchor="middle">AI は、空いた所をどう埋めるか</text>
 </svg>
 ```
 
-この頼み方で AI が自分で埋めるのは、4 枚のどこでしょう。そのうち、埋められて困るのはどれでしょう。
+このプロンプトで AI が自分で埋めるのは、4 枚のどこでしょう。そのうち、埋められて困るのはどれでしょう。
 
 ※ 答え：4 枚とも空き。特に 3。再設定メールを本物の利用者に送ってよいかが無い。送ったメールは revert できない（第 3 章）。
 
@@ -456,8 +456,8 @@ AA も先に書きます。ただ先に書くのは、作る物の中身では�
   <path d="M100,212 H320" class="al"/><path d="M342,212 H536" class="hl"/>
   <text x="100" y="230" class="tx">p.80・78 GO・LGTM</text><text x="536" y="230" class="tx" text-anchor="end">p.82</text>
   <g fill="#fff" class="hl"><rect x="40" y="286" width="190" height="50" rx="6"/><rect x="243" y="286" width="190" height="50" rx="6"/><rect x="446" y="286" width="190" height="50" rx="6"/><rect x="650" y="286" width="190" height="50" rx="6"/></g>
-  <g class="ts hc" text-anchor="middle"><text x="135" y="317">目的</text><text x="338" y="317">守る条件</text><text x="541" y="317">使える権限</text><text x="745" y="317">判定の条件</text></g>
-  <text x="440" y="362" class="tx" text-anchor="middle">人が渡す 4 枚（p.71）。作り方は入れない。この一筋の分だけ書く（p.78・76）</text>
+  <g class="ts hc" text-anchor="middle"><text x="135" y="317">目的</text><text x="338" y="317">制約</text><text x="541" y="317">使える権限</text><text x="745" y="317">受け入れ条件</text></g>
+  <text x="440" y="362" class="tx" text-anchor="middle">人が渡す 4 枚（p.71）。作り方は入れない。この 1 本の分だけ書く（p.78・76）</text>
 </svg>
 ```
 
@@ -478,10 +478,10 @@ AA も先に書きます。ただ先に書くのは、作る物の中身では�
     <text x="64" y="160">roles/maker.md</text><text x="64" y="188">roles/judge.md</text>
     <text x="64" y="236">tasks/012-retry.md</text><text x="64" y="264">tasks/013-…</text>
   </g>
-  <g class="ts"><text x="330" y="112">共通の決まり・語の意味・線の右の表</text>
+  <g class="ts"><text x="330" y="112">共通の決まり・語の意味・人が通す操作の表</text>
     <text x="330" y="160">作る役の決まり</text><text x="330" y="188">判定する役の決まり</text>
     <text x="330" y="236" class="hc" font-weight="700">依頼 1 件 = 1 ファイル（4 枚）</text></g>
-  <text x="330" y="294" class="tx">目的・守る条件・使える権限・判定の条件の 4 見出し</text>
+  <text x="330" y="294" class="tx">目的・制約・使える権限・受け入れ条件の 4 見出し</text>
   <path d="M52,128 H828 M52,210 H828" class="lt dash"/>
   <g class="tx"><text x="820" y="112" text-anchor="end">全部の役が読む</text><text x="820" y="174" text-anchor="end">1 役 = 1 ファイル</text><text x="820" y="250" text-anchor="end">人が書く</text></g>
   <text x="440" y="358" class="ts sub" text-anchor="middle">名前は例。CLAUDE.md は Claude Code の場合（ほかの道具なら AGENTS.md など）</text>
@@ -490,7 +490,7 @@ AA も先に書きます。ただ先に書くのは、作る物の中身では�
 
 この条文を守るとは：依頼ファイルの無い作業を、AI のセッションに渡さないことです。4 枚は依頼 1 件につき 1 ファイル、決まりは 1 役につき 1 ファイルに置きます。
 
-※ 依頼ファイルは PR と同じ repo に置く。判定する AI は、差分と一緒に 4 枚目を読む（第 2 章 p.32）。
+※ 依頼ファイルは PR と同じ repo に置く。判定する AI は、差分と一緒に受け入れ条件を読む（第 2 章 p.32）。
 
 ## 実装イメージ：依頼ファイルの中身
 
@@ -501,9 +501,9 @@ AA も先に書きます。ただ先に書くのは、作る物の中身では�
   <g style="font-family:monospace;font-size:15px">
     <text x="60" y="76" font-weight="700"># 012 注文 API の再試行</text>
     <text x="60" y="108" class="hc">## 目的</text><text x="80" y="130">決済が一時的に落ちても、注文を取りこぼさない</text>
-    <text x="60" y="160" class="hc">## 守る条件</text><text x="80" y="182">二重に課金しない。再試行は 3 回まで</text>
+    <text x="60" y="160" class="hc">## 制約</text><text x="80" y="182">二重に課金しない。再試行は 3 回まで</text>
     <text x="60" y="212" class="hc">## 使える権限</text><text x="80" y="234">src/order/ と tests/。本番の決済は呼ばない</text>
-    <text x="60" y="264" class="hc">## 判定の条件</text><text x="80" y="286">決済が 3 回落ちても注文が 1 件だけ残るテスト</text>
+    <text x="60" y="264" class="hc">## 受け入れ条件</text><text x="80" y="286">決済が 3 回落ちても注文が 1 件だけ残るテスト</text>
     <text x="60" y="320" class="sub">## 質問と答え（AI が足す。第 8 章）</text>
   </g>
   <rect x="630" y="14" width="230" height="160" rx="8" fill="#fff" class="lt"/>
@@ -514,11 +514,11 @@ AA も先に書きます。ただ先に書くのは、作る物の中身では�
 </svg>
 ```
 
-目的・条件・権限・判定の見出しのどれかが空なら、その依頼はまだ渡しません。語の意味は共通の決まりに 1 語 1 行で書き、変えるときは版を上げます。
+目的・制約・権限・受け入れ条件の見出しのどれかが空なら、その依頼はまだ渡しません。語の意味は共通の決まりに 1 語 1 行で書き、変えるときは版を上げます。
 
 ※ 中身は第 4 章 p.71 の例。人が渡すのはここまでで、作り方は書かない。見出しを埋めるのに迷うなら、それが要件定義の残りの仕事（p.83）。
 
-## 次章へ：1 回通った頼み方は次も通るか
+## 次章へ：1 回通ったプロンプトは次も通るか
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">

@@ -1,7 +1,7 @@
 # 第 5 章　確率的品質
 
-群: 頼み方・判定・権限・刻み
-副題: 1 回通った頼み方を、merge の理由にしない
+群: プロンプト・判定・権限・刻み
+副題: 1 回通ったプロンプトを、merge の理由にしない
 
 > 品質は分布で見る
 
@@ -13,7 +13,7 @@
 ```svg
 <svg viewBox="0 0 880 300" width="880" height="300">
   <defs><clipPath id="c5-left"><rect x="0" y="0" width="330" height="300"/></clipPath></defs>
-  <text x="60" y="288" class="ts sub">同じ頼み方を何度も回したときの、出来の分かれ方</text>
+  <text x="60" y="288" class="ts sub">同じプロンプトを何度も回したときの、出来の分かれ方</text>
   <path d="M90,240 C 260,240 380,60 540,60 C 680,60 760,240 820,240 Z" fill="#dbe7f4" stroke="#2f6fb3" stroke-width="3"/>
   <path d="M90,240 C 260,240 380,60 540,60 C 680,60 760,240 820,240 Z" class="xw" clip-path="url(#c5-left)"/>
   <path d="M330,46 V246" class="ln dash"/><text x="330" y="40" class="ts" text-anchor="middle">合格線</text>
@@ -34,19 +34,19 @@ p.82 は第 5〜7 章の入口（3 章で 1 枚）。operator msg 241ea18b「4 �
 例の数（20 回のうち 17 回など）は作り物。
 -->
 
-第 4 章で、4 枚を書いて渡した頼み方が 1 回通りました。この章から 3 章かけて、人が毎回は見ない輪で、渡した 4 枚が守られ続けるかを見ます。
+第 4 章で、4 枚を書いて渡したプロンプトが 1 回通りました。この章から 3 章かけて、人が毎回は見ないループで、渡した 4 枚が守られ続けるかを見ます。
 
 ## 渡しても、判定・権限・大きさで壊れる
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g fill="#fff" class="hl"><rect x="40" y="16" width="180" height="80" rx="6"/><rect x="250" y="16" width="180" height="80" rx="6"/><rect x="460" y="16" width="180" height="80" rx="6"/><rect x="670" y="16" width="180" height="80" rx="6"/></g>
-  <g class="ts hc" font-weight="700"><text x="54" y="46">1 目的</text><text x="264" y="46">2 守る条件</text><text x="474" y="46">3 使える権限</text><text x="684" y="46">4 判定の条件</text></g>
+  <g class="ts hc" font-weight="700"><text x="54" y="46">1 目的</text><text x="264" y="46">2 制約</text><text x="474" y="46">3 使える権限</text><text x="684" y="46">4 受け入れ条件</text></g>
   <g class="tx"><text x="54" y="76">何を達成したいか</text><text x="264" y="76">何を守るか</text><text x="474" y="76">どこまで任せるか</text><text x="684" y="76">何をもって成果とするか</text></g>
   <path d="M550,98 V122" class="ln" marker-end="url(#arr)"/><path d="M760,98 V122" class="ln" marker-end="url(#arr)"/>
   <rect x="460" y="126" width="180" height="76" rx="6" fill="#fff" stroke="#222" stroke-width="3"/>
   <text x="550" y="152" class="ts" text-anchor="middle" font-weight="700">第 6 章　権限</text>
-  <text x="550" y="174" class="ts" text-anchor="middle">書いた範囲より、</text><text x="550" y="194" class="ts" text-anchor="middle">届く範囲が広い</text>
+  <text x="550" y="174" class="ts" text-anchor="middle">書いた範囲より、</text><text x="550" y="194" class="ts" text-anchor="middle">読める・送れる範囲が広い</text>
   <rect x="670" y="126" width="180" height="76" rx="6" fill="#fff" stroke="#222" stroke-width="3"/>
   <text x="760" y="152" class="ts" text-anchor="middle" font-weight="700">第 5 章　判定</text>
   <text x="760" y="174" class="ts" text-anchor="middle">1 回の ✓ を、</text><text x="760" y="194" class="ts" text-anchor="middle">次も通ると扱う</text>
@@ -58,16 +58,16 @@ p.82 は第 5〜7 章の入口（3 章で 1 枚）。operator msg 241ea18b「4 �
   <path d="M445,240 V254" class="ln" marker-end="url(#arr)"/>
   <rect x="40" y="258" width="810" height="70" rx="6" fill="#fff" stroke="#222" stroke-width="3"/>
   <text x="64" y="288" class="ts" font-weight="700">第 7 章　大きさ</text>
-  <text x="64" y="314" class="ts">4 枚が覆う一筋が大きいと、revert できない側に寄る。大きさは 4 枚のどれにも無い</text>
+  <text x="64" y="314" class="ts">4 枚が覆う 1 本が大きいと、revert できない側に寄る。大きさは 4 枚のどれにも無い</text>
   <text x="445" y="362" class="ts sub" text-anchor="middle">判定・権限・大きさは、4 枚と 1 対 1 ではない</text>
 </svg>
 ```
 
-人が毎回は見ない輪で、4 枚を書いて渡しても、判定・権限・大きさで、まだ壊れます。1 は第 6 章、2 は第 5 章で扱い、第 7 章は 4 枚の外の大きさを見ます。
+人が毎回は見ないループで、4 枚を書いて渡しても、判定・権限・大きさで、まだ壊れます。1 は第 6 章、2 は第 5 章で扱い、第 7 章は 4 枚の外の大きさを見ます。
 
-※ 4 枚は第 4 章 p.71、一筋は p.78。p.71 の例では、4 の「注文が 1 件だけ残る」が 2 の「二重に課金しない」を確かめている。
+※ 4 枚は第 4 章 p.71、1 本は p.78。p.71 の例では、4 の「注文が 1 件だけ残る」が 2 の「二重に課金しない」を確かめている。
 
-## 同じ頼み方を 20 回：✓ と ✗ の並び
+## 同じプロンプトを 20 回：✓ と ✗ の並び
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -127,20 +127,20 @@ AI の出力は、同じ 4 枚で頼んでも毎回ばらつきます。1 回目
   <rect x="680" y="170" width="120" height="60" rx="6" class="box"/><text x="740" y="206" class="t" text-anchor="middle">merge</text>
   <path d="M140,200 H176" class="ln" marker-end="url(#arr)"/><path d="M300,200 H336" class="ln" marker-end="url(#arr)"/><path d="M450,200 H486" class="ln" marker-end="url(#arr)"/><path d="M640,200 H676" class="ln" marker-end="url(#arr)"/>
   <path d="M240,166 C300,60 660,60 728,164" class="xl dash" marker-end="url(#arr-x)"/>
-  <rect x="404" y="58" width="120" height="34" rx="4" fill="#fff" class="lt"/><text x="464" y="81" class="ts" text-anchor="middle">前回 ✓ の札</text>
+  <rect x="404" y="58" width="120" height="34" rx="4" fill="#fff" class="lt"/><text x="464" y="81" class="ts" text-anchor="middle">前回 ✓ の記録</text>
   <use href="#i-no" x="452" y="98" width="26" height="26"/>
   <path d="M340,246 V262 H640 V246" class="al"/>
-  <text x="490" y="290" class="ts ac" text-anchor="middle">4 の判定の条件で、今回の出力を見る</text>
-  <text x="490" y="314" class="tx" text-anchor="middle">2 の守る条件も、ここで確かめる</text>
+  <text x="490" y="290" class="ts ac" text-anchor="middle">4 の受け入れ条件で、今回の出力を見る</text>
+  <text x="490" y="314" class="tx" text-anchor="middle">2 の制約も、ここで確かめる</text>
   <text x="440" y="360" class="ts sub" text-anchor="middle">同じ 4 枚でも、出力は毎回ちがう</text>
 </svg>
 ```
 
-前回と同じ 4 枚でも、今回の出力は今回の判定に通します。4 枚目の判定の条件は、1 回目のためでなく、毎回のためにあります。
+前回と同じ 4 枚でも、今回の出力は今回の判定に通します。受け入れ条件は、1 回目のためでなく、毎回のためにあります。
 
 ※ 毎回の判定は別の会話の AI（第 2 章 p.26）で、人の点は増えない。人が立つのは、これまでどおり第 3 章の戻せない操作と権限緩和。
 
-## 頼み方を直した効き目も回数で比べる
+## プロンプトを直した効き目も回数で比べる
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -197,7 +197,7 @@ D5 は、出力がばらつくという前提から直に出ます。前提が�
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="80" y="40" width="560" height="280" rx="10" fill="#fff" class="al"/>
   <text x="104" y="76" class="ts sub">AI からの報告</text>
-  <text x="104" y="124" class="t">頼み方を直して試したら、通りました。</text>
+  <text x="104" y="124" class="t">プロンプトを直して試したら、通りました。</text>
   <text x="104" y="156" class="t">merge してください。</text>
   <use href="#i-ok" x="560" y="100" width="40" height="40"/>
   <path d="M104,186 H616" class="lt"/>
@@ -209,7 +209,7 @@ D5 は、出力がばらつくという前提から直に出ます。前提が�
 
 AI からの報告です。この報告だけで merge してよいでしょうか。足りないのは何でしょう。
 
-※ 答え：よくない。今回の出力が今回の判定に通った記録が要る（p.93）。直した頼み方を採るなら、何回中何回かも要る（p.94）。
+※ 答え：よくない。今回の出力が今回の判定に通った記録が要る（p.93）。直したプロンプトを採るなら、何回中何回かも要る（p.94）。
 
 ## まとめ：1 回の ✓ は分布の一部、判定は毎回
 
@@ -243,7 +243,7 @@ AI からの報告です。この報告だけで merge してよいでしょう�
   <use href="#i-pr" x="40" y="96" width="30" height="38"/><text x="84" y="122" class="ts">PR（push のたびに）</text>
   <path d="M250,116 H296" class="ln" marker-end="url(#arr)"/>
   <rect x="300" y="82" width="250" height="70" rx="6" fill="#fff" class="al"/>
-  <text x="425" y="110" class="ts ac" text-anchor="middle">判定の AI を新しく起こす</text><text x="425" y="136" class="tx" text-anchor="middle">渡すのは差分と 4 枚目だけ</text>
+  <text x="425" y="110" class="ts ac" text-anchor="middle">判定の AI を新しく起こす</text><text x="425" y="136" class="tx" text-anchor="middle">渡すのは差分と受け入れ条件だけ</text>
   <path d="M550,116 H596" class="ln" marker-end="url(#arr)"/>
   <rect x="600" y="82" width="260" height="70" rx="6" fill="#fff" class="lt"/>
   <text x="616" y="110" class="ts">PR へのコメント</text><text x="616" y="136" style="font-family:monospace;font-size:14px">LGTM ✅ 見た commit: 3f2a9c1</text>
@@ -251,7 +251,7 @@ AI からの報告です。この報告だけで merge してよいでしょう�
   <rect x="560" y="190" width="300" height="56" rx="6" class="box"/>
   <text x="710" y="214" class="ts" text-anchor="middle">merge の前に、見た commit が</text><text x="710" y="236" class="ts" text-anchor="middle">今の先頭と同じか照らす</text>
   <rect x="40" y="190" width="470" height="150" rx="8" fill="#fff" class="lt"/>
-  <text x="60" y="218" class="ts" font-weight="700">頼み方（役ファイル・依頼ファイル）を直したら</text>
+  <text x="60" y="218" class="ts" font-weight="700">プロンプト（役ファイル・依頼ファイル）を直したら</text>
   <text x="60" y="250" class="ts">同じ依頼を、直す前と後で 5 回ずつ流す</text>
   <text x="60" y="284" class="tx">直す前</text><use href="#i-ok" x="120" y="268" width="22" height="22"/><use href="#i-ok" x="146" y="268" width="22" height="22"/><use href="#i-no" x="172" y="268" width="22" height="22"/><use href="#i-ok" x="198" y="268" width="22" height="22"/><use href="#i-no" x="224" y="268" width="22" height="22"/><text x="262" y="285" class="ts">3 / 5</text>
   <text x="60" y="320" class="tx">直した後</text><use href="#i-ok" x="120" y="304" width="22" height="22"/><use href="#i-ok" x="146" y="304" width="22" height="22"/><use href="#i-ok" x="172" y="304" width="22" height="22"/><use href="#i-ok" x="198" y="304" width="22" height="22"/><use href="#i-no" x="224" y="304" width="22" height="22"/><text x="262" y="321" class="ts">4 / 5</text>
