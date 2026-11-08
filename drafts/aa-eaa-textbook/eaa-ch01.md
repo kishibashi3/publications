@@ -16,6 +16,7 @@ p.「AA のレビュー分離は別の目的」: AA の本の第 2 章は、レ�
 直し方: 章題を「職能で分ける理由は人間にあった」にし、人間が必ず職能で分けたとは書かない。p.「LeSS・SAFe は職能で分けない」「枠組みが減らしたのも渡し直し」「チームの中には職能が残る」を足した。枠組みが職能で分けないのはこの章の主張（職能で切ると渡し直しが残る）を人間の側で先に示したもので、主張を弱めない。「チームの中には職能が残る」は書き手の読み（SAFe の all the skills・LeSS の multiple specializations は、技能を持つ人が複数いることを前提にする）で、注に書いた。
 Spotify は付録で引くので、この章では名前を挙げない（付録の旧本文は EAA 紹介 0 の訳）。
 77a7fc9 の検算と通読を受けて直した（@ope-ultp1635 msg 614590ff。判定の正本 @reviewer 2026-11-08-eaa-textbook-77a7fc9-ch00-04 / ch05-08 / ch09-12-furoku、@reader 2026-11-08-eaa-textbook-v5-215p-6readers-r3）: 第 3 章が SAFe の value stream と別の語だとした「価値」を、SAFe の側で先に使っていた（絵「価値の単位で組む」）。「機能を最後まで作る」「value stream に沿って組む」にした。「枠組みが職能で分けないのも渡し直しを減らすため」は出典が LeSS だけなので、LeSS に限った。「チームの中には職能が残る」は LeSS が直接言っているので「書き手の読み」を出典に替えた（@reviewer 1 便）。
+職能で分けるとループが閉じない、を章の軸にした（@ope-ultp1635 msg c3478a77。この本の考え「職能による分業は、分けたらループが回らない」。逐語は roles-kaz 側）: それまでの章は「渡し直しが残る」（手間）までしか言っていなかった。第 0 章のループの定義の語（計画し、作り、確かめて直す）をそのまま使い、職能で分けるとどの持ち場もその一部しか持たない（実装だけは確かめられず、テストだけは直せない）ことを p.「職能で分けるとループが閉じない」に置いた。渡し直しは消さず、閉じないループをつなぐ手間として帰結に回した（p.「閉じないループを渡し直しでつなぐ」は旧 p.「職能で分けると機能が切れる」、p.「職能で切るとループが閉じないまま」は旧 p.「職能で切ると渡し直しだけ残る」。第 7 章が引く「第 1 章の渡し直し」は残る）。Cell の定義との接続は p.「職能で切った単位は Cell にならない」で、定義は Core の字、当たらないとするのはこの本の読みと注で断った。@reader の読者が手間の話としてこの章を飛ばしたので、章の概要の 1 文目をループが閉じないことにした。
 -->
 
 ```svg
@@ -29,37 +30,84 @@ Spotify は付録で引くので、この章では名前を挙げない（付録
   </g>
   <g class="a"><rect x="40" y="140" width="60" height="30" rx="4"/><rect x="135" y="140" width="60" height="30" rx="4"/><rect x="230" y="140" width="60" height="30" rx="4"/><rect x="325" y="140" width="60" height="30" rx="4"/></g>
   <path d="M100,155 H133 M195,155 H228 M290,155 H323" class="xl" marker-end="url(#arr-x)"/>
-  <text x="212" y="276" class="ts xc" text-anchor="middle">一つの機能の文脈を、持ち場ごとに渡し直す</text>
+  <text x="212" y="276" class="ts xc" text-anchor="middle">どの持ち場でも、ループが閉じない</text>
   <text x="212" y="306" class="ts sub" text-anchor="middle">人間には、職能で分ける理由があった</text>
   <rect x="480" y="50" width="370" height="200" rx="10" class="hl" style="fill:#fff"/>
   <text x="665" y="30" class="t hc" text-anchor="middle" font-weight="700">Agent には職能が小さな文脈</text>
   <rect x="555" y="80" width="220" height="44" rx="22" class="a"/><text x="665" y="108" class="ts on" text-anchor="middle">Agent</text>
   <text x="665" y="160" class="ts" text-anchor="middle">設計・実装・テスト・レビュー</text>
   <text x="665" y="190" class="ts" text-anchor="middle">どれも頼める</text>
-  <text x="665" y="306" class="ts hc" text-anchor="middle">職能で切ると、渡し直しだけが残る</text>
+  <text x="665" y="306" class="ts hc" text-anchor="middle">職能で切ると、閉じないループが残る</text>
 </svg>
 ```
 
-人間が職能で分けるのは、職能ごとに覚えることが多いからです。大規模開発の枠組みは、チームを職能で分けなくなりました。LeSS は、その理由に渡しと待ちが増えることを挙げます。Agent にとって職能は大きな文脈ではないので、職能で切ると渡し直しだけが残ります。
+職能で分けると、どの持ち場も、計画し、作り、確かめて直すループの一部しか持たず、ループが閉じません。人間は、職能ごとに覚えることが多いので、閉じないループを渡し直しでつないできました。大規模開発の枠組みは、チームを職能で分けなくなりました。LeSS は、その理由に渡しと待ちが増えることを挙げます。Agent にとって職能は大きな文脈ではないので、職能で切ると、閉じないループと渡し直しだけが残ります。
 
 ## 職能より、ドメイン・価値・権限で分ける
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="60" y="40" width="760" height="250" rx="10" class="soft"/>
-  <text x="90" y="90" class="t hc" font-weight="700">人間には、職能で仕事を分ける理由があった。</text>
-  <text x="90" y="130" class="t hc" font-weight="700">しかし職能は、Agent にとって大きな文脈ではない。</text>
-  <text x="90" y="190" class="t" font-weight="700">それより、ドメイン・価値・権限で分けたほうが、</text>
-  <text x="90" y="230" class="t" font-weight="700">文脈が疎結合になる。</text>
+  <text x="90" y="84" class="t hc" font-weight="700">職能で分けると、どの持ち場でもループが閉じない。</text>
+  <text x="90" y="120" class="t hc" font-weight="700">人間には、それでも職能で分ける理由があった。</text>
+  <text x="90" y="156" class="t hc" font-weight="700">しかし職能は、Agent にとって大きな文脈ではない。</text>
+  <text x="90" y="210" class="t" font-weight="700">それより、ドメイン・価値・権限で分けたほうが、</text>
+  <text x="90" y="246" class="t" font-weight="700">文脈が疎結合になる。</text>
   <text x="440" y="340" class="ts sub" text-anchor="middle">この本の主張。この章は色の付いた前半を扱う</text>
 </svg>
 ```
 
-この章は、この主張の前半を扱います。人間が職能で分ける理由は何か、それが Agent ではなぜ成り立たないのか、です。後半の切り方は、第 2 章から見ます。
+この章は主張の前半を扱います。職能で分けると何が起き、人間はなぜそれでも分けたか、それが Agent ではなぜ成り立たないかです。後半の切り方は、第 2 章から見ます。
 
 ※ 後半の切り方は、第 0 章 p.「切り方は、Core の外の提案」のとおり、Core の規定ではなくこの本の提案。
 
-## 職能で分けると機能が切れる
+## 職能で分けるとループが閉じない
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <g class="ts" text-anchor="middle">
+    <rect x="40" y="50" width="180" height="210" rx="8" class="box"/><text x="130" y="82" font-weight="700">設計</text>
+    <rect x="245" y="50" width="180" height="210" rx="8" class="box"/><text x="335" y="82" font-weight="700">実装</text>
+    <rect x="450" y="50" width="180" height="210" rx="8" class="box"/><text x="540" y="82" font-weight="700">テスト</text>
+    <rect x="655" y="50" width="180" height="210" rx="8" class="box"/><text x="745" y="82" font-weight="700">レビュー</text>
+    <rect x="80" y="120" width="100" height="36" rx="18" class="a"/><text x="130" y="144" class="on">計画する</text>
+    <rect x="285" y="120" width="100" height="36" rx="18" class="a"/><text x="335" y="144" class="on">作る</text>
+    <rect x="490" y="120" width="100" height="36" rx="18" class="a"/><text x="540" y="144" class="on">確かめる</text>
+    <rect x="695" y="120" width="100" height="36" rx="18" class="a"/><text x="745" y="144" class="on">確かめる</text>
+  </g>
+  <g class="tx xc" text-anchor="middle"><text x="130" y="210">作れない</text><text x="335" y="210">確かめられない</text><text x="540" y="210">直せない</text><text x="745" y="210">直せない</text></g>
+  <text x="440" y="310" class="t xc" text-anchor="middle" font-weight="700">どの持ち場の中でも、ループが一周しない</text>
+  <text x="440" y="346" class="ts sub" text-anchor="middle">ループ：計画し、作り、確かめて直す（第 0 章）</text>
+</svg>
+```
+
+職能で分けると、どの持ち場も、計画し、作り、確かめて直すループの一部しか持ちません。実装だけの持ち場は確かめられず、テストだけの持ち場は直せません。
+
+※ どの持ち場の中でもループが閉じない。ループの定義は第 0 章 p.「素直に大きくすると一つの Cell」。
+
+## 職能で切った単位は Cell にならない
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <rect x="40" y="50" width="380" height="240" rx="10" class="hl" style="fill:#fff"/>
+  <text x="230" y="84" class="t hc" text-anchor="middle" font-weight="700">Cell</text>
+  <circle cx="230" cy="170" r="52" class="ln"/>
+  <text x="230" y="176" class="ts" text-anchor="middle">ループが閉じる</text>
+  <text x="230" y="262" class="tx" text-anchor="middle">自律して成果を出す</text>
+  <rect x="460" y="50" width="380" height="240" rx="10" class="box"/>
+  <text x="650" y="84" class="t" text-anchor="middle" font-weight="700">実装だけの持ち場</text>
+  <rect x="600" y="130" width="100" height="36" rx="18" class="a"/><text x="650" y="154" class="ts on" text-anchor="middle">作る</text>
+  <path d="M700,148 H800" class="xl" marker-end="url(#arr-x)"/><text x="760" y="136" class="tx xc" text-anchor="middle">次へ渡す</text>
+  <text x="650" y="230" class="ts xc" text-anchor="middle">渡さないと、何も完成しない</text>
+  <text x="440" y="340" class="t" text-anchor="middle" font-weight="700">職能で切った持ち場は、Cell の形を取れない</text>
+</svg>
+```
+
+職能で切った持ち場は、次の持ち場に渡さないと何も完成しません。自律して成果を出す単位、つまり Cell になりません。
+
+※ Cell の定義は Core の字（「自律的に成果を実現する単位」。EAA Core 版 6「0.」）。職能で切った持ち場がこれに当たらないとするのは、この本の読み。
+
+## 閉じないループを渡し直しでつなぐ
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -76,7 +124,7 @@ Spotify は付録で引くので、この章では名前を挙げない（付録
 </svg>
 ```
 
-設計・実装・テスト・レビューで分けると、一つの機能の文脈が持ち場ごとに切られます。持ち場を越えるたびに、その機能の前提を渡し直します。
+ループが閉じないので、一つの機能の文脈が持ち場ごとに切られます。持ち場を越えるたびに、その機能の前提を渡し直します。
 
 ※ 例の機能は説明のために選んだ。
 
@@ -95,7 +143,7 @@ Spotify は付録で引くので、この章では名前を挙げない（付録
 </svg>
 ```
 
-人間は、職能ごとに覚える知識と手の技が多く、一人で全部はこなせません。だから職能で分ける組織は、渡し直しの手間を払ってきました。
+人間は、職能ごとに覚える知識と手の技が多く、一人で全部はこなせません。だから職能で分ける組織は、閉じないループを渡し直しでつなぎ、その手間を払ってきました。
 
 ## LeSS・SAFe は職能で分けない
 
@@ -191,26 +239,26 @@ Agent には、設計・実装・テスト・レビューのどれも頼めま�
 
 ※ AA の本の第 2 章は、作る役と判定する役を、どちらも Agent に頼む形を扱った。
 
-## 職能で切ると渡し直しだけ残る
+## 職能で切るとループが閉じないまま
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g>
     <text x="220" y="50" class="t" text-anchor="middle" font-weight="700">人間</text>
     <rect x="60" y="80" width="150" height="120" rx="6" class="ok"/><text x="135" y="146" class="ts on" text-anchor="middle">分ける理由</text>
-    <rect x="230" y="80" width="150" height="120" rx="6" class="xl" style="fill:#fff"/><text x="305" y="146" class="ts xc" text-anchor="middle">渡し直し</text>
+    <rect x="230" y="80" width="150" height="120" rx="6" class="xl" style="fill:#fff"/><text x="305" y="146" class="ts xc" text-anchor="middle">閉じないループ</text>
   </g>
   <path d="M440,40 V260" class="lt dash"/>
   <g>
     <text x="660" y="50" class="t" text-anchor="middle" font-weight="700">Agent</text>
     <rect x="500" y="80" width="150" height="120" rx="6" class="lt dash" style="fill:#fff"/><text x="575" y="146" class="ts sub" text-anchor="middle">理由は無い</text>
-    <rect x="670" y="80" width="150" height="120" rx="6" class="xl" style="fill:#fff"/><text x="745" y="146" class="ts xc" text-anchor="middle">渡し直し</text>
+    <rect x="670" y="80" width="150" height="120" rx="6" class="xl" style="fill:#fff"/><text x="745" y="146" class="ts xc" text-anchor="middle">閉じないループ</text>
   </g>
-  <text x="440" y="320" class="t xc" text-anchor="middle" font-weight="700">理由が消えても、手間は消えない</text>
+  <text x="440" y="320" class="t xc" text-anchor="middle" font-weight="700">理由が消えても、ループは閉じないまま</text>
 </svg>
 ```
 
-Agent を職能で分けると、人間が職能で分けた理由は無いまま、機能の文脈を持ち場ごとに渡し直す手間だけが残ります。
+Agent を職能で分けると、人間が職能で分けた理由は無いまま、どの持ち場でもループが閉じず、渡し直す手間だけが残ります。
 
 ## 人の役割の割り当ても職能
 
