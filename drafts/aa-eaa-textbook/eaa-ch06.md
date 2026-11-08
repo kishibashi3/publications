@@ -11,7 +11,7 @@
 持ってこなかったもの（群四の第 10 章へ移す）: 結んでいない者は所有者にならない・所有者が離れたら改訂は止まる・後任も結ぶ Cell の合意で決める・所有者がいない間も止めることはできる（core.md:98-102）、最後のページの「後任の合意が成り立たないときは合意不成立」（core.md:101・11）。どれも共有する文書の所有者と承認の話で、v5 の第 10 章（共有する文書の改訂を人間の所有者が承認する）の中身。第 10 章を書くまで、旧本文は 2d0ca30 の eaa-ch08.md にある。
 2d0ca30 の第 2 章 p.「揃えるのは外とのつながり方」（delivery-guide.md「3.」、適用例）の中身は p.「中の作り方は書かない」に持ってきた。第 2 章の注（「群三の第 6 章で Contract と一緒に扱う」）のとおり。
 2d0ca30 の第 0 章 p.「つなぐのは版の付いた共有文書」のうち、どの Evidence を渡すかを Contract に書く（core.md:24）は p.「結合は Contract に集める」へ。各 Cell が採用を決め、全部が同じ版を採用したときに成り立つ（⑥ の直し: 成り立つ版まで各 Cell が決めるとは読ませない）は p.「結ぶ Cell が全部採用して、成立する」へ。
-p.「切っても渡すものは残る」「疎結合は、狭く書いた結合」「書いていない結合は相手を読ませる」は書き手の読み。Core は疎結合の語を使っていない（core.md を grep で確認、0 件）。注に書いた。
+p.「切っても渡すものは残る」「疎結合は、少なく明示された結合」「暗黙の結合は相手を読ませる」は書き手の読み。Core は疎結合の語を使っていない（core.md を grep で確認、0 件）。注に書いた。
 p.「結ぶ Cell が全部採用して、成立する」の 2 文目は、目次の通読で @reader の読者が第 6 章（全員が同じ版）と第 9 章（各自の版）の関係を組み立てられなかった所（@reader 349c4d63）への答え。core.md:79-80（新版の公開と採用は別、採用中の合意は移行が成立するまで有効）の字による。
 在庫と物流の例は、第 4 章の組と同じ。例の版 1 の入出力・Evidence に「指示番号」を足し、欠品を「物流がそう判断した理由」とした。第 8 章で、在庫が物流に聞かずに突き合わせられること（core.md:22）と、判断の成立（core.md:39）を例で見せるため。第 9 章の例（出荷指示に希望時間帯を足す）とは食い違わない。中が Scrum・委託先の標準工程という設定は素材 3 と 2d0ca30 の第 6 章のまま。第 7・8 章でも使う。
 Core 版 6 は「契約」「検収」の語を使っていない（core.md を grep で確認）。Contract に「契約」の字を当てない（2 周目に Contract＝契約書の取り違えが強まった。@reader r2 cea29c1f）。
@@ -19,7 +19,7 @@ Core 版 6 は「契約」「検収」の語を使っていない（core.md を 
 77a7fc9 の検算と通読を受けて直した（@ope-ultp1635 msg 614590ff。判定の正本 @reviewer 2026-11-08-eaa-textbook-77a7fc9-ch00-04 / ch05-08 / ch09-12-furoku、@reader 2026-11-08-eaa-textbook-v5-215p-6readers-r3）: 「EAA 紹介 3」の説明が本に無かった（@reader の読者 3 体）。最初に出る p.「例：在庫と物流のあいだ」の注に書いた。付録 p.「引用の確かめ方」の注にも置いた。
 -->
 
-> Contract には、渡すもの・条件・確かめ方を書き、結ぶ Cell のすべてが同じ版を採用して成り立たせる。書いていない結合は、相手の文脈を読みに行かせる。
+> Contract には、渡すもの・条件・確かめ方を書き、結ぶ Cell のすべてが同じ版を採用して成り立たせる。暗黙の結合は、相手の文脈を読みに行かせる。
 
 ```svg
 <svg viewBox="0 0 880 300" width="880" height="300">
@@ -30,11 +30,11 @@ Core 版 6 は「契約」「検収」の語を使っていない（core.md を 
   <use href="#i-ok" x="141" y="140" width="28" height="28"/><text x="155" y="190" class="ts okc" text-anchor="middle">版 1 を採用</text>
   <use href="#i-ok" x="711" y="140" width="28" height="28"/><text x="725" y="190" class="ts okc" text-anchor="middle">版 1 を採用</text>
   <text x="440" y="170" class="ts" text-anchor="middle">相手の中は書かない</text>
-  <text x="440" y="264" class="t" text-anchor="middle" font-weight="700">結合を一か所に、狭く、書いた形で持つ</text>
+  <text x="440" y="264" class="t" text-anchor="middle" font-weight="700">結合を一か所に集め、少なく、明示して持つ</text>
 </svg>
 ```
 
-価値・ドメイン・権限で切っても、Cell のあいだで渡すものは残ります。その結合を、あいだの取り決めである Contract に集め、狭く書いて持ちます。
+価値・ドメイン・権限で切っても、Cell のあいだで渡すものは残ります。その結合を、あいだの取り決めである Contract に集め、少なく、明示して持ちます。
 
 ## 切っても渡すものは残る
 
@@ -48,9 +48,9 @@ Core 版 6 は「契約」「検収」の語を使っていない（core.md を 
 </svg>
 ```
 
-第 4 章で在庫と物流をドメインの境目で切りました。それでも在庫は出荷を指示し、物流は結果を返します。切っても、あいだで渡すものは残ります。
+第 4 章で在庫と物流をドメインの境界で切りました。それでも在庫は出荷を指示し、物流は結果を返します。切っても、あいだで渡すものは残ります。
 
-## 疎結合は、狭く書いた結合
+## 疎結合は、少なく明示された結合
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -58,7 +58,7 @@ Core 版 6 は「契約」「検収」の語を使っていない（core.md を 
   <text x="220" y="56" class="t xc" text-anchor="middle" font-weight="700">結合が無い</text>
   <rect x="60" y="90" width="120" height="120" rx="10" class="box"/><rect x="260" y="90" width="120" height="120" rx="10" class="box"/>
   <use href="#i-no" x="208" y="138" width="24" height="24"/><text x="220" y="250" class="ts" text-anchor="middle">何も渡らないなら、</text><text x="220" y="276" class="ts" text-anchor="middle">分業にならない</text>
-  <text x="660" y="56" class="t hc" text-anchor="middle" font-weight="700">狭く、書いてある</text>
+  <text x="660" y="56" class="t hc" text-anchor="middle" font-weight="700">少なく、明示してある</text>
   <rect x="480" y="90" width="120" height="120" rx="10" class="box"/><rect x="720" y="90" width="120" height="120" rx="10" class="box"/>
   <rect x="610" y="126" width="100" height="48" rx="3" class="hl" style="fill:#fff"/><text x="660" y="156" class="ts hc" text-anchor="middle">Contract</text>
   <path d="M600,150 H610 M710,150 H720" class="ln"/>
@@ -67,11 +67,11 @@ Core 版 6 は「契約」「検収」の語を使っていない（core.md を 
 </svg>
 ```
 
-疎結合は、結合が無いことではありません。結合が狭く、書いてあることです。何も渡らない Cell どうしは、分業していません。
+疎結合は、結合が無いことではありません。結合が少なく、明示されていることです。何も渡らない Cell どうしは、分業していません。
 
 ※ 書き手の読み。疎結合はこの本の考えの語（第 0 章）。Core は疎結合の語を使わない。
 
-## 書いていない結合は相手を読ませる
+## 暗黙の結合は相手を読ませる
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -81,11 +81,11 @@ Core 版 6 は「契約」「検収」の語を使っていない（core.md を 
   <path d="M536,200 H344" class="xl" marker-end="url(#arr-x)"/><text x="440" y="226" class="tx xc" text-anchor="middle">物流の事情で返る</text>
   <rect x="540" y="60" width="300" height="200" rx="10" class="box"/><text x="690" y="96" class="t" text-anchor="middle" font-weight="700">物流の Cell</text>
   <text x="690" y="170" class="ts" text-anchor="middle">便の都合・人の手配</text>
-  <text x="440" y="330" class="t xc" text-anchor="middle" font-weight="700">書いていない結合は、そのたびに相手の文脈へ入る</text>
+  <text x="440" y="330" class="t xc" text-anchor="middle" font-weight="700">暗黙の結合は、そのたびに相手の文脈へ入る</text>
 </svg>
 ```
 
-締め時刻が書いていなければ、在庫は指示のたびに物流の事情を聞きに行きます。書いていない結合は、相手の文脈を読みに行かせます。
+締め時刻が書いていなければ、在庫は指示のたびに物流の事情を聞きに行きます。暗黙の結合は、相手の文脈を読みに行かせます。
 
 ※ 書き手の読み。毎回聞きに行くことは、第 2 章のコンテキストスイッチに当たる。例は説明のために作った。
 

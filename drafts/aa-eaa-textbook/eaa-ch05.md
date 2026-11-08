@@ -182,7 +182,7 @@ p.「自分の権限は自分で広げない」は core.md:96。保ち方は群�
   <path d="M430,170 H470" class="ln" marker-end="url(#arr)"/>
   <rect x="480" y="50" width="170" height="240" rx="10" class="hl" style="fill:#fff"/><rect x="525" y="70" width="80" height="40" rx="6" class="h"/><text x="565" y="96" class="ts on" text-anchor="middle">責任者</text><g class="tx" text-anchor="middle"><text x="565" y="170">判断</text><text x="565" y="210">判断</text></g>
   <rect x="670" y="50" width="170" height="240" rx="10" class="hl" style="fill:#fff"/><rect x="715" y="70" width="80" height="40" rx="6" class="h"/><text x="755" y="96" class="ts on" text-anchor="middle">責任者</text><g class="tx" text-anchor="middle"><text x="755" y="170">判断</text><text x="755" y="210">判断</text></g>
-  <text x="440" y="340" class="t" text-anchor="middle" font-weight="700">追えないなら、文脈の切れ目で権限を渡して分ける</text>
+  <text x="440" y="340" class="t" text-anchor="middle" font-weight="700">追えないなら、文脈の境界で権限を渡して分ける</text>
 </svg>
 ```
 
@@ -217,11 +217,11 @@ Cell の範囲は、判断の責任者が中の判断を追える大きさに収
   <g opacity=".7"><rect x="240" y="110" width="400" height="120" rx="6" class="xl dash" style="fill:none"/></g>
   <use href="#i-no" x="640" y="100" width="24" height="24"/>
   <text x="440" y="176" class="ts" text-anchor="middle">自分で緩める・自分で広げる</text>
-  <text x="440" y="336" class="t" text-anchor="middle" font-weight="700">片側の都合で、切れ目が動く</text>
+  <text x="440" y="336" class="t" text-anchor="middle" font-weight="700">片側の都合で、境界が動く</text>
 </svg>
 ```
 
-権限で切った切れ目は、片側の実行者が自分の権限を自分で広げれば動きます。Core は、実行者が自ら権限を広げることを禁じています。保ち方は第 10 章で見ます。
+権限で切った境界は、片側の実行者が自分の権限を自分で広げれば動きます。Core は、実行者が自ら権限を広げることを禁じています。保ち方は第 10 章で見ます。
 
 出典: EAA Core 版 6「4. 提案と変更」（実行者が自分を縛る規範を緩める変更を自己承認したり、自ら権限を拡大したりしてはならない）。
 
@@ -237,4 +237,4 @@ Cell の範囲は、判断の責任者が中の判断を追える大きさに収
 </svg>
 ```
 
-価値・ドメイン・権限で切っても、Cell のあいだで渡すものは残ります。第 6 章から、その結合を狭く、書いた形で持つやり方を見ます。
+価値・ドメイン・権限で切っても、Cell のあいだで渡すものは残ります。第 6 章から、その結合を少なく、明示して持つやり方を見ます。

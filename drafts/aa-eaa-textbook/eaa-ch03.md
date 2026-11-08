@@ -7,7 +7,7 @@
 構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v5.md（dd08b888）の第 3 章。着手: @ope-ultp1635 msg 83d1e0ea（群二）。
 この章に当たる章は 2d0ca30 までの本に無い。新しく書いた。
 この本の問いと考えは structure-v5.md の「イデア」「AA がスケールしない理由」。本文には口語の原文を載せず、第 0 章 p.「一つの Cell への問い」・第 1 章の本の言葉に揃える（@ope-ultp1635 msg 62a8ef68）。
-「価値」の語: structure-v5.md の字は「価値観」で、判断が割れたときに何を先に取るかを指す。SAFe の value stream（顧客に届ける価値の流れ）とは別の語。目次の通読で読者が第 3 章の「価値ごとに Cell を分け」を ART を value stream で切るのと同じ向きと読んだ（@reader 349c4d63）。同じ向きと読まれても主張は崩れないが、語の取り違えは群三・群四で効くので、p.「価値は何を先に取るか」の注で分けた。
+「価値」の語: structure-v5.md の字は「価値観」で、判断が割れたときに何を優先するかを指す。SAFe の value stream（顧客に届ける価値の流れ）とは別の語。目次の通読で読者が第 3 章の「価値ごとに Cell を分け」を ART を value stream で切るのと同じ向きと読んだ（@reader 349c4d63）。同じ向きと読まれても主張は崩れないが、語の取り違えは群三・群四で効くので、p.「価値は何を優先するか」の注で分けた。
 「価値は一つのループに置かず、各 Cell の規範（Constitution）に書く」は structure-v5.md 判定の記録 4 番目の (b) の読み。Constitution の定義は core.md:37。各 Cell が規範の範囲で中を決めるのは core.md:62、上書きしないのは core.md:63、提案は core.md:84。
 決済・推薦・請求の例と「障害が出た日に予定の変更を出すか」は書き手が作った（注に書いた）。第 0 章の決済・推薦と同じ例を使った。
 p.「切り替えは外から見えない」は、第 0 章の問い「人間が管理し切れるか」と価値の問いをつなぐ書き手の導出。注に書いた。
@@ -38,12 +38,12 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
 
 価値で分けると、一つの Cell が判断に使う優先順位が一つに揃います。何を優先するかが同じ仕事を一つの Cell に集め、その価値は一つのループではなく、各 Cell の規範に書きます。
 
-## 価値は何を先に取るか
+## 価値は何を優先するか
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="220" y="40" width="440" height="80" rx="10" class="box"/>
-  <text x="440" y="88" class="t" text-anchor="middle" font-weight="700">判断が割れたとき、何を先に取るか</text>
+  <text x="440" y="88" class="t" text-anchor="middle" font-weight="700">判断が割れたとき、何を優先するか</text>
   <path d="M360,124 L250,180 M520,124 L630,180" class="ln" marker-end="url(#arr)"/>
   <g class="t" text-anchor="middle" font-weight="700">
     <rect x="120" y="190" width="240" height="60" rx="8" class="hl" style="fill:#fff"/><text x="240" y="228" class="hc">止めないこと</text>
@@ -53,7 +53,7 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
 </svg>
 ```
 
-この章の価値は、判断が割れたときに何を先に取るかです。例えば、止めないことを取るか、速く変えることを取るか、です。
+この章の価値は、判断が割れたときに何を優先するかです。例えば、止めないことを優先するか、速く変えることを優先するか、です。
 
 ※ この本の価値は、優先するもの（価値観）を指す。SAFe の value stream（顧客に届ける価値の流れ）とは別の語。
 
@@ -65,16 +65,16 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
   <text x="440" y="72" class="t" text-anchor="middle" font-weight="700">障害が出た日に、予定の変更を出すか</text>
   <path d="M330,104 L230,160 M550,104 L650,160" class="ln" marker-end="url(#arr)"/>
   <rect x="80" y="170" width="300" height="130" rx="10" class="box"/>
-  <text x="230" y="204" class="ts" text-anchor="middle" font-weight="700">決済：止めないことを取る</text>
+  <text x="230" y="204" class="ts" text-anchor="middle" font-weight="700">決済：止めないことを優先する</text>
   <use href="#i-no" x="218" y="226" width="24" height="24"/><text x="230" y="280" class="ts" text-anchor="middle">見送る</text>
   <rect x="500" y="170" width="300" height="130" rx="10" class="box"/>
-  <text x="650" y="204" class="ts" text-anchor="middle" font-weight="700">推薦：速く変えることを取る</text>
+  <text x="650" y="204" class="ts" text-anchor="middle" font-weight="700">推薦：速く変えることを優先する</text>
   <use href="#i-ok" x="638" y="226" width="24" height="24"/><text x="650" y="280" class="ts" text-anchor="middle">出す</text>
   <text x="440" y="350" class="ts sub" text-anchor="middle">どちらの答えも、その仕事の価値からは正しい</text>
 </svg>
 ```
 
-障害が出た日に、予定の変更を出すか。決済は止めないことを取って見送り、推薦は速く変えることを取って出します。同じ問いで答えが逆です。
+障害が出た日に、予定の変更を出すか。決済は止めないことを優先して見送り、推薦は速く変えることを優先して出します。同じ問いで答えが逆です。
 
 ※ 例は説明のために作った（第 0 章の決済・推薦と同じ）。
 
@@ -122,10 +122,10 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="60" y="60" width="360" height="220" rx="10" class="hl" style="fill:#fff"/>
-  <text x="240" y="96" class="t hc" text-anchor="middle" font-weight="700">止めないことを取る Cell</text>
+  <text x="240" y="96" class="t hc" text-anchor="middle" font-weight="700">止めないことを優先する Cell</text>
   <g class="ts" text-anchor="middle"><rect x="100" y="140" width="120" height="40" rx="4" class="soft"/><text x="160" y="166">決済</text><rect x="260" y="140" width="120" height="40" rx="4" class="soft"/><text x="320" y="166">請求</text></g>
   <rect x="460" y="60" width="360" height="220" rx="10" class="hl" style="fill:#fff"/>
-  <text x="640" y="96" class="t hc" text-anchor="middle" font-weight="700">速く変えることを取る Cell</text>
+  <text x="640" y="96" class="t hc" text-anchor="middle" font-weight="700">速く変えることを優先する Cell</text>
   <g class="ts" text-anchor="middle"><rect x="500" y="140" width="120" height="40" rx="4" class="soft"/><text x="560" y="166">推薦</text><rect x="660" y="140" width="120" height="40" rx="4" class="soft"/><text x="720" y="166">検索</text></g>
   <text x="440" y="336" class="t" text-anchor="middle" font-weight="700">一つの Cell の中では、優先順位は一つ</text>
 </svg>
@@ -148,11 +148,11 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
   <path d="M135,108 L220,170 M325,108 L240,170 M555,108 L640,170 M745,108 L660,170" class="ln"/>
   <rect x="120" y="175" width="220" height="80" rx="10" class="hl" style="fill:#fff"/><text x="230" y="222" class="ts hc" text-anchor="middle" font-weight="700">Cell</text>
   <rect x="540" y="175" width="220" height="80" rx="10" class="hl" style="fill:#fff"/><text x="650" y="222" class="ts hc" text-anchor="middle" font-weight="700">Cell</text>
-  <text x="440" y="320" class="t" text-anchor="middle" font-weight="700">決済と請求は止めないことを取り、推薦と検索は速く変えることを取る</text>
+  <text x="440" y="320" class="t" text-anchor="middle" font-weight="700">決済と請求は止めないことを優先し、推薦と検索は速く変えることを優先する</text>
 </svg>
 ```
 
-価値の数とサービスの数は揃いません。止めないことを取る決済と請求は、一つの Cell に集めてかまいません。
+価値の数とサービスの数は揃いません。止めないことを優先する決済と請求は、一つの Cell に集めてかまいません。
 
 ※ Core は、一つの Cell が複数の責務を担ってよいとする。出典: EAA Core 版 6「1. 責務と分割」。例は説明のために作った。
 
@@ -163,7 +163,7 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
   <rect x="200" y="40" width="480" height="260" rx="10" class="hl" style="fill:#fff"/>
   <text x="440" y="76" class="t hc" text-anchor="middle" font-weight="700">決済の Cell の Constitution</text>
   <g class="ts">
-    <text x="240" y="120">目的</text><text x="240" y="152" font-weight="700" class="hc">価値：止めないことを先に取る</text>
+    <text x="240" y="120">目的</text><text x="240" y="152" font-weight="700" class="hc">価値：止めないことを優先する</text>
     <text x="240" y="184">制約</text><text x="240" y="216">権限</text><text x="240" y="248">禁止事項</text>
   </g>
   <text x="440" y="346" class="ts sub" text-anchor="middle">一つのループにではなく、各 Cell の規範に置く</text>
@@ -180,14 +180,14 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="200" y="40" width="480" height="250" rx="10" class="hl" style="fill:#fff"/>
   <text x="440" y="74" class="t hc" text-anchor="middle" font-weight="700">決済の Cell</text>
-  <rect x="240" y="100" width="400" height="44" rx="6" class="soft"/><text x="440" y="128" class="ts" text-anchor="middle">Constitution：止めないことを先に取る</text>
+  <rect x="240" y="100" width="400" height="44" rx="6" class="soft"/><text x="440" y="128" class="ts" text-anchor="middle">Constitution：止めないことを優先する</text>
   <path d="M440,148 V180" class="ln" marker-end="url(#arr)"/>
   <rect x="300" y="190" width="280" height="60" rx="30" class="a"/><text x="440" y="226" class="ts on" text-anchor="middle">中の方式と実行を決める</text>
   <text x="440" y="340" class="t" text-anchor="middle" font-weight="700">判断のたびに価値を選び直さない</text>
 </svg>
 ```
 
-各 Cell は、採用した規範の範囲で中の方式と実行を決めます。決済の Cell は、止めないことを取る規範の下で、自分の判断を下します。
+各 Cell は、採用した規範の範囲で中の方式と実行を決めます。決済の Cell は、止めないことを優先する規範の下で、自分の判断を下します。
 
 出典: EAA Core 版 6「2. 自治と権限」。
 
@@ -196,9 +196,9 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="60" y="60" width="320" height="200" rx="10" class="hl" style="fill:#fff"/><text x="220" y="96" class="t hc" text-anchor="middle" font-weight="700">推薦の Cell</text>
-  <text x="220" y="150" class="ts" text-anchor="middle">速く変えることを取る</text>
+  <text x="220" y="150" class="ts" text-anchor="middle">速く変えることを優先する</text>
   <rect x="500" y="60" width="320" height="200" rx="10" class="hl" style="fill:#fff"/><text x="660" y="96" class="t hc" text-anchor="middle" font-weight="700">決済の Cell</text>
-  <text x="660" y="150" class="ts" text-anchor="middle">止めないことを取る</text>
+  <text x="660" y="150" class="ts" text-anchor="middle">止めないことを優先する</text>
   <path d="M380,120 H498" class="xl dash" marker-end="url(#arr-x)"/><use href="#i-no" x="428" y="88" width="24" height="24"/><text x="440" y="146" class="tx xc" text-anchor="middle">書き換え</text>
   <path d="M380,210 H498" class="ln" marker-end="url(#arr)"/><text x="440" y="236" class="tx" text-anchor="middle">理由を付けた提案</text>
   <text x="440" y="320" class="t" text-anchor="middle" font-weight="700">受け入れるかは、決済の Cell が決める</text>
@@ -207,7 +207,7 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
 
 推薦の Cell が、決済の Cell の判断を速さの側へ書き換えることはしません。変えたいときは、内容と理由を付けて提案します。
 
-出典: EAA Core 版 6「2. 自治と権限」「4. 提案と変更」。権限で切った切れ目は第 5 章で見る。
+出典: EAA Core 版 6「2. 自治と権限」「4. 提案と変更」。権限で切った境界は第 5 章で見る。
 
 ## あいだで渡すものは書く
 
@@ -230,7 +230,7 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="200" y="40" width="480" height="240" rx="10" class="box"/>
-  <text x="440" y="74" class="t" text-anchor="middle" font-weight="700">止めないことを取る Cell</text>
+  <text x="440" y="74" class="t" text-anchor="middle" font-weight="700">止めないことを優先する Cell</text>
   <g class="ts" text-anchor="middle">
     <rect x="240" y="120" width="180" height="90" rx="6" class="soft"/><text x="330" y="156">在庫</text><text x="330" y="184" class="tx">在庫の語と記録</text>
     <rect x="460" y="120" width="180" height="90" rx="6" class="soft"/><text x="550" y="156">物流</text><text x="550" y="184" class="tx">物流の語と記録</text>
@@ -241,7 +241,7 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
 </svg>
 ```
 
-止めないことを取る仕事どうしでも、在庫と物流では読む語と記録が違います。価値で切った後もまだ文脈が混ざるなら、ドメインでも切ります。
+止めないことを優先する仕事どうしでも、在庫と物流では読む語と記録が違います。価値で切った後もまだ文脈が混ざるなら、ドメインでも切ります。
 
 ## 次章へ：ドメインで切る
 
@@ -256,4 +256,4 @@ p.「価値で切るのも Core の外」: Core は Constitution を価値を定
 </svg>
 ```
 
-第 4 章では、在庫と物流のように扱う対象が違う仕事を、ドメインの境目で切ります。一つの Cell が読む語と記録を、一つの範囲に閉じます。
+第 4 章では、在庫と物流のように扱う対象が違う仕事を、ドメインの境界で切ります。一つの Cell が読む語と記録を、一つの範囲に閉じます。

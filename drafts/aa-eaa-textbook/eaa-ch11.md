@@ -57,14 +57,14 @@
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="200" y="30" width="480" height="270" rx="10" class="box"/><text x="440" y="66" class="t" text-anchor="middle" font-weight="700">在庫の Cell</text>
-  <rect x="230" y="96" width="200" height="150" rx="6" class="soft"/><text x="330" y="130" class="ts" text-anchor="middle" font-weight="700">在庫</text><text x="330" y="170" class="tx" text-anchor="middle">数を正しく保つ</text><text x="330" y="196" class="tx" text-anchor="middle">ことを先に取る</text>
-  <rect x="450" y="96" width="200" height="150" rx="6" class="soft"/><text x="550" y="130" class="ts" text-anchor="middle" font-weight="700">返品</text><text x="550" y="170" class="tx" text-anchor="middle">返金の速さを</text><text x="550" y="196" class="tx" text-anchor="middle">先に取る</text>
+  <rect x="230" y="96" width="200" height="150" rx="6" class="soft"/><text x="330" y="130" class="ts" text-anchor="middle" font-weight="700">在庫</text><text x="330" y="170" class="tx" text-anchor="middle">数を正しく保つ</text><text x="330" y="196" class="tx" text-anchor="middle">ことを優先する</text>
+  <rect x="450" y="96" width="200" height="150" rx="6" class="soft"/><text x="550" y="130" class="ts" text-anchor="middle" font-weight="700">返品</text><text x="550" y="170" class="tx" text-anchor="middle">返金の速さを</text><text x="550" y="196" class="tx" text-anchor="middle">優先する</text>
   <path d="M434,170 H446" class="xl"/>
-  <text x="440" y="340" class="ts xc" text-anchor="middle">戻った品を数え直すたびに、どちらを先に取るかを切り替える</text>
+  <text x="440" y="340" class="ts xc" text-anchor="middle">戻った品を数え直すたびに、どちらを優先するかを切り替える</text>
 </svg>
 ```
 
-在庫の Cell が、店舗からの返品も扱うようになりました。在庫は数を正しく保つことを、返品は返金の速さを先に取ります。判断のたびに切り替えが起きます。
+在庫の Cell が、店舗からの返品も扱うようになりました。在庫は数を正しく保つことを、返品は返金の速さを優先します。判断のたびに切り替えが起きます。
 
 ※ 例は説明のための仮定。価値の違いで判定に通らなくなる形は第 3 章で見ました。
 
@@ -80,7 +80,7 @@
 </svg>
 ```
 
-逆に、Mission と Contract に書いても照会が要り、改訂が止まらない Cell どうしは、切れ目が文脈の境目に合っていません。まとめ直すか、引き直します。
+逆に、Mission と Contract に書いても照会が要り、改訂が止まらない Cell どうしは、境界が文脈に合っていません。まとめ直すか、引き直します。
 
 ※ 書き手の読み。書けていないだけなら、直す先は Mission と Contract（第 7・12 章）。Core はいつまとめるかを書いていない。
 
