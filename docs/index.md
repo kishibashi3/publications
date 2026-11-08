@@ -13,6 +13,7 @@
 - [応用](./applications/) — アジャイル / AI / 教育 / 企業
 - [AI](./ai/) — エージェント設計 / 実装 / リテラシー
 - [このサイトについて](./about.md)
+- [AI 向け目次](./llms.md) — AI に最初に読ませる目次。[`/llms.txt`](/llms.txt) と同じ内容の HTML 版
 
 ## Feedback
 

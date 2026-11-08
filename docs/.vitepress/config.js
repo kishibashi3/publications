@@ -14,7 +14,8 @@ export default withMermaid({
     nav: [
       { text: 'ホーム', link: '/' },
       { text: 'About', link: '/about' },
-      { text: '貢献', link: '/contributing' }
+      { text: '貢献', link: '/contributing' },
+      { text: 'AI 向け目次', link: '/llms' }
     ],
     sidebar: {
       '/core/': [
