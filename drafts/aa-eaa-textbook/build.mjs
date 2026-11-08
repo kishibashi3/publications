@@ -45,6 +45,9 @@ const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&
 export const countChars = s => [...s.replace(/<[^>]+>/g, '').replace(/[*`#>|\s]/g, '')].length;
 
 // ---------- 絵 ----------
+// md の絵に直書きされた色の旧い値 → 案 A の値。md は変えず、絵を出すときに置き換える（CSS と矢印・記号の定義は新しい値で書いてある）
+const PALETTE = {"#d9822b":"#c56a1c","#2f6fb3":"#285b98","#c62828":"#b0261d","#2e7d32":"#2a6b31","#b5b5b5":"#b2ada3","#222":"#1e1c19"};
+const recolor = svg => Object.entries(PALETTE).reduce((t, [from, to]) => t.replace(new RegExp(from + '(?![0-9a-fA-F])', 'gi'), to), svg);
 let GV = null;
 export async function loadGraphviz() {
   if (!GV) { const { Graphviz } = await import('@hpcc-js/wasm-graphviz'); GV = await Graphviz.load(); }
@@ -60,7 +63,7 @@ function figure(kind, src, where) {
     if (!/^<svg[\s>]/.test(svg)) fail(`${where}: svg の塊が <svg で始まっていない`);
   }
   if (/<script|on\w+\s*=/i.test(svg)) fail(`${where}: 絵に script / イベント属性がある`);
-  return `<figure>${svg}</figure>`;
+  return `<figure>${recolor(svg)}</figure>`;
 }
 
 // ---------- md → ページ ----------
@@ -129,19 +132,24 @@ function body(text, where, cover, skeleton = false) {
 // ---------- HTML ----------
 const DEFS = `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
-<marker id="arr-x" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker>
+<marker id="arr-x" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b0261d"/></marker>
 <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#eee"/><line x1="0" y1="0" x2="0" y2="8" stroke="#cfcfcf" stroke-width="3"/></pattern>
 <pattern id="hatch-x" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#fbe3e3"/><line x1="0" y1="0" x2="0" y2="8" stroke="#e8a3a3" stroke-width="3"/></pattern>
-<symbol id="i-wait" viewBox="0 0 20 28"><path d="M2,1 H18 V5 L11.5,14 L18,23 V27 H2 V23 L8.5,14 L2,5 Z" fill="#d9822b"/><path d="M5,6 H15 L10,12 Z M5,25 L10,19 L15,25 Z" fill="#fff"/></symbol>
-<symbol id="i-pile" viewBox="0 0 28 28"><rect x="2" y="19" width="24" height="7" fill="#c62828"/><rect x="5" y="11" width="18" height="7" fill="#c62828"/><rect x="8" y="3" width="12" height="7" fill="#c62828"/></symbol>
-<symbol id="i-pr" viewBox="0 0 24 30"><rect x="1" y="1" width="22" height="28" rx="2" fill="#fff" stroke="#2f6fb3" stroke-width="2"/><path d="M5,8 H19 M5,13 H19 M5,18 H15" stroke="#2f6fb3" stroke-width="2"/></symbol>
-<symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#2e7d32"/><path d="M6,12.5 L10.5,17 L18,8" fill="none" stroke="#fff" stroke-width="3"/></symbol>
-<symbol id="i-no" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#c62828"/><path d="M7,7 L17,17 M17,7 L7,17" stroke="#fff" stroke-width="3"/></symbol>
+<symbol id="i-wait" viewBox="0 0 20 28"><path d="M2,1 H18 V5 L11.5,14 L18,23 V27 H2 V23 L8.5,14 L2,5 Z" fill="#c56a1c"/><path d="M5,6 H15 L10,12 Z M5,25 L10,19 L15,25 Z" fill="#fff"/></symbol>
+<symbol id="i-pile" viewBox="0 0 28 28"><rect x="2" y="19" width="24" height="7" fill="#b0261d"/><rect x="5" y="11" width="18" height="7" fill="#b0261d"/><rect x="8" y="3" width="12" height="7" fill="#b0261d"/></symbol>
+<symbol id="i-pr" viewBox="0 0 24 30"><rect x="1" y="1" width="22" height="28" rx="2" fill="#fff" stroke="#285b98" stroke-width="2"/><path d="M5,8 H19 M5,13 H19 M5,18 H15" stroke="#285b98" stroke-width="2"/></symbol>
+<symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#2a6b31"/><path d="M6,12.5 L10.5,17 L18,8" fill="none" stroke="#fff" stroke-width="3"/></symbol>
+<symbol id="i-no" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#b0261d"/><path d="M7,7 L17,17 M17,7 L7,17" stroke="#fff" stroke-width="3"/></symbol>
 </defs></svg>`;
 
 // 絵の色は本 1 冊で固定する（plan §B.4）。人 = 橙、AI = 青、待ち = 灰、間違い = 赤、通った = 緑
+// 見た目は案 A「本」（2026-11-08、@ope-ultp1635 msg 8f3b887c）。色は役のまま値を落ち着かせた。md の絵に直書きされた旧い値は figure() が PALETTE で置き換える
+// 案 B・C と比べる道具は agent-hub-roles-kaz の writer-ja/drafts/textbook-css/
 const CSS = `
-:root { --h:#d9822b; --a:#2f6fb3; --w:#b5b5b5; --x:#c62828; --ok:#2e7d32; --ink:#222; --sub:#777; }
+:root { --h:#c56a1c; --a:#285b98; --w:#b2ada3; --x:#b0261d; --ok:#2a6b31; --ink:#1e1c19; --sub:#7b766c;
+  /* 明朝は Hiragino Mincho → Noto Serif JP → Yu Mincho の順。Noto を Yu Mincho より先に置くのは、検査と画像を Noto で通したため（Yu Mincho は字面が細く、まだ誰も見ていない） */
+  --serif: "Hiragino Mincho ProN","Noto Serif JP","Noto Serif CJK JP","Yu Mincho","YuMincho",serif;
+  --sans: "Hiragino Sans","Noto Sans JP","Noto Sans CJK JP","Yu Gothic",sans-serif; }
 * { box-sizing: border-box; }
 body { margin: 0; background: #e9e9e6; color: var(--ink); font-family: "Hiragino Sans","Noto Sans JP","Noto Sans CJK JP","Yu Gothic",sans-serif; }
 section.page { width: 960px; height: 600px; margin: 24px auto; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.18); padding: 18px 40px 16px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
@@ -185,8 +193,8 @@ section.page.skeleton h2 { color: #55554f; }
 section.page.skeleton::after { content: "骨格"; position: absolute; top: 14px; right: 40px; font-size: 11px; letter-spacing: .1em; color: #fff; background: #c3c3bb; padding: 2px 8px; border-radius: 3px; }
 /* モックの絵（骨格の章の概要で、章の主張の絵がまだ無い）。本物と取り違えないよう、枠も札も赤系にして「モック」と書く */
 figure.mock .todo-box { min-height: 260px; border-color: #e0a3a3; background: repeating-linear-gradient(45deg, #fdf6f6, #fdf6f6 10px, #f8eaea 10px, #f8eaea 20px); }
-figure.mock .todo-tag { background: #c62828; font-size: 14px; }
-#toc a.mock span:last-child::after { content: "（モック）"; color: #c62828; font-size: 11px; margin-left: 4px; }
+figure.mock .todo-tag { background: #b0261d; font-size: 14px; }
+#toc a.mock span:last-child::after { content: "（モック）"; color: #b0261d; font-size: 11px; margin-left: 4px; }
 #toc a.sk span:last-child { color: #8a8a82; }
 #toc a.sk .n::after { content: "·"; margin-left: 3px; color: #c3c3bb; }
 
@@ -208,6 +216,32 @@ body.toc-closed #toc { transform: translateX(-100%); }
 #toc a .n { color: var(--sub); font-size: 12px; min-width: 20px; text-align: right; padding-top: 2px; font-variant-numeric: tabular-nums; }
 #toc a.here { background: #fdf2e6; box-shadow: inset 3px 0 0 var(--h); }
 #toc a.here .n { color: var(--h); }
+
+/* 案 A「本」: 紙の白と明朝。見出し・本文・目次を明朝にし、柱と注は細い罫で区切る */
+body { background: #d6d2c8; }
+section.page { background: #fffdf7; box-shadow: 0 1px 0 rgba(60,45,20,.08), 0 14px 28px -14px rgba(60,45,20,.45); padding: 20px 56px 16px; }
+section.page figure { font-family: var(--sans); }           /* 絵の字は今のゴシックのまま（枠の寸法を変えない） */
+section.page h1, section.page h2, section.cover p.sub, section.cover p.lead, section.page .txt { font-family: var(--serif); }
+.run { font-size: 11px; letter-spacing: .14em; color: var(--sub); border-bottom: 1px solid #ddd6c8; padding-bottom: 5px; }
+.run span:last-child { letter-spacing: .04em; }
+section.page h2 { font-size: 28px; font-weight: 700; letter-spacing: .05em; margin: 12px 0 2px; }
+.txt { font-size: 19.5px; line-height: 1.72; letter-spacing: .03em; }
+.note { font-size: 11.5px; border-top: 1px solid #e3ddd0; padding-top: 4px; margin-top: 2px; letter-spacing: .02em; }
+.note:empty { display: none; }
+section.cover { padding: 50px 88px 28px; }
+section.cover .run { left: 56px; right: 56px; }
+section.cover h1 { font-size: 40px; font-weight: 700; letter-spacing: .07em; margin: 4px 0 8px; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+section.cover p.sub { font-size: 23px; font-weight: 700; letter-spacing: .04em; margin: 0 0 8px; }
+section.cover p.lead { font-size: 18.5px; font-weight: 600; line-height: 1.6; letter-spacing: .02em; }
+section.cover .txt { font-size: 18px; color: #4a463f; line-height: 1.65; }
+#toc { background: #fbf9f3; border-right: 1px solid #e0dacd; font-family: var(--serif); }
+#toc .grp { color: #6e695f; border-top: 1px solid #cfc8b9; letter-spacing: .12em; font-size: 12px; }
+#toc .ch { background: none; border-left: 3px solid var(--ink); margin-left: 12px; padding-left: 12px; font-size: 16px; letter-spacing: .04em; }
+#toc .ch .lead { color: #5e594f; }
+#toc a { font-family: var(--serif); }
+#toc a:hover { background: #f2eee4; }
+#toc a.here { background: #f5ebdc; }
+#toc-btn { background: #fffdf7; border-color: #d6cfbf; font-family: var(--serif); }
 `;
 const NAV = `<script>
 // ←/→ でページを送る。m または目次ボタンで目次。いま見ているページに印をつける（外部には出ない）
