@@ -18,6 +18,8 @@
 77a7fc9 の検算と通読を受けて直した（@ope-ultp1635 msg 614590ff。判定の正本 @reviewer 2026-11-08-eaa-textbook-77a7fc9-ch00-04 / ch05-08 / ch09-12-furoku、@reader 2026-11-08-eaa-textbook-v5-215p-6readers-r3）: p.「AA と Cell」の名付けを「AA のように自律して開発する単位」にした（第 2 章で中が人のチームでも Cell なのと食い違っていた。@reviewer 1 便）。第 3〜5 章の「〜で切るのも Core の外」のページを外し、p.「切り方は、Core の外の提案」の注 1 か所にまとめた（6 体とも開かなくなった形。読者）。
 章題を短くした（@ope-ultp1635 msg 12bf66b5）: 全章の題を一つの主張で止め、理由・帰結・限定は章の概要へ移した。build.mjs に章題の上限 30 字（AA の最長 29 字）。この章は起点「AA は走り切れない」を題に残し、「EAA は…方法に答える」を章の概要の文へ移した。記録: writer-ja/drafts/eaa-toc/structure-v5.md「章題を短くした」。
 章題を名詞句にした（@ope-ultp1635 msg 23aba03d、root CLAUDE.md「成果物の文章の作法」二 3df0d3d5）: 全章と付録の題を名詞句にし、短くした主張の 1 文は「副題:」の行に移した。起点「AA は一つの開発単位では巨大なシステムを走り切れない」はこの章の副題と、章の概要の文の 1 文目の両方に置いた。目次は章題の下に副題を出す。記録: writer-ja/drafts/eaa-toc/structure-v5.md「章題を名詞句にした」。
+分ける理由の二つに根拠を入れた（@ope-ultp1635 msg d7431726。kishibashi3 の指摘を逐語で受けた: 追い切れないの「多すぎる」に根拠が無い・切り替えると何が悪いかが無い「ここは大事だね」）: p.「判断 8,000 件、追えるのは 80 件」「自分の現場で数える」「切り替えると取り違える」「取り違え 80 件、見つかるのは 1 件」を足した。数は書き手が説明のために作り、注に書いた（AA の本 第 1 章 p.8 と同じ扱い。人のレビュー 60 分は AA の数字を借りた）。出典つきの数は AA の本 第 1 章 p.9 の調査を引くだけにした。代償は「取り違えが出て、追い切れない判断に紛れる」まで。切り方の判定（第 2 章）と、どちらの価値で答えたかが外から見えないこと（第 3 章）は先取りしない。
+p.「巨大なシステムでは人間は分業する」を p.「追い切れず、取り違えるから分ける」に替えた（@ope-ultp1635 の見立て、採否は書き手）。人間の慣習を分ける根拠にすると、第 1 章の「職能で分ける理由は人間にあった。Agent には当てはまらない」と根拠の扱いが割れる。分ける理由は前の二つで閉じるので、このページは二つから分けることを結ぶ役にし、人間の分業の枠組みとの対応は付録へ送った。章の概要の「人間が分業するように」は根拠ではなく本の問いの字なので変えない。
 -->
 
 ```svg
@@ -105,7 +107,7 @@ AA で巨大なシステムを作る素直なやり方は、完璧な設計図�
 
 この本は、このやり方を問います。走り切れるか、人間が管理し切れるか、一つのループで価値を切り替えられるか。この章は、この問いに答えます。
 
-※ どの問いも、答えは「できない」。次のページから、人間が追い切れない理由と、ループが価値を切り替える理由を見る。
+※ どの問いも、答えは「できない」。次のページから、人間が追い切れない理由と、ループが価値を切り替える理由と、その代償を見る。
 
 ## 一つの Cell の判断は追い切れない
 
@@ -128,6 +130,48 @@ AA で巨大なシステムを作る素直なやり方は、完璧な設計図�
 一つの Cell で巨大なシステムを走り切ると、中で下される判断が多すぎて、その Cell の責任を負う人間には追い切れません。
 
 ※ AA の本の第 1 章の、人がレビューすれば遅く、外せば誤りが積み上がる板挟みは、Cell が大きくなるほど強くなる。
+
+## 判断 8,000 件、追えるのは 80 件
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <text x="230" y="40" class="ts sub">一つの Cell で扱うサービスの数と、1 日の判断のうち人間が追える割合</text>
+  <g class="t" text-anchor="end"><text x="210" y="102">サービス 1 本</text><text x="210" y="192">10 本</text><text x="210" y="282">100 本</text></g>
+  <rect x="230" y="70" width="560" height="50" class="soft"/><rect x="230" y="70" width="560" height="50" class="h"/>
+  <text x="510" y="101" class="ts on" text-anchor="middle">追える 80 件 ／ 判断 80 件</text>
+  <rect x="230" y="160" width="560" height="50" class="soft"/><rect x="230" y="160" width="56" height="50" class="h"/>
+  <text x="300" y="191" class="ts">追える 80 件 ／ 判断 800 件</text>
+  <rect x="230" y="250" width="560" height="50" class="soft"/><rect x="230" y="250" width="6" height="50" class="h"/>
+  <text x="250" y="281" class="ts">追える 80 件 ／ 判断 8,000 件</text>
+  <g class="t"><text x="805" y="102">100%</text><text x="805" y="192">10%</text><text x="805" y="282">1%</text></g>
+  <text x="440" y="350" class="tl" text-anchor="middle">増えるのは、判断だけ</text>
+</svg>
+```
+
+サービス 1 本で 1 日 80 件の判断が出て、人間が追えるのも 80 件とします。サービス 100 本を一つの Cell で扱うと、判断は 8,000 件、追えるのは 1% です。
+
+※ 説明のために作った数字です。PR 1 本に判断 10 件、サービス 1 本に PR 1 日 8 本。人のレビューは AA の本 第 1 章 p.8 の PR 1 本 60 分で、1 日 8 本まで見る。
+
+## 自分の現場で数える
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <rect x="40" y="70" width="380" height="200" rx="10" class="soft"/>
+  <text x="230" y="112" class="t" text-anchor="middle" font-weight="700">Cell の中で出る PR</text>
+  <text x="230" y="180" class="ts" text-anchor="middle">1 日に出る PR の本数</text>
+  <text x="230" y="240" class="tx" text-anchor="middle">Cell を大きくすると増える</text>
+  <text x="440" y="180" class="tl" text-anchor="middle">対</text>
+  <rect x="460" y="70" width="380" height="200" rx="10" class="hl" style="fill:#fff"/>
+  <text x="650" y="112" class="t hc" text-anchor="middle" font-weight="700">人間が見られる PR</text>
+  <text x="650" y="180" class="ts" text-anchor="middle">責任を負う人間が 1 日にレビューできる本数</text>
+  <text x="650" y="240" class="tx" text-anchor="middle">Cell を大きくしても増えない</text>
+  <text x="440" y="330" class="t" text-anchor="middle" font-weight="700">自分の現場の数を入れて、左と右を比べる</text>
+</svg>
+```
+
+自分の現場では、1 日に出る PR の本数と、責任を負う人間が 1 日にレビューできる本数を比べます。Cell を大きくして増えるのは、前者だけです。
+
+※ 人のレビューが律速になることは、AA の本 第 1 章 p.9 の調査にある（開発者と技術購買層 1,528 人の 85%）。
 
 ## サービスごとに価値が違う
 
@@ -175,23 +219,73 @@ Agent が計画し、作り、確かめて直すのを繰り返す流れをル�
 
 ※ 主体の中で、判断に使う文脈がこのように切り替わることを、第 2 章でコンテキストスイッチと呼び、切り方の判定に使う。
 
-## 巨大なシステムでは人間は分業する
+## 切り替えると取り違える
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <g>
-    <rect x="40" y="80" width="240" height="180" rx="10" class="box"/><g class="h"><rect x="70" y="140" width="40" height="44" rx="6"/><rect x="140" y="140" width="40" height="44" rx="6"/><rect x="210" y="140" width="40" height="44" rx="6"/></g><text x="160" y="230" class="ts" text-anchor="middle">チーム</text>
-    <rect x="320" y="80" width="240" height="180" rx="10" class="box"/><g class="h"><rect x="350" y="140" width="40" height="44" rx="6"/><rect x="420" y="140" width="40" height="44" rx="6"/><rect x="490" y="140" width="40" height="44" rx="6"/></g><text x="440" y="230" class="ts" text-anchor="middle">チーム</text>
-    <rect x="600" y="80" width="240" height="180" rx="10" class="box"/><g class="h"><rect x="630" y="140" width="40" height="44" rx="6"/><rect x="700" y="140" width="40" height="44" rx="6"/><rect x="770" y="140" width="40" height="44" rx="6"/></g><text x="720" y="230" class="ts" text-anchor="middle">チーム</text>
-  </g>
-  <text x="440" y="50" class="t" text-anchor="middle" font-weight="700">人間は、巨大なシステムを必ず分けて作ってきた</text>
-  <text x="440" y="320" class="t hc" text-anchor="middle" font-weight="700">Agent が実行する開発でも分ける。何で分けるか</text>
+  <circle cx="150" cy="170" r="90" class="ln"/>
+  <text x="150" y="176" class="ts sub" text-anchor="middle">一つのループ</text>
+  <path d="M236,140 L296,104 M236,190 L296,198" class="lt"/>
+  <rect x="300" y="80" width="250" height="44" rx="4" class="xl" style="fill:#fff"/><text x="425" y="108" class="ts xc" text-anchor="middle">前の判断：推薦を速く変える</text>
+  <path d="M425,124 V170" class="ln" marker-end="url(#arr)"/>
+  <rect x="300" y="176" width="250" height="44" rx="4" class="xl" style="fill:#fff"/><text x="425" y="204" class="ts xc" text-anchor="middle">次の判断：決済も速く変える</text>
+  <text x="425" y="250" class="tx" text-anchor="middle">決済が優先するのは、止めないこと</text>
+  <path d="M550,198 H600" class="ln" marker-end="url(#arr)"/>
+  <rect x="610" y="150" width="230" height="96" rx="6" class="soft"/>
+  <text x="725" y="190" class="ts" text-anchor="middle">確かめを省いた変更が</text>
+  <text x="725" y="218" class="ts" text-anchor="middle">決済に出る</text>
+  <text x="440" y="330" class="t" text-anchor="middle" font-weight="700">切り替えるたびに、前の価値が残ることがある</text>
 </svg>
 ```
 
-巨大なシステムを作るとき、人間は必ず仕事を分けてきました。Agent が実行する開発でも、仕事は分ける必要があります。問題は、何で分けるかです。
+切り替えのたびに、前の仕事の価値で次の判断を下すことがあります。決済の判断を速く変えるで下すと、確かめを省いた変更が決済に出ます。
 
-※ この本の問いを一文にすると、人間が巨大なシステムで必ずしてきた分業を、Agent が実行する開発でどう実現するか、になる。
+※ 例は説明のために作った。
+
+## 取り違え 80 件、見つかるのは 1 件
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <rect x="40" y="70" width="230" height="170" rx="10" class="soft"/>
+  <text x="155" y="110" class="ts" text-anchor="middle">1 日の判断</text><text x="155" y="170" class="tl" text-anchor="middle">8,000 件</text><text x="155" y="210" class="tx" text-anchor="middle">ほぼ全部が切り替えを挟む</text>
+  <path d="M270,155 H320" class="ln" marker-end="url(#arr)"/>
+  <rect x="325" y="70" width="230" height="170" rx="10" class="xl" style="fill:#fff"/>
+  <text x="440" y="110" class="ts xc" text-anchor="middle">取り違えた判断</text><text x="440" y="170" class="tl" text-anchor="middle">80 件</text><text x="440" y="210" class="tx" text-anchor="middle">正しい判断と同じ形で出る</text>
+  <path d="M555,155 H605" class="ln" marker-end="url(#arr)"/>
+  <rect x="610" y="70" width="230" height="170" rx="10" class="hl" style="fill:#fff"/>
+  <text x="725" y="110" class="ts hc" text-anchor="middle">人間が見つける</text><text x="725" y="170" class="tl" text-anchor="middle">1 件ほど</text><text x="725" y="210" class="tx" text-anchor="middle">残りは見つからないまま出る</text>
+  <g class="tx" text-anchor="middle"><text x="297" y="270">100 回に 1 回</text><text x="582" y="270">追えるのは 1%</text></g>
+  <text x="440" y="330" class="t" text-anchor="middle" font-weight="700">取り違えは、追い切れない判断に紛れる</text>
+</svg>
+```
+
+8,000 件の判断がほぼ全部切り替えを挟み、100 回に 1 回取り違えると、1 日 80 件です。人間が追えるのは 1% なので、見つかるのは 1 件ほどです。
+
+※ 説明のために作った数字です。8,000 件と 1% は p.「判断 8,000 件、追えるのは 80 件」と同じ。取り違えの率も作った値。
+
+## 追い切れず、取り違えるから分ける
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <rect x="40" y="60" width="300" height="90" rx="10" class="hl" style="fill:#fff"/>
+  <text x="190" y="96" class="t hc" text-anchor="middle" font-weight="700">人間が追い切れない</text><text x="190" y="128" class="tx" text-anchor="middle">追えるのは判断の 1%</text>
+  <rect x="40" y="180" width="300" height="90" rx="10" class="xl" style="fill:#fff"/>
+  <text x="190" y="216" class="t xc" text-anchor="middle" font-weight="700">ループが価値を取り違える</text><text x="190" y="248" class="tx" text-anchor="middle">1 日 80 件、見つかるのは 1 件</text>
+  <path d="M340,105 C 380,105 380,165 410,165 M340,225 C 380,225 380,165 410,165" class="ln"/>
+  <path d="M410,165 H450" class="ln" marker-end="url(#arr)"/>
+  <g>
+    <rect x="460" y="110" width="110" height="110" rx="10" class="box"/><text x="515" y="172" class="ts" text-anchor="middle" font-weight="700">Cell</text>
+    <rect x="595" y="110" width="110" height="110" rx="10" class="box"/><text x="650" y="172" class="ts" text-anchor="middle" font-weight="700">Cell</text>
+    <rect x="730" y="110" width="110" height="110" rx="10" class="box"/><text x="785" y="172" class="ts" text-anchor="middle" font-weight="700">Cell</text>
+  </g>
+  <text x="650" y="90" class="ts" text-anchor="middle">一つの Cell で走り切らず、分ける</text>
+  <text x="440" y="330" class="t hc" text-anchor="middle" font-weight="700">分ける理由はこの二つ。問題は、何で分けるか</text>
+</svg>
+```
+
+一つの Cell で走り切ると、人間は判断を追い切れず、ループは価値を取り違えます。だから仕事を分けます。問題は、何で分けるかです。
+
+※ 分ける理由はこの二つで、人間が分業してきた慣習には拠らない。人間の分業の枠組みとの対応は付録で見る。
 
 ## 答え：文脈を疎結合に分ける
 
