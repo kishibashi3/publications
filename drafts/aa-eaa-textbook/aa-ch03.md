@@ -30,14 +30,14 @@
 第 14 版（plan §F, @ope-ultp1635 msg 467fb7b2）で読み手を上げ、言い換えを戻し p.1〜2・3〜5・15〜16 を畳んだ。
 -->
 
-第 2 章で、人はレビューの輪の外に出ました。この章では、人が残る所を決めます。
+第 2 章で、人はレビューのループの外に出ました。この章では、人が残る所を決めます。
 
 ## 人の判断は、戻せない操作と権限緩和へ
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <text x="60" y="40" class="tx">PR 1 本につき</text>
-  <g class="ts" text-anchor="middle"><text x="200" y="64">第 1 章の輪</text><text x="365" y="64">第 2 章の輪</text></g>
+  <g class="ts" text-anchor="middle"><text x="200" y="64">第 1 章のループ</text><text x="365" y="64">第 2 章のループ</text></g>
   <g class="t" text-anchor="end"><text x="130" y="122">レビュー</text><text x="130" y="232">人の判断</text></g>
   <rect x="150" y="88" width="100" height="56" rx="6" class="h"/><text x="200" y="122" class="ts on" text-anchor="middle">人が 1 回</text>
   <text x="280" y="122" class="t" text-anchor="middle">＝</text>
@@ -91,7 +91,7 @@
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <path d="M440,40 V340" stroke="#d9822b" stroke-width="5"/>
-  <text x="220" y="56" class="t" text-anchor="middle">線の左</text><text x="660" y="56" class="t" text-anchor="middle">線の右へ渡る</text>
+  <text x="220" y="56" class="t" text-anchor="middle">revert できる</text><text x="660" y="56" class="t" text-anchor="middle">revert できない</text>
   <rect x="40" y="100" width="150" height="60" rx="6" fill="#fff" class="al"/><text x="115" y="126" class="ts ac" text-anchor="middle">別の会話の AI</text><text x="115" y="148" class="ts ac" text-anchor="middle">がレビュー</text>
   <use href="#i-ok" x="196" y="116" width="28" height="28"/>
   <path d="M228,130 H262" class="ln" marker-end="url(#arr)"/>
@@ -107,7 +107,7 @@
 </svg>
 ```
 
-線の左は、別の会話の AI のレビューに通れば auto-merge します。線の右も、レビューは外さず、最後に人が approve します。
+戻せる操作は、別の会話の AI のレビューに通れば auto-merge します。戻せない操作も、レビューは外さず、最後に人が approve します。
 
 ※ レビューと merge は別の役（第 2 章）。どちらも、作成者の手の外に置く。
 
@@ -126,7 +126,7 @@
 </svg>
 ```
 
-第 2 章の公開の実例です。71 秒後に revert しましたが、公開されていた 71 秒は戻りません。公開は、線の右です。
+第 2 章の公開の実例です。71 秒後に revert しましたが、公開されていた 71 秒は戻りません。公開は、戻せない操作です。
 
 出典: kishibashi3/publications PR #40（merge 2026-09-19T16:09:17Z）と巻き戻しの PR #47（16:10:28Z）。第 2 章と同じ件。
 
@@ -194,7 +194,7 @@ revert できても、1 回の変更が大きいと、外したときの損が�
 </svg>
 ```
 
-監査や検収の署名は、線の右へ渡る所そのものです。外すのは、署名の前に人が毎日全部を読み直すことです。
+監査や検収の署名は、戻せない操作そのものです。外すのは、署名の前に人が毎日全部を読み直すことです。
 
 ※ 条文も「責任は人間に留める」と書く（D4）。検収や契約の取り決めは、この本では扱いません。
 
@@ -214,7 +214,7 @@ revert できても、1 回の変更が大きいと、外したときの損が�
   <text x="230" y="114" class="ts hc" text-anchor="middle">「確認なし」に切り替える</text>
   <path d="M220,134 V184" class="hl"/>
   <text x="220" y="300" class="ts" text-anchor="middle">設定は、1 行で revert できる</text>
-  <text x="440" y="356" class="ts xc" text-anchor="middle">線の左にあるのに、人が要る</text>
+  <text x="440" y="356" class="ts xc" text-anchor="middle">戻せるのに、人が要る</text>
 </svg>
 ```
 
@@ -256,14 +256,14 @@ revert できる変更でも、人を残す物があります。AI が自分の�
   <text x="381" y="132" class="ts ac" text-anchor="middle">レビューに通れば、AI が進める</text>
   <rect x="604" y="60" width="224" height="130" fill="#fbe9d7" class="hl"/>
   <text x="716" y="122" class="ts hc" text-anchor="middle">人が approve</text>
-  <text x="716" y="144" class="tx" text-anchor="middle">線の右</text>
+  <text x="716" y="144" class="tx" text-anchor="middle">戻せない操作</text>
   <rect x="162" y="194" width="666" height="124" class="h"/>
-  <text x="495" y="248" class="t on" text-anchor="middle">全部、人が approve（床）</text>
+  <text x="495" y="248" class="t on" text-anchor="middle">全部、人が approve（権限緩和）</text>
   <text x="495" y="278" class="ts on" text-anchor="middle">revert できても、できなくても</text>
 </svg>
 ```
 
-横は revert できるか、縦は自分の権限を緩めるか。下の段を、この本では床と呼びます。revert できても、全部人が approve します。
+横は revert できるか、縦は自分の権限を緩めるか。下の段が権限緩和です。revert できても、全部人が approve します。
 
 ## 実例：AI が自分の権限を自分で緩めた
 
@@ -317,17 +317,17 @@ D8 は、第 2 章の D3 と同じ形です。D3 は自分の成果を、D8 は�
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <text x="60" y="70" class="ts">人の判断（1 日にできる量）</text>
-  <rect x="60" y="100" width="170" height="70" class="h"/><text x="145" y="142" class="ts on" text-anchor="middle">床</text>
-  <rect x="230" y="100" width="170" height="70" fill="#fbe9d7" stroke="#d9822b" stroke-width="2"/><text x="315" y="142" class="ts hc" text-anchor="middle">線の右の手前</text>
+  <rect x="60" y="100" width="170" height="70" class="h"/><text x="145" y="142" class="ts on" text-anchor="middle">権限緩和</text>
+  <rect x="230" y="100" width="170" height="70" fill="#fbe9d7" stroke="#d9822b" stroke-width="2"/><text x="315" y="142" class="ts hc" text-anchor="middle">戻せない操作の手前</text>
   <rect x="400" y="100" width="420" height="70" class="soft"/><path d="M400,100 H820 V170 H400" class="ln"/>
   <text x="610" y="142" class="ts sub" text-anchor="middle">毎日の判断</text>
   <path d="M610,240 V180" class="ln" marker-end="url(#arr)"/>
-  <text x="610" y="270" class="ts" text-anchor="middle">ここを減らせば、床と線の右に回せる</text>
+  <text x="610" y="270" class="ts" text-anchor="middle">ここを減らせば、権限緩和と戻せない操作に回せる</text>
   <text x="440" y="340" class="tx" text-anchor="middle">棒の長さは増えない</text>
 </svg>
 ```
 
-人が判断できる量には限りがあります。床と線の右に回すぶんは、毎日の判断から持ってきます。
+人が判断できる量には限りがあります。権限緩和と戻せない操作に回すぶんは、毎日の判断から持ってきます。
 
 ※ 第 2 章でレビューを AI に渡したので、レビューはこの棒を使わない。レビュアーが人のときだけ使う。
 
@@ -336,10 +336,10 @@ D8 は、第 2 章の D3 と同じ形です。D3 は自分の成果を、D8 は�
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="30" y="60" width="230" height="100" rx="10" class="soft"/>
-  <text x="145" y="92" class="ts" text-anchor="middle">床</text>
+  <text x="145" y="92" class="ts" text-anchor="middle">権限緩和</text>
   <g fill="#d9822b"><circle cx="105" cy="128" r="12"/><circle cx="145" cy="128" r="12"/><circle cx="185" cy="128" r="12"/></g>
   <rect x="30" y="180" width="230" height="100" rx="10" class="soft"/>
-  <text x="145" y="212" class="ts" text-anchor="middle">線の右の手前</text>
+  <text x="145" y="212" class="ts" text-anchor="middle">戻せない操作の手前</text>
   <g fill="#d9822b"><circle cx="105" cy="248" r="12"/><circle cx="145" cy="248" r="12"/><circle cx="185" cy="248" r="12"/></g>
   <text x="145" y="320" class="ts" text-anchor="middle">消せない</text>
   <text x="580" y="44" class="ts" text-anchor="middle">AI からの「これで合ってる？」</text>
@@ -362,18 +362,18 @@ D8 は、第 2 章の D3 と同じ形です。D3 は自分の成果を、D8 は�
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <text x="60" y="70" class="ts">人の判断</text>
-  <rect x="60" y="100" width="170" height="70" class="h"/><text x="145" y="142" class="ts on" text-anchor="middle">床</text>
-  <rect x="230" y="100" width="170" height="70" fill="#fbe9d7" stroke="#d9822b" stroke-width="2"/><text x="315" y="142" class="ts hc" text-anchor="middle">線の右の手前</text>
+  <rect x="60" y="100" width="170" height="70" class="h"/><text x="145" y="142" class="ts on" text-anchor="middle">権限緩和</text>
+  <rect x="230" y="100" width="170" height="70" fill="#fbe9d7" stroke="#d9822b" stroke-width="2"/><text x="315" y="142" class="ts hc" text-anchor="middle">戻せない操作の手前</text>
   <rect x="400" y="100" width="420" height="70" class="soft"/><path d="M400,100 H820 V170 H400" class="ln"/>
   <text x="610" y="142" class="ts sub" text-anchor="middle">毎日の判断</text>
   <path d="M60,200 H400" class="hl"/><text x="230" y="230" class="ts hc" text-anchor="middle">ここを削ると</text>
   <rect x="60" y="260" width="760" height="70" rx="8" class="soft"/>
   <text x="440" y="292" class="ts" text-anchor="middle">どのルールも「AI が要らないと思えば外せる物」になる</text>
-  <text x="440" y="316" class="tx" text-anchor="middle">床の判断を減らすことは、成果ではない</text>
+  <text x="440" y="316" class="tx" text-anchor="middle">戻せない操作と権限緩和の判断を減らすことは、成果ではない</text>
 </svg>
 ```
 
-条文 D1 は「要らない判断をなくすことも成果だ」と言います。でも床の判断は、なくしてよい判断ではありません。
+条文 D1 は「要らない判断をなくすことも成果だ」と言います。でも戻せない操作と権限緩和の判断は、なくしてよい判断ではありません。
 
 ※ この判断をなくすと、ほかの決まりも全部、AI が要ると思えば外せる物に変わる。
 
@@ -382,7 +382,7 @@ D8 は、第 2 章の D3 と同じ形です。D3 は自分の成果を、D8 は�
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <text x="60" y="70" class="ts">人の判断（限られている）</text>
-  <rect x="60" y="100" width="170" height="70" class="h"/><text x="145" y="142" class="ts on" text-anchor="middle">床（D8）</text>
+  <rect x="60" y="100" width="170" height="70" class="h"/><text x="145" y="142" class="ts on" text-anchor="middle">権限緩和（D8）</text>
   <rect x="230" y="100" width="590" height="70" class="soft"/><path d="M230,100 H820 V170 H230" class="ln"/>
   <path d="M250,135 H500" class="hl"/><path d="M500,135 L488,127 M500,135 L488,143" class="hl"/>
   <path d="M800,135 H560" class="ln"/><path d="M560,135 L572,127 M560,135 L572,143" class="ln"/>
@@ -394,7 +394,7 @@ D8 は、第 2 章の D3 と同じ形です。D3 は自分の成果を、D8 は�
 </svg>
 ```
 
-D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の向きに引きます。床の上の分け方は、この本では決めません。
+D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の向きに引きます。権限緩和を除いた残りの分け方は、この本では決めません。
 
 ※ D4 と D1 のどちらを優先するかは、この本では決めない。
 
@@ -437,8 +437,8 @@ D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の�
   <rect x="300" y="6" width="80" height="34" rx="6" class="h"/><text x="340" y="30" class="ts on" text-anchor="middle">人</text>
   <rect x="770" y="40" width="100" height="50" rx="6" class="h"/><text x="820" y="72" class="t on" text-anchor="middle">人</text>
   <text x="836" y="276" class="tx" text-anchor="middle">公開・送信</text>
-  <text x="420" y="320" class="ts" text-anchor="middle">輪の中は、人を待たずに回る</text>
-  <text x="420" y="346" class="ts hc" text-anchor="middle">輪から外へ出る所と、権限を緩める所にだけ、人が立つ</text>
+  <text x="420" y="320" class="ts" text-anchor="middle">ループの中は、人を待たずに回る</text>
+  <text x="420" y="346" class="ts hc" text-anchor="middle">ループから外へ出る所と、権限を緩める所にだけ、人が立つ</text>
 </svg>
 ```
 
@@ -456,9 +456,9 @@ D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の�
 </svg>
 ```
 
-人が approve するのは、どれでしょう。線の左にあるのに、人が要るものはどれでしょう。
+人が approve するのは、どれでしょう。revert できるのに、人が要るものはどれでしょう。
 
-※ 答え：イ・ウ・エ。ウは revert できるが床の上。オは revert できるが量が多い。人を呼ぶ前に、1 回の変更を小さくする。
+※ 答え：イ・ウ・エ。ウは revert できるが権限緩和。オは revert できるが量が多い。人を呼ぶ前に、1 回の変更を小さくする。
 
 ## まとめ：人が立つ所と、要らない判断を消す
 
@@ -487,14 +487,14 @@ D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の�
 
 この章を条文で書くと、D4・D8・D1 の 3 行です。D1 は、要らない判断をなくすことも成果だと言います。
 
-## 実装イメージ：線の右の表
+## 実装イメージ：人が通す操作の表
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="20" y="6" width="840" height="46" rx="8" class="soft"/>
   <text x="36" y="35" class="ts sub">この章の約束</text>
-  <text x="150" y="35" class="ts">AI は表の操作の手前で止まり、人に渡す。人は表の操作と床の PR だけ自分で通す</text>
-  <g class="tx"><text x="40" y="82">CLAUDE.md の「線の右」の節（例）</text><text x="470" y="82">revert</text><text x="560" y="82">床</text><text x="630" y="82">AI のセッションでは</text></g>
+  <text x="150" y="35" class="ts">AI は表の操作の手前で止まり、人に渡す。人は表の操作と権限緩和の PR だけ自分で通す</text>
+  <g class="tx"><text x="40" y="82">CLAUDE.md の「人が通す操作」の節（例）</text><text x="470" y="82">revert</text><text x="560" y="82">権限緩和</text><text x="630" y="82">AI のセッションでは</text></g>
   <path d="M20,90 H860" class="lt"/>
   <rect x="20" y="92" width="840" height="34" class="soft"/><rect x="20" y="160" width="840" height="34" class="soft"/><rect x="20" y="228" width="840" height="34" class="soft"/><rect x="20" y="296" width="840" height="34" fill="#fdf2e6"/>
   <g class="ts">
@@ -503,7 +503,7 @@ D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の�
     <text x="40" y="319">7 決まりファイル・権限設定を変える PR</text>
   </g>
   <g class="ts xc"><text x="470" y="115">できない</text><text x="470" y="149">できない</text><text x="470" y="183">できない</text><text x="470" y="217">できない</text><text x="470" y="251">できない</text><text x="470" y="285">できない</text></g>
-  <text x="470" y="319" class="ts okc">できる</text><text x="560" y="319" class="ts hc" font-weight="700">床</text>
+  <text x="470" y="319" class="ts okc">できる</text><text x="560" y="319" class="ts hc" font-weight="700">権限緩和</text>
   <g class="ts"><text x="630" y="115">禁止。人が出す</text><text x="630" y="149">禁止。人が流す</text><text x="630" y="183">禁止</text><text x="630" y="217">禁止</text><text x="630" y="251">禁止</text><text x="630" y="285">禁止</text></g>
   <text x="630" y="319" class="ts hc">出してよい。人が merge</text>
   <text x="440" y="362" class="tx" text-anchor="middle">行の中身は例。自分の現場の操作で書き直す</text>
@@ -512,7 +512,7 @@ D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の�
 
 この条文を守るとは：表の 7 行を AI のセッションで禁じ、人の手順に置くことです。表は共通の決まりのファイル（例 CLAUDE.md）に書きます。
 
-※ 1〜6 は revert できない操作（p.44）、7 は床（p.52）。表に無い操作で迷ったら、AI はその都度聞く。2 度来たら表に足す（第 8 章）。
+※ 1〜6 は revert できない操作（p.44）、7 は権限緩和（p.52）。表に無い操作で迷ったら、AI はその都度聞く。2 度来たら表に足す（第 8 章）。
 
 ## 実装イメージ：表を設定に写す
 
@@ -538,7 +538,7 @@ D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の�
     <text x="480" y="112">migrations/</text><text x="480" y="140">deploy/・.github/workflows/</text>
     <text x="480" y="178">CLAUDE.md・roles/</text><text x="480" y="206">.claude/</text>
   </g>
-  <text x="640" y="112" class="tx">← 線の右</text><text x="700" y="178" class="tx hc">← 床（表の 7）</text>
+  <text x="640" y="112" class="tx">← 戻せない操作</text><text x="700" y="178" class="tx hc">← 権限緩和（表の 7）</text>
   <path d="M480,232 H840" class="lt"/>
   <text x="480" y="262" class="ts">ほかの PR は、テストと判定が</text><text x="480" y="286" class="ts">通れば自動 merge（p.45）</text>
   <text x="440" y="350" class="ts sub" text-anchor="middle">送信・課金のように PR を通らない操作は、左の設定でしか止まらない</text>
@@ -562,8 +562,8 @@ D4 は人の判断を増やし、D1 は減らします。同じ棒を、逆の�
   <path d="M750,210 V280 H90 V214" class="ln" marker-end="url(#arr)"/>
   <text x="90" y="110" class="tl" text-anchor="middle">?</text>
   <path d="M90,118 V144" class="lt"/>
-  <text x="440" y="330" class="ts sub" text-anchor="middle">人が輪の中で触るのは、ここだけになった</text>
+  <text x="440" y="330" class="ts sub" text-anchor="middle">人がループの中で触るのは、ここだけになった</text>
 </svg>
 ```
 
-人が毎日触るのは、「頼む」だけになりました。そこで何を渡せば、輪は人を待たずに回るのでしょう。それが第 4 章です。
+人が毎日触るのは、「頼む」だけになりました。そこで何を渡せば、ループは人を待たずに回るのでしょう。それが第 4 章です。

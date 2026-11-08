@@ -1,6 +1,6 @@
-# 第 6 章　参照と送信の境界
+# 第 6 章　参照と送信の最小権限
 
-群: 頼み方・判定・権限・刻み
+群: プロンプト・判定・権限・刻み
 副題: AI が読める・送れる範囲は、役ごとに絞る
 
 <!-- 2026-11-08（@ope-ultp1635 msg 8b20f53a）: 章題を名詞句にし、主張の 1 文は副題へ移した（root CLAUDE.md「成果物の文章の作法」二）。EAA と同じ形 -->
@@ -34,7 +34,7 @@
 
 第 5 章で、判定は毎回になりました。壊れる所の、次は権限です。判定が見ない所で、AI が何を読み、どこへ送れるかを見ます。
 
-## 書いた権限より、届く範囲が広い
+## 書いた権限より、読める・送れる範囲が広い
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -44,7 +44,7 @@
   <rect x="30" y="80" width="230" height="140" rx="6" fill="#fff" class="hl"/>
   <text x="46" y="110" class="ts hc" font-weight="700">3 使える権限</text>
   <text x="46" y="150" class="ts">テスト環境まで</text><text x="46" y="176" class="ts">本番の決済は呼ばない</text>
-  <text x="145" y="250" class="tx" text-anchor="middle">札に書いた範囲（第 4 章 p.71）</text>
+  <text x="145" y="250" class="tx" text-anchor="middle">権限に書いた範囲（第 4 章 p.71）</text>
   <rect x="300" y="56" width="560" height="300" rx="12" fill="#f4f4f2"/>
   <text x="316" y="80" class="tx">AI が読める・送れる範囲</text>
   <rect x="440" y="180" width="130" height="56" rx="6" class="a"/><text x="505" y="214" class="ts on" text-anchor="middle">実装役の AI</text>
@@ -53,15 +53,15 @@
   <g fill="#fff" stroke="#c62828" stroke-width="2"><rect x="660" y="96" width="180" height="48" rx="6"/><rect x="660" y="184" width="180" height="48" rx="6"/><rect x="660" y="272" width="180" height="48" rx="6"/></g>
   <g class="ts" text-anchor="middle"><text x="750" y="126">本番の決済の鍵</text><text x="750" y="214">顧客一覧</text><text x="750" y="302">社外へのメール</text></g>
   <g class="ln"><path d="M470,178 L430,150" marker-end="url(#arr)"/><path d="M572,196 L656,128" marker-end="url(#arr)"/><path d="M572,208 H656" marker-end="url(#arr)"/><path d="M572,222 L656,288" marker-end="url(#arr)"/></g>
-  <text x="440" y="300" class="ts xc" text-anchor="middle">札の外も読める・送れる</text>
+  <text x="440" y="300" class="ts xc" text-anchor="middle">権限の外も読める・送れる</text>
 </svg>
 ```
 
-3 枚目に「本番の決済は呼ばない」と書いても、本番の鍵を読めるなら、守っているのは AI の読み方だけです。
+権限に「本番の決済は呼ばない」と書いても、本番の鍵を読めるなら、守っているのは AI の読み方だけです。
 
 ※ AI は書かれていない所を、もっともらしく埋める（第 4 章 p.68）。図は説明のための作り物。
 
-## 人の線は、送ると分かる送信で止まる
+## 人の承認は、送ると分かる送信で止まる
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -79,15 +79,15 @@
   <text x="80" y="308" class="ts">PR の説明にそのまま貼った</text>
   <path d="M220,246 V168" class="xl dash" marker-end="url(#arr-x)"/>
   <text x="510" y="282" class="ts xc">送ったと気づかれないまま、</text>
-  <text x="510" y="308" class="ts xc">線の左を通る</text>
+  <text x="510" y="308" class="ts xc">戻せる操作として通る</text>
 </svg>
 ```
 
-第 3 章の人の線は、送ると分かる操作の手前で止まります。顧客の名前を PR の説明に貼ると、気づかれずに線の左を通ります。線を動かしても、気づかない送り方は残ります。
+第 3 章で人が止めるのは、送ると分かる操作です。顧客の名前を PR の説明に貼ると、気づかれずに通ります。止める操作を増やしても、気づかない送り方は残ります。
 
-※ 説明のための作り物。物差しは第 3 章 p.44。説明は書き直せても、読まれた分は戻らない（p.46 と同じ形）。
+※ 説明のための作り物。revert できるかの並びは第 3 章 p.44。説明は書き直せても、読まれた分は戻らない（p.46 と同じ形）。
 
-## 役ごとに、見える範囲の円が違う
+## 役ごとに、読める・送れる範囲が違う
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -103,13 +103,13 @@
     <text x="720" y="130">公開の資料</text><text x="720" y="160">過去の記録</text><text x="720" y="190">4 枚の目的</text>
   </g>
   <rect x="200" y="314" width="480" height="44" rx="6" class="w"/>
-  <text x="440" y="342" class="ts" text-anchor="middle">どの円にも入らない：本番の決済の鍵・顧客一覧</text>
+  <text x="440" y="342" class="ts" text-anchor="middle">どの役の範囲にも入らない：本番の決済の鍵・顧客一覧</text>
 </svg>
 ```
 
-AI が読めて送れる範囲を、役に要るぶんだけにします。届かない物は、埋めようも送りようもありません。条文 D6 です。
+AI が読めて送れる範囲を、役に要るぶんだけにします。読めない物は、埋めようも送りようもありません。条文 D6 です。
 
-※ D6「実行者が参照・送信できる情報は、役割に応じて最小化する（P2）」。P2 は第 8 章 p.126。条文の一覧は p.3。
+※ D6「実行者が参照・送信できる情報は、役割に応じて最小化する（P2）」。セキュリティの最小権限の原則を、読む物・送る物に当てた行。P2 は第 8 章 p.126。条文の一覧は p.3。
 
 ## 絞るのは参照と送信、目的は渡す
 
@@ -129,7 +129,7 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
 </svg>
 ```
 
-目的が分かるための文脈までは切りません。1 枚目の目的と、その背景は渡します。外すのは、役に要らない読み書きだけです。
+目的が分かるための文脈までは切りません。目的と、その背景は渡します。外すのは、役に要らない読み書きだけです。
 
 ## 読めた資料は、従う決まりではない
 
@@ -156,7 +156,7 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
 
 ※ 上の役の判断材料を読めても、上の役の決める権限は得ない。
 
-## 円を広げる変更は、床の上
+## 範囲を広げる変更は、権限緩和
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -164,7 +164,7 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
   <rect x="110" y="96" width="120" height="34" rx="6" class="a"/><text x="170" y="119" class="ts on" text-anchor="middle">実装役</text>
   <text x="170" y="190" class="ts" text-anchor="middle">テスト環境</text>
   <circle cx="170" cy="180" r="150" fill="none" class="al dash"/>
-  <text x="170" y="350" class="tx ac" text-anchor="middle">広げたい円</text>
+  <text x="170" y="350" class="tx ac" text-anchor="middle">広げたい範囲</text>
   <rect x="360" y="70" width="230" height="70" rx="6" fill="#fff" class="al"/>
   <use href="#i-pr" x="374" y="86" width="28" height="36"/>
   <text x="412" y="100" class="ts">本番の決済の鍵も</text><text x="412" y="124" class="ts">見せてください</text>
@@ -172,13 +172,13 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
   <path d="M590,105 H656" class="ln" marker-end="url(#arr)"/>
   <rect x="660" y="76" width="180" height="60" rx="6" class="h"/><text x="750" y="112" class="ts on" text-anchor="middle">人が通す</text>
   <rect x="360" y="210" width="480" height="70" rx="6" class="h"/>
-  <text x="600" y="242" class="ts on" text-anchor="middle">床：AI が自分の縛りを緩める変更</text>
+  <text x="600" y="242" class="ts on" text-anchor="middle">権限緩和：AI が自分の縛りを緩める変更</text>
   <text x="600" y="266" class="tx on" text-anchor="middle">第 3 章 p.52</text>
-  <text x="600" y="320" class="ts sub" text-anchor="middle">円を狭める向きは、床に当たらない</text>
+  <text x="600" y="320" class="ts sub" text-anchor="middle">範囲を狭める向きは、権限緩和に当たらない</text>
 </svg>
 ```
 
-円を広げるのは、AI の縛りを緩める変更です。AI が頼むのはかまいません。通すのは人で、第 3 章の床に当たります。
+読める・送れる範囲を広げるのは、AI の縛りを緩める変更です。AI が頼むのはかまいません。通すのは人で、第 3 章の権限緩和に当たります。
 
 ※ 第 3 章 p.52・p.54。許可リストのような、文書の形をとらない縛りも D8 に入る。
 
@@ -200,7 +200,7 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
 
 ※ 答え：鍵と顧客一覧は要らない。差分と受け入れ条件は外せない。受け入れ条件が無いと作成者寄りになる（第 2 章 p.31）。
 
-## まとめ：届く範囲を、役ごとに先に決める
+## まとめ：読める・送れる範囲を役で決める
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -209,11 +209,11 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
   <text x="64" y="112" style="font-size:19px">D6 実行者が参照・送信できる情報は、役割に応じて最小化する（P2）</text>
   <path d="M100,120 H290" class="hl"/><path d="M370,120 H600" class="hl"/>
   <text x="100" y="146" class="tx">p.101・99 判定の見ない所</text>
-  <text x="370" y="146" class="tx">p.103 役ごとの円</text>
+  <text x="370" y="146" class="tx">p.103 役ごとの範囲</text>
   <g fill="#fff" class="lt"><rect x="40" y="214" width="250" height="110" rx="8"/><rect x="315" y="214" width="250" height="110" rx="8"/><rect x="590" y="214" width="250" height="110" rx="8"/></g>
   <text x="70" y="254" class="ts">目的は渡す</text><text x="70" y="296" class="tx">p.104 絞るのは参照と送信</text>
   <text x="345" y="254" class="ts">読める ≠ 従う</text><text x="345" y="296" class="tx">p.105 メモから権限は出ない</text>
-  <text x="620" y="254" class="ts">広げるのは床の上</text><text x="620" y="296" class="tx">p.106 通すのは人</text>
+  <text x="620" y="254" class="ts">広げるのは権限緩和</text><text x="620" y="296" class="tx">p.106 通すのは人</text>
   <text x="440" y="360" class="ts sub" text-anchor="middle">壊れる所（判定・権限・大きさ）のうち：権限</text>
 </svg>
 ```
@@ -222,13 +222,13 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
 
 ※ 条文の一覧は p.3。
 
-## 実装イメージ：役ごとの届く範囲
+## 実装イメージ：役ごとの読める・送れる範囲
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="20" y="6" width="840" height="46" rx="8" class="soft"/>
   <text x="36" y="35" class="ts sub">この章の約束</text>
-  <text x="150" y="35" class="ts">どの役も、自分の行の外には手を伸ばさない。行を広げたいときは頼む（床）</text>
+  <text x="150" y="35" class="ts">どの役も、自分の行の外には手を伸ばさない。行を広げたいときは頼む（権限緩和）</text>
   <g class="tx"><text x="40" y="84">役</text><text x="190" y="84">読める所</text><text x="440" y="84">送れる所・打てる物</text><text x="690" y="84">持つ鍵</text></g>
   <path d="M20,92 H860" class="lt"/>
   <rect x="20" y="94" width="840" height="76" class="soft"/>
@@ -237,13 +237,13 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
     <text x="440" y="124">自分の branch に push</text><text x="440" y="150">PR を出す。テストを回す</text>
     <text x="690" y="124">テスト用の鍵だけ</text></g>
   <text x="40" y="208" class="t ac" font-weight="700">判定する AI</text>
-  <g class="ts"><text x="190" y="204">差分・4 枚目</text><text x="190" y="230">・決まりファイル</text>
+  <g class="ts"><text x="190" y="204">差分・受け入れ条件</text><text x="190" y="230">・決まりファイル</text>
     <text x="440" y="204">PR へのコメントだけ</text><text x="440" y="230" class="sub">push も merge もしない</text>
     <text x="690" y="204">なし</text></g>
   <rect x="20" y="254" width="840" height="76" fill="#fdf2e6"/>
   <text x="40" y="288" class="t hc" font-weight="700">人</text>
   <g class="ts"><text x="190" y="284">全部</text>
-    <text x="440" y="284">merge・線の右の操作</text><text x="440" y="310">（第 3 章の表）</text>
+    <text x="440" y="284">merge・戻せない操作</text><text x="440" y="310">（第 3 章の表）</text>
     <text x="690" y="284">本番の鍵</text></g>
   <text x="440" y="362" class="tx" text-anchor="middle">役ごとに別のセッションを起こし、それぞれの権限設定でこの行を書く</text>
 </svg>
@@ -251,7 +251,7 @@ AI が読めて送れる範囲を、役に要るぶんだけにします。届�
 
 この条文を守るとは：役ごとのセッションの権限設定で、読める場所と打てるコマンドを決めることです。判定の役は、読むことと PR へのコメントしかできません。
 
-※ 本番の鍵は、AI のセッションを起こす端末の環境変数に置かない。設定で読みを禁じても、環境にあれば届く（p.101）。
+※ 本番の鍵は、AI のセッションを起こす端末の環境変数に置かない。設定で読みを禁じても、環境にあれば読める（p.101）。
 
 ## 次章へ：1 回が大きいと戻せるか
 

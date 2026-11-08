@@ -36,7 +36,7 @@
 1 本目の条件を「別モデル」から「作成者の文脈を持たない」に戻した（@ope-ultp1635 msg 7c4be03f・判断は writer-ja/drafts/aa-toc-retitle/ch02-axis-judgment.md）。条文 §2 前提の語は「生成元」、D3 は「異なる主体または」が先。
 -->
 
-第 1 章で、AI レビューに替えた輪は、同じ所で読み違えました。この章では、何を替えればよかったのかを見ます。
+第 1 章で、AI レビューに替えたループは、同じ所で読み違えました。この章では、何を替えればよかったのかを見ます。
 
 ## 原因：作成者とレビュアーが同じ文脈
 
@@ -59,7 +59,7 @@
 
 第 1 章で外したのは、人のレビューでした。でも、壊れた原因は別の所です。レビュアーが、作成者と同じ会話と前提を積んでいました。
 
-※ 第 1 章 p.10・p.11 の輪。
+※ 第 1 章 p.10・p.11 のループ。
 
 ## 判定は残し、レビュアーを文脈から切る
 
@@ -206,7 +206,7 @@ merge する AI に聞かれ、書いた AI は「文章は良い」の意味で
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="30" y="60" width="230" height="80" rx="8" fill="#fff" class="hl"/>
-  <text x="145" y="92" class="ts hc" text-anchor="middle">頼み方</text>
+  <text x="145" y="92" class="ts hc" text-anchor="middle">プロンプト</text>
   <text x="145" y="120" class="t" text-anchor="middle">「ちゃんと動くか見て」</text>
   <path d="M260,100 H336" class="ln" marker-end="url(#arr)"/>
   <rect x="340" y="70" width="160" height="60" rx="6" fill="#fff" class="al"/><text x="420" y="96" class="ts ac" text-anchor="middle">別の会話の AI</text><text x="420" y="118" class="ts ac" text-anchor="middle">がレビュー</text>
@@ -285,7 +285,7 @@ merge する AI に聞かれ、書いた AI は「文章は良い」の意味で
 </svg>
 ```
 
-人のレビュー 60 分が、別の会話の AI のレビューに替わります。輪は、人の速さで止まらなくなります。
+人のレビュー 60 分が、別の会話の AI のレビューに替わります。ループは、人の速さで止まらなくなります。
 
 ※ 説明のために作った数字。上の段は第 1 章 p.8 と同じ。縮尺も同じ。
 
@@ -294,11 +294,11 @@ merge する AI に聞かれ、書いた AI は「文章は良い」の意味で
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="40" y="50" width="230" height="270" rx="10" fill="#fbe9d7" class="hl"/>
-  <text x="155" y="96" class="t" text-anchor="middle" font-weight="700">輪に人を残す</text>
+  <text x="155" y="96" class="t" text-anchor="middle" font-weight="700">ループに人を残す</text>
   <use href="#i-wait" x="125" y="130" width="60" height="84"/>
   <text x="155" y="262" class="ts hc" text-anchor="middle">人の速さで止まる</text>
   <rect x="610" y="50" width="230" height="270" rx="10" fill="#fff" stroke="#bbb" stroke-width="2" class="dash"/>
-  <text x="725" y="96" class="t sub" text-anchor="middle" font-weight="700">輪から人を外す</text>
+  <text x="725" y="96" class="t sub" text-anchor="middle" font-weight="700">ループから人を外す</text>
   <use href="#i-pile" x="685" y="132" width="80" height="80" opacity="0.25"/>
   <path d="M660,251 H790" class="xl" stroke-width="3"/>
   <text x="725" y="256" class="ts sub" text-anchor="middle">間違いが速く増える</text>
@@ -329,7 +329,7 @@ merge する AI に聞かれ、書いた AI は「文章は良い」の意味で
 </svg>
 ```
 
-この輪は、この章の、文脈・merge・受け入れ条件のうち、どれに引っかかるでしょう。直すには、何を替えればよいでしょう。
+このループは、この章の、文脈・merge・受け入れ条件のうち、どれに引っかかるでしょう。直すには、何を替えればよいでしょう。
 
 ※ 答え：全部。書いた会話のままレビューし、作成者が次へ進め、受け入れ条件が書かれていない。
 
@@ -384,7 +384,7 @@ merge する AI に聞かれ、書いた AI は「文章は良い」の意味で
 
 この条文を守るとは：作るセッションの権限から merge を外すことです。判定は PR ごとに新しいセッションを起こし、差分と受け入れ条件 1 行だけを渡します。
 
-※ 権限の書き方は第 3 章 p.64 の例と同じ。役ごとに届く範囲は第 6 章 p.109、毎回かける形は第 5 章 p.98。
+※ 権限の書き方は第 3 章 p.64 の例と同じ。役ごとの読める・送れる範囲は第 6 章 p.109、毎回かける形は第 5 章 p.98。
 
 ## 実装イメージ：LGTM をコメントに置く
 
@@ -438,7 +438,7 @@ merge する AI に聞かれ、書いた AI は「文章は良い」の意味で
 
 同じアカウントなので、LGTM を書いた役と merge した役が本当に別だったかは、仕組みでは保証されません。守っているのは決まりと記録だけです。
 
-※ 第 3 章 p.52 の床と同じ扱い。決まりや権限を緩める変更は、revert できても人が見る。
+※ 第 3 章 p.52 の権限緩和と同じ扱い。決まりや権限を緩める変更は、revert できても人が見る。
 
 ## 次章へ：人は、戻せない操作の前に残る
 
@@ -459,4 +459,4 @@ merge する AI に聞かれ、書いた AI は「文章は良い」の意味で
 </svg>
 ```
 
-人は輪の外に出ました。でも、revert できない操作の手前には、人を残すかもしれません。それが第 3 章です。
+人はループの外に出ました。でも、revert できない操作の手前には、人を残すかもしれません。それが第 3 章です。

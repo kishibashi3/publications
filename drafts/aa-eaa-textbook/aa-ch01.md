@@ -68,7 +68,7 @@ build: ./build.sh → build/aa.html。1 ページ = ## 1 つ。絵はちょう�
 
 出典: 1 は DORA 2025 報告（AI 利用 90%）、2 は GitHub Docs（Copilot の PR）、3 は WEEL「AI駆動開発（AIDD）の定義とは？」（2026-08-24）。
 
-## どの形も同じ輪：最後は人が approve
+## どの形も同じループ：人が approve
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -91,7 +91,7 @@ build: ./build.sh → build/aa.html。1 ページ = ## 1 つ。絵はちょう�
 </svg>
 ```
 
-どの形も、1 周の大きさが違うだけの同じ輪です。テストも AI レビューも先に回し、approve は別の人。この本はこの輪を最後まで使います。
+どの形も、1 周の大きさが違うだけの同じループです。テストも AI レビューも先に回し、approve は別の人。この本はこのループを最後まで使います。
 
 ## 10 周回しても、人が見る所は同じ
 
@@ -138,7 +138,7 @@ build: ./build.sh → build/aa.html。1 ページ = ## 1 つ。絵はちょう�
   <rect x="786" y="284" width="34" height="30" rx="4" class="h"/>
   <path d="M694,299 H702 M736,299 H744 M778,299 H786" class="ln"/>
   <path d="M190,272 H850" class="lt"/>
-  <text x="520" y="352" class="ts sub" text-anchor="middle">やり方（p.6 の輪：頼む → AI が作る → テスト → 人が approve）は毎周同じ</text>
+  <text x="520" y="352" class="ts sub" text-anchor="middle">やり方（p.6 のループ：頼む → AI が作る → テスト → 人が approve）は毎周同じ</text>
 </svg>
 ```
 
@@ -146,7 +146,7 @@ build: ./build.sh → build/aa.html。1 ページ = ## 1 つ。絵はちょう�
 
 ※ 説明のために作った絵です。指示ファイルの例: GitHub Copilot の .github/copilot-instructions.md（GitHub Docs）。
 
-## 律速はレビュー 60 分：AI 10 倍でも同じ
+## ボトルネックはレビュー：AI 10 倍でも
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -207,7 +207,7 @@ PR は 10 分で来て、レビューと直しの往復に 60 分。AI が 10 �
 </svg>
 ```
 
-同じ輪から人の approve を外し、AI のレビューに替える。CI が通れば merge。本当に速くなります。
+同じループから人の approve を外し、AI のレビューに替える。CI が通れば merge。本当に速くなります。
 
 ## 同じ AI が実装もレビューも：同じ所を誤る
 
@@ -288,11 +288,11 @@ PR は 10 分で来て、レビューと直しの往復に 60 分。AI が 10 �
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="40" y="50" width="230" height="270" rx="10" fill="#fbe9d7" class="hl"/>
-  <text x="155" y="96" class="t" text-anchor="middle" font-weight="700">輪に人を残す</text>
+  <text x="155" y="96" class="t" text-anchor="middle" font-weight="700">ループに人を残す</text>
   <use href="#i-wait" x="125" y="130" width="60" height="84"/>
   <text x="155" y="262" class="ts hc" text-anchor="middle">人の速さで止まる</text>
   <rect x="610" y="50" width="230" height="270" rx="10" fill="#f8dddd" class="xl"/>
-  <text x="725" y="96" class="t" text-anchor="middle" font-weight="700">輪から人を外す</text>
+  <text x="725" y="96" class="t" text-anchor="middle" font-weight="700">ループから人を外す</text>
   <use href="#i-pile" x="685" y="132" width="80" height="80"/>
   <text x="725" y="262" class="ts xc" text-anchor="middle">間違いが速く増える</text>
   <rect x="360" y="145" width="160" height="80" rx="8" class="box"/>
@@ -430,7 +430,7 @@ AI が賢く速くなるのを待っても、この板挟みは消えません�
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="40" y="26" class="ts sub">AA の条文から逐語（左の札）と、この本での意味（右）</text>
+  <text x="40" y="26" class="ts sub">AA の条文から逐語（左）と、この本での意味（右）</text>
   <rect x="40" y="40" width="800" height="100" rx="10" class="soft"/>
   <rect x="40" y="40" width="10" height="100" class="h"/>
   <text x="70" y="72" class="t" font-weight="700">目的</text><text x="70" y="94" class="tx">条文の目的の表</text>
@@ -489,11 +489,11 @@ p.2 の「人の判断の置き場所を選ぶ」は、p.14 の板挟みへの�
   <text x="520" y="303" class="t ac" text-anchor="middle" font-weight="700">第 2 章　ほどき方</text>
   <path d="M655,296 H700" class="ln dash" marker-end="url(#arr)"/>
   <rect x="705" y="268" width="150" height="56" rx="8" fill="#fff" class="al"/>
-  <text x="780" y="303" class="ts ac" text-anchor="middle">第 8 章　輪が育つ</text>
+  <text x="780" y="303" class="ts ac" text-anchor="middle">第 8 章　ループが育つ</text>
 </svg>
 ```
 
-この本は、板挟みのほどき方と、回すほど人を待たなくなる輪を書きます。各章で、はじめの輪を描き直して比べます。
+この本は、板挟みのほどき方と、回すほど人を待たなくなるループを書きます。各章で、はじめのループを描き直して比べます。
 
 ※ 組み方は、各章の終わりの「実装イメージ」と、通しの 1 枚の巻末 p.163 に。
 
@@ -510,7 +510,7 @@ p.2 の「人の判断の置き場所を選ぶ」は、p.14 の板挟みへの�
   <text x="400" y="190" class="ts hc" text-anchor="middle">人が全部の PR を読み、merge を押す</text>
   <rect x="40" y="226" width="800" height="104" rx="8" fill="#fff" class="lt dash"/>
   <text x="60" y="256" class="ts sub">まだ無い物</text>
-  <g class="ts"><text x="60" y="288">判定する別の AI（第 2 章）・線の右の表（第 3 章）・依頼ファイル（第 4 章）</text>
+  <g class="ts"><text x="60" y="288">判定する別の AI（第 2 章）・人が通す操作の表（第 3 章）・依頼ファイル（第 4 章）</text>
     <text x="60" y="316">役ごとの権限設定（第 6 章）・決まりを変える手順（第 9 章）</text></g>
   <text x="440" y="362" class="ts sub" text-anchor="middle">第 2 章から、章の終わりで 1 つずつ足していく</text>
 </svg>

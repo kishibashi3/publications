@@ -28,8 +28,8 @@
   <rect x="217.3" y="59.6" width="22" height="16" rx="2" fill="#fff" stroke="#2f6fb3" stroke-width="2.5"/>
   <rect x="377.6" y="63.0" width="22" height="16" rx="2" fill="#fff" stroke="#2f6fb3" stroke-width="2.5"/>
   <circle cx="490" cy="80" r="9" class="h"/><text x="510" y="86" class="ts">人を待つ（AI の質問に人が答える）</text>
-  <rect x="479" y="134" width="22" height="16" rx="2" fill="#fff" stroke="#2f6fb3" stroke-width="2.5"/><text x="510" y="148" class="ts">札（同じ質問が 2 度来たら書く）</text>
-  <text x="510" y="210" class="ts">外の周ほど、札が増え、</text><text x="510" y="234" class="ts">人を待つ所が減る</text>
+  <rect x="479" y="134" width="22" height="16" rx="2" fill="#fff" stroke="#2f6fb3" stroke-width="2.5"/><text x="510" y="148" class="ts">決まり（同じ質問が 2 度来たら書く）</text>
+  <text x="510" y="210" class="ts">外の周ほど、決まりが増え、</text><text x="510" y="234" class="ts">人を待つ所が減る</text>
 </svg>
 ```
 
@@ -41,7 +41,7 @@
 例は 1 つに通した: AI の質問「31 日は含める？」（第 1 章 p.11・第 3 章 p.52 と同じ）→ 札「期間の終わりの日は含める」。作り物。
 -->
 
-第 7 章までで、作った者が自分で通さない形が何度も出ました。この章では、書いた決まりで輪がどう変わるかを見ます。
+第 7 章までで、作った者が自分で通さない形が何度も出ました。この章では、書いた決まりでループがどう変わるかを見ます。
 
 ## 第 1 章の図：10 周目も人を待つ所は同じ
 
@@ -106,23 +106,23 @@ AA でも、1 周目は人を待ちます。待つのはレビューではあり
   <text x="50" y="72" class="tx">チームの決まりに従って働く</text>
   <rect x="100" y="96" width="680" height="208" rx="10" fill="#fff" class="al"/>
   <text x="120" y="124" class="ts ac" font-weight="700">今の周（AI）</text>
-  <text x="120" y="148" class="tx">条件の文書に従って働く</text>
+  <text x="120" y="148" class="tx">決まりのファイルに従って働く</text>
   <rect x="170" y="176" width="540" height="112" rx="10" fill="#fff" class="al dash"/>
   <text x="190" y="204" class="ts ac" font-weight="700">次の周（AI）</text>
-  <text x="190" y="228" class="tx">札の足された条件に従って働く</text>
-  <rect x="560" y="76" width="150" height="40" rx="4" class="box"/><text x="635" y="101" class="ts" text-anchor="middle">条件の文書</text>
+  <text x="190" y="228" class="tx">書き足された決まりに従って働く</text>
+  <rect x="560" y="76" width="150" height="40" rx="4" class="box"/><text x="635" y="101" class="ts" text-anchor="middle">決まりのファイル</text>
   <text x="550" y="88" class="tx hc" text-anchor="end">人が書く</text>
-  <rect x="560" y="156" width="150" height="40" rx="4" class="box"/><text x="635" y="181" class="ts" text-anchor="middle">条件の札</text>
+  <rect x="560" y="156" width="150" height="40" rx="4" class="box"/><text x="635" y="181" class="ts" text-anchor="middle">決まり</text>
   <text x="550" y="168" class="tx ac" text-anchor="end">質問を受けた AI が書く</text>
   <text x="440" y="356" class="ts" text-anchor="middle">どの箱も、外の決まりに従って働き、内の決まりを書く</text>
 </svg>
 ```
 
-札を書くのは、周を回して同じ質問を 2 度受けた AI です。どの層も、決まりに従って働き、下の決まりを書きます。働かない者には、書く根拠がありません。
+決まりを書き足すのは、周を回して同じ質問を 2 度受けた AI です。どの層も、決まりに従って働き、下の決まりを書きます。働かない者には、書く根拠がありません。
 
 ※ P2「各層は、自らの憲法に従って執行し、下位の憲法を書く」。働かずに下を書くだけの層には、書く根拠が無い。
 
-## 同じ質問が 2 周続いたら、条件に書く
+## 同じ質問が 2 周続いたら、決まりに書く
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -134,38 +134,38 @@ AA でも、1 周目は人を待ちます。待つのはレビューではあり
   <g class="tx sub"><text x="182" y="245">来ない</text><text x="422" y="245">来ない</text></g>
   <path d="M330,160 H640" class="ln" marker-end="url(#arr)"/>
   <rect x="650" y="110" width="200" height="100" rx="6" class="box"/>
-  <text x="750" y="138" class="ts" text-anchor="middle" font-weight="700">条件の札</text>
+  <text x="750" y="138" class="ts" text-anchor="middle" font-weight="700">決まり</text>
   <text x="750" y="168" class="ts" text-anchor="middle">期間の終わりの日は</text><text x="750" y="190" class="ts" text-anchor="middle">含める</text>
   <path d="M750,210 V240 H604" class="ln dash" marker-end="url(#arr)"/>
-  <text x="440" y="320" class="ts" text-anchor="middle">2 度来た質問は札にする。1 度きりの質問は書かない</text>
+  <text x="440" y="320" class="ts" text-anchor="middle">2 度来た質問は決まりに書く。1 度きりの質問は書かない</text>
 </svg>
 ```
 
-第 3 章 p.56 の形を、周に分けて見ます。同じ質問が 2 周続いたら、答えを条件に書き足します。この 1 枚を「条件の札」と呼びます。
+第 3 章 p.56 の形を、周に分けて見ます。同じ質問が 2 周続いたら、答えを決まりに書き足します。
 
-※ 例えば、時刻をどう読むかの問い合わせが繰り返されるなら、札にする。1 度きりの質問まで札にすると、札ごとに人の点が付く（次のページ）。
+※ 例えば、時刻をどう読むかの問い合わせが繰り返されるなら、決まりに書く。1 度きりの質問まで書くと、書き足すごとに人の点が付く（次のページ）。
 
-## 書き足した条件には、人の点が付く
+## 書き足した決まりには、人の点が付く
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="120" width="160" height="60" rx="6" class="a"/><text x="120" y="156" class="ts on" text-anchor="middle">AI が札を書く</text>
+  <rect x="40" y="120" width="160" height="60" rx="6" class="a"/><text x="120" y="156" class="ts on" text-anchor="middle">AI が決まりを書く</text>
   <path d="M200,150 H266" class="ln" marker-end="url(#arr)"/>
   <rect x="272" y="96" width="200" height="108" rx="6" class="box"/>
-  <text x="372" y="124" class="tx" text-anchor="middle">条件の札（案）</text>
+  <text x="372" y="124" class="tx" text-anchor="middle">決まり（案）</text>
   <text x="372" y="156" class="ts" text-anchor="middle">期間の終わりの日は</text><text x="372" y="178" class="ts" text-anchor="middle">含める</text>
   <circle cx="472" cy="96" r="13" class="h"/>
   <path d="M472,150 H630" class="ln" marker-end="url(#arr)"/>
-  <rect x="636" y="120" width="200" height="60" rx="6" class="h"/><text x="736" y="148" class="ts on" text-anchor="middle">条件の持ち主の人</text><text x="736" y="170" class="ts on" text-anchor="middle">が通す</text>
+  <rect x="636" y="120" width="200" height="60" rx="6" class="h"/><text x="736" y="148" class="ts on" text-anchor="middle">決まりの持ち主の人</text><text x="736" y="170" class="ts on" text-anchor="middle">が通す</text>
   <path d="M120,180 V290 H590" class="al"/>
   <use href="#i-no" x="594" y="276" width="28" height="28"/>
-  <text x="360" y="320" class="ts ac" text-anchor="middle">書いた AI は、自分の札を通さない</text>
+  <text x="360" y="320" class="ts ac" text-anchor="middle">書いた AI は、自分の書き足しを通さない</text>
   <text x="530" y="80" class="tx hc">通した人の点</text>
   <text x="440" y="362" class="ts sub" text-anchor="middle">なぜ書いた者が通さないのかは、第 9 章</text>
 </svg>
 ```
 
-札は AI が書いてかまいません。通すのは、書いた者でない人です。札には、通した人の点が付きます。
+決まりは AI が書き足してかまいません。通すのは、書いた者でない人です。書き足した決まりには、通した人の点が付きます。
 
 ※ 決まりの持ち主は人。決まりの変更を言い出した者は、その変更を通さない。
 
@@ -178,7 +178,7 @@ AA でも、1 周目は人を待ちます。待つのはレビューではあり
   <g class="a"><rect x="170" y="60" width="160" height="44" rx="6"/><rect x="170" y="150" width="160" height="44" rx="6"/><rect x="170" y="240" width="160" height="44" rx="6"/></g>
   <g class="ts on" text-anchor="middle"><text x="250" y="88">作った AI</text><text x="250" y="178">AI</text><text x="250" y="268">質問を受けた AI</text></g>
   <g class="box"><rect x="390" y="60" width="160" height="44" rx="4"/><rect x="390" y="150" width="160" height="44" rx="4"/><rect x="390" y="240" width="160" height="44" rx="4"/></g>
-  <g class="ts" text-anchor="middle"><text x="470" y="88">成果の PR</text><text x="470" y="178">権限を緩める変更</text><text x="470" y="268">条件の札</text></g>
+  <g class="ts" text-anchor="middle"><text x="470" y="88">成果の PR</text><text x="470" y="178">権限を緩める変更</text><text x="470" y="268">決まり</text></g>
   <rect x="650" y="60" width="160" height="44" rx="6" fill="#fff" class="al"/><text x="730" y="88" class="ts ac" text-anchor="middle">別の AI が判定</text>
   <rect x="650" y="150" width="160" height="44" rx="6" class="h"/><text x="730" y="178" class="ts on" text-anchor="middle">人が通す</text>
   <rect x="650" y="240" width="160" height="44" rx="6" class="h"/><text x="730" y="268" class="ts on" text-anchor="middle">人が通す</text>
@@ -189,7 +189,7 @@ AA でも、1 周目は人を待ちます。待つのはレビューではあり
 </svg>
 ```
 
-成果でも、権限でも、札でも、書いた者は自分で通しませんでした。どの層も下の決まりを書くので、この形はどの層にも出ます。第 7 章の問いの答えです。
+成果でも、権限でも、決まりでも、書いた者は自分で通しませんでした。どの層も下の決まりを書くので、この形はどの層にも出ます。第 7 章の問いの答えです。
 
 ※ 第 2 章 p.28・第 3 章 p.54。働きながら下を書くのはよい。自分が出した改訂を自分で通すのはいけない。
 
@@ -198,30 +198,30 @@ AA でも、1 周目は人を待ちます。待つのはレビューではあり
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g class="tx" text-anchor="middle"><text x="230" y="44">1 周</text><text x="310" y="44">2</text><text x="390" y="44">3</text><text x="470" y="44">4</text><text x="550" y="44">5</text><text x="630" y="44">6</text><text x="710" y="44">7</text><text x="790" y="44">8</text></g>
-  <g class="ts" text-anchor="end"><text x="180" y="110">札がない</text><text x="180" y="230">札がある</text></g>
+  <g class="ts" text-anchor="end"><text x="180" y="110">決まりがない</text><text x="180" y="230">決まりがある</text></g>
   <path d="M190,160 H840" class="lt"/>
   <g fill="#fff" stroke="#d9822b" stroke-width="3" stroke-dasharray="5 4"><circle cx="230" cy="105" r="13"/><circle cx="310" cy="105" r="13"/><circle cx="390" cy="105" r="13"/><circle cx="470" cy="105" r="13"/><circle cx="550" cy="105" r="13"/><circle cx="630" cy="105" r="13"/><circle cx="710" cy="105" r="13"/><circle cx="790" cy="105" r="13"/></g>
   <g fill="#fff" stroke="#d9822b" stroke-width="3" stroke-dasharray="5 4"><circle cx="230" cy="225" r="13"/><circle cx="310" cy="225" r="13"/></g>
-  <rect x="330" y="248" width="120" height="44" rx="5" class="box"/><text x="390" y="275" class="tx" text-anchor="middle">条件の札</text>
+  <rect x="330" y="248" width="120" height="44" rx="5" class="box"/><text x="390" y="275" class="tx" text-anchor="middle">決まり</text>
   <circle cx="450" cy="248" r="11" class="h"/>
   <path d="M450,270 H830" class="ln dash" marker-end="url(#arr)"/>
   <g class="tx sub" text-anchor="middle"><text x="470" y="230">来ない</text><text x="630" y="230">来ない</text><text x="790" y="230">来ない</text></g>
   <text x="840" y="140" class="ts hc" text-anchor="end">質問で待つ 8 回</text>
-  <text x="840" y="320" class="ts hc" text-anchor="end">質問 2 回 ＋ 札の承認 1 回</text>
+  <text x="840" y="320" class="ts hc" text-anchor="end">質問 2 回 ＋ 決まりの承認 1 回</text>
   <text x="440" y="362" class="tx" text-anchor="middle">周を重ねるほど、差は開く</text>
 </svg>
 ```
 
-札がなければ、同じ質問の点は毎周出ます。札の点は 1 回きりです。1 回の approve が、以後の同じ質問を全部引き受けます。
+決まりに書かなければ、同じ質問の点は毎周出ます。書き足した決まりの点は 1 回きりです。1 回の approve が、以後の同じ質問を全部引き受けます。
 
-※ 第 4 章 p.70 の「書かれていない良い慣行」も、この形で戻る。困った所で質問になり、札になった時点で効く。
+※ 第 4 章 p.70 の「書かれていない良い慣行」も、この形で戻る。困った所で質問になり、決まりに書いた時点で効く。
 
-## 回すほど札が増え、人を待つ所が減る
+## 回すほど決まりが増え、人を待つ所が減る
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g class="t" text-anchor="middle"><text x="300" y="34">1 周目</text><text x="520" y="34">5 周目</text><text x="740" y="34">10 周目</text></g>
-  <g class="ts" text-anchor="end"><text x="170" y="150">コード</text><text x="170" y="240">条件の札</text><text x="170" y="304">やり方</text><text x="170" y="346">人を待つ所</text></g>
+  <g class="ts" text-anchor="end"><text x="170" y="150">コード</text><text x="170" y="240">決まり</text><text x="170" y="304">やり方</text><text x="170" y="346">人を待つ所</text></g>
   <path d="M190,198 H850" class="lt"/><path d="M190,272 H850" class="lt"/>
   <rect x="265" y="178" width="70" height="16" class="a"/>
   <rect x="292" y="222" width="16" height="26" rx="2" class="box"/><circle cx="300" cy="216" r="4" class="h"/>
@@ -235,34 +235,34 @@ AA でも、1 周目は人を待ちます。待つのはレビューではあり
   <rect x="672" y="222" width="16" height="26" rx="2" class="box"/><circle cx="680" cy="216" r="4" class="h"/><rect x="692" y="222" width="16" height="26" rx="2" class="box"/><circle cx="700" cy="216" r="4" class="h"/><rect x="712" y="222" width="16" height="26" rx="2" class="box"/><circle cx="720" cy="216" r="4" class="h"/><rect x="732" y="222" width="16" height="26" rx="2" class="box"/><circle cx="740" cy="216" r="4" class="h"/><rect x="752" y="222" width="16" height="26" rx="2" class="box"/><circle cx="760" cy="216" r="4" class="h"/><rect x="772" y="222" width="16" height="26" rx="2" class="box"/><circle cx="780" cy="216" r="4" class="h"/><rect x="792" y="222" width="16" height="26" rx="2" class="box"/><circle cx="800" cy="216" r="4" class="h"/>
   <rect x="660" y="284" width="34" height="30" rx="4" class="h"/><rect x="702" y="284" width="34" height="30" rx="4" class="a"/><rect x="744" y="284" width="34" height="30" rx="4" class="box"/><rect x="786" y="284" width="34" height="30" rx="4" class="a"/><path d="M694,299 H702 M736,299 H744 M778,299 H786" class="ln"/>
   <circle cx="729" cy="340" r="8" class="h"/><circle cx="751" cy="340" r="8" class="h"/>
-  <path d="M640,356 H850" class="hl dash"/><text x="850" y="372" class="tx" text-anchor="end">床（第 3 章）より下には減らない</text>
+  <path d="M640,356 H850" class="hl dash"/><text x="850" y="372" class="tx" text-anchor="end">人が残る所（第 3 章）より下には減らない</text>
 </svg>
 ```
 
-札が増えるほど、人を待つ所が減ります。人が見るのを我慢したのではありません。答えを札が持っているので、聞かなくなったのです。
+決まりが増えるほど、人を待つ所が減ります。人が見るのを我慢したのではありません。答えを決まりが持っているので、聞かなくなったのです。
 
-※ 点の数は測った値ではありません。実例が取れたら差し替えます。札の上の小さな点は、通した人。
+※ 点の数は測った値ではありません。実例が取れたら差し替えます。決まりの上の小さな点は、通した人。
 
-## 点は床で止まる
+## 点は、人が残る所で止まる
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <path d="M60,70 H820" class="ln" marker-end="url(#arr)"/>
   <text x="60" y="100" class="tx">revert できる</text><text x="820" y="100" class="tx" text-anchor="end">revert できない</text>
   <path d="M520,40 V100" stroke="#d9822b" stroke-width="5"/><rect x="490" y="20" width="60" height="26" rx="5" class="h"/><text x="520" y="39" class="tx on" text-anchor="middle">人</text>
-  <text x="440" y="134" class="tx" text-anchor="middle">第 3 章の物差し（p.44）</text>
+  <text x="440" y="134" class="tx" text-anchor="middle">第 3 章の revert できるかの並び（p.44）</text>
   <g class="ts" text-anchor="middle"><text x="190" y="176">1 周目</text><text x="390" y="176">5 周目</text><text x="590" y="176">10 周目</text><text x="770" y="176">20 周目</text></g>
   <g fill="#fff" stroke="#d9822b" stroke-width="3" stroke-dasharray="5 4"><circle cx="130" cy="212" r="11"/><circle cx="160" cy="212" r="11"/><circle cx="190" cy="212" r="11"/><circle cx="220" cy="212" r="11"/><circle cx="390" cy="212" r="11"/></g>
   <g class="h"><circle cx="160" cy="262" r="11"/><circle cx="220" cy="262" r="11"/><circle cx="360" cy="262" r="11"/><circle cx="420" cy="262" r="11"/><circle cx="560" cy="262" r="11"/><circle cx="620" cy="262" r="11"/><circle cx="740" cy="262" r="11"/><circle cx="800" cy="262" r="11"/></g>
   <path d="M60,286 H840" class="hl dash"/>
-  <g class="tx"><text x="70" y="316">点線の点：札で消える質問</text><text x="70" y="340" class="hc">塗った点：revert できない操作の手前と、AI が自分の権限を緩める変更</text></g>
+  <g class="tx"><text x="70" y="316">点線の点：決まりで消える質問</text><text x="70" y="340" class="hc">塗った点：revert できない操作の手前と、AI が自分の権限を緩める変更</text></g>
   <text x="840" y="316" class="ts hc" text-anchor="end">ここより下には減らない</text>
 </svg>
 ```
 
-札を何枚足しても、残る点があります。revert できない操作の手前と、AI が自分の権限を緩める変更です。第 3 章で人を残した所です。
+決まりをいくつ足しても、残る点があります。revert できない操作の手前と、AI が自分の権限を緩める変更です。第 3 章で人を残した所です。
 
-※ 第 3 章 p.57。戻せない操作と権限緩和は、何度来ても「聞かなくてよい」と札に書かない。
+※ 第 3 章 p.57。戻せない操作と権限緩和は、何度来ても「聞かなくてよい」と決まりに書かない。
 
 <!--
 2026-10-18 足した（@ope-ultp1635 msg b4b1749a）。
@@ -287,20 +287,20 @@ v21 判定の B5 の読者 1 体が p.2 の戻り矢印＋p.22 から「最後�
   <g fill="#fff" stroke="#d9822b" stroke-width="2"><rect x="270" y="250" width="120" height="28"/><rect x="470" y="250" width="120" height="28"/><rect x="670" y="250" width="120" height="28"/></g>
   <g class="h"><rect x="270" y="250" width="40" height="28"/><rect x="470" y="250" width="80" height="28"/><rect x="670" y="250" width="120" height="28"/></g>
   <g class="tx" text-anchor="middle"><text x="330" y="300">6 × 2 ＝ 12</text><text x="530" y="300">3 × 4 ＝ 12</text><text x="730" y="300">2 × 6 ＝ 12</text></g>
-  <text x="440" y="350" class="ts sub" text-anchor="middle">塗った所＝床の点。件数と一緒に増える</text>
+  <text x="440" y="350" class="ts sub" text-anchor="middle">塗った所＝人が残る所の点。件数と一緒に増える</text>
 </svg>
 ```
 
 1 件あたり人を待つ所は減ります。でも待たなくなった分、流せる件数が増えます。人の判断の量が減るとは限りません。
 
-※ p.21 の前提「希少なのは人間の判断」は、AA でも変わりません。変わるのは、1 回の判断で流せる量です。床の点も、件数に比例して増えます。
+※ p.21 の前提「希少なのは人間の判断」は、AA でも変わりません。変わるのは、1 回の判断で流せる量です。人が残る所の点も、件数に比例して増えます。
 
 ## 著者の場で数えた：減ったのは率だけ
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="225" y="34" class="ts ac" text-anchor="middle" font-weight="700">AI 同士の便</text>
-  <text x="655" y="34" class="ts hc" text-anchor="middle" font-weight="700">人の判断を運ぶ便</text>
+  <text x="225" y="34" class="ts ac" text-anchor="middle" font-weight="700">AI 同士のメッセージ</text>
+  <text x="655" y="34" class="ts hc" text-anchor="middle" font-weight="700">人の判断を運ぶメッセージ</text>
   <path d="M440,20 V300" class="lt dash"/>
   <path d="M60,270 H400" class="ln"/><path d="M490,270 H830" class="ln"/>
   <g class="a"><rect x="90" y="262" width="70" height="8"/><rect x="190" y="50" width="70" height="220"/><rect x="290" y="161" width="70" height="109"/></g>
@@ -312,9 +312,9 @@ v21 判定の B5 の読者 1 体が p.2 の戻り矢印＋p.22 から「最後�
 </svg>
 ```
 
-AI 同士の便が 27 倍になった週も、人の判断を運ぶ便は減りませんでした。下がったのは比で、便の数は 4 倍でした。
+AI 同士のメッセージが 27 倍になった週も、人の判断を運ぶメッセージは減りませんでした。下がったのは比で、メッセージの数は 4 倍でした。
 
-※ 著者の場の hub の記録（非公開案件の便は除く）。AI 同士の便には空回りの往復も入る。同じ時期に仕事も増えたので、増えた理由は分けられない。
+※ 著者の場の hub の記録（非公開案件のメッセージは除く）。AI 同士のメッセージには空回りの往復も入る。同じ時期に仕事も増えたので、増えた理由は分けられない。
 
 <!--
 数字は週の表の _non 列（非公開案件の便を除いた値）。「人の判断を運ぶ便」= O（@ope-ultp1635 の送信、@scheduler 宛を除く）、「AI 同士の便」= P。
@@ -328,7 +328,7 @@ O は人の判断そのものではない（operator は AI）。だから文は
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="200" y="36" class="ts" text-anchor="middle" font-weight="700">条件の文書の版</text>
+  <text x="200" y="36" class="ts" text-anchor="middle" font-weight="700">決まりのファイルの版</text>
   <g class="box"><rect x="40" y="60" width="100" height="130" rx="4"/><rect x="150" y="60" width="100" height="130" rx="4"/><rect x="260" y="60" width="100" height="130" rx="4"/></g>
   <g class="ts" text-anchor="middle"><text x="90" y="86">v1</text><text x="200" y="86">v2</text><text x="310" y="86">v3</text></g>
   <path d="M56,104 H124 M56,120 H124 M166,104 H234 M166,120 H234 M276,104 H344 M276,120 H344" class="lt"/>
@@ -340,16 +340,16 @@ O は人の判断そのものではない（operator は AI）。だから文は
   <path d="M440,290 H840" class="ln"/>
   <g fill="#fff" stroke="#d9822b" stroke-width="2"><rect x="460" y="110" width="36" height="180"/><rect x="506" y="140" width="36" height="150"/><rect x="552" y="170" width="36" height="120"/><rect x="598" y="200" width="36" height="90"/><rect x="644" y="230" width="36" height="60"/><rect x="690" y="230" width="36" height="60"/><rect x="736" y="230" width="36" height="60"/><rect x="782" y="230" width="36" height="60"/></g>
   <g class="tx" text-anchor="middle"><text x="478" y="310">1</text><text x="524" y="310">2</text><text x="570" y="310">3</text><text x="616" y="310">4</text><text x="662" y="310">5</text><text x="708" y="310">6</text><text x="754" y="310">7</text><text x="800" y="310">8 周</text></g>
-  <path d="M640,230 H840" class="hl dash"/><text x="840" y="222" class="tx hc" text-anchor="end">床</text>
-  <text x="640" y="350" class="tx" text-anchor="middle">減って、床で横ばいになる</text>
+  <path d="M640,230 H840" class="hl dash"/><text x="840" y="222" class="tx hc" text-anchor="end">人が残る所</text>
+  <text x="640" y="350" class="tx" text-anchor="middle">減って、人が残る所で横ばいになる</text>
 </svg>
 ```
 
-育ったかどうかは、気持ちではなく数えられます。条件の文書の版ごとの差分と、周ごとの質問の数です。
+育ったかどうかは、気持ちではなく数えられます。決まりのファイルの版ごとの差分と、周ごとの質問の数です。
 
 ※ 版は直すたびに増える番号。棒は説明のための値。
 
-## 「毎回確かめよ」の札は点を増やす
+## 「毎回確かめよ」の決まりは点を増やす
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -363,13 +363,13 @@ O は人の判断そのものではない（operator は AI）。だから文は
   <text x="60" y="260" class="tx">→ 毎周、人を待つ</text>
   <g class="h"><circle cx="530" cy="240" r="13"/><circle cx="610" cy="240" r="13"/><circle cx="690" cy="240" r="13"/><circle cx="770" cy="240" r="13"/></g>
   <path d="M460,110 H500" class="ln" marker-end="url(#arr)"/><path d="M460,240 H500" class="ln" marker-end="url(#arr)"/>
-  <text x="440" y="340" class="ts" text-anchor="middle">同じ「書き足し」でも、人を待つ所が減る札と増える札がある</text>
+  <text x="440" y="340" class="ts" text-anchor="middle">同じ「書き足し」でも、人を待つ所が減る決まりと増える決まりがある</text>
 </svg>
 ```
 
-札が引き受けるのは、判断を要らなくする書き方だけです。「毎回確かめる」と書き足すと、人を待つ所はかえって増えます。
+決まりが引き受けるのは、判断を要らなくする書き方だけです。「毎回確かめる」と書き足すと、人を待つ所はかえって増えます。
 
-※ 説明のために作った札です。
+※ 説明のために作った決まりです。
 
 ## いまの形と並べる：違うのは減り方
 
@@ -391,7 +391,7 @@ O は人の判断そのものではない（operator は AI）。だから文は
   <g class="h"><circle cx="498" cy="290" r="8"/><circle cx="520" cy="290" r="8"/><circle cx="542" cy="290" r="8"/></g>
   <rect x="660" y="230" width="34" height="30" rx="4" class="h"/><rect x="702" y="230" width="34" height="30" rx="4" class="a"/><rect x="744" y="230" width="34" height="30" rx="4" class="box"/><rect x="786" y="230" width="34" height="30" rx="4" class="a"/><path d="M694,245 H702 M736,245 H744 M778,245 H786" class="ln"/>
   <circle cx="729" cy="290" r="8" class="h"/><circle cx="751" cy="290" r="8" class="h"/>
-  <path d="M640,312 H850" class="hl dash"/><text x="850" y="332" class="tx" text-anchor="end">床</text>
+  <path d="M640,312 H850" class="hl dash"/><text x="850" y="332" class="tx" text-anchor="end">人が残る所</text>
   <text x="520" y="352" class="ts sub" text-anchor="middle">橙の点＝人を待つ所。1 周目は AA の方が多いこともある</text>
   <text x="520" y="372" class="ts sub" text-anchor="middle">（点の数は測っていません。実例が取れたら差し替えます）</text>
 </svg>
@@ -419,12 +419,12 @@ O は人の判断そのものではない（operator は AI）。だから文は
   <rect x="510" y="118" width="90" height="30" rx="4" class="a"/><text x="555" y="138" class="tx on" text-anchor="middle">作り直し 安い</text>
   <rect x="720" y="190" width="120" height="56" rx="4" class="w"/><text x="780" y="216" class="ts" text-anchor="middle">境目で</text><text x="780" y="236" class="ts" text-anchor="middle">人を待つ</text>
   <path d="M500,250 H850" class="ln"/>
-  <rect x="550" y="276" width="240" height="40" rx="6" class="box"/><text x="670" y="302" class="ts" text-anchor="middle">答え：一部から一筋通す</text>
+  <rect x="550" y="276" width="240" height="40" rx="6" class="box"/><text x="670" y="302" class="ts" text-anchor="middle">答え：一部から merge まで通す</text>
   <text x="440" y="356" class="tx" text-anchor="middle">第 4 章 p.73・p.76・p.78 の絵を、1 枚に並べた</text>
 </svg>
 ```
 
-第 4 章の工程の区切り方も、前提（実装が高い）が変わって、答えが変わりました。札の書き直しと同じ形です。これが P3 です。
+第 4 章の工程の区切り方も、前提（実装が高い）が変わって、答えが変わりました。決まりの書き直しと同じ形です。これが P3 です。
 
 ※ P3「憲法は観測を根拠に改訂される」。決まりが固定だと、前提が変わったとき、従って失敗するか黙って外すかしかない。
 
@@ -439,22 +439,22 @@ O は人の判断そのものではない（operator は AI）。だから文は
   <g class="tx" text-anchor="middle"><text x="180" y="176">チーム</text><text x="440" y="176">チーム</text><text x="700" y="176">チーム</text></g>
   <g fill="#fff" stroke="#bbb" stroke-width="2" class="dash"><rect x="230" y="70" width="60" height="200" rx="8"/><rect x="490" y="70" width="60" height="200" rx="8"/><rect x="750" y="70" width="60" height="200" rx="8"/></g>
   <text x="85" y="296" class="tx hc" text-anchor="middle">人の速さで止まる</text>
-  <text x="625" y="226" class="tx hc" text-anchor="middle">床の分</text>
+  <text x="625" y="226" class="tx hc" text-anchor="middle">人が残る分</text>
   <text x="260" y="296" class="tx sub" text-anchor="middle">外れた壁</text>
   <text x="440" y="346" class="ts sub" text-anchor="middle">右の壁は第 2 章で外れた。左の壁は、周ごとに薄くなる</text>
 </svg>
 ```
 
-第 2 章で、右の壁が外れました。左の壁も、回すほど薄くなります。人を待つ所が周ごとに減るからです。床の分は残ります。
+第 2 章で、右の壁が外れました。左の壁も、回すほど薄くなります。人を待つ所が周ごとに減るからです。戻せない操作と権限緩和の分は残ります。
 
 ※ 第 1 章 p.14・第 2 章 p.35 の図の描き直し。測った結果ではない。
 
-## 練習問題：この質問を札にするか
+## 練習問題：この質問を決まりに書くか
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <text x="60" y="44" class="ts sub">AI の質問の記録（3 周ぶん）</text>
-  <g class="ts" text-anchor="middle"><text x="530" y="44">1 周</text><text x="600" y="44">2 周</text><text x="670" y="44">3 周</text><text x="780" y="44">札にする？</text></g>
+  <g class="ts" text-anchor="middle"><text x="530" y="44">1 周</text><text x="600" y="44">2 周</text><text x="670" y="44">3 周</text><text x="780" y="44">決まりに書く？</text></g>
   <g class="soft"><rect x="40" y="70" width="680" height="60"/><rect x="40" y="150" width="680" height="60"/><rect x="40" y="230" width="680" height="60"/></g>
   <g class="t"><text x="60" y="108">A「31 日は含める？」</text><text x="60" y="188">B「ボタンの文言は？」</text><text x="60" y="268">C「本番の古いデータを消してよい？」</text></g>
   <g fill="#fff" stroke="#d9822b" stroke-width="3" stroke-dasharray="5 4"><circle cx="530" cy="100" r="12"/><circle cx="600" cy="100" r="12"/><circle cx="670" cy="100" r="12"/><circle cx="530" cy="180" r="12"/><circle cx="530" cy="260" r="12"/><circle cx="600" cy="260" r="12"/><circle cx="670" cy="260" r="12"/></g>
@@ -464,11 +464,11 @@ O は人の判断そのものではない（operator は AI）。だから文は
 </svg>
 ```
 
-3 周ぶんの AI の質問です。札にしてよいのはどれでしょう。札にしてはいけないのはどれでしょう。
+3 周ぶんの AI の質問です。決まりに書いてよいのはどれでしょう。書いてはいけないのはどれでしょう。
 
-※ 答え：A は札にする。B は 1 度きりなので書かない。C は「消してよい」と札に書かない。revert できない操作の手前で、床に当たる（p.132）。
+※ 答え：A は決まりに書く。B は 1 度きりなので書かない。C は「消してよい」と決まりに書かない。revert できない操作の手前で、人が残る所に当たる（p.132）。
 
-## まとめ：2 度来た質問を、次から札で通す
+## まとめ：2 度来た質問は、決まりで通す
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -480,16 +480,16 @@ O は人の判断そのものではない（operator は AI）。だから文は
   <text x="64" y="170" style="font-size:19px">D1 希少な判断を、最も価値のある判断に配分する。</text>
   <text x="64" y="200" style="font-size:19px">　　不要な判断をなくすことも成果である（P1・前提）</text>
   <path d="M100,208 H446" class="hl"/>
-  <text x="100" y="226" class="tx">p.127〜128 2 度来た質問を札にして、人を待つ所を消す</text>
+  <text x="100" y="226" class="tx">p.127〜128 2 度来た質問を決まりに書いて、人を待つ所を消す</text>
   <rect x="200" y="270" width="16" height="26" rx="2" class="box"/><circle cx="208" cy="264" r="4" class="h"/>
   <rect x="236" y="270" width="16" height="26" rx="2" class="box"/><circle cx="244" cy="264" r="4" class="h"/><rect x="256" y="270" width="16" height="26" rx="2" class="box"/><circle cx="264" cy="264" r="4" class="h"/>
   <rect x="292" y="270" width="16" height="26" rx="2" class="box"/><circle cx="300" cy="264" r="4" class="h"/><rect x="312" y="270" width="16" height="26" rx="2" class="box"/><circle cx="320" cy="264" r="4" class="h"/><rect x="332" y="270" width="16" height="26" rx="2" class="box"/><circle cx="340" cy="264" r="4" class="h"/>
   <g class="h"><circle cx="460" cy="284" r="7"/><circle cx="478" cy="284" r="7"/><circle cx="496" cy="284" r="7"/><circle cx="530" cy="284" r="7"/><circle cx="548" cy="284" r="7"/><circle cx="582" cy="284" r="7"/></g>
-  <g class="tx"><text x="200" y="322">札が増える</text><text x="460" y="322">人を待つ所が減る（床で止まる）</text></g>
+  <g class="tx"><text x="200" y="322">決まりが増える</text><text x="460" y="322">人を待つ所が減る（人が残る所で止まる）</text></g>
 </svg>
 ```
 
-この章を条文で書くと、P3 と D1 の後半です。2 度来た質問を札にする仕組みは、条文には書いてありません。作り方の取り決めです。
+この章を条文で書くと、P3 と D1 の後半です。2 度来た質問を決まりに書く仕組みは、条文には書いてありません。作り方の取り決めです。
 
 ※ 同じ判断が繰り返されるなら、その条件を決まりと環境に移し、次から AI が自分で進められるようにする。守らなくても条文には反しない。
 
@@ -521,7 +521,7 @@ O は人の判断そのものではない（operator は AI）。だから文は
 
 この条文を守るとは：2 回目に来た質問で、答えを決まりのファイルに足す PR を出させることです。質問と答えは、依頼ファイルの末尾に残しておきます。
 
-※ 床の質問（revert できない操作の手前・権限を緩める）は、2 回来ても「聞かなくてよい」と書かない（p.132）。質問は作り物。
+※ 人が残る所の質問（revert できない操作の手前・権限を緩める）は、2 回来ても「聞かなくてよい」と書かない（p.132）。質問は作り物。
 
 ## 実装イメージ：育ったかを数える
 
@@ -543,11 +543,11 @@ O は人の判断そのものではない（operator は AI）。だから文は
 </svg>
 ```
 
-育ったかは、決まりのファイルの変更の数と、依頼ごとの質問の数で数えます。左が増えても右が減らないなら、札の書き方を見直します。
+育ったかは、決まりのファイルの変更の数と、依頼ごとの質問の数で数えます。左が増えても右が減らないなら、決まりの書き方を見直します。
 
-※ 右が減らないときは、「毎回確かめる」型の札を足していないかを見る（p.136）。床の点は、件数に比例して残る（p.133）。
+※ 右が減らないときは、「毎回確かめる」型の決まりを足していないかを見る（p.136）。人が残る所の点は、件数に比例して残る（p.133）。
 
-## 次章へ：札 1 枚を足すのは軽くてよいか
+## 次章へ：決まりを 1 行足すのは軽くてよいか
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -559,8 +559,8 @@ O は人の判断そのものではない（operator は AI）。だから文は
   <path d="M240,235 H820" class="xl" marker-end="url(#arr-x)"/>
   <g class="x"><circle cx="360" cy="235" r="6"/><circle cx="460" cy="235" r="6"/><circle cx="560" cy="235" r="6"/><circle cx="660" cy="235" r="6"/><circle cx="760" cy="235" r="6"/></g>
   <text x="440" y="320" class="tl" text-anchor="middle">?</text>
-  <text x="440" y="356" class="ts sub" text-anchor="middle">札 1 枚を足す手続きは、軽くてよいか</text>
+  <text x="440" y="356" class="ts sub" text-anchor="middle">決まりを 1 行足す手続きは、軽くてよいか</text>
 </svg>
 ```
 
-札 1 枚は、以後の周すべてに効きます。誤った札も同じです。だから、札を足す手続きは重くしてあります。それが第 9 章です。
+書き足した決まりは、以後の周すべてに効きます。誤った決まりも同じです。だから、決まりを足す手続きは重くしてあります。それが第 9 章です。
