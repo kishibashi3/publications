@@ -101,7 +101,7 @@ function body(text, where, cover, skeleton = false) {
   const figs = [];
   text = text.replace(/^```(svg|dot)[^\n]*\n([\s\S]*?)^```[ \t]*$/gm, (_, k, src) => { figs.push(figure(k, src, where)); return ''; });
   if (figs.length > 1) fail(`${where}: 絵が ${figs.length} 枚（1 ページにちょうど 1 枚）`);
-  // 章の概要の絵は省けない。骨格の章に限り、まだ描いていなければ build がモックの絵を出す（2026-11-07 kishibashi3「モック絵でも入れとけば」）。
+  // 章の概要の絵は省けない。骨格の章に限り、まだ描いていなければ build がモックの絵を出す（@ope-ultp1635 msg d693542d）。
   // モックは書き手が描かない。build が組む枠だけにして、本物の絵と取り違えられないようにする（手で描いた仮の絵は本物と見分けが付かない）
   if (cover && !figs.length && !skeleton) fail(`${where}: 章の概要に絵が無い（章の主張を描いた絵をちょうど 1 枚。まだなら書き手のメモに build: skeleton）`);
   const paras = text.split(/\n\s*\n/).map(s => s.trim()).filter(Boolean);
