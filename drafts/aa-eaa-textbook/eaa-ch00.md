@@ -23,6 +23,7 @@ p.「巨大なシステムでは人間は分業する」を p.「追い切れず
 57234c5 の検算を受けて直した（@ope-ultp1635 msg e0a49b49、判定の正本 @reviewer 2026-11-08-eaa-textbook-57234c5-ch00）: p.「自分の現場で数える」の注は、AA p.9 の調査を「律速になることは調査にある」と引いていた。AA は問いの字（レビューと検証へ移した）と「だから正しい、という数字ではありません」の断りを置いているので、問いの字を逐語で引き、律速を示した数字ではないと断った。p.「取り違え 80 件、見つかるのは多くて 1 件」は、1 件が出る前提（見る 1% は取り違えと関係なく選ぶ・見た中の取り違えは全部見つける）を注に書き、本文・図・題で 1 件を上限として書いた。注の上限 90 字に収めるため「取り違えの率も作った値」を外した（注の 1 文目「説明のために作った数字です」が率も含む）。見ても見つからない取り違えがあることは書かない（第 3 章 p.「切り替えは外から見えない」の先取りになる）。第 4 章以降に第 0 章の数（8,000 件・1%・80 件・1 件）を引く所は無い（eaa-ch01〜12・付録・巻末を grep。第 5 章 p.「責任者が追える大きさ」の「追い切れない」は数を引かない）。
 問いの主語を「一つのループ」にした（@ope-ultp1635 msg 1e9e028f。kishibashi3 の言葉「一つのループは巨大なシステムを開発できるか？ だよね。問いは」）: 「走り切る」は口語から残った比喩なので外し、「開発する」にした。最初の問いの主語は「一つの Cell」だったが、価値を切り替える問いと同じ「一つのループ」にし、問いの字を本人の字に寄せた（前置きの「完璧な設計図を Agent に書かせれば、」は p.「素直に大きくすると一つの Cell」の絵と本文にあるので問いからは外した。そのページの本文は文の上限 80 字に収めるため「完璧な」を絵の「完璧な設計図」に任せた）。副題と章の概要の 1 文目も同じ主語にした。ループの定義は p.「一つのループは価値を切り替える」にあったが、問いより後なので、p.「素直に大きくすると一つの Cell」の本文へ移し、章の概要には短い言い換えを置いた（目次では副題に「ループ」が定義より先に出る）。Cell は残した: 責任を負う人間は Cell に付く（core.md:28）ので、素直なやり方は「一つの Cell の中の一つのループ」で、Core の「1 Cell の EAA」の注はそのまま当たる。答えのページ（追い切れない・判断 8,000 件・分ける）の主語も問いに合わせてループにした。p.「自分の現場で数える」は Cell を大きくしたときの PR の数なので Cell のまま。この上の記録に残る「走り切」「開発単位」は直した経緯の字で、本文には 0 件。
 問いの主語を Cell とループの二つに分けた（@ope-ultp1635 msg c3478a77。判定の正本 @reviewer 2026-11-08-eaa-textbook-0db9058-ch00）: 主語をループに揃えると、一つの Cell でループを 100 本に分ければ追えるように読める。責任を負う人間は Cell に付き、一つの Cell にループはいくつあってもよい（第 2 章 p.「Agent の数では増えない」「主体は、判断する Agent と人」）ので、追い切れないの側は Cell で書く。開発できるか・管理し切れるかの主語は Cell、価値を切り替えられるかの主語はループ。c066f20 の三つの問いの形に戻した。副題・章の概要・最初の絵・p.「Cell とループへの問い」（題も替えた）・p.「一つの Cell の判断は追い切れない」・p.「判断 8,000 件、追えるのは 80 件」・p.「追い切れず、取り違えるから分ける」を Cell にし、p.「一つの Cell の判断は追い切れない」に「中のループを分けても、Cell の判断の数は減りません」を足した（第 5 章 p.「責任者が追える大きさ」への線）。数の前提: 8,000 件・1%・多くて 1 件は Cell で数えた値、取り違え 80 件はループの値。素直なやり方を「一つの Cell の一つのループ」と本文に書き、p.「取り違え 80 件…」は一つのループが 8,000 件を下す前提を本文に置いた。ループの定義に「Agent が」「繰り返す」を戻した。第 3 章は注の中のページ名だけ。
+v6 の 1 便目で直した（構造: writer-ja/drafts/eaa-toc/structure-v6.md 87be3308。本文 GO: @ope-ultp1635 msg 8c181d1b）: p.「切る軸は価値・ドメイン・権限」の題を「切る軸の例：価値・ドメイン・権限」にした（題だけ読むと軸が三つに決まって見える）。本文と注は変えず、絵の章番号（第 3・4・5 章）を「第 2 章で例に」にした。p.「切り方は、Core の外の提案」の注の「第 3〜5 章」を第 2 章に。p.「この本の構成」を v6 の章立て（群二「Cell の境界と責務」・第 2〜4 章、群三 第 5〜7 章、群四 第 8・9 章、群五 第 10・11 章）に書き直した。p.「答え：文脈を疎結合に分ける」の注の Contract の章を第 5 章に。この章の本文・注・絵は v6 の章番号で書いたので、3 便目の章番号の直しでこの章はずらさない（絵のリンク #ch5・#ch8・#ch10 は、3 便目でファイルの番号を詰めるまで、いまの第 5・8・10 章に飛ぶ）。
 -->
 
 ```svg
@@ -311,9 +312,9 @@ AA は、AI エージェント（Agent）に開発を任せるやり方で、同
 
 この本の答えは、各主体の文脈が疎結合になるように分けることです。一つの主体が、自分の仕事を進めるあいだに別の文脈へ切り替えずに済むように切ります。
 
-※ 文脈は、その主体が判断に使う語と記録・優先する価値・判断の権限を指す。疎結合は結合が無いことではなく、結合が少なく、明示されていること（第 6 章）。
+※ 文脈は、その主体が判断に使う語と記録・優先する価値・判断の権限を指す。疎結合は結合が無いことではなく、結合が少なく、明示されていること（第 5 章）。
 
-## 切る軸は価値・ドメイン・権限
+## 切る軸の例：価値・ドメイン・権限
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -325,9 +326,9 @@ AA は、AI エージェント（Agent）に開発を任せるやり方で、同
   </g>
   <text x="150" y="300" class="ts sub" text-anchor="middle">理由は第 1 章</text>
   <g>
-    <rect x="320" y="60" width="160" height="200" rx="10" class="hl" style="fill:#fff"/><text x="400" y="110" class="t hc" text-anchor="middle" font-weight="700">価値</text><text x="400" y="150" class="tx" text-anchor="middle">何を優先するか</text><text x="400" y="230" class="ts" text-anchor="middle">第 3 章</text>
-    <rect x="500" y="60" width="160" height="200" rx="10" class="hl" style="fill:#fff"/><text x="580" y="110" class="t hc" text-anchor="middle" font-weight="700">ドメイン</text><text x="580" y="150" class="tx" text-anchor="middle">何を扱うか</text><text x="580" y="230" class="ts" text-anchor="middle">第 4 章</text>
-    <rect x="680" y="60" width="160" height="200" rx="10" class="hl" style="fill:#fff"/><text x="760" y="110" class="t hc" text-anchor="middle" font-weight="700">権限</text><text x="760" y="150" class="tx" text-anchor="middle">何を決められるか</text><text x="760" y="230" class="ts" text-anchor="middle">第 5 章</text>
+    <rect x="320" y="60" width="160" height="200" rx="10" class="hl" style="fill:#fff"/><text x="400" y="110" class="t hc" text-anchor="middle" font-weight="700">価値</text><text x="400" y="150" class="tx" text-anchor="middle">何を優先するか</text><text x="400" y="230" class="ts" text-anchor="middle">第 2 章で例に</text>
+    <rect x="500" y="60" width="160" height="200" rx="10" class="hl" style="fill:#fff"/><text x="580" y="110" class="t hc" text-anchor="middle" font-weight="700">ドメイン</text><text x="580" y="150" class="tx" text-anchor="middle">何を扱うか</text><text x="580" y="230" class="ts" text-anchor="middle">第 2 章で例に</text>
+    <rect x="680" y="60" width="160" height="200" rx="10" class="hl" style="fill:#fff"/><text x="760" y="110" class="t hc" text-anchor="middle" font-weight="700">権限</text><text x="760" y="150" class="tx" text-anchor="middle">何を決められるか</text><text x="760" y="230" class="ts" text-anchor="middle">第 2 章で例に</text>
   </g>
   <text x="580" y="300" class="ts sub" text-anchor="middle">判定は第 2 章：主体の中でコンテキストスイッチが起きないか</text>
 </svg>
@@ -354,7 +355,7 @@ AA は、AI エージェント（Agent）に開発を任せるやり方で、同
 
 EAA Core は、分割と分けた後の責任・権限・合意を定めますが、どこで切るかは書いていません。この本の切り方は、Core の規定ではなく、この本の提案です。
 
-※ 出典: EAA Core 版 6「1. 責務と分割」。分割を「責務と自律的な判断権限を別の責任主体へ引き渡すこと」と定める。第 3〜5 章の切り方も、すべて同じ扱い。
+※ 出典: EAA Core 版 6「1. 責務と分割」。分割を「責務と自律的な判断権限を別の責任主体へ引き渡すこと」と定める。第 2 章の切り方も、同じ扱い。
 
 ## この本の構成
 
@@ -366,25 +367,25 @@ EAA Core は、分割と分けた後の責任・権限・合意を定めます�
     <text x="60" y="63" class="sub">いまの章と第 1 章。職能で切らない理由</text>
     <a href="#ch1"><text x="820" y="40" text-anchor="end">第 1 章</text></a>
     <rect x="40" y="82" width="800" height="60" rx="6" class="lt" style="fill:#fff"/>
-    <text x="60" y="108" font-weight="700">文脈が疎結合になる切り方</text>
-    <text x="60" y="131" class="sub">切り方の判定と、価値・ドメイン・権限での切り方</text>
+    <text x="60" y="108" font-weight="700">Cell の境界と責務</text>
+    <text x="60" y="131" class="sub">切り方の判定と軸の例、Profile・Constitution・Federation</text>
     <a href="#ch2"><text x="820" y="108" text-anchor="end">第 2 章から</text></a>
     <rect x="40" y="150" width="800" height="60" rx="6" class="lt" style="fill:#fff"/>
     <text x="60" y="176" font-weight="700">切っても残る結合の持ち方</text>
-    <text x="60" y="199" class="sub">Cell のあいだの取り決め、仕事の渡し方、成果の確かめ方</text>
-    <a href="#ch6"><text x="820" y="176" text-anchor="end">第 6 章から</text></a>
+    <text x="60" y="199" class="sub">Cell のあいだの取り決め、仕事の渡し方、成果の確かめ方と語の定義</text>
+    <a href="#ch5"><text x="820" y="176" text-anchor="end">第 5 章から</text></a>
     <rect x="40" y="218" width="800" height="60" rx="6" class="lt" style="fill:#fff"/>
     <text x="60" y="244" font-weight="700">分業を続けながら境界を保つ</text>
     <text x="60" y="267" class="sub">取り決めの版の変え方と、共有する文書の改訂の承認</text>
-    <a href="#ch9"><text x="820" y="244" text-anchor="end">第 9 章から</text></a>
+    <a href="#ch8"><text x="820" y="244" text-anchor="end">第 8 章から</text></a>
     <rect x="40" y="286" width="800" height="60" rx="6" class="lt" style="fill:#fff"/>
     <text x="60" y="312" font-weight="700">切り直しと加わり方</text>
     <text x="60" y="335" class="sub">Cell の分け直しと、いまの分業からの始め方</text>
-    <a href="#ch11"><text x="820" y="312" text-anchor="end">第 11 章から</text></a>
+    <a href="#ch10"><text x="820" y="312" text-anchor="end">第 10 章から</text></a>
   </g>
 </svg>
 ```
 
-第 1 章で職能で切らない理由、第 2〜5 章で切り方、第 6〜8 章で切っても残る結合、第 9・10 章で境界の保ち方、第 11・12 章で切り直しと始め方を見ます。
+第 1 章で職能で切らない理由、第 2〜4 章で Cell の境界と責務、第 5〜7 章で切っても残る結合、第 8・9 章で境界の保ち方、第 10・11 章で切り直しと始め方を見ます。
 
 ※ LeSS・SAFe・Spotify など、人間の分業の枠組みとの対応は付録で見る。
