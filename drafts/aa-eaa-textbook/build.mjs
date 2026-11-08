@@ -100,7 +100,7 @@ function body(text, where, cover, skeleton = false) {
   const figs = [];
   text = text.replace(/^```(svg|dot)[^\n]*\n([\s\S]*?)^```[ \t]*$/gm, (_, k, src) => { figs.push(figure(k, src, where)); return ''; });
   if (figs.length > 1) fail(`${where}: 絵が ${figs.length} 枚（1 ページにちょうど 1 枚）`);
-  // 章の概要の絵は省けない。骨格の章に限り、まだ描いていなければ build がモックの絵を出す（2026-11-07 kishibashi3「モック絵でも入れとけば」）。
+  // 章の概要の絵は省けない。骨格の章に限り、まだ描いていなければ build がモックの絵を出す（2026-11-07、@ope-ultp1635 msg d693542d）。
   // モックは書き手が描かない。build が組む枠だけにして、本物の絵と取り違えられないようにする（手で描いた仮の絵は本物と見分けが付かない）
   if (cover && !figs.length && !skeleton) fail(`${where}: 章の概要に絵が無い（章の主張を描いた絵をちょうど 1 枚。まだなら書き手のメモに build: skeleton）`);
   const paras = text.split(/\n\s*\n/).map(s => s.trim()).filter(Boolean);
@@ -155,8 +155,8 @@ section.page figure svg { max-width: 100%; max-height: 100%; height: auto; }
 section.cover { padding: 46px 80px 30px; }
 section.cover .run { position: absolute; top: 18px; left: 40px; right: 40px; }
 section.cover h1 { font-size: 36px; margin: 0 0 6px; line-height: 1.35; }   /* 章の題が主張の 1 文になり長いので 44 → 36px */
-section.cover .sub { font-size: 26px; font-weight: 700; color: var(--h); margin: 0 0 8px; line-height: 1.4; }
-section.cover .lead { font-size: 24px; font-weight: 700; color: var(--ink); margin: 0 0 6px; line-height: 1.45; }
+section.cover p.sub { font-size: 26px; font-weight: 700; color: var(--h); margin: 0 0 8px; line-height: 1.4; }
+section.cover p.lead { font-size: 24px; font-weight: 700; color: var(--ink); margin: 0 0 6px; line-height: 1.45; }
 section.cover figure { margin: 6px 0 10px; }
 section.cover .txt { font-size: 19px; color: #444; line-height: 1.55; }
 svg text { font-family: inherit; fill: var(--ink); }
