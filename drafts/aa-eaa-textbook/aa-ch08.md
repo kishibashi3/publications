@@ -112,7 +112,7 @@ AA でも、1 周目は人を待ちます。待つのはレビューではあり
   <text x="190" y="228" class="tx">書き足された決まりに従って働く</text>
   <rect x="560" y="76" width="150" height="40" rx="4" class="box"/><text x="635" y="101" class="ts" text-anchor="middle">決まりのファイル</text>
   <text x="550" y="88" class="tx hc" text-anchor="end">人が書く</text>
-  <rect x="560" y="156" width="150" height="40" rx="4" class="box"/><text x="635" y="181" class="ts" text-anchor="middle">決まり</text>
+  <rect x="560" y="156" width="150" height="40" rx="4" class="box"/><text x="635" y="181" class="ts" text-anchor="middle">決まりの書き足し</text>
   <text x="550" y="168" class="tx ac" text-anchor="end">質問を受けた AI が書く</text>
   <text x="440" y="356" class="ts" text-anchor="middle">どの箱も、外の決まりに従って働き、内の決まりを書く</text>
 </svg>
@@ -439,13 +439,13 @@ O は人の判断そのものではない（operator は AI）。だから文は
   <g class="tx" text-anchor="middle"><text x="180" y="176">チーム</text><text x="440" y="176">チーム</text><text x="700" y="176">チーム</text></g>
   <g fill="#fff" stroke="#bbb" stroke-width="2" class="dash"><rect x="230" y="70" width="60" height="200" rx="8"/><rect x="490" y="70" width="60" height="200" rx="8"/><rect x="750" y="70" width="60" height="200" rx="8"/></g>
   <text x="85" y="296" class="tx hc" text-anchor="middle">人の速さで止まる</text>
-  <text x="625" y="226" class="tx hc" text-anchor="middle">人が残る分</text>
+  <text x="625" y="226" class="tx hc" text-anchor="middle">人が残る所</text>
   <text x="260" y="296" class="tx sub" text-anchor="middle">外れた壁</text>
   <text x="440" y="346" class="ts sub" text-anchor="middle">右の壁は第 2 章で外れた。左の壁は、周ごとに薄くなる</text>
 </svg>
 ```
 
-第 2 章で、右の壁が外れました。左の壁も、回すほど薄くなります。人を待つ所が周ごとに減るからです。戻せない操作と権限緩和の分は残ります。
+第 2 章で、右の壁が外れました。左の壁も、回すほど薄くなります。人を待つ所が周ごとに減るからです。戻せない操作と権限緩和は、人が残る所として残ります。
 
 ※ 第 1 章 p.14・第 2 章 p.35 の図の描き直し。測った結果ではない。
 

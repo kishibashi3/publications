@@ -42,11 +42,11 @@
   <g fill="#fff" class="lt"><rect x="520" y="6" width="110" height="30" rx="4"/><rect x="640" y="6" width="110" height="30" rx="4"/></g>
   <rect x="760" y="6" width="110" height="30" rx="4" fill="#fff" stroke="#222" stroke-width="3"/>
   <g class="tx" text-anchor="middle"><text x="575" y="26">5 判定</text><text x="695" y="26">6 権限</text><text x="815" y="26" style="fill:#222;font-weight:700">7 大きさ</text></g>
-  <g fill="#fff" class="hl"><rect x="40" y="60" width="96" height="40" rx="4"/><rect x="146" y="60" width="96" height="40" rx="4"/><rect x="252" y="60" width="96" height="40" rx="4"/><rect x="358" y="60" width="96" height="40" rx="4"/></g>
-  <g class="tx hc" text-anchor="middle"><text x="88" y="85">1 目的</text><text x="194" y="85">2 条件</text><text x="300" y="85">3 権限</text><text x="406" y="85">4 判定</text></g>
-  <path d="M40,108 V118 H454 V108" class="ln"/>
-  <text x="247" y="140" class="ts" text-anchor="middle">4 枚が書くのは「この 1 本の分」</text>
-  <text x="247" y="162" class="tx" text-anchor="middle">1 本の大きさは、4 枚のどれにも無い</text>
+  <g fill="#fff" class="hl"><rect x="40" y="60" width="106" height="40" rx="4"/><rect x="152" y="60" width="106" height="40" rx="4"/><rect x="264" y="60" width="106" height="40" rx="4"/><rect x="376" y="60" width="106" height="40" rx="4"/></g>
+  <g class="tx hc" text-anchor="middle"><text x="93" y="85">1 目的</text><text x="205" y="85">2 制約</text><text x="317" y="85">3 権限</text><text x="429" y="85">4 受け入れ条件</text></g>
+  <path d="M40,108 V118 H482 V108" class="ln"/>
+  <text x="261" y="140" class="ts" text-anchor="middle">4 枚が書くのは「この 1 本の分」</text>
+  <text x="261" y="162" class="tx" text-anchor="middle">1 本の大きさは、4 枚のどれにも無い</text>
   <path d="M60,290 H820" class="ln" marker-end="url(#arr)"/>
   <text x="60" y="320" class="ts sub">revert できる</text><text x="820" y="320" class="ts sub" text-anchor="end">revert できない</text>
   <path d="M440,190 V340" stroke="#d9822b" stroke-width="5"/>
