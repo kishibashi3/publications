@@ -11,10 +11,10 @@
 <svg viewBox="0 0 880 380" width="880" height="380">
   <rect x="10" y="6" width="425" height="178" rx="8" fill="#fff" class="lt"/>
   <text x="26" y="32" class="ts" font-weight="700">役（第 2・6 章）</text>
-  <g class="ts"><text x="26" y="62" class="hc">人 1 人：依頼を書き、左下の操作を通す</text>
+  <g class="ts"><text x="26" y="62" class="hc">人 1 人：依頼を書き、人が通す操作を担う</text>
     <text x="26" y="90" class="ac">作る AI：依頼 1 件ごとにセッション</text>
     <text x="26" y="118" class="ac">判定する AI：PR ごとに新しく起こす</text>
-    <text x="26" y="146">merge：戻せる変更は必須チェックで自動</text><text x="96" y="170">左下の操作は人が押す</text></g>
+    <text x="26" y="146">merge：人が通す操作の他は必須チェックで自動</text><text x="96" y="170">人が通す操作は人が押す</text></g>
   <rect x="445" y="6" width="425" height="178" rx="8" fill="#fff" stroke="#222" stroke-width="3"/>
   <text x="461" y="32" class="ts" font-weight="700">最初に作るファイル（第 4 章）</text>
   <g style="font-family:monospace;font-size:15px"><text x="461" y="64">1 CLAUDE.md</text><text x="461" y="110">2 roles/maker.md・judge.md</text><text x="461" y="152">3 tasks/001-….md</text></g>
@@ -32,6 +32,6 @@
 </svg>
 ```
 
-最初に作るのは右上のファイルです。役は人・作る AI・判定する AI に分け、左下の操作だけ人が通します。大きな場では、常駐の AI チームで回す形もあります。
+最初に作るのは右上のファイルです。役は人・作る AI・判定する AI に分け、戻せない操作と権限緩和を人が通します。大きな場では、常駐の AI チームで回す形もあります。
 
 ※ 始めは第 1 章の出発点から、表と依頼ファイルを足すだけでよい。判定する AI と自動 merge は、表ができてから足す。

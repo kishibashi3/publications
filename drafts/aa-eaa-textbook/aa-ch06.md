@@ -44,7 +44,7 @@
   <rect x="30" y="80" width="230" height="140" rx="6" fill="#fff" class="hl"/>
   <text x="46" y="110" class="ts hc" font-weight="700">3 使える権限</text>
   <text x="46" y="150" class="ts">テスト環境まで</text><text x="46" y="176" class="ts">本番の決済は呼ばない</text>
-  <text x="145" y="250" class="tx" text-anchor="middle">権限に書いた範囲（第 4 章 p.71）</text>
+  <text x="145" y="250" class="tx" text-anchor="middle">依頼に書いた権限（第 4 章 p.71）</text>
   <rect x="300" y="56" width="560" height="300" rx="12" fill="#f4f4f2"/>
   <text x="316" y="80" class="tx">AI が読める・送れる範囲</text>
   <rect x="440" y="180" width="130" height="56" rx="6" class="a"/><text x="505" y="214" class="ts on" text-anchor="middle">実装役の AI</text>
@@ -53,11 +53,11 @@
   <g fill="#fff" stroke="#c62828" stroke-width="2"><rect x="660" y="96" width="180" height="48" rx="6"/><rect x="660" y="184" width="180" height="48" rx="6"/><rect x="660" y="272" width="180" height="48" rx="6"/></g>
   <g class="ts" text-anchor="middle"><text x="750" y="126">本番の決済の鍵</text><text x="750" y="214">顧客一覧</text><text x="750" y="302">社外へのメール</text></g>
   <g class="ln"><path d="M470,178 L430,150" marker-end="url(#arr)"/><path d="M572,196 L656,128" marker-end="url(#arr)"/><path d="M572,208 H656" marker-end="url(#arr)"/><path d="M572,222 L656,288" marker-end="url(#arr)"/></g>
-  <text x="440" y="300" class="ts xc" text-anchor="middle">権限の外も読める・送れる</text>
+  <text x="440" y="300" class="ts xc" text-anchor="middle">書いた権限の外も読める・送れる</text>
 </svg>
 ```
 
-権限に「本番の決済は呼ばない」と書いても、本番の鍵を読めるなら、守っているのは AI の読み方だけです。
+依頼の権限に「本番の決済は呼ばない」と書いても、本番の鍵を読めるなら、守っているのは AI の読み方だけです。
 
 ※ AI は書かれていない所を、もっともらしく埋める（第 4 章 p.68）。図は説明のための作り物。
 
