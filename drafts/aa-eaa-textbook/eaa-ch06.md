@@ -142,7 +142,7 @@ Evidence は成果や判断の成立を確かめる記録です。判断は上�
   <rect x="450" y="184" width="390" height="70" rx="10" class="soft"/><text x="645" y="212" class="ts" text-anchor="middle" font-weight="700">変更を提案する</text><text x="645" y="238" class="tx" text-anchor="middle">Contract の入出力に欄を足す</text>
   <path d="M440,256 V272" class="ln" marker-end="url(#arr)"/>
   <rect x="40" y="276" width="800" height="96" rx="3" class="hl" style="fill:#fff"/>
-  <text x="60" y="302" class="ts hc" font-weight="700">違いと対応を、共有する Ontology に足す</text><text x="560" y="302" class="tx">初めから全部の語をそろえない</text>
+  <use href="#i-ok" x="58" y="286" width="20" height="20"/><text x="86" y="302" class="ts hc" font-weight="700">違いと対応を、共有する Ontology に足す</text><text x="560" y="302" class="tx">初めから全部の語をそろえない</text>
   <text x="60" y="330" class="tx">対応：物流の出荷日は、在庫の出荷日以後</text>
   <text x="60" y="356" class="tx">対応で確かめられるのは、二つの出荷日が矛盾しないかまで。在庫の意味の出荷日の値は出ないので、置き換えない</text>
 </svg>

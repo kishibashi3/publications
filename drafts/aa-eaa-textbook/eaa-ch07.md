@@ -136,7 +136,7 @@ v7 の残す字: 提起した者は、文書を提供する側に属していて
   </g>
   <path d="M40,146 H840 M40,174 H840 M40,202 H840 M310,122 V232" class="lt"/>
   <rect x="40" y="250" width="390" height="104" rx="10" class="soft"/>
-  <text x="235" y="278" class="ts" text-anchor="middle" font-weight="700">基盤の Cell も、PR で提案する</text>
+  <use href="#i-pr" x="112" y="262" width="18" height="22"/><text x="247" y="278" class="ts" text-anchor="middle" font-weight="700">基盤の Cell も、PR で提案する</text>
   <text x="235" y="304" class="tx" text-anchor="middle">Platform を担う Cell の CI/CD の変更も PR で出す</text>
   <text x="235" y="328" class="tx" text-anchor="middle">受け取った Cell が、規範と Contract に合うかを確かめる</text>
   <rect x="450" y="250" width="390" height="104" rx="10" class="soft"/>
@@ -252,17 +252,17 @@ Contract の所有者は、結ぶ Cell に属する 1 人を結ぶ Cell が合�
     <rect x="40" y="84" width="250" height="170" rx="10" class="soft"/>
     <text x="165" y="112" class="ts" font-weight="700">規範を緩めたい</text>
     <text x="165" y="140">「欠品の理由を残す手順を外したい」</text>
-    <text x="165" y="176" class="xc">自分では承認しない</text>
+    <use href="#i-no" x="88" y="162" width="18" height="18"/><text x="176" y="176" class="xc">自分では承認しない</text>
     <text x="165" y="206">緩めるかは、</text><text x="165" y="228">正当な所有者が承認して決める</text>
     <rect x="315" y="84" width="250" height="170" rx="10" class="soft"/>
     <text x="440" y="112" class="ts" font-weight="700">権限が足りない</text>
     <text x="440" y="140">「在庫の引き当てを直接書き換えたい」</text>
-    <text x="440" y="176" class="xc">自分で権限を足さない</text>
+    <use href="#i-no" x="356" y="162" width="18" height="18"/><text x="451" y="176" class="xc">自分で権限を足さない</text>
     <text x="440" y="206">足りないと示して、</text><text x="440" y="228">正当な判断主体との調整に戻す</text>
     <rect x="590" y="84" width="250" height="170" rx="10" class="soft"/>
     <text x="715" y="112" class="ts" font-weight="700">書き込める</text>
     <text x="715" y="140">Profile の正本を編集できる・</text><text x="715" y="160">リポジトリに書き込める</text>
-    <text x="715" y="196" class="xc">承認ではない</text>
+    <use href="#i-no" x="662" y="182" width="18" height="18"/><text x="726" y="196" class="xc">承認ではない</text>
     <text x="715" y="222">これだけでは、義務を消す・緩める・</text><text x="715" y="242">権限を足す、はできない</text>
   </g>
   <text x="440" y="300" class="t" text-anchor="middle" font-weight="700">自分を縛る規範を自分で緩めず、権限を自分で広げない</text>

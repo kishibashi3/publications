@@ -137,7 +137,7 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
   <text x="730" y="48" class="ts" text-anchor="middle">1 日の判断</text><text x="730" y="84" class="tl" text-anchor="middle">8,000 件</text>
   <path d="M730,98 V120" class="ln" marker-end="url(#arr)"/><text x="742" y="114" class="tx">100 回に 1 回</text>
   <rect x="610" y="124" width="240" height="78" rx="8" class="xl" style="fill:#fff"/>
-  <text x="730" y="152" class="ts xc" text-anchor="middle">取り違えた判断</text><text x="730" y="188" class="tl" text-anchor="middle">80 件</text>
+  <text x="730" y="152" class="ts xc" text-anchor="middle">取り違えた判断</text><text x="730" y="188" class="tl" text-anchor="middle">80 件</text><use href="#i-pile" x="782" y="164" width="24" height="24"/>
   <path d="M730,202 V224" class="ln" marker-end="url(#arr)"/><text x="742" y="218" class="tx">追えるのは 1%</text>
   <rect x="610" y="228" width="240" height="78" rx="8" class="hl" style="fill:#fff"/>
   <text x="730" y="256" class="ts hc" text-anchor="middle">人間が見つける</text><text x="730" y="292" class="tl" text-anchor="middle">多くて 1 件</text>

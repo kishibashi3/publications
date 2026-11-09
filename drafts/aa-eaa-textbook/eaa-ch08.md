@@ -70,7 +70,7 @@ v7 で畳んだ: 5b5aea2 の eaa-ch09.md（Cell の分け直しと引き継ぎ�
   </g>
   <path d="M40,76 H500 M40,102 H500 M40,128 H500 M40,154 H500 M40,180 H500 M40,206 H500 M230,50 V232" class="lt"/>
   <rect x="530" y="50" width="310" height="182" rx="10" class="xl" style="fill:#fff"/>
-  <text x="685" y="76" class="ts xc" text-anchor="middle" font-weight="700">残さないもの</text>
+  <use href="#i-no" x="626" y="60" width="20" height="20"/><text x="697" y="76" class="ts xc" text-anchor="middle" font-weight="700">残さないもの</text>
   <g class="tx" text-anchor="middle">
     <text x="685" y="104" font-weight="700">責任の空白</text><text x="685" y="124">戻った品を数え直すかを、どちらも判断しない</text>
     <text x="685" y="156" font-weight="700">決定権の重なり</text><text x="685" y="176">返品の再出荷の指示を、両方が出して食い違う</text>
