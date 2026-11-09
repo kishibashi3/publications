@@ -124,11 +124,11 @@ Contract は、相互の責任、提供条件、入出力、必要な Evidence �
 ## 例：在庫と物流の Contract
 
 ```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
+<svg viewBox="0 0 880 404" width="880" height="404">
   <rect x="40" y="8" width="220" height="48" rx="10" class="box"/><text x="150" y="30" class="ts" text-anchor="middle" font-weight="700">在庫の Cell</text><text x="150" y="48" class="tx" text-anchor="middle">中は Scrum（自社のチーム）</text>
   <rect x="620" y="8" width="220" height="48" rx="10" class="box"/><text x="730" y="30" class="ts" text-anchor="middle" font-weight="700">物流の Cell</text><text x="730" y="48" class="tx" text-anchor="middle">中は委託先の標準工程</text>
   <text x="440" y="38" class="tx" text-anchor="middle">中の作り方は、Contract に書かない</text>
-  <rect x="40" y="66" width="800" height="270" rx="3" class="hl" style="fill:#fff"/>
+  <rect x="40" y="66" width="800" height="294" rx="3" class="hl" style="fill:#fff"/>
   <text x="60" y="90" class="ts hc" font-weight="700">在庫と物流のあいだの Contract　版 1</text>
   <g class="tx">
     <text x="60" y="118" font-weight="700">相互の責任</text><text x="200" y="118">在庫は、引き当て済みの品目だけを指示に載せる。物流は、受けた指示を出荷し、結果を返す</text>
@@ -138,9 +138,10 @@ Contract は、相互の責任、提供条件、入出力、必要な Evidence �
     <text x="60" y="256" font-weight="700">所有者</text><text x="200" y="256">物流の窓口の責任者</text>
     <text x="60" y="282" font-weight="700">観測</text><text x="200" y="282">受け入れられなかった出荷結果と、その理由</text>
     <text x="60" y="308" font-weight="700">準拠先</text><text x="200" y="308">自己改訂規範アーキテクチャ v1・最小構成</text><text x="520" y="308">改訂の承認と版を定めた文書。Core も従う</text>
+    <text x="60" y="332">準拠先は未確定の草案。GitHub の kishibashi3/publications の drafts/self-revising-norm-architecture/ にあり、公開サイトには無い</text>
   </g>
   <path d="M60,130 H820 M60,158 H820 M60,204 H820" class="lt"/><path d="M60,236 H820" class="ln"/>
-  <text x="440" y="366" class="ts sub" text-anchor="middle">埋まらない欄は、まだ合意していないこと。版 1 を出す前に相手と決める</text>
+  <text x="440" y="390" class="ts sub" text-anchor="middle">埋まらない欄は、まだ合意していないこと。版 1 を出す前に相手と決める</text>
 </svg>
 ```
 
