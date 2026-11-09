@@ -27,6 +27,8 @@ v6 の 1 便目で直した（構造: writer-ja/drafts/eaa-toc/structure-v6.md 8
 082ceb2 の検算 1 便目を受けて直した（@ope-ultp1635 msg 6f1c06c4、判定の正本 @reviewer 2026-11-09-eaa-textbook-082ceb2-fold）: v6 で落とした旧第 3 章 p.「切り替えは外から見えない」の中身（どちらの優先で答えたかが外から見えず、責任を負う人間がなぜかを追えない）は、受け皿とした p.「一つの Cell の判断は追い切れない」p.「切り替えると取り違える」に無かった。落ちたのは二つの問いのつながりなので、p.「追い切れず、取り違えるから分ける」の本文 2 文目と絵の二つの枠のあいだに置いた。本文の上限 80 字に収めるため「問題は、何で分けるかです」を本文から外した（絵の下の行が言う）。上の行の「第 3 章 p.「切り替えは外から見えない」の先取りになる」は、そのページが無くなったので理由として成り立たない。
 082ceb2 の検算 3 便目を受けて直した（@ope-ultp1635 msg 468b4a37、判定の正本 @reviewer 2026-11-09-eaa-textbook-082ceb2-ch04-constitution-federation 97306492）: p.「一つのループは価値を切り替える」の本文の主語を「ループを回す Agent」にした。題は変えていない（問いの主語「一つのループ」は kishibashi3 の字、上の msg 1e9e028f の記録）（第 2 章の注の主体は Agent や人で、ループではない）。
 v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v7.md 863f5176。本文 GO: @ope-ultp1635 msg d9ab1757、kishibashi3「うん」）: 18 → 7 ページ。p.「AA と Cell」に p.「素直に大きくすると一つの Cell」（ループの定義を本文、「1 Cell の EAA」を絵）。p.「判断 8,000 件、追えるのは 80 件」に p.「一つの Cell の判断は追い切れない」（「中のループを分けても判断の数は減らない」を本文）と p.「自分の現場で数える」（比べる 2 つの数を絵）。p.「一つのループは価値を取り違える」に p.「一つのループは価値を切り替える」「サービスごとに価値が違う」「切り替えると取り違える」「取り違え 80 件、見つかるのは多くて 1 件」。p.「答え：文脈を疎結合に分ける」に p.「追い切れず、取り違えるから分ける」（外から見えないを注）と p.「切る軸の例：価値・ドメイン・権限」（絵の下の段）。p.「この本と EAA Core」に p.「拠る文書：Core と Profiles」と p.「切り方は、Core の外の提案」（どこで切るかを書かないを絵）、p.「この本の構成」は落とした（目次が言う）。p.「Cell・文書・手続きの全体図」は p.「用語の一覧」と巻末 p.「通しの 1 枚」を 1 枚に。p.「Cell とループへの問い」は落とした（章の概要が同じ問いを言う）。落とした字と行き先の一覧: writer-ja/drafts/eaa-toc/fold-v7-ledger.md。
+v7 の便 1 の判定を受けて戻した（@ope-ultp1635 msg 7bd9839e）: p.「答え：文脈を疎結合に分ける」の注に「分ける理由はこの二つで、人間の分業の慣習には拠らない」を戻した（第 1 章の「職能で分ける理由は人間にあった。Agent には当てはまらない」と根拠の扱いが割れないため。@reviewer が前に「p.12 の理由は Agent が実行しても残るので食い違わない」とした判定の前提）。注の上限 90 字に収めるため、文脈の定義「文脈は判断に使う語と記録・価値・権限」は注から絵の左下の行に移した（字は同じ。各 Cell の箱の 3 行も同じことを言う）。疎結合の定義は注に残した。
+v7 の便 2 で、p.「Cell・文書・手続きの全体図」の Evidence の下の 2 行「受けた側は、作った側に聞かずに／共有する語の定義で読んで確かめる」を「受けた側は、作った側を介さずに確かめる／渡す語の意味は、共有する Ontology に書く」にした。第 6 章の副題で直した形（「聞かずに」が照会とぶつかる、「読んで」が不等号の対応で成り立たない。@reviewer 2026-11-09-eaa-textbook-082ceb2-ch04-constitution-federation の 2-2・2-3）が、便 1 でこの絵に入っていた。
 章番号: この章の本文・注・絵は v7 の章番号（10 章）で書いた。2・3 便目でファイルの番号を詰めるまで、#ch5 より後のリンクはいまのファイルの章に飛ぶ。
 -->
 
@@ -170,6 +172,7 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
   <g class="ts hc" text-anchor="middle"><text x="395" y="198">文脈が一つ</text><text x="575" y="198">文脈が一つ</text><text x="755" y="198">文脈が一つ</text></g>
   <path d="M480,125 H490 M660,125 H670" class="ln"/>
   <text x="575" y="250" class="ts" text-anchor="middle">あいだの結合は少なく、明示してある</text>
+  <text x="30" y="250" class="tx">文脈＝判断に使う語と記録・価値・権限</text>
   <text x="30" y="306" class="ts" font-weight="700">切る軸の例</text>
   <g class="ts hc" text-anchor="middle">
     <rect x="130" y="284" width="110" height="34" rx="6" class="hl" style="fill:#fff"/><text x="185" y="307">価値</text>
@@ -185,7 +188,7 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
 
 だから分けます。この本の答えは、各主体の文脈が疎結合になるように分けることです。切り方は Core の規定ではなく、この本の提案です。
 
-※ どちらの優先で答えたかは外から見えず、責任を負う人間はなぜかを追えない。文脈は判断に使う語と記録・価値・権限。疎結合は、結合が少なく明示されていること（第 5 章）。
+※ どちらの優先で答えたかは外から見えず、責任を負う人間はなぜかを追えない。分ける理由はこの二つで、人間の分業の慣習には拠らない。疎結合は、結合が少なく明示されていること（第 5 章）。
 
 ## この本と EAA Core
 
@@ -250,8 +253,8 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
   <text x="440" y="162" class="ts" text-anchor="middle"><tspan font-weight="700">Mission</tspan>　今回の仕事を頼む <a href="#ch5"><tspan class="tx">第 5 章</tspan></a></text>
   <path d="M594,222 H286" class="ln" marker-end="url(#arr)"/>
   <text x="440" y="214" class="ts" text-anchor="middle"><tspan font-weight="700">Evidence</tspan>　成果の記録を返す <a href="#ch6"><tspan class="tx">第 6 章</tspan></a></text>
-  <text x="440" y="244" class="tx" text-anchor="middle">受けた側は、作った側に聞かずに</text>
-  <text x="440" y="262" class="tx" text-anchor="middle">共有する語の定義で読んで確かめる</text>
+  <text x="440" y="244" class="tx" text-anchor="middle">受けた側は、作った側を介さずに確かめる</text>
+  <text x="440" y="262" class="tx" text-anchor="middle">渡す語の意味は、共有する Ontology に書く</text>
   <text x="440" y="292" class="tx" text-anchor="middle">互いの中は指定せず、共有する文書でつながる（Federation <a href="#ch4"><tspan>第 4 章</tspan></a>）</text>
   <text x="10" y="322" class="ts" font-weight="700">変えるとき・分け直すとき・始めるとき</text>
   <g class="box"><rect x="10" y="332" width="280" height="76" rx="6"/><rect x="300" y="332" width="280" height="76" rx="6"/><rect x="590" y="332" width="280" height="76" rx="6"/></g>
