@@ -131,7 +131,7 @@ Profile は、Cell が引き受ける責務を定める版付きの仕様です�
 
 Standard は EAA が再利用できる形で出し、Domain は企業が業務から書きます。形式は同じで、Domain は最初の Mission に要る範囲から書きます。
 
-出典: EAA Profiles「2.」「6.」「9.」。名前の右は「6.」の表の目的を縮めた。Assurance や Regulated を担う Cell があっても、各 Cell の義務は残る。
+出典: EAA Profiles「2.」「6.」「9.」。右は「6.」の「成立させる責務」の略。Assurance や Regulated を担う Cell があっても、各 Cell の義務は残る。
 
 ## 書くことと割り当てることは別
 

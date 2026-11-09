@@ -63,7 +63,7 @@ v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
     <rect x="70" y="252" width="320" height="30" rx="4" class="soft"/><text x="230" y="272">判断の権限</text>
   </g>
   <rect x="460" y="136" width="380" height="160" rx="10" class="xl" style="fill:#fff"/>
-  <text x="650" y="166" class="ts xc" text-anchor="middle" font-weight="700">通らない例：第 0 章の一つのループ</text>
+  <text x="650" y="166" class="ts xc" text-anchor="middle" font-weight="700">通らない例：第 0 章のループを回す Agent</text>
   <g class="tx" text-anchor="middle">
     <rect x="480" y="190" width="160" height="32" rx="4" class="soft"/><text x="560" y="211">決済：止めない</text>
     <rect x="660" y="190" width="160" height="32" rx="4" class="soft"/><text x="740" y="211">推薦：速く変える</text>

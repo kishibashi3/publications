@@ -1,6 +1,6 @@
 # 付録　LeSS・SAFe・Spotify との対応
 
-副題: 大規模開発の枠組みは、集める決定と任せる決定を分けている
+副題: LeSS と SAFe は、集める決定と任せる決定を分けている
 
 <!--
 構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v5.md（77de7781）の付録。着手: @ope-ultp1635 msg cfe0fe59（群五）。
@@ -31,16 +31,17 @@ v7 の 3 便目（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
 - p.「この本の切り方との対応」に p.「複数社のあいだも、集めるか任せるか」p.「あいだの合意を、書いて持つ」を畳んだ。p.「引用の確かめ方」は各ページの出典の注で足りるので落とした（Kniberg の動画を当たり直していないことは Spotify のページの絵に、EAA 紹介 0 の説明は同じページの注にある）。
 - 章番号: 本文・注・絵は v7 の章番号（10 章）で書いた。
 検算 1 便目と v7 の通読を受けて直した（@ope-ultp1635 msg 9628f0a9。判定の正本 roles-kaz reviewer/feedback-archive/2026-11-09-eaa-textbook-d0dd000-fold-v7-1-core.md、reader/feedback-archive/2026-11-09-eaa-textbook-v7-68p-6readers.md）: p.「SAFe 2022 年版：既定は任せる」に、英文ごとの日本語（書き手の訳）、版の見出し（2022 年の版／いまの版）、2023 年 12 月の版にこの字が無いことを絵の中に、この本との関係（ART の中の SAFe は Cell の中の作り方として残す）の段を足した。PI Planning の planning board の行は落とした。本文の「いまの版にその字は無く」は、いまの版を導入部しか読んでいないので「2023 年 12 月の版に」にした（@reader 桜井: 単独では渡せない、版の違いを協力会社の担当が読み分けられない）。p.「この本の切り方との対応」の「この本」の箱に「契約書は別に持つ（第 5 章）」を足した（@reader 河野が Contract が契約書の代わりか分からなくなった）。
+検算 2・3 便目を受けて直した（@ope-ultp1635 msg 6a0e7393。判定の正本 roles-kaz reviewer/feedback-archive/2026-11-09-eaa-textbook-8e2f807-fold-v7-2.md・-3.md）: 「2022 年版」「2023 年 12 月の版」は SAFe の版ではなく Web Archive の取得日だった。版の名前に替えた — 2022-02-01 の取得は頁の Last update 10 February 2021、ナビに「What's new in the SAFe 5.1 Big Picture」があるので SAFe 5.1。2023-12-14 の取得は Last update 14 August 2023、ナビに「SAFe 6.0」なので SAFe 6.0（2026-11-09 に Web Archive で確かめた）。訳から、表示した英文の続きの字（that block progress の「進みが止まる」、2 文あとの「進行役は RTE」）を外した。最初のページの題・副題・本文を LeSS と SAFe に限った（Spotify の集める側は引いた記述に無い）。表の SAFe 5.1 の行の PI Planning はいまの版の頁から引いたので「（いまの版）」と書いた。
 -->
 
-## 三つとも、決定ごとに分けている
+## LeSS と SAFe は決定ごとに分けている
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g class="ts">
     <text x="60" y="56" font-weight="700">枠組み</text><text x="220" y="56" font-weight="700">一か所に集めるもの</text><text x="540" y="56" font-weight="700">各チームに任せるもの</text>
     <text x="60" y="116" font-weight="700">LeSS</text><text x="220" y="116">優先順位（一人の PO）</text><text x="540" y="116">チームのあいだの調整</text>
-    <text x="60" y="176" font-weight="700">SAFe</text><text x="60" y="200" class="tx">2022 年版</text><text x="220" y="176">戦略的な決定だけ</text><text x="220" y="200" class="tx">頻度が低く、長く効き、規模の経済が大きい</text><text x="540" y="176" class="hc" font-weight="700">ほかの決定すべて（既定）</text><text x="540" y="200" class="tx">あいだの計画は PI Planning で揃える</text>
+    <text x="60" y="176" font-weight="700">SAFe</text><text x="60" y="200" class="tx">SAFe 5.1</text><text x="220" y="176">戦略的な決定だけ</text><text x="220" y="200" class="tx">頻度が低く、長く効き、規模の経済が大きい</text><text x="540" y="176" class="hc" font-weight="700">ほかの決定すべて（既定）</text><text x="540" y="200" class="tx">あいだの計画は PI Planning（いまの版）</text>
     <text x="60" y="266" font-weight="700">Spotify</text><text x="220" y="266" class="tx">引いた記述の中には無い</text><text x="540" y="266">大きく任せた</text>
   </g>
   <path d="M40,76 H840 M40,146 H840 M40,226 H840 M40,296 H840 M200,30 V296 M520,30 V296" class="lt"/>
@@ -48,7 +49,7 @@ v7 の 3 便目（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
 </svg>
 ```
 
-LeSS・SAFe・Spotify は、チームのあいだの決定を、どれか一方に寄せてはいません。決定ごとに、一か所に集めるものと各チームに任せるものを分けています。
+LeSS と SAFe は、チームのあいだの決定を、どれか一方に寄せてはいません。決定ごとに、一か所に集めるものと各チームに任せるものを分けています。
 
 ※ 三つとも、それぞれの条件の下で機能している。この本は優劣を判定しない。
 
@@ -79,11 +80,11 @@ LeSS は、優先順位の最終決定を一人の Product Owner（PO）に集�
 
 出典: LeSS（題・英文・参照日は絵の中）。PBI は Product Backlog の項目、iteration は開発の 1 周期。
 
-## SAFe 2022 年版：既定は任せる
+## SAFe 5.1：既定は任せる
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="40" y="18" class="tx sub">2022 年の版：SAFe「Principle #9 – Decentralize decision-making」（Web Archive 2022-02-01、2026-11-08 参照）</text>
+  <text x="40" y="18" class="tx sub">SAFe 5.1：「Principle #9 – Decentralize decision-making」（2021-02-10 更新。Web Archive 2022-02-01 の取得）</text>
   <rect x="40" y="28" width="440" height="62" rx="8" class="soft"/>
   <text x="260" y="50" class="ts" text-anchor="middle" font-weight="700">Centralize Strategic Decisions</text>
   <text x="260" y="76" class="tx" text-anchor="middle">戦略的な決定だけ集める（まれ・長く効く・規模の経済）</text>
@@ -91,15 +92,15 @@ LeSS は、優先順位の最終決定を一人の Product Owner（PO）に集�
   <text x="670" y="50" class="ts hc" text-anchor="middle" font-weight="700">Decentralize Everything Else</text>
   <text x="670" y="76" class="tx" text-anchor="middle">ほかはすべて任せる（頻繁・急ぐ・現場の情報）</text>
   <text x="40" y="112" class="ts">All other decisions should be decentralized.</text>
-  <text x="40" y="134" class="tx">2023 年 12 月の版にこの字は無い。決定ごとに点を付けて、任せるかを選ぶ</text>
+  <text x="40" y="134" class="tx">SAFe 6.0（頁の更新 2023-08-14）にこの字は無い。決定ごとに点を付けて、任せるかを選ぶ</text>
   <path d="M40,150 H840" class="lt"/>
   <text x="40" y="170" class="tx sub">いまの版：SAFe「Principle #9 - Decentralize Decision-Making」の導入部（framework.scaledagile.com、2026-11-08 参照）</text>
   <text x="40" y="192" class="ts">when managerial input is necessary for most decisions, it causes a queue of decision requests</text>
-  <text x="40" y="212" class="tx">多くの決定に管理者の判断が要ると、判断待ちの列ができて進みが止まる</text>
+  <text x="40" y="212" class="tx">多くの決定に管理者の判断が要ると、判断待ちの列ができる</text>
   <path d="M40,228 H840" class="lt"/>
   <text x="40" y="248" class="tx sub">いまの版：SAFe「PI Planning」（framework.scaledagile.com/pi-planning、2026-11-08 参照）</text>
   <text x="40" y="270" class="ts">It is typically a 2-day event for the entire ART that takes place every 8-12 weeks.</text>
-  <text x="40" y="290" class="tx">ART（チームを束ねた単位）全体で、8〜12 週ごとにふつう 2 日。進行役は RTE</text>
+  <text x="40" y="290" class="tx">ART（チームを束ねた単位）全体で、8〜12 週ごとにふつう 2 日</text>
   <rect x="40" y="306" width="800" height="64" rx="10" class="box"/>
   <text x="60" y="332" class="ts" font-weight="700">この本との関係</text>
   <text x="200" y="332" class="tx">ART の中の SAFe の進め方は、Cell の中の作り方として残す（第 9 章）</text>
@@ -107,7 +108,7 @@ LeSS は、優先順位の最終決定を一人の Product Owner（PO）に集�
 </svg>
 ```
 
-SAFe は 2022 年版で、戦略的な決定だけ集めてほかを任せていました。2023 年 12 月の版にその字は無く、いまの版は集めすぎると判断待ちの列ができると書きます。
+SAFe 5.1 は、戦略的な決定だけ集めてほかを任せていました。SAFe 6.0 にその字は無く、いまの版は集めすぎると判断待ちの列ができると書きます。
 
 出典: SAFe（題・英文・版・参照日は絵の中）。英文の下の日本語は書き手の訳。いまの版は導入部だけを読んだ。
 

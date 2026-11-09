@@ -213,23 +213,25 @@ Core を採用するかは Cell ごとに決め、規範の所有者のうち Co
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="20" y="8" width="840" height="58" rx="8" class="box"/>
-  <text x="36" y="30" class="tx" font-weight="700">既知の不足（Core が冒頭に挙げた。詳しい手順が未定）</text>
-  <text x="36" y="52" class="tx">合意不成立・外部の制約の変化・緊急時の調整、移行中の責任、複数の Cell にまたがる変更の互換性・適用順・部分失敗からの復旧</text>
+  <rect x="20" y="8" width="840" height="54" rx="8" class="box"/>
+  <text x="36" y="28" class="tx"><tspan font-weight="700">既知の不足（Core が冒頭に挙げた。詳しい手順が未定）</tspan>　「移行」は版の移行の語で、分け直しの引き継ぎに当たるかは決まらない</text>
+  <text x="36" y="48" class="tx">合意不成立・外部の制約の変化・緊急時の調整、移行中の責任、複数の Cell にまたがる変更の互換性・適用順・部分失敗からの復旧</text>
   <g class="tx">
-    <text x="36" y="94" font-weight="700">第 3 章</text><text x="120" y="94">既知の不足の移行中の責任。Profiles が未決：スキーマと Template・責務の分割の手続き・ロードの確かめ方</text>
-    <text x="120" y="114">分離の引継ぎと移行の手順・外部の義務を履行できないとき・切替時の予期しない不一致と緊急時の手順</text>
-    <text x="36" y="144" font-weight="700">第 5 章</text><text x="120" y="144">Core に無い：商取引上の契約書との関係・Mission の記法（書く場所・書式）・欄を埋めるための問い・</text>
-    <text x="120" y="164">Contract 更新などを判定する者</text>
-    <text x="36" y="194" font-weight="700">第 6 章</text><text x="120" y="194">Core に無い：Evidence の様式に書く項目・共有する Ontology と Evidence の様式の所有者の決め方</text>
-    <text x="36" y="224" font-weight="700">第 7 章</text><text x="120" y="224">既知の不足の全部。Core に無い：提起した者と承認した者が別だと記録の上でどう示すか・承認の手続きの細部・</text>
-    <text x="120" y="244">所有者本人が出したい改訂の進め方（提起した者は承認せず、Contract の所有者は 1 人なので、承認できる者がいない）</text>
-    <text x="36" y="274" font-weight="700">第 8 章</text><text x="120" y="274">既知の不足の移行中の責任。Profiles が未決：引継ぎの詳しい手順・分離と再統合の移行の手順</text>
-    <text x="36" y="304" font-weight="700">第 9 章</text><text x="120" y="304">Core に無い：採用の記録の書式と置き場所・採用をやめる手続き・Core の版が違う Cell どうしの扱い・</text>
-    <text x="120" y="324">採用しない部分を示した後、同じ Contract で両側が別の規定に従う状態の扱い</text>
+    <text x="36" y="86" font-weight="700">第 3 章</text><text x="120" y="86">既知の不足の移行中の責任。Profiles が未確定：詳しいスキーマと Template・責務をさらに分割する手続き・</text>
+    <text x="120" y="104">ロードの確かめ方・分離と再統合の移行の手順。Core の自治・権限・Evidence の原則を保ち、具体例から確定する</text>
+    <text x="120" y="122">Profiles が未決：引継ぎの詳しい手順・外部の義務の履行不能・予期しない不一致と緊急時の詳しい手順</text>
+    <text x="36" y="150" font-weight="700">第 5 章</text><text x="120" y="150">Core に無い：商取引上の契約書との関係・Mission の記法（書く場所・書式）・欄を埋めるための問い・</text>
+    <text x="120" y="168">Contract 更新などを判定する者。結合を Contract に集めるのは、この本の読み</text>
+    <text x="36" y="196" font-weight="700">第 6 章</text><text x="120" y="196">Core に無い：Evidence の様式に書く項目・共有する Ontology と Evidence の様式の所有者の決め方</text>
+    <text x="120" y="214">（所有者の決め方を Core が書いているのは、Contract だけ）</text>
+    <text x="36" y="242" font-weight="700">第 7 章</text><text x="120" y="242">既知の不足の全部。Core に無い：提起した者と承認した者が別だと記録の上でどう示すか・承認の手続きの細部・</text>
+    <text x="120" y="260">所有者本人が出したい改訂の進め方（提起した者は承認せず、Contract の所有者は 1 人なので、承認できる者がいない）</text>
+    <text x="36" y="288" font-weight="700">第 8 章</text><text x="120" y="288">既知の不足の移行中の責任。Profiles が未決：引継ぎの詳しい手順。未確定：分離と再統合の移行の手順</text>
+    <text x="36" y="318" font-weight="700">第 9 章</text><text x="120" y="318">Core に無い：採用の記録の書式と置き場所・採用をやめる手続き・Core の版が違う Cell どうしの扱い・</text>
+    <text x="120" y="336">採用しない部分を示した後、同じ Contract で両側が別の規定に従う状態の扱い</text>
   </g>
-  <path d="M20,76 H860 M20,128 H860 M20,178 H860 M20,208 H860 M20,258 H860 M20,288 H860 M20,338 H860" class="lt"/>
-  <text x="440" y="366" class="ts sub" text-anchor="middle">手順が未定の調整を、ほかの Cell からの一方的な強制で埋めない</text>
+  <path d="M20,70 H860 M20,134 H860 M20,180 H860 M20,226 H860 M20,272 H860 M20,302 H860 M20,348 H860" class="lt"/>
+  <text x="440" y="370" class="ts sub" text-anchor="middle">手順が未定の調整を、ほかの Cell からの一方的な強制で埋めない</text>
 </svg>
 ```
 

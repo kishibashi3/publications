@@ -60,7 +60,7 @@ v7 の全体図で、在庫の Cell と物流の Cell の箱の中にそれぞ�
 </svg>
 ```
 
-AA は、一つの Cell では巨大なシステムを開発できません。責任を負う人間は判断を追い切れず、Agent が計画し、作り、確かめて直す一つのループは、価値を切り替えて取り違えます。この本は、人間が分業するように仕事を分けて Agent に実行させる方法に答えます。答えは、各主体の文脈が疎結合になるように分けることです。
+AA は、一つの Cell では巨大なシステムを開発できません。責任を負う人間は判断を追い切れず、Agent は、計画し、作り、確かめて直す一つのループを回しながら、価値を切り替えて取り違えます。この本は、人間が分業するように仕事を分けて Agent に実行させる方法に答えます。答えは、各主体の文脈が疎結合になるように分けることです。
 
 ## AA と Cell
 
@@ -158,7 +158,7 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
   <rect x="30" y="30" width="230" height="70" rx="10" class="hl" style="fill:#fff"/>
   <text x="145" y="60" class="ts hc" text-anchor="middle" font-weight="700">人間が追い切れない</text><text x="145" y="86" class="tx" text-anchor="middle">追えるのは判断の 1%</text>
   <rect x="30" y="120" width="230" height="70" rx="10" class="xl" style="fill:#fff"/>
-  <text x="145" y="150" class="ts xc" text-anchor="middle" font-weight="700">ループが価値を取り違える</text><text x="145" y="176" class="tx" text-anchor="middle">見つかるのは多くて 1 件</text>
+  <text x="145" y="150" class="ts xc" text-anchor="middle" font-weight="700">Agent が価値を取り違える</text><text x="145" y="176" class="tx" text-anchor="middle">見つかるのは多くて 1 件</text>
   <text x="145" y="214" class="tx" text-anchor="middle">どちらの優先か、外から見えない</text>
   <path d="M262,110 H302" class="ln" marker-end="url(#arr)"/>
   <g>
@@ -255,7 +255,7 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
   <rect x="318" y="230" width="244" height="50" rx="4" fill="#fff" class="hl"/>
   <path d="M280,255 H316 M564,255 H600" class="lt"/>
   <text x="330" y="250" class="ts" font-weight="700">共有する Ontology</text><a href="#ch6"><text x="550" y="250" class="tx" text-anchor="end">第 6 章</text></a>
-  <text x="330" y="270" class="tx">渡す語の定義。両側が同じ一つを持つ</text>
+  <text x="330" y="270" class="tx">渡す語の定義。境界の両側が保持する</text>
   <text x="440" y="298" class="tx" text-anchor="middle">互いの中は指定せず、共有する文書でつながる（Federation <a href="#ch4"><tspan>第 4 章</tspan></a>）</text>
   <text x="10" y="322" class="ts" font-weight="700">変えるとき・分け直すとき・始めるとき</text>
   <g class="box"><rect x="10" y="332" width="280" height="76" rx="6"/><rect x="300" y="332" width="280" height="76" rx="6"/><rect x="590" y="332" width="280" height="76" rx="6"/></g>

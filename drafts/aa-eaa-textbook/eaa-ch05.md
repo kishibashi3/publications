@@ -69,7 +69,7 @@ v7 の 3 便目（@ope-ultp1635 msg 58cbdf2b の判定 1）: core.md:67 の前�
 </svg>
 ```
 
-価値・ドメイン・権限で切っても、Cell のあいだで渡すものは残ります。その結合を Contract に集めて明示し、その上で一回ずつの仕事を Mission で頼みます。
+価値・ドメイン・権限で切っても、Cell のあいだで渡すものは残ります。この本は、その結合を Contract に集めて明示し、その上で一回ずつの仕事を Mission で頼みます。
 
 ## 疎結合は、少なく明示された結合
 
@@ -113,7 +113,8 @@ v7 の 3 便目（@ope-ultp1635 msg 58cbdf2b の判定 1）: core.md:67 の前�
   <path d="M60,98 H820 M60,134 H820 M60,170 H820" class="lt"/><path d="M60,232 H820" class="ln"/>
   <text x="60" y="262" class="ts" font-weight="700">共有する文書として持つもの</text>
   <text x="60" y="294" class="ts">所有者（人間）・観測・準拠先</text><text x="440" y="294" class="tx">欄だけでは、Contract は揃わない</text>
-  <text x="440" y="356" class="ts sub" text-anchor="middle">どの Evidence を渡すかも、ここで決める</text>
+  <text x="440" y="338" class="tx" text-anchor="middle">結合を Contract に集めるのは、この本の読み。Core は Contract の欄と、境界に流れを通すことを書く</text>
+  <text x="440" y="364" class="ts sub" text-anchor="middle">どの Evidence を渡すかも、ここで決める</text>
 </svg>
 ```
 
