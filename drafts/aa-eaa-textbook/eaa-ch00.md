@@ -341,6 +341,44 @@ AA は、AI エージェント（Agent）に開発を任せるやり方で、同
 
 ※ 価値・ドメイン・権限は切る軸の例で、全部ではない。どの軸で切っても、判定は第 2 章の一つに通す。
 
+## 拠る文書：Core と Profiles
+
+<!--
+2026-11-09（@ope-ultp1635 msg 41fb85e0 の「二」）で足した。@reviewer と @reader が別々に指摘した形: 本は「Core はここまでしか決めていない」を第 3・5〜11 章に置きながら、Core が規範案で未確定であることと Profiles との関係（core.md:3・5）を 1 件も書いていなかった。Profiles は第 3 章で多く引くのに、どういう文書かが本に無かった。@reader の長谷川・宮下が「Core が何か分からない」で止まった。
+断りであって主張ではない（依頼の条件）。何に拠っているか・それがどういう状態かだけを書く。
+字の出どころ（origin/main 7336df4 の drafts/enterprise-agentic-agile/）: core.md:3「位置づけ：規範案（未確定）」・:4 対象・:5「参照：責務仕様は Profiles。解説・適用例は本書に規範を追加しない」・:9 版 6。profiles.md:3「位置づけ：責務仕様案（未確定）」・:4 対象・:5「詳細スキーマは未確定」。README.md:3 案内（非規範）・:19〜24 の表（Delivery Guide・Role Model・Adoption Guide は非規範の適用例）・:26〜27「草案である」・:31 Working Notes は検討履歴・参考資料。
+本が引く EAA の文書は、Core・Profiles のほかに Adoption Guide・Delivery Guide・Role Model・Working Notes（eaa-*.md を grep）。絵の下の段に並べた。
+置き場所: 次のページ「切り方は、Core の外の提案」が Core の字とこの本の提案を分けるので、その前で Core が何かを先に言う。
+-->
+
+```svg
+<svg viewBox="0 0 880 400" width="880" height="400">
+  <rect x="40" y="14" width="370" height="196" rx="10" class="box"/>
+  <text x="62" y="46" class="t" font-weight="700">EAA Core　版 6</text>
+  <text x="62" y="76" class="ts hc" font-weight="700">位置づけ：規範案（未確定）</text>
+  <g class="ts"><text x="62" y="112">Cell・Federation などの定義と、</text><text x="62" y="136">責務と分割・自治・意味と合意・</text><text x="62" y="160">変更・成果と記録の規定</text></g>
+  <text x="62" y="192" class="tx">各章の注は「EAA Core 版 6「1.」」の形で引く</text>
+  <path d="M410,112 H466" class="ln" marker-end="url(#arr)"/>
+  <text x="438" y="98" class="tx" text-anchor="middle">責務の</text><text x="438" y="134" class="tx" text-anchor="middle">仕様は</text>
+  <rect x="470" y="14" width="370" height="196" rx="10" class="box"/>
+  <text x="492" y="46" class="t" font-weight="700">EAA Profiles</text>
+  <text x="492" y="76" class="ts hc" font-weight="700">位置づけ：責務仕様案（未確定）</text>
+  <g class="ts"><text x="492" y="112">Cell が引き受ける責務と、</text><text x="492" y="136">その引受・合成・改訂・解除。</text><text x="492" y="160">Standard と Domain</text></g>
+  <text x="492" y="192" class="tx">詳細スキーマも未確定。主に第 3 章で引く</text>
+  <rect x="40" y="226" width="800" height="54" rx="8" fill="#fff" class="lt dash"/>
+  <text x="62" y="250" class="ts" font-weight="700">ほかに引く文書</text>
+  <text x="62" y="270" class="tx">Adoption Guide・Delivery Guide・Role Model は非規範の適用例、Working Notes は検討履歴。EAA 自身がそう位置づけている</text>
+  <rect x="40" y="296" width="800" height="90" rx="10" fill="#fff" class="hl"/>
+  <text x="62" y="326" class="ts hc" font-weight="700">この本</text>
+  <g class="ts"><text x="62" y="352">上の二つを規範として引く。どちらも未確定の草案で、版が変われば字も変わりうる</text>
+    <text x="62" y="376">各章の「Core はここまでしか決めていない」は、版 6 の字で読んだ範囲</text></g>
+</svg>
+```
+
+この本は EAA Core と EAA Profiles を規範として引きます。どちらも未確定の草案で、Core は規範案、Profiles は責務仕様案と自ら書いています。
+
+※ 出典: Core と Profiles の冒頭の「位置づけ」。Core は責務の仕様を Profiles に任せる。この本は Core 版 6 を引き、Profiles には版の欄が無い。
+
 ## 切り方は、Core の外の提案
 
 ```svg
@@ -359,6 +397,53 @@ AA は、AI エージェント（Agent）に開発を任せるやり方で、同
 EAA Core は、分割と分けた後の責任・権限・合意を定めますが、どこで切るかは書いていません。この本の切り方は、Core の規定ではなく、この本の提案です。
 
 ※ 出典: EAA Core 版 6「1. 責務と分割」。分割を「責務と自律的な判断権限を別の責任主体へ引き渡すこと」と定める。第 2 章の切り方も、同じ扱い。
+
+## 用語の一覧
+
+<!--
+2026-11-09（@ope-ultp1635 msg 41fb85e0 の「一」）で足した。AA の第 0 章「条文の一覧：原則 P・指針 D」と同じ役（語から説明する章へ飛ぶ）。Core の概念表を写さず、この本のどの章で扱うかを主にした。
+数えた形（依頼の表）: 主な語のうち Profile・Federation・Contract は第 0 章（p.「この本の構成」の絵）、Constitution・Evidence・Ontology は第 2 章で、説明する章より前に名前が出る。読み手は後で説明されるのか、もう説明されたのかが分からない。だから本文で「名前だけ先に出る語も、説明はこの表の章で」と言う。
+語の並びは本の群に合わせた（Cell の境界と責務 → 切っても残る結合の持ち方）。群四・群五（第 8〜11 章）は新しい概念の語を持たないので、章の中で出る語の段に手続きの語を置いた。
+意味の列は core.md:19〜36 の概念表を、本文の各章が使っている言い方に寄せて平らにした（Cell は第 0 章 p.「AA と Cell」の注、Federation は第 4 章の名付け、Ontology は core.md:16「境界の両側が保持する」）。
+置き場所: 第 0 章の終わり。p.「この本の構成」の絵が Profile・Constitution・Federation を出すので、その前に置く。
+-->
+
+```svg
+<svg viewBox="0 0 880 410" width="880" height="410">
+  <g class="tx"><text x="40" y="18">語</text><text x="190" y="18">この本での意味</text><text x="840" y="18" text-anchor="end">説明する章</text></g>
+  <path d="M40,26 H840" class="lt"/>
+  <text x="40" y="48" class="ts sub" font-weight="700">Cell の境界と責務</text>
+  <rect x="40" y="56" width="800" height="32" class="soft"/>
+  <g class="ts"><text x="52" y="78" font-weight="700">Cell</text><text x="190" y="78">目的に対する責任・権限・実行能力を持ち、自律して成果を出す単位</text></g>
+  <text x="830" y="78" class="ts" text-anchor="end"><a href="#ch0"><tspan>第 0 章</tspan></a><tspan>・</tspan><a href="#ch2"><tspan>第 2 章</tspan></a></text>
+  <g class="ts"><text x="52" y="110" font-weight="700">Profile</text><text x="190" y="110">Cell が引き受ける責務を書いた、版付きの仕様</text></g>
+  <a href="#ch3"><text x="830" y="110" class="ts" text-anchor="end">第 3 章</text></a>
+  <rect x="40" y="120" width="800" height="32" class="soft"/>
+  <g class="ts"><text x="52" y="142" font-weight="700">Constitution</text><text x="190" y="142">Cell が採用した目的・価値・制約・権限・禁止事項の規範</text></g>
+  <a href="#ch4"><text x="830" y="142" class="ts" text-anchor="end">第 4 章</text></a>
+  <g class="ts"><text x="52" y="174" font-weight="700">Federation</text><text x="190" y="174">互いの中の方式を指定せず、共有する文書でつながる Cell どうしの関係</text></g>
+  <a href="#ch4"><text x="830" y="174" class="ts" text-anchor="end">第 4 章</text></a>
+  <text x="40" y="206" class="ts sub" font-weight="700">切っても残る結合の持ち方</text>
+  <rect x="40" y="214" width="800" height="32" class="soft"/>
+  <g class="ts"><text x="52" y="236" font-weight="700">Contract</text><text x="190" y="236">Cell のあいだの取り決め。責任・提供条件・入出力・要る Evidence</text></g>
+  <a href="#ch5"><text x="830" y="236" class="ts" text-anchor="end">第 5 章</text></a>
+  <g class="ts"><text x="52" y="268" font-weight="700">Mission</text><text x="190" y="268">責務のもとで、今回実現する変化・成果</text></g>
+  <a href="#ch6"><text x="830" y="268" class="ts" text-anchor="end">第 6 章</text></a>
+  <rect x="40" y="278" width="800" height="32" class="soft"/>
+  <g class="ts"><text x="52" y="300" font-weight="700">Evidence</text><text x="190" y="300">成果や判断が成り立ったことを、確かめられるようにする記録</text></g>
+  <a href="#ch7"><text x="830" y="300" class="ts" text-anchor="end">第 7 章</text></a>
+  <g class="ts"><text x="52" y="332" font-weight="700">Ontology</text><text x="190" y="332">境界の両側が持つ、共有する語の定義。意味の違いと対応も持つ</text></g>
+  <a href="#ch7"><text x="830" y="332" class="ts" text-anchor="end">第 7 章</text></a>
+  <path d="M40,348 H840" class="lt"/>
+  <text x="40" y="372" class="ts sub" font-weight="700">章の中で出る語</text>
+  <g class="tx"><text x="190" y="372">Standard・Domain（第 3 章）、Task・Authority・Acceptance Evidence（第 6 章）、</text>
+    <text x="190" y="394">版の公開と採用（第 8 章）、所有者と承認・職務分離（第 9 章）、引き継ぎ（第 10 章）</text></g>
+</svg>
+```
+
+この本の主な語と、それを説明する章です。第 0〜2 章で名前だけ先に出る語も、説明はこの表の章で行います。語に出会ったら、ここへ戻ってください。
+
+※ 意味は EAA Core 版 6 の概念表の定義を、この本の言葉で言い直した。Core の字は、各章の注で引く。
 
 ## この本の構成
 
@@ -391,4 +476,4 @@ EAA Core は、分割と分けた後の責任・権限・合意を定めます�
 
 第 1 章で職能で切らない理由、第 2〜4 章で Cell の境界と責務、第 5〜7 章で切っても残る結合、第 8・9 章で境界の保ち方、第 10・11 章で切り直しと始め方を見ます。
 
-※ LeSS・SAFe・Spotify など、人間の分業の枠組みとの対応は付録で見る。
+※ LeSS・SAFe・Spotify など、人間の分業の枠組みとの対応は付録で見る。全体を 1 枚にした絵は巻末に置いた。
