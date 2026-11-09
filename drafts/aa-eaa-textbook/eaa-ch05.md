@@ -50,6 +50,7 @@ v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
 v7 の残す字「結ぶ Cell の全部が同じ版を採用して成り立つ。片側だけの間は前の版」（core.md:80）は p.「結ぶ Cell が全部採用して、成立する」の本文に逐語。
 章番号: この章の本文・注・絵は v7 の章番号（10 章）で書いた。版の改訂と採用・所有者は第 7 章（旧第 8・9 章）。この上の記録の章番号は、そのときの番号のまま。
 v7 の 3 便目（@ope-ultp1635 msg 58cbdf2b の判定 1）: core.md:67 の前半「子 Mission は親 Goal への寄与を説明可能にする」を p.「Mission は、一回の仕事」の絵（Goal・Outcome の箱の下）に戻した。便 2 で落としたが、第 4 章にこの字は無く、落とす根拠が無かった。出典に「2.」を足した。後半（目的を変えるなら新しい Mission か改訂として提案する）は p.「例：追跡番号を出荷結果に載せる」の注のまま。
+検算 1 便目と v7 の通読を受けて直した（@ope-ultp1635 msg 9628f0a9。判定の正本 roles-kaz reviewer/feedback-archive/2026-11-09-eaa-textbook-d0dd000-fold-v7-1-core.md、reader/feedback-archive/2026-11-09-eaa-textbook-v7-68p-6readers.md）: p.「Contract は、契約書とは別に持つ」を足した（@reader 河野・片山。3 周目は 454f55d の eaa-ch05.md p.「Core はここまでしか決めていない」と eaa-ch11.md p.「採用しない部分は、相手に示す」の 2 ページで分かっていた。重なる所の例は eaa-ch11.md の例のまま）。p.「Mission の欄を埋める問い」を 454f55d の eaa-ch06.md p.「欄を埋めるための問い」から戻した（@reader 河野・宮下）。Authority の行に、頼む側が持っていないものは書けない（core.md:66）を足した（河野が自分で書く Authority が分からなかった）。
 -->
 
 > Contract には渡すもの・条件・確かめ方を書き、結ぶ Cell のすべてが同じ版を採用して成り立たせる。一回ずつの仕事は Mission で、受ける Cell が頼む側の事情を知らずに進められる形で渡す。
@@ -147,6 +148,32 @@ Contract は、相互の責任、提供条件、入出力、必要な Evidence �
 
 ※ 例・中の作り方・埋まらない欄の読みは EAA 紹介 3（この本の前に書いた紹介資料。先に読まなくてよい）のもので、以降の章でも使う。準拠先は Core「4.」が決めた文書。
 
+## Contract は、契約書とは別に持つ
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <g class="tx">
+    <text x="60" y="30" font-weight="700"></text><text x="200" y="30" class="hc" font-weight="700">Contract</text><text x="540" y="30" font-weight="700">商取引の契約書</text>
+    <text x="60" y="60" font-weight="700">結ぶもの</text><text x="200" y="60">Cell と Cell。同じ会社の中でも結ぶ</text><text x="540" y="60">会社と会社</text>
+    <text x="60" y="90" font-weight="700">書くこと</text><text x="200" y="90">相互の責任・提供条件・入出力・必要な Evidence</text><text x="540" y="90">代金・期間・検収・責任の範囲などの取引の条件</text>
+    <text x="60" y="120" font-weight="700">変え方</text><text x="200" y="120">所有者が版を公開し、結ぶ Cell が全部採用して移る</text><text x="540" y="120">当事者が合意して改める</text>
+    <text x="60" y="150" font-weight="700">確かめ方</text><text x="200" y="150">受け取った Cell が Evidence で受け入れる</text><text x="540" y="150">発注側が契約の条件で検収する</text>
+  </g>
+  <path d="M40,40 H840 M40,70 H840 M40,100 H840 M40,130 H840 M180,14 V160 M520,14 V160" class="lt"/>
+  <text x="440" y="196" class="ts" text-anchor="middle" font-weight="700">会社をまたぐあいだでは、両方を持つ。Contract は契約書の代わりにならない</text>
+  <rect x="40" y="216" width="800" height="120" rx="10" class="soft"/>
+  <text x="60" y="244" class="ts" font-weight="700">両方が同じことを決めているとき</text>
+  <text x="60" y="272" class="tx">例：Contract の所有者の交代を、取引先との契約書で決めている</text>
+  <text x="60" y="298" class="tx">→ Core を採用するときに、その規定を「採用しない部分」と理由として記録に書き、</text>
+  <text x="60" y="320" class="tx">　 Contract を結ぶ相手の Cell に示す（記録の書き方は第 9 章）</text>
+  <text x="440" y="366" class="ts sub" text-anchor="middle">契約書との関係は、Core に書かれていない</text>
+</svg>
+```
+
+Contract は Cell のあいだの合意で、契約書の代わりではありません。契約書で決めている所は、Core を採用するときに採用しない部分として相手に示します。
+
+※ 契約書の側の欄と、重なる所の扱いは書き手の読み。例は仮定。採用しない部分を示すのは Core 版 6「6.」。契約主体をまたぐ責任は Profiles「6.」の Supplier。
+
 ## 結ぶ Cell が全部採用して、成立する
 
 ```svg
@@ -194,6 +221,29 @@ Contract は、相互の責任、提供条件、入出力、必要な Evidence �
 Mission は、引き受けた責務のもとで今回実現する変化です。目指す状態が Goal、成り立たせた変化が Outcome です。続く取り決めは Contract です。
 
 出典: EAA Core 版 6 の概念表「Mission」「Goal」「Outcome」、「2.」。※ 詳しくは打合せでと渡すと、受けた側は頼んだ側に聞きに戻る（書き手の読み、第 2 章）。
+
+## Mission の欄を埋める問い
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <rect x="40" y="10" width="800" height="330" rx="3" class="hl" style="fill:#fff"/>
+  <g class="ts">
+    <text x="60" y="44" font-weight="700">Goal</text><text x="270" y="44">終わったとき、何ができるようになっているか</text>
+    <text x="60" y="88" font-weight="700">Constraints</text><text x="270" y="88">進めるあいだ、何を変えてはいけないか</text>
+    <text x="60" y="132" font-weight="700">Authority</text><text x="270" y="132">頼む側が持っているもののうち、何を使ってよく、</text><text x="270" y="154">何を使わないか</text>
+    <text x="270" y="176" class="tx">頼む側が持っていないものは書けない。無ければ「無い」と書く</text>
+    <text x="60" y="220" font-weight="700">Acceptance Evidence</text><text x="270" y="220">何が残っていたら、成果と判断が成り立ったと、</text><text x="270" y="242" font-weight="700">頼んだ側が、受けた側を介さずに確かめられるか</text>
+    <text x="60" y="286" font-weight="700">依存する版</text><text x="270" y="286">どの版の Contract・Ontology・Constitution を前提にしたか</text>
+    <text x="60" y="326" class="sub">背景と条件</text><text x="270" y="326" class="sub">引き受けるかを決めるのに、受ける側は何を知る必要があるか</text>
+  </g>
+  <path d="M50,62 H830 M50,106 H830 M50,194 H830 M50,262 H830 M50,304 H830" class="lt"/>
+  <text x="440" y="368" class="ts sub" text-anchor="middle">左が Core の欄。右は、自分の案件で欄を埋めるときの問い</text>
+</svg>
+```
+
+右の問いに答えると、Mission の欄が埋まります。問いは、受ける側が頼む側に聞かなくても答えが分かる形で書くためのものです。
+
+※ 問いは書き手が作った。Core の字と照合した（Acceptance Evidence は「0.」と概念表、Authority は「2.」の委任元の範囲を越えない）。
 
 ## 例：追跡番号を出荷結果に載せる
 

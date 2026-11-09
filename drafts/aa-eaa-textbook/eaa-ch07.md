@@ -10,6 +10,7 @@ p.「公開と採用は、別の行為」の絵の下の行に、第 4 章から
 p.「改訂は提起者でない人間の所有者が承認する」は、便 2 の判定（@ope-ultp1635 msg 58cbdf2b の判定 2）を受けて、共有する文書の所有者が人間であること（core.md:94）を Evidence の様式を含む文書の一覧と一緒に絵の上の段に置いた。題は v7 の表の字（22 字）を build の上限 20 字に収めた。
 v7 の残す字: 提起した者は、文書を提供する側に属していても承認しない（core.md「4.」）は p.「改訂は…」の本文。対象は Cell の境界（どの軸で切った境界も、core.md:24）は p.「実行者は、自分の権限を広げない」の絵の下の行。
 章番号: この章の本文・注・絵は v7 の章番号（10 章）で書いた。
+検算 1 便目と v7 の通読を受けて直した（@ope-ultp1635 msg 9628f0a9。判定の正本 roles-kaz reviewer/feedback-archive/2026-11-09-eaa-textbook-d0dd000-fold-v7-1-core.md、reader/feedback-archive/2026-11-09-eaa-textbook-v7-68p-6readers.md）: p.「相手の切り替えを強いると、文脈が戻る」を 454f55d の eaa-ch08.md:41-57 から戻した（便 3 の「落としたままでよい」の判定の誤り。旧ページは @reviewer 3 便 1. の判定を既に取り込んでいた）。p.「公開と採用は、別の行為」の絵の行「物流は在庫に合わせて切り替えずに済む」は第 2 章の判定の字と同じで限定が無かったので、「物流は事情を、自分の採用を決めるときに読む」にした。p.「所有者は、結ぶ Cell が合意して決める」の注「冒頭の観測欄」を「Core が冒頭に挙げた既知の不足」に（@reader 長谷川・片山）。p.「正本の改訂と、採用版の変更を分ける」の注に、提供する側は発注元か委託先かの区別ではないと足した。
 -->
 
 > 変えたい側は内容・理由・根拠を付けて提案し、提起していない人間の所有者が承認して新しい版を公開する。採用は各 Cell の規範の所有者が決め、Contract は結ぶ Cell が全部同じ版を採用するまで、いま成り立っている版で効く。実行者は自分の権限を自分で広げない。
@@ -51,7 +52,7 @@ v7 の残す字: 提起した者は、文書を提供する側に属していて
     <text x="60" y="268">物流が版 2 を採用する</text><text x="500" y="268" text-anchor="middle" class="hc" font-weight="700">2</text><text x="630" y="268" text-anchor="middle" class="hc" font-weight="700">2</text><text x="770" y="268" text-anchor="middle" class="okc" font-weight="700">2（移行）</text>
   </g>
   <path d="M40,150 H840 M40,182 H840 M40,214 H840 M40,246 H840" class="lt"/>
-  <text x="440" y="306" class="ts" text-anchor="middle">在庫が先に採用しても版 1 の上で続け、物流は在庫に合わせて切り替えずに済む</text>
+  <text x="440" y="306" class="ts" text-anchor="middle">在庫が先に採用しても版 1 の上で続く。物流は事情を、自分の採用を決めるときに読む</text>
   <text x="440" y="340" class="tx" text-anchor="middle">Profile の引受・Mission・提案では、依存する Ontology・Constitution・Contract の版を特定する</text>
   <text x="440" y="364" class="tx" text-anchor="middle">新しい版を公開しても、採用中の合意は移行が成り立つまで効く</text>
 </svg>
@@ -60,6 +61,27 @@ v7 の残す字: 提起した者は、文書を提供する側に属していて
 新しい版の公開と、各 Cell の採用は別の行為です。Contract は結ぶ Cell が全部同じ版を採用して移り、それまではいま成り立っている版が効きます。
 
 出典: EAA Core 版 6「3.」。※ 表の版の番号は EAA 紹介 3 の仮定。誰が書いた Constitution をどの Cell が採用するかは Core に無い。
+
+## 相手の切り替えを強いると、文脈が戻る
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <path d="M440,30 V300" class="lt dash"/>
+  <text x="220" y="56" class="t" text-anchor="middle" font-weight="700">変えた時点で、相手も切り替える</text>
+  <rect x="40" y="80" width="360" height="190" rx="10" class="box"/><text x="220" y="116" class="ts" text-anchor="middle" font-weight="700">物流の Cell</text>
+  <text x="220" y="160" class="ts" text-anchor="middle">自分の仕事を止めて、</text><text x="220" y="186" class="ts" text-anchor="middle">変えた事情をすぐ読む</text>
+  <use href="#i-no" x="206" y="212" width="28" height="28"/>
+  <text x="660" y="56" class="t hc" text-anchor="middle" font-weight="700">採用するまで、前の版のまま</text>
+  <rect x="480" y="80" width="360" height="190" rx="10" class="hl" style="fill:#fff"/><text x="660" y="116" class="ts hc" text-anchor="middle" font-weight="700">物流の Cell</text>
+  <text x="660" y="160" class="ts" text-anchor="middle">版 1 の上で仕事を続け、事情は</text><text x="660" y="186" class="ts" text-anchor="middle">採用を決めるときに読む</text>
+  <use href="#i-ok" x="646" y="212" width="28" height="28"/>
+  <text x="440" y="340" class="ts sub" text-anchor="middle">第 2 章の判定（自分の仕事のあいだに別の文脈へ切り替えずに済むか）を、時間の上に当てる</text>
+</svg>
+```
+
+一方の変更が即時の切り替えを強いると、相手は仕事を止めて事情を読みます。公開と採用を分けても事情は読みますが、いつ読むかを相手が決められます。
+
+※ 書き手の読み（第 2 章の判定を時間の上に当てた）。Core が定めるのは、公開と採用を分けること、全部が採用して移ること、提案すること。
 
 ## 例：出荷指示に希望時間帯を足したい
 
@@ -157,7 +179,7 @@ v7 の残す字: 提起した者は、文書を提供する側に属していて
 
 Profile の正本は提供する側が持ち、引き受けた側は採用した版を特定します。どちらが変えたい場合も、正本の改訂と採用版の変更を別にし、PR も分けます。
 
-出典: EAA Profiles「4.」の「改訂元と採用先を分ける」、EAA Delivery Guide「20. Profile 改訂・採用 Pattern」（PR の分け方は適用例）。
+出典: EAA Profiles「4.」、Delivery Guide「20.」（PR の分け方は適用例）。※ 提供する側は Profile を出した側で、発注元か委託先かの区別ではない。
 
 ## 改訂は提起者でない人間の所有者が承認する
 
@@ -218,7 +240,7 @@ Profile の正本は提供する側が持ち、引き受けた側は採用した
 
 Contract の所有者は、結ぶ Cell に属する 1 人を結ぶ Cell が合意して決めます。離れたら後任が決まるまで改訂は承認されず、後任も同じ合意で決めます。
 
-出典: EAA Core 版 6「4. 提案と変更」。※ 後任の合意が成り立たないときは、合意不成立（冒頭の観測欄）として扱う。
+出典: EAA Core 版 6「4. 提案と変更」。※ 後任の合意が成り立たないときは、合意不成立（Core が冒頭に挙げた既知の不足）として扱う。
 
 ## 実行者は、自分の権限を広げない
 

@@ -12,6 +12,7 @@ Operator: 第 0〜8 章に Operator の字は無い。p.「判断を規範に書
 絵: Cell はどれもほかの Cell の枠の外に並べる（core.md:43）。
 章番号: この章の本文・注・絵は v7 の章番号（10 章）で書いた。
 便 3 の判定（@ope-ultp1635 msg a6251cdc）: p.「例：在庫と物流を Core でつなぐ」の注に、5b5aea2 の eaa-ch10.md:206 の「中の規範に所有者がいない Cell は、採用の前に中の手続きで決める」を戻した（@reader r3 の p.191〜194）。注の上限 90 字に入れるため、同じ注の「在庫と物流の例の続きで、」を「例は仮定。」に、出典の「（適用例）」と「EAA 」3 つを落とした。旧注の参照「（第 9 章）」は付けていない（v7 では第 7 章 p.「改訂は提起者でない人間の所有者が承認する」の絵の「Cell の中の規範の改訂の手続きは、各 Cell が決める」に当たる）。
+検算 1 便目と v7 の通読を受けて直した（@ope-ultp1635 msg 9628f0a9。判定の正本 roles-kaz reviewer/feedback-archive/2026-11-09-eaa-textbook-d0dd000-fold-v7-1-core.md、reader/feedback-archive/2026-11-09-eaa-textbook-v7-68p-6readers.md）: p.「判断を規範に書き直していく」に delivery-guide.md:15-16 の条件（人の判断を例外に集める運営では）と断り（人が中心の作り方の Cell に同じ運営を求めない）を戻した（便 3 の「注で足りる」の判定の誤り）。p.「Core が決めていないこと」の本文「導入する Cell は、自分の案件でこれを決めます」は絵の下の行（core.md:71）と閉じないので、一つの Cell で閉じるものとほかの Cell にかかるもので主語を分けた。第 7 章の行「所有者は 1 人」を「Contract の所有者は 1 人」に（core.md:98。所有者を 1 人と決めているのは Contract だけ）。
 -->
 
 > 最初に、いまの分業でチームの境界を越えて行き来している記録を見る。中の作り方は残し、行き来の多い一つのあいだから Contract に書き、Core の採用は各 Cell の規範の所有者が承認して記録する。
@@ -190,7 +191,7 @@ Core を採用するかは Cell ごとに決め、規範の所有者のうち Co
     <rect x="720" y="10" width="140" height="60" rx="22" class="a"/><text x="790" y="36" class="on">機械で読む制御</text><text x="790" y="56" class="on">次からは任せる</text>
   </g>
   <path d="M140,40 H156 M280,40 H296 M520,40 H536 M700,40 H716" class="ln"/>
-  <text x="440" y="104" class="ts" text-anchor="middle" font-weight="700">同じ判断を、毎回 Operator がしなくてよくなる</text>
+  <text x="440" y="104" class="ts" text-anchor="middle" font-weight="700">人の判断を例外に集める運営では、同じ判断を毎回 Operator がしなくてよくなる</text>
   <rect x="20" y="126" width="270" height="222" rx="10" class="xl" style="fill:#fff"/>
   <text x="155" y="154" class="ts xc" text-anchor="middle" font-weight="700">機械化は、権限の緩和ではない</text>
   <g class="tx" text-anchor="middle"><text x="155" y="186">自分を縛る規範を自分で承認して</text><text x="155" y="206">緩めることとは別</text><text x="155" y="244">ほかの Cell にかかる規範は、</text><text x="155" y="264">提案して所有者の承認と</text><text x="155" y="284">相手の採用を得る</text></g>
@@ -200,10 +201,11 @@ Core を採用するかは Cell ごとに決め、規範の所有者のうち Co
   <rect x="590" y="126" width="270" height="222" rx="10" class="soft"/>
   <text x="725" y="154" class="ts" text-anchor="middle" font-weight="700">観測すること</text>
   <g class="tx" text-anchor="middle"><text x="725" y="186">人の判断の件数を減らしながら、</text><text x="725" y="206">成果と安全を保てているか</text><text x="725" y="226">を一緒に観測する</text><text x="725" y="264" class="hc" font-weight="700">依存が減っていくことを</text><text x="725" y="284" class="hc" font-weight="700">成熟と見る</text><text x="725" y="320">判断の件数の多さが価値ではない</text></g>
+  <text x="440" y="372" class="ts hc" text-anchor="middle" font-weight="700">人が中心の作り方の Cell に、同じ運営を求めるものではない</text>
 </svg>
 ```
 
-Operator は、ふつうの成果物を一つずつ承認する役ではありません。繰り返す判断を記録し、承認と受入を得て規則や Contract にし、機械で読める形にします。
+人の判断を例外に集める運営では、Operator はふつうの成果物を一つずつ承認しません。繰り返す判断を、承認と受入を得て規則や Contract にします。
 
 出典: EAA Adoption Guide「6.」、Role Model「1.」「2.」、Delivery Guide「2.」（適用例）。Operator は判断責任者を担う人間の呼び名。
 
@@ -221,7 +223,7 @@ Operator は、ふつうの成果物を一つずつ承認する役ではあり�
     <text x="120" y="164">Contract 更新などを判定する者</text>
     <text x="36" y="194" font-weight="700">第 6 章</text><text x="120" y="194">Core に無い：Evidence の様式に書く項目・共有する Ontology と Evidence の様式の所有者の決め方</text>
     <text x="36" y="224" font-weight="700">第 7 章</text><text x="120" y="224">既知の不足の全部。Core に無い：提起した者と承認した者が別だと記録の上でどう示すか・承認の手続きの細部・</text>
-    <text x="120" y="244">所有者本人が出したい改訂の進め方（提起した者は承認せず、所有者は 1 人なので、承認できる者がいない）</text>
+    <text x="120" y="244">所有者本人が出したい改訂の進め方（提起した者は承認せず、Contract の所有者は 1 人なので、承認できる者がいない）</text>
     <text x="36" y="274" font-weight="700">第 8 章</text><text x="120" y="274">既知の不足の移行中の責任。Profiles が未決：引継ぎの詳しい手順・分離と再統合の移行の手順</text>
     <text x="36" y="304" font-weight="700">第 9 章</text><text x="120" y="304">Core に無い：採用の記録の書式と置き場所・採用をやめる手続き・Core の版が違う Cell どうしの扱い・</text>
     <text x="120" y="324">採用しない部分を示した後、同じ Contract で両側が別の規定に従う状態の扱い</text>
@@ -231,6 +233,6 @@ Operator は、ふつうの成果物を一つずつ承認する役ではあり�
 </svg>
 ```
 
-章ごとの、Core と Profiles が決めていないことです。導入する Cell は、自分の案件でこれを決めます。決めていることは各ページの出典が言います。
+Core と Profiles が決めていないことです。一つの Cell で閉じるものはその Cell が、ほかの Cell にかかるものはかかる Cell と調整して決めます。
 
 出典: EAA Core 版 6 冒頭の観測欄・「2.」、EAA Profiles「5.」「6.」「8.」「9.」「10.」。※ Core の「移行」は版の移行の語。導入の順序と速さは適用例。

@@ -30,6 +30,7 @@ v7 の 3 便目（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
 - p.「SAFe 2022 年版：既定は任せる」に p.「SAFe：集めすぎると判断待ちの列」p.「SAFe：計画は PI Planning で」を畳んだ。題と絵と注に「2022 年版」を残し、いまの版の字と 2022 年版の字を絵の中で分けた（@reader の桜井が、推進会議の前に協力会社の担当に読ませたいと挙げた 3 ページ。社外に出る前提で読まれる。@ope-ultp1635 msg 58cbdf2b）。2023 年 12 月の版の扱いは注に残した。英文・URL・参照日は前のページのまま絵の中。
 - p.「この本の切り方との対応」に p.「複数社のあいだも、集めるか任せるか」p.「あいだの合意を、書いて持つ」を畳んだ。p.「引用の確かめ方」は各ページの出典の注で足りるので落とした（Kniberg の動画を当たり直していないことは Spotify のページの絵に、EAA 紹介 0 の説明は同じページの注にある）。
 - 章番号: 本文・注・絵は v7 の章番号（10 章）で書いた。
+検算 1 便目と v7 の通読を受けて直した（@ope-ultp1635 msg 9628f0a9。判定の正本 roles-kaz reviewer/feedback-archive/2026-11-09-eaa-textbook-d0dd000-fold-v7-1-core.md、reader/feedback-archive/2026-11-09-eaa-textbook-v7-68p-6readers.md）: p.「SAFe 2022 年版：既定は任せる」に、英文ごとの日本語（書き手の訳）、版の見出し（2022 年の版／いまの版）、2023 年 12 月の版にこの字が無いことを絵の中に、この本との関係（ART の中の SAFe は Cell の中の作り方として残す）の段を足した。PI Planning の planning board の行は落とした。本文の「いまの版にその字は無く」は、いまの版を導入部しか読んでいないので「2023 年 12 月の版に」にした（@reader 桜井: 単独では渡せない、版の違いを協力会社の担当が読み分けられない）。p.「この本の切り方との対応」の「この本」の箱に「契約書は別に持つ（第 5 章）」を足した（@reader 河野が Contract が契約書の代わりか分からなくなった）。
 -->
 
 ## 三つとも、決定ごとに分けている
@@ -82,30 +83,33 @@ LeSS は、優先順位の最終決定を一人の Product Owner（PO）に集�
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="40" y="20" class="tx sub">SAFe「Principle #9 – Decentralize decision-making」（Web Archive 2022-02-01 の版、2026-11-08 参照）</text>
-  <rect x="40" y="30" width="440" height="70" rx="8" class="soft"/>
-  <text x="260" y="54" class="ts" text-anchor="middle" font-weight="700">Centralize Strategic Decisions</text>
-  <text x="260" y="82" class="tx" text-anchor="middle">Infrequent・Long-lasting・Provide significant economies of scale</text>
-  <rect x="500" y="30" width="340" height="70" rx="8" class="hl" style="fill:#fff"/>
-  <text x="670" y="54" class="ts hc" text-anchor="middle" font-weight="700">Decentralize Everything Else</text>
-  <text x="670" y="82" class="tx" text-anchor="middle">Frequent・Time-critical・Require local information</text>
-  <text x="40" y="126" class="ts">The vast majority of decisions do not reach the threshold of strategic importance.</text>
-  <text x="40" y="148" class="ts">All other decisions should be decentralized.</text>
-  <path d="M40,166 H840" class="lt"/>
-  <text x="40" y="188" class="tx sub">SAFe「Principle #9 - Decentralize Decision-Making」いまの版の導入部（framework.scaledagile.com、2026-11-08 参照）</text>
-  <text x="40" y="212" class="ts">when managerial input is necessary for most decisions, it causes a queue of</text>
-  <text x="40" y="234" class="ts">decision requests that block progress</text>
-  <path d="M40,252 H840" class="lt"/>
-  <text x="40" y="274" class="tx sub">SAFe「PI Planning」（framework.scaledagile.com/pi-planning、2026-11-08 参照）</text>
-  <text x="40" y="298" class="ts">It is typically a 2-day event for the entire ART that takes place every 8-12 weeks.</text>
-  <text x="40" y="320" class="ts">PI Planning is led by the Release Train Engineer (RTE).</text>
-  <text x="40" y="350" class="tx">チームのあいだの依存は ART planning board に載せる。ART は SAFe の、チームを束ねた単位。RTE はその進行役</text>
+  <text x="40" y="18" class="tx sub">2022 年の版：SAFe「Principle #9 – Decentralize decision-making」（Web Archive 2022-02-01、2026-11-08 参照）</text>
+  <rect x="40" y="28" width="440" height="62" rx="8" class="soft"/>
+  <text x="260" y="50" class="ts" text-anchor="middle" font-weight="700">Centralize Strategic Decisions</text>
+  <text x="260" y="76" class="tx" text-anchor="middle">戦略的な決定だけ集める（まれ・長く効く・規模の経済）</text>
+  <rect x="500" y="28" width="340" height="62" rx="8" class="hl" style="fill:#fff"/>
+  <text x="670" y="50" class="ts hc" text-anchor="middle" font-weight="700">Decentralize Everything Else</text>
+  <text x="670" y="76" class="tx" text-anchor="middle">ほかはすべて任せる（頻繁・急ぐ・現場の情報）</text>
+  <text x="40" y="112" class="ts">All other decisions should be decentralized.</text>
+  <text x="40" y="134" class="tx">2023 年 12 月の版にこの字は無い。決定ごとに点を付けて、任せるかを選ぶ</text>
+  <path d="M40,150 H840" class="lt"/>
+  <text x="40" y="170" class="tx sub">いまの版：SAFe「Principle #9 - Decentralize Decision-Making」の導入部（framework.scaledagile.com、2026-11-08 参照）</text>
+  <text x="40" y="192" class="ts">when managerial input is necessary for most decisions, it causes a queue of decision requests</text>
+  <text x="40" y="212" class="tx">多くの決定に管理者の判断が要ると、判断待ちの列ができて進みが止まる</text>
+  <path d="M40,228 H840" class="lt"/>
+  <text x="40" y="248" class="tx sub">いまの版：SAFe「PI Planning」（framework.scaledagile.com/pi-planning、2026-11-08 参照）</text>
+  <text x="40" y="270" class="ts">It is typically a 2-day event for the entire ART that takes place every 8-12 weeks.</text>
+  <text x="40" y="290" class="tx">ART（チームを束ねた単位）全体で、8〜12 週ごとにふつう 2 日。進行役は RTE</text>
+  <rect x="40" y="306" width="800" height="64" rx="10" class="box"/>
+  <text x="60" y="332" class="ts" font-weight="700">この本との関係</text>
+  <text x="200" y="332" class="tx">ART の中の SAFe の進め方は、Cell の中の作り方として残す（第 9 章）</text>
+  <text x="200" y="356" class="tx">この本が書くのは Cell のあいだの合意の持ち方。対応はこの付録の最後のページ</text>
 </svg>
 ```
 
-2022 年版の SAFe は、戦略的な決定だけを集めてほかは任せていました。いまの版は集めすぎると判断待ちの列ができると書き、計画は PI Planning で揃えます。
+SAFe は 2022 年版で、戦略的な決定だけ集めてほかを任せていました。2023 年 12 月の版にその字は無く、いまの版は集めすぎると判断待ちの列ができると書きます。
 
-出典: SAFe（題・英文・参照日は絵の中）。2023 年 12 月の版に「ほかはすべて任せる」の字は無く、決定ごとに点を付けて任せるかを選ぶ。
+出典: SAFe（題・英文・版・参照日は絵の中）。英文の下の日本語は書き手の訳。いまの版は導入部だけを読んだ。
 
 ## Spotify：任せる側に大きく寄った
 
@@ -145,11 +149,11 @@ Spotify は、各チームに任せる側に大きく寄りました。元社員
   <text x="440" y="186" class="tx sub" text-anchor="middle">左と右は同じ物ではない。読み替えの見当</text>
   <text x="40" y="222" class="ts" font-weight="700">あいだの合意を、誰が持つか（複数社で組む現場でも同じ）</text>
   <g class="tx" text-anchor="middle">
-    <rect x="40" y="236" width="250" height="96" rx="10" class="soft"/><text x="165" y="262" class="ts" font-weight="700">集める</text><text x="165" y="288">発注側の定例会議で合わせ、</text><text x="165" y="310">契約と検収の条件に書く</text>
-    <rect x="315" y="236" width="250" height="96" rx="10" class="soft"/><text x="440" y="262" class="ts" font-weight="700">任せる</text><text x="440" y="288">ベンダーどうしで直接合わせる。</text><text x="440" y="310">中身は話した人が持つ</text>
-    <rect x="590" y="236" width="250" height="96" rx="10" class="hl" style="fill:#fff"/><text x="715" y="262" class="ts hc" font-weight="700">この本</text><text x="715" y="288">版付きの Contract に書き、結ぶ</text><text x="715" y="310">Cell が全部採用して成り立たせる</text>
+    <rect x="40" y="236" width="250" height="104" rx="10" class="soft"/><text x="165" y="262" class="ts" font-weight="700">集める</text><text x="165" y="288">発注側の定例会議で合わせ、</text><text x="165" y="310">契約と検収の条件に書く</text>
+    <rect x="315" y="236" width="250" height="104" rx="10" class="soft"/><text x="440" y="262" class="ts" font-weight="700">任せる</text><text x="440" y="288">ベンダーどうしで直接合わせる。</text><text x="440" y="310">中身は話した人が持つ</text>
+    <rect x="590" y="236" width="250" height="104" rx="10" class="hl" style="fill:#fff"/><text x="715" y="262" class="ts hc" font-weight="700">この本</text><text x="715" y="288">版付きの Contract に書き、結ぶ</text><text x="715" y="310">Cell が全部採用して成り立たせる</text><text x="715" y="330" class="hc">契約書は別に持つ（第 5 章）</text>
   </g>
-  <text x="440" y="362" class="ts sub" text-anchor="middle">片側だけでは変わらない。採用は各 Cell の規範の所有者が決める</text>
+  <text x="440" y="366" class="ts sub" text-anchor="middle">片側だけでは変わらない。採用は各 Cell の規範の所有者が決める</text>
 </svg>
 ```
 

@@ -33,6 +33,7 @@ p.「〜」の参照: 移したページの題を本文・注・絵の中で引�
 絵の Cell の枠は入れ子にしない（core.md:43）。
 v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v7.md 863f5176。本文 GO: @ope-ultp1635 msg d9ab1757、kishibashi3「うん」）: 19 → 7 ページ。p.「Profile は、引き受ける責務の仕様」に p.「Profile に書くこと」（5 項目を絵の右に）。p.「Standard と Domain」に p.「Standard の初期カタログ」（名前だけ絵に）p.「Domain は最初の Mission から」。p.「書くことと割り当てることは別」に p.「判断責任者は責務ごとに置く」p.「ロードで引き受ける」p.「正本は提供する側、採用版は引き受けた側」。p.「分割は、責務と判断権限を渡すこと」に p.「渡した判断は相手のもの」p.「親・子は由来の呼び名」（「責務だけを渡して判断を手元に残すのは分割ではない」は本文に残した）。p.「一つの Cell が複数を担う」に p.「合わせて担うときに確かめること」p.「横断責務も Profile」。落とした: p.「Core はここまでしか決めていない」（右側は第 9 章 p.「Core が決めていないこと」へ。3 便目で書く。字は ledger に逐語で控えた）、p.「次章へ：Constitution」。落とした字と行き先: writer-ja/drafts/eaa-toc/fold-v7-ledger.md。
 章番号: v7 の章番号（第 7 章 版の改訂と採用、第 8 章 Cell の分け直し）で書いた。
+検算 1 便目と v7 の通読を受けて直した（@ope-ultp1635 msg 9628f0a9。判定の正本 roles-kaz reviewer/feedback-archive/2026-11-09-eaa-textbook-d0dd000-fold-v7-1-core.md、reader/feedback-archive/2026-11-09-eaa-textbook-v7-68p-6readers.md）: p.「書くことと割り当てることは別」の「提供する側」を「Profile を出した側（提供する側）」にし、発注元か委託先かの区別ではないと足した（@reader 河野・片山が発注元かベンダーかで止まった。profiles.md:61 の提供側・引受側は Profile の提供と引受の語）。p.「Standard と Domain」の Standard Profile の名前に、profiles.md:92-98 の表の「目的」の列を縮めて並べた（@reader 河野・宮下・長谷川が名前だけで中身が無いと止まった）。
 -->
 
 ```svg
@@ -109,14 +110,14 @@ Profile は、Cell が引き受ける責務を定める版付きの仕様です�
   <rect x="30" y="30" width="400" height="280" rx="3" class="box"/><text x="230" y="64" class="t" text-anchor="middle" font-weight="700">Standard Profile</text>
   <text x="230" y="96" class="ts" text-anchor="middle">EAA が、再利用できる責務として出す</text>
   <text x="230" y="126" class="tx" text-anchor="middle">初めに挙げたカタログ</text>
-  <g class="ts" text-anchor="middle">
-    <rect x="50" y="140" width="110" height="32" rx="4" class="soft"/><text x="105" y="161">Platform</text>
-    <rect x="175" y="140" width="110" height="32" rx="4" class="soft"/><text x="230" y="161">Portfolio</text>
-    <rect x="300" y="140" width="110" height="32" rx="4" class="soft"/><text x="355" y="161">Supplier</text>
-    <rect x="50" y="182" width="110" height="32" rx="4" class="soft"/><text x="105" y="203">Assurance</text>
-    <rect x="175" y="182" width="110" height="32" rx="4" class="soft"/><text x="230" y="203">Regulated</text>
-    <rect x="300" y="182" width="110" height="32" rx="4" class="soft"/><text x="355" y="203">Migration</text>
-    <rect x="175" y="224" width="110" height="32" rx="4" class="soft"/><text x="230" y="245">Cutover</text>
+  <g class="tx">
+    <text x="46" y="148" font-weight="700">Platform</text><text x="126" y="148">各実行系が共通基盤を使える</text>
+    <text x="46" y="168" font-weight="700">Portfolio</text><text x="126" y="168">全体目的と投資・資源配分をつなぐ</text>
+    <text x="46" y="188" font-weight="700">Supplier</text><text x="126" y="188">契約主体をまたぐ責任と受入を成り立たせる</text>
+    <text x="46" y="208" font-weight="700">Assurance</text><text x="126" y="208">成果を独立した根拠で判定できるようにする</text>
+    <text x="46" y="228" font-weight="700">Regulated</text><text x="126" y="228">外部の義務を実行・監査できる条件にする</text>
+    <text x="46" y="248" font-weight="700">Migration</text><text x="126" y="248">旧系から新系への移行を成り立たせる</text>
+    <text x="46" y="268" font-weight="700">Cutover</text><text x="126" y="268">合意した条件と順序で切替全体を成り立たせる</text>
   </g>
   <text x="230" y="290" class="tx" text-anchor="middle">全部を置くことは求めない。完成したスキーマでもない</text>
   <rect x="450" y="30" width="400" height="280" rx="3" class="box"/><text x="650" y="64" class="t" text-anchor="middle" font-weight="700">Domain Profile</text>
@@ -130,7 +131,7 @@ Profile は、Cell が引き受ける責務を定める版付きの仕様です�
 
 Standard は EAA が再利用できる形で出し、Domain は企業が業務から書きます。形式は同じで、Domain は最初の Mission に要る範囲から書きます。
 
-出典: EAA Profiles「2.」「6.」「9.」。Assurance や Regulated を担う Cell があっても、対象の各 Cell が持つ義務は消えない（「6.」）。
+出典: EAA Profiles「2.」「6.」「9.」。名前の右は「6.」の表の目的を縮めた。Assurance や Regulated を担う Cell があっても、各 Cell の義務は残る。
 
 ## 書くことと割り当てることは別
 
@@ -139,7 +140,7 @@ Standard は EAA が再利用できる形で出し、Domain は企業が業務�
   <rect x="30" y="30" width="370" height="250" rx="3" class="box"/><text x="215" y="62" class="t" text-anchor="middle" font-weight="700">Profile の本文（正本）</text>
   <g class="ts"><text x="56" y="104">責務の中身</text><text x="56" y="136">要る権限（要求として）</text></g>
   <g class="tx xc"><text x="56" y="176">特定の担当者は書かない</text><text x="56" y="200">特定の Agent 製品は書かない</text></g>
-  <text x="56" y="246" class="tx">正本は提供する側が持つ。版 1・版 2 …</text>
+  <text x="56" y="236" class="tx">正本は、Profile を出した側（提供する側）が持つ</text><text x="56" y="258" class="tx">版 1・版 2 …。発注元か委託先かの区別ではない</text>
   <path d="M404,155 H476" class="ln" marker-end="url(#arr)"/><text x="440" y="145" class="tx" text-anchor="middle">ロード</text>
   <rect x="480" y="30" width="370" height="250" rx="10" class="hl" style="fill:#fff"/><text x="665" y="62" class="t hc" text-anchor="middle" font-weight="700">割当</text>
   <g class="ts"><text x="506" y="104">引き受ける Cell</text><text x="506" y="136">責務ごとの判断責任者</text><text x="506" y="168">資源・対象範囲・採用した版</text><text x="506" y="200">実際に与えられた権限</text></g>
