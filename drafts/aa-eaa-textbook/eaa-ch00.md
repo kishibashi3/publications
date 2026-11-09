@@ -26,6 +26,8 @@ p.「巨大なシステムでは人間は分業する」を p.「追い切れず
 v6 の 1 便目で直した（構造: writer-ja/drafts/eaa-toc/structure-v6.md 87be3308。本文 GO: @ope-ultp1635 msg 8c181d1b）: p.「切る軸は価値・ドメイン・権限」の題を「切る軸の例：価値・ドメイン・権限」にした（題だけ読むと軸が三つに決まって見える）。本文と注は変えず、絵の章番号（第 3・4・5 章）を「第 2 章で例に」にした。p.「切り方は、Core の外の提案」の注の「第 3〜5 章」を第 2 章に。p.「この本の構成」を v6 の章立て（群二「Cell の境界と責務」・第 2〜4 章、群三 第 5〜7 章、群四 第 8・9 章、群五 第 10・11 章）に書き直した。p.「答え：文脈を疎結合に分ける」の注の Contract の章を第 5 章に。この章の本文・注・絵は v6 の章番号で書いたので、3 便目の章番号の直しでこの章はずらさない（絵のリンク #ch5・#ch8・#ch10 は、3 便目でファイルの番号を詰めるまで、いまの第 5・8・10 章に飛ぶ）。
 082ceb2 の検算 1 便目を受けて直した（@ope-ultp1635 msg 6f1c06c4、判定の正本 @reviewer 2026-11-09-eaa-textbook-082ceb2-fold）: v6 で落とした旧第 3 章 p.「切り替えは外から見えない」の中身（どちらの優先で答えたかが外から見えず、責任を負う人間がなぜかを追えない）は、受け皿とした p.「一つの Cell の判断は追い切れない」p.「切り替えると取り違える」に無かった。落ちたのは二つの問いのつながりなので、p.「追い切れず、取り違えるから分ける」の本文 2 文目と絵の二つの枠のあいだに置いた。本文の上限 80 字に収めるため「問題は、何で分けるかです」を本文から外した（絵の下の行が言う）。上の行の「第 3 章 p.「切り替えは外から見えない」の先取りになる」は、そのページが無くなったので理由として成り立たない。
 082ceb2 の検算 3 便目を受けて直した（@ope-ultp1635 msg 468b4a37、判定の正本 @reviewer 2026-11-09-eaa-textbook-082ceb2-ch04-constitution-federation 97306492）: p.「一つのループは価値を切り替える」の本文の主語を「ループを回す Agent」にした。題は変えていない（問いの主語「一つのループ」は kishibashi3 の字、上の msg 1e9e028f の記録）（第 2 章の注の主体は Agent や人で、ループではない）。
+v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v7.md 863f5176。本文 GO: @ope-ultp1635 msg d9ab1757、kishibashi3「うん」）: 18 → 7 ページ。p.「AA と Cell」に p.「素直に大きくすると一つの Cell」（ループの定義を本文、「1 Cell の EAA」を絵）。p.「判断 8,000 件、追えるのは 80 件」に p.「一つの Cell の判断は追い切れない」（「中のループを分けても判断の数は減らない」を本文）と p.「自分の現場で数える」（比べる 2 つの数を絵）。p.「一つのループは価値を取り違える」に p.「一つのループは価値を切り替える」「サービスごとに価値が違う」「切り替えると取り違える」「取り違え 80 件、見つかるのは多くて 1 件」。p.「答え：文脈を疎結合に分ける」に p.「追い切れず、取り違えるから分ける」（外から見えないを注）と p.「切る軸の例：価値・ドメイン・権限」（絵の下の段）。p.「この本と EAA Core」に p.「拠る文書：Core と Profiles」と p.「切り方は、Core の外の提案」（どこで切るかを書かないを絵）、p.「この本の構成」は落とした（目次が言う）。p.「Cell・文書・手続きの全体図」は p.「用語の一覧」と巻末 p.「通しの 1 枚」を 1 枚に。p.「Cell とループへの問い」は落とした（章の概要が同じ問いを言う）。落とした字と行き先の一覧: writer-ja/drafts/eaa-toc/fold-v7-ledger.md。
+章番号: この章の本文・注・絵は v7 の章番号（10 章）で書いた。2・3 便目でファイルの番号を詰めるまで、#ch5 より後のリンクはいまのファイルの章に飛ぶ。
 -->
 
 ```svg
@@ -60,303 +62,139 @@ AA は、一つの Cell では巨大なシステムを開発できません。�
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="250" y="50" width="380" height="240" rx="10" class="box"/>
-  <text x="440" y="86" class="t" text-anchor="middle" font-weight="700">Cell</text>
-  <rect x="405" y="104" width="70" height="40" rx="6" class="h"/><text x="440" y="130" class="ts on" text-anchor="middle">人間</text>
-  <text x="500" y="130" class="tx">責任を負う</text>
-  <rect x="330" y="176" width="220" height="44" rx="22" class="a"/><text x="440" y="204" class="ts on" text-anchor="middle">Agent が開発する（AA）</text>
-  <g class="tx" text-anchor="middle"><text x="330" y="262">目的</text><text x="390" y="262">責任</text><text x="450" y="262">権限</text><text x="530" y="262">実行能力</text></g>
-  <text x="440" y="336" class="ts sub" text-anchor="middle">外との合意に基づいて、自律して成果を出す単位</text>
+  <rect x="30" y="50" width="420" height="250" rx="10" class="box"/>
+  <text x="240" y="86" class="t" text-anchor="middle" font-weight="700">Cell</text>
+  <rect x="205" y="104" width="70" height="40" rx="6" class="h"/><text x="240" y="130" class="ts on" text-anchor="middle">人間</text>
+  <text x="290" y="130" class="tx">責任を負う</text>
+  <rect x="130" y="176" width="220" height="44" rx="22" class="a"/><text x="240" y="204" class="ts on" text-anchor="middle">Agent が開発する（AA）</text>
+  <text x="240" y="240" class="tx" text-anchor="middle">AA は、同じ組の AA の本が扱う</text>
+  <g class="tx" text-anchor="middle"><text x="130" y="262">目的</text><text x="190" y="262">責任</text><text x="250" y="262">権限</text><text x="330" y="262">実行能力</text></g>
+  <text x="240" y="336" class="ts sub" text-anchor="middle">外との合意に基づいて、自律して成果を出す単位</text>
+  <text x="680" y="40" class="ts" text-anchor="middle" font-weight="700">ループ</text>
+  <circle cx="680" cy="170" r="92" class="ln"/>
+  <g class="tx" text-anchor="middle">
+    <rect x="630" y="62" width="100" height="30" rx="15" class="a"/><text x="680" y="82" class="on">計画する</text>
+    <rect x="722" y="155" width="100" height="30" rx="15" class="a"/><text x="772" y="175" class="on">作る</text>
+    <rect x="630" y="248" width="100" height="30" rx="15" class="a"/><text x="680" y="268" class="on">確かめる</text>
+    <rect x="538" y="155" width="100" height="30" rx="15" class="a"/><text x="588" y="175" class="on">直す</text>
+  </g>
+  <path d="M350,198 H534" class="lt dash"/>
+  <text x="680" y="316" class="tx" text-anchor="middle">一つの Cell の一つのループで開発すると、</text>
+  <text x="680" y="336" class="tx" text-anchor="middle">Core はそれを「1 Cell の EAA」と呼ぶ</text>
 </svg>
 ```
 
-AA は、AI エージェント（Agent）に開発を任せるやり方で、同じ組の AA の本が扱います。AA のように自律して開発する単位を、この本では Cell と呼びます。
+AA は Agent に開発を任せるやり方です。AA のように自律して開発する単位を Cell、Agent が計画し、作り、確かめて直すのを繰り返す流れをループと呼びます。
 
 ※ Cell は「一定の目的に対する責任・権限・実行能力を持ち、外部との合意に基づいて自律的に成果を実現する単位」。出典: EAA Core 版 6「0.」。
-
-## 素直に大きくすると一つの Cell
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="110" width="150" height="150" rx="4" class="hl" style="fill:#fff"/>
-  <text x="115" y="150" class="ts hc" text-anchor="middle" font-weight="700">完璧な設計図</text>
-  <g class="lt"><path d="M66,180 H164 M66,204 H164 M66,228 H140"/></g>
-  <path d="M190,185 H260" class="ln" marker-end="url(#arr)"/><text x="225" y="174" class="tx" text-anchor="middle">書かせる</text>
-  <rect x="270" y="60" width="300" height="250" rx="10" class="box"/>
-  <text x="420" y="96" class="t" text-anchor="middle" font-weight="700">一つの Cell</text>
-  <rect x="320" y="150" width="200" height="44" rx="22" class="a"/><text x="420" y="178" class="ts on" text-anchor="middle">Agent</text>
-  <text x="420" y="250" class="ts sub" text-anchor="middle">一つのループで最後まで開発する</text>
-  <path d="M570,185 H640" class="ln" marker-end="url(#arr)"/>
-  <rect x="650" y="80" width="200" height="210" rx="6" class="soft"/>
-  <g class="h" opacity=".8"><rect x="670" y="100" width="70" height="40" rx="4"/><rect x="760" y="100" width="70" height="40" rx="4"/><rect x="670" y="160" width="70" height="40" rx="4"/><rect x="760" y="160" width="70" height="40" rx="4"/><rect x="670" y="220" width="70" height="40" rx="4"/><rect x="760" y="220" width="70" height="40" rx="4"/></g>
-  <text x="750" y="320" class="ts" text-anchor="middle">巨大なシステム</text>
-</svg>
-```
-
-素直に作るなら、設計図を Agent に書かせ、一つの Cell の一つのループで開発します。ループは、Agent が計画し、作り、確かめて直すのを繰り返す流れです。
-
-※ EAA Core は、AA が全部の責務を担う構成を「1 Cell の EAA」と呼ぶ。出典: EAA Core 版 6「0.」。
-
-## Cell とループへの問い
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="60" y="40" width="760" height="270" rx="10" class="soft"/>
-  <text x="90" y="100" class="t" font-weight="700">一つの Cell は、巨大なシステムを開発できるか。</text>
-  <text x="90" y="176" class="t hc" font-weight="700">その Cell で下される判断を、責任を負う人間は管理し切れるか。</text>
-  <text x="90" y="236" class="t hc" font-weight="700">マイクロサービスごとに優先する価値が違うのに、</text>
-  <text x="90" y="268" class="t hc" font-weight="700">一つのループでそれを切り替えられるか。</text>
-  <text x="440" y="350" class="ts sub" text-anchor="middle">この本の出発点の問い</text>
-</svg>
-```
-
-このやり方を問います。一つの Cell は巨大なシステムを開発できるか。人間がその判断を管理し切れるか。一つのループで価値を切り替えられるか。この章が答えます。
-
-※ どの問いも、答えは「できない」。次のページから、人間が追い切れない理由と、ループが価値を切り替える理由と、その代償を見る。
-
-## 一つの Cell の判断は追い切れない
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="40" width="560" height="290" rx="10" class="box"/><text x="320" y="72" class="t" text-anchor="middle" font-weight="700">一つの Cell</text>
-  <g class="a">
-    <circle cx="90" cy="120" r="9"/><circle cx="150" cy="150" r="9"/><circle cx="210" cy="110" r="9"/><circle cx="270" cy="160" r="9"/><circle cx="330" cy="120" r="9"/><circle cx="390" cy="150" r="9"/><circle cx="450" cy="110" r="9"/><circle cx="520" cy="140" r="9"/>
-    <circle cx="100" cy="210" r="9"/><circle cx="170" cy="250" r="9"/><circle cx="240" cy="220" r="9"/><circle cx="310" cy="260" r="9"/><circle cx="380" cy="220" r="9"/><circle cx="450" cy="260" r="9"/><circle cx="530" cy="220" r="9"/>
-    <circle cx="120" cy="300" r="9"/><circle cx="260" cy="300" r="9"/><circle cx="400" cy="300" r="9"/><circle cx="540" cy="295" r="9"/>
-  </g>
-  <rect x="80" y="96" width="150" height="80" rx="40" class="hl"/>
-  <rect x="680" y="140" width="120" height="50" rx="6" class="h"/><text x="740" y="171" class="ts on" text-anchor="middle">人間</text>
-  <path d="M676,165 C 500,170 300,140 234,138" class="lt dash"/>
-  <text x="740" y="220" class="ts" text-anchor="middle">追えるのは</text><text x="740" y="244" class="ts" text-anchor="middle">一部の判断だけ</text>
-  <text x="320" y="364" class="ts sub" text-anchor="middle">● は Cell の中で下される判断</text>
-</svg>
-```
-
-一つの Cell で巨大なシステムを開発すると、判断が多すぎて、責任を負う人間には追い切れません。中のループを分けても、Cell の判断の数は減りません。
-
-※ AA の本の第 1 章の、人がレビューすれば遅く、外せば誤りが積み上がる板挟みは、Cell が大きくなるほど強くなる。
 
 ## 判断 8,000 件、追えるのは 80 件
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="230" y="40" class="ts sub">一つの Cell で扱うサービスの数と、1 日の判断のうち人間が追える割合</text>
-  <g class="t" text-anchor="end"><text x="210" y="102">サービス 1 本</text><text x="210" y="192">10 本</text><text x="210" y="282">100 本</text></g>
-  <rect x="230" y="70" width="560" height="50" class="soft"/><rect x="230" y="70" width="560" height="50" class="h"/>
-  <text x="510" y="101" class="ts on" text-anchor="middle">追える 80 件 ／ 判断 80 件</text>
-  <rect x="230" y="160" width="560" height="50" class="soft"/><rect x="230" y="160" width="56" height="50" class="h"/>
-  <text x="300" y="191" class="ts">追える 80 件 ／ 判断 800 件</text>
-  <rect x="230" y="250" width="560" height="50" class="soft"/><rect x="230" y="250" width="6" height="50" class="h"/>
-  <text x="250" y="281" class="ts">追える 80 件 ／ 判断 8,000 件</text>
-  <g class="t"><text x="805" y="102">100%</text><text x="805" y="192">10%</text><text x="805" y="282">1%</text></g>
-  <text x="440" y="350" class="tl" text-anchor="middle">増えるのは、判断だけ</text>
+  <text x="230" y="30" class="ts sub">一つの Cell で扱うサービスの数と、1 日の判断のうち人間が追える割合</text>
+  <g class="t" text-anchor="end"><text x="210" y="82">サービス 1 本</text><text x="210" y="152">10 本</text><text x="210" y="222">100 本</text></g>
+  <rect x="230" y="52" width="560" height="44" class="soft"/><rect x="230" y="52" width="560" height="44" class="h"/>
+  <text x="510" y="80" class="ts on" text-anchor="middle">追える 80 件 ／ 判断 80 件</text>
+  <rect x="230" y="122" width="560" height="44" class="soft"/><rect x="230" y="122" width="56" height="44" class="h"/>
+  <text x="300" y="150" class="ts">追える 80 件 ／ 判断 800 件</text>
+  <rect x="230" y="192" width="560" height="44" class="soft"/><rect x="230" y="192" width="6" height="44" class="h"/>
+  <text x="250" y="220" class="ts">追える 80 件 ／ 判断 8,000 件</text>
+  <g class="t"><text x="805" y="82">100%</text><text x="805" y="152">10%</text><text x="805" y="222">1%</text></g>
+  <text x="440" y="272" class="t" text-anchor="middle" font-weight="700">増えるのは判断だけ。中のループを分けても減らない</text>
+  <rect x="40" y="296" width="800" height="70" rx="8" class="lt" style="fill:#fff"/>
+  <text x="60" y="324" class="ts" font-weight="700">自分の現場で数える</text>
+  <text x="60" y="350" class="tx">1 日に出る PR の本数（Cell を大きくすると増える） 対 責任を負う人間が 1 日にレビューできる本数（増えない）</text>
 </svg>
 ```
 
-サービス 1 本で 1 日 80 件の判断が出て、人間が追えるのも 80 件とします。サービス 100 本を一つの Cell で扱うと、判断は 8,000 件、追えるのは 1% です。
+一つの Cell でサービス 100 本を扱うと、1 日の判断は 8,000 件、責任を負う人間が追えるのは 80 件です。中のループを分けても、Cell の判断の数は減りません。
 
 ※ 説明のために作った数字です。PR 1 本に判断 10 件、サービス 1 本に PR 1 日 8 本。人のレビューは AA の本 第 1 章 p.8 の PR 1 本 60 分で、1 日 8 本まで見る。
 
-## 自分の現場で数える
+## 一つのループは価値を取り違える
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="70" width="380" height="200" rx="10" class="soft"/>
-  <text x="230" y="112" class="t" text-anchor="middle" font-weight="700">Cell の中で出る PR</text>
-  <text x="230" y="180" class="ts" text-anchor="middle">1 日に出る PR の本数</text>
-  <text x="230" y="240" class="tx" text-anchor="middle">Cell を大きくすると増える</text>
-  <text x="440" y="180" class="tl" text-anchor="middle">対</text>
-  <rect x="460" y="70" width="380" height="200" rx="10" class="hl" style="fill:#fff"/>
-  <text x="650" y="112" class="t hc" text-anchor="middle" font-weight="700">人間が見られる PR</text>
-  <text x="650" y="180" class="ts" text-anchor="middle">責任を負う人間が 1 日にレビューできる本数</text>
-  <text x="650" y="240" class="tx" text-anchor="middle">Cell を大きくしても増えない</text>
-  <text x="440" y="330" class="t" text-anchor="middle" font-weight="700">自分の現場の数を入れて、左と右を比べる</text>
-</svg>
-```
-
-自分の現場では、1 日に出る PR の本数と、責任を負う人間が 1 日にレビューできる本数を比べます。Cell を大きくして増えるのは、前者だけです。
-
-※ AA の本 第 1 章 p.9 の調査で、1,528 人の 85% が「AI はボトルネックを、コードを書くことから、レビューと検証へ移した」に「そう思う」と答えた。律速を示した数字ではない。
-
-## サービスごとに価値が違う
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <g>
-    <rect x="40" y="70" width="240" height="200" rx="10" class="soft"/><text x="160" y="110" class="t" text-anchor="middle" font-weight="700">決済</text>
-    <rect x="70" y="150" width="180" height="50" rx="6" class="hl" style="fill:#fff"/><text x="160" y="182" class="ts hc" text-anchor="middle">止めない</text>
-    <rect x="320" y="70" width="240" height="200" rx="10" class="soft"/><text x="440" y="110" class="t" text-anchor="middle" font-weight="700">推薦</text>
-    <rect x="350" y="150" width="180" height="50" rx="6" class="hl" style="fill:#fff"/><text x="440" y="182" class="ts hc" text-anchor="middle">速く変える</text>
-    <rect x="600" y="70" width="240" height="200" rx="10" class="soft"/><text x="720" y="110" class="t" text-anchor="middle" font-weight="700">集計</text>
-    <rect x="630" y="150" width="180" height="50" rx="6" class="hl" style="fill:#fff"/><text x="720" y="182" class="ts hc" text-anchor="middle">安く保つ</text>
+  <g class="ts hc" text-anchor="middle">
+    <rect x="30" y="20" width="170" height="40" rx="4" class="hl" style="fill:#fff"/><text x="115" y="46">決済：止めない</text>
+    <rect x="220" y="20" width="170" height="40" rx="4" class="hl" style="fill:#fff"/><text x="305" y="46">推薦：速く変える</text>
+    <rect x="410" y="20" width="170" height="40" rx="4" class="hl" style="fill:#fff"/><text x="495" y="46">集計：安く保つ</text>
   </g>
-  <text x="440" y="320" class="t" text-anchor="middle" font-weight="700">何を優先して判断するかが、サービスごとに違う</text>
-</svg>
-```
-
-巨大なシステムでは、マイクロサービスごとに優先する価値が違います。例えば決済は止めないことを、推薦は変える速さを優先します。
-
-※ 例は説明のために作った。
-
-## 一つのループは価値を切り替える
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <circle cx="300" cy="190" r="120" class="ln"/>
-  <g class="ts" text-anchor="middle">
-    <rect x="250" y="52" width="100" height="36" rx="18" class="a"/><text x="300" y="76" class="on">計画する</text>
-    <rect x="370" y="172" width="100" height="36" rx="18" class="a"/><text x="420" y="196" class="on">作る</text>
-    <rect x="250" y="292" width="100" height="36" rx="18" class="a"/><text x="300" y="316" class="on">確かめる</text>
-    <rect x="130" y="172" width="100" height="36" rx="18" class="a"/><text x="180" y="196" class="on">直す</text>
+  <path d="M115,60 L272,124 M305,60 V108 M495,60 L338,124" class="lt"/>
+  <circle cx="305" cy="148" r="40" class="ln"/>
+  <text x="305" y="154" class="ts sub" text-anchor="middle">ループ</text>
+  <text x="305" y="210" class="tx xc" text-anchor="middle">判断のたびに、優先する価値を切り替える</text>
+  <g class="ts xc" text-anchor="middle">
+    <rect x="30" y="230" width="250" height="40" rx="4" class="xl" style="fill:#fff"/><text x="155" y="256">前の判断：推薦を速く変える</text>
+    <rect x="300" y="230" width="250" height="40" rx="4" class="xl" style="fill:#fff"/><text x="425" y="256">次の判断：決済も速く変える</text>
   </g>
-  <text x="300" y="196" class="ts sub" text-anchor="middle">ループ</text>
-  <g class="ts" text-anchor="middle">
-    <rect x="560" y="70" width="260" height="44" rx="4" class="xl" style="fill:#fff"/><text x="690" y="98" class="xc">決済の判断：止めない</text>
-    <rect x="560" y="150" width="260" height="44" rx="4" class="xl" style="fill:#fff"/><text x="690" y="178" class="xc">推薦の判断：速く変える</text>
-    <rect x="560" y="230" width="260" height="44" rx="4" class="xl" style="fill:#fff"/><text x="690" y="258" class="xc">集計の判断：安く保つ</text>
-  </g>
-  <path d="M690,114 V146 M690,194 V226" class="ln" marker-end="url(#arr)"/>
-  <text x="690" y="320" class="ts xc" text-anchor="middle">判断のたびに優先順位を切り替える</text>
+  <path d="M280,250 H296" class="ln" marker-end="url(#arr)"/>
+  <text x="290" y="298" class="ts xc" text-anchor="middle">確かめを省いた変更が、決済に出る</text>
+  <rect x="610" y="20" width="240" height="78" rx="8" class="soft"/>
+  <text x="730" y="48" class="ts" text-anchor="middle">1 日の判断</text><text x="730" y="84" class="tl" text-anchor="middle">8,000 件</text>
+  <path d="M730,98 V120" class="ln" marker-end="url(#arr)"/><text x="742" y="114" class="tx">100 回に 1 回</text>
+  <rect x="610" y="124" width="240" height="78" rx="8" class="xl" style="fill:#fff"/>
+  <text x="730" y="152" class="ts xc" text-anchor="middle">取り違えた判断</text><text x="730" y="188" class="tl" text-anchor="middle">80 件</text>
+  <path d="M730,202 V224" class="ln" marker-end="url(#arr)"/><text x="742" y="218" class="tx">追えるのは 1%</text>
+  <rect x="610" y="228" width="240" height="78" rx="8" class="hl" style="fill:#fff"/>
+  <text x="730" y="256" class="ts hc" text-anchor="middle">人間が見つける</text><text x="730" y="292" class="tl" text-anchor="middle">多くて 1 件</text>
+  <text x="440" y="356" class="t" text-anchor="middle" font-weight="700">取り違えは正しい判断と同じ形で出て、追い切れない判断に紛れる</text>
 </svg>
 ```
 
-ループは、計画し、作り、確かめて直すたびに判断を下します。一つのループを回す Agent が全部のサービスを扱うと、その Agent は判断のたびに価値を切り替えます。
+サービスごとに優先する価値が違うので、一つのループを回す Agent は判断のたびに価値を切り替え、前の仕事の価値で次を判断することがあります。
 
-※ 主体の中で、判断に使う文脈がこのように切り替わることを、第 2 章でコンテキストスイッチと呼び、切り方の判定に使う。
-
-## 切り替えると取り違える
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <circle cx="150" cy="170" r="90" class="ln"/>
-  <text x="150" y="176" class="ts sub" text-anchor="middle">一つのループ</text>
-  <path d="M236,140 L296,104 M236,190 L296,198" class="lt"/>
-  <rect x="300" y="80" width="250" height="44" rx="4" class="xl" style="fill:#fff"/><text x="425" y="108" class="ts xc" text-anchor="middle">前の判断：推薦を速く変える</text>
-  <path d="M425,124 V170" class="ln" marker-end="url(#arr)"/>
-  <rect x="300" y="176" width="250" height="44" rx="4" class="xl" style="fill:#fff"/><text x="425" y="204" class="ts xc" text-anchor="middle">次の判断：決済も速く変える</text>
-  <text x="425" y="250" class="tx" text-anchor="middle">決済が優先するのは、止めないこと</text>
-  <path d="M550,198 H600" class="ln" marker-end="url(#arr)"/>
-  <rect x="610" y="150" width="230" height="96" rx="6" class="soft"/>
-  <text x="725" y="190" class="ts" text-anchor="middle">確かめを省いた変更が</text>
-  <text x="725" y="218" class="ts" text-anchor="middle">決済に出る</text>
-  <text x="440" y="330" class="t" text-anchor="middle" font-weight="700">切り替えるたびに、前の価値が残ることがある</text>
-</svg>
-```
-
-切り替えのたびに、前の仕事の価値で次の判断を下すことがあります。決済の判断を速く変えるで下すと、確かめを省いた変更が決済に出ます。
-
-※ 例は説明のために作った。
-
-## 取り違え 80 件、見つかるのは多くて 1 件
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="70" width="230" height="170" rx="10" class="soft"/>
-  <text x="155" y="110" class="ts" text-anchor="middle">1 日の判断</text><text x="155" y="170" class="tl" text-anchor="middle">8,000 件</text><text x="155" y="210" class="tx" text-anchor="middle">ほぼ全部が切り替えを挟む</text>
-  <path d="M270,155 H320" class="ln" marker-end="url(#arr)"/>
-  <rect x="325" y="70" width="230" height="170" rx="10" class="xl" style="fill:#fff"/>
-  <text x="440" y="110" class="ts xc" text-anchor="middle">取り違えた判断</text><text x="440" y="170" class="tl" text-anchor="middle">80 件</text><text x="440" y="210" class="tx" text-anchor="middle">正しい判断と同じ形で出る</text>
-  <path d="M555,155 H605" class="ln" marker-end="url(#arr)"/>
-  <rect x="610" y="70" width="230" height="170" rx="10" class="hl" style="fill:#fff"/>
-  <text x="725" y="110" class="ts hc" text-anchor="middle">人間が見つける</text><text x="725" y="170" class="tl" text-anchor="middle">多くて 1 件</text><text x="725" y="210" class="tx" text-anchor="middle">残りは見つからないまま出る</text>
-  <g class="tx" text-anchor="middle"><text x="297" y="270">100 回に 1 回</text><text x="582" y="270">追えるのは 1%</text></g>
-  <text x="440" y="330" class="t" text-anchor="middle" font-weight="700">取り違えは、追い切れない判断に紛れる</text>
-</svg>
-```
-
-一つのループの 8,000 件はほぼ全部が切り替えを挟み、100 回に 1 回取り違えると 1 日 80 件です。人間が追えるのは 1% なので、見つかるのは多くて 1 件です。
-
-※ 説明のために作った数字です。8,000 件と 1% は p.「判断 8,000 件、追えるのは 80 件」と同じ。1 件は、見る 1% を取り違えと関係なく選び、見た取り違えを全部見つけた場合の上限。
-
-## 追い切れず、取り違えるから分ける
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="60" width="300" height="90" rx="10" class="hl" style="fill:#fff"/>
-  <text x="190" y="96" class="t hc" text-anchor="middle" font-weight="700">人間が追い切れない</text><text x="190" y="128" class="tx" text-anchor="middle">追えるのは判断の 1%</text>
-  <rect x="40" y="180" width="300" height="90" rx="10" class="xl" style="fill:#fff"/>
-  <text x="190" y="216" class="t xc" text-anchor="middle" font-weight="700">ループが価値を取り違える</text><text x="190" y="248" class="tx" text-anchor="middle">1 日 80 件、見つかるのは多くて 1 件</text>
-  <text x="190" y="170" class="tx" text-anchor="middle">どちらの優先で答えたかは、外から見えない</text>
-  <path d="M340,105 C 380,105 380,165 410,165 M340,225 C 380,225 380,165 410,165" class="ln"/>
-  <path d="M410,165 H450" class="ln" marker-end="url(#arr)"/>
-  <g>
-    <rect x="460" y="110" width="110" height="110" rx="10" class="box"/><text x="515" y="172" class="ts" text-anchor="middle" font-weight="700">Cell</text>
-    <rect x="595" y="110" width="110" height="110" rx="10" class="box"/><text x="650" y="172" class="ts" text-anchor="middle" font-weight="700">Cell</text>
-    <rect x="730" y="110" width="110" height="110" rx="10" class="box"/><text x="785" y="172" class="ts" text-anchor="middle" font-weight="700">Cell</text>
-  </g>
-  <text x="650" y="90" class="ts" text-anchor="middle">一つの Cell で開発せず、分ける</text>
-  <text x="440" y="330" class="t hc" text-anchor="middle" font-weight="700">分ける理由はこの二つ。問題は、何で分けるか</text>
-</svg>
-```
-
-一つの Cell では人間は判断を追い切れず、ループは価値を取り違えます。どちらの優先で答えたかは外から見えず、責任を負う人間はなぜかを追えません。だから分けます。
-
-※ 分ける理由はこの二つで、人間が分業してきた慣習には拠らない。人間の分業の枠組みとの対応は付録で見る。
+※ 例と数は説明のために作った。8,000 件と 1% は前のページと同じ。1 件は、見る 1% を取り違えと関係なく選び、見た取り違えを全部見つけた場合の上限。
 
 ## 答え：文脈を疎結合に分ける
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
+  <rect x="30" y="30" width="230" height="70" rx="10" class="hl" style="fill:#fff"/>
+  <text x="145" y="60" class="ts hc" text-anchor="middle" font-weight="700">人間が追い切れない</text><text x="145" y="86" class="tx" text-anchor="middle">追えるのは判断の 1%</text>
+  <rect x="30" y="120" width="230" height="70" rx="10" class="xl" style="fill:#fff"/>
+  <text x="145" y="150" class="ts xc" text-anchor="middle" font-weight="700">ループが価値を取り違える</text><text x="145" y="176" class="tx" text-anchor="middle">見つかるのは多くて 1 件</text>
+  <text x="145" y="214" class="tx" text-anchor="middle">どちらの優先か、外から見えない</text>
+  <path d="M262,110 H302" class="ln" marker-end="url(#arr)"/>
   <g>
-    <rect x="40" y="60" width="230" height="220" rx="10" class="box"/><text x="155" y="96" class="t" text-anchor="middle" font-weight="700">Cell</text>
-    <rect x="325" y="60" width="230" height="220" rx="10" class="box"/><text x="440" y="96" class="t" text-anchor="middle" font-weight="700">Cell</text>
-    <rect x="610" y="60" width="230" height="220" rx="10" class="box"/><text x="725" y="96" class="t" text-anchor="middle" font-weight="700">Cell</text>
+    <rect x="310" y="30" width="170" height="190" rx="10" class="box"/><text x="395" y="60" class="ts" text-anchor="middle" font-weight="700">Cell</text>
+    <rect x="490" y="30" width="170" height="190" rx="10" class="box"/><text x="575" y="60" class="ts" text-anchor="middle" font-weight="700">Cell</text>
+    <rect x="670" y="30" width="170" height="190" rx="10" class="box"/><text x="755" y="60" class="ts" text-anchor="middle" font-weight="700">Cell</text>
   </g>
-  <g class="tx">
-    <text x="64" y="134">読む語と記録</text><text x="64" y="164">優先する価値</text><text x="64" y="194">判断の権限</text>
-    <text x="349" y="134">読む語と記録</text><text x="349" y="164">優先する価値</text><text x="349" y="194">判断の権限</text>
-    <text x="634" y="134">読む語と記録</text><text x="634" y="164">優先する価値</text><text x="634" y="194">判断の権限</text>
+  <g class="tx" text-anchor="middle">
+    <text x="395" y="100">読む語と記録</text><text x="395" y="126">優先する価値</text><text x="395" y="152">判断の権限</text>
+    <text x="575" y="100">読む語と記録</text><text x="575" y="126">優先する価値</text><text x="575" y="152">判断の権限</text>
+    <text x="755" y="100">読む語と記録</text><text x="755" y="126">優先する価値</text><text x="755" y="152">判断の権限</text>
   </g>
-  <g class="ts hc" text-anchor="middle"><text x="155" y="250">文脈が一つ</text><text x="440" y="250">文脈が一つ</text><text x="725" y="250">文脈が一つ</text></g>
-  <path d="M270,170 H325 M555,170 H610" class="ln"/>
-  <text x="440" y="330" class="t" text-anchor="middle" font-weight="700">あいだの結合は少なく、明示してある</text>
+  <g class="ts hc" text-anchor="middle"><text x="395" y="198">文脈が一つ</text><text x="575" y="198">文脈が一つ</text><text x="755" y="198">文脈が一つ</text></g>
+  <path d="M480,125 H490 M660,125 H670" class="ln"/>
+  <text x="575" y="250" class="ts" text-anchor="middle">あいだの結合は少なく、明示してある</text>
+  <text x="30" y="306" class="ts" font-weight="700">切る軸の例</text>
+  <g class="ts hc" text-anchor="middle">
+    <rect x="130" y="284" width="110" height="34" rx="6" class="hl" style="fill:#fff"/><text x="185" y="307">価値</text>
+    <rect x="250" y="284" width="110" height="34" rx="6" class="hl" style="fill:#fff"/><text x="305" y="307">ドメイン</text>
+    <rect x="370" y="284" width="110" height="34" rx="6" class="hl" style="fill:#fff"/><text x="425" y="307">権限</text>
+  </g>
+  <g opacity=".6"><rect x="500" y="284" width="110" height="34" rx="6" class="lt dash" style="fill:#fff"/><text x="555" y="307" class="ts" text-anchor="middle">職能</text></g>
+  <use href="#i-no" x="616" y="289" width="24" height="24"/>
+  <text x="652" y="307" class="tx">判定は第 2 章、職能は第 1 章</text>
+  <text x="440" y="362" class="ts sub" text-anchor="middle">切り方はこの本の提案。Core の規定ではない</text>
 </svg>
 ```
 
-この本の答えは、各主体の文脈が疎結合になるように分けることです。一つの主体が、自分の仕事を進めるあいだに別の文脈へ切り替えずに済むように切ります。
+だから分けます。この本の答えは、各主体の文脈が疎結合になるように分けることです。切り方は Core の規定ではなく、この本の提案です。
 
-※ 文脈は、その主体が判断に使う語と記録・優先する価値・判断の権限を指す。疎結合は結合が無いことではなく、結合が少なく、明示されていること（第 5 章）。
+※ どちらの優先で答えたかは外から見えず、責任を負う人間はなぜかを追えない。文脈は判断に使う語と記録・価値・権限。疎結合は、結合が少なく明示されていること（第 5 章）。
 
-## 切る軸の例：価値・ドメイン・権限
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <g opacity=".7">
-    <rect x="40" y="60" width="220" height="200" rx="10" class="soft"/>
-    <text x="150" y="96" class="t" text-anchor="middle" font-weight="700">職能</text>
-    <g class="ts" text-anchor="middle"><text x="150" y="140">設計・実装</text><text x="150" y="170">テスト・レビュー</text></g>
-    <use href="#i-no" x="138" y="200" width="24" height="24"/>
-  </g>
-  <text x="150" y="300" class="ts sub" text-anchor="middle">理由は第 1 章</text>
-  <g>
-    <rect x="320" y="60" width="160" height="200" rx="10" class="hl" style="fill:#fff"/><text x="400" y="110" class="t hc" text-anchor="middle" font-weight="700">価値</text><text x="400" y="150" class="tx" text-anchor="middle">何を優先するか</text><text x="400" y="230" class="ts" text-anchor="middle">第 2 章で例に</text>
-    <rect x="500" y="60" width="160" height="200" rx="10" class="hl" style="fill:#fff"/><text x="580" y="110" class="t hc" text-anchor="middle" font-weight="700">ドメイン</text><text x="580" y="150" class="tx" text-anchor="middle">何を扱うか</text><text x="580" y="230" class="ts" text-anchor="middle">第 2 章で例に</text>
-    <rect x="680" y="60" width="160" height="200" rx="10" class="hl" style="fill:#fff"/><text x="760" y="110" class="t hc" text-anchor="middle" font-weight="700">権限</text><text x="760" y="150" class="tx" text-anchor="middle">何を決められるか</text><text x="760" y="230" class="ts" text-anchor="middle">第 2 章で例に</text>
-  </g>
-  <text x="580" y="300" class="ts sub" text-anchor="middle">判定は第 2 章：主体の中でコンテキストスイッチが起きないか</text>
-</svg>
-```
-
-この本は、職能ではなく価値・ドメイン・権限で切ります。職能で切らない理由は第 1 章、切り方の判定は第 2 章で見ます。
-
-※ 価値・ドメイン・権限は切る軸の例で、全部ではない。どの軸で切っても、判定は第 2 章の一つに通す。
-
-## 拠る文書：Core と Profiles
-
-<!--
-2026-11-09（@ope-ultp1635 msg 41fb85e0 の「二」）で足した。@reviewer と @reader が別々に指摘した形: 本は「Core はここまでしか決めていない」を第 3・5〜11 章に置きながら、Core が規範案で未確定であることと Profiles との関係（core.md:3・5）を 1 件も書いていなかった。Profiles は第 3 章で多く引くのに、どういう文書かが本に無かった。@reader の長谷川・宮下が「Core が何か分からない」で止まった。
-断りであって主張ではない（依頼の条件）。何に拠っているか・それがどういう状態かだけを書く。
-字の出どころ（origin/main 7336df4 の drafts/enterprise-agentic-agile/）: core.md:3「位置づけ：規範案（未確定）」・:4 対象・:5「参照：責務仕様は Profiles。解説・適用例は本書に規範を追加しない」・:9 版 6。profiles.md:3「位置づけ：責務仕様案（未確定）」・:4 対象・:5「詳細スキーマは未確定」。README.md:3 案内（非規範）・:19〜24 の表（Delivery Guide・Role Model・Adoption Guide は非規範の適用例）・:26〜27「草案である」・:31 Working Notes は検討履歴・参考資料。
-本が引く EAA の文書は、Core・Profiles のほかに Adoption Guide・Delivery Guide・Role Model・Working Notes（eaa-*.md を grep）。絵の下の段に並べた。
-置き場所: 次のページ「切り方は、Core の外の提案」が Core の字とこの本の提案を分けるので、その前で Core が何かを先に言う。
--->
+## この本と EAA Core
 
 ```svg
 <svg viewBox="0 0 880 400" width="880" height="400">
   <rect x="40" y="14" width="370" height="196" rx="10" class="box"/>
   <text x="62" y="46" class="t" font-weight="700">EAA Core　版 6</text>
   <text x="62" y="76" class="ts hc" font-weight="700">位置づけ：規範案（未確定）</text>
-  <g class="ts"><text x="62" y="112">Cell・Federation などの定義と、</text><text x="62" y="136">責務と分割・自治・意味と合意・</text><text x="62" y="160">変更・成果と記録の規定</text></g>
+  <g class="ts"><text x="62" y="112">Cell・Federation などの定義と、</text><text x="62" y="136">分割と、分けた後の責任・権限・合意</text><text x="62" y="160">どこで切るかは書いていない</text></g>
   <text x="62" y="192" class="tx">各章の注は「EAA Core 版 6「1.」」の形で引く</text>
   <path d="M410,112 H466" class="ln" marker-end="url(#arr)"/>
   <text x="438" y="98" class="tx" text-anchor="middle">責務の</text><text x="438" y="134" class="tx" text-anchor="middle">仕様は</text>
@@ -371,109 +209,58 @@ AA は、AI エージェント（Agent）に開発を任せるやり方で、同
   <rect x="40" y="296" width="800" height="90" rx="10" fill="#fff" class="hl"/>
   <text x="62" y="326" class="ts hc" font-weight="700">この本</text>
   <g class="ts"><text x="62" y="352">上の二つを規範として引く。どちらも未確定の草案で、版が変われば字も変わりうる</text>
-    <text x="62" y="376">各章の「Core はここまでしか決めていない」は、版 6 の字で読んだ範囲</text></g>
+    <text x="62" y="376">どこで切るか（文脈が疎結合になるように）は、この本の提案。Core の規定ではない</text></g>
 </svg>
 ```
 
 この本は EAA Core と EAA Profiles を規範として引きます。どちらも未確定の草案で、Core は規範案、Profiles は責務仕様案と自ら書いています。
 
-※ 出典: Core と Profiles の冒頭の「位置づけ」。Core は責務の仕様を Profiles に任せる。この本は Core 版 6 を引き、Profiles には版の欄が無い。
+※ 出典: Core と Profiles の冒頭の「位置づけ」、Core 版 6「1.」。Core は責務の仕様を Profiles に任せる。Profiles には版の欄が無い。
 
-## 切り方は、Core の外の提案
+## Cell・文書・手続きの全体図
 
 ```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="60" width="380" height="230" rx="10" class="box"/>
-  <text x="230" y="96" class="t" text-anchor="middle" font-weight="700">EAA Core が定める</text>
-  <g class="ts"><text x="70" y="140">分割は、責務と判断権限を渡すこと</text><text x="70" y="172">分けた後の責任・権限・合意</text><text x="70" y="204">境界を越える Evidence と取り決め</text></g>
-  <rect x="460" y="60" width="380" height="230" rx="10" class="hl" style="fill:#fff"/>
-  <text x="650" y="96" class="t hc" text-anchor="middle" font-weight="700">この本が足す</text>
-  <g class="ts"><text x="490" y="140">どこで切るか</text><text x="490" y="172">文脈が疎結合になるように</text><text x="490" y="204">価値・ドメイン・権限で</text></g>
-  <text x="650" y="258" class="tx" text-anchor="middle">この本の提案。Core の規定ではない</text>
-  <text x="440" y="340" class="ts sub" text-anchor="middle">左は Core の字で書き、右はこの本の提案として書く</text>
+<svg viewBox="0 0 880 420" width="880" height="420">
+  <text x="10" y="18" class="tx">なぜ分けるか：判断を追い切れず、価値を取り違える（<a href="#ch0"><tspan>第 0 章</tspan></a>）。職能では切らない（<a href="#ch1"><tspan>第 1 章</tspan></a>）。境界の判定（<a href="#ch2"><tspan>第 2 章</tspan></a>）</text>
+  <rect x="10" y="30" width="270" height="250" rx="10" fill="#fff" class="al"/>
+  <text x="26" y="58" class="t ac" font-weight="700">在庫の Cell</text>
+  <rect x="26" y="72" width="238" height="44" rx="5" class="soft"/>
+  <text x="38" y="90" class="ts" font-weight="700">Profile</text><text x="38" y="109" class="tx">引き受ける責務</text><a href="#ch3"><text x="256" y="90" class="tx" text-anchor="end">第 3 章</text></a>
+  <rect x="26" y="124" width="238" height="44" rx="5" class="soft"/>
+  <text x="38" y="142" class="ts" font-weight="700">Constitution</text><text x="38" y="161" class="tx">採用した規範</text><a href="#ch4"><text x="256" y="142" class="tx" text-anchor="end">第 4 章</text></a>
+  <rect x="26" y="176" width="238" height="44" rx="5" class="soft"/>
+  <text x="38" y="194" class="ts" font-weight="700">Ontology</text><text x="38" y="213" class="tx">共有する語の定義</text><a href="#ch6"><text x="256" y="194" class="tx" text-anchor="end">第 6 章</text></a>
+  <text x="26" y="244" class="tx">中は Agent でも人のチームでも。</text><text x="26" y="264" class="tx">作り方はこの Cell が決める</text>
+  <rect x="600" y="30" width="270" height="250" rx="10" fill="#fff" class="al"/>
+  <text x="616" y="58" class="t ac" font-weight="700">物流の Cell</text>
+  <rect x="616" y="72" width="238" height="44" rx="5" class="soft"/>
+  <text x="628" y="90" class="ts" font-weight="700">Profile</text><text x="628" y="109" class="tx">引き受ける責務</text>
+  <rect x="616" y="124" width="238" height="44" rx="5" class="soft"/>
+  <text x="628" y="142" class="ts" font-weight="700">Constitution</text><text x="628" y="161" class="tx">採用した規範</text>
+  <rect x="616" y="176" width="238" height="44" rx="5" class="soft"/>
+  <text x="628" y="194" class="ts" font-weight="700">Ontology</text><text x="628" y="213" class="tx">共有する語の定義</text>
+  <text x="616" y="244" class="tx">境界は、中の主体が文脈を</text><text x="616" y="264" class="tx">切り替えずに済む範囲</text>
+  <rect x="318" y="30" width="244" height="104" rx="4" fill="#fff" class="hl"/>
+  <text x="440" y="54" class="ts hc" text-anchor="middle" font-weight="700">Contract（版付きの取り決め）</text>
+  <text x="440" y="76" class="tx" text-anchor="middle">渡すもの・条件・確かめ方</text>
+  <text x="440" y="96" class="tx" text-anchor="middle">結ぶ Cell の全部が同じ版を</text>
+  <text x="440" y="116" class="tx" text-anchor="middle">採用して成り立つ <a href="#ch5"><tspan>第 5 章</tspan></a></text>
+  <path d="M280,82 H316 M564,82 H600" class="lt"/>
+  <path d="M286,170 H594" class="ln" marker-end="url(#arr)"/>
+  <text x="440" y="162" class="ts" text-anchor="middle"><tspan font-weight="700">Mission</tspan>　今回の仕事を頼む <a href="#ch5"><tspan class="tx">第 5 章</tspan></a></text>
+  <path d="M594,222 H286" class="ln" marker-end="url(#arr)"/>
+  <text x="440" y="214" class="ts" text-anchor="middle"><tspan font-weight="700">Evidence</tspan>　成果の記録を返す <a href="#ch6"><tspan class="tx">第 6 章</tspan></a></text>
+  <text x="440" y="244" class="tx" text-anchor="middle">受けた側は、作った側に聞かずに</text>
+  <text x="440" y="262" class="tx" text-anchor="middle">共有する語の定義で読んで確かめる</text>
+  <text x="440" y="292" class="tx" text-anchor="middle">互いの中は指定せず、共有する文書でつながる（Federation <a href="#ch4"><tspan>第 4 章</tspan></a>）</text>
+  <text x="10" y="322" class="ts" font-weight="700">変えるとき・分け直すとき・始めるとき</text>
+  <g class="box"><rect x="10" y="332" width="280" height="76" rx="6"/><rect x="300" y="332" width="280" height="76" rx="6"/><rect x="590" y="332" width="280" height="76" rx="6"/></g>
+  <g class="ts"><text x="22" y="356">版の改訂と採用</text><text x="312" y="356">Cell の分け直し</text><text x="602" y="356">導入</text></g>
+  <g class="tx"><text x="22" y="376">提起者でない所有者が承認し、各 Cell が採用</text><text x="312" y="376">切り替えが始まったら分ける</text><text x="602" y="376">行き来の多いあいだから試す</text></g>
+  <g class="tx"><a href="#ch7"><text x="22" y="398">第 7 章</text></a><a href="#ch8"><text x="312" y="398">第 8 章</text></a><a href="#ch9"><text x="602" y="398">第 9 章</text></a></g>
 </svg>
 ```
 
-EAA Core は、分割と分けた後の責任・権限・合意を定めますが、どこで切るかは書いていません。この本の切り方は、Core の規定ではなく、この本の提案です。
+Cell は責務・規範・語の定義を持ち、あいだを Contract に書き、Mission で頼み、Evidence で確かめます。番号の章がその部分を説明します。
 
-※ 出典: EAA Core 版 6「1. 責務と分割」。分割を「責務と自律的な判断権限を別の責任主体へ引き渡すこと」と定める。第 2 章の切り方も、同じ扱い。
-
-## 用語の一覧
-
-<!--
-2026-11-09（@ope-ultp1635 msg 41fb85e0 の「一」）で足した。AA の第 0 章「条文の一覧：原則 P・指針 D」と同じ役（語から説明する章へ飛ぶ）。Core の概念表を写さず、この本のどの章で扱うかを主にした。
-数えた形（依頼の表）: 主な語のうち Profile・Federation・Contract は第 0 章（p.「この本の構成」の絵）、Constitution・Evidence・Ontology は第 2 章で、説明する章より前に名前が出る。読み手は後で説明されるのか、もう説明されたのかが分からない。だから本文で「名前だけ先に出る語も、説明はこの表の章で」と言う。
-語の並びは本の群に合わせた（Cell の境界と責務 → 切っても残る結合の持ち方）。群四・群五（第 8〜11 章）は新しい概念の語を持たないので、章の中で出る語の段に手続きの語を置いた。
-意味の列は core.md:19〜36 の概念表を、本文の各章が使っている言い方に寄せて平らにした（Cell は第 0 章 p.「AA と Cell」の注、Federation は第 4 章の名付け、Ontology は core.md:16「境界の両側が保持する」）。
-置き場所: 第 0 章の終わり。p.「この本の構成」の絵が Profile・Constitution・Federation を出すので、その前に置く。
--->
-
-```svg
-<svg viewBox="0 0 880 410" width="880" height="410">
-  <g class="tx"><text x="40" y="18">語</text><text x="190" y="18">この本での意味</text><text x="840" y="18" text-anchor="end">説明する章</text></g>
-  <path d="M40,26 H840" class="lt"/>
-  <text x="40" y="48" class="ts sub" font-weight="700">Cell の境界と責務</text>
-  <rect x="40" y="56" width="800" height="32" class="soft"/>
-  <g class="ts"><text x="52" y="78" font-weight="700">Cell</text><text x="190" y="78">目的に対する責任・権限・実行能力を持ち、自律して成果を出す単位</text></g>
-  <text x="830" y="78" class="ts" text-anchor="end"><a href="#ch0"><tspan>第 0 章</tspan></a><tspan>・</tspan><a href="#ch2"><tspan>第 2 章</tspan></a></text>
-  <g class="ts"><text x="52" y="110" font-weight="700">Profile</text><text x="190" y="110">Cell が引き受ける責務を書いた、版付きの仕様</text></g>
-  <a href="#ch3"><text x="830" y="110" class="ts" text-anchor="end">第 3 章</text></a>
-  <rect x="40" y="120" width="800" height="32" class="soft"/>
-  <g class="ts"><text x="52" y="142" font-weight="700">Constitution</text><text x="190" y="142">Cell が採用した目的・価値・制約・権限・禁止事項の規範</text></g>
-  <a href="#ch4"><text x="830" y="142" class="ts" text-anchor="end">第 4 章</text></a>
-  <g class="ts"><text x="52" y="174" font-weight="700">Federation</text><text x="190" y="174">互いの中の方式を指定せず、共有する文書でつながる Cell どうしの関係</text></g>
-  <a href="#ch4"><text x="830" y="174" class="ts" text-anchor="end">第 4 章</text></a>
-  <text x="40" y="206" class="ts sub" font-weight="700">切っても残る結合の持ち方</text>
-  <rect x="40" y="214" width="800" height="32" class="soft"/>
-  <g class="ts"><text x="52" y="236" font-weight="700">Contract</text><text x="190" y="236">Cell のあいだの取り決め。責任・提供条件・入出力・要る Evidence</text></g>
-  <a href="#ch5"><text x="830" y="236" class="ts" text-anchor="end">第 5 章</text></a>
-  <g class="ts"><text x="52" y="268" font-weight="700">Mission</text><text x="190" y="268">責務のもとで、今回実現する変化・成果</text></g>
-  <a href="#ch6"><text x="830" y="268" class="ts" text-anchor="end">第 6 章</text></a>
-  <rect x="40" y="278" width="800" height="32" class="soft"/>
-  <g class="ts"><text x="52" y="300" font-weight="700">Evidence</text><text x="190" y="300">成果や判断が成り立ったことを、確かめられるようにする記録</text></g>
-  <a href="#ch7"><text x="830" y="300" class="ts" text-anchor="end">第 7 章</text></a>
-  <g class="ts"><text x="52" y="332" font-weight="700">Ontology</text><text x="190" y="332">境界の両側が持つ、共有する語の定義。意味の違いと対応も持つ</text></g>
-  <a href="#ch7"><text x="830" y="332" class="ts" text-anchor="end">第 7 章</text></a>
-  <path d="M40,348 H840" class="lt"/>
-  <text x="40" y="372" class="ts sub" font-weight="700">章の中で出る語</text>
-  <g class="tx"><text x="190" y="372">Standard・Domain（第 3 章）、Task・Authority・Acceptance Evidence（第 6 章）、</text>
-    <text x="190" y="394">版の公開と採用（第 8 章）、所有者と承認・職務分離（第 9 章）、引き継ぎ（第 10 章）</text></g>
-</svg>
-```
-
-この本の主な語と、それを説明する章です。第 0〜2 章で名前だけ先に出る語も、説明はこの表の章で行います。語に出会ったら、ここへ戻ってください。
-
-※ 意味は EAA Core 版 6 の概念表の定義を、この本の言葉で言い直した。Core の字は、各章の注で引く。
-
-## この本の構成
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <g class="ts">
-    <rect x="40" y="14" width="800" height="60" rx="6" class="soft"/>
-    <text x="60" y="40" font-weight="700">巨大なシステムの分業という問い</text>
-    <text x="60" y="63" class="sub">いまの章と第 1 章。職能で切らない理由</text>
-    <a href="#ch1"><text x="820" y="40" text-anchor="end">第 1 章</text></a>
-    <rect x="40" y="82" width="800" height="60" rx="6" class="lt" style="fill:#fff"/>
-    <text x="60" y="108" font-weight="700">Cell の境界と責務</text>
-    <text x="60" y="131" class="sub">切り方の判定と軸の例、Profile・Constitution・Federation</text>
-    <a href="#ch2"><text x="820" y="108" text-anchor="end">第 2 章から</text></a>
-    <rect x="40" y="150" width="800" height="60" rx="6" class="lt" style="fill:#fff"/>
-    <text x="60" y="176" font-weight="700">切っても残る結合の持ち方</text>
-    <text x="60" y="199" class="sub">Cell のあいだの取り決め、仕事の渡し方、成果の確かめ方と語の定義</text>
-    <a href="#ch5"><text x="820" y="176" text-anchor="end">第 5 章から</text></a>
-    <rect x="40" y="218" width="800" height="60" rx="6" class="lt" style="fill:#fff"/>
-    <text x="60" y="244" font-weight="700">分業を続けながら境界を保つ</text>
-    <text x="60" y="267" class="sub">取り決めの版の変え方と、共有する文書の改訂の承認</text>
-    <a href="#ch8"><text x="820" y="244" text-anchor="end">第 8 章から</text></a>
-    <rect x="40" y="286" width="800" height="60" rx="6" class="lt" style="fill:#fff"/>
-    <text x="60" y="312" font-weight="700">切り直しと加わり方</text>
-    <text x="60" y="335" class="sub">Cell の分け直しと、いまの分業からの始め方</text>
-    <a href="#ch10"><text x="820" y="312" text-anchor="end">第 10 章から</text></a>
-  </g>
-</svg>
-```
-
-第 1 章で職能で切らない理由、第 2〜4 章で Cell の境界と責務、第 5〜7 章で切っても残る結合、第 8・9 章で境界の保ち方、第 10・11 章で切り直しと始め方を見ます。
-
-※ LeSS・SAFe・Spotify など、人間の分業の枠組みとの対応は付録で見る。全体を 1 枚にした絵は巻末に置いた。
+※ 例の在庫と物流は第 2・3・5〜7 章で使う。語の意味は EAA Core 版 6 の概念表をこの本の言葉で言い直した。Core の字は各章の注で引く。
