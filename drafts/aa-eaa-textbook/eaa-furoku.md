@@ -25,6 +25,11 @@ p.「この本の切り方との対応」は書き手の読み。枠組みの語
 付録は巻末と同じ組み方（章の概要・群・リードを持たない）。build.mjs に <本>-furoku.md を読む行を足した（付録の判定・並べる順・公開してよい名前の一覧）。
 新しく引く外部の文献: 上の SAFe・LeSS・Lee の原文（どれも旧第 1 章で引いた文書の当たり直しか、同じ枠組みの別のページ）。
 v6 の 3 便目（着手: @ope-ultp1635 msg df6c27d8。構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v6.md 87be3308）で、本文・注・絵の「第 N 章」を v6 の番号にした（第 6 章以降は 1 ずつ減らした）。旧第 3〜5 章を指していた所: 絵「判断の権限を渡して分ける（第 5 章）」→ 第 3 章、「責任者が追える大きさ（第 5 章）」→ 第 2 章、注「第 3 章の「価値」」→ 第 2 章。この上の記録の章番号は、そのときの番号のまま。
+v7 の 3 便目（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v7.md 863f5176。着手: @ope-ultp1635 msg 58cbdf2b。本文 GO: msg d9ab1757）で 11 → 5 ページに畳んだ。前の字は `git show 5b5aea2:drafts/aa-eaa-textbook/eaa-furoku.md`。ページごとの行き先と落とした字: writer-ja/drafts/eaa-toc/fold-v7-ledger.md の便 3。
+- p.「LeSS：優先順位は一人の PO」に p.「LeSS：調整は、チームどうしで話す」を畳んだ。
+- p.「SAFe 2022 年版：既定は任せる」に p.「SAFe：集めすぎると判断待ちの列」p.「SAFe：計画は PI Planning で」を畳んだ。題と絵と注に「2022 年版」を残し、いまの版の字と 2022 年版の字を絵の中で分けた（@reader の桜井が、推進会議の前に協力会社の担当に読ませたいと挙げた 3 ページ。社外に出る前提で読まれる。@ope-ultp1635 msg 58cbdf2b）。2023 年 12 月の版の扱いは注に残した。英文・URL・参照日は前のページのまま絵の中。
+- p.「この本の切り方との対応」に p.「複数社のあいだも、集めるか任せるか」p.「あいだの合意を、書いて持つ」を畳んだ。p.「引用の確かめ方」は各ページの出典の注で足りるので落とした（Kniberg の動画を当たり直していないことは Spotify のページの絵に、EAA 紹介 0 の説明は同じページの注にある）。
+- 章番号: 本文・注・絵は v7 の章番号（10 章）で書いた。
 -->
 
 ## 三つとも、決定ごとに分けている
@@ -34,7 +39,7 @@ v6 の 3 便目（着手: @ope-ultp1635 msg df6c27d8。構造: agent-hub-roles-k
   <g class="ts">
     <text x="60" y="56" font-weight="700">枠組み</text><text x="220" y="56" font-weight="700">一か所に集めるもの</text><text x="540" y="56" font-weight="700">各チームに任せるもの</text>
     <text x="60" y="116" font-weight="700">LeSS</text><text x="220" y="116">優先順位（一人の PO）</text><text x="540" y="116">チームのあいだの調整</text>
-    <text x="60" y="176" font-weight="700">SAFe</text><text x="60" y="200" class="tx">2022 年の版</text><text x="220" y="176">戦略的な決定だけ</text><text x="220" y="200" class="tx">頻度が低く、長く効き、規模の経済が大きい</text><text x="540" y="176" class="hc" font-weight="700">ほかの決定すべて（既定）</text><text x="540" y="200" class="tx">あいだの計画は PI Planning で揃える</text>
+    <text x="60" y="176" font-weight="700">SAFe</text><text x="60" y="200" class="tx">2022 年版</text><text x="220" y="176">戦略的な決定だけ</text><text x="220" y="200" class="tx">頻度が低く、長く効き、規模の経済が大きい</text><text x="540" y="176" class="hc" font-weight="700">ほかの決定すべて（既定）</text><text x="540" y="200" class="tx">あいだの計画は PI Planning で揃える</text>
     <text x="60" y="266" font-weight="700">Spotify</text><text x="220" y="266" class="tx">引いた記述の中には無い</text><text x="540" y="266">大きく任せた</text>
   </g>
   <path d="M40,76 H840 M40,146 H840 M40,226 H840 M40,296 H840 M200,30 V296 M520,30 V296" class="lt"/>
@@ -50,102 +55,57 @@ LeSS・SAFe・Spotify は、チームのあいだの決定を、どれか一方�
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="60" y="40" width="200" height="130" rx="10" class="box"/><text x="160" y="96" class="t" text-anchor="middle" font-weight="700">50 チーム</text>
-  <path d="M264,105 H336" class="ln" marker-end="url(#arr)"/>
-  <rect x="340" y="40" width="200" height="130" rx="10" class="soft"/><text x="440" y="96" class="t" text-anchor="middle" font-weight="700">PBI 200 件</text><text x="440" y="130" class="tx" text-anchor="middle">1 回の iteration で</text>
-  <path d="M544,105 H616" class="ln" marker-end="url(#arr)"/>
-  <rect x="680" y="70" width="120" height="70" rx="6" class="h"/><text x="740" y="112" class="ts on" text-anchor="middle">PO</text>
-  <text x="60" y="230" class="ts sub">LeSS「Area Product Owner」　less.works/less/less-huge/area-product-owner（2026-11-08 参照）</text>
-  <text x="60" y="264" class="ts">With 50 teams this leads to a PB with 200 PBIs just for one iteration.</text>
-  <text x="60" y="292" class="ts">Prioritizing 200 PBIs per iteration is too much work for one PO.</text>
-  <text x="60" y="330" class="ts">… the PO always has the final decision.</text>
+  <rect x="40" y="16" width="130" height="76" rx="10" class="box"/><text x="105" y="60" class="ts" text-anchor="middle" font-weight="700">50 チーム</text>
+  <path d="M172,54 H198" class="ln" marker-end="url(#arr)"/>
+  <rect x="200" y="16" width="130" height="76" rx="10" class="soft"/><text x="265" y="48" class="ts" text-anchor="middle" font-weight="700">PBI 200 件</text><text x="265" y="74" class="tx" text-anchor="middle">1 回の iteration で</text>
+  <path d="M332,54 H358" class="ln" marker-end="url(#arr)"/>
+  <rect x="360" y="30" width="70" height="48" rx="6" class="h"/><text x="395" y="60" class="ts on" text-anchor="middle">PO</text>
+  <rect x="470" y="16" width="120" height="76" rx="10" class="box"/><text x="530" y="60" class="ts" text-anchor="middle" font-weight="700">チーム</text>
+  <rect x="720" y="16" width="120" height="76" rx="10" class="box"/><text x="780" y="60" class="ts" text-anchor="middle" font-weight="700">チーム</text>
+  <path d="M592,54 H718" class="ln" marker-start="url(#arr)" marker-end="url(#arr)"/><text x="655" y="44" class="ts hc" text-anchor="middle">"just talk"</text>
+  <text x="235" y="118" class="tx" text-anchor="middle">優先順位は集める</text><text x="655" y="118" class="tx" text-anchor="middle">調整は任せる</text>
+  <text x="40" y="160" class="tx sub">LeSS「Area Product Owner」　less.works/less/less-huge/area-product-owner（2026-11-08 参照）</text>
+  <text x="40" y="186" class="ts">With 50 teams this leads to a PB with 200 PBIs just for one iteration.</text>
+  <text x="40" y="210" class="ts">Prioritizing 200 PBIs per iteration is too much work for one PO.</text>
+  <text x="40" y="234" class="ts">… the PO always has the final decision.</text>
+  <text x="40" y="276" class="tx sub">LeSS「Coordination and Integration」　less.works/less/framework/coordination-and-integration（2026-11-08 参照）</text>
+  <text x="40" y="302" class="ts">You do not need a formal, official, usually slow coordination mechanism</text>
+  <text x="40" y="326" class="ts">in order to coordinate.</text>
 </svg>
 ```
 
-LeSS は、優先順位の最終決定を一人の Product Owner（PO）に集めます。補う役を置く主な理由は、その一人が多すぎる仕事を抱えないようにするためです。
+LeSS は、優先順位の最終決定を一人の Product Owner（PO）に集め、チームのあいだの調整は各チームに任せます。チームどうしが直接話して合わせます。
 
-出典: LeSS「Area Product Owner」（英文は絵の中）。PBI は Product Backlog の項目、iteration は開発の 1 周期。
-
-## LeSS：調整は、チームどうしで話す
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="60" y="60" width="240" height="140" rx="10" class="box"/><text x="180" y="138" class="t" text-anchor="middle" font-weight="700">チーム</text>
-  <rect x="580" y="60" width="240" height="140" rx="10" class="box"/><text x="700" y="138" class="t" text-anchor="middle" font-weight="700">チーム</text>
-  <path d="M304,130 H576" class="ln" marker-start="url(#arr)" marker-end="url(#arr)"/><text x="440" y="116" class="ts hc" text-anchor="middle">"just talk"</text>
-  <text x="60" y="262" class="ts sub">LeSS「Coordination and Integration」　less.works/less/framework/coordination-and-integration（2026-11-08 参照）</text>
-  <text x="60" y="296" class="ts">You do not need a formal, official, usually slow coordination mechanism</text>
-  <text x="60" y="320" class="ts">in order to coordinate.</text>
-</svg>
-```
-
-LeSS は、チームのあいだの調整を各チームに任せます。調整が要るなら、相手のチームへ行く・電話するなどして、直接話して合わせます。
-
-出典: LeSS「Coordination and Integration」（英文は絵の中）。
+出典: LeSS（題・英文・参照日は絵の中）。PBI は Product Backlog の項目、iteration は開発の 1 周期。
 
 ## SAFe 2022 年版：既定は任せる
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="40" width="380" height="200" rx="10" class="soft"/>
-  <text x="230" y="76" class="t" text-anchor="middle" font-weight="700">Centralize Strategic Decisions</text>
-  <g class="ts" text-anchor="middle"><text x="230" y="120">Infrequent</text><text x="230" y="150">Long-lasting</text><text x="230" y="180">Provide significant economies of scale</text></g>
-  <rect x="460" y="40" width="380" height="200" rx="10" class="hl" style="fill:#fff"/>
-  <text x="650" y="76" class="t hc" text-anchor="middle" font-weight="700">Decentralize Everything Else</text>
-  <g class="ts" text-anchor="middle"><text x="650" y="120">Frequent</text><text x="650" y="150">Time-critical</text><text x="650" y="180">Require local information</text></g>
-  <text x="60" y="284" class="ts sub">SAFe「Principle #9 – Decentralize decision-making」（Web Archive 2022-02-01 の版、2026-11-08 参照）</text>
-  <text x="60" y="316" class="ts">The vast majority of decisions do not reach the threshold of strategic importance.</text>
-  <text x="60" y="340" class="ts">All other decisions should be decentralized.</text>
+  <text x="40" y="20" class="tx sub">SAFe「Principle #9 – Decentralize decision-making」（Web Archive 2022-02-01 の版、2026-11-08 参照）</text>
+  <rect x="40" y="30" width="440" height="70" rx="8" class="soft"/>
+  <text x="260" y="54" class="ts" text-anchor="middle" font-weight="700">Centralize Strategic Decisions</text>
+  <text x="260" y="82" class="tx" text-anchor="middle">Infrequent・Long-lasting・Provide significant economies of scale</text>
+  <rect x="500" y="30" width="340" height="70" rx="8" class="hl" style="fill:#fff"/>
+  <text x="670" y="54" class="ts hc" text-anchor="middle" font-weight="700">Decentralize Everything Else</text>
+  <text x="670" y="82" class="tx" text-anchor="middle">Frequent・Time-critical・Require local information</text>
+  <text x="40" y="126" class="ts">The vast majority of decisions do not reach the threshold of strategic importance.</text>
+  <text x="40" y="148" class="ts">All other decisions should be decentralized.</text>
+  <path d="M40,166 H840" class="lt"/>
+  <text x="40" y="188" class="tx sub">SAFe「Principle #9 - Decentralize Decision-Making」いまの版の導入部（framework.scaledagile.com、2026-11-08 参照）</text>
+  <text x="40" y="212" class="ts">when managerial input is necessary for most decisions, it causes a queue of</text>
+  <text x="40" y="234" class="ts">decision requests that block progress</text>
+  <path d="M40,252 H840" class="lt"/>
+  <text x="40" y="274" class="tx sub">SAFe「PI Planning」（framework.scaledagile.com/pi-planning、2026-11-08 参照）</text>
+  <text x="40" y="298" class="ts">It is typically a 2-day event for the entire ART that takes place every 8-12 weeks.</text>
+  <text x="40" y="320" class="ts">PI Planning is led by the Release Train Engineer (RTE).</text>
+  <text x="40" y="350" class="tx">チームのあいだの依存は ART planning board に載せる。ART は SAFe の、チームを束ねた単位。RTE はその進行役</text>
 </svg>
 ```
 
-2022 年の版の SAFe は、任せる側を既定にしていました。集めるのは、頻度が低く、長く効き、規模の経済が大きい戦略的な決定だけで、ほかはすべて任せます。
+2022 年版の SAFe は、戦略的な決定だけを集めてほかは任せていました。いまの版は集めすぎると判断待ちの列ができると書き、計画は PI Planning で揃えます。
 
-出典: SAFe「Principle #9」2022 年の版（英文は絵の中）。2023 年 12 月の版に「ほかはすべて任せる」の字は無く、決定ごとに点を付けて任せるかを選ぶ。
-
-## SAFe：集めすぎると判断待ちの列
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <g class="ts" text-anchor="middle">
-    <rect x="40" y="70" width="110" height="70" rx="6" class="box"/><text x="95" y="112">決定</text>
-    <rect x="160" y="70" width="110" height="70" rx="6" class="box"/><text x="215" y="112">決定</text>
-    <rect x="280" y="70" width="110" height="70" rx="6" class="box"/><text x="335" y="112">決定</text>
-    <rect x="400" y="70" width="110" height="70" rx="6" class="box"/><text x="455" y="112">決定</text>
-  </g>
-  <path d="M514,105 H636" class="ln" marker-end="url(#arr)"/>
-  <rect x="640" y="70" width="180" height="70" rx="6" class="h"/><text x="730" y="112" class="ts on" text-anchor="middle">管理者</text>
-  <text x="60" y="230" class="ts sub">SAFe「Principle #9 - Decentralize Decision-Making」（framework.scaledagile.com、2026-11-08 参照）</text>
-  <text x="60" y="264" class="ts">when managerial input is necessary for most decisions, it causes a queue of</text>
-  <text x="60" y="288" class="ts">decision requests that block progress</text>
-</svg>
-```
-
-いまの版の SAFe は、任せる理由の一つに、ほとんどの決定に管理者の関与が要ると決定を求める列ができ、進行を止めることを挙げます。
-
-出典: SAFe「Principle #9」のいまの版の導入部（英文は絵の中）。
-
-## SAFe：計画は PI Planning で
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="40" width="800" height="190" rx="10" class="box"/><text x="440" y="76" class="t" text-anchor="middle" font-weight="700">PI Planning（ART 全体の催し）</text>
-  <g class="ts" text-anchor="middle">
-    <rect x="80" y="100" width="150" height="60" rx="6" class="soft"/><text x="155" y="136">チーム</text>
-    <rect x="260" y="100" width="150" height="60" rx="6" class="soft"/><text x="335" y="136">チーム</text>
-    <rect x="440" y="100" width="150" height="60" rx="6" class="soft"/><text x="515" y="136">チーム</text>
-    <rect x="620" y="100" width="180" height="60" rx="6" class="h"/><text x="710" y="136" class="on">RTE が進める</text>
-  </g>
-  <text x="440" y="200" class="ts" text-anchor="middle">依存は ART planning board に載せる</text>
-  <text x="60" y="270" class="ts sub">SAFe「PI Planning」（framework.scaledagile.com/pi-planning、2026-11-08 参照）</text>
-  <text x="60" y="302" class="ts">It is typically a 2-day event for the entire ART that takes place every 8-12 weeks.</text>
-  <text x="60" y="330" class="ts">PI Planning is led by the Release Train Engineer (RTE).</text>
-</svg>
-```
-
-チームのあいだの計画と依存は、8〜12 週ごとの PI Planning で、ART の全チームが揃えます。決定を一人に集めず、決まった周期の場で揃えます。
-
-出典: SAFe「PI Planning」（英文は絵の中）。ART は SAFe の、チームを束ねた単位。RTE はその進行役。
+出典: SAFe（題・英文・参照日は絵の中）。2023 年 12 月の版に「ほかはすべて任せる」の字は無く、決定ごとに点を付けて任せるかを選ぶ。
 
 ## Spotify：任せる側に大きく寄った
 
@@ -170,79 +130,29 @@ Spotify は、各チームに任せる側に大きく寄りました。元社員
 
 出典: 題・年・媒体は絵の中。Kniberg の字の訳は EAA 紹介 0（この本の前に書いた紹介資料）。一社の実践の記述です。
 
-## 複数社のあいだも、集めるか任せるか
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="220" y="44" class="t" text-anchor="middle" font-weight="700">発注側が集める</text>
-  <text x="660" y="44" class="t" text-anchor="middle" font-weight="700">ベンダーに任せる</text>
-  <path d="M440,30 V320" class="lt dash"/>
-  <rect x="140" y="70" width="160" height="60" rx="6" class="h"/><text x="220" y="106" class="ts on" text-anchor="middle">発注側の定例会議</text>
-  <g class="ts" text-anchor="middle"><rect x="60" y="180" width="120" height="60" rx="6" class="box"/><text x="120" y="216">A 社</text><rect x="260" y="180" width="120" height="60" rx="6" class="box"/><text x="320" y="216">B 社</text></g>
-  <path d="M180,134 L130,176 M260,134 L310,176" class="ln"/>
-  <g class="ts" text-anchor="middle"><rect x="500" y="120" width="120" height="60" rx="6" class="box"/><text x="560" y="156">A 社</text><rect x="700" y="120" width="120" height="60" rx="6" class="box"/><text x="760" y="156">B 社</text></g>
-  <path d="M624,150 H696" class="ln" marker-start="url(#arr)" marker-end="url(#arr)"/><text x="660" y="214" class="ts hc" text-anchor="middle">直接合わせる</text>
-  <text x="220" y="300" class="ts sub" text-anchor="middle">合わせた中身は、契約と検収の条件に書く</text>
-  <text x="660" y="300" class="ts sub" text-anchor="middle">合わせた中身は、話した人が持つ</text>
-</svg>
-```
-
-複数社で組む現場でも、集めるか任せるかを分けます。発注側の定例会議で合わせて契約と検収の条件に書くか、ベンダーどうしで直接合わせてもらうかです。
-
-※ 説明のための一般的な形で、特定の現場の記述ではない。第 11 章の例の定例会議は左側。
-
 ## この本の切り方との対応
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <g class="ts">
-    <text x="60" y="56" font-weight="700">枠組みの記述</text><text x="470" y="56" font-weight="700">この本で当たる所</text>
-    <text x="60" y="106">チーム・ART の中の進め方</text><text x="470" y="106">Cell の中の作り方（第 2・11 章）</text>
-    <text x="60" y="156">決定を任せる（SAFe・LeSS）</text><text x="470" y="156">判断の権限を渡して分ける（第 3 章）</text>
-    <text x="60" y="206">あいだの調整・計画</text><text x="470" y="206">Contract と、版の採用（第 5・8 章）</text>
-    <text x="60" y="256">一人に集めた優先順位（LeSS）</text><text x="470" y="256">責任者が追える大きさ（第 2 章）</text>
+  <g class="tx">
+    <text x="50" y="30" font-weight="700">枠組みの記述</text><text x="450" y="30" font-weight="700">この本で当たる所</text>
+    <text x="50" y="60">チーム・ART の中の進め方</text><text x="450" y="60">Cell の中の作り方（第 2・9 章）</text>
+    <text x="50" y="90">決定を任せる（SAFe・LeSS）</text><text x="450" y="90">判断の権限を渡して分ける（第 3 章）</text>
+    <text x="50" y="120">あいだの調整・計画</text><text x="450" y="120">Contract と、版の採用（第 5・7 章）</text>
+    <text x="50" y="150">一人に集めた優先順位（LeSS）</text><text x="450" y="150">責任者が追える大きさ（第 2 章）</text>
   </g>
-  <path d="M40,76 H840 M40,126 H840 M40,176 H840 M40,226 H840 M40,276 H840 M450,30 V276" class="lt"/>
-  <text x="440" y="330" class="ts sub" text-anchor="middle">左と右は同じ物ではない。読み替えの見当</text>
-</svg>
-```
-
-枠組みで使っている語を、この本のどの章で扱うかの見当です。決定を任せることは権限で分けることに、あいだの調整は Contract と版の採用に当たります。
-
-※ 書き手の読み。SAFe の「Organizing ARTs around value」の value は value stream の側で、第 2 章の「価値」とは別の語なので、表に置かない。
-
-## あいだの合意を、書いて持つ
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="40" y="50" width="250" height="200" rx="10" class="soft"/><text x="165" y="90" class="t" text-anchor="middle" font-weight="700">集める</text><text x="165" y="140" class="ts" text-anchor="middle">一人や定例の場が持つ</text>
-  <rect x="315" y="50" width="250" height="200" rx="10" class="soft"/><text x="440" y="90" class="t" text-anchor="middle" font-weight="700">任せる</text><text x="440" y="140" class="ts" text-anchor="middle">話した人が持つ</text>
-  <rect x="590" y="50" width="250" height="200" rx="10" class="hl" style="fill:#fff"/><text x="715" y="90" class="t hc" text-anchor="middle" font-weight="700">この本</text>
-  <text x="715" y="140" class="ts" text-anchor="middle">版付きの Contract に書き、</text><text x="715" y="166" class="ts" text-anchor="middle">結ぶ Cell が全部採用して</text><text x="715" y="192" class="ts" text-anchor="middle">成り立たせる</text>
-  <text x="440" y="306" class="ts sub" text-anchor="middle">片側だけでは変わらない。採用は各 Cell の所有者が決める</text>
-</svg>
-```
-
-この本は、あいだの合意を一人にも話した人にも預けず、版付きの Contract に書きます。結ぶ Cell が全部同じ版を採用して成り立つので、片側では変わりません。
-
-出典: EAA Core 版 6「3. 意味と合意」「4. 提案と変更」。第 5・8 章で見ました。
-
-## 引用の確かめ方
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <g class="ts">
-    <text x="60" y="56" font-weight="700">引用</text><text x="520" y="56" font-weight="700">この本で原文に当たったか</text>
-    <text x="60" y="110">LeSS「Area Product Owner」</text><use href="#i-ok" x="520" y="92" width="24" height="24"/><text x="556" y="110" class="tx">2026-11-08</text>
-    <text x="60" y="160">LeSS「Coordination and Integration」</text><use href="#i-ok" x="520" y="142" width="24" height="24"/><text x="556" y="160" class="tx">2026-11-08</text>
-    <text x="60" y="210">SAFe「Principle #9」「PI Planning」</text><use href="#i-ok" x="520" y="192" width="24" height="24"/><text x="556" y="210" class="tx">2026-11-08（Web Archive の版を含む）</text>
-    <text x="60" y="260">Lee「Spotify's Failed #SquadGoals」</text><use href="#i-ok" x="520" y="242" width="24" height="24"/><text x="556" y="260" class="tx">2026-11-08</text>
-    <text x="60" y="310">Kniberg「Spotify Engineering Culture」</text><use href="#i-no" x="520" y="292" width="24" height="24"/><text x="556" y="310" class="tx">動画。訳は EAA 紹介 0 のまま</text>
+  <path d="M30,40 H850 M30,70 H850 M30,100 H850 M30,130 H850 M30,160 H850 M430,14 V160" class="lt"/>
+  <text x="440" y="186" class="tx sub" text-anchor="middle">左と右は同じ物ではない。読み替えの見当</text>
+  <text x="40" y="222" class="ts" font-weight="700">あいだの合意を、誰が持つか（複数社で組む現場でも同じ）</text>
+  <g class="tx" text-anchor="middle">
+    <rect x="40" y="236" width="250" height="96" rx="10" class="soft"/><text x="165" y="262" class="ts" font-weight="700">集める</text><text x="165" y="288">発注側の定例会議で合わせ、</text><text x="165" y="310">契約と検収の条件に書く</text>
+    <rect x="315" y="236" width="250" height="96" rx="10" class="soft"/><text x="440" y="262" class="ts" font-weight="700">任せる</text><text x="440" y="288">ベンダーどうしで直接合わせる。</text><text x="440" y="310">中身は話した人が持つ</text>
+    <rect x="590" y="236" width="250" height="96" rx="10" class="hl" style="fill:#fff"/><text x="715" y="262" class="ts hc" font-weight="700">この本</text><text x="715" y="288">版付きの Contract に書き、結ぶ</text><text x="715" y="310">Cell が全部採用して成り立たせる</text>
   </g>
-  <path d="M40,76 H840 M40,126 H840 M40,176 H840 M40,226 H840 M40,276 H840 M40,326 H840 M500,30 V326" class="lt"/>
+  <text x="440" y="362" class="ts sub" text-anchor="middle">片側だけでは変わらない。採用は各 Cell の規範の所有者が決める</text>
 </svg>
 ```
 
-英文の引用は、Kniberg の動画を除いて、この本で原文に当たりました。Kniberg の字だけは、EAA 紹介 0 の訳のままです。
+枠組みの語を、この本のどの章で扱うかの見当です。この本は、あいだの合意を一人にも話した人にも預けず、版付きの Contract に書いて持ちます。
 
-※ EAA 紹介 0・3 は、この本の前に書いた EAA の紹介資料。注に出てくるが、この本を読むのに先に読む必要はない。
+※ 書き手の読み。複数社の形は一般的な形で、特定の現場ではない。SAFe の value は value stream の側で、第 2 章の「価値」とは別の語。

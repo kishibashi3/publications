@@ -49,6 +49,7 @@ v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
 畳んで落ちかけた Core の字を戻した: 採用を決めるのは各 Cell の規範の所有者（core.md:91）は p.「結ぶ Cell が全部採用して、成立する」の注、Mission で背景と引受条件を共有する（core.md:65）は例の絵の右上、埋まらない欄の読みが EAA 紹介 3 のもので Core の規定ではないことは p.「例：在庫と物流の Contract」の注。
 v7 の残す字「結ぶ Cell の全部が同じ版を採用して成り立つ。片側だけの間は前の版」（core.md:80）は p.「結ぶ Cell が全部採用して、成立する」の本文に逐語。
 章番号: この章の本文・注・絵は v7 の章番号（10 章）で書いた。版の改訂と採用・所有者は第 7 章（旧第 8・9 章）。この上の記録の章番号は、そのときの番号のまま。
+v7 の 3 便目（@ope-ultp1635 msg 58cbdf2b の判定 1）: core.md:67 の前半「子 Mission は親 Goal への寄与を説明可能にする」を p.「Mission は、一回の仕事」の絵（Goal・Outcome の箱の下）に戻した。便 2 で落としたが、第 4 章にこの字は無く、落とす根拠が無かった。出典に「2.」を足した。後半（目的を変えるなら新しい Mission か改訂として提案する）は p.「例：追跡番号を出荷結果に載せる」の注のまま。
 -->
 
 > Contract には渡すもの・条件・確かめ方を書き、結ぶ Cell のすべてが同じ版を採用して成り立たせる。一回ずつの仕事は Mission で、受ける Cell が頼む側の事情を知らずに進められる形で渡す。
@@ -182,16 +183,17 @@ Contract は、相互の責任、提供条件、入出力、必要な Evidence �
   <g class="tx"><text x="80" y="148" font-weight="700">Goal</text><text x="160" y="148">目指す状態</text><text x="80" y="174" font-weight="700">Outcome</text><text x="160" y="174">成り立たせた変化</text></g>
   <rect x="500" y="86" width="320" height="104" rx="3" class="hl" style="fill:#fff"/>
   <g class="ts" text-anchor="middle"><text x="660" y="124">在庫と物流のあいだの</text><text x="660" y="150">責任・条件・入出力・Evidence</text><text x="660" y="178" class="sub">変えるまで効き続ける</text></g>
-  <rect x="40" y="226" width="800" height="120" rx="10" class="xl" style="fill:#fff"/>
-  <use href="#i-no" x="60" y="244" width="24" height="24"/><text x="96" y="262" class="ts">「追跡番号を出してほしい、詳しくは打合せで」と渡す</text>
-  <text x="96" y="294" class="tx">物流は、どこで終わりか・何を変えてはだめか・何で受け入れるかが分からない</text>
-  <text x="96" y="322" class="tx xc">在庫の事情を聞きに戻る（頼んだ側の文脈を読みに行く）</text>
+  <text x="440" y="214" class="tx" text-anchor="middle">Mission を分けたら、子 Mission は親 Goal への寄与を説明できるようにする</text>
+  <rect x="40" y="236" width="800" height="120" rx="10" class="xl" style="fill:#fff"/>
+  <use href="#i-no" x="60" y="254" width="24" height="24"/><text x="96" y="272" class="ts">「追跡番号を出してほしい、詳しくは打合せで」と渡す</text>
+  <text x="96" y="304" class="tx">物流は、どこで終わりか・何を変えてはだめか・何で受け入れるかが分からない</text>
+  <text x="96" y="332" class="tx xc">在庫の事情を聞きに戻る（頼んだ側の文脈を読みに行く）</text>
 </svg>
 ```
 
 Mission は、引き受けた責務のもとで今回実現する変化です。目指す状態が Goal、成り立たせた変化が Outcome です。続く取り決めは Contract です。
 
-出典: EAA Core 版 6 の概念表「Mission」「Goal」「Outcome」。※ 詳しくは打合せでと渡すと、受けた側は頼んだ側の事情を聞きに戻る（書き手の読み、第 2 章）。
+出典: EAA Core 版 6 の概念表「Mission」「Goal」「Outcome」、「2.」。※ 詳しくは打合せでと渡すと、受けた側は頼んだ側に聞きに戻る（書き手の読み、第 2 章）。
 
 ## 例：追跡番号を出荷結果に載せる
 

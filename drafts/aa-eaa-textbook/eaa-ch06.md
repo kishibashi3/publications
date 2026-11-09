@@ -29,6 +29,7 @@ v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
 (1) 「自分の意味に置き換えて読む」: 本文から「読める」を外し、対応で分かることを絵に書いた — 不等号の対応から在庫が確かめられるのは、二つの出荷日が矛盾しないか（物流の出荷日が在庫の出荷日以後か）まで。在庫の意味の値は出ないので置き換えない。値が要るなら Contract に欄を足す提案をする（注）。Core の字は core.md:36「文脈から解釈可能にする」と core.md:21「共通語の定義（Ontology）によって読む」まで。在庫が物流の語を物流の意味のまま読むことが第 2 章の判定に当たるか: 定義は境界の両側が保持する共通語の定義（core.md:21）なので、在庫が読むのは自分も持つ定義で、物流の Cell の中の記録や事情ではない。これは書き手の読みで、p.「Ontology は共有する語の定義」の絵の下の行に置いた。
 (2) 副題の「聞かずに」: 副題を「成果は、受け取った側が作った側を介さずに確かめる」にした（core.md:22 の字）。「共有する語の定義で読む」は副題から外した（Ontology の字は章題が持つ）。章の概要の文と絵の「聞かずに」「聞きに行かない」も「介さずに」「確かめのたびに聞かない」にした。照会（core.md:76）は、ずれのときに語の意味を聞くことで、確かめのたびに聞くことではない（p.「ずれは、照会か変更提案で解く」の注）。
 章番号: この章の本文・注・絵は v7 の章番号（10 章）で書いた。提案の手続きは第 7 章（旧第 8 章）。この上の記録の章番号は、そのときの番号のまま。
+v7 の 3 便目（@ope-ultp1635 msg 58cbdf2b の判定 2）: Evidence の様式の定義（Evidence として何を、どの形で残すかを定める、Cell 間で共有する文書。core.md:41）と所有者は人間（core.md:94）を p.「Evidence は受け取った側が確かめる」の絵の右下の箱の下の行に戻した。便 2 で第 4 章 p.「Federation は中を指定しない」の文書の一覧に入れるとして落としたが、一覧にあるのは名前だけで定義を持っていなかった。共有する文書の所有者が人間であることは、第 7 章 p.「改訂は提起者でない人間の所有者が承認する」の絵の上の段にも置いた。
 -->
 
 > Evidence は成果や判断の成立を確かめる記録で、受け取った Cell が作った Cell を介さずに確かめられる形にする。記録は共有する語の定義（Ontology）で読み、意味のずれは受け入れられなかったときに見え、照会か変更提案で解く。
@@ -63,12 +64,14 @@ v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
   <text x="190" y="236" class="ts" text-anchor="middle" font-weight="700">確かめる側</text>
   <text x="190" y="264" class="tx" text-anchor="middle">どの Cell の判断も、</text><text x="190" y="286" class="tx" text-anchor="middle">ほかの Cell は上書きしない（第 4 章）</text>
   <text x="190" y="318" class="tx hc" text-anchor="middle" font-weight="700">だから、確かめるのは</text><text x="190" y="340" class="tx hc" text-anchor="middle" font-weight="700">受け取った Cell</text>
-  <rect x="360" y="206" width="480" height="150" rx="10" class="box"/>
+  <rect x="360" y="206" width="480" height="166" rx="10" class="box"/>
   <text x="600" y="236" class="ts" text-anchor="middle" font-weight="700">Evidence になる記録の例</text>
-  <g class="tx" text-anchor="middle"><text x="490" y="268">PR</text><text x="600" y="268">実行できるテスト</text><text x="730" y="268">CI の実行結果</text>
-  <text x="490" y="296">本番の実行記録</text><text x="600" y="296">突き合わせの結果</text><text x="730" y="296">切り戻しの結果</text>
-  <text x="530" y="324" class="hc">人間の判断の記録</text><text x="700" y="324">外部の確認</text></g>
-  <text x="600" y="348" class="tx sub" text-anchor="middle">どれを渡すかは、Contract と Mission で決める</text>
+  <g class="tx" text-anchor="middle"><text x="490" y="260">PR</text><text x="600" y="260">実行できるテスト</text><text x="730" y="260">CI の実行結果</text>
+  <text x="490" y="280">本番の実行記録</text><text x="600" y="280">突き合わせの結果</text><text x="730" y="280">切り戻しの結果</text>
+  <text x="530" y="300" class="hc">人間の判断の記録</text><text x="700" y="300">外部の確認</text></g>
+  <text x="600" y="322" class="tx sub" text-anchor="middle">どれを渡すかは、Contract と Mission で決める</text>
+  <text x="600" y="344" class="tx hc" text-anchor="middle">何を、どの形で残すかは、Evidence の様式に書く</text>
+  <text x="600" y="362" class="tx hc" text-anchor="middle">Cell のあいだで共有する文書で、所有者は人間</text>
 </svg>
 ```
 
