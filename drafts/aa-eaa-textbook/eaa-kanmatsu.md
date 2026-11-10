@@ -7,6 +7,7 @@
 - 引いた文書: 本文・注が引く文書を全部挙げ、置き場所を書いた。置き場所は 2026-11-10 に kishibashi3/publications の main で確かめた（enterprise-agentic-agile/ の 7 本・self-revising-norm-architecture/・agentic-agile-materials/explanations/eaa/・aa-eaa-textbook/ の aa-*.md）。repo は公開。公開サイト（docs/）にはどれも無い。この本の原稿は drafts/eaa-textbook の branch にだけある。LeSS・SAFe・Spotify の文献は付録の各ページの絵の中に題・URL・参照日がある。
 - @reviewer の巻末の検算（roles-kaz reviewer/feedback-archive/2026-11-10-eaa-textbook-5221280-kanmatsu.md、a797aaaa、着手: @ope-ultp1635 msg 2999263c）で直した: EAA・Cell・割当・採用・正本・所有者・Outcome・Authority の行、p.6 の EAA の行（「AA を」→「AA から」）と注の出典、引いた文書に README の行。Outcome は Core の「成立させる」に合わせ、p.35 の本文と絵の字も「成り立たせる」に直した。正本を定義したページは p.22（「Profile の本文（正本）」）。
 - 同じ検算の Suggestion 2〜5 を直した（着手: @ope-ultp1635 msg 8f1f2e85）: ロードを Profiles「4.」と p.22 の「引き受け（ロード）」に合わせて引き受けそのものにした。Federation に主語「Cell どうしが」を足した。Ontology に Core 概念表の「意味の違いと対応を保持し」を足した（p.42 の主張）。3 枚目の題を「Mission の欄」から「Mission と判断責任者」にした（欄でない Mission・Outcome・Task・Operator が載るため。Operator は判断責任者を担う人間の呼び名。「Mission と Operator」は見出しの上限 20 字を 1 字越える）。
+- fc76428 の再検算（roles-kaz reviewer/feedback-archive、f9f6d6d5、着手: @ope-ultp1635 msg dd244475）で直した: 3 枚目に判断責任者の行を足した（定義 p.22。Core「1.」の語で、本文 6 ページと割当の行に出るのに一覧に無かった。Operator はそれを担う人間の非規範の呼び名なので、Operator の上に置いた）。行が増えた分、本文の「の語」「の意味」を落として 80 字に収めた。p.35 の絵の Outcome に「実際に」を足した（Core の Outcome の字。Mission の「今回実現する変化」と分ける）。
 - この本の版: 本に版の番号を付けていないので、日付で書いた（草案、2026-11-10）。版を上げるときはこの行の日付を変える。
 -->
 
@@ -77,7 +78,7 @@
   <g class="ts" font-weight="700"><text x="40" y="28">語</text><text x="230" y="28">意味（この本の言い直し）</text><text x="840" y="28" text-anchor="end">定義</text></g>
   <path d="M30,40 H850" class="lt"/>
   <g class="ts" font-weight="700">
-    <text x="40" y="66">Mission</text><text x="40" y="102">Goal</text><text x="40" y="138">Outcome</text><text x="40" y="174">Constraints</text><text x="40" y="210">Authority</text><text x="40" y="242">Acceptance</text><text x="40" y="260">Evidence</text><text x="40" y="286">Task</text><text x="40" y="322">Operator</text>
+    <text x="40" y="66">Mission</text><text x="40" y="102">Goal</text><text x="40" y="138">Outcome</text><text x="40" y="174">Constraints</text><text x="40" y="210">Authority</text><text x="40" y="242">Acceptance</text><text x="40" y="260">Evidence</text><text x="40" y="286">Task</text><text x="40" y="322">判断責任者</text><text x="40" y="358">Operator</text>
   </g>
   <g class="ts">
     <text x="230" y="66">引き受けた責務のもとで、今回実現する変化</text>
@@ -87,15 +88,16 @@
     <text x="230" y="210">頼む側が持っている物のうち、受けた側が使ってよい物と、使わない物</text>
     <text x="230" y="251">Evidence のうち、成果の受け入れに使うと Mission に書いた物</text>
     <text x="230" y="286">Mission を受けた Cell が分けた作業。分け方はその Cell が決める</text>
-    <text x="230" y="322">判断責任者を担う人間の呼び名。EAA Role Model の語</text>
+    <text x="230" y="322">責務ごとに置く、その責務を正当に判断する者。誰かは割当で決める</text>
+    <text x="230" y="358">判断責任者を担う人間の呼び名。EAA Role Model の語</text>
   </g>
   <g class="ts hc" text-anchor="end">
-    <a href="#p35"><text x="840" y="66">p.35</text></a><a href="#p35"><text x="840" y="102">p.35</text></a><a href="#p35"><text x="840" y="138">p.35</text></a><a href="#p36"><text x="840" y="174">p.36</text></a><a href="#p36"><text x="840" y="210">p.36</text></a><a href="#p36"><text x="840" y="251">p.36</text></a><a href="#p37"><text x="840" y="286">p.37</text></a><a href="#p63"><text x="840" y="322">p.63</text></a>
+    <a href="#p35"><text x="840" y="66">p.35</text></a><a href="#p35"><text x="840" y="102">p.35</text></a><a href="#p35"><text x="840" y="138">p.35</text></a><a href="#p36"><text x="840" y="174">p.36</text></a><a href="#p36"><text x="840" y="210">p.36</text></a><a href="#p36"><text x="840" y="251">p.36</text></a><a href="#p37"><text x="840" y="286">p.37</text></a><a href="#p22"><text x="840" y="322">p.22</text></a><a href="#p63"><text x="840" y="358">p.63</text></a>
   </g>
 </svg>
 ```
 
-第 4 章の Mission とその欄の語、第 8 章の Operator です。Constraints と Authority の意味は p.36 の問いから言い直しました。
+第 4 章の Mission とその欄、第 2 章の判断責任者、第 8 章の Operator です。Constraints と Authority は p.36 の問いから言い直しました。
 
 ※ Mission の欄は Goal・Constraints・Authority・Acceptance Evidence（EAA Core 版 6「2.」）。完了の条件は p.38。
 
