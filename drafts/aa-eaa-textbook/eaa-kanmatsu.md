@@ -97,7 +97,7 @@
 </svg>
 ```
 
-第 4 章の Mission とその欄、第 2 章の判断責任者、第 8 章の Operator です。
+第 4 章の Mission とその欄、第 2 章の判断責任者、第 8 章の Operator です。Constraints と Authority は p.36 の問いから言い直しました。
 
 ※ Mission の欄は Goal・Constraints・Authority・Acceptance Evidence（EAA Core 版 6「2.」）。完了の条件は p.38。
 
