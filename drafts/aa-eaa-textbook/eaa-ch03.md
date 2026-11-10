@@ -1,212 +1,137 @@
-# 第 3 章　Profile
+# 第 3 章　Constitution と Federation
 
-群: Cell の境界と責務
-副題: Cell の責務は、版付きの仕様に書いてから渡す
+群: Cell の責務と規範
+副題: 中は規範と Contract の範囲で決め、相手の中は指定しない
 
 <!--
-構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v6.md（87be3308）の第 3 章。着手: @ope-ultp1635 msg 6d22f01a（v6 の 2 便目）。本文 GO: @ope-ultp1635 msg 8c181d1b、kishibashi3「うん」。
-このファイルは 62b9aa0 までの第 3 章（価値による分割）を置き換えた。旧第 3 章のページの行き先は v6 の表のとおり（価値の例は第 2 章へ 1 便目で移した。Constitution のページ — 価値は Constitution に書く・規範の範囲で中を決める・違う価値で上書きしない — は 3 便目で第 4 章へ。旧本文は 62b9aa0 の eaa-ch03.md にある）。
-出典の中心: EAA Profiles（origin/main drafts/enterprise-agentic-agile/profiles.md）全体と、EAA Core 版 6「1. 責務と分割」（core.md:49〜53）・概念表「Profile」「横断責務」「Cell に属する」「親 Cell・子 Cell」（core.md:30・31・42・43）。
-いまの本のどこにも無く、新しく書いたページと出典:
-- p.「Profile に書くこと」— profiles.md:36〜42（「3.」の 5 項目）。項目名・記法・必須項目は未確定（profiles.md:36）
-- p.「例：在庫の Profile」— 書き手の例。5 項目を在庫に当てた。在庫・物流・「出荷日」は第 2 章 p.「例：ドメインで切る」と同じ
-- p.「Standard Profile と Domain Profile」— profiles.md:24〜32（「2.」）。Domain の例は原典の 3 つ（契約・請求・受注）のまま
-- p.「Standard Profile の初期カタログ」— profiles.md:85〜102（「6.」）。表の「成り立たせる責務」の列は Profiles の字を平らに言い直した
-- p.「書くことと割り当てることは別」— profiles.md:44〜46（「3.」）、core.md:50（「1.」記述だけで権限は発生しない）
-- p.「判断責任者は責務ごとに置く」— core.md:49（「1.」）。例は 62b9aa0 の第 5 章 p.「例：最後に誰が決めるか」から持ってきた（注文画面・在庫連携は @reader のペルソナの設定から借りた形で、書き手が作った例）
-- p.「合わせて担うときに確かめること」— profiles.md:53・54（「4.」）。三つの言い直しは書き手。分け直すときの同じ確かめ（core.md:58）は第 10 章 p.「責任の空白と、決定権の重なり」。空白と重なりは第 10 章と同じく持ち主（割当の判断責任者、profiles.md:44）で言い直した。Profile の字で言い直すと p.「書くことと割り当てることは別」（core.md:50・profiles.md:46）と食い違うため（@reviewer 2026-11-09 ch03 の「3-2」）
-- p.「ロードで引き受ける」— profiles.md:50・51・56・57（「4.」）。Enterprise Cell は profiles.md:51 の字のまま引き、説明は付けない。「全体を扱う」は working-notes.md:304 の字で、その節は :297〜298 で EAA の規範ではないとしているため出典から外した（@reviewer 同「2.」）
-- p.「横断責務も Profile」— core.md:31（概念表「横断責務」）、profiles.md:21・22（「1.」）・109（「7.」）
-- p.「Domain Profile は最初の Mission に要る範囲から」— profiles.md:122〜131（「9.」）。Billing の例は Profiles の例をそのまま訳した
-- p.「正本は提供する側、採用版は引き受けた側」— profiles.md:61〜63・70（「4.」の「改訂元と採用先を分ける」）。手続きの表は第 8 章 p.「正本の改訂と、採用版の変更を分ける」が既に持つので、ここは誰が何を持つかだけにした
-- p.「Core はここまでしか決めていない」— 左は Core の字だけ（core.md:30・50・52・53・31・63）。見出しは第 8・10 章に揃えて「Core が決めていること」。右は Core の観測欄の既知の不足のうち分け直しに関わる「移行中の責任」（core.md:11、第 10 章と同じ）と、Profiles が未決・未確定とした所（profiles.md:83・102・120・131・135）。題は第 5〜11 章の同題のページに揃えた
+構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v6.md（87be3308）の第 4 章。着手: @ope-ultp1635 msg df6c27d8（v6 の 3 便目）。本文 GO: @ope-ultp1635 msg 8c181d1b、kishibashi3「うん」。
+このファイルは 1adcc30 までの第 4 章（ドメインによる分割）を置き換えた。旧第 4 章のページの行き先は v6 の表のとおり（ドメインの例は 1 便目で第 2 章へ、Profile のページは 2 便目で第 3 章へ、Ontology のページはこの便で第 7 章へ）。旧第 5 章（権限による分割）のファイルは消した。旧本文は 1adcc30 の eaa-ch04.md・eaa-ch05.md、旧第 3 章（価値による分割）は 62b9aa0 の eaa-ch03.md にある。
+出典の中心: EAA Core 版 6「0. 目的と範囲」（core.md:16〜18）・概念表「Constitution」「Federation」（core.md:37・29）・「2. 自治と権限」（core.md:62・63・70）・「3. 意味と合意」（core.md:78・79）・「4. 提案と変更」（core.md:84・85・94）。
 移したページ（v6 の表のとおり）:
-- p.「Profile は、引き受ける責務の仕様」← 62b9aa0 第 4 章 p.「責務は Profile に書く」。在庫の Profile の絵は p.「例：在庫の Profile」へ移し、このページの絵は Profiles「1.」の概念表（Profile・Cell・Mission）にした
-- p.「判断責任者は責務ごとに置く」← 62b9aa0 第 5 章 p.「例：最後に誰が決めるか」
-- p.「分割は、責務と判断権限を渡すこと」← 62b9aa0 第 5 章 p.「分割は判断権限ごと渡す」＋ 第 2 章 p.「増えるのは判断を渡すとき」（渡す先は責任主体で人に限らない・責任を複数の人で負ってよい。core.md:42・52。@reviewer 2-1 の直しのまま）
-- p.「渡した判断は相手のもの」← 62b9aa0 第 5 章 同題。注の章番号を v6 に（Profile はこの章、版の採用は第 8 章）
-- p.「親・子は由来の呼び名」← 62b9aa0 第 5 章 同題
-- p.「一つの Cell が複数を担う」← 62b9aa0 第 4 章 同題 ＋ profiles.md:78・79（「5.」）。旧第 4 章の判定「語と記録が混ざらないなら」を、第 2 章の判定（ch02 文脈＝語と記録・価値・権限）に直した
-p.「〜」の参照: 移したページの題を本文・注・絵の中で引いている所は、第 11 章（いまの番号）の注（p.「親・子は由来の呼び名」、題は変えていない）と、旧第 5 章の注の中だけで、どちらもリンクではない。章番号で旧第 4・5 章を指している所（eaa-ch08.md:134 本文「第 5 章の分割」・eaa-ch11.md:103 注「分割の決まりは第 5 章」・eaa-ch12.md:177 絵「（第 4 章）」・eaa-furoku.md:200 絵「（第 5 章）」）は、3 便目の章番号の直しで行き先をこの章にする。
-章番号: この章の本文・注・絵は v6 の章番号で書いた（第 2 章 Cell の境界、第 4 章 Constitution と Federation、第 5 章 Contract、第 7 章 Evidence と Ontology、第 8 章 版の公開と採用、第 9 章 改訂の承認と権限、第 10 章 Cell の分け直し）。3 便目の章番号の直しで、この章はずらさない。
-書き手の読み: p.「判断責任者は責務ごとに置く」の帰結（二つなら提案・一つなら責務の責任者）、p.「合わせて担うときに確かめること」の言い直し。注で断った。
+- p.「Constitution は Cell の規範」← 62b9aa0 第 3 章 p.「価値は Constitution に書く」。題を Constitution の定義の側にした。本文・注・絵はそのまま
+- p.「規範の範囲で中を決める」← 62b9aa0 第 3 章 同題（そのまま）
+- p.「親も横断も上書きしない」← 1adcc30 第 5 章 同題 ＋ 62b9aa0 第 3 章 p.「違う価値で上書きしない」。絵に推薦の Cell を足し、本文に「速さの側へ書き換えない」を入れた。理由を付けた提案は次の p.「変えるときは提案で」が持つ
+- p.「上書きを許すと文脈が戻る」「変えるときは提案で」「断ることと義務を捨てることは別」← 1adcc30 第 5 章 同題（そのまま）
+- p.「Federation は中を指定しない」← 62b9aa0 第 2 章 p.「中は人のチームでもよい」（絵はそのまま）＋ 概念表「Federation」。題は build の上限 20 字に収めるため v6 の表（Federation は中の方式を指定しない、21 字）から短くした
+新しく書いたページと出典:
+- p.「例：決済と推薦の Constitution」— 書き手の例。欄は概念表「Constitution」（core.md:37）の目的・価値・制約・権限・禁止事項。決済・推薦・「障害の日に予定の変更を出すか」は第 2 章 p.「例：価値で切る」と同じ例
+- p.「Constitution の版を特定する」— core.md:78・79。v6 の表の題（依存する Constitution の版を特定する、23 字）を上限 20 字に収めた。Mission の欄は第 6 章 p.「依存する版で、前提が動かない」が持つ
+- p.「Cell どうしは共有する文書でつなぐ」— 概念表「Federation」（core.md:29）と core.md:94（共有する文書の範囲と、所有者・観測・準拠先）。v6 の表の題（Federation は共有する文書でつなぐ、21 字）を上限 20 字に収めるため主語を Cell にした。Federation の語はこのページの本文と前のページの題に出る
+- p.「次章へ：切っても残る結合」← 1adcc30 第 5 章 同題を書き直した
+落としたページ: v6 の表の p.「AA は 1 Cell の EAA」。v6 の条件（第 0 章 p.「AA と Cell」と言うことが重なるなら、落として第 0 章の注に回す）に当たる: 第 0 章 p.「素直に大きくすると一つの Cell」の注が既に「1 Cell の EAA」を書いている。core.md:17・18 の残り（AA は単独で成立する・分割後の Cell を担う AA も同じ AA）は p.「Federation は中を指定しない」の注に置いた。このため章は 13 ページではなく 12 ページ。
+上書きしない・提案で変えるをこの章に置いたのは v6 の判断のとおり（core.md:63 は「2. 自治と権限」で Constitution の範囲で中を決める行 core.md:62 と同じ節。第 6 章 p.「目的を変えるなら、提案する」、第 7 章 p.「上書きしないので、届いた側が確かめる」、第 8 章 p.「変えたい側は、提案する」が先に使う）。
+章番号: この章の本文・注・絵は v6 の章番号で書いた。
+p.「上書きを許すと文脈が戻る」は書き手の読み（注のまま）。p.「例：決済と推薦の Constitution」の欄の中身は書き手が作った（注に書いた）。
 絵の Cell の枠は入れ子にしない（core.md:43）。
-v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v7.md 863f5176。本文 GO: @ope-ultp1635 msg d9ab1757、kishibashi3「うん」）: 19 → 7 ページ。p.「Profile は、引き受ける責務の仕様」に p.「Profile に書くこと」（5 項目を絵の右に）。p.「Standard と Domain」に p.「Standard の初期カタログ」（名前だけ絵に）p.「Domain は最初の Mission から」。p.「書くことと割り当てることは別」に p.「判断責任者は責務ごとに置く」p.「ロードで引き受ける」p.「正本は提供する側、採用版は引き受けた側」。p.「分割は、責務と判断権限を渡すこと」に p.「渡した判断は相手のもの」p.「親・子は由来の呼び名」（「責務だけを渡して判断を手元に残すのは分割ではない」は本文に残した）。p.「一つの Cell が複数を担う」に p.「合わせて担うときに確かめること」p.「横断責務も Profile」。落とした: p.「Core はここまでしか決めていない」（右側は第 9 章 p.「Core が決めていないこと」へ。3 便目で書く。字は ledger に逐語で控えた）、p.「次章へ：Constitution」。落とした字と行き先: writer-ja/drafts/eaa-toc/fold-v7-ledger.md。
-章番号: v7 の章番号（第 7 章 版の改訂と採用、第 8 章 Cell の分け直し）で書いた。
-検算 1 便目と v7 の通読を受けて直した（@ope-ultp1635 msg 9628f0a9。判定の正本 roles-kaz reviewer/feedback-archive/2026-11-09-eaa-textbook-d0dd000-fold-v7-1-core.md、reader/feedback-archive/2026-11-09-eaa-textbook-v7-68p-6readers.md）: p.「書くことと割り当てることは別」の「提供する側」を「Profile を出した側（提供する側）」にし、発注元か委託先かの区別ではないと足した（@reader 河野・片山が発注元かベンダーかで止まった。profiles.md:61 の提供側・引受側は Profile の提供と引受の語）。p.「Standard と Domain」の Standard Profile の名前に、profiles.md:92-98 の表の「目的」の列を縮めて並べた（@reader 河野・宮下・長谷川が名前だけで中身が無いと止まった）。
+082ceb2 の検算 3 便目を受けて直した（@ope-ultp1635 msg 468b4a37、判定の正本 @reviewer 2026-11-09-eaa-textbook-082ceb2-ch04-constitution-federation 97306492）: p.「Constitution の版を特定する」の絵の「採用するまで」を「移行が成り立つまで」にし（Contract は結ぶ Cell の全部が採用して移る、core.md:80）、絵に Contract の移り方（core.md:80）を 1 行足した。p.「Constitution は Cell の規範」に core.md:37 の「採用した」を戻し、誰が書いた Constitution をどの Cell が採用するかは Core に無いこと（core.md:94 の列挙にも無い）を版のページの注に、採用の判断主体（core.md:91）を同じページの絵に書いた。この本の読み（Cell が採用した Constitution をその Cell の規範と読む）は p.「Constitution は Cell の規範」の注のまま。p.「規範の範囲で中を決める」に core.md:62 の Contract を戻し（題・本文・絵。題は p.「規範と Contract の範囲で中を決める」）、章の概要・副題も同じにした。p.「Federation は中を指定しない」の名付けを概念表 core.md:29 の全体（中を指定しない＋共有する文書を通してつながる）にし、Contract が縛るのは合意した欄（core.md:38）でその範囲の中は各 Cell が決める、を絵に足した（core.md:62 と core.md:18 が両立すること）。「委託先の工程」→「委託先」（core.md:18「AA以外の開発主体」。工程は中の方式に当たる）、絵の「同じ形で」→「共有する文書で」。p.「断ることと義務を捨てることは別」の「合意した義務」→「すでに負っている義務」（core.md:70「既存義務」）。最後のページの送りを第 5 章の副題に揃えて「Contract に書いて明示する」にした。
+v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure-v7.md 863f5176。本文 GO: @ope-ultp1635 msg d9ab1757、kishibashi3「うん」）: 12 → 4 ページ。p.「Constitution は Cell の規範」に p.「例：決済と推薦の Constitution」（絵）p.「規範と Contract の範囲で中を決める」（本文 2 文目。「採用した」と「規範と Contract」は残した）。p.「上書きせず、提案で変える」に p.「親も横断も上書きしない」p.「変えるときは提案で」p.「上書きを許すと文脈が戻る」（書き手の読みとして注）p.「断ることと義務を捨てることは別」。p.「Federation は中を指定しない」に p.「Cell どうしは共有する文書でつなぐ」（文書の一覧と所有者・観測・準拠先を絵に。第 7 章 p.「Evidence の様式も共有する文書」の受け皿もこの絵の一覧）。移した: p.「Constitution の版を特定する」は第 7 章 p.「公開と採用は、別の行為」の注へ（3 便目で書く。字は ledger に逐語で控えた）。落とした: p.「次章へ：切っても残る結合」。落とした字と行き先: writer-ja/drafts/eaa-toc/fold-v7-ledger.md。
+第 1 章（職能による分業の限界）を Cell の境界の章に畳み、章番号を 1 つ詰めた（@ope-ultp1635 msg 352dee1a）。群の名前を「Cell の責務と規範」にした（境界はいまの第 1 章の群一へ移った。Profile が責務、Constitution が規範、Federation は Cell どうしの規範として読む）。上のメモの章番号は書いた時点のまま。
 -->
 
 ```svg
 <svg viewBox="0 0 880 340" width="880" height="340">
-  <rect x="40" y="40" width="300" height="230" rx="10" class="hl" style="fill:#fff"/>
-  <text x="190" y="76" class="t hc" text-anchor="middle" font-weight="700">Cell</text>
-  <rect x="110" y="110" width="160" height="40" rx="6" class="h"/><text x="190" y="136" class="ts on" text-anchor="middle">判断責任者</text>
-  <text x="190" y="196" class="ts" text-anchor="middle">権限・資源・能力</text>
-  <text x="190" y="226" class="tx" text-anchor="middle">割当で決める</text>
-  <path d="M500,155 H346" class="ln" marker-end="url(#arr)"/><text x="423" y="145" class="tx" text-anchor="middle">引き受ける</text>
-  <rect x="510" y="40" width="330" height="230" rx="3" class="box"/>
-  <text x="675" y="76" class="t" text-anchor="middle" font-weight="700">Profile（版 1）</text>
-  <g class="ts"><text x="540" y="116">目的と範囲</text><text x="540" y="144">意味と参照する Ontology</text><text x="540" y="172">権限と制約</text><text x="540" y="200">能力と外への保証</text><text x="540" y="228">Evidence と判断できない条件</text></g>
-  <text x="440" y="310" class="t" text-anchor="middle" font-weight="700">責務は先に書き、誰が引き受けるかは別に決める</text>
+  <rect x="40" y="40" width="250" height="220" rx="10" class="hl" style="fill:#fff"/>
+  <text x="165" y="76" class="t hc" text-anchor="middle" font-weight="700">決済の Cell</text>
+  <rect x="70" y="100" width="190" height="44" rx="6" class="soft"/><text x="165" y="128" class="ts" text-anchor="middle">Constitution</text>
+  <path d="M165,148 V176" class="ln" marker-end="url(#arr)"/><text x="165" y="206" class="ts" text-anchor="middle">中を決める</text>
+  <rect x="590" y="40" width="250" height="220" rx="10" class="hl" style="fill:#fff"/>
+  <text x="715" y="76" class="t hc" text-anchor="middle" font-weight="700">推薦の Cell</text>
+  <rect x="620" y="100" width="190" height="44" rx="6" class="soft"/><text x="715" y="128" class="ts" text-anchor="middle">Constitution</text>
+  <path d="M715,148 V176" class="ln" marker-end="url(#arr)"/><text x="715" y="206" class="ts" text-anchor="middle">中を決める</text>
+  <rect x="320" y="90" width="240" height="110" rx="3" class="box"/>
+  <text x="440" y="130" class="ts" text-anchor="middle" font-weight="700">共有する文書</text>
+  <text x="440" y="164" class="tx" text-anchor="middle">Contract・Ontology など</text>
+  <path d="M290,145 H320 M560,145 H590" class="ln"/>
+  <text x="440" y="234" class="tx" text-anchor="middle">相手の中の方式は指定しない</text>
+  <text x="440" y="310" class="t" text-anchor="middle" font-weight="700">中は規範と Contract の範囲で決め、あいだは共有する文書でつなぐ</text>
 </svg>
 ```
 
-Cell が引き受ける責務は、版付きの仕様（Profile）に書いてから渡します。Profile には責務の中身を書き、どの Cell と誰が引き受けるかは割当として別に決めます。分割は、この責務と判断の権限を別の責任主体に渡すことです。
+各 Cell は採用した規範（Constitution）と結んだ Contract の範囲で中を決め、ほかの Cell は上書きせずに提案します。Cell どうしは中の方式を指定せず、共有する文書でつながります。
 
-## Profile は、引き受ける責務の仕様
+## Constitution は Cell の規範
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <rect x="30" y="20" width="400" height="260" rx="10" class="hl" style="fill:#fff"/>
+  <text x="230" y="52" class="t hc" text-anchor="middle" font-weight="700">決済が採用した Constitution</text>
+  <g class="ts">
+    <text x="50" y="94" font-weight="700">目的</text><text x="140" y="94">注文の支払いを受ける</text>
+    <text x="50" y="136" font-weight="700">価値</text><text x="140" y="136" class="hc">止めないことを優先する</text>
+    <text x="50" y="178" font-weight="700">制約</text><text x="140" y="178">障害の日は変更を出さない</text>
+    <text x="50" y="220" font-weight="700">権限</text><text x="140" y="220">決済の手順と設定を決める</text>
+    <text x="50" y="262" font-weight="700">禁止</text><text x="140" y="262">確定した支払いを書き換えない</text>
+  </g>
+  <rect x="450" y="20" width="400" height="260" rx="10" class="hl" style="fill:#fff"/>
+  <text x="650" y="52" class="t hc" text-anchor="middle" font-weight="700">推薦が採用した Constitution</text>
+  <g class="ts">
+    <text x="470" y="94" font-weight="700">目的</text><text x="560" y="94">買いたい商品を見つけやすく</text>
+    <text x="470" y="136" font-weight="700">価値</text><text x="560" y="136" class="hc">速く変えることを優先する</text>
+    <text x="470" y="178" font-weight="700">制約</text><text x="560" y="178">試す変更は一部の利用者から</text>
+    <text x="470" y="220" font-weight="700">権限</text><text x="560" y="220">推薦の並べ方を決める</text>
+    <text x="470" y="262" font-weight="700">禁止</text><text x="560" y="262">同意の無い履歴は使わない</text>
+  </g>
+  <text x="440" y="316" class="ts" text-anchor="middle">価値は一つのループに置かず、各 Cell が採用した規範に書く。中の方式と実行はその範囲で決める</text>
+  <text x="440" y="356" class="ts sub" text-anchor="middle">障害の日に変更を出すかで答えが逆になる理由が、規範の字で読める</text>
+</svg>
+```
+
+Core は、採用した目的・価値・制約・権限・禁止事項の規範を Constitution と呼びます。Cell はこの規範と結んだ Contract の範囲で中を決めます。
+
+出典: EAA Core 版 6 の概念表「Constitution」、「2.」。※ 採用した規範をその Cell の Constitution と読むのは書き手の読み。例は説明のために作った。
+
+## 上書きせず、提案で変える
+
+```svg
+<svg viewBox="0 0 880 380" width="880" height="380">
+  <g class="ts" text-anchor="middle">
+    <rect x="30" y="20" width="200" height="56" rx="10" class="hl" style="fill:#fff"/><text x="130" y="54" class="hc" font-weight="700">親 Cell</text>
+    <rect x="30" y="92" width="200" height="56" rx="10" class="hl" style="fill:#fff"/><text x="130" y="126" class="hc" font-weight="700">横断の Cell</text>
+    <rect x="30" y="164" width="200" height="56" rx="10" class="hl" style="fill:#fff"/><text x="130" y="198" class="hc" font-weight="700">推薦の Cell</text>
+  </g>
+  <g opacity=".6"><path d="M230,48 L330,96 M230,120 H330 M230,192 L330,144" class="xl dash"/></g>
+  <use href="#i-no" x="334" y="108" width="24" height="24"/><text x="294" y="244" class="tx xc" text-anchor="middle">一方的に上書きしない</text>
+  <path d="M370,120 H430" class="ln" marker-end="url(#arr)"/><text x="400" y="110" class="tx" text-anchor="middle">提案</text>
+  <rect x="436" y="20" width="414" height="200" rx="10" class="hl" style="fill:#fff"/>
+  <text x="643" y="52" class="t hc" text-anchor="middle" font-weight="700">決済の Cell が確かめて決める</text>
+  <text x="643" y="86" class="tx" text-anchor="middle">提案には、内容・理由・根拠を示す</text>
+  <g class="ts" text-anchor="middle"><text x="520" y="130">受け入れる</text><text x="643" y="130">直しを求める</text><text x="770" y="130">受け入れない</text></g>
+  <rect x="456" y="152" width="374" height="52" rx="6" class="xl" style="fill:#fff"/>
+  <text x="643" y="174" class="tx" text-anchor="middle">すでに負っている義務は、一方的に捨てない</text>
+  <text x="643" y="194" class="tx" text-anchor="middle">果たせないときは示して、正当な判断主体との調整に戻す</text>
+  <rect x="30" y="268" width="820" height="56" rx="8" class="soft"/>
+  <text x="440" y="302" class="ts" text-anchor="middle">上書きを許すと、分けた Cell は書き換えられる時を知るために相手の文脈まで読み、文脈は一つに戻る</text>
+  <text x="440" y="356" class="ts sub" text-anchor="middle">親子・兄弟・横断に、同じ原則を当てる</text>
+</svg>
+```
+
+親も横断の Cell も、相手の判断を一方的に上書きせず、内容・理由・根拠を示して提案します。受け入れないことと、すでに負っている義務を捨てることは別です。
+
+出典: EAA Core 版 6「2. 自治と権限」「4. 提案と変更」、概念表「横断責務」。※ 上書きを許すと文脈が戻る、は書き手の読み。例は説明のために作った。
+
+## Federation は中を指定しない
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g>
-    <rect x="30" y="30" width="170" height="110" rx="3" class="box"/><text x="115" y="66" class="ts" text-anchor="middle" font-weight="700">Profile</text><text x="115" y="96" class="tx" text-anchor="middle">引き受ける責務の定義</text><text x="115" y="120" class="tx" text-anchor="middle">版を持つ</text>
-    <rect x="30" y="160" width="170" height="80" rx="10" class="hl" style="fill:#fff"/><text x="115" y="194" class="ts hc" text-anchor="middle" font-weight="700">Cell</text><text x="115" y="220" class="tx" text-anchor="middle">責務を引き受ける主体</text>
-    <rect x="30" y="260" width="170" height="80" rx="10" class="box"/><text x="115" y="294" class="ts" text-anchor="middle" font-weight="700">Mission</text><text x="115" y="320" class="tx" text-anchor="middle">今回達成する変化・成果</text>
-    <path d="M115,140 V160 M115,240 V260" class="ln"/>
+    <rect x="30" y="20" width="200" height="120" rx="10" class="hl" style="fill:#fff"/><text x="130" y="52" class="ts hc" text-anchor="middle" font-weight="700">Cell</text>
+    <rect x="60" y="80" width="140" height="36" rx="18" class="a"/><text x="130" y="104" class="ts on" text-anchor="middle">Agent（AA）</text>
+    <rect x="30" y="152" width="200" height="120" rx="10" class="hl" style="fill:#fff"/><text x="130" y="184" class="ts hc" text-anchor="middle" font-weight="700">Cell</text>
+    <rect x="60" y="212" width="140" height="36" rx="6" class="h"/><text x="130" y="236" class="ts on" text-anchor="middle">人のチーム</text>
+    <rect x="650" y="20" width="200" height="120" rx="10" class="hl" style="fill:#fff"/><text x="750" y="52" class="ts hc" text-anchor="middle" font-weight="700">Cell</text>
+    <rect x="680" y="80" width="140" height="36" rx="6" class="soft"/><text x="750" y="104" class="ts" text-anchor="middle">委託先</text>
   </g>
-  <path d="M206,85 H246" class="ln" marker-end="url(#arr)"/>
-  <rect x="250" y="30" width="600" height="310" rx="3" class="box"/>
-  <text x="550" y="66" class="t" text-anchor="middle" font-weight="700">Profile に書くこと</text>
-  <g class="ts">
-    <text x="280" y="112">目的と、責任を負う範囲・負わない範囲</text>
-    <text x="280" y="154">業務上の意味と、参照する Ontology</text>
-    <text x="280" y="196">要る権限、守る制約と参照する規範</text>
-    <text x="280" y="238">提供する能力、依存先、外への保証と Contract</text>
-    <text x="280" y="280">成り立ちを示す Evidence、自分で判断できない条件</text>
-  </g>
-  <text x="550" y="322" class="tx" text-anchor="middle">項目名・書き方・必須の欄は、Profiles が未確定にしている</text>
-  <text x="440" y="368" class="ts sub" text-anchor="middle">Profile は続く責務、Mission は今回の仕事</text>
+  <rect x="280" y="20" width="320" height="252" rx="3" class="box"/>
+  <text x="440" y="54" class="t" text-anchor="middle" font-weight="700">Cell のあいだで共有する文書</text>
+  <g class="ts"><text x="310" y="96">Contract</text><text x="310" y="128">共有する Profile</text><text x="310" y="160">共有する Ontology</text><text x="310" y="192">Evidence の様式</text></g>
+  <text x="440" y="226" class="tx" text-anchor="middle">どれも、所有者・観測・準拠先を持つ</text><text x="440" y="252" class="tx" text-anchor="middle">これを通して、責任・権限・合意・Evidence をつなぐ</text>
+  <path d="M230,80 H280 M230,212 H280 M600,80 H650" class="ln"/>
+  <text x="750" y="190" class="tx" text-anchor="middle">相手の中の方式は</text><text x="750" y="210" class="tx" text-anchor="middle">指定しない</text>
+  <text x="440" y="316" class="t" text-anchor="middle" font-weight="700">中の作り方は問わず、共有する文書でつながる</text>
+  <text x="440" y="356" class="ts sub" text-anchor="middle">Contract が縛るのは合意した欄だけ。その範囲の中は各 Cell が決める</text>
 </svg>
 ```
 
-Profile は、Cell が引き受ける責務を定める版付きの仕様です。責務の範囲と意味、要る権限と制約、外への保証、確かめ方、自分で判断できない条件を書きます。
+Cell どうしが互いの中の方式を指定せず、共有する文書を通してつながる関係を Federation と呼びます。中が人のチームや委託先でも構いません。
 
-出典: EAA Core 版 6 の概念表「Profile」、EAA Profiles「1.」「3.」。項目名・記法・必須項目は次の設計対象とされている。
-
-## 例：在庫の Profile
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="60" y="20" width="760" height="300" rx="3" class="box"/>
-  <text x="440" y="54" class="t" text-anchor="middle" font-weight="700">在庫の Profile（版 1）</text>
-  <g class="ts">
-    <text x="90" y="98" font-weight="700">目的と範囲</text><text x="330" y="98">倉庫ごとの在庫数が正しい。便の手配は負わない</text>
-    <text x="90" y="144" font-weight="700">意味と Ontology</text><text x="330" y="144">「出荷日」は引当を確定した日。物流との対応は Ontology</text>
-    <text x="90" y="190" font-weight="700">権限と制約</text><text x="330" y="190">引当の順番を決める。引当済みの在庫は動かさない</text>
-    <text x="90" y="236" font-weight="700">能力と保証</text><text x="330" y="236">引当の結果を物流に渡す（Contract）</text>
-    <text x="90" y="282" font-weight="700">Evidence と条件</text><text x="330" y="282">棚卸の記録と突き合わせる。欠品の代替品は決めない</text>
-  </g>
-  <text x="440" y="356" class="ts sub" text-anchor="middle">引き受ける Cell と判断責任者は、ここには書かない</text>
-</svg>
-```
-
-第 2 章で切った在庫の Cell の責務を、前のページの項目で書くとこうなります。誰が引き受けるかは書きません。
-
-※ 例は説明のために作った。欄の名前は前のページの項目を短くしたもので、Profiles の項目名ではない。
-
-## Standard と Domain
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="30" y="30" width="400" height="280" rx="3" class="box"/><text x="230" y="64" class="t" text-anchor="middle" font-weight="700">Standard Profile</text>
-  <text x="230" y="96" class="ts" text-anchor="middle">EAA が、再利用できる責務として出す</text>
-  <text x="230" y="126" class="tx" text-anchor="middle">初めに挙げたカタログ</text>
-  <g class="tx">
-    <text x="46" y="148" font-weight="700">Platform</text><text x="126" y="148">各実行系が共通基盤を使える</text>
-    <text x="46" y="168" font-weight="700">Portfolio</text><text x="126" y="168">全体目的と投資・資源配分をつなぐ</text>
-    <text x="46" y="188" font-weight="700">Supplier</text><text x="126" y="188">契約主体をまたぐ責任と受入を成り立たせる</text>
-    <text x="46" y="208" font-weight="700">Assurance</text><text x="126" y="208">成果を独立した根拠で判定できるようにする</text>
-    <text x="46" y="228" font-weight="700">Regulated</text><text x="126" y="228">外部の義務を実行・監査できる条件にする</text>
-    <text x="46" y="248" font-weight="700">Migration</text><text x="126" y="248">旧系から新系への移行を成り立たせる</text>
-    <text x="46" y="268" font-weight="700">Cutover</text><text x="126" y="268">合意した条件と順序で切替全体を成り立たせる</text>
-  </g>
-  <text x="230" y="290" class="tx" text-anchor="middle">全部を置くことは求めない。完成したスキーマでもない</text>
-  <rect x="450" y="30" width="400" height="280" rx="3" class="box"/><text x="650" y="64" class="t" text-anchor="middle" font-weight="700">Domain Profile</text>
-  <text x="650" y="96" class="ts" text-anchor="middle">企業が、業務の意味・不変条件・責任から書く</text>
-  <text x="650" y="126" class="tx" text-anchor="middle">契約・請求・受注など</text>
-  <rect x="470" y="144" width="360" height="56" rx="6" class="soft"/><text x="650" y="168" class="ts" text-anchor="middle">全業務を初日から書かない</text><text x="650" y="190" class="ts" text-anchor="middle">最初の Mission に要る範囲だけ書く</text>
-  <rect x="470" y="214" width="360" height="56" rx="6" class="xl" style="fill:#fff"/><text x="650" y="238" class="ts" text-anchor="middle">まだ決めていない所を</text><text x="650" y="260" class="ts" text-anchor="middle">権限があることにしない</text>
-  <text x="440" y="352" class="t" text-anchor="middle" font-weight="700">形式も引き受け方も同じ。Cell の種類は分けない</text>
-</svg>
-```
-
-Standard は EAA が再利用できる形で出し、Domain は企業が業務から書きます。形式は同じで、Domain は最初の Mission に要る範囲から書きます。
-
-出典: EAA Profiles「2.」「6.」「9.」。右は「6.」の「成立させる責務」の略。Assurance や Regulated を担う Cell があっても、各 Cell の義務は残る。
-
-## 書くことと割り当てることは別
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="30" y="30" width="370" height="250" rx="3" class="box"/><text x="215" y="62" class="t" text-anchor="middle" font-weight="700">Profile の本文（正本）</text>
-  <g class="ts"><text x="56" y="104">責務の中身</text><text x="56" y="136">要る権限（要求として）</text></g>
-  <g class="tx xc"><text x="56" y="176">特定の担当者は書かない</text><text x="56" y="200">特定の Agent 製品は書かない</text></g>
-  <text x="56" y="236" class="tx">正本は、Profile を出した側（提供する側）が持つ</text><text x="56" y="258" class="tx">版 1・版 2 …。発注元か委託先かの区別ではない</text>
-  <path d="M404,155 H476" class="ln" marker-end="url(#arr)"/><text x="440" y="145" class="tx" text-anchor="middle">ロード</text>
-  <rect x="480" y="30" width="370" height="250" rx="10" class="hl" style="fill:#fff"/><text x="665" y="62" class="t hc" text-anchor="middle" font-weight="700">割当</text>
-  <g class="ts"><text x="506" y="104">引き受ける Cell</text><text x="506" y="136">責務ごとの判断責任者</text><text x="506" y="168">資源・対象範囲・採用した版</text><text x="506" y="200">実際に与えられた権限</text></g>
-  <text x="506" y="246" class="tx">要る権限と能力を確保して、引き受けが成り立つ</text>
-  <text x="440" y="320" class="ts" text-anchor="middle">新しい版を公開しても、引き受けた側が採用するまで当たらない</text>
-  <text x="440" y="356" class="ts sub" text-anchor="middle">Profile に書いただけでは、権限は生まれない</text>
-</svg>
-```
-
-Profile には責務と要る権限を書き、誰が引き受けるかは割当に書きます。要る権限と能力を確保して引き受け（ロード）が成り立ち、新しい版も採用まで当たりません。
-
-出典: EAA Profiles「3.」「4.」、EAA Core 版 6「1.」（記述だけで権限は発生しない。責務ごとに正当な判断責任者を明らかにする）。手続きは第 7 章。
-
-## 分割は、責務と判断権限を渡すこと
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="30" y="30" width="390" height="200" rx="10" class="hl" style="fill:#fff"/>
-  <text x="225" y="64" class="t hc" text-anchor="middle" font-weight="700">分割</text>
-  <g class="ts"><text x="60" y="110">責務を渡す</text><text x="60" y="146">自分で判断する権限も渡す</text></g>
-  <use href="#i-ok" x="60" y="174" width="24" height="24"/><text x="94" y="192" class="ts">Cell が増える</text>
-  <rect x="460" y="30" width="390" height="200" rx="10" class="xl" style="fill:#fff"/>
-  <text x="655" y="64" class="t xc" text-anchor="middle" font-weight="700">分割ではない</text>
-  <g class="ts"><text x="490" y="110">責務だけを渡す</text><text x="490" y="146">判断は手元に残す</text></g>
-  <use href="#i-no" x="490" y="174" width="24" height="24"/><text x="524" y="192" class="ts">受けた側は毎回問い合わせる</text>
-  <rect x="30" y="250" width="390" height="70" rx="10" class="hl" style="fill:#fff"/>
-  <text x="225" y="278" class="ts" text-anchor="middle">親 Cell（渡した側）・子 Cell（受け取った側）</text>
-  <text x="225" y="304" class="tx" text-anchor="middle">由来の呼び名。分割の後は、ほかの Cell と同じ関係</text>
-  <rect x="460" y="250" width="390" height="70" rx="10" class="soft"/>
-  <text x="655" y="278" class="ts" text-anchor="middle">渡した側の範囲が後で変わっても</text>
-  <text x="655" y="304" class="tx" text-anchor="middle">受け取った側が新しい版を採用するまで変わらない</text>
-  <text x="440" y="356" class="ts sub" text-anchor="middle">渡す先は責任主体。人一人に限らない</text>
-</svg>
-```
-
-分割は、責務と自分で判断する権限を別の責任主体に渡すことです。責務だけを渡して判断を手元に残すのは分割ではありません。渡したものは受け取った Cell のものです。
-
-出典: EAA Core 版 6「1. 責務と分割」、概念表「Cell に属する」（責任を複数の人で負ってよい）「親 Cell・子 Cell」。
-
-## 一つの Cell が複数を担う
-
-```svg
-<svg viewBox="0 0 880 380" width="880" height="380">
-  <rect x="30" y="20" width="520" height="110" rx="10" class="hl" style="fill:#fff"/>
-  <text x="290" y="50" class="ts hc" text-anchor="middle" font-weight="700">一つの Cell</text>
-  <g class="ts" text-anchor="middle">
-    <rect x="70" y="68" width="200" height="44" rx="6" class="soft"/><text x="170" y="96">在庫の Profile</text>
-    <rect x="310" y="68" width="200" height="44" rx="6" class="soft"/><text x="410" y="96">発注の Profile</text>
-  </g>
-  <text x="290" y="156" class="tx" text-anchor="middle">担う者が文脈を切り替えずに済むなら、分けずに置く（第 2 章の判定）</text>
-  <g class="ts">
-    <rect x="30" y="172" width="165" height="110" rx="6" class="box"/><text x="112" y="200" text-anchor="middle" font-weight="700">責任の空白</text><text x="112" y="232" text-anchor="middle" class="tx">どの判断責任者も</text><text x="112" y="254" text-anchor="middle" class="tx">引き受けていない</text>
-    <rect x="207" y="172" width="165" height="110" rx="6" class="box"/><text x="289" y="200" text-anchor="middle" font-weight="700">重なる決定権</text><text x="289" y="232" text-anchor="middle" class="tx">同じことを二人の</text><text x="289" y="254" text-anchor="middle" class="tx">判断責任者が決める</text>
-    <rect x="385" y="172" width="165" height="110" rx="6" class="box"/><text x="467" y="200" text-anchor="middle" font-weight="700">両立しない保証</text><text x="467" y="232" text-anchor="middle" class="tx">片方を守ると、</text><text x="467" y="254" text-anchor="middle" class="tx">もう片方が守れない</text>
-  </g>
-  <rect x="580" y="20" width="270" height="262" rx="10" class="hl" style="fill:#fff"/>
-  <text x="715" y="52" class="ts hc" text-anchor="middle" font-weight="700">横断責務も Profile</text>
-  <text x="715" y="84" class="tx" text-anchor="middle">複数の Cell にまたがる変更・保証</text>
-  <text x="715" y="108" class="tx" text-anchor="middle">（例：Platform の Cell）</text>
-  <path d="M715,124 V160" class="ln" marker-end="url(#arr)"/><text x="725" y="146" class="tx">変更を提案する</text>
-  <rect x="610" y="166" width="210" height="44" rx="6" class="soft"/><text x="715" y="193" class="ts" text-anchor="middle">業務の Cell が決める</text>
-  <use href="#i-no" x="620" y="226" width="22" height="22"/><text x="650" y="243" class="tx xc">相手を直接変えない</text>
-  <text x="440" y="334" class="ts sub" text-anchor="middle">Profile 一つに Cell 一つ、は求めない。決定権は割当で生まれる</text>
-</svg>
-```
-
-Profile 一つに Cell 一つは求めず、切り替えずに済むなら同じ Cell で担います。そのときは割当で、責任の空白・重なる決定権・両立しない保証を確かめます。
-
-出典: EAA Core 版 6「1.」・概念表「横断責務」、EAA Profiles「4.」「5.」「7.」。※ 三つの言い直しは書き手。空白と重なりを持ち主で見るのは第 8 章と同じ。
+出典: EAA Core 版 6「0.」「2.」「4.」、概念表「Federation」「Contract」。AA は単独でも成り立ち、分けた後の Cell を担う AA も同じ AA（「0.」）。

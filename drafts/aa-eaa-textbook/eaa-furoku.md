@@ -103,7 +103,7 @@ LeSS は、優先順位の最終決定を一人の Product Owner（PO）に集�
   <text x="40" y="290" class="tx">ART（チームを束ねた単位）全体で、8〜12 週ごとにふつう 2 日</text>
   <rect x="40" y="306" width="800" height="64" rx="10" class="box"/>
   <text x="60" y="332" class="ts" font-weight="700">この本との関係</text>
-  <text x="200" y="332" class="tx">ART の中の SAFe の進め方は、Cell の中の作り方として残す（第 9 章）</text>
+  <text x="200" y="332" class="tx">ART の中の SAFe の進め方は、Cell の中の作り方として残す（第 8 章）</text>
   <text x="200" y="356" class="tx">この本が書くのは Cell のあいだの合意の持ち方。対応はこの付録の最後のページ</text>
 </svg>
 ```
@@ -141,10 +141,10 @@ Spotify は、各チームに任せる側に大きく寄りました。元社員
 <svg viewBox="0 0 880 380" width="880" height="380">
   <g class="tx">
     <text x="50" y="30" font-weight="700">枠組みの記述</text><text x="450" y="30" font-weight="700">この本で当たる所</text>
-    <text x="50" y="60">チーム・ART の中の進め方</text><text x="450" y="60">Cell の中の作り方（第 2・9 章）</text>
-    <text x="50" y="90">決定を任せる（SAFe・LeSS）</text><text x="450" y="90">判断の権限を渡して分ける（第 3 章）</text>
-    <text x="50" y="120">あいだの調整・計画</text><text x="450" y="120">Contract と、版の採用（第 5・7 章）</text>
-    <text x="50" y="150">一人に集めた優先順位（LeSS）</text><text x="450" y="150">責任者が追える大きさ（第 2 章）</text>
+    <text x="50" y="60">チーム・ART の中の進め方</text><text x="450" y="60">Cell の中の作り方（第 1・8 章）</text>
+    <text x="50" y="90">決定を任せる（SAFe・LeSS）</text><text x="450" y="90">判断の権限を渡して分ける（第 2 章）</text>
+    <text x="50" y="120">あいだの調整・計画</text><text x="450" y="120">Contract と、版の採用（第 4・6 章）</text>
+    <text x="50" y="150">一人に集めた優先順位（LeSS）</text><text x="450" y="150">責任者が追える大きさ（第 1 章）</text>
   </g>
   <path d="M30,40 H850 M30,70 H850 M30,100 H850 M30,130 H850 M30,160 H850 M430,14 V160" class="lt"/>
   <text x="440" y="186" class="tx sub" text-anchor="middle">左と右は同じ物ではない。読み替えの見当</text>
@@ -152,7 +152,7 @@ Spotify は、各チームに任せる側に大きく寄りました。元社員
   <g class="tx" text-anchor="middle">
     <rect x="40" y="236" width="250" height="104" rx="10" class="soft"/><text x="165" y="262" class="ts" font-weight="700">集める</text><text x="165" y="288">発注側の定例会議で合わせ、</text><text x="165" y="310">契約と検収の条件に書く</text>
     <rect x="315" y="236" width="250" height="104" rx="10" class="soft"/><text x="440" y="262" class="ts" font-weight="700">任せる</text><text x="440" y="288">ベンダーどうしで直接合わせる。</text><text x="440" y="310">中身は話した人が持つ</text>
-    <rect x="590" y="236" width="250" height="104" rx="10" class="hl" style="fill:#fff"/><text x="715" y="262" class="ts hc" font-weight="700">この本</text><text x="715" y="288">版付きの Contract に書き、結ぶ</text><text x="715" y="310">Cell が全部採用して成り立たせる</text><text x="715" y="330" class="hc">契約書は別に持つ（第 5 章）</text>
+    <rect x="590" y="236" width="250" height="104" rx="10" class="hl" style="fill:#fff"/><text x="715" y="262" class="ts hc" font-weight="700">この本</text><text x="715" y="288">版付きの Contract に書き、結ぶ</text><text x="715" y="310">Cell が全部採用して成り立たせる</text><text x="715" y="330" class="hc">契約書は別に持つ（第 4 章）</text>
   </g>
   <text x="440" y="366" class="ts sub" text-anchor="middle">片側だけでは変わらない。採用は各 Cell の規範の所有者が決める</text>
 </svg>
@@ -160,4 +160,4 @@ Spotify は、各チームに任せる側に大きく寄りました。元社員
 
 枠組みの語を、この本のどの章で扱うかの見当です。この本は、あいだの合意を一人にも話した人にも預けず、版付きの Contract に書いて持ちます。
 
-※ 書き手の読み。複数社の形は一般的な形で、特定の現場ではない。SAFe の value は value stream の側で、第 2 章の「価値」とは別の語。
+※ 書き手の読み。複数社の形は一般的な形で、特定の現場ではない。SAFe の value は value stream の側で、第 1 章の「価値」とは別の語。

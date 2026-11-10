@@ -1,6 +1,6 @@
 # 第 0 章　AA と巨大なシステム
 
-群: 巨大なシステムの分業という問い
+群: 巨大なシステムの分業と Cell の境界
 副題: AA は一つの Cell では巨大なシステムを開発できない
 
 <!--
@@ -32,6 +32,7 @@ v7 の便 2 で、p.「Cell・文書・手続きの全体図」の Evidence の�
 
 v7 の全体図で、在庫の Cell と物流の Cell の箱の中にそれぞれ描いていた「Ontology／共有する語の定義」を外し、二つの Cell のあいだに「共有する Ontology」の箱を 1 つ置いて両方の Cell に線でつないだ（下の行「渡す語の定義。両側が同じ一つを持つ」）。箱の中に 1 つずつ描くと各 Cell が自分の定義を持つと読め、第 6 章 p.「Ontology は共有する語の定義」の読み（同じ一つの定義を両側が持つ、core.md:21「境界の両側が保持する共通語の定義」）と食い違っていた。絵の下の行「渡す語の意味は、共有する Ontology に書く」は箱の下の行に移した。本文の「責務・規範・語の定義を持ち」を「責務と規範を持ち、語の定義を共有し」に（上限 80 字に入れるため「番号の章が」を「各章が」に）。kishibashi3 の問い（@ope-ultp1635 msg d9e92257）。
 章番号: この章の本文・注・絵は v7 の章番号（10 章）で書いた。2・3 便目でファイルの番号を詰めるまで、#ch5 より後のリンクはいまのファイルの章に飛ぶ。
+第 1 章（職能による分業の限界）を Cell の境界の章に畳んだ（@ope-ultp1635 msg 352dee1a）: 群の名前を「巨大なシステムの分業と Cell の境界」にした（第 0 章の問いと、その答えの Cell の境界を 1 つの群に）。p.「答え：文脈を疎結合に分ける」の絵の「判定は第 2 章、職能は第 1 章」を「判定と職能は第 1 章」に、全体図の上の行の「職能では切らない（第 1 章）。境界の判定（第 2 章）」を「職能では切らず、境界を判定する（第 1 章）」にした。ほかの章番号とリンクは 1 つずつ詰めた。上のメモの章番号は書いた時点のまま。
 -->
 
 ```svg
@@ -183,14 +184,14 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
   </g>
   <g opacity=".6"><rect x="500" y="284" width="110" height="34" rx="6" class="lt dash" style="fill:#fff"/><text x="555" y="307" class="ts" text-anchor="middle">職能</text></g>
   <use href="#i-no" x="616" y="289" width="24" height="24"/>
-  <text x="652" y="307" class="tx">判定は第 2 章、職能は第 1 章</text>
+  <text x="652" y="307" class="tx">判定と職能は第 1 章</text>
   <text x="440" y="362" class="ts sub" text-anchor="middle">切り方はこの本の提案。Core の規定ではない</text>
 </svg>
 ```
 
 だから分けます。この本の答えは、各主体の文脈が疎結合になるように分けることです。切り方は Core の規定ではなく、この本の提案です。
 
-※ どちらの優先で答えたかは外から見えず、責任を負う人間はなぜかを追えない。分ける理由はこの二つで、人間の分業の慣習には拠らない。疎結合は、結合が少なく明示されていること（第 5 章）。
+※ どちらの優先で答えたかは外から見えず、責任を負う人間はなぜかを追えない。分ける理由はこの二つで、人間の分業の慣習には拠らない。疎結合は、結合が少なく明示されていること（第 4 章）。
 
 ## この本と EAA Core
 
@@ -207,7 +208,7 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
   <text x="492" y="46" class="t" font-weight="700">EAA Profiles</text>
   <text x="492" y="76" class="ts hc" font-weight="700">位置づけ：責務仕様案（未確定）</text>
   <g class="ts"><text x="492" y="112">Cell が引き受ける責務と、</text><text x="492" y="136">その引受・合成・改訂・解除。</text><text x="492" y="160">Standard と Domain</text></g>
-  <text x="492" y="192" class="tx">詳細スキーマも未確定。主に第 3 章で引く</text>
+  <text x="492" y="192" class="tx">詳細スキーマも未確定。主に第 2 章で引く</text>
   <rect x="40" y="226" width="800" height="54" rx="8" fill="#fff" class="lt dash"/>
   <text x="62" y="250" class="ts" font-weight="700">ほかに引く文書</text>
   <text x="62" y="270" class="tx">Adoption Guide・Delivery Guide・Role Model は非規範の適用例、Working Notes は検討履歴。EAA 自身がそう位置づけている</text>
@@ -226,13 +227,13 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
 
 ```svg
 <svg viewBox="0 0 880 420" width="880" height="420">
-  <text x="10" y="18" class="tx">なぜ分けるか：判断を追い切れず、価値を取り違える（<a href="#ch0"><tspan>第 0 章</tspan></a>）。職能では切らない（<a href="#ch1"><tspan>第 1 章</tspan></a>）。境界の判定（<a href="#ch2"><tspan>第 2 章</tspan></a>）</text>
+  <text x="10" y="18" class="tx">なぜ分けるか：判断を追い切れず、価値を取り違える（<a href="#ch0"><tspan>第 0 章</tspan></a>）。職能では切らず、境界を判定する（<a href="#ch1"><tspan>第 1 章</tspan></a>）</text>
   <rect x="10" y="30" width="270" height="250" rx="10" fill="#fff" class="al"/>
   <text x="26" y="58" class="t ac" font-weight="700">在庫の Cell</text>
   <rect x="26" y="72" width="238" height="44" rx="5" class="soft"/>
-  <text x="38" y="90" class="ts" font-weight="700">Profile</text><text x="38" y="109" class="tx">引き受ける責務</text><a href="#ch3"><text x="256" y="90" class="tx" text-anchor="end">第 3 章</text></a>
+  <text x="38" y="90" class="ts" font-weight="700">Profile</text><text x="38" y="109" class="tx">引き受ける責務</text><a href="#ch2"><text x="256" y="90" class="tx" text-anchor="end">第 2 章</text></a>
   <rect x="26" y="124" width="238" height="44" rx="5" class="soft"/>
-  <text x="38" y="142" class="ts" font-weight="700">Constitution</text><text x="38" y="161" class="tx">採用した規範</text><a href="#ch4"><text x="256" y="142" class="tx" text-anchor="end">第 4 章</text></a>
+  <text x="38" y="142" class="ts" font-weight="700">Constitution</text><text x="38" y="161" class="tx">採用した規範</text><a href="#ch3"><text x="256" y="142" class="tx" text-anchor="end">第 3 章</text></a>
   <text x="26" y="196" class="tx">中は Agent でも人のチームでも。</text><text x="26" y="216" class="tx">作り方はこの Cell が決める</text>
   <rect x="600" y="30" width="270" height="250" rx="10" fill="#fff" class="al"/>
   <text x="616" y="58" class="t ac" font-weight="700">物流の Cell</text>
@@ -245,26 +246,26 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
   <text x="440" y="54" class="ts hc" text-anchor="middle" font-weight="700">Contract（版付きの取り決め）</text>
   <text x="440" y="76" class="tx" text-anchor="middle">渡すもの・条件・確かめ方</text>
   <text x="440" y="96" class="tx" text-anchor="middle">結ぶ Cell の全部が同じ版を</text>
-  <text x="440" y="116" class="tx" text-anchor="middle">採用して成り立つ <a href="#ch5"><tspan>第 5 章</tspan></a></text>
+  <text x="440" y="116" class="tx" text-anchor="middle">採用して成り立つ <a href="#ch4"><tspan>第 4 章</tspan></a></text>
   <path d="M280,82 H316 M564,82 H600" class="lt"/>
   <path d="M286,164 H594" class="ln" marker-end="url(#arr)"/>
-  <text x="440" y="156" class="ts" text-anchor="middle"><tspan font-weight="700">Mission</tspan>　今回の仕事を頼む <a href="#ch5"><tspan class="tx">第 5 章</tspan></a></text>
+  <text x="440" y="156" class="ts" text-anchor="middle"><tspan font-weight="700">Mission</tspan>　今回の仕事を頼む <a href="#ch4"><tspan class="tx">第 4 章</tspan></a></text>
   <path d="M594,198 H286" class="ln" marker-end="url(#arr)"/>
-  <text x="440" y="190" class="ts" text-anchor="middle"><tspan font-weight="700">Evidence</tspan>　成果の記録を返す <a href="#ch6"><tspan class="tx">第 6 章</tspan></a></text>
+  <text x="440" y="190" class="ts" text-anchor="middle"><tspan font-weight="700">Evidence</tspan>　成果の記録を返す <a href="#ch5"><tspan class="tx">第 5 章</tspan></a></text>
   <text x="440" y="218" class="tx" text-anchor="middle">受けた側は、作った側を介さずに確かめる</text>
   <rect x="318" y="230" width="244" height="50" rx="4" fill="#fff" class="hl"/>
   <path d="M280,255 H316 M564,255 H600" class="lt"/>
-  <text x="330" y="250" class="ts" font-weight="700">共有する Ontology</text><a href="#ch6"><text x="550" y="250" class="tx" text-anchor="end">第 6 章</text></a>
+  <text x="330" y="250" class="ts" font-weight="700">共有する Ontology</text><a href="#ch5"><text x="550" y="250" class="tx" text-anchor="end">第 5 章</text></a>
   <text x="330" y="270" class="tx">渡す語の定義。境界の両側が保持する</text>
-  <text x="440" y="298" class="tx" text-anchor="middle">互いの中は指定せず、共有する文書でつながる（Federation <a href="#ch4"><tspan>第 4 章</tspan></a>）</text>
+  <text x="440" y="298" class="tx" text-anchor="middle">互いの中は指定せず、共有する文書でつながる（Federation <a href="#ch3"><tspan>第 3 章</tspan></a>）</text>
   <text x="10" y="322" class="ts" font-weight="700">変えるとき・分け直すとき・始めるとき</text>
   <g class="box"><rect x="10" y="332" width="280" height="76" rx="6"/><rect x="300" y="332" width="280" height="76" rx="6"/><rect x="590" y="332" width="280" height="76" rx="6"/></g>
   <g class="ts"><text x="22" y="356">版の改訂と採用</text><text x="312" y="356">Cell の分け直し</text><text x="602" y="356">導入</text></g>
   <g class="tx"><text x="22" y="376">提起者でない所有者が承認し、各 Cell が採用</text><text x="312" y="376">切り替えが始まったら分ける</text><text x="602" y="376">行き来の多いあいだから試す</text></g>
-  <g class="tx"><a href="#ch7"><text x="22" y="398">第 7 章</text></a><a href="#ch8"><text x="312" y="398">第 8 章</text></a><a href="#ch9"><text x="602" y="398">第 9 章</text></a></g>
+  <g class="tx"><a href="#ch6"><text x="22" y="398">第 6 章</text></a><a href="#ch7"><text x="312" y="398">第 7 章</text></a><a href="#ch8"><text x="602" y="398">第 8 章</text></a></g>
 </svg>
 ```
 
 Cell は責務と規範を持ち、語の定義を共有し、あいだを Contract に書き、Mission で頼み、Evidence で確かめます。各章がその部分を説明します。
 
-※ 例の在庫と物流は第 2・3・5〜7 章で使う。語の意味は EAA Core 版 6 の概念表をこの本の言葉で言い直した。Core の字は各章の注で引く。
+※ 例の在庫と物流は第 1・2・4〜6 章で使う。語の意味は EAA Core 版 6 の概念表をこの本の言葉で言い直した。Core の字は各章の注で引く。
