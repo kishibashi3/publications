@@ -32,6 +32,11 @@ v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
 - p.「AA のレビュー分離は別の目的」は旧第 1 章のまま。AA の本の第 2 章のレビューの切り離しは分業ではなく職務分離（Core の用語表）。
 - p.「Agent の数と中の作り方では決まらない」は旧 p.「職能でも Agent の数でも決まらない」。職能は前のページが言うので題から外した。
 - 落とした: 旧第 1 章の章の概要。字の行き先は fold-ch01-into-ch02.md の「第 1 章のページの行き先」。旧本文と書き手のメモは d0343ce の eaa-ch01.md にある。
+5edaa3d の検算を受けて直した（@ope-ultp1635 msg 2eec57ec、判定の正本 @reviewer 2026-11-10-eaa-textbook-5edaa3d-fold-ch01）:
+- p.「いまの分け方：工程ごとに AI」を p.「AI 駆動開発の分け方」にした。AA の字（aa-ch01.md:64）は「国内で『AI 駆動開発』と呼ぶときは、多くが 3」までで、国内の使い方全体で最も広いのは補完。本文に「国内で『AI 駆動開発』と呼ぶとき」の限定を戻し、題からも「いま」と「工程ごとに AI」を外した（右の形は出典が無く、「いま」に含めると強く読める）。
+- 同じページ: AA の字は「工程」で「職能」は aa-*.md に 0 件。左右とも職能の分業と読むのはこの本なので、絵の下の行・本文・注でそう断った。
+- p.「人間には理由があり、Agent には無い」: people still specialize は LeSS の字で、SAFe では照合していない。本文と絵の行を LeSS に限った。旧絵（d0343ce）の「機能を最後まで作る」「（どちらも cross-functional）」を戻した。右の「職能はここに無い」はこの本の文脈の定義（第 0 章）による読みと絵の中で断った（注は上限 90 字に近く、足せなかった）。
+- p.「切る軸：価値・ドメイン・権限」: 注の「例と権限の読み」に職能の列を含めた。4 列目の「理由は次のページから」を「理由はこの後のページで」にした（次は p.「AI 駆動開発の分け方」で、理由はその後の 2 ページ）。
 -->
 
 ```svg
@@ -124,16 +129,16 @@ v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
   <text x="768" y="168" class="ts xc" text-anchor="middle">職能はここに無い</text>
   <rect x="678" y="206" width="180" height="80" rx="8" class="xl" style="fill:#fff"/>
   <use href="#i-no" x="700" y="220" width="22" height="22"/><text x="730" y="237" class="ts xc">軸にならない</text>
-  <text x="768" y="270" class="tx" text-anchor="middle">理由は次のページから</text>
+  <text x="768" y="270" class="tx" text-anchor="middle">理由はこの後のページで</text>
   <text x="440" y="352" class="ts sub" text-anchor="middle">価値・ドメイン・権限は、主体の中で切り替えずに済む範囲を見つける例</text>
 </svg>
 ```
 
 価値で切ると、障害の日に決済は変更を見送り、推薦は出せます。ドメインで切ると「出荷日」の意味が切り替わらず、権限ごと渡すと問い合わせという切り替えが消えます。
 
-※ 価値は判断が割れたときに何を優先するかで、SAFe の value stream とは別の語。境界で読む Ontology は第 5 章、権限を渡す分割は第 2 章。例と権限の読みは書き手による。
+※ 価値は判断が割れたときに何を優先するかで、SAFe の value stream とは別の語。境界で読む Ontology は第 5 章、権限を渡す分割は第 2 章。例・権限・職能の読みは書き手。
 
-## いまの分け方：工程ごとに AI
+## AI 駆動開発の分け方
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
@@ -153,13 +158,13 @@ v7 で畳んだ（構造: agent-hub-roles-kaz/writer-ja/drafts/eaa-toc/structure
   </g>
   <path d="M644,93 H663" class="ln" marker-end="url(#arr)"/><path d="M751,110 L566,172" class="ln" marker-end="url(#arr)"/><path d="M644,193 H663" class="ln" marker-end="url(#arr)"/>
   <text x="655" y="252" class="tx" text-anchor="middle">人のチームの役割を、Agent に写す</text>
-  <text x="440" y="330" class="t hc" text-anchor="middle" font-weight="700">どちらも、職能で分けている</text>
+  <text x="440" y="330" class="t hc" text-anchor="middle" font-weight="700">この本は、どちらも職能の分業と読む</text>
 </svg>
 ```
 
-AA の本が、国内で多いとした形は、工程ごとに AI に書かせる形です。担当を Agent に割り当てる形も、同じく職能で分けています。
+国内で「AI 駆動開発」と呼ぶとき、AA の本が多いとしたのは工程ごとに AI に書かせる形です。担当を Agent に割り当てる形と合わせ、この本は職能の分業と読みます。
 
-出典: 左は AA の本 第 1 章 p.「よくある 3 つの形：補完・PR・工程ごと」の工程ごとの形（WEEL、2026-08-24）。※ 右は人の役割を写した職能の分業（書き手の読み）。
+出典: 左は AA の本 第 1 章 p.「よくある 3 つの形：補完・PR・工程ごと」の工程ごとの形（WEEL、2026-08-24）。※ AA の字は工程。左右とも職能の分業と読むのは書き手。
 
 ## 職能で分けるとループが閉じない
 
@@ -196,9 +201,9 @@ AA の本が、国内で多いとした形は、工程ごとに AI に書かせ�
   <rect x="20" y="20" width="410" height="270" rx="10" class="box"/>
   <text x="225" y="52" class="t" text-anchor="middle" font-weight="700">人間：職能で分ける理由がある</text>
   <g class="ts"><text x="40" y="88">職能ごとに、覚える知識と手の技が多い</text><text x="40" y="114">一人で全部はこなせない</text></g>
-  <rect x="34" y="132" width="382" height="144" rx="8" class="hl" style="fill:#fff"/>
-  <text x="225" y="160" class="ts hc" text-anchor="middle" font-weight="700">LeSS・SAFe：一つのチームに技能を揃える</text>
-  <g class="tx" text-anchor="middle"><text x="225" y="190">渡しと待ちが増えるのを、LeSS は理由に挙げる</text><text x="225" y="216">チームの中で、人は今も得意な職能を持つ</text><text x="225" y="240">（people still specialize）</text><text x="225" y="264">LeSS：フィーチャーチーム　SAFe：チームと ART</text></g>
+  <rect x="34" y="126" width="382" height="158" rx="8" class="hl" style="fill:#fff"/>
+  <text x="225" y="150" class="ts hc" text-anchor="middle" font-weight="700">LeSS・SAFe：一つのチームに技能を揃える</text>
+  <g class="tx" text-anchor="middle"><text x="225" y="174">機能を最後まで作る（どちらも cross-functional）</text><text x="225" y="196">LeSS：フィーチャーチーム　SAFe：チームと ART</text><text x="225" y="218">渡しと待ちが増えるのを、LeSS は理由に挙げる</text><text x="225" y="242">LeSS：チームの中でも、人は今も得意な職能を持つ</text><text x="225" y="264">（people still specialize）</text></g>
   <rect x="450" y="20" width="410" height="270" rx="10" class="hl" style="fill:#fff"/>
   <text x="655" y="52" class="t hc" text-anchor="middle" font-weight="700">Agent：どの作業も頼める</text>
   <g class="tx" text-anchor="middle">
@@ -209,15 +214,16 @@ AA の本が、国内で多いとした形は、工程ごとに AI に書かせ�
   </g>
   <rect x="580" y="114" width="150" height="36" rx="18" class="a"/><text x="655" y="138" class="ts on" text-anchor="middle">Agent</text>
   <rect x="468" y="164" width="376" height="112" rx="8" class="box"/>
-  <text x="655" y="190" class="ts hc" text-anchor="middle" font-weight="700">判断に使う文脈</text>
-  <text x="655" y="218" class="tx" text-anchor="middle">扱う対象の語と記録・優先する価値・判断の権限</text>
-  <text x="655" y="254" class="ts xc" text-anchor="middle">職能はここに無い</text>
+  <text x="655" y="188" class="ts hc" text-anchor="middle" font-weight="700">判断に使う文脈</text>
+  <text x="655" y="212" class="tx" text-anchor="middle">扱う対象の語と記録・優先する価値・判断の権限</text>
+  <text x="655" y="242" class="ts xc" text-anchor="middle">職能はここに無い</text>
+  <text x="655" y="266" class="tx" text-anchor="middle">この本の文脈の定義（第 0 章）による読み</text>
   <text x="440" y="330" class="t" text-anchor="middle" font-weight="700">職能ごとの覚えることの多さは、Agent を分ける理由にならない</text>
   <text x="440" y="362" class="ts sub" text-anchor="middle">英文は LeSS「Feature Teams」、SAFe「Agile Teams」「Agile Release Train」（2026-11-08 参照）</text>
 </svg>
 ```
 
-人間は職能ごとに覚えることが多く、LeSS や SAFe でもチームの中に職能が残ります。Agent はどの作業も頼め、判断に使う文脈に職能はありません。
+人間は職能ごとに覚えることが多く、LeSS は、チームの中でも人は得意な職能を持つと書きます。Agent はどの作業も頼め、判断に使う文脈に職能はありません。
 
 出典: LeSS「Feature Teams」、SAFe「Agile Teams」「Agile Release Train」。原文に当たった。ART は SAFe のチームの束。対応は付録。
 
