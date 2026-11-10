@@ -209,7 +209,7 @@ Contract は Cell のあいだの合意で、契約書の代わりではあり�
   <text x="660" y="44" class="t" text-anchor="middle" font-weight="700">Contract</text><text x="660" y="68" class="ts sub" text-anchor="middle">続いていく取り決め</text>
   <rect x="60" y="86" width="320" height="104" rx="3" class="hl" style="fill:#fff"/>
   <g class="ts" text-anchor="middle"><text x="220" y="116">出荷結果に追跡番号を載せる</text></g>
-  <g class="tx"><text x="80" y="148" font-weight="700">Goal</text><text x="160" y="148">目指す状態</text><text x="80" y="174" font-weight="700">Outcome</text><text x="160" y="174">成り立たせた変化</text></g>
+  <g class="tx"><text x="80" y="148" font-weight="700">Goal</text><text x="160" y="148">目指す状態</text><text x="80" y="174" font-weight="700">Outcome</text><text x="160" y="174">成り立たせる変化</text></g>
   <rect x="500" y="86" width="320" height="104" rx="3" class="hl" style="fill:#fff"/>
   <g class="ts" text-anchor="middle"><text x="660" y="124">在庫と物流のあいだの</text><text x="660" y="150">責任・条件・入出力・Evidence</text><text x="660" y="178" class="sub">変えるまで効き続ける</text></g>
   <text x="440" y="214" class="tx" text-anchor="middle">Mission を分けたら、子 Mission は親 Goal への寄与を説明できるようにする</text>
@@ -220,7 +220,7 @@ Contract は Cell のあいだの合意で、契約書の代わりではあり�
 </svg>
 ```
 
-Mission は、引き受けた責務のもとで今回実現する変化です。目指す状態が Goal、成り立たせた変化が Outcome です。続く取り決めは Contract です。
+Mission は、引き受けた責務のもとで今回実現する変化です。目指す状態が Goal、成り立たせる変化が Outcome です。続く取り決めは Contract です。
 
 出典: EAA Core 版 6 の概念表「Mission」「Goal」「Outcome」、「2.」。※ 詳しくは打合せでと渡すと、受けた側は頼んだ側に聞きに戻る（書き手の読み、第 1 章）。
 

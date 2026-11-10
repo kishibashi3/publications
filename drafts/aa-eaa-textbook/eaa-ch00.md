@@ -198,7 +198,7 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
 
 ```svg
 <svg viewBox="0 0 880 430" width="880" height="430">
-  <text x="40" y="20" class="ts"><tspan font-weight="700">EAA</tspan> は Enterprise Agentic Agile の略。AA を、責務の分割と Federation で広げる仕組み</text>
+  <text x="40" y="20" class="ts"><tspan font-weight="700">EAA</tspan> は Enterprise Agentic Agile の略。AA から、責務の分割と Federation で広げる仕組み</text>
   <g transform="translate(0,30)">
   <rect x="40" y="14" width="370" height="196" rx="10" class="box"/>
   <text x="62" y="46" class="t" font-weight="700">EAA Core　版 6</text>
@@ -225,7 +225,7 @@ AA は Agent に開発を任せるやり方です。AA のように自律して�
 
 この本は EAA Core と EAA Profiles を規範として引きます。どちらも未確定の草案で、Core は規範案、Profiles は責務仕様案と自ら書いています。
 
-※ 出典: Core と Profiles の冒頭の「位置づけ」、Core 版 6「1.」。Core は責務の仕様を Profiles に任せる。Profiles には版の欄が無い。
+※ 出典: Core・Profiles 冒頭の位置づけ、Core 版 6「1.」、EAA の行は README。Core は責務の仕様を Profiles に任せる。Profiles には版の欄が無い。
 
 ## Cell・文書・手続きの全体図
 
