@@ -6,6 +6,7 @@
 - 載せた語: 本文で名前を付けて使う語のうち、@reader が挙げた語（Goal・Constraints・Authority・Acceptance Evidence・Outcome・Task・ロード・割当・横断責務・Operator）と、全体図・章題に出る語。並びは定義したページの順。意味は本文の定義の字をこの本の言い直しのまま短くした（Core の字は各ページの注にある）。Constraints と Authority は Core の概念表に行が無く、本文 p.36 の問いから言い直した（Core「2.」は Mission の欄の名前として挙げる）。ページ番号は定義したページ。
 - 引いた文書: 本文・注が引く文書を全部挙げ、置き場所を書いた。置き場所は 2026-11-10 に kishibashi3/publications の main で確かめた（enterprise-agentic-agile/ の 7 本・self-revising-norm-architecture/・agentic-agile-materials/explanations/eaa/・aa-eaa-textbook/ の aa-*.md）。repo は公開。公開サイト（docs/）にはどれも無い。この本の原稿は drafts/eaa-textbook の branch にだけある。LeSS・SAFe・Spotify の文献は付録の各ページの絵の中に題・URL・参照日がある。
 - @reviewer の巻末の検算（roles-kaz reviewer/feedback-archive/2026-11-10-eaa-textbook-5221280-kanmatsu.md、a797aaaa、着手: @ope-ultp1635 msg 2999263c）で直した: EAA・Cell・割当・採用・正本・所有者・Outcome・Authority の行、p.6 の EAA の行（「AA を」→「AA から」）と注の出典、引いた文書に README の行。Outcome は Core の「成立させる」に合わせ、p.35 の本文と絵の字も「成り立たせる」に直した。正本を定義したページは p.22（「Profile の本文（正本）」）。
+- 同じ検算の Suggestion 2〜5 を直した（着手: @ope-ultp1635 msg 8f1f2e85）: ロードを Profiles「4.」と p.22 の「引き受け（ロード）」に合わせて引き受けそのものにした。Federation に主語「Cell どうしが」を足した。Ontology に Core 概念表の「意味の違いと対応を保持し」を足した（p.42 の主張）。3 枚目の題を「Mission の欄」から「Mission と判断責任者」にした（欄でない Mission・Outcome・Task・Operator が載るため。Operator は判断責任者を担う人間の呼び名。「Mission と Operator」は見出しの上限 20 字を 1 字越える）。
 - この本の版: 本に版の番号を付けていないので、日付で書いた（草案、2026-11-10）。版を上げるときはこの行の日付を変える。
 -->
 
@@ -26,7 +27,7 @@
     <text x="230" y="208">Cell が引き受ける責務の、版付きの仕様</text>
     <text x="230" y="244">Profile の 2 種。EAA が再利用できる形で出す物と、企業が業務から書く物</text>
     <text x="230" y="271">引き受ける Cell・判断責任者・資源・範囲・採用した版を、</text><text x="230" y="289">Profile と別に決めた物。権限はここで与える</text>
-    <text x="230" y="316">要る権限と能力を確保して、責務の引き受けを成り立たせること</text>
+    <text x="230" y="316">指定範囲の責務を引き受け、要る権限と能力を確保すること</text>
     <text x="230" y="352">複数の Cell にまたがる変更・保証の責務。これも Profile に書く</text>
   </g>
   <g class="ts hc" text-anchor="end">
@@ -50,10 +51,10 @@
   </g>
   <g class="ts">
     <text x="230" y="64">Cell が採用した目的・価値・制約・権限・禁止事項の規範</text>
-    <text x="230" y="100">互いの中の方式を指定せず、共有する文書でつながる関係</text>
+    <text x="230" y="100">Cell どうしが互いの中の方式を指定せず、共有する文書でつながる関係</text>
     <text x="230" y="136">責任・提供条件・入出力・要る Evidence を定める、Cell のあいだの合意</text>
     <text x="230" y="172">成果や判断が成り立ったことを確かめられる記録</text>
-    <text x="230" y="208">渡す語の意味の定義。境界の両側が保持する</text>
+    <text x="230" y="208">渡す語の意味の定義。境界の両側が保持し、意味の違いと対応も持つ</text>
     <text x="230" y="244">各 Cell の規範の所有者が、文書の版に従うと決めること。版の公開とは別の行為</text>
     <text x="230" y="280">Profile の本文。提供する側が持ち、版を重ねる</text>
     <text x="230" y="316">文書の改訂を承認する人間。Cell の規範の所有者は、新しい版の採用も決める</text>
@@ -69,7 +70,7 @@
 
 ※ 所有者と提起者の決め方は第 6 章。Contract の所有者の決め方は p.51。
 
-## 語の一覧：Mission の欄
+## 語の一覧：Mission と判断責任者
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
