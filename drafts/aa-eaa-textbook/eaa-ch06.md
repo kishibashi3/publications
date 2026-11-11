@@ -166,10 +166,10 @@ v7 の残す字: 提起した者は、文書を提供する側に属していて
   </g>
   <path d="M40,44 H840 M40,98 H840 M230,16 V152 M540,16 V152" class="lt"/>
   <rect x="40" y="176" width="370" height="110" rx="10" class="box"/>
-  <text x="225" y="204" class="ts" text-anchor="middle" font-weight="700">提供する側の repo</text>
+  <text x="225" y="204" class="ts" text-anchor="middle" font-weight="700">提供する側</text>
   <rect x="80" y="220" width="290" height="50" rx="6" class="soft"/><text x="225" y="242" class="tx" text-anchor="middle">正本を改訂する PR</text><text x="225" y="262" class="tx hc" text-anchor="middle" font-weight="700">Profile　版 2（固定）</text>
   <rect x="470" y="176" width="370" height="110" rx="10" class="box"/>
-  <text x="655" y="204" class="ts" text-anchor="middle" font-weight="700">引き受けた側の repo</text>
+  <text x="655" y="204" class="ts" text-anchor="middle" font-weight="700">引き受けた側</text>
   <rect x="510" y="220" width="290" height="50" rx="6" class="soft"/><text x="655" y="242" class="tx" text-anchor="middle">採用版を更新する PR</text><text x="655" y="262" class="tx" text-anchor="middle">CLAUDE.md から版 2 を参照する</text>
   <path d="M410,245 H466" class="ln" marker-end="url(#arr)"/>
   <text x="440" y="318" class="ts sub" text-anchor="middle">参照は latest ではなく、承認済みの中身を特定できる固定版。古い版は上書きしない</text>

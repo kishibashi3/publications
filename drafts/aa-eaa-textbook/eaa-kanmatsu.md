@@ -13,6 +13,7 @@
 - 組み方の見本: AA の巻末「通しの 1 枚：役・ファイル・線・約束」に当たる 1 枚。周辺文書から取れる字だけで書いた — Delivery Guide「6.」（Issue・Sub-issue・PR・Actions・コメント・close の対応、ふつうの変更は Agent が判定し規範改訂と採用版の移行は所有者が判断）・「7.」（Mission の Issue の欄。説明用の記法で確定スキーマではない）・「8.」（PR の merge は Mission の完了と同じではない。今回の絵には入れていない）・「20.」（引受側の CLAUDE.md から提供側 Profile の固定版を参照、正本の PR と採用版の PR を分ける）、文書管理（採用先は repo・文書パス・完全な commit SHA を記録し、branch 名と latest を採用版にしない）。Profiles「4.」も CLAUDE.md の実装例を Delivery Guide に送る。
 - 組み方の見本の右下（周辺文書に無いもの）: Contract・Ontology・Constitution のファイル名、Profile 正本と Contract を置く repo、Cell ごとに repo を分けるか、採用の記録を置く場所。2026-11-10 に main の enterprise-agentic-agile/ の全文書と document-management.md を「repo・ファイル・.md・パス・置き場・保存」で grep して、無いことを確かめた（観測範囲: main の enterprise-agentic-agile/ と document-management.md。未確認: 他 branch）。書き手の読みでは埋めていない。AA の見本にある「最初に作るファイル」の並びも、EAA の周辺文書に無いので作っていない。決め方の行き先は p.「Core が決めていないこと」。
 - 引いた文書に文書管理（drafts/document-management.md、運用案内・非規範）を足した。組み方の見本が引くため。
+- 巻末の検算と v9 の通読の指摘で直した（着手: @ope-ultp1635 msg 3406ad20）: 組み方の見本の左下を Delivery Guide「6.」「20.」の字に戻した（「参照できる」「判定できる」「正当な所有者」）。右下の採用の記録は「20.」に CLAUDE.md と PR の例があるので、無い範囲を書式とそれ以外の置き場所に狭めた。p.49 の絵の「repo」は周辺文書に無い字なので外し、「提供する側」「引き受けた側」にした（「20.」は正本側の PR・採用側の PR とだけ書く）。p.64 に 4 件の行は無いので、案内を「かかる Cell が決める（p.64 の本文）」にした。第 0 章の問いは p.3 の「自分の現場で数える」（PR の本数 対 レビューできる本数）に合わせ、数える範囲を「責任を負う人間が同じ範囲」にした。p.58 は境界を越えた行き来の数え方で、判断の数え方ではないので戻る所に足していない。第 1 章の問いは、職能で分けた持ち場があるかでなく、切り替えが職能の境界で起きているかを問う形にした。第 3 章・第 6 章は戻る所を行の順に並べた。引いた文書の置き場所は main でなく commit 6e3587e を指す。
 - この本の版: 本に版の番号を付けていないので、日付で書いた（草案、2026-11-10）。版を上げるときはこの行の日付を変える。
 -->
 
@@ -25,8 +26,8 @@
   <g class="ts" font-weight="700"><text x="40" y="76">第 0 章</text><text x="40" y="164">第 1 章</text><text x="40" y="252">第 2 章</text><text x="40" y="340">第 3 章</text></g>
   <g class="tx"><text x="40" y="96">AA と巨大なシステム</text><text x="40" y="184">Cell の境界</text><text x="40" y="272">Profile</text><text x="40" y="360">Constitution と</text><text x="40" y="376">Federation</text></g>
   <g class="ts">
-    <text x="210" y="76">いまのチーム一つで、1 日に出る判断は何件か。</text><text x="210" y="98">そのうち、責任を負う人間が追えるのは何件か</text>
-    <text x="210" y="164">仕事の途中で、別の語・記録・価値・権限へ切り替えている</text><text x="210" y="186">持ち場はどこか。職能で分けた持ち場は、その中にあるか</text>
+    <text x="210" y="76">責任を負う人間が同じ範囲で、1 日に出る PR は何本か。</text><text x="210" y="98">そのうち、その人たちが 1 日にレビューできるのは何本か</text>
+    <text x="210" y="164">仕事の途中で、別の語・記録・価値・権限へ切り替えている</text><text x="210" y="186">持ち場はどこか。その切り替えは、職能で分けた境界で起きているか</text>
     <text x="210" y="252">自分のチームの責務を Profile の項目で書くと、書けない項目は</text><text x="210" y="274">どれか。誰が引き受けるかは、どこで決めているか</text>
     <text x="210" y="340">相手のチームの中の作り方を指定したり、判断を上書きしたり</text><text x="210" y="362">している取り決めはあるか。提案に替えるなら、誰に出すか</text>
   </g>
@@ -35,7 +36,7 @@
     <a href="#p3"><text x="840" y="76">p.3</text></a>
     <a href="#p9"><text x="840" y="164">p.9</text></a><a href="#p12"><text x="840" y="186">p.12</text></a>
     <a href="#p19"><text x="840" y="252">p.19</text></a><a href="#p22"><text x="840" y="274">p.22</text></a>
-    <a href="#p27"><text x="840" y="340">p.27</text></a><a href="#p28"><text x="840" y="362">p.28</text></a>
+    <a href="#p28"><text x="840" y="340">p.28</text></a><a href="#p27"><text x="840" y="362">p.27</text></a>
   </g>
 </svg>
 ```
@@ -65,7 +66,7 @@
     <a href="#p31"><text x="840" y="66">p.31</text></a><a href="#p32"><text x="840" y="86">p.32</text></a>
     <a href="#p36"><text x="840" y="120">p.36</text></a>
     <a href="#p40"><text x="840" y="174">p.40</text></a><a href="#p42"><text x="840" y="194">p.42</text></a>
-    <a href="#p45"><text x="840" y="228">p.45</text></a><a href="#p50"><text x="840" y="248">p.50</text></a>
+    <a href="#p50"><text x="840" y="228">p.50</text></a><a href="#p45"><text x="840" y="248">p.45</text></a>
     <a href="#p55"><text x="840" y="282">p.55</text></a><a href="#p56"><text x="840" y="302">p.56</text></a>
     <a href="#p58"><text x="840" y="336">p.58</text></a><a href="#p59"><text x="840" y="356">p.59</text></a>
   </g>
@@ -89,12 +90,12 @@
   <g class="tx"><text x="461" y="152">　の ref と version（参照する版）</text><text x="461" y="170">説明用の記法で、確定した書式ではない</text></g>
   <rect x="10" y="184" width="425" height="170" rx="8" fill="#fff" class="lt"/>
   <text x="26" y="210" class="ts" font-weight="700">CLAUDE.md と PR（「6.」「20.」）</text>
-  <g class="ts"><text x="26" y="238">提供する側の Profile の固定した版を参照する</text><text x="26" y="262">版を変えるときは、正本の PR と採用版の PR を分ける</text><text x="26" y="286">ふつうの変更は Agent が判定し、規範の改訂と</text><text x="26" y="306">採用版の移行は所有者が判断する（「6.」）</text></g>
+  <g class="ts"><text x="26" y="238">提供する側の Profile の固定した版を参照できる</text><text x="26" y="262">版を変えるときは、正本の PR と採用版の PR を分ける</text><text x="26" y="286">ふつうの変更は Agent が判定できる。規範の改訂と</text><text x="26" y="306">採用版の移行は正当な所有者が判断する（「6.」）</text></g>
   <g class="tx"><text x="26" y="328">採用の記録は repo・文書の path・完全な commit SHA で書き、</text><text x="26" y="346">branch 名と latest は使わない（文書管理）</text></g>
   <rect x="445" y="184" width="425" height="170" rx="8" fill="#fff" class="lt" stroke-dasharray="6 4"/>
   <text x="461" y="210" class="ts" font-weight="700">周辺文書に無いもの</text>
-  <g class="ts"><text x="461" y="238">Contract・Ontology・Constitution のファイル名</text><text x="461" y="262">Profile の正本と Contract を置く repo</text><text x="461" y="286">Cell ごとに repo を分けるか</text><text x="461" y="310">採用の記録を置く場所</text></g>
-  <text x="461" y="338" class="tx">この本も決めない。決め方は <a href="#p64"><tspan>p.64</tspan></a>（Core が決めていないこと）</text>
+  <g class="ts"><text x="461" y="238">Contract・Ontology・Constitution のファイル名</text><text x="461" y="262">Profile の正本と Contract を置く repo</text><text x="461" y="286">Cell ごとに repo を分けるか</text><text x="461" y="310">採用の記録の書式と、CLAUDE.md・PR 以外の置き場所</text></g>
+  <text x="461" y="338" class="tx">この本も決めない。かかる Cell が決める（<a href="#p64"><tspan>p.64</tspan></a> の本文）</text>
   <text x="440" y="374" class="tx" text-anchor="middle">出典: Delivery Guide「6.」「7.」「20.」、文書管理（どれも非規範の適用例）</text>
 </svg>
 ```
@@ -197,34 +198,35 @@ Mission は Issue、変更は PR、確かめた結果は Actions に残します
 
 ```svg
 <svg viewBox="0 0 880 380" width="880" height="380">
-  <text x="40" y="24" class="ts" font-weight="700">置き場所は、GitHub の公開 repo kishibashi3/publications の main。公開サイトには無い</text>
-  <g class="tx" font-weight="700"><text x="40" y="54">文書</text><text x="330" y="54">位置づけ</text><text x="520" y="54">置き場所（drafts/ の下）</text></g>
-  <path d="M30,62 H850" class="lt"/>
+  <text x="40" y="22" class="ts" font-weight="700">置き場所は、GitHub の公開 repo kishibashi3/publications の次の commit。公開サイトには無い</text>
+  <text x="40" y="42" class="tx" style="font-family:monospace">commit 6e3587e494db56666a65df5b6e8626e12350faab（2026-11-10 の main）</text>
+  <g class="tx" font-weight="700"><text x="40" y="62">文書</text><text x="330" y="62">位置づけ</text><text x="520" y="62">置き場所（drafts/ の下）</text></g>
+  <path d="M30,70 H850" class="lt"/>
   <g class="ts">
-    <text x="40" y="84" font-weight="700">EAA Core　版 6</text><text x="330" y="84">規範案（未確定）</text>
-    <text x="40" y="106" font-weight="700">EAA Profiles</text><text x="330" y="106">責務仕様案（未確定）</text>
-    <text x="40" y="128">Adoption Guide・Delivery Guide</text><text x="330" y="128">適用例（非規範）</text>
-    <text x="40" y="150">Role Model</text><text x="330" y="150">適用例（非規範）</text>
-    <text x="40" y="172">Working Notes</text><text x="330" y="172">検討資料（非規範）</text>
-    <text x="40" y="194">EAA README</text><text x="330" y="194">案内（非規範）</text>
-    <text x="40" y="216">自己改訂規範アーキテクチャ</text><text x="330" y="216">Core の準拠先</text>
-    <text x="40" y="238">AA の本</text><text x="330" y="238">同じ組の本</text>
-    <text x="40" y="260">EAA 紹介 0〜3</text><text x="330" y="260">この本の前の紹介資料</text>
-    <text x="40" y="282">AA・EAA の文書管理</text><text x="330" y="282">運用案内（非規範）</text>
+    <text x="40" y="88" font-weight="700">EAA Core　版 6</text><text x="330" y="88">規範案（未確定）</text>
+    <text x="40" y="110" font-weight="700">EAA Profiles</text><text x="330" y="110">責務仕様案（未確定）</text>
+    <text x="40" y="132">Adoption Guide・Delivery Guide</text><text x="330" y="132">適用例（非規範）</text>
+    <text x="40" y="154">Role Model</text><text x="330" y="154">適用例（非規範）</text>
+    <text x="40" y="176">Working Notes</text><text x="330" y="176">検討資料（非規範）</text>
+    <text x="40" y="198">EAA README</text><text x="330" y="198">案内（非規範）</text>
+    <text x="40" y="220">自己改訂規範アーキテクチャ</text><text x="330" y="220">Core の準拠先</text>
+    <text x="40" y="242">AA の本</text><text x="330" y="242">同じ組の本</text>
+    <text x="40" y="264">EAA 紹介 0〜3</text><text x="330" y="264">この本の前の紹介資料</text>
+    <text x="40" y="286">AA・EAA の文書管理</text><text x="330" y="286">運用案内（非規範）</text>
   </g>
   <g class="tx" style="font-family:monospace">
-    <text x="520" y="84">enterprise-agentic-agile/core.md</text>
-    <text x="520" y="106">enterprise-agentic-agile/profiles.md</text>
-    <text x="520" y="128">同じ所の adoption-guide.md・delivery-guide.md</text>
-    <text x="520" y="150">同じ所の role-model.md</text>
-    <text x="520" y="172">同じ所の working-notes.md</text>
-    <text x="520" y="194">同じ所の README.md</text>
-    <text x="520" y="216">self-revising-norm-architecture/</text>
-    <text x="520" y="238">aa-eaa-textbook/ の aa- で始まる md</text>
-    <text x="520" y="260">agentic-agile-materials/explanations/eaa/</text>
-    <text x="520" y="282">document-management.md</text>
+    <text x="520" y="88">enterprise-agentic-agile/core.md</text>
+    <text x="520" y="110">enterprise-agentic-agile/profiles.md</text>
+    <text x="520" y="132">同じ所の adoption-guide.md・delivery-guide.md</text>
+    <text x="520" y="154">同じ所の role-model.md</text>
+    <text x="520" y="176">同じ所の working-notes.md</text>
+    <text x="520" y="198">同じ所の README.md</text>
+    <text x="520" y="220">self-revising-norm-architecture/</text>
+    <text x="520" y="242">aa-eaa-textbook/ の aa- で始まる md</text>
+    <text x="520" y="264">agentic-agile-materials/explanations/eaa/</text>
+    <text x="520" y="286">document-management.md</text>
   </g>
-  <text x="40" y="304" class="tx">LeSS・SAFe・Spotify の文献は、付録の各ページの絵の中に題・URL・参照日がある</text>
+  <text x="40" y="306" class="tx">LeSS・SAFe・Spotify の文献は、付録の各ページの絵の中に題・URL・参照日がある</text>
   <rect x="40" y="314" width="800" height="60" rx="10" fill="#fff" class="hl"/>
   <text x="60" y="339" class="ts hc" font-weight="700">この本の版</text><text x="200" y="339" class="ts">草案、2026-11-10。版が変わると、ページの番号と字も変わる</text>
   <text x="200" y="362" class="tx">原稿は同じ repo の branch drafts/eaa-textbook の drafts/aa-eaa-textbook/（eaa- で始まる md）</text>
