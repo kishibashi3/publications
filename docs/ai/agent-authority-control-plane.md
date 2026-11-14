@@ -195,7 +195,7 @@ Delegation には最低限、
 
 を束縛する。
 
-再委任では、権限の範囲を減衰させる必要がある。形式としては RFC 8693 の actor chain、Macaroons、Biscuit のような Capability 方式を優先して検討する。
+再委任では、権限の範囲を減衰させる必要がある。形式としては Macaroons、Biscuit のような Capability 方式を優先して検討する。RFC 8693 の actor chain（入れ子の `act` claim）は減衰の方式ではない。委任の経路を残す記録であり、RFC 8693 はアクセス制御の判断に入れ子の `act` を使わないと定めている（4.1 節）。誰が誰の代わりに動いているかを残す用途には使える。
 
 ただし、Token 形式だけでは Budget のような状態を持つ Authority は解けない。
 
