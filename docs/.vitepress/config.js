@@ -130,8 +130,10 @@ export default withMermaid({
           items: [
             { text: '設計概論', link: '/ai/agent-design/' },
             { text: '実装概論', link: '/ai/agent-implementation/' },
+            { text: 'データエージェント設計', link: '/ai/data-agent-design/' },
             { text: 'オントロジー', link: '/ai/ontology/' },
-            { text: 'リテラシー', link: '/ai/literacy/' }
+            { text: 'リテラシー', link: '/ai/literacy/' },
+            { text: 'Pure Agent OS Lab（英語）', link: '/ai/pure-agent-os/' }
           ]
         },
         {
