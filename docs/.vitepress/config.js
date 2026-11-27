@@ -10,6 +10,18 @@ export default withMermaid({
 
   lang: 'ja',
 
+  head: [
+    [
+      'script',
+      { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-H8HZ222344' }
+    ],
+    [
+      'script',
+      {},
+      "window.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('js', new Date());\ngtag('config', 'G-H8HZ222344');"
+    ]
+  ],
+
   themeConfig: {
     nav: [
       { text: 'ホーム', link: '/' },
