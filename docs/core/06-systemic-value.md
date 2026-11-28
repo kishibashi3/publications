@@ -35,9 +35,9 @@ $$V = f(S, R, T)$$
 ## 6.3 システム価値の方程式
 
 この三項をエネルギー的に統合すると、
-システム価値は次のように定式化される。
+創発エネルギーは次のように定式化される。
 
-$$V = \alpha S R e^{-|\delta T|} - \beta \frac{d|\delta T|}{dt}$$
+$$E_{\text{創発}} = \alpha S R e^{-|\delta T|} - \beta \frac{d|\delta T|}{dt}$$
 
 ここで
 - $\alpha$：創発係数（共鳴の純度）
